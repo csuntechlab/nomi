@@ -5,7 +5,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <body>
+            {{Form::open()}}
+            Login
+            <br>
+            Username
+            {{Form::text('username')}}
+            <br>
+            Password
+            {{Form::password('password')}}
+            <br>
+            {{Form::submit('submit')}}
+            {{Form::close()}}
+        </body>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
