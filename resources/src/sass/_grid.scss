@@ -1,3 +1,4 @@
+
 .grid-container {
   display: grid;
   grid-column-gap: 10px;
@@ -15,13 +16,12 @@
   text-align: center;
 }
 
-.box1 {
-  background-color: red;
-  width: 100px;
-  height: 100px;
+.box1{
+	background-color: red;
+	width: 100px;
+	height: 100px;
 }
-
-.box2 {
+.box2{
   background-color: blue;
   width: 100px;
   height: 100px;
