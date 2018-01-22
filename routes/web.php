@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/testing-travis', function() {
+//     return "This is to test travis.";
+// });
