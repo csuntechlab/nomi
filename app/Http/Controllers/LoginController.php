@@ -15,5 +15,9 @@ class LoginController extends Controller
 
     public function validateUser(Request $request)
     {
+        $credentials = $request->all('username', 'password');
+        if (auth()->attempt($credentials)) {
+            echo 123;
+        }
     }
 }
