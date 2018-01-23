@@ -14,4 +14,12 @@ class LoginControllerTest extends TestCase
         $response = $this->call('GET', '/');
         $this->assertEquals(200, $response->status());
     }
+
+    /** @test */
+    public function faculty_can_login()
+    {
+        $data = ['username' => 'steve', 'password' => ''];
+        $response = $this->call('POST', '/', $data);
+        $this->assertEquals(200, $response->status());
+    }
 }
