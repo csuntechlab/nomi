@@ -17,7 +17,14 @@ class LoginController extends Controller
     {
         $credentials = $request->all('username', 'password');
         if (auth()->attempt($credentials)) {
-            echo 123;
+            $user = auth()->user();
+            if ($user->rank != null) {
+                return 123;
+            }
+
+            return redirect()->route('welcome');
         }
+
+        return redirect()->route('welcome');
     }
 }

@@ -12,5 +12,5 @@ declare(strict_types=1);
 |
 */
 
-Route::get('/', 'LoginController@index');
+Route::get('/', 'LoginController@index')->name('welcome');
 Route::post('/', 'LoginController@validateUser');

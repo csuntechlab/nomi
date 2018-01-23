@@ -22,4 +22,12 @@ class LoginControllerTest extends TestCase
         $response = $this->call('POST', '/', $data);
         $this->assertEquals(200, $response->status());
     }
+
+    /** @test */
+    public function non_faculty_cannot_login()
+    {
+        $data = ['username' => 'jeffery.d.barrow', 'password' => ''];
+        $response = $this->call('POST', '/', $data);
+        $this->assertEquals(302, $response->status());
+    }
 }
