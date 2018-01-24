@@ -5,7 +5,7 @@
 		<div v-for="farmAnimal in farmAnimals">
 			<div class="grid-item">
 				<div>{{ farmAnimal.animal }}</div>
-				<!-- Tim's img tag that takes the camera goes in here. -->
+				<!--img tag that takes the camera goes in here. -->
 				<img :src="farmAnimal.image" width="100px" :alt="farmAnimal.animal">
 			</div>
 		</div>
@@ -51,6 +51,12 @@ export default {
 	// 	    vm.products = this.convertToString(response.data);
 	// 	  });
 	// },
+    //  created: function() {
+    //     $.getJSON('https://hplussport.com/api/products')
+    //        .done(function(data) {
+    //             vm.theProducts = data; 
+    //         });
+    //  }
 
 }
 
