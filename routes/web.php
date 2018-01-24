@@ -16,10 +16,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/guzz', function () {
-    $client = new \GuzzleHttp\Client();
-
-    return $client->get(
-        'http://api.metalab.csun.edu/curriculum/api/terms/Spring-2015/classes/comp'
-    )->getBody()->getContents();
-});
+Route::get('/guzz', 'CurriculumController@getCourses');

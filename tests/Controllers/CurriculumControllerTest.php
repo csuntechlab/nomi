@@ -6,12 +6,10 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class CurriculumControllerTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function testBasicTest()
+    //**@test*/
+    public function canRetrieveJSON()
     {
         $this->assertTrue(true);
     }
