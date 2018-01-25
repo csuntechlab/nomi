@@ -11,18 +11,28 @@ class LoginController extends Controller
 {
     protected $authVerifierContract = null;
 
+    /**
+     * LoginController constructor.
+     *
+     * @param AuthVerifierContract $authVerifierContract
+     *                                                   - A contract that authenticates users
+     */
     public function __construct(AuthVerifierContract $authVerifierContract)
     {
         $this->authVerifierContract = $authVerifierContract;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('welcome');
     }
 
     /**
-     * Description:.
+     * Description: Logs in a user by authenticating them against
+     *              the LDAP servers using the authVerifierContract.
      *
      * @param Request $request
      *

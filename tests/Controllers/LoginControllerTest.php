@@ -56,6 +56,6 @@ class LoginControllerTest extends TestCase
             ->andReturn(false);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals(302, $response->status());
+        $this->assertEquals('/', $response->getRequest()->getRequestUri());
     }
 }
