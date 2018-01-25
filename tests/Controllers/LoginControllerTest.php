@@ -12,20 +12,33 @@ use Tests\TestCase;
 
 class LoginControllerTest extends TestCase
 {
+    /**
+     * Description: Sets up the test and makes a mock of
+     *              AuthVerifierContract.
+     */
     public function setUp()
     {
         parent::setUp();
         $this->verifier = Mockery::spy(AuthVerifierContract::class);
     }
 
-    /** @test */
+    /**
+     * Description: Checks that we can hit the index route.
+     *
+     * @test
+     */
     public function can_hit_login_index_page()
     {
         $response = $this->call('GET', '/');
         $this->assertEquals(200, $response->status());
     }
 
-    /** @test */
+    /**
+     * Description: Checks that logging in works using sample data
+     *              and Mockery to simulate the AuthVerifierContract.
+     *
+     * @test
+     */
     public function faculty_can_login()
     {
         $data = ['username' => 'steve', 'password' => ''];
@@ -39,10 +52,16 @@ class LoginControllerTest extends TestCase
             ->andReturn(true);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals(200, $response->status());
+        $this->assertEquals(env('APP_URL') . '/home', $response->getTargetUrl());
     }
 
-    /** @test */
+    /**
+     * Description: Checks that logging in blocks users who are not
+     *              authorized to use the application using sample data
+     *              Mockery to simulate the AuthVerifierContract.
+     *
+     * @test
+     */
     public function non_faculty_cannot_login()
     {
         $data = ['username' => 'jeffery.d.barrow', 'password' => ''];
@@ -56,6 +75,6 @@ class LoginControllerTest extends TestCase
             ->andReturn(false);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals('/', $response->getRequest()->getRequestUri());
+        $this->assertEquals(env('APP_URL'), $response->getTargetUrl());
     }
 }

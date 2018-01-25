@@ -15,7 +15,7 @@ class LoginController extends Controller
      * LoginController constructor.
      *
      * @param AuthVerifierContract $authVerifierContract
-     *                                                   - A contract that authenticates users
+     *                                                   A contract that authenticates users
      */
     public function __construct(AuthVerifierContract $authVerifierContract)
     {
@@ -23,6 +23,8 @@ class LoginController extends Controller
     }
 
     /**
+     * Description: Returns the welcome screen view.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -42,9 +44,9 @@ class LoginController extends Controller
     {
         $credentials = $request->all('username', 'password');
         if ($this->authVerifierContract->isVerified($credentials)) {
-            return 123;
+            return redirect()->route('home');
         }
 
-        return redirect()->route('welcome');
+        return redirect()->route('login');
     }
 }

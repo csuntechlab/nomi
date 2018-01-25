@@ -12,5 +12,15 @@ declare(strict_types=1);
 |
 */
 
-Route::get('/', 'LoginController@index')->name('welcome');
+/**
+ * Routes associated with login.
+ */
+Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@validateUser');
+
+/**
+ * Routes for home page.
+ */
+Route::get('/home', function () {
+    echo 'You Are Logged In!';
+})->name('home')->middleware('auth');
