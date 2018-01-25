@@ -24,3 +24,9 @@ Route::post('/', 'LoginController@validateUser');
 Route::get('/home', function () {
     echo 'You Are Logged In!';
 })->name('home')->middleware('auth');
+
+/**
+ * Route for logout. Not Yet Implemented.
+ */
+Route::get('/logout', function () {
+});
