@@ -10,4 +10,9 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
+<<<<<<< HEAD
 .php_cs.cache
+=======
+/.php_cs.cache
+/.DS_STORE
+>>>>>>> c84a72a9053558b5d38a10d7dd0b1a06abecdf2a

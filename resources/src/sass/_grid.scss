@@ -1,3 +1,4 @@
+
 .grid-container {
   display: grid;
   grid-column-gap: 10px;
@@ -10,9 +11,19 @@
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 5px;
+  padding: 20px;
   font-size: 30px;
   text-align: center;
 }
 
+.box1{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+}
+.box2{
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
 
