@@ -52,7 +52,7 @@ class LoginControllerTest extends TestCase
             ->andReturn(true);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals(env('APP_URL') . '/home', $response->getTargetUrl());
+        $this->assertEquals('http://localhost/home', $response->getTargetUrl());
     }
 
     /**
@@ -75,6 +75,6 @@ class LoginControllerTest extends TestCase
             ->andReturn(false);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals(env('APP_URL'), $response->getTargetUrl());
+        $this->assertEquals('http://localhost', $response->getTargetUrl());
     }
 }
