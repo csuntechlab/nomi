@@ -165,8 +165,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * NameFace Service Providers...
          */
+        App\Providers\AuthorizationServiceProvider::class,
 
         /*
          * Application Service Providers...
