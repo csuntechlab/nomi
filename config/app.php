@@ -165,8 +165,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Custom Service Providers...
+         * NameFace Service Providers...
          */
+        App\Providers\AuthorizationServiceProvider::class,
 
         App\Providers\CurriculumServiceProvider::class,
 
@@ -178,6 +179,16 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * LDAP...
+         */
+        CSUNMetaLab\Authentication\Providers\AuthServiceProvider::class,
+
+        /*
+         * Form Functionality...
+         */
+        Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -225,5 +236,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // Form Aliases
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 ];

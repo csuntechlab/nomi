@@ -12,8 +12,23 @@ declare(strict_types=1);
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * Routes associated with login.
+ */
+Route::get('/', 'LoginController@index')->name('login');
+Route::post('/', 'LoginController@validateUser');
+
+/**
+ * Routes for home page.
+ */
+Route::get('/home', function () {
+    echo 'You Are Logged In!';
+})->name('home')->middleware('auth');
+
+/**
+ * Route for logout. Not Yet Implemented.
+ */
+Route::get('/logout', function () {
 });
 
 Route::get('/guzz', 'CurriculumController@getCourses');
