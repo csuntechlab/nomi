@@ -11573,7 +11573,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -11592,85 +11591,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     methods: {
-        uploadImage: function uploadImage(e, something) {
-            var _this = this;
-
-            console.log('running');
-            console.log('something');
-            var files = e.target.files;
-            if (!files[0]) {
-                console.log('empty');
-                return;
-            }
-            console.log('running');
-
-            var data = new FormData();
-            data.append('media', files[0]);
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                console.log('adding photo');
-                console.log(_this.$ref.id);
-                something = e.target.result;
-            };
-
-            //            var callback = function(file) {
-            //                console.log('adding photor');
-            //                this.farmAnimal.image = e.target.result;
-            //			}
-            //
-            //            reader.onload = function(e, callback) {
-            //                callback(e.target.result);
-            //			}
-
-            if (files[0]) {
-                reader.readAsDataURL(files[0]);
-            }
-            //reader.readAsDataURL(files[0]);
-            //console.log(reader.readAsDataURL(files[0]));
-        },
-
-        getId: function getId(e) {
-            var clickedPhoto = e.target.id;
-            console.log(clickedPhoto);
-            this.uploadImage();
-        },
-
-        clickHandler: function clickHandler(event) {
-            //            console.log(event.target.result);
-            //console.log(event.target.id);
-            //            console.log(event.path);
-            var nameId = event.target.id;
-            console.log(nameId);
-            var something = document.getElementById(event.target.id + "-img");
-            console.log(something);
-            //this.uploadImage(something);
+        changePhoto: function changePhoto(event) {
+            var imageId = document.getElementById(event.target.id + "-img");
 
             var files = event.target.files;
-            console.log(files);
             if (!files[0]) {
-                console.log('empty');
                 return;
             }
-            console.log('running');
 
             var data = new FormData();
             data.append('media', files[0]);
             var reader = new FileReader();
             reader.onload = function (event) {
-                console.log('adding photo');
-                //                console.log(this.$ref.id);
-                something.src = event.target.result;
+                imageId.src = event.target.result;
             };
-            console.log('passed');
-
-            //            var callback = function(file) {
-            //                console.log('adding photor');
-            //                this.farmAnimal.image = e.target.result;
-            //			}
-            //
-            //            reader.onload = function(e, callback) {
-            //                callback(e.target.result);
-            //			}
 
             if (files[0]) {
                 reader.readAsDataURL(files[0]);
@@ -11706,7 +11640,7 @@ var render = function() {
                       name: "photo",
                       accept: "image/*"
                     },
-                    on: { change: _vm.clickHandler }
+                    on: { change: _vm.changePhoto }
                   }),
                   _vm._v(" "),
                   _c("img", {
