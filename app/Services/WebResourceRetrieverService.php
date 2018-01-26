@@ -38,4 +38,19 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             . \str_replace('nr_', '', auth()->user()->email) . '/classes'
         )->getBody()->getContents();
     }
+
+    /**
+     * Retrieves media from META+LAB Media web service.
+     *
+     * @return string
+     */
+    public function getMedia()
+    {
+        $client = new Client();
+
+        return $client->get(
+            'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
+            . \str_replace('nr_', '', auth()->user()->email)
+        )->getBody()->getContents();
+    }
 }

@@ -38,7 +38,4 @@ Route::get('/logout', function () {
  */
 Route::get('/courses', 'WebResourceController@courses');
 Route::get('/roster', 'WebResourceController@roster');
-
-Route::get('/me', function () {
-    return auth()->user();
-});
+Route::get('/media', 'WebResourceController@media');

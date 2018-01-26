@@ -35,4 +35,12 @@ class WebResourceController extends Controller
     {
         return $this->webResourceRetriever->getRoster();
     }
+
+    /**
+     * @return mixed
+     */
+    public function media()
+    {
+        return $this->webResourceRetriever->getMedia();
+    }
 }

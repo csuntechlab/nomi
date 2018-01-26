@@ -50,4 +50,18 @@ class WebResourceControllerTest extends TestCase
 
         $controller->roster();
     }
+
+    /**
+     * @test
+     */
+    public function getMedia_calls_roster_in_retriever()
+    {
+        $controller = new WebResourceController($this->retriever);
+
+        $this->retriever
+            ->shouldReceive('getMedia')
+            ->once();
+
+        $controller->media();
+    }
 }
