@@ -10,9 +10,32 @@
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 5px;
+  padding: 20px;
   font-size: 30px;
   text-align: center;
 }
 
+.box1 {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}
+
+.box2 {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+
+image {
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.image-upload > input {
+  display: none;
+}
 
