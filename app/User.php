@@ -28,4 +28,6 @@ class User extends MetaUser
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public $incrementing = false;
 }

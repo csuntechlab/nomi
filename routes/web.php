@@ -22,14 +22,23 @@ Route::post('/', 'LoginController@validateUser');
  * Routes for home page.
  */
 Route::get('/home', function () {
-    echo 'You Are Logged In!';
+    echo 'You are logged IN.';
 })->name('home')->middleware('auth');
 
 /**
- * Route for logout. Not Yet Implemented.
+ * Route for logout.
  */
 Route::get('/logout', function () {
+    auth()->logout();
+    echo 'You are logged OUT';
 });
 
+/**
+ * Web Service Routes.
+ */
 Route::get('/courses', 'WebResourceController@courses');
 Route::get('/roster', 'WebResourceController@roster');
+
+Route::get('/me', function () {
+    return auth()->user();
+});

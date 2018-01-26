@@ -28,6 +28,9 @@ class WebResourceController extends Controller
         return $this->webResourceRetriever->getCourses();
     }
 
+    /**
+     * @return mixed
+     */
     public function roster()
     {
         return $this->webResourceRetriever->getRoster();
