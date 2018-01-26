@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f53c2572a38596a8756e6683d19f547f",
+    "content-hash": "2517c99cb0f7a7144fcebbd42863d207",
     "packages": [
+        {
+            "name": "csun-metalab/laravel-directory-authentication",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/csun-metalab/laravel-directory-authentication.git",
+                "reference": "12044287daf2d186a1e1457bb3aab2de8fe62d49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/csun-metalab/laravel-directory-authentication/zipball/12044287daf2d186a1e1457bb3aab2de8fe62d49",
+                "reference": "12044287daf2d186a1e1457bb3aab2de8fe62d49",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Authentication/"
+                ],
+                "psr-4": {
+                    "CSUNMetaLab\\Authentication\\": "src/Authentication/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Fritz",
+                    "email": "mattf@burbankparanormal.com"
+                }
+            ],
+            "description": "Composer package for Laravel 5.0 and above to allow for directory-based authentication",
+            "time": "2017-12-02T02:45:28+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -602,6 +641,71 @@
                 "psysh"
             ],
             "time": "2017-12-18T16:25:11+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v5.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6",
+                "reference": "2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "5.5.*",
+                "illuminate/routing": "5.5.*",
+                "illuminate/session": "5.5.*",
+                "illuminate/support": "5.5.*",
+                "illuminate/view": "5.5.*",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "illuminate/database": "5.5.*",
+                "mockery/mockery": "~0.9.4",
+                "phpunit/phpunit": "~5.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                },
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "http://laravelcollective.com",
+            "time": "2017-08-31T14:46:03+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2126,6 +2230,56 @@
                 "dump"
             ],
             "time": "2018-01-03T17:14:19+00:00"
+        },
+        {
+            "name": "tiesa/ldap",
+            "version": "dev-master",
+            "target-dir": "Toyota/Component/Ldap",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ccottet/ldap.git",
+                "reference": "0759f17996fbb434ee5155dc527b95d8059c6d41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ccottet/ldap/zipball/0759f17996fbb434ee5155dc527b95d8059c6d41",
+                "reference": "0759f17996fbb434ee5155dc527b95d8059c6d41",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ldap": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7.13"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Toyota\\Component\\Ldap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cyril Cottet",
+                    "email": "cyril.cottet@gmail.com"
+                }
+            ],
+            "description": "LDAP made easy & practical to use in PHP",
+            "homepage": "https://github.com/ccottet/ldap",
+            "keywords": [
+                "ldap"
+            ],
+            "time": "2013-02-04T07:37:38+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -4518,7 +4672,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "tiesa/ldap": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
