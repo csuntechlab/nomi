@@ -26,24 +26,28 @@ class WebResourceControllerTest extends TestCase
     /**
      * @test
      */
-    public function courses_returns_JSON()
+    public function getCourses_calls_courses_in_retriever()
     {
         $controller = new WebResourceController($this->retriever);
 
         $this->retriever
             ->shouldReceive('getCourses')
             ->once();
+
+        $controller->courses();
     }
 
     /**
      * @test
      */
-    public function roster_returns_JSON()
+    public function getRoster_calls_roster_in_retriever()
     {
         $controller = new WebResourceController($this->retriever);
 
         $this->retriever
             ->shouldReceive('getRoster')
             ->once();
+
+        $controller->roster();
     }
 }
