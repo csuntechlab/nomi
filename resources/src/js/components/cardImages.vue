@@ -2,12 +2,15 @@
 <div>
 
 		<div  class="grid-container">
+			<!--for loop through array objects-->
 		<div v-for="farmAnimal in farmAnimals">
 			<div class="grid-item">
 				<div>{{ farmAnimal.animal }}</div>
 				<div class="image-upload">
+					<!--Needs to be made into a separate component-->
 					<label :for="farmAnimal.animal">
 						<div>
+							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
 							<input :id="farmAnimal.animal" @change="changePhoto" type="file" name="photo" accept="image/*">
 							<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="image" name="photo" accept="image/*">
 						</div>
@@ -30,6 +33,7 @@
 export default {
     data: function () {
         return {
+//            JSON object placeholder
             farmAnimals: [
                 {animal: "pig", image: ''},
                 {
@@ -51,8 +55,9 @@ export default {
     },
     methods: {
 		changePhoto: function(event) {
+//		    grabs id of image
             var imageId = document.getElementById(event.target.id + "-img");
-
+//            checks if empty and sets file instance to variable files
             var files = event.target.files;
             if (!files[0]) {
                 return;
@@ -61,10 +66,13 @@ export default {
             var data = new FormData();
             data.append('media', files[0])
             var reader = new FileReader();
+//            On load of file, grab the image id's src that contains image
+//				and equal it to the add image file
             reader.onload = (event) => {
                 imageId.src = event.target.result;
             };
 
+//            this check is needed to prevent "blob error"
             if(files[0]){
                 reader.readAsDataURL(files[0]);
             }

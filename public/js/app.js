@@ -11573,11 +11573,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            //            JSON object placeholder
             farmAnimals: [{ animal: "pig", image: '' }, {
                 animal: "chicken",
                 image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
@@ -11592,8 +11596,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         changePhoto: function changePhoto(event) {
+            //		    grabs id of image
             var imageId = document.getElementById(event.target.id + "-img");
-
+            //            checks if empty and sets file instance to variable files
             var files = event.target.files;
             if (!files[0]) {
                 return;
@@ -11602,10 +11607,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var data = new FormData();
             data.append('media', files[0]);
             var reader = new FileReader();
+            //            On load of file, grab the image id's src that contains image
+            //				and equal it to the add image file
             reader.onload = function (event) {
                 imageId.src = event.target.result;
             };
 
+            //            this check is needed to prevent "blob error"
             if (files[0]) {
                 reader.readAsDataURL(files[0]);
             }
