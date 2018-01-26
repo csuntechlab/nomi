@@ -6,7 +6,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 
-class CurriculumControllerTest extends TestCase
+class WebResourceControllerTest extends TestCase
 {
     //**@test*/
     public function canRetrieveJSON()

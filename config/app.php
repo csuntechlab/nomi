@@ -168,8 +168,7 @@ return [
          * NameFace Service Providers...
          */
         App\Providers\AuthorizationServiceProvider::class,
-
-        App\Providers\CurriculumServiceProvider::class,
+        App\Providers\WebResourceServiceProvider::class,
 
         /*
          * Application Service Providers...

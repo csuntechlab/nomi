@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
-interface CurriculumRetrieverContract
+interface WebResourceRetrieverContract
 {
     public function getCourses();
+    public function getRoster();
 }

@@ -6,13 +6,13 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class CurriculumServiceProvider extends ServiceProvider
+class WebResourceServiceProvider extends ServiceProvider
 {
     public function register()
     {
         $this->app->bind(
-            'App\Contracts\CurriculumRetrieverContract',
-            'App\Services\CurriculumRetrieverService'
+            'App\Contracts\WebResourceRetrieverContract',
+            'App\Services\WebResourceRetrieverService'
         );
     }
 }

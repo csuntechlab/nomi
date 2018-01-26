@@ -31,4 +31,5 @@ Route::get('/home', function () {
 Route::get('/logout', function () {
 });
 
-Route::get('/guzz', 'CurriculumController@getCourses');
+Route::get('/courses', 'WebResourceController@courses');
+Route::get('/roster', 'WebResourceController@roster');
