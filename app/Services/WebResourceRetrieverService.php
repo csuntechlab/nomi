@@ -48,9 +48,10 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
+        //hacky fix to remove @csun.edu
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
-            . \str_replace('nr_', '', auth()->user()->email)
+            . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0]
         )->getBody()->getContents();
     }
 }
