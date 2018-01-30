@@ -39,3 +39,8 @@ Route::get('/logout', function () {
 Route::get('/courses', 'WebResourceController@courses');
 Route::get('/roster', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
+
+/**
+ * Image CRUD Routes.
+ */
+Route::post('/upload', 'ImageController@uploadImage');
