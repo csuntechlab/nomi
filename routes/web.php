@@ -21,9 +21,7 @@ Route::post('/', 'LoginController@validateUser');
 /**
  * Routes for home page.
  */
-Route::get('/home', function () {
-    echo 'You Are Logged In!';
-})->name('home')->middleware('auth');
+Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
 
 /**
  * Route for logout. Not Yet Implemented.

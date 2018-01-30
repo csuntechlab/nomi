@@ -8,7 +8,23 @@
 // require(axios);
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router'
 import App from './App.vue';
+import Splash from './views/Splash'
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes : [
+        {
+            path: '/splash',
+            name: 'splash',
+            component: Splash
+
+        }
+    ]
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,8 +37,9 @@ import App from './App.vue';
 
 var app = new Vue({
     el: '#app',
-    render: h => h(App),
+    components: {App},
+    router
   
    
-});
+})
  
