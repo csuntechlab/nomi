@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="app">
-    <app></app>
+    <splash></splash>
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>

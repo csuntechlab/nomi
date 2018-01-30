@@ -9,8 +9,8 @@
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
-import App from './App.vue';
-import Splash from './views/Splash'
+// import App from './App.vue';
+import Splash from './views/Splash.vue'
 
 Vue.use(VueRouter);
 
@@ -37,9 +37,9 @@ const router = new VueRouter({
 
 var app = new Vue({
     el: '#app',
-    components: {App},
-    router
+    components: {Splash},
+    router,
   
    
-})
+});
  
