@@ -25,4 +25,12 @@
         <style>
         </style>
     </head>
+    <body>
+        <div class="container" id='app'>
+            <card-images></card-images>
+        </div>
+
+        <script src="{{ asset('js/app.js') }}"></script>
+       
+    </body>
 </html>

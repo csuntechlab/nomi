@@ -9,7 +9,6 @@
 
 window.Vue = require('vue');
 import VueRouter from 'vue-router'
-// import App from './App.vue';
 import Splash from './views/Splash.vue'
 
 Vue.use(VueRouter);
@@ -31,14 +30,13 @@ const router = new VueRouter({
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.component('card-images', require('./components/cardImages.vue'));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-
-var app = new Vue({
+const app = new Vue({
     el: '#app',
     components: {Splash},
     router,
+
   
    
 });

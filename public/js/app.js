@@ -100,13 +100,16 @@ module.exports = __webpack_require__(11);
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__views_Splash_vue__);
+=======
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -118,6 +121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.Vue = __webpack_require__(3);
 
+<<<<<<< HEAD
 // import App from './App.vue';
 
 
@@ -133,14 +137,14 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     }]
 });
 
+=======
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
+Vue.component('card-images', __webpack_require__(7));
 
 var app = new Vue({
     el: '#app',
@@ -11412,6 +11416,7 @@ process.umask = function() { return 0; };
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+<<<<<<< HEAD
 "use strict";
 /**
   * vue-router v3.0.1
@@ -11423,6 +11428,42 @@ process.umask = function() { return 0; };
 function assert (condition, message) {
   if (!condition) {
     throw new Error(("[vue-router] " + message))
+=======
+var disposed = false
+var normalizeComponent = __webpack_require__(8)
+/* script */
+var __vue_script__ = __webpack_require__(9)
+/* template */
+var __vue_template__ = __webpack_require__(10)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\cardImages.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-339f6990", Component.options)
+  } else {
+    hotAPI.reload("data-v-339f6990", Component.options)
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
   }
 }
 
@@ -11627,6 +11668,7 @@ function stringifyQuery (obj) {
       return ''
     }
 
+<<<<<<< HEAD
     if (val === null) {
       return encode(key)
     }
@@ -11663,6 +11705,40 @@ function createRoute (
   router
 ) {
   var stringifyQuery$$1 = router && router.options.stringifyQuery;
+=======
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 
   var query = location.query || {};
   try {
@@ -11685,6 +11761,7 @@ function createRoute (
   return Object.freeze(route)
 }
 
+<<<<<<< HEAD
 function clone (value) {
   if (Array.isArray(value)) {
     return value.map(clone)
@@ -11702,6 +11779,49 @@ function clone (value) {
 // the starting route that represents the initial state
 var START = createRoute(null, {
   path: '/'
+=======
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            //            JSON object placeholder
+            farmAnimals: [{ animal: "pig", image: '' }, {
+                animal: "chicken",
+                image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
+            }, {
+                animal: "rooster",
+                image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
+            }, { animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, {
+                animal: "duck",
+                image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
+            }]
+        };
+    },
+    methods: {
+        changePhoto: function changePhoto(event) {
+            //		    grabs id of image
+            var imageId = document.getElementById(event.target.id + "-img");
+            //            checks if empty and sets file instance to variable files
+            var files = event.target.files;
+            if (!files[0]) {
+                return;
+            }
+
+            var data = new FormData();
+            data.append('media', files[0]);
+            var reader = new FileReader();
+            //            On load of file, grab the image id's src that contains image
+            //				and equal it to the add image file
+            reader.onload = function (event) {
+                imageId.src = event.target.result;
+            };
+
+            //            this check is needed to prevent "blob error"
+            if (files[0]) {
+                reader.readAsDataURL(files[0]);
+            }
+        }
+    }
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 });
 
 function formatMatch (record) {
@@ -11713,6 +11833,7 @@ function formatMatch (record) {
   return res
 }
 
+<<<<<<< HEAD
 function getFullPath (
   ref,
   _stringifyQuery
@@ -14198,11 +14319,55 @@ module.exports = function normalizeComponent (
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
+=======
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+<<<<<<< HEAD
   return _c("p", [_vm._v("Hello World!")])
+=======
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "grid-container" },
+      _vm._l(_vm.farmAnimals, function(farmAnimal) {
+        return _c("div", [
+          _c("div", { staticClass: "grid-item grid-Img" }, [
+            _c("div", [_vm._v(_vm._s(farmAnimal.animal))]),
+            _vm._v(" "),
+            _c("div", [
+              _c("label", { attrs: { for: farmAnimal.animal } }, [
+                _c("div", { staticClass: "crop" }, [
+                  _c("input", {
+                    attrs: {
+                      id: farmAnimal.animal,
+                      type: "file",
+                      name: "photo",
+                      accept: "image/*"
+                    },
+                    on: { change: _vm.changePhoto }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "crop img",
+                    attrs: {
+                      id: farmAnimal.animal + "-img",
+                      src: farmAnimal.image,
+                      name: "photo",
+                      accept: "image/*"
+                    }
+                  })
+                ])
+              ])
+            ])
+          ])
+        ])
+      })
+    )
+  ])
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -14210,7 +14375,11 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
+<<<<<<< HEAD
     require("vue-hot-reload-api")      .rerender("data-v-26c2281b", module.exports)
+=======
+    require("vue-hot-reload-api")      .rerender("data-v-339f6990", module.exports)
+>>>>>>> cdb0b190be7093f9ec180d368f3241eb19a7703f
   }
 }
 

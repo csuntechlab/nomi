@@ -15,6 +15,29 @@
   text-align: center;
 }
 
+.grid-Img {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*images with the same width*/
+
+.crop {
+  height: 300px;
+  /*width: 400px;*/
+  overflow: hidden;
+}
+
+.crop img {
+  height: auto;
+  width: 100%;
+}
+
 .box1 {
   background-color: red;
   width: 100px;
@@ -26,4 +49,17 @@
   width: 100px;
   height: 100px;
 }
+
+image {
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.image-upload > input {
+  display: none;
+}
+
 
