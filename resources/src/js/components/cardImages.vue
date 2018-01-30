@@ -4,15 +4,15 @@
 		<div  class="grid-container">
 			<!--for loop through array objects-->
 		<div v-for="farmAnimal in farmAnimals">
-			<div class="grid-item">
+			<div class="grid-item grid-Img">
 				<div>{{ farmAnimal.animal }}</div>
-				<div class="image-upload">
+				<div>
 					<!--Needs to be made into a separate component-->
 					<label :for="farmAnimal.animal">
-						<div>
+						<div class="crop">
 							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
 							<input :id="farmAnimal.animal" @change="changePhoto" type="file" name="photo" accept="image/*">
-							<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="image" name="photo" accept="image/*">
+							<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="crop img" name="photo" accept="image/*">
 						</div>
 					</label>
 				</div>

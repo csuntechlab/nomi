@@ -11635,12 +11635,12 @@ var render = function() {
       { staticClass: "grid-container" },
       _vm._l(_vm.farmAnimals, function(farmAnimal) {
         return _c("div", [
-          _c("div", { staticClass: "grid-item" }, [
+          _c("div", { staticClass: "grid-item grid-Img" }, [
             _c("div", [_vm._v(_vm._s(farmAnimal.animal))]),
             _vm._v(" "),
-            _c("div", { staticClass: "image-upload" }, [
+            _c("div", [
               _c("label", { attrs: { for: farmAnimal.animal } }, [
-                _c("div", [
+                _c("div", { staticClass: "crop" }, [
                   _c("input", {
                     attrs: {
                       id: farmAnimal.animal,
@@ -11652,7 +11652,7 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("img", {
-                    staticClass: "image",
+                    staticClass: "crop img",
                     attrs: {
                       id: farmAnimal.animal + "-img",
                       src: farmAnimal.image,
