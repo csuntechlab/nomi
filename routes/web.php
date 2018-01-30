@@ -21,10 +21,22 @@ Route::post('/', 'LoginController@validateUser');
 /**
  * Route for home page. Takes us to the SPA.
  */
-Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
+Route::get('/home', function () {
+    echo 'You are logged IN.';
+})->name('home')->middleware('auth');
+
 
 /**
- * Route for logout. Not Yet Implemented.
+ * Route for logout.
  */
 Route::get('/logout', function () {
+    auth()->logout();
+    echo 'You are logged OUT';
 });
+
+/**
+ * Web Service Routes.
+ */
+Route::get('/courses', 'WebResourceController@courses');
+Route::get('/roster', 'WebResourceController@roster');
+Route::get('/media', 'WebResourceController@media');
