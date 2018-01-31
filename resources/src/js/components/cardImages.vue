@@ -29,7 +29,7 @@
 </template> 
 
 <script>
-
+    import axios from 'axios';
 export default {
     data: function () {
         return {
@@ -76,6 +76,18 @@ export default {
             if(files[0]){
                 reader.readAsDataURL(files[0]);
             }
+
+            var posts = [];
+
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+				.then(response => {
+				    posts = response.data;
+                    console.log(posts);
+				})
+				.catch(e => {
+				    this.errors.push(e)
+				});
+
 		}
     }
 }
