@@ -19,11 +19,9 @@ Route::get('/', 'LoginController@index')->name('login');
 Route::post('/', 'LoginController@validateUser');
 
 /**
- * Routes for home page.
+ * Route for home page. Takes us to the SPA.
  */
-Route::get('/home', function () {
-    echo 'You are logged IN.';
-})->name('home')->middleware('auth');
+Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
 
 /**
  * Route for logout.
