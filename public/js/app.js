@@ -100,12 +100,8 @@ module.exports = __webpack_require__(11);
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__App_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -117,21 +113,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.Vue = __webpack_require__(3);
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
+Vue.component('card-images', __webpack_require__(7));
 
 var app = new Vue({
-  el: '#app',
-  render: function render(h) {
-    return h(__WEBPACK_IMPORTED_MODULE_0__App_vue___default.a);
-  }
+  el: '#app'
 
 });
 
@@ -11420,7 +11410,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/App.vue"
+Component.options.__file = "resources\\src\\js\\components\\cardImages.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -11429,9 +11419,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6e99997e", Component.options)
+    hotAPI.createRecord("data-v-339f6990", Component.options)
   } else {
-    hotAPI.reload("data-v-6e99997e", Component.options)
+    hotAPI.reload("data-v-339f6990", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -11575,39 +11565,60 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			farmAnimals: [{ animal: "Pig", image: "https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Mammals/H-P/pig-young-closeup.ngsversion.1412640764383.jpg" }, { animal: "Chicken", image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg" }, { animal: "Rooster", image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771" }, { animal: "Cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, { animal: "Duck", image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg" }]
+    data: function data() {
+        return {
+            //            JSON object placeholder
+            farmAnimals: [{ animal: "pig", image: '' }, {
+                animal: "chicken",
+                image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
+            }, {
+                animal: "rooster",
+                image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
+            }, { animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, {
+                animal: "duck",
+                image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
+            }]
+        };
+    },
+    methods: {
+        changePhoto: function changePhoto(event) {
+            //		    grabs id of image
+            var imageId = document.getElementById(event.target.id + "-img");
+            //            checks if empty and sets file instance to variable files
+            var files = event.target.files;
+            if (!files[0]) {
+                return;
+            }
 
-		};
-	}
+            var data = new FormData();
+            data.append('media', files[0]);
+            var reader = new FileReader();
+            //            On load of file, grab the image id's src that contains image
+            //				and equal it to the add image file
+            reader.onload = function (event) {
+                imageId.src = event.target.result;
+            };
 
-	// methods: {
-	// 	convertToString: function(){
-	// 		this.farmAnimals = JSON.stringify(this.farmAnimals);
-	// 	},
-	// 	convertToJSON: function(data){
-	// 		this.farmAnimals = JSON.parse(this.farmAnimals);
-	// 	}
-	// },
-	//
-	//
-	// created: function(){
-	// 	var vm = this;
-	// 	axios.get("https://hplussport.com/api/products").then(function (response) {
-	// 	    vm.products = this.convertToString(response.data);
-	// 	  });
-	// },
-	//  created: function() {
-	//     $.getJSON('https://hplussport.com/api/products')
-	//        .done(function(data) {
-	//             vm.theProducts = data; 
-	//         });
-	//  }
-
+            //            this check is needed to prevent "blob error"
+            if (files[0]) {
+                reader.readAsDataURL(files[0]);
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -11624,16 +11635,34 @@ var render = function() {
       { staticClass: "grid-container" },
       _vm._l(_vm.farmAnimals, function(farmAnimal) {
         return _c("div", [
-          _c("div", { staticClass: "grid-item" }, [
+          _c("div", { staticClass: "grid-item grid-Img" }, [
             _c("div", [_vm._v(_vm._s(farmAnimal.animal))]),
             _vm._v(" "),
-            _c("img", {
-              attrs: {
-                src: farmAnimal.image,
-                width: "100px",
-                alt: farmAnimal.animal
-              }
-            })
+            _c("div", [
+              _c("label", { attrs: { for: farmAnimal.animal } }, [
+                _c("div", { staticClass: "crop" }, [
+                  _c("input", {
+                    attrs: {
+                      id: farmAnimal.animal,
+                      type: "file",
+                      name: "photo",
+                      accept: "image/*"
+                    },
+                    on: { change: _vm.changePhoto }
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    staticClass: "crop img",
+                    attrs: {
+                      id: farmAnimal.animal + "-img",
+                      src: farmAnimal.image,
+                      name: "photo",
+                      accept: "image/*"
+                    }
+                  })
+                ])
+              ])
+            ])
           ])
         ])
       })
@@ -11646,7 +11675,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6e99997e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-339f6990", module.exports)
   }
 }
 

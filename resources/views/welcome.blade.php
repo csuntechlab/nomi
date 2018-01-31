@@ -26,8 +26,9 @@
         </style>
     </head>
     <body>
-        <div id="app"></div>
-       {{--  <script src="https://unpkg.com/axios/dist/axios.min.js"></script> --}}
+        <div class="container" id='app'>
+            <card-images></card-images>
+        </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
        
