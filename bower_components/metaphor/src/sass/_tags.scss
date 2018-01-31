@@ -1,0 +1,50 @@
+// Tags
+//
+
+.tag {
+  display: inline;
+  padding: 2px 6px;
+  margin-bottom: modular-scale(-2);
+  font-size: modular-scale(-1);
+  font-weight: bold;
+  line-height: 1;
+  color: rgba($grey, .9);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: $default;
+  border-radius: $border-radius;
+  border: 1px solid #e7e7e7;
+
+  &--info { background-color: $azure; border-color: $azure; }
+  &--success { color: #fff; background-color: $success; border-color: $success; }
+  &--warning { background-color: $warning; border-color: $warning; }
+  &--danger { color: #fff; background-color: $danger; border-color: $danger; }
+
+  &--default-outline { border: 1px solid #fff; color: #fff; background-color: transparent; }
+  &--danger-outline { background: #fff; border: 1px solid #d00d2d; color: #d00d2d; }
+
+  // Empty tags collapse automatically
+  &:empty {
+    display: none;
+  }
+}
+
+.tag--close::after {
+  padding-left: 6px;
+  font-size: modular-scale(-1);
+  font-weight: normal;
+  line-height: 1;
+  color: inherit;
+  content: "\00d7";
+  cursor: pointer;
+}
+
+// Add hover effects, but only for links
+a.tag {
+  &:focus,
+  &:hover {
+    cursor: pointer;
+  }
+}

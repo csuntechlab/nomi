@@ -15,6 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('card-images', require('./components/cardImages.vue'));
+Vue.component('nav-bar', require('./components/navBar.vue'));
 
 const app = new Vue({
     el: '#app',

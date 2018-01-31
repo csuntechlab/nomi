@@ -1,0 +1,11 @@
+{
+  "name": "metaphor",
+  "version": "0.12.1",
+  "description": "An elegantly crafted UI Kit for CSUN branded prototypes & applications",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-15",
+    "laravel-elixir-scss-lint": "^1.3.1",
+    "laravel-elixir-webpack-official": "^1.0.10"
+  }
+}

@@ -1,0 +1,52 @@
+// PANELS
+//
+
+$panel-colors: (
+  alert: $red,
+  default: $dark-gray
+);
+
+.panel {
+  margin-bottom: modular-scale(1);
+  border: 1px solid rgba(#4a4a4a, .3);
+  border-radius: $border-radius;
+
+  @each $name, $hex in $panel-colors {
+    &--#{$name} {
+      border-color: $hex;
+      .panel__header {
+        color: $white;
+        background-color: $hex;
+        border-color: $hex;
+      }
+    }
+  }
+}
+
+.panel__header {
+  padding: modular-scale(-2) modular-scale(0);
+  border-bottom: 1px solid rgba(#4a4a4a, .4);
+
+  h1,h2,h3,h4,h5,h6 {
+    margin-bottom: 0;
+  }
+}
+
+.panel__img {
+  background-color: #e7e7e7;
+  display: block;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.panel__content { padding: modular-scale(0); }
+
+.panel__footer {
+  @extend .milli;
+  padding: modular-scale(-2) modular-scale(0);
+  color: rgba(#4a4a4a, .6);
+  background-color: #efefef;
+}
