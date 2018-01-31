@@ -14170,7 +14170,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/views/Splash.vue"
+Component.options.__file = "resources\\src\\js\\views\\Splash.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14179,9 +14179,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-26c2281b", Component.options)
+    hotAPI.createRecord("data-v-f6eb33ca", Component.options)
   } else {
-    hotAPI.reload("data-v-26c2281b", Component.options)
+    hotAPI.reload("data-v-f6eb33ca", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14207,7 +14207,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-26c2281b", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f6eb33ca", module.exports)
   }
 }
 
@@ -14237,7 +14237,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/cardImages.vue"
+Component.options.__file = "resources\\src\\js\\components\\cardImages.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -14246,9 +14246,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6573ca7e", Component.options)
+    hotAPI.createRecord("data-v-339f6990", Component.options)
   } else {
-    hotAPI.reload("data-v-6573ca7e", Component.options)
+    hotAPI.reload("data-v-339f6990", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14353,32 +14353,32 @@ var render = function() {
       { staticClass: "grid-container" },
       _vm._l(_vm.farmAnimals, function(farmAnimal) {
         return _c("div", [
-          _c("div", { staticClass: "grid-item grid-Img" }, [
-            _c("div", [_vm._v(_vm._s(farmAnimal.animal))]),
+          _c("div", {}, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _vm._v(_vm._s(farmAnimal.animal))
+            ]),
             _vm._v(" "),
-            _c("div", [
-              _c("label", { attrs: { for: farmAnimal.animal } }, [
-                _c("div", { staticClass: "crop" }, [
-                  _c("input", {
-                    attrs: {
-                      id: farmAnimal.animal,
-                      type: "file",
-                      name: "photo",
-                      accept: "image/*"
-                    },
-                    on: { change: _vm.changePhoto }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
-                    staticClass: "crop img",
-                    attrs: {
-                      id: farmAnimal.animal + "-img",
-                      src: farmAnimal.image,
-                      name: "photo",
-                      accept: "image/*"
-                    }
-                  })
-                ])
+            _c("label", { attrs: { for: farmAnimal.animal } }, [
+              _c("div", { staticClass: "panel crop" }, [
+                _c("input", {
+                  attrs: {
+                    id: farmAnimal.animal,
+                    type: "file",
+                    name: "photo",
+                    accept: "image/*"
+                  },
+                  on: { change: _vm.changePhoto }
+                }),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "panel__content crop img",
+                  attrs: {
+                    id: farmAnimal.animal + "-img",
+                    src: farmAnimal.image,
+                    name: "photo",
+                    accept: "image/*"
+                  }
+                })
               ])
             ])
           ])
@@ -14393,7 +14393,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6573ca7e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-339f6990", module.exports)
   }
 }
 

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="//cdn.metalab.csun.edu/metaphor/css/metaphor.css">
         <body>
             {{Form::open()}}
             Login
@@ -31,6 +31,6 @@
         </div>
 
         <script src="{{ asset('js/app.js') }}"></script>
-       
+        <script src="//cdn.metalab.csun.edu/metaphor/js/metaphor.js"></script>
     </body>
 </html>
