@@ -15892,9 +15892,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }, { animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, {
                 animal: "duck",
                 image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
-            }]
+            }],
+
+            postBody: '',
+            errors: []
         };
     },
+
     methods: {
         changePhoto: function changePhoto(event) {
             var _this = this;
@@ -15921,11 +15925,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 reader.readAsDataURL(files[0]);
             }
 
-            var posts = [];
+            /*axios.post('upload', {
+                body: this.postBody
+            })
+            .then(response => {})
+            .catch(e => {
+            this.errors.push(e)
+            })
+            */
 
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('https://jsonplaceholder.typicode.com/posts').then(function (response) {
-                posts = response.data;
-                console.log(posts);
+            this.axios.post('http://nameface.test/api/upload', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(function (response) {
+                console.log(response);
             }).catch(function (e) {
                 _this.errors.push(e);
             });

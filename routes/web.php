@@ -39,6 +39,8 @@ Route::get('/roster', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
 
 /**
- * Image CRUD Routes.
+ * Test Route.
  */
-Route::post('/upload', 'ImageController@uploadImage');
+Route::post('/max/', function () {
+    return 'Test';
+});

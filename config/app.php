@@ -169,6 +169,7 @@ return [
          */
         App\Providers\AuthorizationServiceProvider::class,
         App\Providers\WebResourceServiceProvider::class,
+        App\Providers\ImageCRUDServiceProvider::class,
 
         /*
          * Application Service Providers...

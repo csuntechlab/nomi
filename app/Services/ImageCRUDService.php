@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ImageCRUDContract;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Intervention implementation of image CRUD.
@@ -16,26 +17,27 @@ class ImageCRUDService implements ImageCRUDContract
      */
     public function upload()
     {
-        $image = request()->file('image');
+        $image = request()->media;
+
         $data = [
             'image' => $image,
         ];
 
         $rules = [
-            'image' => 'required|mimes:jpeg,jpg,png|max:1000',
+            'image' => 'required|mimes:jpeg,jpg,png|max:10000',
         ];
 
         $validator = Validator::make($data, $rules);
 
         if ($validator->fails()) {
-            return redirect()->route('/')->withErrors($validator);
+            return 'Failed';
         }
 
-        //$destinationPath = env("IMAGE_UPLOAD_LOCATION");
-        $destinationPath = '/resources';
+        $image->move(
+            env('IMAGE_UPLOAD_LOCATION'),
+            $image->getClientOriginalName()
+        );
 
-        Input::file('image')->move($destinationPath, 'test_img');
-
-        return redirect(route('/'));
+        return 'Uploaded';
     }
 }

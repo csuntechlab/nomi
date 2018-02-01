@@ -22,6 +22,6 @@ class ImageController extends Controller
 
     public function uploadImage()
     {
-        $this->imageCRUDContract->upload();
+        return $this->imageCRUDContract->upload();
     }
 }
