@@ -34,6 +34,6 @@ Route::get('/logout', function () {
 /**
  * Web Service Routes.
  */
-Route::get('/courses', 'WebResourceController@courses');
-Route::get('/roster', 'WebResourceController@roster');
+Route::get('/courses/{term}', 'WebResourceController@courses');
+Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
