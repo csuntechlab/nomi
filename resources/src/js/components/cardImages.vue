@@ -29,7 +29,7 @@
 </template> 
 
 <script>
-
+import axios from 'axios';
 export default {
     data: function () {
         return {
@@ -49,23 +49,25 @@ export default {
                     animal: "duck",
                     image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
                 },
-
             ],
+
+            errors: []
         }
     },
+
     methods: {
 		changePhoto: function(event) {
 //		    grabs id of image
-            var imageId = document.getElementById(event.target.id + "-img");
+            let imageId = document.getElementById(event.target.id + "-img");
 //            checks if empty and sets file instance to variable files
-            var files = event.target.files;
+            let files = event.target.files;
             if (!files[0]) {
                 return;
             }
 
-            var data = new FormData();
-            data.append('media', files[0])
-            var reader = new FileReader();
+            let data = new FormData();
+            data.append('media', files[0]);
+            let reader = new FileReader();
 //            On load of file, grab the image id's src that contains image
 //				and equal it to the add image file
             reader.onload = (event) => {
@@ -76,6 +78,18 @@ export default {
             if(files[0]){
                 reader.readAsDataURL(files[0]);
             }
+
+            this.axios.post('http://nameface.test/api/upload', data, {
+                headers: {
+                	'Content-Type': 'multipart/form-data'
+				}
+			})
+                .then(response => {
+                    console.log(response);
+				})
+                .catch(e => {
+                    this.errors.push(e)
+                });
 		}
     }
 }

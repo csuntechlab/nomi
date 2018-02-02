@@ -4,9 +4,21 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="//cdn.metalab.csun.edu/metaphor/css/metaphor.css">
-        <body>
-            {{Form::open()}}
+
+        <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        <!-- Styles -->
+        <style>
+        </style>
+    </head>
+    <body>
+        <div class="container" id='app'>
+            <nav-bar></nav-bar>
+            <card-images></card-images>
+        </div>
+
+         {{Form::open()}}
             Login
             <br>
             Username
@@ -17,20 +29,10 @@
             <br>
             {{Form::submit('submit')}}
             {{Form::close()}}
-        </body>
 
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <!-- Styles -->
-        <style>
-        </style>
-    </head>
-    <body>
-        <div class="container" id='app'>
-            <card-images></card-images>
-        </div>
-
-        <script src="{{ asset('js/app.js') }}"></script>
-        <script src="//cdn.metalab.csun.edu/metaphor/js/metaphor.js"></script>
+            <script src="{{ asset('js/metaphor.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
     </body>
+     
 </html>
