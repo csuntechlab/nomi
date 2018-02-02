@@ -15888,7 +15888,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             //            JSON object placeholder
-            farmAnimals: [{ animal: "pig", image: '' }, {
+            farmAnimals: [{ animal: "pig",
+                image: 'https://i.pinimg.com/originals/48/54/a0/4854a0e00a798d9942032dad745e844b.jpg' }, {
                 animal: "chicken",
                 image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
             }, {
