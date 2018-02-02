@@ -33,6 +33,25 @@ class RosterRetrievalService implements RosterRetrievalContract
         }
         $allStudentIds = Student::pluck('student_id');
         $allStudentIds = $allStudentIds->toArray();
-        dd($allStudentIds);
+        $studentKeysNotInDatabase = \array_diff($studentsKeys, $allStudentIds);
+        $unaddedStudents = [];
+        foreach ($studentKeysNotInDatabase as $id) {
+            $temporaryStudent = null;
+            foreach ($unsanitizedStudents as  $unsanitizedStudent) {
+                if ($id == $unsanitizedStudent->members_id) {
+                    $temporaryStudent = $unsanitizedStudent;
+                    break;
+                }
+            }
+            \array_push($unaddedStudents, [
+                'student_id' => $id,
+                'display_name' => $temporaryStudent->first_name . ' ' . $temporaryStudent->last_name,
+                'recognized' => false,
+            ]);
+        }
+        $students = Student::hydrate($unaddedStudents);
+        foreach ($students as $student) {
+            $student->save();
+        }
     }
 }
