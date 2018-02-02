@@ -1,0 +1,48 @@
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-Img {
+  position: relative;
+  float: left;
+  width:  100px;
+  height: 100px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
+/*images with the same width*/
+.crop {
+  height: 300px;
+  /*width: 400px;*/
+  overflow: hidden;
+}
+.crop img {
+  height: auto;
+  width: 100%;
+}
+.box1{
+	background-color: red;
+	width: 100px;
+	height: 100px;
+}
+.box2{
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+}
+

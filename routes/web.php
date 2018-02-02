@@ -12,10 +12,29 @@ declare(strict_types=1);
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * Routes associated with login.
+ */
+Route::get('/', 'LoginController@index')->name('login');
+Route::post('/', 'LoginController@validateUser');
+
+/**
+ * Route for home page. Takes us to the SPA.
+ */
+Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
+
+/**
+ * Route for logout.
+ */
+Route::get('/logout', function () {
+    auth()->logout();
+    echo 'You are logged OUT';
 });
 
-// Route::get('/testing-travis', function() {
-//     return "This is to test travis.";
-// });
+
+/**
+ * Web Service Routes.
+ */
+Route::get('/courses', 'WebResourceController@courses');
+Route::get('/roster', 'WebResourceController@roster');
+Route::get('/media', 'WebResourceController@media');
