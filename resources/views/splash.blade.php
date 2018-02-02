@@ -6,9 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue SPA Demo</title>
 </head>
-<body>
+
 <div id="app">
     <splash></splash>
+</div>
+
+<div>
+    <a href='{!! url('/courses/2173'); !!}'>Course List</a>
+</div>
+<br/>
+<div>
+    <a href='{!! url('/students/2173/0') !!}'>Student List</a>
+</div>
+<br />
+<div>
+    <a href='{!! url('students/shuffle/2173/0') !!}'>Shuffled Students</a>
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>

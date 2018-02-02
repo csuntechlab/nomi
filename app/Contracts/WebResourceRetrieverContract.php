@@ -6,9 +6,9 @@ namespace App\Contracts;
 
 interface WebResourceRetrieverContract
 {
-    public function getCourses();
+    public function getCourses($term);
 
-    public function getRoster();
+    public function getRoster($term, $course);
 
     public function getMedia();
 }

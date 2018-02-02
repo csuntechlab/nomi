@@ -32,8 +32,14 @@ Route::get('/logout', function () {
 });
 
 /**
- * Web Service Routes.
+ * Web Service API Routes.
  */
-Route::get('/courses', 'WebResourceController@courses');
-Route::get('/roster', 'WebResourceController@roster');
+Route::get('/courses/{term}', 'WebResourceController@courses');
+Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
+
+/**
+ * Roster API Routes.
+ */
+Route::get('/students/{term}/{course}', 'RosterController@getStudents');
+Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');
