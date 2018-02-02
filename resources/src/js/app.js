@@ -8,6 +8,22 @@
 // require(axios);
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router'
+import Splash from './views/Splash.vue'
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes : [
+        {
+            path: '/splash',
+            name: 'splash',
+            component: Splash
+
+        }
+    ]
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -19,6 +35,9 @@ Vue.component('nav-bar', require('./components/navBar.vue'));
 
 const app = new Vue({
     el: '#app',
+    components: {Splash},
+    router,
+
   
    
 });
