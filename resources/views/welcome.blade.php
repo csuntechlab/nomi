@@ -16,7 +16,6 @@
         <div class="container" id='app'>
             <nav-bar></nav-bar>
             <card-images></card-images>
-        </div>
 
          {{Form::open()}}
             Login
@@ -29,7 +28,7 @@
             <br>
             {{Form::submit('submit')}}
             {{Form::close()}}
-
+        </div>
 
             <script src="{{ asset('js/metaphor.js') }}"></script>
             <script src="{{ asset('js/app.js') }}"></script>

@@ -1,5 +1,4 @@
 <template>
-<div>
 
 
 
@@ -19,9 +18,6 @@
 			</div>
 		</div>
 
-
-    	
-    </div>
 
  
 

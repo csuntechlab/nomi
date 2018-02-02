@@ -15882,10 +15882,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -15954,46 +15950,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "grid-container" },
-      _vm._l(_vm.farmAnimals, function(farmAnimal) {
-        return _c("div", { staticClass: "panel" }, [
-          _c("div", { staticClass: "grid-item panel-content" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v(_vm._s(farmAnimal.animal))
-            ]),
+  return _c(
+    "div",
+    { staticClass: "grid-container" },
+    _vm._l(_vm.farmAnimals, function(farmAnimal) {
+      return _c("div", { staticClass: "panel" }, [
+        _c("div", { staticClass: "grid-item panel-content" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v(_vm._s(farmAnimal.animal))
+          ]),
+          _vm._v(" "),
+          _c("label", { attrs: { for: farmAnimal.animal } }, [
+            _c("input", {
+              staticClass: "hide",
+              attrs: {
+                id: farmAnimal.animal,
+                type: "file",
+                name: "photo",
+                accept: "image/*"
+              },
+              on: { change: _vm.changePhoto }
+            }),
             _vm._v(" "),
-            _c("label", { attrs: { for: farmAnimal.animal } }, [
-              _c("input", {
-                staticClass: "hide",
+            _c("div", { staticClass: "crop" }, [
+              _c("img", {
+                staticClass: "img--circle crop img",
                 attrs: {
-                  id: farmAnimal.animal,
-                  type: "file",
+                  id: farmAnimal.animal + "-img",
+                  src: farmAnimal.image,
                   name: "photo",
                   accept: "image/*"
-                },
-                on: { change: _vm.changePhoto }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "crop" }, [
-                _c("img", {
-                  staticClass: "img--circle crop img",
-                  attrs: {
-                    id: farmAnimal.animal + "-img",
-                    src: farmAnimal.image,
-                    name: "photo",
-                    accept: "image/*"
-                  }
-                })
-              ])
+                }
+              })
             ])
           ])
         ])
-      })
-    )
-  ])
+      ])
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -16031,7 +16025,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/navBar.vue"
+Component.options.__file = "resources\\src\\js\\components\\navBar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16040,9 +16034,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-92050874", Component.options)
+    hotAPI.createRecord("data-v-083b6980", Component.options)
   } else {
-    hotAPI.reload("data-v-92050874", Component.options)
+    hotAPI.reload("data-v-083b6980", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16058,8 +16052,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -16101,62 +16093,56 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("nav", { staticClass: "primary-nav" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "primary-nav__mobile" }, [
-          _c("div", { staticClass: "primary-nav__btn" }, [
-            _c("div", { staticClass: "bar" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "bar" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "bar" })
-          ]),
+      _c("div", { staticClass: "primary-nav__mobile" }, [
+        _c("div", { staticClass: "primary-nav__btn" }, [
+          _c("div", { staticClass: "bar" }),
           _vm._v(" "),
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "bar" })
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [
+            _c("span", { staticClass: "sr-only" }, [
+              _vm._v("California State University, Northridge (CSUN)")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__sub-brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [_vm._v("Nameface")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "primary-nav__links" }, [
+        _c("li", [
           _c(
             "a",
-            {
-              staticClass: "primary-nav__brand",
-              attrs: { href: "www.csun.edu" }
-            },
-            [
-              _c("span", { staticClass: "sr-only" }, [
-                _vm._v("California State University, Northridge (CSUN)")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass: "primary-nav__sub-brand",
-              attrs: { href: "www.csun.edu" }
-            },
-            [_vm._v("Nameface")]
+            { staticClass: "primary-nav__link active", attrs: { href: "#" } },
+            [_vm._v("Courses")]
           )
         ]),
         _vm._v(" "),
-        _c("ul", { staticClass: "primary-nav__links" }, [
-          _c("li", [
-            _c(
-              "a",
-              { staticClass: "primary-nav__link active", attrs: { href: "#" } },
-              [_vm._v("Courses")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              { staticClass: "primary-nav__link", attrs: { href: "#" } },
-              [_vm._v("Profile")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c(
-              "a",
-              { staticClass: "primary-nav__link", attrs: { href: "#" } },
-              [_vm._v("Help")]
-            )
+        _c("li", [
+          _c("a", { staticClass: "primary-nav__link", attrs: { href: "#" } }, [
+            _vm._v("Profile")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { staticClass: "primary-nav__link", attrs: { href: "#" } }, [
+            _vm._v("Help")
           ])
         ])
       ])
@@ -16168,7 +16154,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-92050874", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-083b6980", module.exports)
   }
 }
 

@@ -1,7 +1,6 @@
 <template>
 
 <nav class="primary-nav">
-  <div class="container">
     <div class="primary-nav__mobile">
       <div class="primary-nav__btn">
         <div class="bar"></div>
@@ -16,7 +15,6 @@
       <li><a class="primary-nav__link" href="#">Profile</a></li>
       <li><a class="primary-nav__link" href="#">Help</a></li>
     </ul>
-  </div>
 </nav>
 
 </template> 
