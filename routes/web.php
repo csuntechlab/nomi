@@ -42,3 +42,4 @@ Route::get('/media', 'WebResourceController@media');
  * Roster API Routes.
  */
 Route::get('/students/{term}/{course}', 'RosterController@getStudents');
+Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');

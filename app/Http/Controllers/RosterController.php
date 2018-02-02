@@ -19,4 +19,12 @@ class RosterController extends Controller
     {
         return $this->rosterRetriever->getStudentsFromRoster($term, $course);
     }
+
+    public function shuffleStudents($term, $course)
+    {
+        $students = $this->getStudents($term, $course);
+        \shuffle($students);
+
+        return $students;
+    }
 }
