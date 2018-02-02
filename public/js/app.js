@@ -14352,26 +14352,27 @@ var render = function() {
       "div",
       { staticClass: "grid-container" },
       _vm._l(_vm.farmAnimals, function(farmAnimal) {
-        return _c("div", [
-          _c("div", {}, [
+        return _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "grid-item panel-content" }, [
             _c("div", { staticClass: "panel-heading" }, [
               _vm._v(_vm._s(farmAnimal.animal))
             ]),
             _vm._v(" "),
             _c("label", { attrs: { for: farmAnimal.animal } }, [
-              _c("div", { staticClass: "panel crop" }, [
-                _c("input", {
-                  attrs: {
-                    id: farmAnimal.animal,
-                    type: "file",
-                    name: "photo",
-                    accept: "image/*"
-                  },
-                  on: { change: _vm.changePhoto }
-                }),
-                _vm._v(" "),
+              _c("input", {
+                staticClass: "hide",
+                attrs: {
+                  id: farmAnimal.animal,
+                  type: "file",
+                  name: "photo",
+                  accept: "image/*"
+                },
+                on: { change: _vm.changePhoto }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "crop" }, [
                 _c("img", {
-                  staticClass: "panel__content crop img",
+                  staticClass: "img--circle crop img",
                   attrs: {
                     id: farmAnimal.animal + "-img",
                     src: farmAnimal.image,
