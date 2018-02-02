@@ -3,13 +3,13 @@
   grid-column-gap: 5%;
   grid-row-gap: 5%;
   grid-template-columns: auto auto auto;
-  margin: auto 0;
+  margin: auto;
 }
 
 .grid-item {
-  padding: 10%;
-  height: 300px;
-  width: 400px;
+  padding: 5%;
+  height: 100%;
+  width: 100%;
   text-align: center;
 }
 
@@ -23,14 +23,13 @@
 
 .crop {
   height: 200px;
-  padding: 0;
 }
 
 .crop img {
   display: inline-block;
   position: relative;
   margin: auto;
-  border-radius: 50%;
-  width: 65%;
+  min-width: 200px;
+  width: 70%;
 }
 
