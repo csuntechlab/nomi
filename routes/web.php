@@ -28,7 +28,8 @@ Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
  */
 Route::get('/logout', function () {
     auth()->logout();
-    echo 'You are logged OUT';
+
+    return redirect('/');
 });
 
 /**
