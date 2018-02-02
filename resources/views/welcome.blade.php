@@ -16,22 +16,8 @@
     <body>
         <div class="container" id='app'>
             <nav-bar></nav-bar>
-            <card-images></card-images>
+            @yield('content')
         </div>
-
-         {{Form::open()}}
-            Login
-            <br>
-            Username
-            {{Form::text('username')}}
-            <br>
-            Password
-            {{Form::password('password')}}
-            <br>
-            {{Form::submit('submit')}}
-            {{Form::close()}}
-
-
             <script src="{{ asset('js/metaphor.js') }}"></script>
             <script src="{{ asset('js/app.js') }}"></script>
        
