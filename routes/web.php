@@ -37,10 +37,3 @@ Route::get('/logout', function () {
 Route::get('/courses', 'WebResourceController@courses');
 Route::get('/roster', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
-
-/**
- * Test Route.
- */
-Route::post('/max/', function () {
-    return 'Test';
-});
