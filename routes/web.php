@@ -31,6 +31,7 @@ Route::get('/logout', function () {
     echo 'You are logged OUT';
 });
 
+
 /**
  * Web Service Routes.
  */
