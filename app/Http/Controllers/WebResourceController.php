@@ -21,19 +21,24 @@ class WebResourceController extends Controller
     }
 
     /**
+     * @param $term
+     *
      * @return mixed
      */
-    public function courses()
+    public function courses($term)
     {
-        return $this->webResourceRetriever->getCourses();
+        return $this->webResourceRetriever->getCourses($term);
     }
 
     /**
+     * @param $term
+     * @param $course
+     *
      * @return mixed
      */
-    public function roster()
+    public function roster($term, $course)
     {
-        return $this->webResourceRetriever->getRoster();
+        return $this->webResourceRetriever->getRoster($term, $course);
     }
 
     /**
