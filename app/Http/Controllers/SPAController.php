@@ -13,6 +13,6 @@ class SPAController extends Controller
      */
     public function index()
     {
-        return view('splash');
+        return view('cards');
     }
 }

@@ -5,20 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <body>
-            {{Form::open()}}
-            Login
-            <br>
-            Username
-            {{Form::text('username')}}
-            <br>
-            Password
-            {{Form::password('password')}}
-            <br>
-            {{Form::submit('submit')}}
-            {{Form::close()}}
-        </body>
 
+        <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Styles -->
@@ -27,10 +15,12 @@
     </head>
     <body>
         <div class="container" id='app'>
-            <card-images></card-images>
+            <nav-bar></nav-bar>
+            @yield('content')
         </div>
-
-        <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/metaphor.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
        
     </body>
+     
 </html>

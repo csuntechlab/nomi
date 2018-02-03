@@ -13,3 +13,6 @@ let mix = require('laravel-mix');
 
 mix.js('resources/src/js/app.js', 'public/js')
    .sass('resources/src/sass/app.scss', 'public/css');
+
+mix.copy('bower_components/metaphor/dist/js/metaphor.js', 'public/js')
+	.copy('bower_components/metaphor/dist/css/metaphor.css', 'public/css');
