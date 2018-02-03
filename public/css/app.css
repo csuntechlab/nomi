@@ -1,64 +1,35 @@
 .grid-container {
   display: grid;
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
   grid-template-columns: auto auto auto;
-  background-color: #2196F3;
-  padding: 10px;
+  margin: auto;
 }
 
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
+  padding: 5%;
+  height: 100%;
+  width: 100%;
   text-align: center;
 }
 
-.grid-Img {
-  position: relative;
-  float: left;
-  width: 100px;
-  height: 100px;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
+.hide {
+  display: none;
 }
 
-/*images with the same width*/
+.panel {
+  border-radius: 25px;
+}
 
 .crop {
-  height: 300px;
-  /*width: 400px;*/
-  overflow: hidden;
+  height: 200px;
 }
 
 .crop img {
-  height: auto;
-  width: 100%;
-}
-
-.box1 {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-}
-
-.box2 {
-  background-color: blue;
-  width: 100px;
-  height: 100px;
-}
-
-image {
-  width: 50%;
-  height: 50%;
-  display: block;
-  margin: 0 auto;
-  z-index: 2;
-}
-
-.image-upload > input {
-  display: none;
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  min-width: 200px;
+  width: 70%;
 }
 

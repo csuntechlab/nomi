@@ -1,27 +1,23 @@
 <template>
-<div>
+
+
 
 		<div  class="grid-container">
 			<!--for loop through array objects-->
-		<div v-for="farmAnimal in farmAnimals">
-			<div class="grid-item grid-Img">
-				<div>{{ farmAnimal.animal }}</div>
-				<div>
+		<div class="panel" v-for="farmAnimal in farmAnimals">
+			<div class="grid-item panel-content">
+				<div class="panel-heading">{{ farmAnimal.animal }}</div>
 					<!--Needs to be made into a separate component-->
 					<label :for="farmAnimal.animal">
-						<div class="crop">
 							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
-							<input :id="farmAnimal.animal" @change="changePhoto" type="file" name="photo" accept="image/*">
-							<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="crop img" name="photo" accept="image/*">
+								<input class="hide" :id="farmAnimal.animal" @change="changePhoto" type="file" name="photo" accept="image/*">
+						<div class="crop">
+								<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="img--circle crop img" name="photo" accept="image/*">
 						</div>
 					</label>
-				</div>
 			</div>
 		</div>
 
-
-    	
-    </div>
 
  
 
@@ -35,7 +31,9 @@ export default {
         return {
 //            JSON object placeholder
             farmAnimals: [
-                {animal: "pig", image: ''},
+                {	animal: "pig",
+					image: 'https://i.pinimg.com/originals/48/54/a0/4854a0e00a798d9942032dad745e844b.jpg'
+				},
                 {
                     animal: "chicken",
                     image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
