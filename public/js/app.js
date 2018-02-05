@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(4);
 var isBuffer = __webpack_require__(14);
 
 /*global toString:true*/
@@ -403,10 +403,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(6);
   }
   return adapter;
 }
@@ -477,37 +477,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -616,7 +589,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,7 +607,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -824,7 +797,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -835,7 +808,7 @@ var settle = __webpack_require__(17);
 var buildURL = __webpack_require__(19);
 var parseHeaders = __webpack_require__(20);
 var isURLSameOrigin = __webpack_require__(21);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(7);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(22);
 
 module.exports = function xhrAdapter(config) {
@@ -1011,7 +984,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1036,7 +1009,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1048,7 +1021,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1071,6 +1044,33 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -1143,7 +1143,7 @@ var app = new Vue({
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(4);
 var Axios = __webpack_require__(15);
 var defaults = __webpack_require__(2);
 
@@ -1178,9 +1178,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(9);
 axios.CancelToken = __webpack_require__(29);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -1333,7 +1333,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(7);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1768,7 +1768,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(26);
-var isCancel = __webpack_require__(9);
+var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(27);
 var combineURLs = __webpack_require__(28);
@@ -1928,7 +1928,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(9);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -12834,13 +12834,13 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(32).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(32).setImmediate))
 
 /***/ }),
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
+var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
@@ -12891,17 +12891,9 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(33);
-// On some exotic environments, it's not clear which object `setimmeidate` was
-// able to install onto.  Search each possibility in the same order as the
-// `setimmediate` library.
-exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
-                       (typeof global !== "undefined" && global.setImmediate) ||
-                       (this && this.setImmediate);
-exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
-                         (typeof global !== "undefined" && global.clearImmediate) ||
-                         (this && this.clearImmediate);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 33 */
@@ -13094,7 +13086,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(5)))
 
 /***/ }),
 /* 34 */
@@ -15731,7 +15723,7 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = null
 /* template */
@@ -15752,7 +15744,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\src\\js\\views\\Splash.vue"
+Component.options.__file = "resources/src/js/views/Splash.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -15761,9 +15753,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f6eb33ca", Component.options)
+    hotAPI.createRecord("data-v-26c2281b", Component.options)
   } else {
-    hotAPI.reload("data-v-f6eb33ca", Component.options)
+    hotAPI.reload("data-v-26c2281b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15789,7 +15781,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f6eb33ca", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-26c2281b", module.exports)
   }
 }
 
@@ -15806,7 +15798,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(39)
 /* template */
@@ -15827,7 +15819,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\src\\js\\components\\cardImages.vue"
+Component.options.__file = "resources/src/js/components/cardImages.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -15836,9 +15828,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-339f6990", Component.options)
+    hotAPI.createRecord("data-v-6573ca7e", Component.options)
   } else {
-    hotAPI.reload("data-v-339f6990", Component.options)
+    hotAPI.reload("data-v-6573ca7e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15875,32 +15867,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             //            JSON object placeholder
-            farmAnimals: [{ animal: "pig",
-                image: 'https://i.pinimg.com/originals/48/54/a0/4854a0e00a798d9942032dad745e844b.jpg' }, {
-                animal: "chicken",
-                image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
-            }, {
-                animal: "rooster",
-                image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
-            }, { animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, {
-                animal: "duck",
-                image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
-            }],
-
-            errors: []
+            /*students: [
+                {	display_name: "pig",
+            image: 'https://i.pinimg.com/originals/48/54/a0/4854a0e00a798d9942032dad745e844b.jpg'
+            },
+                {
+                    display_name: "chicken",
+                    image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
+                },
+                {
+                    display_name: "rooster",
+                    image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
+                },
+                {
+                    display_name: "cow",
+            image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg"},
+                {
+                    display_name: "duck",
+                    image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
+                },
+            ],*/
+            errors: [],
+            props: ['students'],
+            mounted: function mounted() {
+                console.dir(this.students);
+            }
         };
     },
 
@@ -15954,18 +15951,18 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "grid-container" },
-    _vm._l(_vm.farmAnimals, function(farmAnimal) {
+    _vm._l(_vm.students, function(student) {
       return _c("div", { staticClass: "panel" }, [
         _c("div", { staticClass: "grid-item panel-content" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(farmAnimal.animal))
+            _vm._v(_vm._s(student.display_name))
           ]),
           _vm._v(" "),
-          _c("label", { attrs: { for: farmAnimal.animal } }, [
+          _c("label", { attrs: { for: student.display_name } }, [
             _c("input", {
               staticClass: "hide",
               attrs: {
-                id: farmAnimal.animal,
+                id: student.display_name,
                 type: "file",
                 name: "photo",
                 accept: "image/*"
@@ -15977,8 +15974,8 @@ var render = function() {
               _c("img", {
                 staticClass: "img--circle crop img",
                 attrs: {
-                  id: farmAnimal.animal + "-img",
-                  src: farmAnimal.image,
+                  id: student.display_name + "-img",
+                  src: student.image,
                   name: "photo",
                   accept: "image/*"
                 }
@@ -15996,7 +15993,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-339f6990", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6573ca7e", module.exports)
   }
 }
 
@@ -16005,7 +16002,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(4)
+var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
@@ -16026,7 +16023,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\src\\js\\components\\navBar.vue"
+Component.options.__file = "resources/src/js/components/navBar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16035,9 +16032,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-083b6980", Component.options)
+    hotAPI.createRecord("data-v-92050874", Component.options)
   } else {
-    hotAPI.reload("data-v-083b6980", Component.options)
+    hotAPI.reload("data-v-92050874", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16155,7 +16152,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-083b6980", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-92050874", module.exports)
   }
 }
 

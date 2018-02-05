@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-    <card-images></card-images>
+    <card-images :students="{!! json_encode(Session::get('students')) !!}"></card-images>
     <br>
     <br>
     <ul>

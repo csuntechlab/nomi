@@ -5,21 +5,26 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Contracts\AuthVerifierContract;
+use App\Contracts\RosterRetrievalContract;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    protected $authVerifierContract = null;
+    protected $authVerifierContract;
+    protected $rosterRetrievalContract;
 
     /**
      * LoginController constructor.
      *
-     * @param AuthVerifierContract $authVerifierContract
-     *                                                   A contract that authenticates users
+     * @param AuthVerifierContract    $authVerifierContract
+     * @param RosterRetrievalContract $rosterRetrievalContract
      */
-    public function __construct(AuthVerifierContract $authVerifierContract)
-    {
+    public function __construct(
+        AuthVerifierContract $authVerifierContract,
+        RosterRetrievalContract $rosterRetrievalContract
+    ) {
         $this->authVerifierContract = $authVerifierContract;
+        $this->rosterRetrievalContract = $rosterRetrievalContract;
     }
 
     /**
@@ -44,7 +49,10 @@ class LoginController extends Controller
     {
         $credentials = $request->all('username', 'password');
         if ($this->authVerifierContract->isVerified($credentials)) {
-            return redirect()->route('home');
+            //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
+            $students = $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
+
+            return redirect()->route('home')->with('students', $students);
         }
 
         return redirect()->route('login');
