@@ -195,6 +195,21 @@ return [
          * Intervention.
          */
         Intervention\Image\ImageServiceProvider::class,
+
+        /**
+         * Laravel Force Functionality.
+         */
+        CSUNMetaLab\ForceHttps\Providers\ForceHttpsServiceProvider::class,
+
+        /**
+         * META+LAB Feedback.
+         */
+        CSUNMetaLab\Support\Providers\SupportServiceProvider::class,
+
+        /**
+         * META+LAB Proxy Pass.
+         */
+        CSUNMetaLab\ProxyPass\Providers\ProxyPassServiceProvider::class,
     ],
 
     /*
