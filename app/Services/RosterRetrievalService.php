@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use App\Models\Student;
+use Illuminate\Support\Facades\DB;
 
 class RosterRetrievalService implements RosterRetrievalContract
 {
@@ -17,8 +17,18 @@ class RosterRetrievalService implements RosterRetrievalContract
         $this->webResourceRetriever = $webResourceRetriever;
     }
 
+    /**
+     * Uses the webResource API to grab the roster and return it in a format
+     * that is usable by the application in the front end.
+     *
+     * @param $term
+     * @param $course
+     *
+     * @return array
+     */
     public function getStudentsFromRoster($term, $course)
     {
+        // Grabs the roster information without the instructor
         $roster = $this->webResourceRetriever->getRoster($term, $course);
         $members = \json_decode($roster)->members;
         $unsanitizedStudents = [];
@@ -27,41 +37,27 @@ class RosterRetrievalService implements RosterRetrievalContract
                 \array_push($unsanitizedStudents, $member);
             }
         }
+
+        // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
             \array_push($sanitizedStudents, [
                 'student_id' => $unsanitizedStudent->members_id,
                 'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
+                'email' => $unsanitizedStudent->email,
                 'recognized' => false,
             ]);
         }
 
+        // Checks to see if a student is recognized by the professor
+        // teaching this class
+        $relationships = DB::table('recognitions')->where('professor_id', auth()->user()->user_id)->pluck('student_id')->toArray();
+        foreach ($sanitizedStudents as &$sanitizedStudent) {
+            if (\in_array($sanitizedStudent['student_id'], $relationships)) {
+                $sanitizedStudent['recognized'] = true;
+            }
+        }
+
         return $sanitizedStudents;
-//        $studentsKeys = [];
-//        foreach ($unsanitizedStudents as $unsanitizedStudent) {
-//            \array_push($studentsKeys, $unsanitizedStudent->members_id);
-//        }
-//        $allStudentIds = Student::pluck('student_id');
-//        $allStudentIds = $allStudentIds->toArray();
-//        $studentKeysNotInDatabase = \array_diff($studentsKeys, $allStudentIds);
-//        $unaddedStudents = [];
-//        foreach ($studentKeysNotInDatabase as $id) {
-//            $temporaryStudent = null;
-//            foreach ($unsanitizedStudents as  $unsanitizedStudent) {
-//                if ($id == $unsanitizedStudent->members_id) {
-//                    $temporaryStudent = $unsanitizedStudent;
-//                    break;
-//                }
-//            }
-//            \array_push($unaddedStudents, [
-//                'student_id' => $id,
-//                'display_name' => $temporaryStudent->first_name . ' ' . $temporaryStudent->last_name,
-//                'recognized' => false,
-//            ]);
-//        }
-//        $students = Student::hydrate($unaddedStudents);
-//        foreach ($students as $student) {
-//            $student->save();
-//        }
     }
 }
