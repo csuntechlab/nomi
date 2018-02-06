@@ -51,6 +51,7 @@ class LoginController extends Controller
         if ($this->authVerifierContract->isVerified($credentials)) {
             //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
             $students = $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
+            //dd($students);
 
             return redirect()->route('home')->with('students', $students);
         }
