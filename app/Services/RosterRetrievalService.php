@@ -45,6 +45,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'student_id' => $unsanitizedStudent->members_id,
                 'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
+                'image' => 'http://gyaanii.com/uploads/media/profile/default.jpg',
                 'recognized' => false,
             ]);
         }

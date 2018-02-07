@@ -9,16 +9,16 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    protected $authVerifierContract = null;
+    protected $authVerifierContract;
 
     /**
      * LoginController constructor.
      *
      * @param AuthVerifierContract $authVerifierContract
-     *                                                   A contract that authenticates users
      */
-    public function __construct(AuthVerifierContract $authVerifierContract)
-    {
+    public function __construct(
+        AuthVerifierContract $authVerifierContract
+    ) {
         $this->authVerifierContract = $authVerifierContract;
     }
 

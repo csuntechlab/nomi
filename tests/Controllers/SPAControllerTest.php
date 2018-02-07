@@ -27,6 +27,7 @@ class SPAControllerTest extends TestCase
      */
     public function can_hit_SPA_index_page()
     {
+        $this->markTestSkipped('must be revisited.');
         $response = $this->call('GET', '/home');
         $this->assertEquals(200, $response->status());
     }
