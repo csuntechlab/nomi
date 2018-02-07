@@ -1,7 +1,5 @@
 <template>
-
-
-
+    
 		<div  class="grid-container">
 			<!--for loop through array objects-->
 		<div class="panel" v-for="farmAnimal in farmAnimals">

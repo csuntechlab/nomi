@@ -1,12 +1,11 @@
 <template>
     <div>
-        <button @click="openNav()">press for menu</button>
         <div id="mySidenav" class="sidenav">
             <a href="" class="closebtn" @click.prevent="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+            <a href="#">Game</a>
+            <a href="#">Settings</a>
+            <a href="#">Logout</a>
         </div>
     </div>
 </template>
