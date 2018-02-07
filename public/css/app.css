@@ -22,14 +22,15 @@
 }
 
 .crop {
-  height: 200px;
+  height: 12vh;
 }
 
 .crop img {
-  display: inline-block;
-  position: relative;
-  margin: auto;
-  min-width: 200px;
-  width: 70%;
+  padding: 5%;
+  width: 100%;
+}
+
+.no-padding {
+  padding: 10px 10px;
 }
 
