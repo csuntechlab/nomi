@@ -1,0 +1,17 @@
+
+.grid-container {
+  display: grid;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+}
+
+.grid-item {
+  padding: 5%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+
