@@ -28,7 +28,7 @@ class SPAController extends Controller
         //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
         //If students exist in cache, webservice is not called again; cache times out in $minutes minutes
         $students = Cache::remember('students', $this->minutes, function () {
-            $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
+            return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
         });
 
         return view('cards')->with('students', $students);
