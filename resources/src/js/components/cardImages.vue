@@ -42,7 +42,7 @@ export default {
                     animal: "rooster",
                     image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
                 },
-                {animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg"},
+                {animal: "cow", image: "http://simpleicon.com/wp-content/uploads/add-user.png"},
                 {
                     animal: "duck",
                     image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
