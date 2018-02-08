@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ImageCRUDContract;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -37,6 +38,8 @@ class ImageCRUDService implements ImageCRUDContract
             env('IMAGE_UPLOAD_LOCATION'),
             $image->getClientOriginalName()
         );
+
+        Cache::forget('students');
 
         return 'Uploaded';
     }
