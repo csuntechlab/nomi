@@ -10,28 +10,10 @@
 								<input class="hide" :id="student.display_name" @change="changePhoto" type="file" name="photo" accept="image/*">
 						<div class="crop">
 								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
-
-
-
-		<div  class="container">
-			<!--for loop through array objects-->
-			<!--<div class="row">-->
-				<div class="type--center">
-
-					<div class="col-xs-4 no-padding" v-for="farmAnimal in farmAnimals">
-						<div class="panel">
-							<div class="panel-content">
-								<div class="panel-heading">{{ farmAnimal.animal }}</div>
-								<!--Needs to be made into a separate component-->
-								<label class="crop" :for="farmAnimal.animal">
-										<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
-											<input class="hide" :id="farmAnimal.animal" @change="changePhoto" type="file" name="photo" accept="image/*">
-											<img :id="farmAnimal.animal+'-img'" :src="farmAnimal.image" class="img--circle img" name="photo" accept="image/*">
-								</label>
 						</div>
-					</div>
-				</div>
-			<!--</div>-->
+					</label>
+
+			</div>
 		</div>
     </div>
 </template>
