@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+        <link rel="icon" href="{{asset('images/logo.jpg')}}">
+
         <!-- Styles -->
         <style>
         </style>
