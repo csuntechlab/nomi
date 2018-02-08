@@ -1,0 +1,35 @@
+.grid-container {
+  display: grid;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+}
+
+.grid-item {
+  padding: 5%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+}
+
+.crop {
+  height: 200px;
+}
+
+.crop img {
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  min-width: 200px;
+  width: 70%;
+}
+
