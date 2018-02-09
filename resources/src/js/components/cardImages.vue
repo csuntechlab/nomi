@@ -7,7 +7,7 @@
 					<!--Needs to be made into a separate component-->
 					<label :for="student.display_name">
 							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
-								<input class="hide" :id="student.display_name" @change="changePhoto" type="file" name="photo" accept="image/*">
+								<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email);" type="file" name="photo" accept="image/*">
 						<div class="crop">
 								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
 						</div>
@@ -30,7 +30,7 @@ export default {
     },
 
     methods: {
-		changePhoto: function(event) {
+		changePhoto: function(event, email) {
 //		    grabs id of image
             let imageId = document.getElementById(event.target.id + "-img");
 //            checks if empty and sets file instance to variable files
@@ -41,6 +41,7 @@ export default {
 
             let data = new FormData();
             data.append('media', files[0]);
+            data.append('email', email);
             let reader = new FileReader();
 //            On load of file, grab the image id's src that contains image
 //				and equal it to the add image file
