@@ -7,6 +7,8 @@ namespace App\Services;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
 
 class RosterRetrievalService implements RosterRetrievalContract
 {
@@ -40,12 +42,23 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
+        $imageManager = new ImageManager(['driver' => 'imagick']);
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
+            $email = \str_replace('nr_', '', $unsanitizedStudent->email);
+            $email = \substr($email, 0, \strpos($email, '@'));
+            $imageLocation = '/' . 'avatar.png';
+
+            // checks if image already exists
+            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'avatar.jpg')) {
+                $imageLocation = $email . '/' . 'avatar.jpg';
+            }
+
+            $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)->encode('data-url');
             \array_push($sanitizedStudents, [
                 'student_id' => $unsanitizedStudent->members_id,
                 'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
-                'image' => 'http://gyaanii.com/uploads/media/profile/default.jpg',
+                'image' => $image,
                 'recognized' => false,
             ]);
         }
