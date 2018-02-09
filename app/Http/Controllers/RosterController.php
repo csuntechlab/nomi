@@ -23,8 +23,15 @@ class RosterController extends Controller
     public function shuffleStudents($term, $course)
     {
         $students = $this->getStudents($term, $course);
-        \shuffle($students);
+        $recognizedStudents = \array_filter($students, function ($student) {
+            return $student['recognized'] == true;
+        });
+        $unrecognizedStudents = \array_filter($students, function ($student) {
+            return $student['recognized'] == false;
+        });
+        \shuffle($recognizedStudents);
+        \shuffle($unrecognizedStudents);
 
-        return $students;
+        return \array_merge($unrecognizedStudents, $recognizedStudents);
     }
 }
