@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Vue SPA Demo</title>
 </head>
-<body>
+
 <div id="app">
     <splash></splash>
 </div>
+
 
 <script src="{{ mix('js/app.js') }}"></script>
 </body>

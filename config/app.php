@@ -75,7 +75,7 @@ return [
     |
     | The application locale determines the default locale that will be used
     | by the translation service provider. You are free to set this value
-    | to any of the locales which will be supported by the application.
+    | to any of the locales which will be supported by the application.,
     |
     */
 
@@ -169,6 +169,8 @@ return [
          */
         App\Providers\AuthorizationServiceProvider::class,
         App\Providers\WebResourceServiceProvider::class,
+        App\Providers\RosterServiceProvider::class,
+        App\Providers\ImageCRUDServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -188,6 +190,26 @@ return [
          * Form Functionality...
          */
         Collective\Html\HtmlServiceProvider::class,
+
+        /**
+         * Intervention.
+         */
+        Intervention\Image\ImageServiceProvider::class,
+
+        /**
+         * Laravel Force Functionality.
+         */
+        CSUNMetaLab\ForceHttps\Providers\ForceHttpsServiceProvider::class,
+
+        /**
+         * META+LAB Feedback.
+         */
+        CSUNMetaLab\Support\Providers\SupportServiceProvider::class,
+
+        /**
+         * META+LAB Proxy Pass.
+         */
+        CSUNMetaLab\ProxyPass\Providers\ProxyPassServiceProvider::class,
     ],
 
     /*
@@ -218,6 +240,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Image' => Intervention\Image\Facades\Image::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

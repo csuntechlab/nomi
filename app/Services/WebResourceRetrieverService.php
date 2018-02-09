@@ -12,30 +12,34 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     /**
      * Retrieves course list from CSUN Curriculum web service.
      *
+     * @param $term
+     *
      * @return string
      */
-    public function getCourses()
+    public function getCourses($term)
     {
         $client = new Client();
 
-        //str_replace for testing purposes with dev db, to be removed
         return $client->get(
-            'http://api.metalab.csun.edu/curriculum/api/classes?instructor=' . \str_replace('nr_', '', auth()->user()->email)
+            env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
         )->getBody()->getContents();
     }
 
     /**
      * Retrieves roster from META+LAB Roster web service.
      *
+     * @param $term,
+     * @param $course
+     *
      * @return string
      */
-    public function getRoster()
+    public function getRoster($term, $course)
     {
         $client = new Client();
 
         return $client->get(
-            'http://api.sandbox.csun.edu/metalab/roster/terms/current/memberships/'
-            . \str_replace('nr_', '', auth()->user()->email) . '/classes'
+            env('ROSTER_URL') . '/terms' . '/' . \json_decode($this->getCourses($term))->classes[$course]->term
+            . '/classes' . '/' . \json_decode($this->getCourses($term))->classes[$course]->class_number
         )->getBody()->getContents();
     }
 

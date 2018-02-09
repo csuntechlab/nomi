@@ -34,7 +34,7 @@ class WebResourceControllerTest extends TestCase
             ->shouldReceive('getCourses')
             ->once();
 
-        $controller->courses();
+        $controller->courses('2173');
     }
 
     /**
@@ -48,7 +48,7 @@ class WebResourceControllerTest extends TestCase
             ->shouldReceive('getRoster')
             ->once();
 
-        $controller->roster();
+        $controller->roster('2173', 0);
     }
 
     /**
