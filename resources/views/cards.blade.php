@@ -3,6 +3,7 @@
 @section('content')
     <card-images students="{{json_encode($students)}}"></card-images>
     <br>
+    <flash-cardbutton></flash-cardbutton>
     <br>
     <ul>
         <li><a href='{!! url('/courses/2173'); !!}'>Course List</a></li>

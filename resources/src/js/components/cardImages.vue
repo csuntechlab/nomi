@@ -1,6 +1,7 @@
 <template>
     <div  class="grid-container">
         <!--for loop through array objects-->
+		<button @click="flashCard" role="button" class="btn btn-default">Button</button>
 		<div class="panel" v-for="student in JSON.parse(students)">
 			<div class="grid-item panel-content">
 				<div class="panel-heading">{{student.display_name}}</div>
@@ -8,7 +9,7 @@
 					<label :for="student.display_name">
 							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
 								<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email);" type="file" name="photo" accept="image/*">
-						<div class="crop">
+						<div class="crop" id="myDiv">
 								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
 						</div>
 					</label>
@@ -65,8 +66,25 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 });
+		},
+
+		flashCard: function () {
+			// grabs id of image
+            let imageId = document.getElementById(myDiv);
+            console.log(imageId);
+			// var textId = document.getElementById("textA");
+			if (imageId.style.display !== "none") {
+				imageId.style.display = "none";
+				// textId.style.display = "block";
+			} else {
+				imageId.style.display = "block";
+				// textId.style.display = "none";
+			}
 		}
+
     },
+
+
 
     props: ['students']
 }

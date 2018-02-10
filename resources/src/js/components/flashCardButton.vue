@@ -1,22 +1,24 @@
-<!--<template>
-<button @click="flashCard" role="button" class="btn btn-default">Button</button>
-</div>
+<template>
+    <div>
+        <button @click="flashCard" id="myDiv" role="button" class="btn btn-default">Button</button>
+    </div>
 </template>
 
 <script>
-export default{
+export default {
     methods: {
-        flashCard: function() {
-            //		    grabs id of image
+        flashCard: function () {
+            // grabs id of image
             var imageId = document.getElementById("myDiv");
-            var textId = document.getElementById("textA");
+            // var textId = document.getElementById("textA");
             if (imageId.style.display !== "none") {
                 imageId.style.display = "none";
-                textId.style.display = "block";
+                // textId.style.display = "block";
             } else {
                 imageId.style.display = "block";
-                textId.style.display = "none";
+                // textId.style.display = "none";
             }
+        }
     }
 }
-</script>-->
+</script>>
