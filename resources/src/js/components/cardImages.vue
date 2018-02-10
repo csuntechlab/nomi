@@ -1,19 +1,22 @@
 <template>
-    <div  class="grid-container">
+    <div>
         <!--for loop through array objects-->
-		<div class="panel" v-for="student in JSON.parse(students)">
-			<div class="grid-item panel-content">
-				<div class="panel-heading">{{student.display_name}}</div>
-					<!--Needs to be made into a separate component-->
-					<label :for="student.display_name">
-							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
-								<input class="hide" :id="student.display_name" @change="changePhoto" type="file" name="photo" accept="image/*">
-						<div class="crop">
-								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
-						</div>
-					</label>
-
-			</div>
+		<div class="col-xs-6" v-for="student in JSON.parse(students)">
+            <div class="panel">
+                <div class="grid-item panel-content">
+                    <!--Needs to be made into a separate component-->
+                    <label :for="student.display_name">
+                        <!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
+                        <input class="hide" :id="student.display_name" @change="changePhoto" type="file" name="photo" accept="image/*">
+                        <img :id="student.display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
+                    </label>
+                    <div class="card-title">
+                        <div class="panel-heading">
+                            {{student.display_name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
     </div>
 </template>

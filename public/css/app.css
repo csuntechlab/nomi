@@ -21,16 +21,15 @@
   border-radius: 25px;
 }
 
-.crop {
-  height: 12vh;
+.panel-heading {
+  height: 60px;
 }
 
-.crop img {
-  padding: 5%;
+.grid-image {
   width: 100%;
 }
 
-.no-padding {
-  padding: 10px 10px;
+.card-title {
+  padding: 2% 0%;
 }
 
