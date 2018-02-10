@@ -15876,36 +15876,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    /*created () {
+            console.log(JSON.parse(this.students))
+    },*/
     data: function data() {
         return {
-            //            JSON object placeholder
-            farmAnimals: [{ animal: "pig",
-                image: 'https://i.pinimg.com/originals/48/54/a0/4854a0e00a798d9942032dad745e844b.jpg'
-            }, {
-                animal: "chicken",
-                image: "http://www.newstalk.com/content/000/images/000129/133205_54_news_hub_123495_656x500.jpg"
-            }, {
-                animal: "rooster",
-                image: "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/assets/v3/editorial/0/1f/01fb8392-9599-54ef-a072-eccba5ef5a9b/588964584fea3.image.jpg?resize=1200%2C771"
-            }, { animal: "cow", image: "https://cdn.modernfarmer.com/wp-content/uploads/2015/08/cowburp.jpeg" }, {
-                animal: "duck",
-                image: "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg"
-            }],
-
             errors: []
         };
     },
 
     methods: {
-        changePhoto: function changePhoto(event) {
+        changePhoto: function changePhoto(event, email) {
             var _this = this;
 
             //		    grabs id of image
@@ -15918,6 +15902,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var data = new FormData();
             data.append('media', files[0]);
+            data.append('email', email);
             var reader = new FileReader();
             //            On load of file, grab the image id's src that contains image
             //				and equal it to the add image file
@@ -15940,7 +15925,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.errors.push(e);
             });
         }
-    }
+    },
+
+    props: ['students']
 });
 
 /***/ }),
@@ -15954,31 +15941,35 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "grid-container" },
-    _vm._l(_vm.farmAnimals, function(farmAnimal) {
+    _vm._l(JSON.parse(_vm.students), function(student) {
       return _c("div", { staticClass: "panel" }, [
         _c("div", { staticClass: "grid-item panel-content" }, [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(farmAnimal.animal))
+            _vm._v(_vm._s(student.display_name))
           ]),
           _vm._v(" "),
-          _c("label", { attrs: { for: farmAnimal.animal } }, [
+          _c("label", { attrs: { for: student.display_name } }, [
             _c("input", {
               staticClass: "hide",
               attrs: {
-                id: farmAnimal.animal,
+                id: student.display_name,
                 type: "file",
                 name: "photo",
                 accept: "image/*"
               },
-              on: { change: _vm.changePhoto }
+              on: {
+                change: function($event) {
+                  _vm.changePhoto($event, student.email)
+                }
+              }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "crop" }, [
               _c("img", {
                 staticClass: "img--circle crop img",
                 attrs: {
-                  id: farmAnimal.animal + "-img",
-                  src: farmAnimal.image,
+                  id: student.display_name + "-img",
+                  src: student.image,
                   name: "photo",
                   accept: "image/*"
                 }

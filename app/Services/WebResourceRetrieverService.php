@@ -20,7 +20,6 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        //str_replace for testing purposes with dev db, to be removed
         return $client->get(
             env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
         )->getBody()->getContents();
