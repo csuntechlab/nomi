@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ImageCRUDContract;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -18,6 +19,8 @@ class ImageCRUDService implements ImageCRUDContract
     public function upload()
     {
         $image = request()->media;
+        $email = \str_replace('nr_', '', request()->email);
+        $email = \substr($email, 0, \strpos($email, '@'));
 
         $data = [
             'image' => $image,
@@ -34,9 +37,11 @@ class ImageCRUDService implements ImageCRUDContract
         }
 
         $image->move(
-            env('IMAGE_UPLOAD_LOCATION'),
-            $image->getClientOriginalName()
+            env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/',
+            'avatar.jpg'
         );
+
+        Cache::forget('students');
 
         return 'Uploaded';
     }

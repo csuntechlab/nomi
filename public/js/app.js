@@ -15892,7 +15892,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        changePhoto: function changePhoto(event) {
+        changePhoto: function changePhoto(event, email) {
             var _this = this;
 
             //		    grabs id of image
@@ -15905,6 +15905,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var data = new FormData();
             data.append('media', files[0]);
+            data.append('email', email);
             var reader = new FileReader();
             //            On load of file, grab the image id's src that contains image
             //				and equal it to the add image file
@@ -15955,7 +15956,11 @@ var render = function() {
                   name: "photo",
                   accept: "image/*"
                 },
-                on: { change: _vm.changePhoto }
+                on: {
+                  change: function($event) {
+                    _vm.changePhoto($event, student.email)
+                  }
+                }
               }),
               _vm._v(" "),
               _c("img", {
