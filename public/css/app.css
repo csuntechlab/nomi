@@ -11,6 +11,10 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  -webkit-box-shadow: 3px 6px;
+          box-shadow: 3px 6px;
+  border-radius: 25px;
+  border-color: green;
 }
 
 .hide {
