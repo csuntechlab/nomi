@@ -34,10 +34,16 @@ const router = new VueRouter({
  */
 Vue.component('card-images', require('./components/cardImages.vue'));
 Vue.component('nav-bar', require('./components/navBar.vue'));
+Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
+
+const bus = new Vue();
 
 const app = new Vue({
     el: '#app',
-    components: {Splash},
-    router,
+    components: {
+        Splash,
+        router,
+        bus
+    },
 });
  
