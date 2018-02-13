@@ -15876,6 +15876,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -15940,33 +15944,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid-container" },
     _vm._l(JSON.parse(_vm.students), function(student) {
-      return _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "grid-item panel-content" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(student.display_name))
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: student.display_name } }, [
-            _c("input", {
-              staticClass: "hide",
-              attrs: {
-                id: student.display_name,
-                type: "file",
-                name: "photo",
-                accept: "image/*"
-              },
-              on: {
-                change: function($event) {
-                  _vm.changePhoto($event, student.email)
+      return _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "grid-item panel-content" }, [
+            _c("label", { attrs: { for: student.display_name } }, [
+              _c("input", {
+                staticClass: "hide",
+                attrs: {
+                  id: student.display_name,
+                  type: "file",
+                  name: "photo",
+                  accept: "image/*"
+                },
+                on: {
+                  change: function($event) {
+                    _vm.changePhoto($event, student.email)
+                  }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "crop" }, [
+              }),
+              _vm._v(" "),
               _c("img", {
-                staticClass: "img--circle crop img",
+                staticClass: "img--circle grid-image",
                 attrs: {
                   id: student.display_name + "-img",
                   src: student.image,
@@ -15974,6 +15973,16 @@ var render = function() {
                   accept: "image/*"
                 }
               })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-title" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(student.display_name) +
+                    "\n                        "
+                )
+              ])
             ])
           ])
         ])
