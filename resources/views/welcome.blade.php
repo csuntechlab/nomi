@@ -15,6 +15,7 @@
     <body>
         <div class="container" id='app'>
             <nav-bar></nav-bar>
+            <side-bar></side-bar>
             @yield('content')
             <br>
             <br>
