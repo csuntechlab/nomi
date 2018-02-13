@@ -1111,7 +1111,7 @@ window.Vue = __webpack_require__(31);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
         path: '/splash',
@@ -1130,14 +1130,13 @@ Vue.component('card-images', __webpack_require__(38));
 Vue.component('nav-bar', __webpack_require__(41));
 Vue.component('shuffle-button', __webpack_require__(44));
 
-var bus = new Vue();
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 var app = new Vue({
     el: '#app',
+    router: Router,
     components: {
-        Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a,
-        router: router,
-        bus: bus
+        Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a
     }
 });
 
@@ -15875,9 +15874,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
-        this.bus.$on('shuffleCards', this.shuffleCardsHandler);
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
     },
 
 
@@ -16230,7 +16232,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "shuffle-button"
+    name: "shuffle-button",
+    methods: {
+        emitShuffleCards: function emitShuffleCards() {
+            this.$eventBus.$emit('shuffleCards');
+        }
+    }
 });
 
 /***/ }),
@@ -16247,7 +16254,7 @@ var render = function() {
       {
         on: {
           click: function($event) {
-            this.bus.$emit("shuffleCards")
+            _vm.emitShuffleCards()
           }
         }
       },

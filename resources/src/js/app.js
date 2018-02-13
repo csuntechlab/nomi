@@ -15,7 +15,7 @@ import VueAxios from 'vue-axios';
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 
-const router = new VueRouter({
+const Router = new VueRouter({
     mode: 'history',
     routes : [
         {
@@ -36,14 +36,12 @@ Vue.component('card-images', require('./components/cardImages.vue'));
 Vue.component('nav-bar', require('./components/navBar.vue'));
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
 
-const bus = new Vue();
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 const app = new Vue({
     el: '#app',
+    router: Router,
     components: {
         Splash,
-        router,
-        bus
     },
 });
- 

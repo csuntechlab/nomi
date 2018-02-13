@@ -19,9 +19,13 @@
 
 <script>
 import axios from 'axios';
+
 export default {
     created () {
-        this.bus.$on('shuffleCards', this.shuffleCardsHandler);
+        /** Creates listener for shuffleCards event, applying method on event. */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
     },
 
     data: function () {
