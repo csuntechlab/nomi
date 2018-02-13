@@ -34,6 +34,7 @@ const router = new VueRouter({
  */
 Vue.component('card-images', require('./components/cardImages.vue'));
 Vue.component('nav-bar', require('./components/navBar.vue'));
+Vue.component('menu-bar', require('./components/menuBar.vue'));
 
 const app = new Vue({
     el: '#app',
