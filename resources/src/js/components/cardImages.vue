@@ -23,10 +23,15 @@
 
 <script>
 import axios from 'axios';
+
 export default {
-    /*created () {
-            console.log(JSON.parse(this.students))
-	},*/
+    created () {
+        /** Creates listener for shuffleCards event, applying method on event. */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
+    },
+
     data: function () {
         return {
             errors: [],
@@ -69,6 +74,26 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 });
+		},
+
+        shuffleCardsHandler: function () {
+            let array = JSON.parse(this.students);
+            let currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            this.students = JSON.stringify(array);
 		}
     },
 
