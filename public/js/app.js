@@ -1111,7 +1111,7 @@ window.Vue = __webpack_require__(31);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
         path: '/splash',
@@ -1128,12 +1128,16 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  */
 Vue.component('card-images', __webpack_require__(38));
 Vue.component('nav-bar', __webpack_require__(41));
-Vue.component('side-bar', __webpack_require__(44));
+Vue.component('shuffle-button', __webpack_require__(44));
+
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 var app = new Vue({
     el: '#app',
-    components: { Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a },
-    router: router
+    router: Router,
+    components: {
+        Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a
+    }
 });
 
 /***/ }),
@@ -15882,12 +15886,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    /*created () {
-            console.log(JSON.parse(this.students))
-    },*/
+    created: function created() {
+        /** Creates listener for shuffleCards event, applying method on event. */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
+    },
+
+
     data: function data() {
         return {
             errors: [],
@@ -15952,6 +15966,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.errors.push(e);
                 });
             }
+        },
+
+        shuffleCardsHandler: function shuffleCardsHandler() {
+            var array = JSON.parse(this.students);
+            var currentIndex = array.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            this.students = JSON.stringify(array);
         }
     },
 
@@ -15968,33 +16004,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid-container" },
     _vm._l(JSON.parse(_vm.students), function(student) {
-      return _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "grid-item panel-content" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(student.display_name))
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: student.display_name } }, [
-            _c("input", {
-              staticClass: "hide",
-              attrs: {
-                id: student.display_name,
-                type: "file",
-                name: "photo",
-                accept: "image/*"
-              },
-              on: {
-                change: function($event) {
-                  _vm.changePhoto($event, student.email)
+      return _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "grid-item panel-content" }, [
+            _c("label", { attrs: { for: student.display_name } }, [
+              _c("input", {
+                staticClass: "hide",
+                attrs: {
+                  id: student.display_name,
+                  type: "file",
+                  name: "photo",
+                  accept: "image/*"
+                },
+                on: {
+                  change: function($event) {
+                    _vm.changePhoto($event, student.email)
+                  }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "crop" }, [
+              }),
+              _vm._v(" "),
               _c("img", {
-                staticClass: "img--circle crop img",
+                staticClass: "img--circle grid-image",
                 attrs: {
                   id: student.display_name + "-img",
                   src: student.image,
@@ -16002,6 +16033,16 @@ var render = function() {
                   accept: "image/*"
                 }
               })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-title" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(student.display_name) +
+                    "\n                        "
+                )
+              ])
             ]),
             _vm._v(" "),
             student.recognized
@@ -16247,7 +16288,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/fixed_components/sideBar.vue"
+Component.options.__file = "resources/src/js/components/shuffleButton.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16256,9 +16297,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-589c1544", Component.options)
+    hotAPI.createRecord("data-v-3d6e11a5", Component.options)
   } else {
-    hotAPI.reload("data-v-589c1544", Component.options)
+    hotAPI.reload("data-v-3d6e11a5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16278,22 +16319,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    name: "shuffle-button",
     methods: {
-        openNav: function openNav(event) {
-            document.getElementById("mySidenav").style.width = "250px";
-        },
-
-        closeNav: function closeNav(event) {
-            document.getElementById("mySidenav").style.width = "0";
+        emitShuffleCards: function emitShuffleCards() {
+            this.$eventBus.$emit('shuffleCards');
         }
     }
 });
@@ -16307,30 +16338,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [
-      _c(
-        "a",
-        {
-          staticClass: "closebtn",
-          attrs: { href: "" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.closeNav()
-            }
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            _vm.emitShuffleCards()
           }
-        },
-        [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Profile")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Game")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Settings")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Logout")])
-    ])
+        }
+      },
+      [_vm._v("Shuffle")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -16339,7 +16357,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-589c1544", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3d6e11a5", module.exports)
   }
 }
 
