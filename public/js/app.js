@@ -16977,12 +16977,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "toggle-view-button",
+
+    data: function data() {
+        return {
+            cards: true
+        };
+    },
+
     methods: {
         emitToggleView: function emitToggleView() {
             this.$eventBus.$emit('toggleView');
+            this.cards = !this.cards;
         }
     }
 });
@@ -16995,19 +17008,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            _vm.emitToggleView()
+  return _vm.cards
+    ? _c("div", [
+        _c("input", {
+          attrs: { type: "image", src: "/images/list.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
+            }
           }
-        }
-      },
-      [_vm._v("Toggle View")]
-    )
-  ])
+        })
+      ])
+    : _c("div", [
+        _c("input", {
+          attrs: { type: "image", src: "/images/2x2grid.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
+            }
+          }
+        })
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
