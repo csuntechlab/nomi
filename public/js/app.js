@@ -15877,6 +15877,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     created: function created() {
+        /** Creates listener for shuffleCards event, applying method on event. */
         this.$eventBus.$on('shuffleCards', function () {
             this.shuffleCardsHandler();
         }.bind(this));
@@ -16040,7 +16041,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/navBar.vue"
+Component.options.__file = "resources/src/js/components/fixed_components/navBar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16049,9 +16050,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-92050874", Component.options)
+    hotAPI.createRecord("data-v-2daea318", Component.options)
   } else {
-    hotAPI.reload("data-v-92050874", Component.options)
+    hotAPI.reload("data-v-2daea318", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16086,11 +16087,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        openNav: function openNav(event) {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+    }
+});
 
 /***/ }),
 /* 43 */
@@ -16100,68 +16106,72 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("nav", { staticClass: "primary-nav" }, [
+    _c("div", { staticClass: "primary-nav__mobile" }, [
+      _c(
+        "div",
+        {
+          staticClass: "primary-nav__btn",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.openNav()
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "bar" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "bar" })
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "primary-nav__sub-brand",
+          attrs: { href: "www.csun.edu" }
+        },
+        [_vm._v("Nameface")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("ul", { staticClass: "primary-nav__links" }, [
+      _c("li", [
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__link active",
+            on: {
+              click: function($event) {
+                _vm.openNav()
+              }
+            }
+          },
+          [_vm._v("Menu")]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "primary-nav" }, [
-      _c("div", { staticClass: "primary-nav__mobile" }, [
-        _c("div", { staticClass: "primary-nav__btn" }, [
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__brand",
-            attrs: { href: "www.csun.edu" }
-          },
-          [
-            _c("span", { staticClass: "sr-only" }, [
-              _vm._v("California State University, Northridge (CSUN)")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__sub-brand",
-            attrs: { href: "www.csun.edu" }
-          },
-          [_vm._v("Nameface")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "primary-nav__links" }, [
-        _c("li", [
-          _c(
-            "a",
-            { staticClass: "primary-nav__link active", attrs: { href: "#" } },
-            [_vm._v("Courses")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { staticClass: "primary-nav__link", attrs: { href: "#" } }, [
-            _vm._v("Profile")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("a", { staticClass: "primary-nav__link", attrs: { href: "#" } }, [
-            _vm._v("Help")
-          ])
+    return _c(
+      "a",
+      { staticClass: "primary-nav__brand", attrs: { href: "www.csun.edu" } },
+      [
+        _c("span", { staticClass: "sr-only" }, [
+          _vm._v("California State University, Northridge (CSUN)")
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -16169,7 +16179,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-92050874", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2daea318", module.exports)
   }
 }
 
