@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(50);
 
 
 /***/ }),
@@ -1111,7 +1111,7 @@ window.Vue = __webpack_require__(31);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
         path: '/splash',
@@ -1128,12 +1128,17 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  */
 Vue.component('card-images', __webpack_require__(38));
 Vue.component('nav-bar', __webpack_require__(41));
-Vue.component('side-bar', __webpack_require__(44));
+Vue.component('shuffle-button', __webpack_require__(44));
+Vue.component('side-bar', __webpack_require__(47));
+
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 var app = new Vue({
     el: '#app',
-    components: { Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a },
-    router: router
+    router: Router,
+    components: {
+        Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a
+    }
 });
 
 /***/ }),
@@ -15876,12 +15881,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    /*created () {
-            console.log(JSON.parse(this.students))
-    },*/
+    created: function created() {
+        /** Creates listener for shuffleCards event, applying method on event. */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
+    },
+
+
     data: function data() {
         return {
             errors: []
@@ -15924,6 +15939,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (e) {
                 _this.errors.push(e);
             });
+        },
+
+        shuffleCardsHandler: function shuffleCardsHandler() {
+            var array = JSON.parse(this.students);
+            var currentIndex = array.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            this.students = JSON.stringify(array);
         }
     },
 
@@ -15940,33 +15977,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid-container" },
     _vm._l(JSON.parse(_vm.students), function(student) {
-      return _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "grid-item panel-content" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(student.display_name))
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: student.display_name } }, [
-            _c("input", {
-              staticClass: "hide",
-              attrs: {
-                id: student.display_name,
-                type: "file",
-                name: "photo",
-                accept: "image/*"
-              },
-              on: {
-                change: function($event) {
-                  _vm.changePhoto($event, student.email)
+      return _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "panel" }, [
+          _c("div", { staticClass: "grid-item panel-content" }, [
+            _c("label", { attrs: { for: student.display_name } }, [
+              _c("input", {
+                staticClass: "hide",
+                attrs: {
+                  id: student.display_name,
+                  type: "file",
+                  name: "photo",
+                  accept: "image/*"
+                },
+                on: {
+                  change: function($event) {
+                    _vm.changePhoto($event, student.email)
+                  }
                 }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "crop" }, [
+              }),
+              _vm._v(" "),
               _c("img", {
-                staticClass: "img--circle crop img",
+                staticClass: "img--circle grid-image",
                 attrs: {
                   id: student.display_name + "-img",
                   src: student.image,
@@ -15974,6 +16006,16 @@ var render = function() {
                   accept: "image/*"
                 }
               })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-title" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(student.display_name) +
+                    "\n                        "
+                )
+              ])
             ])
           ])
         ])
@@ -16185,6 +16227,105 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/src/js/components/shuffleButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3d6e11a5", Component.options)
+  } else {
+    hotAPI.reload("data-v-3d6e11a5", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "shuffle-button",
+    methods: {
+        emitShuffleCards: function emitShuffleCards() {
+            this.$eventBus.$emit('shuffleCards');
+        }
+    }
+});
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            _vm.emitShuffleCards()
+          }
+        }
+      },
+      [_vm._v("Shuffle")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3d6e11a5", module.exports)
+  }
+}
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(48)
+/* template */
+var __vue_template__ = __webpack_require__(49)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/src/js/components/fixed_components/sideBar.vue"
 
 /* hot reload */
@@ -16207,7 +16348,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16237,7 +16378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -16282,7 +16423,7 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

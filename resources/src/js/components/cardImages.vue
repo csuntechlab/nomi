@@ -1,28 +1,37 @@
 <template>
-    <div  class="grid-container">
+    <div>
         <!--for loop through array objects-->
-		<div class="panel" v-for="student in JSON.parse(students)">
-			<div class="grid-item panel-content">
-				<div class="panel-heading">{{student.display_name}}</div>
-					<!--Needs to be made into a separate component-->
-					<label :for="student.display_name">
-							<!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
-								<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email);" type="file" name="photo" accept="image/*">
-						<div class="crop">
-								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
-						</div>
-					</label>
-			</div>
+		<div class="col-xs-6" v-for="student in JSON.parse(students)">
+            <div class="panel">
+                <div class="grid-item panel-content">
+                    <!--Needs to be made into a separate component-->
+                    <label :for="student.display_name">
+                        <!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
+                        <input class="hide" :id="student.display_name" @change="changePhoto($event, student.email);" type="file" name="photo" accept="image/*">
+                        <img :id="student.display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
+                    </label>
+                    <div class="card-title">
+                        <div class="panel-heading">
+                            {{student.display_name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+
 export default {
-    /*created () {
-            console.log(JSON.parse(this.students))
-	},*/
+    created () {
+        /** Creates listener for shuffleCards event, applying method on event. */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
+    },
+
     data: function () {
         return {
             errors: [],
@@ -65,6 +74,26 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 });
+		},
+
+        shuffleCardsHandler: function () {
+            let array = JSON.parse(this.students);
+            let currentIndex = array.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            this.students = JSON.stringify(array);
 		}
     },
 
