@@ -11,6 +11,12 @@
 						<div class="crop">
 								<img :id="student.display_name+'-img'" :src="student.image" class="img--circle crop img" name="photo" accept="image/*">
 						</div>
+                        <div v-if="student.recognized">
+                            <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as unrecognized</button>
+                        </div>
+                        <div v-else>
+                            <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as recognized</button>
+                        </div>
 					</label>
 			</div>
 		</div>
@@ -26,6 +32,7 @@ export default {
     data: function () {
         return {
             errors: [],
+            messages: true
         }
     },
 
@@ -65,7 +72,32 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 });
-		}
+		},
+
+
+		updateRecognized: function(recognized, id) {
+
+            let data = new FormData();
+            data.append('student_id', id);
+
+            if(recognized) {
+                this.axios.post('http://nameface.test/markAsUnrecognized', data)
+                    .then(response => {
+                        console.log(response);
+                        })
+                    .catch(e => {
+                        this.errors.push(e)
+                        });
+            } else {
+                this.axios.post('http://nameface.test/markAsRecognized', data)
+                    .then(response => {
+                        console.log(response);
+                         })
+                    .catch(e => {
+                        this.errors.push(e)
+                        });
+            }
+        }
     },
 
     props: ['students']

@@ -171,6 +171,7 @@ return [
         App\Providers\WebResourceServiceProvider::class,
         App\Providers\RosterServiceProvider::class,
         App\Providers\ImageCRUDServiceProvider::class,
+        App\Providers\UpdateRecognizedServiceProvider::class,
 
         /*
          * Application Service Providers...
