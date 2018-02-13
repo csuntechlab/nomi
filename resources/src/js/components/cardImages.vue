@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div v-if="show">
+        <shuffle-button></shuffle-button>
         <!--for loop through array objects-->
 		<div class="col-xs-6" v-for="student in JSON.parse(students)">
             <div class="panel">
@@ -30,10 +31,16 @@ export default {
         this.$eventBus.$on('shuffleCards', function () {
             this.shuffleCardsHandler();
         }.bind(this));
+
+        /** Creates listener for toggleView event, applying method on event. */
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
     },
 
     data: function () {
         return {
+            show: true,
             errors: [],
         }
     },
@@ -94,7 +101,11 @@ export default {
             }
 
             this.students = JSON.stringify(array);
-		}
+		},
+
+        toggleViewHandler: function () {
+            this.show = !this.show;
+        }
     },
 
     props: ['students']
