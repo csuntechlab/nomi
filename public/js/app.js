@@ -1127,7 +1127,7 @@ var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('card-images', __webpack_require__(38));
-Vue.component('grid-view', __webpack_require__(41));
+Vue.component('list-view', __webpack_require__(41));
 Vue.component('nav-bar', __webpack_require__(49));
 Vue.component('side-bar', __webpack_require__(52));
 Vue.component('shuffle-button', __webpack_require__(55));
@@ -16064,7 +16064,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-217cbc3e"
+var __vue_scopeId__ = "data-v-ae56218e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -16075,7 +16075,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/gridView.vue"
+Component.options.__file = "resources/src/js/components/listView.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -16084,9 +16084,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-217cbc3e", Component.options)
+    hotAPI.createRecord("data-v-ae56218e", Component.options)
   } else {
-    hotAPI.reload("data-v-217cbc3e", Component.options)
+    hotAPI.reload("data-v-ae56218e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16107,13 +16107,13 @@ var content = __webpack_require__(43);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(45)("17457c74", content, false);
+var update = __webpack_require__(45)("99e9a222", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-217cbc3e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./gridView.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-217cbc3e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./gridView.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ae56218e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./listView.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-ae56218e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./listView.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -16494,7 +16494,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    name: "grid-view",
+    name: "list-view",
 
     data: function data() {
         return {
@@ -16518,7 +16518,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.show
-    ? _c("div", [_c("h1", [_vm._v("This is the Grid View Placeholder.")])])
+    ? _c("div", [_c("h1", [_vm._v("This is the List View Placeholder.")])])
     : _vm._e()
 }
 var staticRenderFns = []
@@ -16527,7 +16527,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-217cbc3e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-ae56218e", module.exports)
   }
 }
 

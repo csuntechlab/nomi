@@ -1,6 +1,6 @@
 <template>
     <div v-if="show">
-        <h1>This is the Grid View Placeholder.</h1>
+        <h1>This is the List View Placeholder.</h1>
     </div>
 </template>
 
@@ -13,7 +13,7 @@
             }.bind(this));
         },
 
-        name: "grid-view",
+        name: "list-view",
 
         data: function () {
             return {
