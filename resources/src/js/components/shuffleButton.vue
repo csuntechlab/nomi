@@ -1,5 +1,5 @@
 <template>
-    <div> <button @click="emitShuffleCards()">Shuffle</button> </div>
+    <div> <button role="button" class="btn btn-default" @click="emitShuffleCards()">Shuffle</button> </div>
 </template>
 
 <script>
