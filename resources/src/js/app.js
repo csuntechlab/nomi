@@ -33,6 +33,7 @@ const Router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.component('card-images', require('./components/cardImages.vue'));
+Vue.component('menu-bar', require('./components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
 
