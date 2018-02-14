@@ -35,6 +35,9 @@ const Router = new VueRouter({
 Vue.component('card-images', require('./components/cardImages.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
+Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
+Vue.component('profile-image', require('./components/profileImage.vue'));
+
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 

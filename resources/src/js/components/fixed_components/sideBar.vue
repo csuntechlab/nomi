@@ -2,6 +2,7 @@
     <div>
         <div id="mySidenav" class="sidenav">
             <a href="" class="closebtn" @click.prevent="closeNav()">&times;</a>
+            <profile-image></profile-image>
             <a href="#">Profile</a>
             <a href="#">Game</a>
             <a href="#">Settings</a>
@@ -13,7 +14,7 @@
     export default {
         methods: {
             openNav: function(event) {
-                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("mySidenav").style.width = "100vw";
             },
 
             closeNav: function(event) {

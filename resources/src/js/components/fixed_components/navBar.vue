@@ -22,7 +22,7 @@
  export default {
         methods: {
             openNav: function(event) {
-                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("mySidenav").style.width = "100vw";
             },
 
            

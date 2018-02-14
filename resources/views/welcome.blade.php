@@ -16,6 +16,7 @@
         <div class="container" id='app'>
             <nav-bar></nav-bar>
             <side-bar></side-bar>
+            <profile-image></profile-image>
             @yield('content')
         </div>
             <script src="{{ asset('js/metaphor.js') }}"></script>
