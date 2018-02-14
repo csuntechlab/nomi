@@ -15,6 +15,12 @@
                             {{student.display_name}}
                         </div>
                     </div>
+                    <div v-if="student.recognized">
+                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as unrecognized</button>
+                    </div>
+                    <div v-else>
+                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as recognized</button>
+                    </div>
                 </div>
             </div>
 		</div>
@@ -35,6 +41,7 @@ export default {
     data: function () {
         return {
             errors: [],
+            messages: true
         }
     },
 
@@ -75,6 +82,32 @@ export default {
                     this.errors.push(e)
                 });
 		},
+
+
+
+		updateRecognized: function(recognized, id) {
+
+            let data = new FormData();
+            data.append('student_id', id);
+
+            if(recognized) {
+                this.axios.post('http://nameface.test/markAsUnrecognized', data)
+                    .then(response => {
+                        console.log(response);
+                        })
+                    .catch(e => {
+                        this.errors.push(e)
+                        });
+            } else {
+                this.axios.post('http://nameface.test/markAsRecognized', data)
+                    .then(response => {
+                        console.log(response);
+                         })
+                    .catch(e => {
+                        this.errors.push(e)
+                        });
+            }
+        },
 
         shuffleCardsHandler: function () {
             let array = JSON.parse(this.students);

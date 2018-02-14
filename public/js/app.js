@@ -15885,6 +15885,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -15899,7 +15905,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            errors: []
+            errors: [],
+            messages: true
         };
     },
 
@@ -15939,6 +15946,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (e) {
                 _this.errors.push(e);
             });
+        },
+
+        updateRecognized: function updateRecognized(recognized, id) {
+            var _this2 = this;
+
+            var data = new FormData();
+            data.append('student_id', id);
+
+            if (recognized) {
+                this.axios.post('http://nameface.test/markAsUnrecognized', data).then(function (response) {
+                    console.log(response);
+                }).catch(function (e) {
+                    _this2.errors.push(e);
+                });
+            } else {
+                this.axios.post('http://nameface.test/markAsRecognized', data).then(function (response) {
+                    console.log(response);
+                }).catch(function (e) {
+                    _this2.errors.push(e);
+                });
+            }
         },
 
         shuffleCardsHandler: function shuffleCardsHandler() {
@@ -16016,7 +16044,41 @@ var render = function() {
                     "\n                        "
                 )
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            student.recognized
+              ? _c("div", [
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.updateRecognized(
+                            student.recognized,
+                            student.student_id
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Mark as unrecognized")]
+                  )
+                ])
+              : _c("div", [
+                  _c(
+                    "button",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.updateRecognized(
+                            student.recognized,
+                            student.student_id
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Mark as recognized")]
+                  )
+                ])
           ])
         ])
       ])
