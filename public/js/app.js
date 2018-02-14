@@ -16900,6 +16900,8 @@ var render = function() {
     _c(
       "button",
       {
+        staticClass: "btn btn-default",
+        attrs: { role: "button" },
         on: {
           click: function($event) {
             _vm.emitShuffleCards()
