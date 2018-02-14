@@ -2,6 +2,6 @@
 
 @section('content')
     <toggle-view-button></toggle-view-button>
-    <card-images students="{{json_encode($students)}}"></card-images>
+    <grid-view studentsjson="{{json_encode($students)}}"></grid-view>
     <list-view></list-view>
 @stop

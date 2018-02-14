@@ -2,7 +2,7 @@
     <div v-if="show">
         <shuffle-button></shuffle-button>
         <!--for loop through array objects-->
-		<div class="col-xs-6" v-for="student in JSON.parse(students)">
+		<div class="col-xs-6" v-for="student in students">
             <div class="panel">
                 <div class="grid-item panel-content">
                     <!--Needs to be made into a separate component-->
@@ -17,10 +17,10 @@
                         </div>
                     </div>
                     <div v-if="student.recognized">
-                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as unrecognized</button>
+                        <button @click="updateRecognized(student.recognized, student.student_id);">Mark as unrecognized</button>
                     </div>
                     <div v-else>
-                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as recognized</button>
+                        <button @click="updateRecognized(student.recognized, student.student_id);">Mark as recognized</button>
                     </div>
                 </div>
             </div>
@@ -44,9 +44,14 @@ export default {
         }.bind(this));
     },
 
+    mounted() {
+        this.students = JSON.parse(this.studentsjson);
+    },
+
     data: function () {
         return {
             show: true,
+            students: [],
             errors: [],
             messages: true
         }
@@ -90,8 +95,6 @@ export default {
                 });
 		},
 
-
-
 		updateRecognized: function(recognized, id) {
 
             let data = new FormData();
@@ -117,8 +120,7 @@ export default {
         },
 
         shuffleCardsHandler: function () {
-            let array = JSON.parse(this.students);
-            let currentIndex = array.length, temporaryValue, randomIndex;
+            let currentIndex = this.students.length, temporaryValue, randomIndex;
 
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
@@ -128,12 +130,11 @@ export default {
                 currentIndex -= 1;
 
                 // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
+                temporaryValue = this.students[currentIndex];
+                this.students[currentIndex] = this.students[randomIndex];
+                this.students[randomIndex] = temporaryValue;
             }
 
-            this.students = JSON.stringify(array);
 		},
 
         toggleViewHandler: function () {
@@ -141,7 +142,7 @@ export default {
         }
     },
 
-    props: ['students']
+    props: [ 'studentsjson' ]
 }
 
 </script>

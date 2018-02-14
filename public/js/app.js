@@ -1126,7 +1126,7 @@ var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('card-images', __webpack_require__(38));
+Vue.component('grid-view', __webpack_require__(38));
 Vue.component('list-view', __webpack_require__(41));
 Vue.component('menu-bar', __webpack_require__(49));
 Vue.component('nav-bar', __webpack_require__(52));
@@ -15828,7 +15828,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/src/js/components/cardImages.vue"
+Component.options.__file = "resources/src/js/components/gridView.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -15837,9 +15837,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6573ca7e", Component.options)
+    hotAPI.createRecord("data-v-217cbc3e", Component.options)
   } else {
-    hotAPI.reload("data-v-6573ca7e", Component.options)
+    hotAPI.reload("data-v-217cbc3e", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15902,11 +15902,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.toggleViewHandler();
         }.bind(this));
     },
+    mounted: function mounted() {
+        this.students = JSON.parse(this.studentsjson);
+    },
 
 
     data: function data() {
         return {
             show: true,
+            students: [],
             errors: [],
             messages: true
         };
@@ -15972,8 +15976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         shuffleCardsHandler: function shuffleCardsHandler() {
-            var array = JSON.parse(this.students);
-            var currentIndex = array.length,
+            var currentIndex = this.students.length,
                 temporaryValue = void 0,
                 randomIndex = void 0;
 
@@ -15985,12 +15988,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 currentIndex -= 1;
 
                 // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
+                temporaryValue = this.students[currentIndex];
+                this.students[currentIndex] = this.students[randomIndex];
+                this.students[randomIndex] = temporaryValue;
             }
-
-            this.students = JSON.stringify(array);
         },
 
         toggleViewHandler: function toggleViewHandler() {
@@ -15998,7 +15999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    props: ['students']
+    props: ['studentsjson']
 });
 
 /***/ }),
@@ -16015,7 +16016,7 @@ var render = function() {
         [
           _c("shuffle-button"),
           _vm._v(" "),
-          _vm._l(JSON.parse(_vm.students), function(student) {
+          _vm._l(_vm.students, function(student) {
             return _c("div", { staticClass: "col-xs-6" }, [
               _c("div", { staticClass: "panel" }, [
                 _c("div", { staticClass: "grid-item panel-content" }, [
@@ -16104,7 +16105,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6573ca7e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-217cbc3e", module.exports)
   }
 }
 
