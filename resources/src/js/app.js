@@ -34,6 +34,7 @@ const Router = new VueRouter({
  */
 Vue.component('card-images', require('./components/cardImages.vue'));
 Vue.component('list-view', require('./components/listView.vue'));
+Vue.component('menu-bar', require('./components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));

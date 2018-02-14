@@ -45,6 +45,12 @@ Route::get('/media', 'WebResourceController@media');
 Route::get('/students/{term}/{course}', 'RosterController@getStudents');
 Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');
 
+
+/**
+ * Update recognized routes
+ */
+Route::post('/markAsRecognized', 'RecognizedController@markAsRecognized')->middleware('auth');
+Route::post('/markAsUnrecognized', 'RecognizedController@markAsUnrecognized')->middleware('auth');
 /**
  * META+LAB Feedback Routes
  */
