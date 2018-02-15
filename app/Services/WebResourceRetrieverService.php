@@ -38,8 +38,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
 
         return $client->get(
-            env('ROSTER_URL') . '/terms' . '/' . \json_decode($this->getCourses($term))->classes[$course]->term
-            . '/classes' . '/' . \json_decode($this->getCourses($term))->classes[$course]->class_number
+            env('ROSTER_URL') . '/terms' . '/' . ($this->getCourses($term))[$course]->term
+            . '/classes' . '/' . ($this->getCourses($term))[$course]->class_number
         )->getBody()->getContents();
     }
 
