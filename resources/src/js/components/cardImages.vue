@@ -1,6 +1,7 @@
 <template>
     <div v-if="show">
         <shuffle-button></shuffle-button>
+        <flash-cardbutton></flash-cardbutton>
         <!--for loop through array objects-->
 		<div class="col-xs-6" v-for="student in JSON.parse(students)">
             <div class="panel">
@@ -90,7 +91,19 @@ export default {
                 });
 		},
 
-
+		flashCard: function () {
+			// grabs id of image
+            let imageId = document.getElementById(myDiv);
+            console.log(imageId);
+			// var textId = document.getElementById("textA");
+			if (imageId.style.display !== "none") {
+				imageId.style.display = "none";
+				// textId.style.display = "block";
+			} else {
+				imageId.style.display = "block";
+				// textId.style.display = "none";
+			}
+		},
 
 		updateRecognized: function(recognized, id) {
 
@@ -140,6 +153,8 @@ export default {
             this.show = !this.show;
         }
     },
+
+
 
     props: ['students']
 }
