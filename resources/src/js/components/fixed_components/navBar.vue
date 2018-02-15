@@ -2,7 +2,7 @@
 
 <nav class="primary-nav">
     <div class="primary-nav__mobile">
-      <div class="primary-nav__btn">
+      <div class="primary-nav__btn" @click.prevent="openNav()">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -11,9 +11,7 @@
        <a href="www.csun.edu" class="primary-nav__sub-brand">Nameface</a>
     </div>
     <ul class="primary-nav__links">
-      <li><a class="primary-nav__link active" href="#">Courses</a></li>
-      <li><a class="primary-nav__link" href="#">Profile</a></li>
-      <li><a class="primary-nav__link" href="#">Help</a></li>
+      <li><a class="primary-nav__link active" @click="openNav()">Menu</a></li>
     </ul>
 </nav>
 
@@ -21,8 +19,14 @@
 
 <script>
 
-export default {
+ export default {
+        methods: {
+            openNav: function(event) {
+                document.getElementById("mySidenav").style.width = "100vw";
+            }
 
-}
+           
+        }
+    }
 
 </script>

@@ -15,7 +15,13 @@
     <body>
         <div class="container" id='app'>
             <nav-bar></nav-bar>
+            <side-bar></side-bar>
             @yield('content')
+            <br>
+            <br>
+            <br>
+            <br>
+            <menu-bar></menu-bar>
         </div>
             <script src="{{ asset('js/metaphor.js') }}"></script>
             <script src="{{ asset('js/app.js') }}"></script>
