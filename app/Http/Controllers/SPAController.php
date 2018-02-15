@@ -31,6 +31,6 @@ class SPAController extends Controller
             return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
         });
 
-        return view('cards')->with('students', $students);
+        return view('students')->with('students', $students);
     }
 }

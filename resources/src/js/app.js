@@ -32,8 +32,9 @@ const Router = new VueRouter({
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('grid-view', require('./components/gridView.vue'));
-Vue.component('list-view', require('./components/listView.vue'));
+Vue.component('big-container', require('./components/bigContainer.vue'));
+Vue.component('student-grid', require('./components/studentGrid.vue'));
+Vue.component('student-list', require('./components/studentList.vue'));
 Vue.component('menu-bar', require('./components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
