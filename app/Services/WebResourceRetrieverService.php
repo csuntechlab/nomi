@@ -20,9 +20,9 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return $client->get(
+        return \json_decode($client->get(
             env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
-        )->getBody()->getContents();
+        )->getBody()->getContents())->classes;
     }
 
     /**
