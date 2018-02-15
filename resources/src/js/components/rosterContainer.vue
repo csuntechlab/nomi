@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: "big-container",
+        name: "roster-container",
 
         props: [ 'studentsjson' ]
     }

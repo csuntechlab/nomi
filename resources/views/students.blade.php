@@ -1,5 +1,5 @@
 @extends('master')
 
 @section('content')
-<big-container studentsjson="{{json_encode($students)}}"></big-container>
+<roster-container studentsjson="{{json_encode($students)}}"></roster-container>
 @stop
