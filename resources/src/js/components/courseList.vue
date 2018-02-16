@@ -1,11 +1,17 @@
 <template>
     <div v-if="show">
-        <h1>This is the List View Placeholder.</h1>
+        <h1>Course List</h1>
+        <ul class="list">
+        <!--for loop through array objects-->
+            <li class="list__item" v-for="course in this.courses"><a href="#">{{ course.title }}</a></li>
+        </ul>
     </div>
 </template>
 
 <script>
     export default {
+        name: "course-list",
+
         created () {
             /** Creates listener for toggleView event, applying method on event. */
             this.$eventBus.$on('toggleView', function () {
@@ -13,13 +19,21 @@
             }.bind(this));
         },
 
-        name: "list-view",
+        mounted () {
+            /** Transform prop into attribute */
+            this.courses = JSON.parse(this.coursesjson);
+        },
 
         data: function () {
             return {
-                show: false
+                courses: [],
+                show: false,
+                messages: true,
+                errors: [],
             }
         },
+
+        props: ['coursesjson'],
 
         methods: {
             toggleViewHandler: function () {
@@ -28,7 +42,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

@@ -2,7 +2,7 @@
     <div v-if="show">
         <shuffle-button></shuffle-button>
         <!--for loop through array objects-->
-		<div class="col-xs-6" v-for="student in JSON.parse(students)">
+		<div class="col-xs-6" v-for="student in this.students">
             <div class="panel">
                 <div class="grid-item panel-content">
                     <!--Needs to be made into a separate component-->
@@ -17,10 +17,10 @@
                         </div>
                     </div>
                     <div v-if="student.recognized">
-                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as unrecognized</button>
+                        <button role="button" class="btn btn-default" @click="updateRecognized(student.recognized, student.student_id)">Mark as unrecognized</button>
                     </div>
                     <div v-else>
-                        <button v-on:click="updateRecognized(student.recognized, student.student_id);">Mark as recognized</button>
+                        <button role="button" class="btn btn-default" @click="updateRecognized(student.recognized, student.student_id)">Mark as recognized</button>
                     </div>
                 </div>
             </div>
@@ -32,25 +32,35 @@
 import axios from 'axios';
 
 export default {
+    name: "student-grid",
+
     created () {
-        /** Creates listener for shuffleCards event, applying method on event. */
+        /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
             this.shuffleCardsHandler();
         }.bind(this));
 
-        /** Creates listener for toggleView event, applying method on event. */
         this.$eventBus.$on('toggleView', function () {
             this.toggleViewHandler();
         }.bind(this));
+
+    },
+
+    mounted () {
+        /** Transform prop into attribute */
+        this.students = JSON.parse(this.studentsjson);
     },
 
     data: function () {
         return {
+            students: [],
             show: true,
+            messages: true,
             errors: [],
-            messages: true
         }
     },
+
+    props: ['studentsjson'],
 
     methods: {
 		changePhoto: function(event, email) {
@@ -90,10 +100,7 @@ export default {
                 });
 		},
 
-
-
 		updateRecognized: function(recognized, id) {
-
             let data = new FormData();
             data.append('student_id', id);
 
@@ -101,6 +108,11 @@ export default {
                 this.axios.post('http://nameface.test/markAsUnrecognized', data)
                     .then(response => {
                         console.log(response);
+
+                        this.students.find(
+                            function (e){
+                                return e.student_id === id;
+                            }).recognized = false;
                         })
                     .catch(e => {
                         this.errors.push(e)
@@ -109,16 +121,24 @@ export default {
                 this.axios.post('http://nameface.test/markAsRecognized', data)
                     .then(response => {
                         console.log(response);
-                         })
+
+                        this.students.find(
+                            function (e){
+                                return e.student_id === id;
+                            }).recognized = true;
+                        })
                     .catch(e => {
                         this.errors.push(e)
                         });
             }
+
+            //Hacky refresh
+            this.show = false;
+            this.show = true;
         },
 
         shuffleCardsHandler: function () {
-            let array = JSON.parse(this.students);
-            let currentIndex = array.length, temporaryValue, randomIndex;
+            let currentIndex = this.students.length, temporaryValue, randomIndex;
 
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
@@ -128,12 +148,14 @@ export default {
                 currentIndex -= 1;
 
                 // And swap it with the current element.
-                temporaryValue = array[currentIndex];
-                array[currentIndex] = array[randomIndex];
-                array[randomIndex] = temporaryValue;
+                temporaryValue = this.students[currentIndex];
+                this.students[currentIndex] = this.students[randomIndex];
+                this.students[randomIndex] = temporaryValue;
             }
 
-            this.students = JSON.stringify(array);
+            //Hacky refresh
+            this.show = false;
+            this.show = true;
 		},
 
         toggleViewHandler: function () {
@@ -141,7 +163,6 @@ export default {
         }
     },
 
-    props: ['students']
 }
 
 </script>
