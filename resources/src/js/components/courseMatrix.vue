@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: "course-grid",
+    name: "course-matrix",
 
     created () {
         /** Create event listeners */

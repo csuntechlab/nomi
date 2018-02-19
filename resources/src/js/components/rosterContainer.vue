@@ -1,8 +1,8 @@
 <template>
     <div>
         <toggle-view-button></toggle-view-button>
-        <student-grid :studentsjson="studentsjson"></student-grid>
-        <student-list :studentsjson="studentsjson"></student-list>
+        <student-matrix :studentsjson="roster"></student-matrix>
+        <student-list :studentsjson="roster"></student-list>
     </div>
 </template>
 
@@ -10,6 +10,6 @@
     export default {
         name: "roster-container",
 
-        props: [ 'studentsjson' ]
+        props: [ 'roster' ],
     }
 </script>
