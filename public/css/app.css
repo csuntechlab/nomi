@@ -11,6 +11,10 @@
   height: 100%;
   width: 100%;
   text-align: center;
+  -webkit-box-shadow: 3px 6px;
+          box-shadow: 3px 6px;
+  border-radius: 25px;
+  border-color: green;
 }
 
 .hide {
@@ -21,16 +25,25 @@
   border-radius: 25px;
 }
 
-.crop {
-  height: 200px;
+.panel-heading {
+  height: 60px;
 }
 
-.crop img {
-  display: inline-block;
-  position: relative;
-  margin: auto;
-  min-width: 200px;
-  width: 70%;
+.grid-image {
+  height: 33vw;
+  width: 100%;
+}
+
+.card-title {
+  height: 5em;
+}
+
+.menu-bar {
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+  background-color: #b2b2b2;
+  height: 100px;
 }
 
 .sidenav {

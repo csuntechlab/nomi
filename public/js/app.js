@@ -1078,7 +1078,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(71);
 
 
 /***/ }),
@@ -1111,7 +1111,7 @@ window.Vue = __webpack_require__(31);
 Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 
-var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
+var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
     routes: [{
         path: '/splash',
@@ -1126,14 +1126,29 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-Vue.component('card-images', __webpack_require__(38));
+Vue.component('menu-bar', __webpack_require__(38));
 Vue.component('nav-bar', __webpack_require__(41));
 Vue.component('side-bar', __webpack_require__(44));
 
+Vue.component('roster-container', __webpack_require__(47));
+Vue.component('student-grid', __webpack_require__(50));
+Vue.component('student-list', __webpack_require__(53));
+
+Vue.component('shuffle-button', __webpack_require__(56));
+Vue.component('toggle-view-button', __webpack_require__(59));
+
+Vue.component('courses-container', __webpack_require__(62));
+Vue.component('course-grid', __webpack_require__(65));
+Vue.component('course-list', __webpack_require__(68));
+
+Vue.prototype.$eventBus = new Vue(); // Global event bus
+
 var app = new Vue({
     el: '#app',
-    components: { Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a },
-    router: router
+    router: Router,
+    components: {
+        Splash: __WEBPACK_IMPORTED_MODULE_1__views_Splash_vue___default.a
+    }
 });
 
 /***/ }),
@@ -15828,7 +15843,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\src\\js\\components\\cardImages.vue"
+Component.options.__file = "resources\\src\\js\\components\\menuBar.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -15837,9 +15852,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-339f6990", Component.options)
+    hotAPI.createRecord("data-v-6c356a58", Component.options)
   } else {
-    hotAPI.reload("data-v-339f6990", Component.options)
+    hotAPI.reload("data-v-6c356a58", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15855,22 +15870,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -15878,57 +15877,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    /*created () {
-            console.log(JSON.parse(this.students))
-    },*/
-    data: function data() {
-        return {
-            errors: []
-        };
-    },
-
-    methods: {
-        changePhoto: function changePhoto(event, email) {
-            var _this = this;
-
-            //		    grabs id of image
-            var imageId = document.getElementById(event.target.id + "-img");
-            //            checks if empty and sets file instance to variable files
-            var files = event.target.files;
-            if (!files[0]) {
-                return;
-            }
-
-            var data = new FormData();
-            data.append('media', files[0]);
-            data.append('email', email);
-            var reader = new FileReader();
-            //            On load of file, grab the image id's src that contains image
-            //				and equal it to the add image file
-            reader.onload = function (event) {
-                imageId.src = event.target.result;
-            };
-
-            //            this check is needed to prevent "blob error"
-            if (files[0]) {
-                reader.readAsDataURL(files[0]);
-            }
-
-            this.axios.post('http://nameface.test/api/upload', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (e) {
-                _this.errors.push(e);
-            });
-        }
-    },
-
-    props: ['students']
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 40 */
@@ -15938,48 +15887,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "grid-container" },
-    _vm._l(JSON.parse(_vm.students), function(student) {
-      return _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "grid-item panel-content" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(student.display_name))
-          ]),
-          _vm._v(" "),
-          _c("label", { attrs: { for: student.display_name } }, [
-            _c("input", {
-              staticClass: "hide",
-              attrs: {
-                id: student.display_name,
-                type: "file",
-                name: "photo",
-                accept: "image/*"
-              },
-              on: {
-                change: function($event) {
-                  _vm.changePhoto($event, student.email)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "crop" }, [
-              _c("img", {
-                staticClass: "img--circle crop img",
-                attrs: {
-                  id: student.display_name + "-img",
-                  src: student.image,
-                  name: "photo",
-                  accept: "image/*"
-                }
-              })
-            ])
-          ])
-        ])
-      ])
-    })
-  )
+  return _c("nav", { staticClass: "menu-bar" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -15987,7 +15895,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-339f6990", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6c356a58", module.exports)
   }
 }
 
@@ -16068,7 +15976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         openNav: function openNav(event) {
-            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "100vw";
         }
 
     }
@@ -16227,7 +16135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         openNav: function openNav(event) {
-            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("mySidenav").style.width = "100vw";
         },
 
         closeNav: function closeNav(event) {
@@ -16283,6 +16191,1163 @@ if (false) {
 
 /***/ }),
 /* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(48)
+/* template */
+var __vue_template__ = __webpack_require__(49)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\rosterContainer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ce9a4454", Component.options)
+  } else {
+    hotAPI.reload("data-v-ce9a4454", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "roster-container",
+
+    props: ['studentsjson']
+});
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("toggle-view-button"),
+      _vm._v(" "),
+      _c("student-grid", { attrs: { studentsjson: _vm.studentsjson } }),
+      _vm._v(" "),
+      _c("student-list", { attrs: { studentsjson: _vm.studentsjson } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ce9a4454", module.exports)
+  }
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(51)
+/* template */
+var __vue_template__ = __webpack_require__(52)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\studentGrid.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f79937e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f79937e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "student-grid",
+
+    created: function created() {
+        /** Create event listeners */
+        this.$eventBus.$on('shuffleCards', function () {
+            this.shuffleCardsHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
+    },
+    mounted: function mounted() {
+        /** Transform prop into attribute */
+        this.students = JSON.parse(this.studentsjson);
+    },
+
+
+    data: function data() {
+        return {
+            students: [],
+            show: true,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['studentsjson'],
+
+    methods: {
+        changePhoto: function changePhoto(event, email) {
+            var _this = this;
+
+            //		    grabs id of image
+            var imageId = document.getElementById(event.target.id + "-img");
+            //            checks if empty and sets file instance to variable files
+            var files = event.target.files;
+            if (!files[0]) {
+                return;
+            }
+
+            var data = new FormData();
+            data.append('media', files[0]);
+            data.append('email', email);
+            var reader = new FileReader();
+            //            On load of file, grab the image id's src that contains image
+            //				and equal it to the add image file
+            reader.onload = function (event) {
+                imageId.src = event.target.result;
+            };
+
+            //            this check is needed to prevent "blob error"
+            if (files[0]) {
+                reader.readAsDataURL(files[0]);
+            }
+
+            this.axios.post('http://nameface.test/api/upload', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (e) {
+                _this.errors.push(e);
+            });
+        },
+
+        updateRecognized: function updateRecognized(recognized, id) {
+            var _this2 = this;
+
+            var data = new FormData();
+            data.append('student_id', id);
+
+            if (recognized) {
+                this.axios.post('http://nameface.test/markAsUnrecognized', data).then(function (response) {
+                    console.log(response);
+
+                    _this2.students.find(function (e) {
+                        return e.student_id === id;
+                    }).recognized = false;
+                }).catch(function (e) {
+                    _this2.errors.push(e);
+                });
+            } else {
+                this.axios.post('http://nameface.test/markAsRecognized', data).then(function (response) {
+                    console.log(response);
+
+                    _this2.students.find(function (e) {
+                        return e.student_id === id;
+                    }).recognized = true;
+                }).catch(function (e) {
+                    _this2.errors.push(e);
+                });
+            }
+
+            //Hacky refresh
+            this.show = false;
+            this.show = true;
+        },
+
+        shuffleCardsHandler: function shuffleCardsHandler() {
+            var currentIndex = this.students.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = this.students[currentIndex];
+                this.students[currentIndex] = this.students[randomIndex];
+                this.students[randomIndex] = temporaryValue;
+            }
+
+            //Hacky refresh
+            this.show = false;
+            this.show = true;
+        },
+
+        toggleViewHandler: function toggleViewHandler() {
+            this.show = !this.show;
+        }
+    }
+
+});
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c(
+        "div",
+        [
+          _c("shuffle-button"),
+          _vm._v(" "),
+          _vm._l(this.students, function(student) {
+            return _c("div", { staticClass: "col-xs-6" }, [
+              _c("div", { staticClass: "panel" }, [
+                _c("div", { staticClass: "grid-item panel-content" }, [
+                  _c("label", { attrs: { for: student.display_name } }, [
+                    _c("input", {
+                      staticClass: "hide",
+                      attrs: {
+                        id: student.display_name,
+                        type: "file",
+                        name: "photo",
+                        accept: "image/*"
+                      },
+                      on: {
+                        change: function($event) {
+                          _vm.changePhoto($event, student.email)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticClass: "img--circle grid-image",
+                      attrs: {
+                        id: student.display_name + "-img",
+                        src: student.image,
+                        name: "photo",
+                        accept: "image/*"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-title" }, [
+                    _c("div", { staticClass: "panel-heading" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(student.display_name) +
+                          "\n                        "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  student.recognized
+                    ? _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.updateRecognized(
+                                  student.recognized,
+                                  student.student_id
+                                )
+                              }
+                            }
+                          },
+                          [_vm._v("Mark as unrecognized")]
+                        )
+                      ])
+                    : _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { role: "button" },
+                            on: {
+                              click: function($event) {
+                                _vm.updateRecognized(
+                                  student.recognized,
+                                  student.student_id
+                                )
+                              }
+                            }
+                          },
+                          [_vm._v("Mark as recognized")]
+                        )
+                      ])
+                ])
+              ])
+            ])
+          })
+        ],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1f79937e", module.exports)
+  }
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\studentList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2d82ef99", Component.options)
+  } else {
+    hotAPI.reload("data-v-2d82ef99", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "student-list",
+
+    created: function created() {
+        /** Creates listener for toggleView event, applying method on event. */
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
+    },
+    mounted: function mounted() {
+        /** Transform prop into attribute */
+        this.students = JSON.parse(this.studentsjson);
+    },
+
+
+    data: function data() {
+        return {
+            students: [],
+            show: false,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['studentsjson'],
+
+    methods: {
+        toggleViewHandler: function toggleViewHandler() {
+            this.show = !this.show;
+        }
+    }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c("div", [
+        _c("h1", [_vm._v("Student List")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list" },
+          _vm._l(this.students, function(student) {
+            return _c("li", { staticClass: "list__item" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _vm._v(_vm._s(student.display_name))
+              ])
+            ])
+          })
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2d82ef99", module.exports)
+  }
+}
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(57)
+/* template */
+var __vue_template__ = __webpack_require__(58)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\shuffleButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6db61eab", Component.options)
+  } else {
+    hotAPI.reload("data-v-6db61eab", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 57 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "shuffle-button",
+    methods: {
+        emitShuffleCards: function emitShuffleCards() {
+            this.$eventBus.$emit('shuffleCards');
+        }
+    }
+});
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-default",
+        attrs: { role: "button" },
+        on: {
+          click: function($event) {
+            _vm.emitShuffleCards()
+          }
+        }
+      },
+      [_vm._v("Shuffle")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6db61eab", module.exports)
+  }
+}
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(60)
+/* template */
+var __vue_template__ = __webpack_require__(61)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\toggleViewButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-237d16bb", Component.options)
+  } else {
+    hotAPI.reload("data-v-237d16bb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "toggle-view-button",
+
+    data: function data() {
+        return {
+            cards: true
+        };
+    },
+
+    methods: {
+        emitToggleView: function emitToggleView() {
+            this.$eventBus.$emit('toggleView');
+            this.cards = !this.cards;
+        }
+    }
+});
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.cards
+    ? _c("div", [
+        _c("input", {
+          attrs: { type: "image", src: "/images/list.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
+            }
+          }
+        })
+      ])
+    : _c("div", [
+        _c("input", {
+          attrs: { type: "image", src: "/images/2x2grid.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
+            }
+          }
+        })
+      ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-237d16bb", module.exports)
+  }
+}
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(63)
+/* template */
+var __vue_template__ = __webpack_require__(64)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\coursesContainer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-80ac3a8e", Component.options)
+  } else {
+    hotAPI.reload("data-v-80ac3a8e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "roster-container",
+
+    props: ['coursesjson']
+});
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("toggle-view-button"),
+      _vm._v(" "),
+      _c("course-grid", { attrs: { coursesjson: _vm.coursesjson } }),
+      _vm._v(" "),
+      _c("course-list", { attrs: { coursesjson: _vm.coursesjson } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-80ac3a8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(66)
+/* template */
+var __vue_template__ = __webpack_require__(67)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\courseGrid.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5de07311", Component.options)
+  } else {
+    hotAPI.reload("data-v-5de07311", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "course-grid",
+
+    created: function created() {
+        /** Create event listeners */
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
+    },
+    mounted: function mounted() {
+        /** Transform prop into attribute */
+        this.courses = JSON.parse(this.coursesjson);
+    },
+
+
+    data: function data() {
+        return {
+            courses: [],
+            show: true,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['coursesjson'],
+
+    methods: {
+        toggleViewHandler: function toggleViewHandler() {
+            this.show = !this.show;
+        }
+    }
+
+});
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c(
+        "div",
+        _vm._l(this.courses, function(course) {
+          return _c("div", { staticClass: "col-xs-6" }, [
+            _c("div", { staticClass: "panel" }, [
+              _c("div", { staticClass: "grid-item panel-content" }, [
+                _c("div", { staticClass: "card-title" }, [
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(course.title) +
+                        "\n                    "
+                    )
+                  ])
+                ])
+              ])
+            ])
+          ])
+        })
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5de07311", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(69)
+/* template */
+var __vue_template__ = __webpack_require__(70)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\courseList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c9bfa72e", Component.options)
+  } else {
+    hotAPI.reload("data-v-c9bfa72e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "course-list",
+
+    created: function created() {
+        /** Creates listener for toggleView event, applying method on event. */
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
+    },
+    mounted: function mounted() {
+        /** Transform prop into attribute */
+        this.courses = JSON.parse(this.coursesjson);
+    },
+
+
+    data: function data() {
+        return {
+            courses: [],
+            show: false,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['coursesjson'],
+
+    methods: {
+        toggleViewHandler: function toggleViewHandler() {
+            this.show = !this.show;
+        }
+    }
+});
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.show
+    ? _c("div", [
+        _c("h1", [_vm._v("Course List")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list" },
+          _vm._l(this.courses, function(course) {
+            return _c("li", { staticClass: "list__item" }, [
+              _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(course.title))])
+            ])
+          })
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c9bfa72e", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

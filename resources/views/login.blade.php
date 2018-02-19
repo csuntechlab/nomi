@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('master')
 
 @section('content')
     {{Form::open()}}
@@ -10,6 +10,6 @@
     Password
     {{Form::password('password')}}
     <br>
-    {{Form::submit('submit')}}
+    {{Form::submit('Log In')}}
     {{Form::close()}}
 @stop

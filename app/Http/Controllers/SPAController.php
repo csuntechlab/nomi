@@ -5,16 +5,22 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Contracts\RosterRetrievalContract;
+use App\Contracts\WebResourceRetrieverContract;
 use Illuminate\Support\Facades\Cache;
 
 class SPAController extends Controller
 {
     public $rosterRetrievalContract;
+    public $webResourceRetrieverContract;
+    public $web;
     public $minutes;
 
-    public function __construct(RosterRetrievalContract $rosterRetrievalContract)
-    {
+    public function __construct(
+        RosterRetrievalContract $rosterRetrievalContract,
+        WebResourceRetrieverContract $webResourceRetrieverContract
+    ) {
         $this->rosterRetrievalContract = $rosterRetrievalContract;
+        $this->webResourceRetrieverContract = $webResourceRetrieverContract;
         $this->minutes = 27;
     }
 
@@ -31,6 +37,20 @@ class SPAController extends Controller
             return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
         });
 
-        return view('cards')->with('students', $students);
+        return view('students')->with('students', $students);
+    }
+
+    /**
+     * Description: Test method to retrieve course view.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function courses()
+    {
+        $courses = Cache::remember('courses', $this->minutes, function () {
+            return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
+        });
+
+        return view('courses')->with('courses', $courses);
     }
 }

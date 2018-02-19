@@ -20,9 +20,9 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return $client->get(
+        return \json_decode($client->get(
             env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
-        )->getBody()->getContents();
+        )->getBody()->getContents())->classes;
     }
 
     /**
@@ -38,8 +38,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
 
         return $client->get(
-            env('ROSTER_URL') . '/terms' . '/' . \json_decode($this->getCourses($term))->classes[$course]->term
-            . '/classes' . '/' . \json_decode($this->getCourses($term))->classes[$course]->class_number
+            env('ROSTER_URL') . '/terms' . '/' . ($this->getCourses($term))[$course]->term
+            . '/classes' . '/' . ($this->getCourses($term))[$course]->class_number
         )->getBody()->getContents();
     }
 
