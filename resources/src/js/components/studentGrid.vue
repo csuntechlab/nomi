@@ -9,7 +9,8 @@
                     <label :for="student.display_name">
                         <!--on upload call "changePhoto" method, ":id" is shorthand for v-bind, reference documentation-->
                         <input class="hide" :id="student.display_name" @change="changePhoto($event, student.email);" type="file" name="photo" accept="image/*">
-                        <img :id="student.display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
+                        <!--<img :id="student.display_name+'-img'" :src="student.image" class="img&#45;&#45;circle grid-image" name="photo" accept="image/*">-->
+                        <profile-image :id="student.display_name+'-img'" :studentImage=student.image></profile-image>
                     </label>
                     <div class="card-title">
                         <div class="panel-heading">

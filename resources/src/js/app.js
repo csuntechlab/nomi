@@ -46,6 +46,7 @@ Vue.component('toggle-view-button', require('./components/toggleViewButton.vue')
 Vue.component('courses-container', require('./components/coursesContainer.vue'));
 Vue.component('course-grid', require('./components/courseGrid.vue'));
 Vue.component('course-list', require('./components/courseList.vue'));
+Vue.component('profile-image', require('./components/profileImage.vue'));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
