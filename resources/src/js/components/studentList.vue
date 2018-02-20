@@ -2,13 +2,13 @@
     <div v-if="show">
         <h1>Student List</h1>
         <ul class="list">
-        <!--for loop through array objects-->
-            <li class="list__item" v-for="student in this.students"><a href="#">{{ student.display_name }}</a></li>
+            <student-list-item v-for="student in students" :key="student.display_name" :student="student"></student-list-item>
         </ul>
     </div>
 </template>
 
 <script>
+    import studentListItem from './studentListItem.vue';
     export default {
         name: "student-list",
 
@@ -31,6 +31,10 @@
                 messages: true,
                 errors: [],
             }
+        },
+
+        components: {
+            studentListItem
         },
 
         props: ['studentsjson'],

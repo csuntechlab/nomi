@@ -1,10 +1,7 @@
 <template>
     <div v-if="show">
         <shuffle-button></shuffle-button>
-        <!--for loop through array objects-->
-		<div v-for="student in students" :key="student.student_id">
-            <student-card :student="student"></student-card>
-		</div>
+        <student-card v-for="student in students" :key="student.student_id" :student="student"></student-card>
     </div>
 </template>
 
@@ -36,10 +33,11 @@ export default {
             show: true,
             messages: true,
             errors: [],
-            components: {
-                studentCard: studentCard
-            }
         }
+    },
+
+    components: {
+        studentCard
     },
 
     props: ['studentsjson'],
