@@ -1,12 +1,14 @@
 <template>
     <div v-if="show">
         <shuffle-button></shuffle-button>
-        <student-card v-for="student in students" :key="student.student_id" :student="student"></student-card>
+        <card-toggle-button></card-toggle-button>
+        <student-card v-for="student in students" :key="student.student_id" :student="student" :flash="flash"></student-card>
     </div>
 </template>
 
 <script>
 import studentCard from './studentCard.vue';
+import FlashCard from "./flashCard";
 export default {
     name: "student-matrix",
 
@@ -14,6 +16,10 @@ export default {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
             this.shuffleCardsHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleCards', function () {
+            this.toggleCardsHandler();
         }.bind(this));
 
         this.$eventBus.$on('toggleView', function () {
@@ -31,12 +37,14 @@ export default {
         return {
             students: [],
             show: true,
+            flash: false,
             messages: true,
             errors: [],
         }
     },
 
     components: {
+        FlashCard,
         studentCard
     },
 
@@ -66,6 +74,10 @@ export default {
 
         toggleViewHandler: function () {
             this.show = !this.show;
+        },
+
+        toggleCardsHandler: function () {
+            this.flash = !this.flash;
         }
     },
 
