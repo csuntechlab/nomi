@@ -1,6 +1,6 @@
 <template>
     <div>
-
+    <li class="list__item">{{student.display_name}}</li>
     </div>
 </template>
 

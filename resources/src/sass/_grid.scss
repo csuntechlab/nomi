@@ -12,10 +12,22 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  box-shadow: 3px 6px;
-  border-radius: 25px;
-  border-color: green;
-
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2); 
+box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
+border-radius: 25px;
+  
 }
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+  border:0px;
+}
+  
+
+
 
 
