@@ -1,16 +1,15 @@
 <template>
     <div v-if="show">
-        <h1>Student List</h1>
+        <h1>Course List</h1>
         <ul class="list">
-            <student-list-item v-for="student in students" :key="student.display_name" :student="student"></student-list-item>
+            <li class="list__item" v-for="course in this.courses"><a href="#">{{ course.title }}</a></li>
         </ul>
     </div>
 </template>
 
 <script>
-    import studentListItem from './studentListItem.vue';
     export default {
-        name: "student-list",
+        name: "course-list",
 
         created () {
             /** Creates listener for toggleView event, applying method on event. */
@@ -19,25 +18,15 @@
             }.bind(this));
         },
 
-        mounted () {
-            /** Transform prop into attribute */
-            this.students = JSON.parse(this.studentsjson);
-        },
-
         data: function () {
             return {
-                students: [],
-                show: false,
+                show: true,
                 messages: true,
                 errors: [],
             }
         },
 
-        components: {
-            studentListItem
-        },
-
-        props: ['studentsjson'],
+        props: ['courses'],
 
         methods: {
             toggleViewHandler: function () {

@@ -1,6 +1,5 @@
 <template>
     <div v-if="show">
-        <!--for loop through array objects-->
         <div class="col-xs-6" v-for="course in this.courses">
             <div class="panel">
                 <div class="grid-item panel-content">
@@ -27,21 +26,15 @@ export default {
 
     },
 
-    mounted () {
-        /** Transform prop into attribute */
-        this.courses = JSON.parse(this.coursesjson);
-    },
-
     data: function () {
         return {
-            courses: [],
-            show: true,
+            show: false,
             messages: true,
             errors: [],
         }
     },
 
-    props: ['coursesjson'],
+    props: ['courses'],
 
     methods: {
         toggleViewHandler: function () {

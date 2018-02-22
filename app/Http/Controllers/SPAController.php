@@ -37,20 +37,12 @@ class SPAController extends Controller
             return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
         });
 
-        return view('students')->with('students', $students);
-    }
-
-    /**
-     * Description: Test method to retrieve course view.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function courses()
-    {
         $courses = Cache::remember('courses', $this->minutes, function () {
             return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
         });
 
-        return view('courses')->with('courses', $courses);
+        $json = [$courses, $students];
+
+        return view('spa')->with('json', $json);
     }
 }
