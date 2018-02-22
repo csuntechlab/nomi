@@ -1,17 +1,39 @@
 <template>
-    <div>
-    <li class="list__item">{{student.display_name}}</li>
-    </div>
+    <li class="list__item">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <img :id="student.display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
+                </div>
+                <div class="col-xs-9">
+                    {{student.display_name}}
+                    <br />
+                    nickname
+                </div>
+            </div>
+        </div>
+    </li>
 </template>
 
 <script>
-    export default {
+    export default{
         name: "student-list-item",
 
-        props:['student']
+        props:['student'],
+
+        // computed: {
+        //     getEmail: function() {
+        //
+        //         return this.student.email.replace('nr_', '')
+        //     }
+        // }
     }
 </script>
 
-<style>
-
+<style scoped>
+    .list__item{
+        padding: 20px;
+        -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
+        box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
+    }
 </style>
