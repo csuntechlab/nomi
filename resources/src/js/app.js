@@ -38,6 +38,7 @@ Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 
 Vue.component('roster-container', require('./components/rosterContainer.vue'));
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
+Vue.component('card-toggle-button', require('./components/cardToggleButton.vue'));
 Vue.component('toggle-view-button', require('./components/toggleViewButton.vue'));
 
 Vue.component('student-matrix', require('./components/studentMatrix.vue'));
