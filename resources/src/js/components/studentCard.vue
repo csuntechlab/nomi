@@ -1,9 +1,9 @@
 <template>
-    <div v-if="true">
-        <gallery-card :student="student"></gallery-card>
+    <div v-if="flash">
+        <flash-card :student="student"></flash-card>
     </div>
     <div v-else>
-        <flash-card :student="student"></flash-card>
+        <gallery-card :student="student"></gallery-card>
     </div>
 </template>
 
@@ -14,10 +14,6 @@ import FlashCard from "./flashCard";
 
 export default {
     name: "student-card",
-
-    mounted () {
-        /** Transform prop into attribute */
-    },
 
     data: function () {
         return {
@@ -31,9 +27,7 @@ export default {
         GalleryCard
     },
 
-    props: [ 'student' ],
+    props: [ 'student', 'flash' ],
 
-    methods: {
-    }
 }
 </script>
