@@ -18716,8 +18716,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: '',
-            enabled: true
+            imgUrl: this.student.image,
+            enabled: false
         };
     },
 
@@ -18766,7 +18766,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         confirmImage: function confirmImage() {
-            var imageId = document.getElementById(event.target.id + "-img");
             var url = this.myCroppa.generateDataUrl();
             if (!url) {
                 alert('no image');
@@ -18803,8 +18802,8 @@ var render = function() {
                   _c("croppa", {
                     staticClass: "grid-image img--circle",
                     attrs: {
-                      "remove-image": false,
-                      "initial-image": _vm.student.image
+                      "prevent-white-space": true,
+                      "show-remove-button": false
                     },
                     model: {
                       value: _vm.myCroppa,

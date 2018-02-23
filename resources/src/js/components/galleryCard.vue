@@ -6,7 +6,7 @@
 
                     <div v-if="enabled">
 
-                        <croppa v-model="myCroppa" :remove-image="false" :initial-image="student.image" class="grid-image img--circle">
+                        <croppa v-model="myCroppa" :prevent-white-space="true" :show-remove-button="false" class="grid-image img--circle">
                             <!--<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">-->
                             <!--<img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">-->
                         </croppa>
@@ -39,8 +39,8 @@ export default {
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: '',
-            enabled: true
+            imgUrl: this.student.image,
+            enabled: false
         }
     },
 
