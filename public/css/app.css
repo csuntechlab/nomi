@@ -26,8 +26,8 @@
 }
 
 .mask {
-  width: 20vh;
-  height: 20vh;
+  width: 33vh;
+  height: 33vh;
   border-radius: 50%;
   overflow: hidden;
 }
