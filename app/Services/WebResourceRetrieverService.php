@@ -20,9 +20,18 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return \json_decode($client->get(
+        $data = \json_decode($client->get(
             env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
         )->getBody()->getContents())->classes;
+
+        //add an id to each object to make vue stuff easier
+        $i = 0;
+        foreach ($data as $course) {
+            $course->id = $i;
+            ++$i;
+        }
+
+        return $data;
     }
 
     /**

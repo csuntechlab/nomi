@@ -5,7 +5,7 @@
                 <div class="grid-item panel-content">
                     <div class="card-title">
                         <div class="panel-heading">
-                            {{course.title}}
+                            <router-link :to="'/class/'+course.id+'/'+course.title">{{ course.title }}</router-link>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 <template>
     <div>
         <toggle-view-button></toggle-view-button>
+        <h1>{{this.title}}</h1>
         <student-matrix :roster="roster"></student-matrix>
         <student-list :roster="roster"></student-list>
     </div>
@@ -12,7 +13,7 @@
     export default {
         name: "roster-container",
 
-        props: [ 'roster' ],
+        props: [ 'roster', 'title' ],
 
         components: {
             studentMatrix,

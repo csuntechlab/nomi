@@ -7,7 +7,7 @@ let routes = [
     },
 
     {
-        path: '/class',
+        path: '/class/:id/:title',
         component: require('./views/class.vue')
     },
 ];

@@ -1,6 +1,5 @@
 <template>
     <div v-if="show">
-        <h1>Student List</h1>
         <ul class="list">
             <student-list-item v-for="student in this.roster" :key="student.display_name" :student="student"></student-list-item>
         </ul>

@@ -7,8 +7,14 @@
 </template>
 
 <script>
+    import courseList from './courseList'
+    import courseMatrix from './courseMatrix'
     export default {
         name: "courses-container",
-        props: [ 'courses' ]
+        props: [ 'courses' ],
+        components: {
+            courseList,
+            courseMatrix
+        }
     }
 </script>

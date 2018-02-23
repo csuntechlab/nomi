@@ -31,15 +31,21 @@ class SPAController extends Controller
      */
     public function index()
     {
-        //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
-        //If students exist in cache, webservice is not called again; cache times out in $minutes minutes
-        $students = Cache::remember('students', $this->minutes, function () {
-            return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
-        });
-
         $courses = Cache::remember('courses', $this->minutes, function () {
             return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
         });
+
+        $students = [];
+        $len = \count($courses);
+
+        for ($i = 0; $i < $len; ++$i) {
+            \array_push(
+                $students,
+                Cache::remember('students_' . $i, $this->minutes, function () use ($i) {
+                    return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
+                })
+            );
+        }
 
         $json = [$courses, $students];
 

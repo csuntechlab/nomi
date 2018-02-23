@@ -4094,8 +4094,6 @@ Vue.component('shuffle-button', __webpack_require__(85));
 Vue.component('card-toggle-button', __webpack_require__(88));
 
 Vue.component('courses-container', __webpack_require__(91));
-Vue.component('course-matrix', __webpack_require__(94));
-Vue.component('course-list', __webpack_require__(97));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
@@ -5008,7 +5006,7 @@ var routes = [{
     path: '/home',
     component: __webpack_require__(37)
 }, {
-    path: '/class',
+    path: '/class/:id/:title',
     component: __webpack_require__(43)
 }];
 
@@ -5103,7 +5101,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -5153,7 +5151,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home",
@@ -5181,13 +5178,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("router-link", { attrs: { to: "/class" } }, [
-        _vm._v("Class Test Route")
-      ]),
-      _vm._v(" "),
-      _c("courses-container", { attrs: { courses: this.courses } })
-    ],
+    [_c("courses-container", { attrs: { courses: this.courses } })],
     1
   )
 }
@@ -5315,10 +5306,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['json'],
+    props: ['json', 'number', 'title'],
 
     mounted: function mounted() {
-        this.roster = JSON.parse(this.json)[1];
+        this.roster = JSON.parse(this.json)[1][this.$route.params.id];
     }
 });
 
@@ -5334,10 +5325,12 @@ var render = function() {
     "div",
     [
       _c("router-link", { attrs: { to: "/home" } }, [
-        _vm._v("Home Test Route")
+        _vm._v("Back to Courses")
       ]),
       _vm._v(" "),
-      _c("roster-container", { attrs: { roster: this.roster } })
+      _c("roster-container", {
+        attrs: { roster: this.roster, title: this.$route.params.title }
+      })
     ],
     1
   )
@@ -16971,13 +16964,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "roster-container",
 
-    props: ['roster'],
+    props: ['roster', 'title'],
 
     components: {
         studentMatrix: __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default.a,
@@ -17665,7 +17659,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -17883,8 +17876,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.show
     ? _c("div", [
-        _c("h1", [_vm._v("Student List")]),
-        _vm._v(" "),
         _c(
           "ul",
           { staticClass: "list" },
@@ -17920,6 +17911,8 @@ var render = function() {
     "div",
     [
       _c("toggle-view-button"),
+      _vm._v(" "),
+      _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
       _c("student-matrix", { attrs: { roster: _vm.roster } }),
       _vm._v(" "),
@@ -18178,7 +18171,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(93)
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18222,6 +18215,86 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__courseList__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseMatrix__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "courses-container",
+    props: ['courses'],
+    components: {
+        courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a,
+        courseMatrix: __WEBPACK_IMPORTED_MODULE_1__courseMatrix___default.a
+    }
+});
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/course_components/courseList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4217f5b8", Component.options)
+  } else {
+    hotAPI.reload("data-v-4217f5b8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -18232,29 +18305,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "courses-container",
-    props: ['courses']
+    name: "course-list",
+
+    created: function created() {
+        /** Creates listener for toggleView event, applying method on event. */
+        this.$eventBus.$on('toggleView', function () {
+            this.toggleViewHandler();
+        }.bind(this));
+    },
+
+
+    data: function data() {
+        return {
+            show: true,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['courses'],
+
+    methods: {
+        toggleViewHandler: function toggleViewHandler() {
+            this.show = !this.show;
+        }
+    }
 });
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("toggle-view-button"),
-      _vm._v(" "),
-      _c("course-matrix", { attrs: { courses: _vm.courses } }),
-      _vm._v(" "),
-      _c("course-list", { attrs: { courses: _vm.courses } })
-    ],
-    1
-  )
+  return _vm.show
+    ? _c("div", [
+        _c("h1", [_vm._v("Course List")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "list" },
+          _vm._l(this.courses, function(course) {
+            return _c(
+              "li",
+              { staticClass: "list__item" },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/class/" + course.id + "/" + course.title } },
+                  [_vm._v(_vm._s(course.title))]
+                )
+              ],
+              1
+            )
+          })
+        )
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18262,20 +18371,20 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7f690334", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-4217f5b8", module.exports)
   }
 }
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(95)
+var __vue_script__ = __webpack_require__(97)
 /* template */
-var __vue_template__ = __webpack_require__(96)
+var __vue_template__ = __webpack_require__(98)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18314,7 +18423,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18366,7 +18475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18381,13 +18490,22 @@ var render = function() {
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "grid-item panel-content" }, [
                 _c("div", { staticClass: "card-title" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(course.title) +
-                        "\n                    "
-                    )
-                  ])
+                  _c(
+                    "div",
+                    { staticClass: "panel-heading" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to: "/class/" + course.id + "/" + course.title
+                          }
+                        },
+                        [_vm._v(_vm._s(course.title))]
+                      )
+                    ],
+                    1
+                  )
                 ])
               ])
             ])
@@ -18407,97 +18525,6 @@ if (false) {
 }
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(98)
-/* template */
-var __vue_template__ = __webpack_require__(99)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/course_components/courseList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4217f5b8", Component.options)
-  } else {
-    hotAPI.reload("data-v-4217f5b8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 98 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "course-list",
-
-    created: function created() {
-        /** Creates listener for toggleView event, applying method on event. */
-        this.$eventBus.$on('toggleView', function () {
-            this.toggleViewHandler();
-        }.bind(this));
-    },
-
-
-    data: function data() {
-        return {
-            show: true,
-            messages: true,
-            errors: []
-        };
-    },
-
-    props: ['courses'],
-
-    methods: {
-        toggleViewHandler: function toggleViewHandler() {
-            this.show = !this.show;
-        }
-    }
-});
-
-/***/ }),
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -18505,21 +18532,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.show
-    ? _c("div", [
-        _c("h1", [_vm._v("Course List")]),
-        _vm._v(" "),
-        _c(
-          "ul",
-          { staticClass: "list" },
-          _vm._l(this.courses, function(course) {
-            return _c("li", { staticClass: "list__item" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v(_vm._s(course.title))])
-            ])
-          })
-        )
-      ])
-    : _vm._e()
+  return _c(
+    "div",
+    [
+      _c("toggle-view-button"),
+      _vm._v(" "),
+      _c("course-matrix", { attrs: { courses: _vm.courses } }),
+      _vm._v(" "),
+      _c("course-list", { attrs: { courses: _vm.courses } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18527,7 +18550,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4217f5b8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7f690334", module.exports)
   }
 }
 

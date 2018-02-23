@@ -2,7 +2,9 @@
     <div v-if="show">
         <h1>Course List</h1>
         <ul class="list">
-            <li class="list__item" v-for="course in this.courses"><a href="#">{{ course.title }}</a></li>
+            <li class="list__item" v-for="course in this.courses">
+                <router-link :to="'/class/'+course.id+'/'+course.title">{{ course.title }}</router-link>
+            </li>
         </ul>
     </div>
 </template>

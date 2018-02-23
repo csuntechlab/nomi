@@ -19,8 +19,6 @@ Vue.component('shuffle-button', require('./components/roster_components/shuffleB
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
-Vue.component('course-matrix', require('./components/course_components/courseMatrix.vue'));
-Vue.component('course-list', require('./components/course_components/courseList.vue'));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 

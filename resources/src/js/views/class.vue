@@ -1,7 +1,7 @@
 <template>
     <div>
-        <router-link to="/home">Home Test Route</router-link>
-        <roster-container :roster="this.roster"></roster-container>
+        <router-link to="/home">Back to Courses</router-link>
+        <roster-container :roster="this.roster" :title="this.$route.params.title"></roster-container>
     </div>
 </template>
 
@@ -11,14 +11,14 @@
 
         data: () => {
             return {
-                roster: {}
+                roster: {},
             }
         },
 
-        props: ['json'],
+        props: ['json', 'number', 'title'],
 
         mounted () {
-            this.roster = JSON.parse(this.json)[1];
+            this.roster = JSON.parse(this.json)[1][this.$route.params.id];
         },
     }
 </script>

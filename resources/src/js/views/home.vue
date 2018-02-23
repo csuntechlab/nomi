@@ -1,6 +1,5 @@
 <template>
     <div>
-        <router-link to="/class">Class Test Route</router-link>
         <courses-container :courses="this.courses"></courses-container>
     </div>
 </template>
