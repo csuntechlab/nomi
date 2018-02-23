@@ -3,15 +3,20 @@
         <div class="panel">
             <div class="grid-item panel-content">
                 <label :for="student.display_name">
-                    <input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">
-                    <div>
-                        <croppa v-model="myCroppa" v-if="enabled">
-                            <img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">
+
+                    <div v-if="enabled">
+
+                        <croppa v-model="myCroppa" :remove-image="false" :initial-image="student.image" class="grid-image img--circle">
+                            <!--<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">-->
+                            <!--<img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">-->
                         </croppa>
-                        <img @click="toggleCropper" v-else class="img--circle" :src="imgUrl" >
+                        <button class="btn btn-default" @click="confirmImage">I am here</button>
+
 
                     </div>
-                    <button class="btn btn-default" @click="confirmImage">I am here</button>
+                    <div v-else>
+                    <img @click="toggleCropper" class="img--circle" :src="imgUrl" >
+                    </div>
                 </label>
                 <div class="card-title">
                     <div class="panel-heading">
@@ -84,7 +89,6 @@ export default {
 		},
 
         confirmImage: function(){
-            let imageId = document.getElementById(event.target.id + "-img");
             let url = this.myCroppa.generateDataUrl()
             if (!url) {
                 alert('no image')

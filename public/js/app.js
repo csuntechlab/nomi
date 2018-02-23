@@ -18700,6 +18700,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -18791,62 +18796,43 @@ var render = function() {
     _c("div", { staticClass: "panel" }, [
       _c("div", { staticClass: "grid-item panel-content" }, [
         _c("label", { attrs: { for: _vm.student.display_name } }, [
-          _c("input", {
-            staticClass: "hide",
-            attrs: {
-              id: _vm.student.display_name,
-              type: "file",
-              name: "photo",
-              accept: "image/*"
-            },
-            on: {
-              change: function($event) {
-                _vm.changePhoto($event, _vm.student.email)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _vm.enabled
-                ? _c(
-                    "croppa",
-                    {
-                      model: {
-                        value: _vm.myCroppa,
-                        callback: function($$v) {
-                          _vm.myCroppa = $$v
-                        },
-                        expression: "myCroppa"
-                      }
+          _vm.enabled
+            ? _c(
+                "div",
+                [
+                  _c("croppa", {
+                    staticClass: "grid-image img--circle",
+                    attrs: {
+                      "remove-image": false,
+                      "initial-image": _vm.student.image
                     },
-                    [
-                      _c("img", {
-                        staticClass: "grid-image",
-                        attrs: {
-                          id: _vm.student.display_name + "-img",
-                          src: _vm.student.image,
-                          name: "photo",
-                          accept: "image/*"
-                        }
-                      })
-                    ]
+                    model: {
+                      value: _vm.myCroppa,
+                      callback: function($$v) {
+                        _vm.myCroppa = $$v
+                      },
+                      expression: "myCroppa"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: { click: _vm.confirmImage }
+                    },
+                    [_vm._v("I am here")]
                   )
-                : _c("img", {
-                    staticClass: "img--circle",
-                    attrs: { src: _vm.imgUrl },
-                    on: { click: _vm.toggleCropper }
-                  })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-default", on: { click: _vm.confirmImage } },
-            [_vm._v("I am here")]
-          )
+                ],
+                1
+              )
+            : _c("div", [
+                _c("img", {
+                  staticClass: "img--circle",
+                  attrs: { src: _vm.imgUrl },
+                  on: { click: _vm.toggleCropper }
+                })
+              ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
