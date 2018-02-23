@@ -25,6 +25,13 @@
   border: 0px;
 }
 
+.mask {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .hide {
   display: none;
 }

@@ -4,7 +4,14 @@
             <div class="grid-item panel-content">
                 <label :for="student.display_name">
                     <input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">
-                    <croppa><img :id="student.display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*"></croppa>
+                    <div>
+                        <croppa v-model="myCroppa" v-if="enabled">
+                            <img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">
+                        </croppa>
+                        <img @click="toggleCropper" v-else class="img--circle" :src="imgUrl" >
+
+                    </div>
+                    <button class="btn btn-default" @click="confirmImage">I am here</button>
                 </label>
                 <div class="card-title">
                     <div class="panel-heading">
@@ -26,12 +33,19 @@ export default {
         return {
             messages: true,
             errors: [],
+            myCroppa: null,
+            imgUrl: '',
+            enabled: true
         }
     },
 
     props: [ 'student' ],
 
     methods: {
+//        uploadCroppedImage() {
+//            this.myImage.generateBlob((blob) => {
+//                // write code to upload the cropped image file (a file is a blob)
+//            }, 'image/jpeg', 0.8);
 		changePhoto: function(event, email) {
 //		    grabs id of image
             let imageId = document.getElementById(event.target.id + "-img");
@@ -68,6 +82,24 @@ export default {
                     this.errors.push(e)
                 });
 		},
+
+        confirmImage: function(){
+            let imageId = document.getElementById(event.target.id + "-img");
+            let url = this.myCroppa.generateDataUrl()
+            if (!url) {
+                alert('no image')
+                return
+            }
+            this.imgUrl = url
+
+            this.enabled = !this.enabled;
+
+        },
+
+        toggleCropper: function(){
+            this.enabled = !this.enabled;
+        }
+
     }
 }
 </script>

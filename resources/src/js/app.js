@@ -11,7 +11,7 @@ import VueRouter from 'vue-router'
 import Splash from './views/Splash.vue'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import Vue from 'vue-croppa';
+import Croppa from 'vue-croppa';
 
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);

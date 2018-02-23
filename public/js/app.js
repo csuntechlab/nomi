@@ -1158,9 +1158,9 @@ window.Vue = __webpack_require__(32);
 
 
 
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.use(Croppa);
+Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_axios___default.a, __WEBPACK_IMPORTED_MODULE_2_axios___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a);
 
 var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
@@ -1177,25 +1177,25 @@ var Router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('menu-bar', __webpack_require__(40));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('nav-bar', __webpack_require__(43));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('side-bar', __webpack_require__(46));
+Vue.component('menu-bar', __webpack_require__(40));
+Vue.component('nav-bar', __webpack_require__(43));
+Vue.component('side-bar', __webpack_require__(46));
 
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('roster-container', __webpack_require__(49));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('shuffle-button', __webpack_require__(52));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('card-toggle-button', __webpack_require__(55));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('toggle-view-button', __webpack_require__(58));
+Vue.component('roster-container', __webpack_require__(49));
+Vue.component('shuffle-button', __webpack_require__(52));
+Vue.component('card-toggle-button', __webpack_require__(55));
+Vue.component('toggle-view-button', __webpack_require__(58));
 
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('student-matrix', __webpack_require__(61));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('student-list', __webpack_require__(72));
+Vue.component('student-matrix', __webpack_require__(61));
+Vue.component('student-list', __webpack_require__(72));
 
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('courses-container', __webpack_require__(78));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('course-matrix', __webpack_require__(81));
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.component('course-list', __webpack_require__(84));
+Vue.component('courses-container', __webpack_require__(78));
+Vue.component('course-matrix', __webpack_require__(81));
+Vue.component('course-list', __webpack_require__(84));
 
-__WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a.prototype.$eventBus = new __WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a(); // Global event bus
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
-var app = new __WEBPACK_IMPORTED_MODULE_4_vue_croppa___default.a({
+var app = new Vue({
     el: '#app',
     router: Router,
     components: {
@@ -18693,6 +18693,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -18702,13 +18709,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             messages: true,
-            errors: []
+            errors: [],
+            myCroppa: null,
+            imgUrl: '',
+            enabled: true
         };
     },
 
     props: ['student'],
 
     methods: {
+        //        uploadCroppedImage() {
+        //            this.myImage.generateBlob((blob) => {
+        //                // write code to upload the cropped image file (a file is a blob)
+        //            }, 'image/jpeg', 0.8);
         changePhoto: function changePhoto(event, email) {
             var _this = this;
 
@@ -18744,7 +18758,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (e) {
                 _this.errors.push(e);
             });
+        },
+
+        confirmImage: function confirmImage() {
+            var imageId = document.getElementById(event.target.id + "-img");
+            var url = this.myCroppa.generateDataUrl();
+            if (!url) {
+                alert('no image');
+                return;
+            }
+            this.imgUrl = url;
+
+            this.enabled = !this.enabled;
+        },
+
+        toggleCropper: function toggleCropper() {
+            this.enabled = !this.enabled;
         }
+
     }
 });
 
@@ -18759,39 +18790,64 @@ var render = function() {
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
       _c("div", { staticClass: "grid-item panel-content" }, [
-        _c(
-          "label",
-          { attrs: { for: _vm.student.display_name } },
-          [
-            _c("input", {
-              staticClass: "hide",
-              attrs: {
-                id: _vm.student.display_name,
-                type: "file",
-                name: "photo",
-                accept: "image/*"
-              },
-              on: {
-                change: function($event) {
-                  _vm.changePhoto($event, _vm.student.email)
-                }
+        _c("label", { attrs: { for: _vm.student.display_name } }, [
+          _c("input", {
+            staticClass: "hide",
+            attrs: {
+              id: _vm.student.display_name,
+              type: "file",
+              name: "photo",
+              accept: "image/*"
+            },
+            on: {
+              change: function($event) {
+                _vm.changePhoto($event, _vm.student.email)
               }
-            }),
-            _vm._v(" "),
-            _c("croppa", [
-              _c("img", {
-                staticClass: "img--circle grid-image",
-                attrs: {
-                  id: _vm.student.display_name + "-img",
-                  src: _vm.student.image,
-                  name: "photo",
-                  accept: "image/*"
-                }
-              })
-            ])
-          ],
-          1
-        ),
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _vm.enabled
+                ? _c(
+                    "croppa",
+                    {
+                      model: {
+                        value: _vm.myCroppa,
+                        callback: function($$v) {
+                          _vm.myCroppa = $$v
+                        },
+                        expression: "myCroppa"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "grid-image",
+                        attrs: {
+                          id: _vm.student.display_name + "-img",
+                          src: _vm.student.image,
+                          name: "photo",
+                          accept: "image/*"
+                        }
+                      })
+                    ]
+                  )
+                : _c("img", {
+                    staticClass: "img--circle",
+                    attrs: { src: _vm.imgUrl },
+                    on: { click: _vm.toggleCropper }
+                  })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-default", on: { click: _vm.confirmImage } },
+            [_vm._v("I am here")]
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
           _c("div", { staticClass: "panel-heading" }, [
