@@ -11,10 +11,9 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  -webkit-box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2); 
-box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
-border-radius: 25px;
-  
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
 }
 
 .hide {
@@ -23,7 +22,15 @@ border-radius: 25px;
 
 .panel {
   border-radius: 25px;
-  border:0px;
+  border: 0px;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
 }
 
 .panel-heading {
