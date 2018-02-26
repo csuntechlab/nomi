@@ -2,21 +2,32 @@
     <div class="col-xs-6">
         <div class="panel">
             <div class="grid-item panel-content">
-                <label :for="student.display_name">
+                <label class="grid-image" :for="student.display_name">
 
-                    <div v-if="enabled">
+                    <div >
+                        <div style="width:100%; z-index:1000000;">
+                            <croppa v-model="myCroppa"
 
-                        <croppa v-model="myCroppa" :prevent-white-space="true" :show-remove-button="false" class="grid-image img--circle">
-                            <!--<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">-->
-                            <!--<img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">-->
-                        </croppa>
+                                    :prevent-white-space="true"
+                                    :show-remove-button="false"
+                                    :disabled="true"
+                                    @init="renderCanvas()"
+
+
+                            >
+                                <img slot="initial" :src="imgUrl" />
+                                <!--<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">-->
+                                <!--<img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">-->
+                            </croppa>
+                        </div>
                         <button class="btn btn-default" @click="confirmImage">I am here</button>
 
 
                     </div>
-                    <div v-else>
-                    <img @click="toggleCropper" class="img--circle" :src="imgUrl" >
-                    </div>
+
+                    <!--<div v-else>-->
+                    <!--<img @click="toggleCropper" class="grid-image img&#45;&#45;circle" :src="imgUrl" >-->
+                    <!--</div>-->
                 </label>
                 <div class="card-title">
                     <div class="panel-heading">
@@ -40,11 +51,11 @@ export default {
             errors: [],
             myCroppa: null,
             imgUrl: this.student.image,
-            enabled: false
+            enabled: true
         }
     },
 
-    props: [ 'student' ],
+    props: [ 'student'  ],
 
     methods: {
 //        uploadCroppedImage() {
@@ -96,13 +107,26 @@ export default {
             }
             this.imgUrl = url
 
-            this.enabled = !this.enabled;
 
         },
 
+        renderCanvas: function() {
+            console.log(this.myCroppa.getCanvas());
+            let elm = this.myCroppa.getCanvas();
+            let cropper1 = this.myCroppa;
+            elm.style.width="100%";
+            elm.style.height="100%";
+            elm.addEventListener('click', (e) => {cropper1.disabled = !cropper1.disabled} );
+//            elm.addClass="img-circle";
+            //this.myCroppa.disabled="true";
+            console.log(this.myCroppa.getCanvas());
+        },
+
         toggleCropper: function(){
-            this.enabled = !this.enabled;
+            this.myCroppa.disabled(true);
         }
+
+
 
     }
 }

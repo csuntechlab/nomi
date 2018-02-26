@@ -18705,6 +18705,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -18717,7 +18728,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errors: [],
             myCroppa: null,
             imgUrl: this.student.image,
-            enabled: false
+            enabled: true
         };
     },
 
@@ -18772,12 +18783,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
             this.imgUrl = url;
+        },
 
-            this.enabled = !this.enabled;
+        renderCanvas: function renderCanvas() {
+            console.log(this.myCroppa.getCanvas());
+            var elm = this.myCroppa.getCanvas();
+            var cropper1 = this.myCroppa;
+            elm.style.width = "100%";
+            elm.style.height = "100%";
+            elm.addEventListener('click', function (e) {
+                cropper1.disabled = !cropper1.disabled;
+            });
+            //            elm.addClass="img-circle";
+            //this.myCroppa.disabled="true";
+            console.log(this.myCroppa.getCanvas());
         },
 
         toggleCropper: function toggleCropper() {
-            this.enabled = !this.enabled;
+            this.myCroppa.disabled(true);
         }
 
     }
@@ -18794,45 +18817,61 @@ var render = function() {
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
       _c("div", { staticClass: "grid-item panel-content" }, [
-        _c("label", { attrs: { for: _vm.student.display_name } }, [
-          _vm.enabled
-            ? _c(
+        _c(
+          "label",
+          {
+            staticClass: "grid-image",
+            attrs: { for: _vm.student.display_name }
+          },
+          [
+            _c("div", [
+              _c(
                 "div",
+                { staticStyle: { width: "100%", "z-index": "1000000" } },
                 [
-                  _c("croppa", {
-                    staticClass: "grid-image img--circle",
-                    attrs: {
-                      "prevent-white-space": true,
-                      "show-remove-button": false
-                    },
-                    model: {
-                      value: _vm.myCroppa,
-                      callback: function($$v) {
-                        _vm.myCroppa = $$v
-                      },
-                      expression: "myCroppa"
-                    }
-                  }),
-                  _vm._v(" "),
                   _c(
-                    "button",
+                    "croppa",
                     {
-                      staticClass: "btn btn-default",
-                      on: { click: _vm.confirmImage }
+                      attrs: {
+                        "prevent-white-space": true,
+                        "show-remove-button": false,
+                        disabled: true
+                      },
+                      on: {
+                        init: function($event) {
+                          _vm.renderCanvas()
+                        }
+                      },
+                      model: {
+                        value: _vm.myCroppa,
+                        callback: function($$v) {
+                          _vm.myCroppa = $$v
+                        },
+                        expression: "myCroppa"
+                      }
                     },
-                    [_vm._v("I am here")]
+                    [
+                      _c("img", {
+                        attrs: { slot: "initial", src: _vm.imgUrl },
+                        slot: "initial"
+                      })
+                    ]
                   )
                 ],
                 1
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.confirmImage }
+                },
+                [_vm._v("I am here")]
               )
-            : _c("div", [
-                _c("img", {
-                  staticClass: "img--circle",
-                  attrs: { src: _vm.imgUrl },
-                  on: { click: _vm.toggleCropper }
-                })
-              ])
-        ]),
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
           _c("div", { staticClass: "panel-heading" }, [
