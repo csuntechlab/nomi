@@ -37,14 +37,15 @@ Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 
 Vue.component('roster-container', require('./components/rosterContainer.vue'));
-Vue.component('student-grid', require('./components/studentGrid.vue'));
-Vue.component('student-list', require('./components/studentList.vue'));
-
 Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
+Vue.component('card-toggle-button', require('./components/cardToggleButton.vue'));
 Vue.component('toggle-view-button', require('./components/toggleViewButton.vue'));
 
+Vue.component('student-matrix', require('./components/studentMatrix.vue'));
+Vue.component('student-list', require('./components/studentList.vue'));
+
 Vue.component('courses-container', require('./components/coursesContainer.vue'));
-Vue.component('course-grid', require('./components/courseGrid.vue'));
+Vue.component('course-matrix', require('./components/courseMatrix.vue'));
 Vue.component('course-list', require('./components/courseList.vue'));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
