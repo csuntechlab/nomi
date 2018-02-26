@@ -2,13 +2,13 @@
     <div v-if="show">
         <h1>Course List</h1>
         <ul class="list">
-        <!--for loop through array objects-->
-            <li class="list__item" v-for="course in this.courses"><a href="#">{{ course.title }}</a></li>
+            <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
         </ul>
     </div>
 </template>
 
 <script>
+    import courseListItem from './courseListItem.vue'
     export default {
         name: "course-list",
 
@@ -31,6 +31,10 @@
                 messages: true,
                 errors: [],
             }
+        },
+
+        components: {
+            courseListItem
         },
 
         props: ['coursesjson'],
