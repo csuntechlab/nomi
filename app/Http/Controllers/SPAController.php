@@ -31,26 +31,24 @@ class SPAController extends Controller
      */
     public function index()
     {
-        //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
-        //If students exist in cache, webservice is not called again; cache times out in $minutes minutes
-        $students = Cache::remember('students', $this->minutes, function () {
-            return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
-        });
-
-        return view('students')->with('students', $students);
-    }
-
-    /**
-     * Description: Test method to retrieve course view.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function courses()
-    {
         $courses = Cache::remember('courses', $this->minutes, function () {
             return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
         });
 
-        return view('courses')->with('courses', $courses);
+        $students = [];
+        $len = \count($courses);
+
+        for ($i = 0; $i < $len; ++$i) {
+            \array_push(
+                $students,
+                Cache::remember('students_' . $i, $this->minutes, function () use ($i) {
+                    return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
+                })
+            );
+        }
+
+        $json = [$courses, $students];
+
+        return view('spa')->with('json', $json);
     }
 }

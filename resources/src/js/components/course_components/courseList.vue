@@ -19,15 +19,9 @@
             }.bind(this));
         },
 
-        mounted () {
-            /** Transform prop into attribute */
-            this.courses = JSON.parse(this.coursesjson);
-        },
-
         data: function () {
             return {
-                courses: [],
-                show: false,
+                show: true,
                 messages: true,
                 errors: [],
             }
@@ -37,7 +31,7 @@
             courseListItem
         },
 
-        props: ['coursesjson'],
+        props: ['courses'],
 
         methods: {
             toggleViewHandler: function () {

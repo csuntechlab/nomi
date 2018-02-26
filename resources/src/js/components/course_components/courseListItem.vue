@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-9">
-                    {{course.title}}
+                    <router-link :to="'/class/'+course.id+'/'+course.title">{{ course.title }}</router-link>
                 </div>
             </div>
         </div>
