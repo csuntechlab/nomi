@@ -58,14 +58,10 @@ export default {
     props: [ 'student'  ],
 
     methods: {
-//        uploadCroppedImage() {
-//            this.myImage.generateBlob((blob) => {
-//                // write code to upload the cropped image file (a file is a blob)
-//            }, 'image/jpeg', 0.8);
 		changePhoto: function(event, email) {
-//		    grabs id of image
+		    //grabs id of image
             let imageId = document.getElementById(event.target.id + "-img");
-//            checks if empty and sets file instance to variable files
+            //checks if empty and sets file instance to variable files
             let files = event.target.files;
             if (!files[0]) {
                 return;
@@ -75,13 +71,13 @@ export default {
             data.append('media', files[0]);
             data.append('email', email);
             let reader = new FileReader();
-//            On load of file, grab the image id's src that contains image
-//				and equal it to the add image file
+            //On load of file, grab the image id's src that contains image
+            //and equal it to the add image file
             reader.onload = (event) => {
                 imageId.src = event.target.result;
             };
 
-//            this check is needed to prevent "blob error"
+            //this check is needed to prevent "blob error"
             if(files[0]){
                 reader.readAsDataURL(files[0]);
             }
@@ -100,14 +96,16 @@ export default {
 		},
 
         confirmImage: function(){
-            let url = this.myCroppa.generateDataUrl()
+            let url = this.myCroppa.generateDataUrl();
+
             if (!url) {
-                alert('no image')
-                return
+                alert('no image');
+                return;
             }
-            this.imgUrl = url
 
+            this.imgUrl = url;
 
+            this.enabled = !this.enabled;
         },
 
         renderCanvas: function() {
