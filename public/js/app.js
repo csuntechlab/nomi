@@ -18793,6 +18793,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             elm.style.height = "100%";
             elm.addEventListener('click', function (e) {
                 cropper1.disabled = !cropper1.disabled;
+                cropper1.chooseFile();
             });
             //            elm.addClass="img-circle";
             //this.myCroppa.disabled="true";

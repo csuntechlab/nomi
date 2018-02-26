@@ -116,7 +116,10 @@ export default {
             let cropper1 = this.myCroppa;
             elm.style.width="100%";
             elm.style.height="100%";
-            elm.addEventListener('click', (e) => {cropper1.disabled = !cropper1.disabled} );
+            elm.addEventListener('click', (e) => {
+                cropper1.disabled = !cropper1.disabled;
+                cropper1.chooseFile();
+            });
 //            elm.addClass="img-circle";
             //this.myCroppa.disabled="true";
             console.log(this.myCroppa.getCanvas());
