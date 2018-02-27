@@ -1,8 +1,15 @@
 <template>
-  <nav class="menu-bar">
-  	<card-toggle-button class="col-sm-3"></card-toggle-button>
-  	<toggle-view-button class="col-sm-3"></toggle-view-button>
-  	<shuffle-button class="col-sm-3"></shuffle-button>
+  <nav class="menu-bar container">
+    <div class="row">
+      <div class="col-sm-11">
+        <toggle-view-button class="col-sm-3"></toggle-view-button>
+        <card-toggle-button class="col-sm-3"></card-toggle-button>
+        <shuffle-button class="col-sm-3"></shuffle-button>
+      </div>
+      <div class="col-sm-1">
+        <button class="btn btn-default" @click.prevent="openNav()">SideBar</button>
+      </div>
+    </div>
   </nav>
 
 </template> 
@@ -18,6 +25,13 @@ export default {
         cardToggleButton,
         toggleViewButton
     },
+    methods: {
+            openNav: function(event) {
+                document.getElementById("mySidenav").style.width = "100vw";
+            }
+
+           
+        }
 }
 
 </script>

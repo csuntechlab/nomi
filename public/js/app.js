@@ -16074,17 +16074,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-       components: {
-              shuffleButton: __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default.a,
-              cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default.a,
-              toggleViewButton: __WEBPACK_IMPORTED_MODULE_2__toggleViewButton_vue___default.a
-       }
+  components: {
+    shuffleButton: __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default.a,
+    cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default.a,
+    toggleViewButton: __WEBPACK_IMPORTED_MODULE_2__toggleViewButton_vue___default.a
+  },
+  methods: {
+    openNav: function openNav(event) {
+      document.getElementById("mySidenav").style.width = "100vw";
+    }
+
+  }
 });
 
 /***/ }),
@@ -16305,18 +16318,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "menu-bar" },
-    [
-      _c("card-toggle-button", { staticClass: "col-sm-3" }),
+  return _c("nav", { staticClass: "menu-bar container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        { staticClass: "col-sm-11" },
+        [
+          _c("toggle-view-button", { staticClass: "col-sm-3" }),
+          _vm._v(" "),
+          _c("card-toggle-button", { staticClass: "col-sm-3" }),
+          _vm._v(" "),
+          _c("shuffle-button", { staticClass: "col-sm-3" })
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("toggle-view-button", { staticClass: "col-sm-3" }),
-      _vm._v(" "),
-      _c("shuffle-button", { staticClass: "col-sm-3" })
-    ],
-    1
-  )
+      _c("div", { staticClass: "col-sm-1" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.openNav()
+              }
+            }
+          },
+          [_vm._v("SideBar")]
+        )
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -16391,25 +16424,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    methods: {
-        openNav: function openNav(event) {
-            document.getElementById("mySidenav").style.width = "100vw";
-        }
-
-    }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 53 */
@@ -16419,72 +16436,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "primary-nav" }, [
-    _c("div", { staticClass: "primary-nav__mobile" }, [
-      _c(
-        "div",
-        {
-          staticClass: "primary-nav__btn",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.openNav()
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" })
-        ]
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "primary-nav__sub-brand",
-          attrs: { href: "www.csun.edu" }
-        },
-        [_vm._v("Nameface")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("ul", { staticClass: "primary-nav__links" }, [
-      _c("li", [
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__link active",
-            on: {
-              click: function($event) {
-                _vm.openNav()
-              }
-            }
-          },
-          [_vm._v("Menu")]
-        )
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "primary-nav__brand", attrs: { href: "www.csun.edu" } },
-      [
-        _c("span", { staticClass: "sr-only" }, [
-          _vm._v("California State University, Northridge (CSUN)")
-        ])
-      ]
-    )
+    return _c("nav", { staticClass: "primary-nav" }, [
+      _c("div", { staticClass: "primary-nav__mobile" }, [
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [
+            _c("span", { staticClass: "sr-only" }, [
+              _vm._v("California State University, Northridge (CSUN)")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__sub-brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [_vm._v("Nameface")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
