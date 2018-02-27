@@ -1,13 +1,13 @@
 <template>
-  <nav class="menu-bar container">
+  <nav class="metalab-footer menu-bar container">
     <div class="row">
-      <div class="col-sm-11">
+      <div class="col-sm-10">
         <toggle-view-button class="col-sm-3"></toggle-view-button>
         <card-toggle-button class="col-sm-3"></card-toggle-button>
         <shuffle-button class="col-sm-3"></shuffle-button>
       </div>
-      <div class="col-sm-1">
-        <button class="btn btn-default" @click.prevent="openNav()">SideBar</button>
+      <div class="col-sm-2">
+        <input type="image" src="/images/menu.png" @click.prevent="openNav()">SideBar</input>
       </div>
     </div>
   </nav>
@@ -35,11 +35,3 @@ export default {
 }
 
 </script>
-<!-- 
-<style scoped>
-	card-toggle-button, toggle-view-button, shuffle-button {
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-</style> -->

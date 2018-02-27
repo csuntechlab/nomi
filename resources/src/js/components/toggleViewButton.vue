@@ -3,7 +3,7 @@
         <input @click="emitToggleView()" type="image" src="/images/list.png">
     </div>
     <div v-else>
-        <input @click="emitToggleView()" type="image" src="/images/2x2grid.png">
+        <input @click="emitToggleView()" type="image" src="/images/grid.png">
     </div>
 </template>
 

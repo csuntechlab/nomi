@@ -16110,6 +16110,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "shuffle-button",
@@ -16129,19 +16131,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        attrs: { role: "button" },
-        on: {
-          click: function($event) {
-            _vm.emitShuffleCards()
-          }
+    _c("input", {
+      attrs: { type: "image", src: "/images/card-exchange.png" },
+      on: {
+        click: function($event) {
+          _vm.emitShuffleCards()
         }
-      },
-      [_vm._v("Shuffle")]
-    )
+      }
+    }),
+    _vm._v("Shuffle")
   ])
 }
 var staticRenderFns = []
@@ -16197,34 +16195,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.flash
     ? _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: { role: "button" },
-            on: {
-              click: function($event) {
-                _vm.emitToggleCards()
-              }
+        _c("input", {
+          attrs: { type: "image", src: "/images/gallery.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleCards()
             }
-          },
-          [_vm._v("Gallery Mode")]
-        )
+          }
+        }),
+        _vm._v("Gallery Mode")
       ])
     : _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: { role: "button" },
-            on: {
-              click: function($event) {
-                _vm.emitToggleCards()
-              }
+        _c("input", {
+          attrs: { type: "image", src: "/images/flashcards.png" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleCards()
             }
-          },
-          [_vm._v("Flash Card Mode")]
-        )
+          }
+        }),
+        _vm._v("Flash Card Mode")
       ])
 }
 var staticRenderFns = []
@@ -16291,7 +16281,7 @@ var render = function() {
       ])
     : _c("div", [
         _c("input", {
-          attrs: { type: "image", src: "/images/2x2grid.png" },
+          attrs: { type: "image", src: "/images/grid.png" },
           on: {
             click: function($event) {
               _vm.emitToggleView()
@@ -16318,11 +16308,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar container" }, [
+  return _c("nav", { staticClass: "metalab-footer menu-bar container" }, [
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-sm-11" },
+        { staticClass: "col-sm-10" },
         [
           _c("toggle-view-button", { staticClass: "col-sm-3" }),
           _vm._v(" "),
@@ -16333,20 +16323,17 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-1" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.openNav()
-              }
+      _c("div", { staticClass: "col-sm-2" }, [
+        _c("input", {
+          attrs: { type: "image", src: "/images/menu.png" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.openNav()
             }
-          },
-          [_vm._v("SideBar")]
-        )
+          }
+        }),
+        _vm._v("SideBar")
       ])
     ])
   ])

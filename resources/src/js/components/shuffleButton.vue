@@ -1,5 +1,7 @@
 <template>
-    <div> <button role="button" class="btn btn-default" @click="emitShuffleCards()">Shuffle</button> </div>
+    <div> 
+    	<input type="image" src="/images/card-exchange.png" @click="emitShuffleCards()">Shuffle</input>
+    </div>
 </template>
 
 <script>

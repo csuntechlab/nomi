@@ -1,9 +1,9 @@
 <template>
     <div v-if="flash">
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Gallery Mode</button>
+        <input type="image" src="/images/gallery.png" @click="emitToggleCards()">Gallery Mode</input>
     </div>
     <div v-else>
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Flash Card Mode</button>
+        <input type="image" src="/images/flashcards.png" @click="emitToggleCards()">Flash Card Mode</input>
     </div>
 </template>
 
