@@ -6,6 +6,8 @@ namespace App\Services;
 
 use App\Contracts\WebResourceRetrieverContract;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Psr7\Response;
 
 class WebResourceRetrieverService implements WebResourceRetrieverContract
 {
@@ -37,10 +39,16 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return $client->get(
-            env('ROSTER_URL') . '/terms' . '/' . ($this->getCourses($term))[$course]->term
-            . '/classes' . '/' . ($this->getCourses($term))[$course]->class_number
-        )->getBody()->getContents();
+        try {
+            $out = $client->get(
+                env('ROSTER_URL') . '/terms' . '/' . ($this->getCourses($term))[$course]->term
+                . '/classes' . '/' . ($this->getCourses($term))[$course]->class_number
+            );
+        } catch (BadResponseException $e) {
+            $out = new Response(204);
+        }
+
+        return $out;
     }
 
     /**
