@@ -16138,8 +16138,7 @@ var render = function() {
           _vm.emitShuffleCards()
         }
       }
-    }),
-    _vm._v("Shuffle")
+    })
   ])
 }
 var staticRenderFns = []
@@ -16202,8 +16201,7 @@ var render = function() {
               _vm.emitToggleCards()
             }
           }
-        }),
-        _vm._v("Gallery Mode")
+        })
       ])
     : _c("div", [
         _c("input", {
@@ -16213,8 +16211,7 @@ var render = function() {
               _vm.emitToggleCards()
             }
           }
-        }),
-        _vm._v("Flash Card Mode")
+        })
       ])
 }
 var staticRenderFns = []
@@ -16312,18 +16309,18 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-sm-10" },
+        { staticClass: "col-sx-8 col-sm-10" },
         [
-          _c("toggle-view-button", { staticClass: "col-sm-3" }),
+          _c("toggle-view-button", { staticClass: "col-sx-2 col-sm-2" }),
           _vm._v(" "),
-          _c("card-toggle-button", { staticClass: "col-sm-3" }),
+          _c("card-toggle-button", { staticClass: "col-sx-2 col-sm-2" }),
           _vm._v(" "),
-          _c("shuffle-button", { staticClass: "col-sm-3" })
+          _c("shuffle-button", { staticClass: "col-sx-2 col-sm-2" })
         ],
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-2" }, [
+      _c("div", { staticClass: "col-sx-4 col-sm-2" }, [
         _c("input", {
           attrs: { type: "image", src: "/images/menu.png" },
           on: {
