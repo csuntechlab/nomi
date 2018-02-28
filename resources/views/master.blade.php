@@ -16,6 +16,12 @@
         </style>
     </head>
     <body>
+        @if ( $errors->count() > 0 )
+            ...An error occured...
+            @foreach( $errors->all() as $message )
+                ...{{ $message }}...
+            @endforeach
+        @endif
         <div class="container" id='app'>
             <nav-bar></nav-bar>
             <side-bar></side-bar>

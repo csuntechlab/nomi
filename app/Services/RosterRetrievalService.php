@@ -32,6 +32,30 @@ class RosterRetrievalService implements RosterRetrievalContract
     {
         // Grabs the roster information without the instructor
         $roster = $this->webResourceRetriever->getRoster($term, $course);
+        $imageManager = new ImageManager(['driver' => 'imagick']);
+
+        if ($roster->getStatusCode() == 204) {
+            return [
+                [
+                    'student_id' => 999999999,
+                    'display_name' => 'John Bingus',
+                    'email' => 'jbingus@dingus.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999998,
+                    'display_name' => 'Bob Dingus',
+                    'email' => 'bdingus@jingus.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+            ];
+        }
+
+        $roster = $roster->getBody()->getContents();
+
         $members = \json_decode($roster)->members;
         $unsanitizedStudents = [];
         foreach ($members as $member) {
@@ -42,7 +66,6 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
-        $imageManager = new ImageManager(['driver' => 'imagick']);
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
             $email = \str_replace('nr_', '', $unsanitizedStudent->email);
             $email = \substr($email, 0, \strpos($email, '@'));
