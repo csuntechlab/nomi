@@ -18487,7 +18487,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     components: {
-        FlashCard: __WEBPACK_IMPORTED_MODULE_1__flashCard___default.a,
+        flashCard: __WEBPACK_IMPORTED_MODULE_1__flashCard___default.a,
         studentCard: __WEBPACK_IMPORTED_MODULE_0__studentCard_vue___default.a
     },
 
@@ -18706,16 +18706,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -18728,7 +18718,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errors: [],
             myCroppa: null,
             imgUrl: this.student.image,
-            enabled: true
+            enabled: true,
+            canEdit: false,
+            initalImage: null,
+            firstLoad: true,
+            isCancelledPressed: false
         };
     },
 
@@ -18781,29 +18775,61 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             this.imgUrl = url;
-
-            this.enabled = !this.enabled;
+            this.canEdit = false;
         },
 
         renderCanvas: function renderCanvas() {
-            console.log(this.myCroppa.getCanvas());
+            var _this2 = this;
+
             var elm = this.myCroppa.getCanvas();
-            var cropper1 = this.myCroppa;
+            var cropper = this.myCroppa;
+
             elm.style.width = "100%";
             elm.style.height = "100%";
-            elm.addEventListener('click', function (e) {
-                cropper1.disabled = !cropper1.disabled;
-                cropper1.chooseFile();
+            elm.style.borderRadius = "50%";
+
+            elm.addEventListener('touchstart', function (e) {
+                // Enable the cropper
+                cropper.disabled = false;
             });
-            //            elm.addClass="img-circle";
-            //this.myCroppa.disabled="true";
-            console.log(this.myCroppa.getCanvas());
+
+            elm.addEventListener('touchend', function (e) {
+                if (!_this2.canEdit) {
+                    cropper.chooseFile();
+                    _this2.isCancelledPressed = true;
+                }
+            });
+        },
+
+        toggleCanEdit: function toggleCanEdit() {
+            if (this.firstLoad) {
+                this.firstLoad = false;
+            } else {
+                var cropper = this.myCroppa;
+                this.initalImage = this.myCroppa.generateDataUrl();
+                this.isCancelledPressed = false;
+                // console.log(this.initalImage == this.imgUrl);
+                if (this.initalImage == this.imgUrl) {
+                    this.canEdit = false;
+                    cropper.disabled = true;
+                } else {
+                    this.canEdit = true;
+                    cropper.disabled = false;
+                }
+            }
         },
 
         toggleCropper: function toggleCropper() {
             this.myCroppa.disabled(true);
-        }
+        },
 
+        hello: function hello() {
+            console.log("hello");
+        },
+
+        updated: function updated() {
+            console.log("This is happening.");
+        }
     }
 });
 
@@ -18825,57 +18851,61 @@ var render = function() {
             attrs: { for: _vm.student.display_name }
           },
           [
-            _c("div", [
-              _c(
-                "div",
-                { staticStyle: { width: "100%", "z-index": "1000000" } },
-                [
-                  _c(
-                    "croppa",
-                    {
-                      attrs: {
-                        "prevent-white-space": true,
-                        "show-remove-button": false,
-                        disabled: true
+            _c(
+              "div",
+              { staticStyle: { width: "100%" } },
+              [
+                _c(
+                  "croppa",
+                  {
+                    attrs: {
+                      "prevent-white-space": true,
+                      "show-remove-button": false,
+                      disabled: true,
+                      "inital-image": _vm.imgUrl
+                    },
+                    on: {
+                      init: function($event) {
+                        _vm.renderCanvas()
                       },
-                      on: {
-                        init: function($event) {
-                          _vm.renderCanvas()
-                        }
-                      },
-                      model: {
-                        value: _vm.myCroppa,
-                        callback: function($$v) {
-                          _vm.myCroppa = $$v
-                        },
-                        expression: "myCroppa"
+                      "loading-end": function($event) {
+                        _vm.toggleCanEdit()
                       }
                     },
-                    [
-                      _c("img", {
-                        attrs: { slot: "initial", src: _vm.imgUrl },
-                        slot: "initial"
-                      })
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.confirmImage }
-                },
-                [_vm._v("I am here")]
-              )
-            ])
+                    model: {
+                      value: _vm.myCroppa,
+                      callback: function($$v) {
+                        _vm.myCroppa = $$v
+                      },
+                      expression: "myCroppa"
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: { slot: "initial", src: _vm.imgUrl },
+                      on: { change: _vm.hello },
+                      slot: "initial"
+                    })
+                  ]
+                )
+              ],
+              1
+            )
           ]
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
           _c("div", { staticClass: "panel-heading" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: { click: _vm.confirmImage }
+              },
+              [_vm._v("Confirm")]
+            ),
+            _vm._v(" "),
+            _c("br"),
             _vm._v(
               "\n                    " +
                 _vm._s(_vm.student.display_name) +
