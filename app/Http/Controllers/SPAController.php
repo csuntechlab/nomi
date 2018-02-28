@@ -37,6 +37,9 @@ class SPAController extends Controller
             return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
         });
 
+        if ($students == null) {
+            return view('students')->with('students', $students)->withErrors(['Failed to retrieve students.']);
+        }
         return view('students')->with('students', $students);
     }
 
