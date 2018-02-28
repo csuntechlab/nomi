@@ -16329,8 +16329,7 @@ var render = function() {
               _vm.openNav()
             }
           }
-        }),
-        _vm._v("SideBar")
+        })
       ])
     ])
   ])

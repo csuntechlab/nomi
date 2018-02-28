@@ -7,7 +7,7 @@
         <shuffle-button class="col-sx-2 col-sm-2"></shuffle-button>
       </div>
       <div class="col-sx-4 col-sm-2">
-        <input type="image" src="/images/menu.png" @click.prevent="openNav()">SideBar</input>
+        <input type="image" src="/images/menu.png" @click.prevent="openNav()"></input>
       </div>
     </div>
   </nav>
