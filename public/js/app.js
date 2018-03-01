@@ -179,7 +179,7 @@ module.exports = function normalizeComponent (
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(4);
 var isBuffer = __webpack_require__(15);
 
 /*global toString:true*/
@@ -512,10 +512,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(6);
   }
   return adapter;
 }
@@ -586,37 +586,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -634,7 +607,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -824,7 +797,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -835,7 +808,7 @@ var settle = __webpack_require__(18);
 var buildURL = __webpack_require__(20);
 var parseHeaders = __webpack_require__(21);
 var isURLSameOrigin = __webpack_require__(22);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(7);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(23);
 
 module.exports = function xhrAdapter(config) {
@@ -1011,7 +984,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1036,7 +1009,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1048,7 +1021,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1071,6 +1044,33 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -1207,7 +1207,7 @@ var app = new Vue({
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(4);
 var Axios = __webpack_require__(16);
 var defaults = __webpack_require__(3);
 
@@ -1242,9 +1242,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(9);
 axios.CancelToken = __webpack_require__(30);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -1397,7 +1397,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(7);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1832,7 +1832,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(27);
-var isCancel = __webpack_require__(9);
+var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(3);
 var isAbsoluteURL = __webpack_require__(28);
 var combineURLs = __webpack_require__(29);
@@ -1992,7 +1992,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(9);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -12898,13 +12898,13 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(33).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(33).setImmediate))
 
 /***/ }),
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
+var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
@@ -12955,17 +12955,9 @@ exports._unrefActive = exports.active = function(item) {
 
 // setimmediate attaches itself to the global object
 __webpack_require__(34);
-// On some exotic environments, it's not clear which object `setimmeidate` was
-// able to install onto.  Search each possibility in the same order as the
-// `setimmediate` library.
-exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
-                       (typeof global !== "undefined" && global.setImmediate) ||
-                       (this && this.setImmediate);
-exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
-                         (typeof global !== "undefined" && global.clearImmediate) ||
-                         (this && this.clearImmediate);
+exports.setImmediate = setImmediate;
+exports.clearImmediate = clearImmediate;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 34 */
@@ -13158,7 +13150,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(5)))
 
 /***/ }),
 /* 35 */
@@ -16223,7 +16215,7 @@ var render = function() {
       _vm._v(" "),
       _c("a", { attrs: { href: "#" } }, [_vm._v("Settings")]),
       _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Logout")])
+      _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
     ])
   ])
 }
@@ -17472,7 +17464,7 @@ var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(77)("1c7baeb5", content, false, {});
+var update = __webpack_require__(77)("5bb0fe07", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -17631,17 +17623,13 @@ var singletonElement = null
 var singletonCounter = 0
 var isProduction = false
 var noop = function () {}
-var options = null
-var ssrIdKey = 'data-vue-ssr-id'
 
 // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 // tags it will allow on a page
 var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
 
-module.exports = function (parentId, list, _isProduction, _options) {
+module.exports = function (parentId, list, _isProduction) {
   isProduction = _isProduction
-
-  options = _options || {}
 
   var styles = listToStyles(parentId, list)
   addStylesToDom(styles)
@@ -17706,7 +17694,7 @@ function createStyleElement () {
 
 function addStyle (obj /* StyleObjectPart */) {
   var update, remove
-  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
 
   if (styleElement) {
     if (isProduction) {
@@ -17787,9 +17775,6 @@ function applyToTag (styleElement, obj) {
 
   if (media) {
     styleElement.setAttribute('media', media)
-  }
-  if (options.ssrId) {
-    styleElement.setAttribute(ssrIdKey, obj.id)
   }
 
   if (sourceMap) {
