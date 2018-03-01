@@ -2,7 +2,7 @@
     <div v-if="show">
         <shuffle-button></shuffle-button>
         <card-toggle-button></card-toggle-button>
-        <student-card v-for="student in students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+        <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
     </div>
 </template>
 
@@ -34,27 +34,26 @@ export default {
 
     },
 
-    mounted () {
-        /** Transform prop into attribute */
-        this.students = JSON.parse(this.studentsjson);
+    updated () {
+        this.students = this.roster;
     },
 
     data: function () {
         return {
             students: [],
-            show: true,
+            show: false,
             flash: false,
             messages: true,
             errors: [],
         }
     },
 
+    props: ['roster'],
+
     components: {
         FlashCard,
         studentCard
     },
-
-    props: ['studentsjson'],
 
     methods: {
         shuffleCardsHandler: function () {
