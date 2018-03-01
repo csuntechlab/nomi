@@ -15,7 +15,9 @@ export default {
     created () {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
-            this.shuffleCardsHandler();
+            if (this.flash) {
+                this.shuffleCardsHandler();
+            }
         }.bind(this));
 
         this.$eventBus.$on('toggleCards', function () {
@@ -24,6 +26,10 @@ export default {
 
         this.$eventBus.$on('toggleView', function () {
             this.toggleViewHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('updateRecognized', function(id, known) {
+            this.markStudentAsRecognized(id, known);
         }.bind(this));
 
     },
@@ -52,7 +58,18 @@ export default {
 
     methods: {
         shuffleCardsHandler: function () {
-            let currentIndex = this.students.length, temporaryValue, randomIndex;
+            let unKnownStudents = [];
+            let knownStudents = [];
+
+            this.students.forEach((student) => {
+                if(student.recognized == true) {
+                    knownStudents.push(student)
+                } else {
+                    unKnownStudents.push(student)
+                }
+            });
+
+            let currentIndex = unKnownStudents.length, temporaryValue, randomIndex;
 
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
@@ -62,10 +79,27 @@ export default {
                 currentIndex -= 1;
 
                 // And swap it with the current element.
-                temporaryValue = this.students[currentIndex];
-                this.students[currentIndex] = this.students[randomIndex];
-                this.students[randomIndex] = temporaryValue;
+                temporaryValue = unKnownStudents[currentIndex];
+                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                unKnownStudents[randomIndex] = temporaryValue;
             }
+
+            let currentIndexTwo = knownStudents.length, temporaryValueTwo, randomIndexTwo;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndexTwo) {
+
+                // Pick a remaining element...
+                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                currentIndexTwo -= 1;
+
+                // And swap it with the current element.
+                temporaryValueTwo = knownStudents[currentIndexTwo];
+                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                knownStudents[randomIndexTwo] = temporaryValueTwo;
+            }
+
+            this.students = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -78,6 +112,14 @@ export default {
 
         toggleCardsHandler: function () {
             this.flash = !this.flash;
+        },
+
+        markStudentAsRecognized: function(id, known) {
+            this.students.forEach((student) => {
+                if(student.student_id == id) {
+                    student.recognized = known;
+                }
+            });
         }
     },
 

@@ -40,6 +40,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'John Bingus',
                     'email' => 'jbingus@dingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
 
                 [
@@ -47,6 +48,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'Bob Dingus',
                     'email' => 'bdingus@jingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
 
                 [
@@ -54,6 +56,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'Flim Flam',
                     'email' => 'Flim@Flam.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
 
                 [
@@ -61,6 +64,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'Real Person',
                     'email' => 'Real@Person.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
 
                 [
@@ -68,6 +72,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'Some Body',
                     'email' => 'JustTold@Me.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
 
                 [
@@ -75,6 +80,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'The World',
                     'email' => 'is@Mac.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
                 ],
             ];
         }
@@ -107,6 +113,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'image' => $image,
+                'recognized' => false,
             ]);
         }
 
