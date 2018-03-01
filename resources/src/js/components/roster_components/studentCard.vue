@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import GalleryCard from "./galleryCard";
 import FlashCard from "./flashCard";
 

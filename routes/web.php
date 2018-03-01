@@ -19,13 +19,9 @@ Route::post('/', 'LoginController@validateUser');
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
 
-/** Test route for course view */
-Route::get('/classes', 'SPAController@courses')->name('classes')->middleware('auth');
-
 /** Route for logout. */
 Route::get('/logout', function () {
     auth()->logout();
-
     return redirect('/');
 });
 

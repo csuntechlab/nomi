@@ -34,9 +34,11 @@ class SPAControllerTest extends TestCase
     public function index_hits_webservice_if_cache_empty()
     {
         $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever);
-        $this->rosterRetriever
-            ->shouldReceive('getStudentsFromRoster')
+
+        $this->webResourceRetriever
+            ->shouldReceive('getCourses')
             ->once();
+
         $controller->index();
     }
 
@@ -44,13 +46,20 @@ class SPAControllerTest extends TestCase
     public function index_does_not_hit_webservice_if_cache_not_empty()
     {
         $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever);
-        Cache::forever('students', 'students');
+        Cache::forever('courses', 'courses');
+        Cache::forever('students_0', 'students_0');
 
         $this->rosterRetriever
             ->shouldReceive('getStudentsFromRoster')
             ->never();
+
+        $this->webResourceRetriever
+            ->shouldReceive('getCourses')
+            ->never();
+
         $controller->index();
 
-        Cache::forget('students');
+        Cache::forget('courses');
+        Cache::forget('students_0');
     }
 }
