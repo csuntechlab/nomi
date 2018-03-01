@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
@@ -82,17 +81,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'image' => $image,
-                'recognized' => false,
             ]);
-        }
-
-        // Checks to see if a student is recognized by the professor
-        // teaching this class
-        $relationships = DB::table('recognitions')->where('professor_id', auth()->user()->user_id)->pluck('student_id')->toArray();
-        foreach ($sanitizedStudents as &$sanitizedStudent) {
-            if (\in_array($sanitizedStudent['student_id'], $relationships)) {
-                $sanitizedStudent['recognized'] = true;
-            }
         }
 
         return $sanitizedStudents;
