@@ -40,7 +40,6 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'John Bingus',
                     'email' => 'jbingus@dingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
                 ],
 
                 [
@@ -48,7 +47,34 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'display_name' => 'Bob Dingus',
                     'email' => 'bdingus@jingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999997,
+                    'display_name' => 'Flim Flam',
+                    'email' => 'Flim@Flam.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                ],
+
+                [
+                    'student_id' => 999999996,
+                    'display_name' => 'Real Person',
+                    'email' => 'Real@Person.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                ],
+
+                [
+                    'student_id' => 999999995,
+                    'display_name' => 'Some Body',
+                    'email' => 'JustTold@Me.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                ],
+
+                [
+                    'student_id' => 999999994,
+                    'display_name' => 'The World',
+                    'email' => 'is@Mac.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                 ],
             ];
         }
