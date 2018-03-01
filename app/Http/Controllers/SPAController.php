@@ -46,8 +46,11 @@ class SPAController extends Controller
                 })
             );
         }
-
+        
         $json = [$courses, $students];
+        
+        if ($students == [])
+            return view('spa')->with('json', $json)->withErrors(['Failed to retrieve students.']);
 
         return view('spa')->with('json', $json);
     }
