@@ -18446,6 +18446,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -18464,22 +18476,57 @@ var render = function() {
   return _c("li", { staticClass: "list__item" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-xs-9" },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: "/class/" + _vm.course.id + "/" + _vm.course.title
-                }
-              },
-              [_vm._v(_vm._s(_vm.course.title))]
+        _c("div", { staticClass: "col-xs-9" }, [
+          _c(
+            "strong",
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: "/class/" + _vm.course.id + "/" + _vm.course.title
+                  }
+                },
+                [_vm._v(_vm._s(_vm.course.title))]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "class_info" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.course.subject) +
+                " " +
+                _vm._s(_vm.course.catalog_number) +
+                ": #" +
+                _vm._s(_vm.course.id) +
+                "\n                "
             )
-          ],
-          1
-        )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "time_location" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.course.meetings[0].location) +
+                " " +
+                _vm._s(_vm.course.meetings[0].days) +
+                "\n                    " +
+                _vm._s(_vm.course.meetings[0].start_time) +
+                "-" +
+                _vm._s(_vm.course.meetings[0].end_time) +
+                "\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "num_students" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.course.enrollment_count) +
+                " Students\n                "
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -18598,6 +18645,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-matrix",
@@ -18644,21 +18704,56 @@ var render = function() {
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "grid-item panel-content" }, [
                 _c("div", { staticClass: "card-title" }, [
-                  _c(
-                    "div",
-                    { staticClass: "panel-heading" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          attrs: {
-                            to: "/class/" + course.id + "/" + course.title
-                          }
-                        },
-                        [_vm._v(_vm._s(course.title))]
-                      )
-                    ],
-                    1
+                  _c("div", { staticClass: "panel-heading" }, [
+                    _c(
+                      "strong",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: "/class/" + course.id + "/" + course.title
+                            }
+                          },
+                          [_vm._v(_vm._s(course.title))]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "class_info" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.subject) +
+                      " " +
+                      _vm._s(course.catalog_number) +
+                      ": #" +
+                      _vm._s(course.id) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "time_location" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.meetings[0].location) +
+                      " " +
+                      _vm._s(course.meetings[0].days) +
+                      "\n                    " +
+                      _vm._s(course.meetings[0].start_time) +
+                      "-" +
+                      _vm._s(course.meetings[0].end_time) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "num_students" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.enrollment_count) +
+                      " Students\n                "
                   )
                 ])
               ])

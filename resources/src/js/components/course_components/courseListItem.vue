@@ -3,7 +3,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-9">
-                    <router-link :to="'/class/'+course.id+'/'+course.title">{{ course.title }}</router-link>
+                    <strong>
+                        <router-link :to="'/class/'+course.id+'/'+course.title">{{course.title}}</router-link>
+                    </strong>
+                    <div class="class_info">
+                        {{course.subject}} {{course.catalog_number}}: #{{course.id}}
+                    </div>
+                    <div class="time_location">
+                        {{course.meetings[0].location}} {{course.meetings[0].days}}
+                        {{course.meetings[0].start_time}}-{{course.meetings[0].end_time}}
+                    </div>
+                    <div class="num_students">
+                        {{course.enrollment_count}} Students
+                    </div>
                 </div>
             </div>
         </div>
