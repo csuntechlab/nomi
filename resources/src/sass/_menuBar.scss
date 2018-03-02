@@ -1,4 +1,8 @@
 .menu-bar {
 	background-color:#979797;
 	padding:10px;
+	position:fixed;    /*Here's what sticks it*/
+  	bottom:0;          /*to the bottom of the window*/
+  	left:0; 
+  	right:0; 
 }
