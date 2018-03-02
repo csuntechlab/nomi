@@ -1,9 +1,9 @@
 <template>
     <div v-if="cards">
-        <input @click="emitToggleView()" type="image" src="/images/list.png">
+        <input @click="emitToggleView()" type="image" src="/images/2x2grid.png">
     </div>
     <div v-else>
-        <input @click="emitToggleView()" type="image" src="/images/2x2grid.png">
+        <input @click="emitToggleView()" type="image" src="/images/list.png">
     </div>
 </template>
 

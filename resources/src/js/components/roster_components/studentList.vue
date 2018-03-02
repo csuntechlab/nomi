@@ -1,8 +1,7 @@
 <template>
     <div v-if="show">
-        <h1>Student List</h1>
         <ul class="list">
-            <student-list-item v-for="student in students" :key="student.display_name" :student="student"></student-list-item>
+            <student-list-item v-for="student in this.roster" :key="student.display_name" :student="student"></student-list-item>
         </ul>
     </div>
 </template>
@@ -19,15 +18,9 @@
             }.bind(this));
         },
 
-        mounted () {
-            /** Transform prop into attribute */
-            this.students = JSON.parse(this.studentsjson);
-        },
-
         data: function () {
             return {
-                students: [],
-                show: false,
+                show: true,
                 messages: true,
                 errors: [],
             }
@@ -37,7 +30,7 @@
             studentListItem
         },
 
-        props: ['studentsjson'],
+        props: ['roster'],
 
         methods: {
             toggleViewHandler: function () {
