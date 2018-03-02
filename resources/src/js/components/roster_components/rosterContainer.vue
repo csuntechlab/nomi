@@ -2,7 +2,7 @@
     <div>
         <toggle-view-button></toggle-view-button>
         <h1>{{this.title}}</h1>
-        <student-matrix :roster="roster"></student-matrix>
+        <student-matrix :roster="roster" :students="roster"></student-matrix>
         <student-list :roster="roster"></student-list>
     </div>
 </template>

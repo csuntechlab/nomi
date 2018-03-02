@@ -17063,6 +17063,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17072,7 +17079,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
-            this.shuffleCardsHandler();
+            if (this.flash) {
+                this.shuffleCardsHandler();
+            }
         }.bind(this));
 
         this.$eventBus.$on('toggleCards', function () {
@@ -17082,23 +17091,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on('toggleView', function () {
             this.toggleViewHandler();
         }.bind(this));
-    },
-    updated: function updated() {
-        this.students = this.roster;
+
+        this.$eventBus.$on('updateRecognized', function (id, known) {
+            this.markStudentAsRecognized(id, known);
+        }.bind(this));
     },
 
+
+    props: ['roster', 'students'],
 
     data: function data() {
         return {
-            students: [],
             show: false,
             flash: false,
             messages: true,
             errors: []
         };
     },
-
-    props: ['roster'],
 
     components: {
         FlashCard: __WEBPACK_IMPORTED_MODULE_1__flashCard___default.a,
@@ -17107,7 +17116,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         shuffleCardsHandler: function shuffleCardsHandler() {
-            var currentIndex = this.students.length,
+            var unKnownStudents = [];
+            var knownStudents = [];
+
+            this.roster.forEach(function (student) {
+                if (student.recognized === true) {
+                    knownStudents.push(student);
+                } else {
+                    unKnownStudents.push(student);
+                }
+            });
+
+            var currentIndex = unKnownStudents.length,
                 temporaryValue = void 0,
                 randomIndex = void 0;
 
@@ -17119,10 +17139,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 currentIndex -= 1;
 
                 // And swap it with the current element.
-                temporaryValue = this.students[currentIndex];
-                this.students[currentIndex] = this.students[randomIndex];
-                this.students[randomIndex] = temporaryValue;
+                temporaryValue = unKnownStudents[currentIndex];
+                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                unKnownStudents[randomIndex] = temporaryValue;
             }
+
+            var currentIndexTwo = knownStudents.length,
+                temporaryValueTwo = void 0,
+                randomIndexTwo = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndexTwo) {
+
+                // Pick a remaining element...
+                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                currentIndexTwo -= 1;
+
+                // And swap it with the current element.
+                temporaryValueTwo = knownStudents[currentIndexTwo];
+                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                knownStudents[randomIndexTwo] = temporaryValueTwo;
+            }
+
+            this.roster = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -17135,6 +17174,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         toggleCardsHandler: function toggleCardsHandler() {
             this.flash = !this.flash;
+        },
+
+        markStudentAsRecognized: function markStudentAsRecognized(id, known) {
+            this.roster.forEach(function (student) {
+                if (student.student_id === id) {
+                    student.recognized = known;
+                }
+            });
         }
     }
 
@@ -17453,12 +17500,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "flash-card",
 
-    mounted: function mounted() {
-        /** Transform prop into attribute */
-        this.known = this.student.recognized;
-    },
-
-
     data: function data() {
         return {
             known: false,
@@ -17471,26 +17512,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         updateRecognized: function updateRecognized(id) {
-            var _this = this;
-
             var data = new FormData();
             data.append('student_id', id);
 
-            if (this.known) {
-                this.axios.post('http://nameface.test/markAsUnrecognized', data).then(function (response) {
-                    console.log(response);
-                }).catch(function (e) {
-                    _this.errors.push(e);
-                });
-            } else {
-                this.axios.post('http://nameface.test/markAsRecognized', data).then(function (response) {
-                    console.log(response);
-                }).catch(function (e) {
-                    _this.errors.push(e);
-                });
-            }
-
             this.known = !this.known;
+
+            this.$eventBus.$emit('updateRecognized', id, this.known);
         }
     }
 });
@@ -17594,14 +17621,27 @@ var render = function() {
           _vm._v(" "),
           _c("card-toggle-button"),
           _vm._v(" "),
-          _vm._l(this.students, function(student) {
-            return _c("student-card", {
-              key: student.student_id,
-              attrs: { student: student, flash: _vm.flash }
-            })
-          })
+          _vm.flash
+            ? _c(
+                "div",
+                _vm._l(this.roster, function(student) {
+                  return _c("student-card", {
+                    key: student.student_id,
+                    attrs: { student: student, flash: _vm.flash }
+                  })
+                })
+              )
+            : _c(
+                "div",
+                _vm._l(this.students, function(student) {
+                  return _c("student-card", {
+                    key: student.student_id,
+                    attrs: { student: student, flash: _vm.flash }
+                  })
+                })
+              )
         ],
-        2
+        1
       )
     : _vm._e()
 }
@@ -17933,7 +17973,9 @@ var render = function() {
       _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
-      _c("student-matrix", { attrs: { roster: _vm.roster } }),
+      _c("student-matrix", {
+        attrs: { roster: _vm.roster, students: _vm.roster }
+      }),
       _vm._v(" "),
       _c("student-list", { attrs: { roster: _vm.roster } })
     ],
