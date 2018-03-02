@@ -8,17 +8,19 @@
                                     :prevent-white-space="true"
                                     :show-remove-button="false"
                                     :disabled="true"
-                                    :inital-image="imgUrl"
-                                    @init="renderCanvas()"
-                                    @loading-end="toggleCanEdit()">
-                                <img slot="initial" 
-                                    :src="imgUrl"
-                                    @change="hello">
+                                    :disableClickToChoose="false"
+                                    >
+                                <img slot="initial"
+                                    :src="imgUrl">
                             </croppa>
                         </div>
                 </label>
+
+
+
                 <div class="card-title">
                     <div class="panel-heading">
+                        <button class="btn btn-default" @click="renderCanvas">Edit Image</button>
                         <button class="btn btn-default" @click="confirmImage">Confirm</button>
                         <br>
                         {{student.display_name}}
@@ -108,18 +110,15 @@ export default {
             elm.style.width="100%";
             elm.style.height="100%";
             elm.style.borderRadius="50%";
-
-            elm.addEventListener('touchstart', (e) => {
                 // Enable the cropper
-                cropper.disabled = false;
-            });
+            cropper.disabled = false;
+            cropper.chooseFile();
 
-            elm.addEventListener('touchend', (e) => {
-                if (!this.canEdit) {
-                    cropper.chooseFile();
-                    this.isCancelledPressed = true;
-                } 
-            })
+//            elm.addEventListener('touchend', (e) => {
+//                if (!this.canEdit) {
+//                    cropper.chooseFile();
+//                }
+//            })
         },
 
         toggleCanEdit: function() {
@@ -138,18 +137,6 @@ export default {
                     cropper.disabled = false;
                 }
             }
-        },
-
-        toggleCropper: function(){
-            this.myCroppa.disabled(true);
-        },
-
-        hello: function() {
-            console.log("hello");
-        },
-
-        updated() {
-            console.log("This is happening.");
         }
     }
 }

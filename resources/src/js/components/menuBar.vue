@@ -1,5 +1,5 @@
 <template>
-  <nav class="menu-bar"></nav>
+  <nav class="menu-bar grey"></nav>
 
 </template> 
 

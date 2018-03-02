@@ -17634,7 +17634,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar" })
+  return _c("nav", { staticClass: "menu-bar grey" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18706,6 +18706,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -18779,26 +18781,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         renderCanvas: function renderCanvas() {
-            var _this2 = this;
-
             var elm = this.myCroppa.getCanvas();
             var cropper = this.myCroppa;
 
             elm.style.width = "100%";
             elm.style.height = "100%";
             elm.style.borderRadius = "50%";
+            // Enable the cropper
+            cropper.disabled = false;
+            cropper.chooseFile();
 
-            elm.addEventListener('touchstart', function (e) {
-                // Enable the cropper
-                cropper.disabled = false;
-            });
-
-            elm.addEventListener('touchend', function (e) {
-                if (!_this2.canEdit) {
-                    cropper.chooseFile();
-                    _this2.isCancelledPressed = true;
-                }
-            });
+            //            elm.addEventListener('touchend', (e) => {
+            //                if (!this.canEdit) {
+            //                    cropper.chooseFile();
+            //                }
+            //            })
         },
 
         toggleCanEdit: function toggleCanEdit() {
@@ -18817,18 +18814,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     cropper.disabled = false;
                 }
             }
-        },
-
-        toggleCropper: function toggleCropper() {
-            this.myCroppa.disabled(true);
-        },
-
-        hello: function hello() {
-            console.log("hello");
-        },
-
-        updated: function updated() {
-            console.log("This is happening.");
         }
     }
 });
@@ -18862,15 +18847,7 @@ var render = function() {
                       "prevent-white-space": true,
                       "show-remove-button": false,
                       disabled: true,
-                      "inital-image": _vm.imgUrl
-                    },
-                    on: {
-                      init: function($event) {
-                        _vm.renderCanvas()
-                      },
-                      "loading-end": function($event) {
-                        _vm.toggleCanEdit()
-                      }
+                      disableClickToChoose: true
                     },
                     model: {
                       value: _vm.myCroppa,
@@ -18883,7 +18860,6 @@ var render = function() {
                   [
                     _c("img", {
                       attrs: { slot: "initial", src: _vm.imgUrl },
-                      on: { change: _vm.hello },
                       slot: "initial"
                     })
                   ]
@@ -18896,6 +18872,15 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
           _c("div", { staticClass: "panel-heading" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: { click: _vm.renderCanvas }
+              },
+              [_vm._v("Edit Image")]
+            ),
+            _vm._v(" "),
             _c(
               "button",
               {
