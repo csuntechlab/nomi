@@ -16081,6 +16081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -16305,22 +16306,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "metalab-footer menu-bar container" }, [
+  return _c("nav", { staticClass: "menu-bar" }, [
+    _vm._v("\n  Testing\n  "),
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-sx-8 col-sm-10" },
+        { staticClass: "col-xs-10 col-sm-10" },
         [
-          _c("toggle-view-button", { staticClass: "col-sx-2 col-sm-2" }),
+          _c("toggle-view-button", { staticClass: "col-xs-2 col-sm-2" }),
           _vm._v(" "),
-          _c("card-toggle-button", { staticClass: "col-sx-2 col-sm-2" }),
+          _c("card-toggle-button", { staticClass: "col-xs-2 col-sm-2" }),
           _vm._v(" "),
-          _c("shuffle-button", { staticClass: "col-sx-2 col-sm-2" })
+          _c("shuffle-button", { staticClass: "col-xs-2 col-sm-2" })
         ],
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sx-4 col-sm-2" }, [
+      _c("div", { staticClass: "col-xs-2 col-sm-2" }, [
         _c("input", {
           attrs: { type: "image", src: "/images/menu.png" },
           on: {
@@ -16397,6 +16399,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -16644,7 +16647,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "roster-container",
@@ -16663,8 +16665,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("toggle-view-button"),
-      _vm._v(" "),
       _c("student-matrix", { attrs: { studentsjson: _vm.roster } }),
       _vm._v(" "),
       _c("student-list", { attrs: { studentsjson: _vm.roster } })
@@ -17275,22 +17275,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.show
-    ? _c(
-        "div",
-        [
-          _c("shuffle-button"),
-          _vm._v(" "),
-          _c("card-toggle-button"),
-          _vm._v(" "),
+    ? _c("div", [
+        _c(
+          "div",
+          { staticClass: "container" },
           _vm._l(_vm.students, function(student) {
             return _c("student-card", {
               key: student.student_id,
               attrs: { student: student, flash: _vm.flash }
             })
           })
-        ],
-        2
-      )
+        )
+      ])
     : _vm._e()
 }
 var staticRenderFns = []
@@ -17886,7 +17882,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("li", { staticClass: "list__item" }, [
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "hello" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xs-3" }, [
           _c("img", {
@@ -18017,7 +18013,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "roster-container",
@@ -18036,8 +18031,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("toggle-view-button"),
-      _vm._v(" "),
       _c("course-matrix", { attrs: { coursesjson: _vm.coursesjson } }),
       _vm._v(" "),
       _c("course-list", { attrs: { coursesjson: _vm.coursesjson } })

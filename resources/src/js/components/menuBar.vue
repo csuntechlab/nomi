@@ -1,12 +1,12 @@
 <template>
-  <nav class="metalab-footer menu-bar container">
+  <nav class="menu-bar">
     <div class="row">
-      <div class="col-sx-8 col-sm-10">
-        <toggle-view-button class="col-sx-2 col-sm-2"></toggle-view-button>
-        <card-toggle-button class="col-sx-2 col-sm-2"></card-toggle-button>
-        <shuffle-button class="col-sx-2 col-sm-2"></shuffle-button>
+      <div class="col-xs-10 col-sm-10">
+        <toggle-view-button class="col-xs-2 col-sm-2"></toggle-view-button>
+        <card-toggle-button class="col-xs-2 col-sm-2"></card-toggle-button>
+        <shuffle-button class="col-xs-2 col-sm-2"></shuffle-button>
       </div>
-      <div class="col-sx-4 col-sm-2">
+      <div class="col-xs-2 col-sm-2">
         <input type="image" src="/images/menu.png" @click.prevent="openNav()"></input>
       </div>
     </div>

@@ -48,7 +48,9 @@
 
 .menu-bar {
   background-color: #979797;
-  padding-top: 25px;
+  padding: 10px;
+  min-height: 100%;
+  margin-bottom: -50px;
 }
 
 .sidenav {
@@ -83,7 +85,7 @@
 .sidenav .closebtn {
   position: absolute;
   bottom: 18px;
-  right: 57px;
+  right: 52px;
   font-size: 30px;
   margin-left: 50px;
 }

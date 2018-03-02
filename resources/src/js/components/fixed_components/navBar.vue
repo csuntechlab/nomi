@@ -5,6 +5,7 @@
        <a href="www.csun.edu" class="primary-nav__sub-brand">Nameface</a>
     </div>
 </nav>
+</div>
 
 </template> 
 

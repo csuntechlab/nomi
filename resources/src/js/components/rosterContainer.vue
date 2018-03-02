@@ -1,6 +1,5 @@
 <template>
     <div>
-        <toggle-view-button></toggle-view-button>
         <student-matrix :studentsjson="roster"></student-matrix>
         <student-list :studentsjson="roster"></student-list>
     </div>
