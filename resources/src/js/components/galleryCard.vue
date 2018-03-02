@@ -3,34 +3,24 @@
         <div class="panel">
             <div class="grid-item panel-content">
                 <label class="grid-image" :for="student.display_name">
-
-                    <div >
-                        <div style="width:100%; z-index:1000000;">
+                        <div style="width:100%">
                             <croppa v-model="myCroppa"
-
                                     :prevent-white-space="true"
                                     :show-remove-button="false"
                                     :disabled="true"
+                                    :inital-image="imgUrl"
                                     @init="renderCanvas()"
-
-
-                            >
-                                <img slot="initial" :src="imgUrl" />
-                                <!--<input class="hide" :id="student.display_name" @change="changePhoto($event, student.email)" type="file" name="photo" accept="image/*">-->
-                                <!--<img :id="student.display_name+'-img'" :src="student.image" class="grid-image" name="photo" accept="image/*">-->
+                                    @loading-end="toggleCanEdit()">
+                                <img slot="initial" 
+                                    :src="imgUrl"
+                                    @change="hello">
                             </croppa>
                         </div>
-                        <button class="btn btn-default" @click="confirmImage">I am here</button>
-
-
-                    </div>
-
-                    <!--<div v-else>-->
-                    <!--<img @click="toggleCropper" class="grid-image img&#45;&#45;circle" :src="imgUrl" >-->
-                    <!--</div>-->
                 </label>
                 <div class="card-title">
                     <div class="panel-heading">
+                        <button class="btn btn-default" @click="confirmImage">Confirm</button>
+                        <br>
                         {{student.display_name}}
                     </div>
                 </div>
@@ -51,11 +41,15 @@ export default {
             errors: [],
             myCroppa: null,
             imgUrl: this.student.image,
-            enabled: true
+            enabled: true,
+            canEdit: false,
+            initalImage: null,
+            firstLoad: true,
+            isCancelledPressed: false
         }
     },
 
-    props: [ 'student'  ],
+    props: ['student'],
 
     methods: {
 		changePhoto: function(event, email) {
@@ -104,31 +98,59 @@ export default {
             }
 
             this.imgUrl = url;
-
-            this.enabled = !this.enabled;
+            this.canEdit = false;
         },
 
         renderCanvas: function() {
-            console.log(this.myCroppa.getCanvas());
             let elm = this.myCroppa.getCanvas();
-            let cropper1 = this.myCroppa;
+            let cropper = this.myCroppa;
+
             elm.style.width="100%";
             elm.style.height="100%";
-            elm.addEventListener('click', (e) => {
-                cropper1.disabled = !cropper1.disabled;
-                cropper1.chooseFile();
+            elm.style.borderRadius="50%";
+
+            elm.addEventListener('touchstart', (e) => {
+                // Enable the cropper
+                cropper.disabled = false;
             });
-//            elm.addClass="img-circle";
-            //this.myCroppa.disabled="true";
-            console.log(this.myCroppa.getCanvas());
+
+            elm.addEventListener('touchend', (e) => {
+                if (!this.canEdit) {
+                    cropper.chooseFile();
+                    this.isCancelledPressed = true;
+                } 
+            })
+        },
+
+        toggleCanEdit: function() {
+            if (this.firstLoad) {
+                this.firstLoad = false;
+            } else {
+                let cropper = this.myCroppa;
+                this.initalImage = this.myCroppa.generateDataUrl();
+                this.isCancelledPressed = false;
+                // console.log(this.initalImage == this.imgUrl);
+                if (this.initalImage == this.imgUrl) {
+                    this.canEdit = false;
+                    cropper.disabled = true;
+                } else {
+                    this.canEdit = true;
+                    cropper.disabled = false;
+                }
+            }
         },
 
         toggleCropper: function(){
             this.myCroppa.disabled(true);
+        },
+
+        hello: function() {
+            console.log("hello");
+        },
+
+        updated() {
+            console.log("This is happening.");
         }
-
-
-
     }
 }
 </script>

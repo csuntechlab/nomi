@@ -8,7 +8,7 @@
 
 <script>
 import studentCard from './studentCard.vue';
-import FlashCard from "./flashCard";
+import flashCard from "./flashCard";
 export default {
     name: "student-matrix",
 
@@ -44,7 +44,7 @@ export default {
     },
 
     components: {
-        FlashCard,
+        flashCard,
         studentCard
     },
 

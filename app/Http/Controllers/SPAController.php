@@ -40,6 +40,7 @@ class SPAController extends Controller
         if ($students == null) {
             return view('students')->with('students', $students)->withErrors(['Failed to retrieve students.']);
         }
+
         return view('students')->with('students', $students);
     }
 
