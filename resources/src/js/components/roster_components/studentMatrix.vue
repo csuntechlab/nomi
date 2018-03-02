@@ -2,13 +2,20 @@
     <div v-if="show">
         <shuffle-button></shuffle-button>
         <card-toggle-button></card-toggle-button>
-        <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+
+        <div v-if="flash">
+            <student-card v-for="student in this.roster" :key="student.student_id" :student="student" :flash="flash"></student-card>
+        </div>
+
+        <div v-else>
+            <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+        </div>
     </div>
 </template>
 
 <script>
 import studentCard from './studentCard.vue';
-import FlashCard from "./flashCard";
+import FlashCard from './flashCard';
 export default {
     name: "student-matrix",
 
@@ -34,21 +41,16 @@ export default {
 
     },
 
-    updated () {
-        this.students = this.roster;
-    },
+    props: ['roster', 'students'],
 
     data: function () {
         return {
-            students: [],
             show: false,
             flash: false,
             messages: true,
             errors: [],
         }
     },
-
-    props: ['roster'],
 
     components: {
         FlashCard,
@@ -60,8 +62,8 @@ export default {
             let unKnownStudents = [];
             let knownStudents = [];
 
-            this.students.forEach((student) => {
-                if(student.recognized == true) {
+            this.roster.forEach((student) => {
+                if(student.recognized === true) {
                     knownStudents.push(student)
                 } else {
                     unKnownStudents.push(student)
@@ -98,7 +100,7 @@ export default {
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.students = unKnownStudents.concat(knownStudents);
+            this.roster = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -114,8 +116,8 @@ export default {
         },
 
         markStudentAsRecognized: function(id, known) {
-            this.students.forEach((student) => {
-                if(student.student_id == id) {
+            this.roster.forEach((student) => {
+                if(student.student_id === id) {
                     student.recognized = known;
                 }
             });

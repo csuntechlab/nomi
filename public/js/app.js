@@ -17044,6 +17044,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17070,22 +17077,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.markStudentAsRecognized(id, known);
         }.bind(this));
     },
-    updated: function updated() {
-        this.students = this.roster;
-    },
 
+
+    props: ['roster', 'students'],
 
     data: function data() {
         return {
-            students: [],
             show: false,
             flash: false,
             messages: true,
             errors: []
         };
     },
-
-    props: ['roster'],
 
     components: {
         FlashCard: __WEBPACK_IMPORTED_MODULE_1__flashCard___default.a,
@@ -17097,8 +17100,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var unKnownStudents = [];
             var knownStudents = [];
 
-            this.students.forEach(function (student) {
-                if (student.recognized == true) {
+            this.roster.forEach(function (student) {
+                if (student.recognized === true) {
                     knownStudents.push(student);
                 } else {
                     unKnownStudents.push(student);
@@ -17139,7 +17142,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.students = unKnownStudents.concat(knownStudents);
+            this.roster = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -17155,8 +17158,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         markStudentAsRecognized: function markStudentAsRecognized(id, known) {
-            this.students.forEach(function (student) {
-                if (student.student_id == id) {
+            this.roster.forEach(function (student) {
+                if (student.student_id === id) {
                     student.recognized = known;
                 }
             });
@@ -17599,14 +17602,27 @@ var render = function() {
           _vm._v(" "),
           _c("card-toggle-button"),
           _vm._v(" "),
-          _vm._l(this.students, function(student) {
-            return _c("student-card", {
-              key: student.student_id,
-              attrs: { student: student, flash: _vm.flash }
-            })
-          })
+          _vm.flash
+            ? _c(
+                "div",
+                _vm._l(this.roster, function(student) {
+                  return _c("student-card", {
+                    key: student.student_id,
+                    attrs: { student: student, flash: _vm.flash }
+                  })
+                })
+              )
+            : _c(
+                "div",
+                _vm._l(this.students, function(student) {
+                  return _c("student-card", {
+                    key: student.student_id,
+                    attrs: { student: student, flash: _vm.flash }
+                  })
+                })
+              )
         ],
-        2
+        1
       )
     : _vm._e()
 }
@@ -17938,7 +17954,9 @@ var render = function() {
       _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
-      _c("student-matrix", { attrs: { roster: _vm.roster } }),
+      _c("student-matrix", {
+        attrs: { roster: _vm.roster, students: _vm.roster }
+      }),
       _vm._v(" "),
       _c("student-list", { attrs: { roster: _vm.roster } })
     ],
