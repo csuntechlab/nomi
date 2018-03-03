@@ -3,20 +3,17 @@
         <div class="panel">
             <div class="grid-item panel-content">
                 <label class="grid-image" :for="student.display_name">
-                        <div style="width:100%">
+
                             <croppa v-model="myCroppa"
                                     :prevent-white-space="true"
                                     :show-remove-button="false"
                                     :disabled="true"
-                                    :disableClickToChoose="false"
+                                    :quality="2"
                                     >
                                 <img slot="initial"
                                     :src="imgUrl">
                             </croppa>
-                        </div>
                 </label>
-
-
 
                 <div class="card-title">
                     <div class="panel-heading">

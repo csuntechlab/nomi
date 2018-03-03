@@ -18708,6 +18708,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -18837,67 +18838,62 @@ var render = function() {
           },
           [
             _c(
-              "div",
-              { staticStyle: { width: "100%" } },
-              [
-                _c(
-                  "croppa",
-                  {
-                    attrs: {
-                      "prevent-white-space": true,
-                      "show-remove-button": false,
-                      disabled: true,
-                      disableClickToChoose: true
-                    },
-                    model: {
-                      value: _vm.myCroppa,
-                      callback: function($$v) {
-                        _vm.myCroppa = $$v
-                      },
-                      expression: "myCroppa"
-                    }
+              "croppa",
+              {
+                attrs: {
+                  "prevent-white-space": true,
+                  "show-remove-button": false,
+                  disabled: true,
+                  disableClickToChoose: false,
+                  quality: 2
+                },
+                model: {
+                  value: _vm.myCroppa,
+                  callback: function($$v) {
+                    _vm.myCroppa = $$v
                   },
-                  [
-                    _c("img", {
-                      attrs: { slot: "initial", src: _vm.imgUrl },
-                      slot: "initial"
-                    })
-                  ]
+                  expression: "myCroppa"
+                }
+              },
+              [
+                _c("img", {
+                  attrs: { slot: "initial", src: _vm.imgUrl },
+                  slot: "initial"
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-title" }, [
+              _c("div", { staticClass: "panel-heading" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    on: { click: _vm.renderCanvas }
+                  },
+                  [_vm._v("Edit Image")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-default",
+                    on: { click: _vm.confirmImage }
+                  },
+                  [_vm._v("Confirm")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.student.display_name) +
+                    "\n                    "
                 )
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-title" }, [
-          _c("div", { staticClass: "panel-heading" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: { click: _vm.renderCanvas }
-              },
-              [_vm._v("Edit Image")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: { click: _vm.confirmImage }
-              },
-              [_vm._v("Confirm")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.display_name) +
-                "\n                "
-            )
-          ])
-        ])
+              ])
+            ])
+          ],
+          1
+        )
       ])
     ])
   ])
