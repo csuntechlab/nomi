@@ -15,9 +15,9 @@
 </template> 
 
 <script>
-import shuffleButton from './shuffleButton.vue';
-import cardToggleButton from './cardToggleButton.vue';
-import toggleViewButton from './toggleViewButton.vue';
+import shuffleButton from './roster_components/shuffleButton.vue';
+import cardToggleButton from './roster_components/cardToggleButton.vue';
+import toggleViewButton from './fixed_components/toggleViewButton.vue';
 
 export default {
 	components: {
