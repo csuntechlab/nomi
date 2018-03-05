@@ -32,24 +32,4 @@ class RosterControllerTest extends TestCase
         $response = $controller->getStudents('2173', '0');
         $this->assertEquals(['a', 'b', 'c'], $response);
     }
-
-    /**
-     * @test
-     */
-    public function can_shuffle_students()
-    {
-        $controller = new RosterController($this->retriever);
-
-        $this->retriever
-            ->shouldReceive('getStudentsFromRoster')
-            ->once()
-            ->with('2173', '0')
-            ->andReturn([['a', 'recognized' => false], ['b', 'recognized' => false], ['c', 'recognized' => false]]);
-        $response = $controller->shuffleStudents('2173', '0');
-        $this->assertTrue(
-            \in_array(['a', 'recognized' => false], $response) &&
-            \in_array(['b', 'recognized' => false], $response)
-        ) &&
-            \in_array(['c', 'recognized' => false], $response);
-    }
 }
