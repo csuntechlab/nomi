@@ -5,11 +5,10 @@
                 <label class="grid-image" :for="student.display_name">
 
                             <croppa v-model="myCroppa"
-                                    :prevent-white-space="true"
+                                    :prevent-white-space="false"
                                     :show-remove-button="false"
                                     :disabled="true"
                                     :quality="2"
-                                    :supportTouch="true"
                                     @init="styleCanvas()"
                                     >
                                 <img slot="initial"
@@ -23,7 +22,7 @@
                         <br>
                         <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
                         <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
-                        <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
+                        <button class="btn btn-default" @click="confirmImage(student.email)"><i class="fa fa-check fa-4x"></i></button>
                     </div>
                 </div>
             </div>
@@ -91,16 +90,34 @@ export default {
                 });
 		},
 
-        confirmImage: function(){
+        confirmImage: function(email){
             let url = this.myCroppa.generateDataUrl();
+            let newFile = this.myCroppa.getChosenFile();
 
-            if (!url) {
+
+            if (!url)
+            {
                 alert('no image');
                 return;
             }
 
             this.imgUrl = url;
-            this.canEdit = false;
+
+            let data = new FormData();
+            data.append('media', newFile);
+            data.append('email', email);
+            console.log(email);
+            this.axios.post('http://nameface.test/api/upload', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
         },
 
         styleCanvas: function() {

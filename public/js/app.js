@@ -18707,7 +18707,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -18768,8 +18767,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
 
-        confirmImage: function confirmImage() {
+        confirmImage: function confirmImage(email) {
+            var _this2 = this;
+
             var url = this.myCroppa.generateDataUrl();
+            var newFile = this.myCroppa.getChosenFile();
 
             if (!url) {
                 alert('no image');
@@ -18777,7 +18779,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             this.imgUrl = url;
-            this.canEdit = false;
+
+            var data = new FormData();
+            data.append('media', newFile);
+            data.append('email', email);
+            console.log(email);
+            this.axios.post('http://nameface.test/api/upload', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (e) {
+                _this2.errors.push(e);
+            });
         },
 
         styleCanvas: function styleCanvas() {
@@ -18824,11 +18839,10 @@ var render = function() {
               "croppa",
               {
                 attrs: {
-                  "prevent-white-space": true,
+                  "prevent-white-space": false,
                   "show-remove-button": false,
                   disabled: true,
-                  quality: 2,
-                  supportTouch: true
+                  quality: 2
                 },
                 on: {
                   init: function($event) {
@@ -18882,7 +18896,11 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-default",
-                on: { click: _vm.confirmImage }
+                on: {
+                  click: function($event) {
+                    _vm.confirmImage(_vm.student.email)
+                  }
+                }
               },
               [_c("i", { staticClass: "fa fa-check fa-4x" })]
             )
