@@ -2,12 +2,12 @@ import VueRouter from 'vue-router';
 
 let routes = [
     {
-        path: '/home',
+        path: 'home',
         component: require('./views/home.vue')
     },
 
     {
-        path: '/class/:id/:title',
+        path: 'class/:id/:title',
         component: require('./views/class.vue')
     },
 ];
