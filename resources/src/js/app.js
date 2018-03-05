@@ -20,6 +20,9 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
+Vue.component('circle2', require('vue-loading-spinner/src/components/Circle2'));
+Vue.component('loading-button', require('./components/loadingButton'));
+
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 const app = new Vue({
