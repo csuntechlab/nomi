@@ -18708,7 +18708,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -18781,40 +18780,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.canEdit = false;
         },
 
-        renderCanvas: function renderCanvas() {
+        styleCanvas: function styleCanvas() {
             var elm = this.myCroppa.getCanvas();
-            var cropper = this.myCroppa;
 
             elm.style.width = "100%";
             elm.style.height = "100%";
             elm.style.borderRadius = "50%";
-            // Enable the cropper
-            cropper.disabled = false;
-            cropper.chooseFile();
-
-            //            elm.addEventListener('touchend', (e) => {
-            //                if (!this.canEdit) {
-            //                    cropper.chooseFile();
-            //                }
-            //            })
         },
 
-        toggleCanEdit: function toggleCanEdit() {
-            if (this.firstLoad) {
-                this.firstLoad = false;
-            } else {
-                var cropper = this.myCroppa;
-                this.initalImage = this.myCroppa.generateDataUrl();
-                this.isCancelledPressed = false;
-                // console.log(this.initalImage == this.imgUrl);
-                if (this.initalImage == this.imgUrl) {
-                    this.canEdit = false;
-                    cropper.disabled = true;
-                } else {
-                    this.canEdit = true;
-                    cropper.disabled = false;
-                }
-            }
+        toggleCropper: function toggleCropper() {
+
+            var cropper = this.myCroppa;
+
+            cropper.disabled = false;
+        },
+
+        uploadFile: function uploadFile() {
+            var cropper = this.myCroppa;
+            cropper.chooseFile();
         }
     }
 });
@@ -18844,8 +18827,13 @@ var render = function() {
                   "prevent-white-space": true,
                   "show-remove-button": false,
                   disabled: true,
-                  disableClickToChoose: false,
-                  quality: 2
+                  quality: 2,
+                  supportTouch: true
+                },
+                on: {
+                  init: function($event) {
+                    _vm.styleCanvas()
+                  }
                 },
                 model: {
                   value: _vm.myCroppa,
@@ -18861,39 +18849,45 @@ var render = function() {
                   slot: "initial"
                 })
               ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-title" }, [
-              _c("div", { staticClass: "panel-heading" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    on: { click: _vm.renderCanvas }
-                  },
-                  [_vm._v("Edit Image")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-default",
-                    on: { click: _vm.confirmImage }
-                  },
-                  [_vm._v("Confirm")]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(_vm.student.display_name) +
-                    "\n                    "
-                )
-              ])
-            ])
+            )
           ],
           1
-        )
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-title" }, [
+          _c("div", { staticClass: "panel-heading align-center" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.student.display_name) +
+                "\n                    "
+            ),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: { click: _vm.toggleCropper }
+              },
+              [_c("i", { staticClass: "fa fa-edit fa-4x" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
+              [_c("i", { staticClass: "fa fa-camera fa-4x" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: { click: _vm.confirmImage }
+              },
+              [_c("i", { staticClass: "fa fa-check fa-4x" })]
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -19927,6 +19921,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-matrix",
@@ -19971,26 +19967,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.show
-    ? _c(
-        "div",
-        _vm._l(this.courses, function(course) {
-          return _c("div", { staticClass: "col-xs-6" }, [
-            _c("div", { staticClass: "panel" }, [
-              _c("div", { staticClass: "grid-item panel-content" }, [
-                _c("div", { staticClass: "card-title" }, [
-                  _c("div", { staticClass: "panel-heading" }, [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(course.title) +
-                        "\n                    "
-                    )
+    ? _c("div", [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(this.courses, function(course) {
+            return _c("div", { staticClass: "col-lg-4 col-md-4 col-xs-6" }, [
+              _c("div", { staticClass: "panel" }, [
+                _c("div", { staticClass: "grid-item panel-content" }, [
+                  _c("div", { staticClass: "card-title" }, [
+                    _c("div", { staticClass: "panel-heading" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(course.title) +
+                          "\n                        "
+                      )
+                    ])
                   ])
                 ])
               ])
             ])
-          ])
-        })
-      )
+          })
+        )
+      ])
     : _vm._e()
 }
 var staticRenderFns = []

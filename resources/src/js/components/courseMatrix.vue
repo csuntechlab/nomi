@@ -1,12 +1,14 @@
 <template>
     <div v-if="show">
         <!--for loop through array objects-->
-        <div class="col-xs-6" v-for="course in this.courses">
-            <div class="panel">
-                <div class="grid-item panel-content">
-                    <div class="card-title">
-                        <div class="panel-heading">
-                            {{course.title}}
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-6" v-for="course in this.courses">
+                <div class="panel">
+                    <div class="grid-item panel-content">
+                        <div class="card-title">
+                            <div class="panel-heading">
+                                {{course.title}}
+                            </div>
                         </div>
                     </div>
                 </div>

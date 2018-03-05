@@ -9,6 +9,8 @@
                                     :show-remove-button="false"
                                     :disabled="true"
                                     :quality="2"
+                                    :supportTouch="true"
+                                    @init="styleCanvas()"
                                     >
                                 <img slot="initial"
                                     :src="imgUrl">
@@ -16,11 +18,12 @@
                 </label>
 
                 <div class="card-title">
-                    <div class="panel-heading">
-                        <button class="btn btn-default" @click="renderCanvas">Edit Image</button>
-                        <button class="btn btn-default" @click="confirmImage">Confirm</button>
-                        <br>
+                    <div class="panel-heading align-center">
                         {{student.display_name}}
+                        <br>
+                        <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
+                        <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                        <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
                     </div>
                 </div>
             </div>
@@ -100,40 +103,24 @@ export default {
             this.canEdit = false;
         },
 
-        renderCanvas: function() {
+        styleCanvas: function() {
             let elm = this.myCroppa.getCanvas();
-            let cropper = this.myCroppa;
 
             elm.style.width="100%";
             elm.style.height="100%";
             elm.style.borderRadius="50%";
-                // Enable the cropper
-            cropper.disabled = false;
-            cropper.chooseFile();
-
-//            elm.addEventListener('touchend', (e) => {
-//                if (!this.canEdit) {
-//                    cropper.chooseFile();
-//                }
-//            })
         },
 
-        toggleCanEdit: function() {
-            if (this.firstLoad) {
-                this.firstLoad = false;
-            } else {
-                let cropper = this.myCroppa;
-                this.initalImage = this.myCroppa.generateDataUrl();
-                this.isCancelledPressed = false;
-                // console.log(this.initalImage == this.imgUrl);
-                if (this.initalImage == this.imgUrl) {
-                    this.canEdit = false;
-                    cropper.disabled = true;
-                } else {
-                    this.canEdit = true;
-                    cropper.disabled = false;
-                }
-            }
+        toggleCropper: function() {
+
+            let cropper = this.myCroppa;
+
+            cropper.disabled = false;
+        },
+
+        uploadFile: function() {
+            let cropper = this.myCroppa;
+            cropper.chooseFile();
         }
     }
 }
