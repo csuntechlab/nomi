@@ -22,6 +22,7 @@
     "vue-router": "^3.0.1"
   },
   "dependencies": {
-    "vue-axios": "latest"
+    "vue-axios": "latest",
+    "vue-croppa": "^1.2.0"
   }
 }
