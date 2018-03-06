@@ -5,13 +5,13 @@
                 <div v-if="known">
                     <div class="card-title">
                         <div class="panel-heading">
-                            {{student.display_name}}
+                            {{display_name}}
                         </div>
                     </div>
                 </div>
                 <div v-else>
-                    <label :for="student.display_name">
-                        <img :id="student.display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
+                    <label :for="display_name">
+                        <img :id="display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
                     </label>
                 </div>
             </div>
@@ -34,6 +34,10 @@ export default {
     },
 
     props: [ 'student' ],
+
+    computed: {
+        display_name: function() { return this.student.first_name + " " + this.student.last_name; }
+    },
 
     methods: {
 		updateRecognized: function(id) {

@@ -1,7 +1,7 @@
 <template>
     <div v-if="show">
         <ul class="list">
-            <student-list-item v-for="student in this.roster" :key="student.display_name" :student="student"></student-list-item>
+            <student-list-item v-for="student in sortRoster(this.roster)" :key="student.last_name" :student="student"></student-list-item>
         </ul>
     </div>
 </template>
@@ -32,9 +32,24 @@
 
         props: ['roster'],
 
+        computed: {
+            sortedRoster: () => {
+                return this.roster;
+                return this.roster.sort((a,b) => {
+                    return a.last_name.localeCompare(b.last_name);
+                });
+            }
+        },
+
         methods: {
             toggleViewHandler: function () {
                 this.show = !this.show;
+            },
+
+            sortRoster: (roster) => {
+                return roster.sort((a,b) => {
+                    return a.last_name.localeCompare(b.last_name);
+                });
             }
         }
     }

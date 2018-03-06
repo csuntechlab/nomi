@@ -37,7 +37,8 @@ class RosterRetrievalService implements RosterRetrievalContract
             return [
                 [
                     'student_id' => 999999999,
-                    'display_name' => 'John Bingus',
+                    'first_name' => 'John',
+                    'last_name' => 'Bingus',
                     'email' => 'jbingus@dingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -45,7 +46,8 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999998,
-                    'display_name' => 'Bob Dingus',
+                    'first_name' => 'Bob',
+                    'last_name' => 'Dingus',
                     'email' => 'bdingus@jingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -53,7 +55,8 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999997,
-                    'display_name' => 'Flim Flam',
+                    'first_name' => 'Flim',
+                    'last_name' => 'Flam',
                     'email' => 'Flim@Flam.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -61,7 +64,8 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999996,
-                    'display_name' => 'Real Person',
+                    'first_name' => 'Real',
+                    'last_name' => 'Person',
                     'email' => 'Real@Person.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -69,7 +73,8 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999995,
-                    'display_name' => 'Some Body',
+                    'first_name' => 'Some',
+                    'last_name' => 'Body',
                     'email' => 'JustTold@Me.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -77,8 +82,9 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999994,
-                    'display_name' => 'The World',
-                    'email' => 'is@Mac.com',
+                    'first_name' => 'The',
+                    'last_name' => 'World',
+                    'email' => 'is@gonnaroll.me',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
                 ],
@@ -110,7 +116,8 @@ class RosterRetrievalService implements RosterRetrievalContract
             $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)->encode('data-url');
             \array_push($sanitizedStudents, [
                 'student_id' => $unsanitizedStudent->members_id,
-                'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
+                'first_name' => $unsanitizedStudent->first_name,
+                'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'image' => $image,
                 'recognized' => false,

@@ -4,11 +4,11 @@
         <card-toggle-button></card-toggle-button>
 
         <div v-if="flash">
-            <student-card v-for="student in this.roster" :key="student.student_id" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.roster" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
 
         <div v-else>
-            <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.students" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
     </div>
 </template>
