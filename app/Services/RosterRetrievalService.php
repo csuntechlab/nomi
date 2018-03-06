@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
@@ -51,6 +50,38 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
                 ],
+
+                [
+                    'student_id' => 999999997,
+                    'display_name' => 'Flim Flam',
+                    'email' => 'Flim@Flam.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999996,
+                    'display_name' => 'Real Person',
+                    'email' => 'Real@Person.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999995,
+                    'display_name' => 'Some Body',
+                    'email' => 'JustTold@Me.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999994,
+                    'display_name' => 'The World',
+                    'email' => 'is@Mac.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
             ];
         }
 
@@ -84,15 +115,6 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'image' => $image,
                 'recognized' => false,
             ]);
-        }
-
-        // Checks to see if a student is recognized by the professor
-        // teaching this class
-        $relationships = DB::table('recognitions')->where('professor_id', auth()->user()->user_id)->pluck('student_id')->toArray();
-        foreach ($sanitizedStudents as &$sanitizedStudent) {
-            if (\in_array($sanitizedStudent['student_id'], $relationships)) {
-                $sanitizedStudent['recognized'] = true;
-            }
         }
 
         return $sanitizedStudents;

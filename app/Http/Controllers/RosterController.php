@@ -19,19 +19,4 @@ class RosterController extends Controller
     {
         return $this->rosterRetriever->getStudentsFromRoster($term, $course);
     }
-
-    public function shuffleStudents($term, $course)
-    {
-        $students = $this->getStudents($term, $course);
-        $recognizedStudents = \array_filter($students, function ($student) {
-            return $student['recognized'] == true;
-        });
-        $unrecognizedStudents = \array_filter($students, function ($student) {
-            return $student['recognized'] == false;
-        });
-        \shuffle($recognizedStudents);
-        \shuffle($unrecognizedStudents);
-
-        return \array_merge($unrecognizedStudents, $recognizedStudents);
-    }
 }

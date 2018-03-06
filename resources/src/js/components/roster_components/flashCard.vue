@@ -25,11 +25,6 @@ import axios from 'axios';
 export default {
     name: "flash-card",
 
-    mounted () {
-        /** Transform prop into attribute */
-        this.known = this.student.recognized;
-    },
-
     data: function () {
         return {
             known: false,
@@ -45,25 +40,9 @@ export default {
             let data = new FormData();
             data.append('student_id', id);
 
-            if(this.known) {
-                this.axios.post('http://nameface.test/markAsUnrecognized', data)
-                    .then(response => {
-                        console.log(response);
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
-            } else {
-                this.axios.post('http://nameface.test/markAsRecognized', data)
-                    .then(response => {
-                        console.log(response);
-                    })
-                    .catch(e => {
-                        this.errors.push(e)
-                    });
-            }
-
             this.known = !this.known;
+
+            this.$eventBus.$emit('updateRecognized', id, this.known);
         }
     }
 }

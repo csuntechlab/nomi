@@ -1,10 +1,12 @@
 <template>
-    <div id="mySidenav" class="sidenav">
-        <a href="" class="closebtn" @click.prevent="closeNav()">&times;</a>
-        <a href="#">Profile</a>
-        <a href="#">Game</a>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+    <div>
+        <div id="mySidenav" class="sidenav">
+            <a href="" class="closebtn" @click.prevent="closeNav()">&times;</a>
+            <a href="#">Profile</a>
+            <a href="#">Game</a>
+            <a href="#">Settings</a>
+            <a href="/logout">Logout</a>
+        </div>
     </div>
 </template>
 
