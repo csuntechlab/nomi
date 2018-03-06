@@ -4,11 +4,11 @@
         <card-toggle-button></card-toggle-button>
 
         <div v-if="flash">
-            <student-card v-for="student in this.roster" :key="student.last_name" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.students" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
 
         <div v-else>
-            <student-card v-for="student in this.students" :key="student.last_name" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.roster" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
     </div>
 </template>
@@ -22,9 +22,8 @@ export default {
     created () {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
-            if (this.flash) {
+            if (this.flash)
                 this.shuffleCardsHandler();
-            }
         }.bind(this));
 
         this.$eventBus.$on('toggleCards', function () {
@@ -39,6 +38,9 @@ export default {
             this.markStudentAsRecognized(id, known);
         }.bind(this));
 
+        this.$eventBus.$on('sortRoster', function () {
+            this.sortRosterHandler();
+        }.bind(this));
     },
 
     props: ['roster', 'students'],
@@ -49,6 +51,7 @@ export default {
             flash: false,
             messages: true,
             errors: [],
+            lastname: true,
         }
     },
 
@@ -62,7 +65,7 @@ export default {
             let unKnownStudents = [];
             let knownStudents = [];
 
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.recognized === true) {
                     knownStudents.push(student)
                 } else {
@@ -100,7 +103,7 @@ export default {
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.roster = unKnownStudents.concat(knownStudents);
+            this.students = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -116,14 +119,29 @@ export default {
         },
 
         markStudentAsRecognized: function(id, known) {
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.student_id === id) {
                     student.recognized = known;
                 }
             });
+        },
+
+        sortRosterHandler: function () {
+            function sortedRoster (self) {
+                if (self.lastname === true) {
+                    return self.roster.sort((a, b) => {
+                        return a.last_name.localeCompare(b.last_name);
+                    });
+                } else {
+                    return self.roster.sort((a, b) => {
+                        return a.first_name.localeCompare(b.first_name);
+                    });
+                }
+            }
+
+            this.lastname = !this.lastname;
+            this.roster = sortedRoster(this);
         }
     },
-
 }
-
 </script>

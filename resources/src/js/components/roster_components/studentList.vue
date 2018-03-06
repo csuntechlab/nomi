@@ -1,6 +1,5 @@
 <template>
     <div v-if="show">
-        <button @click="sortRoster">Toggle Sorting</button>
         <ul class="list">
             <student-list-item v-for="student in this.roster" :key="student.last_name" :student="student"></student-list-item>
         </ul>
@@ -16,6 +15,10 @@
             /** Creates listener for toggleView event, applying method on event. */
             this.$eventBus.$on('toggleView', function () {
                 this.toggleViewHandler();
+            }.bind(this));
+
+            this.$eventBus.$on('sortRoster', function () {
+                this.sortRosterHandler();
             }.bind(this));
         },
 
@@ -39,7 +42,7 @@
                 this.show = !this.show;
             },
 
-            sortRoster: function () {
+            sortRosterHandler: function () {
                 function sortedRoster (self) {
                     if (self.lastname === true) {
                         return self.roster.sort((a, b) => {

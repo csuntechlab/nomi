@@ -124,6 +124,10 @@ class RosterRetrievalService implements RosterRetrievalContract
             ]);
         }
 
+        \usort($sanitizedStudents, function ($a, $b) {
+            return \strcmp($a['last_name'], $b['last_name']);
+        });
+
         return $sanitizedStudents;
     }
 }

@@ -19,6 +19,7 @@ Vue.component('toggle-view-button', require('./components/fixed_components/toggl
 Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
 Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
+Vue.component('sort-toggle-button', require('./components/roster_components/sortToggleButton.vue'));
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
