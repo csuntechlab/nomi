@@ -19529,8 +19529,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__studentListItem_vue__);
-var _this = this;
-
+//
 //
 //
 //
@@ -19551,12 +19550,12 @@ var _this = this;
         }.bind(this));
     },
 
-
     data: function data() {
         return {
             show: true,
             messages: true,
-            errors: []
+            errors: [],
+            lastname: true
         };
     },
 
@@ -19566,24 +19565,26 @@ var _this = this;
 
     props: ['roster'],
 
-    computed: {
-        sortedRoster: function sortedRoster() {
-            return _this.roster;
-            return _this.roster.sort(function (a, b) {
-                return a.last_name.localeCompare(b.last_name);
-            });
-        }
-    },
-
     methods: {
         toggleViewHandler: function toggleViewHandler() {
             this.show = !this.show;
         },
 
-        sortRoster: function sortRoster(roster) {
-            return roster.sort(function (a, b) {
-                return a.last_name.localeCompare(b.last_name);
-            });
+        sortRoster: function sortRoster() {
+            function sortedRoster(self) {
+                if (self.lastname === true) {
+                    return self.roster.sort(function (a, b) {
+                        return a.last_name.localeCompare(b.last_name);
+                    });
+                } else {
+                    return self.roster.sort(function (a, b) {
+                        return a.first_name.localeCompare(b.first_name);
+                    });
+                }
+            }
+
+            this.lastname = !this.lastname;
+            this.roster = sortedRoster(this);
         }
     }
 });
@@ -19767,10 +19768,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.show
     ? _c("div", [
+        _c("button", { on: { click: _vm.sortRoster } }, [
+          _vm._v("Toggle Sorting")
+        ]),
+        _vm._v(" "),
         _c(
           "ul",
           { staticClass: "list" },
-          _vm._l(_vm.sortRoster(this.roster), function(student) {
+          _vm._l(this.roster, function(student) {
             return _c("student-list-item", {
               key: student.last_name,
               attrs: { student: student }

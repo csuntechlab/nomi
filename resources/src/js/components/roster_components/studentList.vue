@@ -1,7 +1,8 @@
 <template>
     <div v-if="show">
+        <button @click="sortRoster">Toggle Sorting</button>
         <ul class="list">
-            <student-list-item v-for="student in sortRoster(this.roster)" :key="student.last_name" :student="student"></student-list-item>
+            <student-list-item v-for="student in this.roster" :key="student.last_name" :student="student"></student-list-item>
         </ul>
     </div>
 </template>
@@ -11,7 +12,7 @@
     export default {
         name: "student-list",
 
-        created () {
+        created: function () {
             /** Creates listener for toggleView event, applying method on event. */
             this.$eventBus.$on('toggleView', function () {
                 this.toggleViewHandler();
@@ -23,6 +24,7 @@
                 show: true,
                 messages: true,
                 errors: [],
+                lastname: true,
             }
         },
 
@@ -32,24 +34,26 @@
 
         props: ['roster'],
 
-        computed: {
-            sortedRoster: () => {
-                return this.roster;
-                return this.roster.sort((a,b) => {
-                    return a.last_name.localeCompare(b.last_name);
-                });
-            }
-        },
-
         methods: {
             toggleViewHandler: function () {
                 this.show = !this.show;
             },
 
-            sortRoster: (roster) => {
-                return roster.sort((a,b) => {
-                    return a.last_name.localeCompare(b.last_name);
-                });
+            sortRoster: function () {
+                function sortedRoster (self) {
+                    if (self.lastname === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    }
+                }
+
+                this.lastname = !this.lastname;
+                this.roster = sortedRoster(this);
             }
         }
     }
