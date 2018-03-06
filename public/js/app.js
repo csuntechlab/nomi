@@ -18344,6 +18344,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -18375,6 +18377,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "shuffle-button",
@@ -18394,14 +18398,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("input", {
-      attrs: { type: "image", src: "/images/card-exchange.png" },
-      on: {
-        click: function($event) {
-          _vm.emitShuffleCards()
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            _vm.emitShuffleCards()
+          }
         }
-      }
-    })
+      },
+      [_c("i", { staticClass: "fa fa-random" })]
+    )
   ])
 }
 var staticRenderFns = []
@@ -18420,6 +18427,10 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -18457,24 +18468,40 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.flash
     ? _c("div", [
-        _c("input", {
-          attrs: { type: "image", src: "/images/gallery.png" },
-          on: {
-            click: function($event) {
-              _vm.emitToggleCards()
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.emitToggleCards()
+              }
             }
-          }
-        })
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-address-book",
+              attrs: { title: "Gallery Card" }
+            })
+          ]
+        )
       ])
     : _c("div", [
-        _c("input", {
-          attrs: { type: "image", src: "/images/flashcards.png" },
-          on: {
-            click: function($event) {
-              _vm.emitToggleCards()
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.emitToggleCards()
+              }
             }
-          }
-        })
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-id-card",
+              attrs: { title: "Flashcard" }
+            })
+          ]
+        )
       ])
 }
 var staticRenderFns = []
@@ -18493,6 +18520,10 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
 //
 //
 //
@@ -18530,24 +18561,30 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.cards
     ? _c("div", [
-        _c("input", {
-          attrs: { type: "image", src: "/images/grid.png" },
-          on: {
-            click: function($event) {
-              _vm.emitToggleView()
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.emitToggleView()
+              }
             }
-          }
-        })
+          },
+          [_c("i", { staticClass: "fa fa-th-large", attrs: { title: "Grid" } })]
+        )
       ])
     : _c("div", [
-        _c("input", {
-          attrs: { type: "image", src: "/images/list.png" },
-          on: {
-            click: function($event) {
-              _vm.emitToggleView()
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                _vm.emitToggleView()
+              }
             }
-          }
-        })
+          },
+          [_c("i", { staticClass: "fa fa-list-ul", attrs: { title: "List" } })]
+        )
       ])
 }
 var staticRenderFns = []
@@ -18588,15 +18625,23 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }, [
-        _c("input", {
-          attrs: { type: "image", src: "/images/menu.png" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.openNav()
+        _c(
+          "button",
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.openNav()
+              }
             }
-          }
-        })
+          },
+          [
+            _c("i", {
+              staticClass: "fa fa-ellipsis-v",
+              attrs: { title: "Menu" }
+            })
+          ]
+        )
       ])
     ])
   ])

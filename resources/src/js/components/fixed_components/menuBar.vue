@@ -7,7 +7,9 @@
         <shuffle-button class="col-xs-3 col-sm-3 col-md-3"></shuffle-button>
       </div>
       <div class="col-xs-1 col-sm-1 col-md-1">
-        <input type="image" src="/images/menu.png" @click.prevent="openNav()">
+        <button @click.prevent="openNav()">
+          <i class="fa fa-ellipsis-v" title="Menu"></i>
+        </button>
       </div>
     </div>
   </nav>

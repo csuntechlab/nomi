@@ -1,6 +1,8 @@
 <template>
     <div> 
-    	<input type="image" src="/images/card-exchange.png" @click="emitShuffleCards()">
+    	<button @click="emitShuffleCards()">
+            <i class="fa fa-random"></i>
+        </button>
     </div>
 </template>
 
