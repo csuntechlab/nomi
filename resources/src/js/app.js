@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import Croppa from 'vue-croppa';
 import router from './routes';
 
 window.Vue = require('vue');
@@ -8,8 +9,9 @@ window.axios = require('axios');
 
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
+Vue.use(Croppa);
 
-Vue.component('menu-bar', require('./components/menuBar.vue'));
+Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 Vue.component('toggle-view-button', require('./components/fixed_components/toggleViewButton.vue'));

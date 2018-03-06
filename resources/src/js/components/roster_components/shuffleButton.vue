@@ -1,6 +1,6 @@
 <template>
     <div> 
-    	<input type="image" src="/images/card-exchange.png" @click="emitShuffleCards()"></input>
+    	<input type="image" src="/images/card-exchange.png" @click="emitShuffleCards()">
     </div>
 </template>
 

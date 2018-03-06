@@ -25,6 +25,13 @@
   border: 0px;
 }
 
+.mask {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .hide {
   display: none;
 }
@@ -38,7 +45,6 @@
 }
 
 .grid-image {
-  height: 33vw;
   width: 100%;
 }
 
@@ -53,6 +59,10 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.position {
+  float: right;
 }
 
 .sidenav {
