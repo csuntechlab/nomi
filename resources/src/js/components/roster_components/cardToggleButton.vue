@@ -1,12 +1,12 @@
 <template>
     <div v-if="flash">
-        <button @click="emitToggleCards()">
+        <button class="btn btn-default" @click="emitToggleCards()">
             <i class="fa fa-address-book" title="Gallery Card"></i>
         </button>
     </div>
     <div v-else>
-        <button @click="emitToggleCards()">
-            <i class="fa fa-id-card" title="Flashcard"></i>
+        <button class="btn btn-default" @click="emitToggleCards()">
+            <i  class="fa fa-id-card" title="Flashcard"></i>
         </button>
     </div>
 </template>

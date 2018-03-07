@@ -18401,6 +18401,7 @@ var render = function() {
     _c(
       "button",
       {
+        staticClass: "btn btn-default",
         on: {
           click: function($event) {
             _vm.emitShuffleCards()
@@ -18471,6 +18472,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-default",
             on: {
               click: function($event) {
                 _vm.emitToggleCards()
@@ -18489,6 +18491,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-default",
             on: {
               click: function($event) {
                 _vm.emitToggleCards()
@@ -18564,6 +18567,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-default",
             on: {
               click: function($event) {
                 _vm.emitToggleView()
@@ -18577,6 +18581,7 @@ var render = function() {
         _c(
           "button",
           {
+            staticClass: "btn btn-default",
             on: {
               click: function($event) {
                 _vm.emitToggleView()
@@ -18609,7 +18614,7 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xs-11 col-sm-11 col-md-11" },
+        { staticClass: "col-xs-10 col-sm-10 col-md-10" },
         [
           _c("toggle-view-button", {
             staticClass: "col-xs-3 col-sm-3 col-md-3"
@@ -18624,10 +18629,11 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }, [
+      _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
         _c(
           "button",
           {
+            staticClass: "btn btn-default",
             on: {
               click: function($event) {
                 $event.preventDefault()

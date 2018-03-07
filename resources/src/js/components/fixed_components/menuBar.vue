@@ -1,13 +1,13 @@
 <template>
   <nav class="menu-bar bg--black">
     <div class="row">
-      <div class="col-xs-11 col-sm-11 col-md-11">
+      <div class="col-xs-10 col-sm-10 col-md-10">
         <toggle-view-button class="col-xs-3 col-sm-3 col-md-3"></toggle-view-button>
         <card-toggle-button class="col-xs-3 col-sm-3 col-md-3"></card-toggle-button>
         <shuffle-button class="col-xs-3 col-sm-3 col-md-3"></shuffle-button>
       </div>
-      <div class="col-xs-1 col-sm-1 col-md-1">
-        <button @click.prevent="openNav()">
+      <div class="col-xs-2 col-sm-2 col-md-2">
+        <button class="btn btn-default" @click.prevent="openNav()">
           <i class="fa fa-ellipsis-v" title="Menu"></i>
         </button>
       </div>

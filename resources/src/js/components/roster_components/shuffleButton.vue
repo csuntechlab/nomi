@@ -1,6 +1,6 @@
 <template>
     <div> 
-    	<button @click="emitShuffleCards()">
+    	<button class="btn btn-default" @click="emitShuffleCards()">
             <i class="fa fa-random"></i>
         </button>
     </div>

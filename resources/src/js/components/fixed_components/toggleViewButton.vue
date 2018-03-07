@@ -1,11 +1,11 @@
 <template>
     <div v-if="cards">
-        <button @click="emitToggleView()">
+        <button class="btn btn-default" @click="emitToggleView()">
             <i class="fa fa-th-large" title="Grid"></i>
         </button>
     </div>
     <div v-else>
-        <button @click="emitToggleView()"> 
+        <button class="btn btn-default" @click="emitToggleView()"> 
             <i class="fa fa-list-ul" title="List"></i>
         </button>
     </div>
