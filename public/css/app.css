@@ -56,7 +56,6 @@
   bottom: 0;
   position: fixed;
   width: 100vw;
-  background-color: #b2b2b2;
   height: 100px;
 }
 
@@ -95,5 +94,11 @@
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.list__item {
+  padding: 20px;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
 }
 
