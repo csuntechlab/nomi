@@ -1,28 +1,15 @@
 <template>
 <nav class="primary-nav">
-    <div class="primary-nav__mobile">
-        <div class="primary-nav__btn" @click.prevent="openNav()">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-
+    <div class="col-sm-4 col-xs-4 col-md-7 col-lg-5"></div>
+    <div class="col-sm-8 col-xs-8 col-md-5 col-lg-7">
         <a href="www.csun.edu" class="primary-nav__brand"><span class="sr-only">California State University, Northridge (CSUN)</span></a>
         <a href="www.csun.edu" class="primary-nav__sub-brand">Nameface</a>
-    </div>
-
-    <ul class="primary-nav__links">
-        <li><a class="primary-nav__link active" @click="openNav()">Menu</a></li>
-    </ul>
+    </div>   
 </nav>
 </template>
 
 <script>
 export default {
-    methods: {
-        openNav: function(event) {
-            document.getElementById("mySidenav").style.width = "100vw";
-        }
-    }
+
 }
 </script>

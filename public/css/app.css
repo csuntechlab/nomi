@@ -7,6 +7,7 @@
 }
 
 .grid-item {
+  background-color: white;
   padding: 5%;
   height: 100%;
   width: 100%;
@@ -94,5 +95,12 @@
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.list__item {
+  background-color: white;
+  padding: 20px;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
 }
 

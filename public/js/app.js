@@ -5010,7 +5010,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof="fun
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
- * vue-croppa v1.2.0
+ * vue-croppa v1.2.1
  * https://github.com/zhanziyang/vue-croppa
  * 
  * Copyright (c) 2018 zhanziyang
@@ -6080,13 +6080,13 @@ var component = { render: function render() {
       if (!this._fileSizeIsValid(file)) {
         this.loading = false;
         this.$emit(events.FILE_SIZE_EXCEED_EVENT, file);
-        throw new Error('File size exceeds limit which is ' + this.fileSizeLimit + ' bytes.');
+        return false;
       }
       if (!this._fileTypeIsValid(file)) {
         this.loading = false;
         this.$emit(events.FILE_TYPE_MISMATCH_EVENT, file);
         var type = file.type || file.name.toLowerCase().split('.').pop();
-        throw new Error('File type (' + type + ') mimatches (' + this.accept + ').');
+        return false;
       }
       if (typeof window !== 'undefined' && typeof window.FileReader !== 'undefined') {
         var fr = new FileReader();
@@ -6783,11 +6783,7 @@ var content = __webpack_require__(40);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-<<<<<<< HEAD
-var update = __webpack_require__(5)("14beb54d", content, false, {});
-=======
-var update = __webpack_require__(6)("31a3b2c9", content, false, {});
->>>>>>> 91bd0c47e252ef67d29c4b5a128561075c5533a2
+var update = __webpack_require__(6)("14beb54d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -6964,11 +6960,7 @@ var content = __webpack_require__(46);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-<<<<<<< HEAD
-var update = __webpack_require__(5)("11b9b9f6", content, false, {});
-=======
-var update = __webpack_require__(6)("12f86b1a", content, false, {});
->>>>>>> 91bd0c47e252ef67d29c4b5a128561075c5533a2
+var update = __webpack_require__(6)("11b9b9f6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -18279,23 +18271,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    methods: {
-        openNav: function openNav(event) {
-            document.getElementById("mySidenav").style.width = "100vw";
-        }
-    }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 /* 57 */
@@ -18305,72 +18282,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "primary-nav" }, [
-    _c("div", { staticClass: "primary-nav__mobile" }, [
-      _c(
-        "div",
-        {
-          staticClass: "primary-nav__btn",
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.openNav()
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bar" })
-        ]
-      ),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "primary-nav__sub-brand",
-          attrs: { href: "www.csun.edu" }
-        },
-        [_vm._v("Nameface")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("ul", { staticClass: "primary-nav__links" }, [
-      _c("li", [
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__link active",
-            on: {
-              click: function($event) {
-                _vm.openNav()
-              }
-            }
-          },
-          [_vm._v("Menu")]
-        )
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "primary-nav__brand", attrs: { href: "www.csun.edu" } },
-      [
-        _c("span", { staticClass: "sr-only" }, [
-          _vm._v("California State University, Northridge (CSUN)")
-        ])
-      ]
-    )
+    return _c("nav", { staticClass: "primary-nav" }, [
+      _c("div", { staticClass: "col-sm-4 col-xs-4 col-md-7 col-lg-5" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-8 col-xs-8 col-md-5 col-lg-7" }, [
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [
+            _c("span", { staticClass: "sr-only" }, [
+              _vm._v("California State University, Northridge (CSUN)")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "primary-nav__sub-brand",
+            attrs: { href: "www.csun.edu" }
+          },
+          [_vm._v("Nameface")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -19632,11 +19577,7 @@ var content = __webpack_require__(81);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-<<<<<<< HEAD
-var update = __webpack_require__(5)("722b14f6", content, false, {});
-=======
-var update = __webpack_require__(6)("f973e1e6", content, false, {});
->>>>>>> 91bd0c47e252ef67d29c4b5a128561075c5533a2
+var update = __webpack_require__(6)("722b14f6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
