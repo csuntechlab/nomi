@@ -17,7 +17,9 @@
         @endif
         <div id='app'>
             <nav-bar></nav-bar>
-            @yield('content')
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
 
         <script src="{{ asset('js/metaphor.js') }}"></script>
