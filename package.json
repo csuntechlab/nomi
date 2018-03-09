@@ -15,12 +15,13 @@
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
-        "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "lodash": "^4.17.4"
     },
     "dependencies": {
+        "vue": "^2.5.14",
         "vue-axios": "latest",
         "vue-croppa": "^1.2.0",
-        "vue-router": "^3.0.1"
+        "vue-router": "^3.0.1",
+        "vue-template-compiler": "^2.5.14"
     }
 }
