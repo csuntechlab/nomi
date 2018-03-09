@@ -18,6 +18,7 @@
 
         mounted () {
             this.courses = JSON.parse(this.json)[0];
+            console.log(this.courses);
         }
     }
 </script>
