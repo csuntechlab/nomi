@@ -22,7 +22,7 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
-Vue.component('home', require('./views/home.vue'))
+Vue.component('home', require('./views/home.vue'));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
@@ -30,5 +30,5 @@ Vue.config.devtools = true;
 
 const app = new Vue({
     el: '#app',
-    router
+    routes: router
 });
