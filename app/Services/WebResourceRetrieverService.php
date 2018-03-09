@@ -75,4 +75,14 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0]
         )->getBody()->getContents();
     }
+
+    public function getStudent($email)
+    {
+        $client = new Client();
+
+        return $client->get(
+            'https://api.metalab.csun.edu/directory/api/members?email='
+            . \str_replace('nr_', '', $email)
+        )->getBody()->getContents();
+    }
 }
