@@ -18344,8 +18344,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -18377,8 +18375,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "shuffle-button",
@@ -18398,18 +18394,14 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-default",
-        on: {
-          click: function($event) {
-            _vm.emitShuffleCards()
-          }
+    _c("i", {
+      staticClass: "fa fa-random fa-3x type--white",
+      on: {
+        click: function($event) {
+          _vm.emitShuffleCards()
         }
-      },
-      [_c("i", { staticClass: "fa fa-random" })]
-    )
+      }
+    })
   ])
 }
 var staticRenderFns = []
@@ -18428,10 +18420,6 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
 //
 //
 //
@@ -18469,42 +18457,21 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.flash
     ? _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                _vm.emitToggleCards()
-              }
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "fa fa-address-book",
-              attrs: { title: "Gallery Card" }
-            })
-          ]
-        )
+        _c("i", {
+          staticClass: "fa fa-address-book fa-3x type--white",
+          attrs: { title: "Gallery Card" }
+        })
       ])
     : _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                _vm.emitToggleCards()
-              }
+        _c("i", {
+          staticClass: "fa fa-id-card fa-3x type--white",
+          attrs: { title: "Flashcard" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleCards()
             }
-          },
-          [
-            _c("i", {
-              staticClass: "fa fa-id-card",
-              attrs: { title: "Flashcard" }
-            })
-          ]
-        )
+          }
+        })
       ])
 }
 var staticRenderFns = []
@@ -18523,10 +18490,6 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
 //
 //
 //
@@ -18564,32 +18527,26 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.cards
     ? _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                _vm.emitToggleView()
-              }
+        _c("i", {
+          staticClass: "fa fa-th-large fa-3x type--white",
+          attrs: { title: "Grid" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
             }
-          },
-          [_c("i", { staticClass: "fa fa-th-large", attrs: { title: "Grid" } })]
-        )
+          }
+        })
       ])
     : _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                _vm.emitToggleView()
-              }
+        _c("i", {
+          staticClass: "fa fa-list-ul fa-3x type--white",
+          attrs: { title: "List" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleView()
             }
-          },
-          [_c("i", { staticClass: "fa fa-list-ul", attrs: { title: "List" } })]
-        )
+          }
+        })
       ])
 }
 var staticRenderFns = []
@@ -18630,24 +18587,16 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.openNav()
-              }
+        _c("i", {
+          staticClass: "fa fa-ellipsis-v fa-3x type--white",
+          attrs: { title: "Menu" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.openNav()
             }
-          },
-          [
-            _c("i", {
-              staticClass: "fa fa-ellipsis-v",
-              attrs: { title: "Menu" }
-            })
-          ]
-        )
+          }
+        })
       ])
     ])
   ])
