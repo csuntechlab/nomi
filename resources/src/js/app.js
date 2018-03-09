@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
-import router from './routes';
+import {routes} from './routes';
 
 window.Vue = require('vue');
 window.axios = require('axios');
@@ -27,6 +27,11 @@ Vue.component('home', require('./views/home.vue'));
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 Vue.config.devtools = true;
+
+let router = new VueRouter({
+    mode: 'history',
+    routes: routes
+});
 
 const app = new Vue({
     el: '#app',

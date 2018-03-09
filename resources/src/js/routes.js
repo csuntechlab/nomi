@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 
-let routes = [
+export const routes = [
     {
         path: '/home',
         component: require('./views/home.vue')
@@ -11,8 +11,3 @@ let routes = [
         component: require('./views/class.vue')
     },
 ];
-
-export default new VueRouter({
-    mode: 'history',
-    routes: routes
-});
