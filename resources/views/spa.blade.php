@@ -1,7 +1,10 @@
 @extends('master')
 
 @section('content')
-<side-bar></side-bar>
-<router-view json="{{json_encode($json)}}"></router-view>
+<body class="bg--gray">
+<div class="container">
+    <router-view json="{{json_encode($json)}}"></router-view>
+</div>
 <menu-bar></menu-bar>
+</body>
 @stop
