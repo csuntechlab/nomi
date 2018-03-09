@@ -1,4 +1,4 @@
-// import VueRouter from 'vue-router'
+import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
@@ -21,6 +21,8 @@ Vue.component('shuffle-button', require('./components/roster_components/shuffleB
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
+
+Vue.component('home', require('./views/home.vue'))
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
