@@ -16,11 +16,11 @@
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7",
-        "vue-router": "^3.0.1"
+        "vue": "^2.5.7"
     },
     "dependencies": {
         "vue-axios": "latest",
-        "vue-croppa": "^1.2.0"
+        "vue-croppa": "^1.2.0",
+        "vue-router": "^3.0.1"
     }
 }
