@@ -15,7 +15,7 @@
                 ...{{ $message }}...
             @endforeach
         @endif
-        <div id='app'>
+        <div id='app' class="spacing">
             <nav-bar></nav-bar>
             <div class="container">
                 @yield('content')

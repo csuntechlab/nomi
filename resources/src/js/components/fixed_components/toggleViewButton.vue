@@ -1,9 +1,9 @@
 <template>
     <div v-if="cards">
-            <i class="fa fa-th-large fa-3x type--white" title="Grid"  @click="emitToggleView()"></i>
+            <i class="fa fa-list-ul fa-3x type--white" title="List"  @click="emitToggleView()"></i>
     </div>
     <div v-else>
-            <i class="fa fa-list-ul fa-3x type--white" title="List" @click="emitToggleView()"></i>
+            <i class="fa fa-th-large fa-3x type--white" title="Grid" @click="emitToggleView()"></i> 
     </div>
 </template>
 
@@ -16,7 +16,6 @@
                 cards: true
             }
         },
-
         methods: {
             emitToggleView: function () {
                 this.$eventBus.$emit('toggleView');

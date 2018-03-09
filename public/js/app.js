@@ -18459,7 +18459,12 @@ var render = function() {
     ? _c("div", [
         _c("i", {
           staticClass: "fa fa-address-book fa-3x type--white",
-          attrs: { title: "Gallery Card" }
+          attrs: { title: "Gallery Card" },
+          on: {
+            click: function($event) {
+              _vm.emitToggleCards()
+            }
+          }
         })
       ])
     : _c("div", [
@@ -18505,7 +18510,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            cards: true
+            cards: false
         };
     },
 
@@ -18528,8 +18533,8 @@ var render = function() {
   return _vm.cards
     ? _c("div", [
         _c("i", {
-          staticClass: "fa fa-th-large fa-3x type--white",
-          attrs: { title: "Grid" },
+          staticClass: "fa fa-list-ul fa-3x type--white",
+          attrs: { title: "List" },
           on: {
             click: function($event) {
               _vm.emitToggleView()
@@ -18539,8 +18544,8 @@ var render = function() {
       ])
     : _c("div", [
         _c("i", {
-          staticClass: "fa fa-list-ul fa-3x type--white",
-          attrs: { title: "List" },
+          staticClass: "fa fa-th-large fa-3x type--white",
+          attrs: { title: "Grid" },
           on: {
             click: function($event) {
               _vm.emitToggleView()
