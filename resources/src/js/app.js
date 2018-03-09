@@ -24,6 +24,8 @@ Vue.component('courses-container', require('./components/course_components/cours
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
+Vue.config.devtools = true
+
 const app = new Vue({
     el: '#app',
     router
