@@ -11,4 +11,6 @@ interface WebResourceRetrieverContract
     public function getRoster($term, $course);
 
     public function getMedia();
+
+    public function getStudent($email);
 }
