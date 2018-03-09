@@ -1,4 +1,4 @@
-import VueRouter from 'vue-router'
+// import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
