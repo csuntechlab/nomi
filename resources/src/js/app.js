@@ -35,5 +35,8 @@ let router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    components: {
+        'home': home
+    }
 });

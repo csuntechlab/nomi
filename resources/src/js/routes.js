@@ -1,9 +1,10 @@
 import VueRouter from 'vue-router';
+import Home from './views/home.vue';
 
 export const routes = [
     {
         path: '/home',
-        component: require('./views/home.vue')
+        component: Home
     },
 
     {
