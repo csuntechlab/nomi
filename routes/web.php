@@ -29,14 +29,14 @@ Route::get('/logout', function () {
 Route::get('/courses/{term}', 'WebResourceController@courses');
 Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
+Route::get('/student/{email}', 'WebResourceController@student');
 
 /** Roster API Routes. */
 Route::get('/students/{term}/{course}', 'RosterController@getStudents');
 Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');
 
-/** Update recognized routes */
-Route::post('/markAsRecognized', 'RecognizedController@markAsRecognized')->middleware('auth');
-Route::post('/markAsUnrecognized', 'RecognizedController@markAsUnrecognized')->middleware('auth');
+/** Student API Routes */
+Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
 
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {

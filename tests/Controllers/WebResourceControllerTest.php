@@ -64,4 +64,18 @@ class WebResourceControllerTest extends TestCase
 
         $controller->media();
     }
+
+    /**
+     * @test
+     */
+    public function getStudent_makes_call_in_retriever()
+    {
+        $controller = new WebResourceController($this->retriever);
+
+        $this->retriever
+            ->shouldReceive('getStudent')
+            ->once();
+
+        $controller->student('sun@ra.com');
+    }
 }
