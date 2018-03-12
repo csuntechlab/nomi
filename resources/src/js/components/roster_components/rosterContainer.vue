@@ -1,7 +1,8 @@
 <template>
     <div>
         <toggle-view-button></toggle-view-button>
-        <sort-toggle-button></sort-toggle-button>
+        <name-toggle-button></name-toggle-button>
+        <descending-toggle-button></descending-toggle-button>
         <h1>{{this.title}}</h1>
         <student-matrix :roster="roster" :students="roster"></student-matrix>
         <student-list :roster="roster"></student-list>
@@ -11,7 +12,8 @@
 <script>
     import studentMatrix from "./studentMatrix"
     import studentList from "./studentList"
-    import SortToggleButton from "./sortToggleButton";
+    import nameToggleButton from "./nameToggleButton"
+    import descendingToggleButton from "./descendingToggleButton"
     export default {
         name: "roster-container",
 
@@ -19,7 +21,9 @@
 
         components: {
             studentMatrix,
-            studentList
+            studentList,
+            nameToggleButton,
+            descendingToggleButton
         }
     }
 </script>

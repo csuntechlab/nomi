@@ -38,8 +38,12 @@ export default {
             this.markStudentAsRecognized(id, known);
         }.bind(this));
 
-        this.$eventBus.$on('sortRoster', function () {
-            this.sortRosterHandler();
+        this.$eventBus.$on('toggleName', function () {
+            this.toggleNameHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleDesc', function () {
+            this.toggleDescHandler();
         }.bind(this));
     },
 
@@ -52,6 +56,7 @@ export default {
             messages: true,
             errors: [],
             lastname: true,
+            descending: true
         }
     },
 
@@ -126,21 +131,42 @@ export default {
             });
         },
 
-        sortRosterHandler: function () {
+        sortRoster: function () {
             function sortedRoster (self) {
                 if (self.lastname === true) {
-                    return self.roster.sort((a, b) => {
-                        return a.last_name.localeCompare(b.last_name);
-                    });
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
                 } else {
-                    return self.roster.sort((a, b) => {
-                        return a.first_name.localeCompare(b.first_name);
-                    });
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
                 }
             }
 
-            this.lastname = !this.lastname;
             this.roster = sortedRoster(this);
+        },
+
+        toggleNameHandler: function () {
+            this.lastname = !this.lastname;
+            this.sortRoster();
+        },
+
+        toggleDescHandler: function () {
+            this.descending = !this.descending;
+            this.sortRoster();
         }
     },
 }

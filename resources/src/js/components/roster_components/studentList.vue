@@ -20,6 +20,14 @@
             this.$eventBus.$on('sortRoster', function () {
                 this.sortRosterHandler();
             }.bind(this));
+
+            this.$eventBus.$on('toggleName', function () {
+                this.toggleNameHandler();
+            }.bind(this));
+
+            this.$eventBus.$on('toggleDesc', function () {
+                this.toggleDescHandler();
+            }.bind(this));
         },
 
         data: function () {
@@ -28,6 +36,7 @@
                 messages: true,
                 errors: [],
                 lastname: true,
+                descending: true
             }
         },
 
@@ -42,21 +51,42 @@
                 this.show = !this.show;
             },
 
-            sortRosterHandler: function () {
+            sortRoster: function () {
                 function sortedRoster (self) {
                     if (self.lastname === true) {
-                        return self.roster.sort((a, b) => {
-                            return a.last_name.localeCompare(b.last_name);
-                        });
+                        if(self.descending === true) {
+                            return self.roster.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            });
+                        } else {
+                            return self.roster.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            }).reverse();
+                        }
                     } else {
-                        return self.roster.sort((a, b) => {
-                            return a.first_name.localeCompare(b.first_name);
-                        });
+                        if(self.descending === true) {
+                            return self.roster.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            });
+                        } else {
+                            return self.roster.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            }).reverse();
+                        }
                     }
                 }
 
-                this.lastname = !this.lastname;
                 this.roster = sortedRoster(this);
+            },
+
+            toggleNameHandler: function () {
+                this.lastname = !this.lastname;
+                this.sortRoster();
+            },
+
+            toggleDescHandler: function () {
+                this.descending = !this.descending;
+                this.sortRoster();
             }
         }
     }
