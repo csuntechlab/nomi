@@ -11,7 +11,7 @@
     Password
     {{Form::password('password')}}
     <br>
-    {{Form::submit('Log In')}}
+    <loading-button></loading-button>
     {{Form::close()}}
 </div>
 @stop

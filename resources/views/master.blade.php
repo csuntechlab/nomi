@@ -15,6 +15,7 @@
                 ...{{ $message }}...
             @endforeach
         @endif
+
         <div id='app'>
             <nav-bar></nav-bar>
             <div class="container">
