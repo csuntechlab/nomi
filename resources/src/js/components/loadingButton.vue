@@ -1,7 +1,7 @@
 <template>
-    <div style="width:120px">
+    <div class="btnwrapper">
         <button type="submit" @click="ok = true">Log In</button>
-        <circle2 v-show="ok" style="float:right"></circle2>
+        <circle2 class="spinner" v-show="ok"></circle2>
     </div>
 </template>
 
@@ -16,3 +16,13 @@
         }
     }
 </script>
+
+<style>
+    .btnwrapper {
+        width: 120px
+    }
+
+    .spinner {
+        float: right
+    }
+</style>
