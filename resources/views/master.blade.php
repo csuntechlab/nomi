@@ -9,16 +9,18 @@
     </head>
 
     <body>
-        <div class="container" id='app'>
-        <nav-bar></nav-bar>
-        <div>
-            @if ( $errors->count() > 0 )
-                @foreach( $errors->all() as $message )
-                    <span>{{ $message }}</span>
-                @endforeach
-            @endif
-        </div>
-            @yield('content')
+        @if ( $errors->count() > 0 )
+            ...An error occured...
+            @foreach( $errors->all() as $message )
+                ...{{ $message }}...
+            @endforeach
+        @endif
+
+        <div id='app'>
+            <nav-bar></nav-bar>
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
 
         <script src="{{ asset('js/metaphor.js') }}"></script>
