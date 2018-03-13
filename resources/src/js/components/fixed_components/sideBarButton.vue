@@ -1,25 +1,13 @@
 <template>
-    <div v-if="sidebar==false">
-        <button @click="emitToggleSideBar()">
-            
-        </button>
-    </div>
+    <i class="fa fa-ellipsis-v fa-3x type--white" title="Menu" @click.prevent="openNav()"></i>
 </template>
 
 <script>
     export default {
         name: "side-bar-button",
-
-        data: function () {
-            return {
-                sidebar: false
-            }
-        },
-
         methods: {
-            emitToggleSideBar: function () {
-                this.$eventBus.$emit('ToggleSideBar');
-                this.sidebar = !this.sidebar;
+             openNav: function() {
+                document.getElementById("sideNav").style.width = "100vw";
             }
         }
     }
