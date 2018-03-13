@@ -42,7 +42,7 @@ export default {
 
     data: function () {
         return {
-            show: false,
+            show: true,
             flash: false,
             messages: true,
             errors: [],
@@ -111,6 +111,8 @@ export default {
         toggleCardsHandler: function () {
             this.flash = !this.flash;
         },
+
+        // menuHandler: 
 
         markStudentAsRecognized: function(id, known) {
             this.roster.forEach((student) => {

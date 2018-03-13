@@ -18510,10 +18510,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            cards: false
+            cards: true
         };
     },
-
     methods: {
         emitToggleView: function emitToggleView() {
             this.$eventBus.$emit('toggleView');
@@ -19079,7 +19078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            show: false,
+            show: true,
             flash: false,
             messages: true,
             errors: []
@@ -19152,6 +19151,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         toggleCardsHandler: function toggleCardsHandler() {
             this.flash = !this.flash;
         },
+
+        // menuHandler: 
 
         markStudentAsRecognized: function markStudentAsRecognized(id, known) {
             this.roster.forEach(function (student) {
@@ -19813,7 +19814,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            show: true,
+            show: false,
             messages: true,
             errors: []
         };
@@ -20224,7 +20225,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            show: true,
+            show: false,
             messages: true,
             errors: []
         };
@@ -20254,7 +20255,7 @@ var render = function() {
         _c(
           "ul",
           { staticClass: "list" },
-          _vm._l(this.courses, function(course) {
+          _vm._l(_vm.courses, function(course) {
             return _c(
               "li",
               { staticClass: "list__item" },
@@ -20365,7 +20366,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            show: false,
+            show: true,
             messages: true,
             errors: []
         };
@@ -20392,7 +20393,7 @@ var render = function() {
   return _vm.show
     ? _c(
         "div",
-        _vm._l(this.courses, function(course) {
+        _vm._l(_vm.courses, function(course) {
           return _c("div", { staticClass: "col-xs-6" }, [
             _c("div", { staticClass: "panel" }, [
               _c("div", { staticClass: "grid-item panel-content" }, [

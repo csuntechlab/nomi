@@ -20,7 +20,7 @@
 
         data: function () {
             return {
-                show: true,
+                show: false,
                 messages: true,
                 errors: [],
             }
