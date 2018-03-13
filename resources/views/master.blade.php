@@ -17,6 +17,7 @@
         @endif
         <div id='app'>
             <nav-bar></nav-bar>
+            <toggle-view-button></toggle-view-button>
             <div class="container">
                 @yield('content')
             </div>

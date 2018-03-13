@@ -1,22 +1,14 @@
 <template>
-    <div v-if="show">
-        <ul class="list">
-            <student-list-item v-for="student in this.roster" :key="student.display_name" :student="student"></student-list-item>
-        </ul>
-    </div>
+    <ul class="list">
+        <student-list-item v-for="student in this.roster[this.courseid]" :key="student.display_name" :student="student"></student-list-item>
+    </ul>
 </template>
 
 <script>
     import studentListItem from './studentListItem.vue';
+    import { mapGetters } from 'vuex';
     export default {
         name: "student-list",
-
-        created () {
-            /** Creates listener for toggleView event, applying method on event. */
-            this.$eventBus.$on('toggleView', function () {
-                this.toggleViewHandler();
-            }.bind(this));
-        },
 
         data: function () {
             return {
@@ -30,12 +22,12 @@
             studentListItem
         },
 
-        props: ['roster'],
+        props: ['courseid'],
 
-        methods: {
-            toggleViewHandler: function () {
-                this.show = !this.show;
-            }
-        }
+        computed: {
+            ...mapGetters([
+                'roster'
+            ]),
+        },
     }
 </script>

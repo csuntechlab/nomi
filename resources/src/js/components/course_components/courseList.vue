@@ -2,7 +2,7 @@
     <div v-if="show">
         <h1>Course List</h1>
         <ul class="list">
-            <li class="list__item" v-for="course in this.courses">
+            <li class="list__item" v-for="course in courses">
                 <router-link :to="'/class/'+course.id+'/'+course.title">{{ course.title }}</router-link>
             </li>
         </ul>
@@ -10,16 +10,9 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "course-list",
-
-        created () {
-            /** Creates listener for toggleView event, applying method on event. */
-            this.$eventBus.$on('toggleView', function () {
-                this.toggleViewHandler();
-            }.bind(this));
-        },
-
         data: function () {
             return {
                 show: true,
@@ -28,12 +21,10 @@
             }
         },
 
-        props: ['courses'],
-
-        methods: {
-            toggleViewHandler: function () {
-                this.show = !this.show;
-            }
-        }
+        computed: {
+            ...mapGetters([
+                'courses'
+            ])
+        },
     }
 </script>

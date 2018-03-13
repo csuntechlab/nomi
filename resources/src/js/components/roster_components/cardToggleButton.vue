@@ -1,9 +1,7 @@
 <template>
-    <div v-if="flash">
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Gallery Mode</button>
-    </div>
-    <div v-else>
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Flash Card Mode</button>
+    <div>
+        <button v-if="flash" role="button" class="btn btn-default" @click="emitToggleCards()">Gallery Mode</button>
+        <button v-else role="button" class="btn btn-default" @click="emitToggleCards()">Flash Card Mode</button>
     </div>
 </template>
 

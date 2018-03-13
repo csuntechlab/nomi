@@ -1,21 +1,16 @@
 <template>
-    <div v-if="show">
+    <div>
         <shuffle-button></shuffle-button>
         <card-toggle-button></card-toggle-button>
-
-        <div v-if="flash">
-            <student-card v-for="student in this.roster" :key="student.student_id" :student="student" :flash="flash"></student-card>
-        </div>
-
-        <div v-else>
-            <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
-        </div>
+        <student-card v-if="flash "v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+        <student-card v-else v-for="student in this.roster[this.courseid]" :key="student.student_id" :student="student" :flash="flash"></student-card>
     </div>
 </template>
 
 <script>
 import studentCard from './studentCard.vue';
 import FlashCard from './flashCard';
+import { mapGetters } from 'vuex';
 export default {
     name: "student-matrix",
 
@@ -31,30 +26,34 @@ export default {
             this.toggleCardsHandler();
         }.bind(this));
 
-        this.$eventBus.$on('toggleView', function () {
-            this.toggleViewHandler();
-        }.bind(this));
-
         this.$eventBus.$on('updateRecognized', function(id, known) {
             this.markStudentAsRecognized(id, known);
         }.bind(this));
 
+        this.students = this.roster[this.courseid];
     },
-
-    props: ['roster', 'students'],
 
     data: function () {
         return {
             show: false,
-            flash: false,
+            flash: true,
             messages: true,
             errors: [],
+            students: []
         }
     },
+
+    props: ['courseid'],
 
     components: {
         FlashCard,
         studentCard
+    },
+
+    computed: {
+        ...mapGetters([
+            'roster'
+        ]),
     },
 
     methods: {
@@ -62,7 +61,7 @@ export default {
             let unKnownStudents = [];
             let knownStudents = [];
 
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.recognized === true) {
                     knownStudents.push(student)
                 } else {
@@ -100,30 +99,24 @@ export default {
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.roster = unKnownStudents.concat(knownStudents);
+            this.students = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
             this.show = !this.show;
 		},
 
-        toggleViewHandler: function () {
-            this.show = !this.show;
-        },
-
         toggleCardsHandler: function () {
             this.flash = !this.flash;
         },
 
         markStudentAsRecognized: function(id, known) {
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.student_id === id) {
                     student.recognized = known;
                 }
             });
         }
     },
-
 }
-
 </script>

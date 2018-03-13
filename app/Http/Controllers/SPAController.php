@@ -25,11 +25,9 @@ class SPAController extends Controller
     }
 
     /**
-     * Description: Gets the index page of the SPA.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Description: Gets the course/roster data for the SPA.
      */
-    public function index()
+    public function getData()
     {
         $courses = Cache::remember('courses', $this->minutes, function () {
             return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
@@ -47,9 +45,19 @@ class SPAController extends Controller
             );
         }
 
-        $json = [$courses, $students];
+        return [$courses, $students];
+    }
 
-        if ($students == []) {
+    /**
+     * Description: Gets the index page of the SPA.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $json = $this->getData();
+
+        if ($json[1] == []) {
             return view('spa')->with('json', $json)->withErrors(['Failed to retrieve students.']);
         }
 

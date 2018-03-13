@@ -1,27 +1,18 @@
 <template>
-    <div v-if="cards">
-        <input @click="emitToggleView()" type="image" src="/images/2x2grid.png">
-    </div>
-    <div v-else>
-        <input @click="emitToggleView()" type="image" src="/images/list.png">
+    <div>
+        <input v-if="this.list" @click="$store.commit('toggleList')" type="image" src="/images/list.png">
+        <input v-else @click="$store.commit('toggleList')" type="image" src="/images/2x2grid.png">
     </div>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "toggle-view-button",
-
-        data: function () {
-            return {
-                cards: true
-            }
-        },
-
-        methods: {
-            emitToggleView: function () {
-                this.$eventBus.$emit('toggleView');
-                this.cards = !this.cards;
-            }
+        computed: {
+            ...mapGetters([
+                'list'
+            ])
         }
     }
 </script>
