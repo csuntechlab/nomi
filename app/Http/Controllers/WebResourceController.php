@@ -48,4 +48,14 @@ class WebResourceController extends Controller
     {
         return $this->webResourceRetriever->getMedia();
     }
+
+    /**
+     * @param $email
+     *
+     * @return mixed
+     */
+    public function student($email)
+    {
+        return $this->webResourceRetriever->getStudent($email);
+    }
 }

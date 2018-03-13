@@ -1,6 +1,6 @@
 <template>
     <div v-if="show">
-        <div class="col-xs-6" v-for="course in this.courses">
+        <div class="col-xs-6" v-for="course in courses">
             <div class="panel">
                 <div class="grid-item panel-content">
                     <div class="card-title">

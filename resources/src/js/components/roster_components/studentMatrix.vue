@@ -1,8 +1,5 @@
 <template>
     <div v-if="show">
-        <shuffle-button></shuffle-button>
-        <card-toggle-button></card-toggle-button>
-
         <div v-if="flash">
             <student-card v-for="student in this.roster" :key="student.student_id" :student="student" :flash="flash"></student-card>
         </div>
