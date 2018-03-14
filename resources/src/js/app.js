@@ -47,8 +47,8 @@ Vue.prototype.$store = new Vuex.Store({
 
     mutations: {
         getData (state) {
-            // axios.get(`/metalab/test/nameface/data`)
-            axios.get(`/data`)
+            axios.get(`/metalab/test/nameface/data`)
+            // axios.get(`/data`)
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
