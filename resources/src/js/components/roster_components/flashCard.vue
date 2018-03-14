@@ -3,8 +3,8 @@
         <div class="panel">
             <div class="grid-item panel-content" @click="updateRecognized(student.student_id)">
                 <div v-if="known">
-                    <div class="card-title">
-                        <div class="panel-heading">
+                    <div class="card-title back-of-card">
+                        <div class="panel-heading" >
                             {{student.display_name}}
                         </div>
                     </div>
@@ -47,3 +47,15 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .back-of-card {
+        padding: 50% 50%;
+        font-size: 300%;
+    }
+    .panel-heading {
+        display: flex;
+        justify-content: center;
+        top: 0;
+    }
+</style>
