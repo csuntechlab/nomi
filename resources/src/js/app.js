@@ -111,6 +111,8 @@ Vue.prototype.$store = new Vuex.Store({
     }
 });
 
+Vue.config.devtools = true
+
 const app = new Vue({
     el: '#app',
     router,
