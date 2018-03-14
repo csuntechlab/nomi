@@ -8,10 +8,9 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [
         {
-            path: '/home',
+            path: '/',
             component: Home
-        }
-        
+        },
         {
             path: '/class/:id/:title',
             component: Class

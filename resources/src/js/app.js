@@ -1,4 +1,3 @@
-import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
@@ -11,7 +10,7 @@ window.axios = require('axios');
 Vue.config.devtools = true;
 
 Vue.use(VueAxios, axios);
-Vue.use(VueRouter);
+
 Vue.use(Croppa);
 Vue.use(Vuex);
 
