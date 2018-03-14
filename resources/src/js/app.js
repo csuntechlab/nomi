@@ -25,17 +25,22 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
+
 Vue.prototype.$store = new Vuex.Store({
     state: {
         courses: [],
         roster: [],
-        list: true
+        flashroster: [],
+        list: true,
+        flash: false
     },
 
     getters: {
         courses: state => state.courses,
         roster: state => state.roster,
-        list: state => state.list
+        flashroster: state => state.flashroster,
+        list: state => state.list,
+        flash: state => state.flash
     },
 
     mutations: {
@@ -44,6 +49,7 @@ Vue.prototype.$store = new Vuex.Store({
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
+                    state.flashroster = response.data[1];
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -52,6 +58,55 @@ Vue.prototype.$store = new Vuex.Store({
 
         toggleList (state) {
             state.list = !state.list;
+        },
+
+        toggleFlash (state) {
+            state.flash = !state.flash;
+        },
+
+        shuffleFlash (state, courseid) {
+            let unKnownStudents = [];
+            let knownStudents = [];
+
+            state.flashroster[courseid].forEach((student) => {
+                if(student.recognized === true) {
+                    knownStudents.push(student)
+                } else {
+                    unKnownStudents.push(student)
+                }
+            });
+
+            let currentIndex = unKnownStudents.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = unKnownStudents[currentIndex];
+                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                unKnownStudents[randomIndex] = temporaryValue;
+            }
+
+            let currentIndexTwo = knownStudents.length, temporaryValueTwo, randomIndexTwo;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndexTwo) {
+
+                // Pick a remaining element...
+                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                currentIndexTwo -= 1;
+
+                // And swap it with the current element.
+                temporaryValueTwo = knownStudents[currentIndexTwo];
+                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                knownStudents[randomIndexTwo] = temporaryValueTwo;
+            }
+
+            state.flashroster = unKnownStudents.concat(knownStudents);
         }
     }
 });

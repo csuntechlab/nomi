@@ -55,12 +55,6 @@ class SPAController extends Controller
      */
     public function index()
     {
-        $json = $this->getData();
-
-        if ($json[1] == []) {
-            return view('spa')->with('json', $json)->withErrors(['Failed to retrieve students.']);
-        }
-
-        return view('spa')->with('json', $json);
+        return view('spa');
     }
 }
