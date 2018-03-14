@@ -1,3 +1,4 @@
+import App from './App.vue'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
@@ -46,7 +47,8 @@ Vue.prototype.$store = new Vuex.Store({
 
     mutations: {
         getData (state) {
-            axios.get(`/metalab/test/nameface/data`)
+            // axios.get(`/metalab/test/nameface/data`)
+            axios.get(`/data`)
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
@@ -115,7 +117,8 @@ Vue.prototype.$store = new Vuex.Store({
 const app = new Vue({
     el: '#app',
     router,
-
+    template: "<App />",
+    components: { App },
     beforeCreate () {
         this.$store.commit('getData');
     }

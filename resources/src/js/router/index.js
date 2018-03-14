@@ -15,6 +15,10 @@ const router = new VueRouter({
             path: '/class/:id/:title',
             component: Class
         },
+        {
+            path: '/something',
+            template: "<p>something</p>"
+        }
     ]
 });
 

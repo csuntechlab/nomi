@@ -15,15 +15,22 @@
                 ...{{ $message }}...
             @endforeach
         @endif
-        <div id='app'>
-            <nav-bar></nav-bar>
-            <toggle-view-button></toggle-view-button>
-            <div class="container">
-                @yield('content')
-            </div>
+
+        <div class="container" id='app'>
+            {{Form::open()}}
+            Login
+            <br>
+            Username
+            {{Form::text('username')}}
+            <br>
+            Password
+            {{Form::password('password')}}
+            <br>
+            {{Form::submit('Log In')}}
+            {{Form::close()}}
         </div>
 
         <script src="{{ asset('js/metaphor.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
+        <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     </body>
 </html>

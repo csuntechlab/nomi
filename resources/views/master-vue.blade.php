@@ -15,17 +15,8 @@
             @endforeach
         @endif
 
-        <script>
-            // window.myApp = window.myApp || {};
-            var something = {!! json_encode($json) !!}
-            console.log(something);
-            // something = JSON.stringify(something);
-            // something = JSON.parse(something);
-            // localStorage.setItem('json', JSON.stringify(something));
-            // console.log(sessionStorage.getItem('json'));
-        </script>
-
         <div id='app'></div>
+        
         <script src="{{ asset('js/metaphor.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
