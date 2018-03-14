@@ -45,7 +45,7 @@ Vue.prototype.$store = new Vuex.Store({
 
     mutations: {
         getData (state) {
-            axios.get(`data`)
+            axios.get(`nameface/data`)
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
