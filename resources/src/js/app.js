@@ -115,7 +115,7 @@ const app = new Vue({
     el: '#app',
     router,
 
-    created () {
+    beforeCreate () {
         this.$store.commit('getData');
     }
 });
