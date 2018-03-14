@@ -18266,7 +18266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "side-bar-button",
     methods: {
         openNav: function openNav() {
-            document.getElementById("sideNav").style.width = "100vw";
+            document.getElementById("sideNav").style.height = "50vw";
         }
     }
 });
@@ -18310,11 +18310,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("nav", { staticClass: "menu-bar bg--black" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xs-11 col-sm-11 col-md-11" }),
+      _c("div", { staticClass: "col-xs-10 col-sm-10 col-md-10" }),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-xs-1 col-sm-1 col-md-1" },
+        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
         [_c("side-bar-button")],
         1
       )
@@ -18556,15 +18556,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
     methods: {
-        openNav: function openNav(event) {
-            document.getElementById("sideNav").style.width = "100vw";
-        },
         closeNav: function closeNav(event) {
-            document.getElementById("sideNav").style.width = "0";
+            document.getElementById("sideNav").style.height = "0";
         }
     }
 });
@@ -18577,10 +18577,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "sidenav", attrs: { id: "sideNav" } }, [
+  return _c(
+    "div",
+    { staticClass: "sidenav bg--red", attrs: { id: "sideNav" } },
+    [
+      _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c("i", {
-        staticClass: "fa fa-times fa-3x type--white",
+        staticClass: "fa fa-times fa-2x type--white closebtn",
         attrs: { title: "Close" },
         on: {
           click: function($event) {
@@ -18588,47 +18594,39 @@ var render = function() {
             _vm.closeNav()
           }
         }
-      }),
-      _vm._v(" "),
-      _c(
-        "i",
-        {
-          staticClass: "fa fa-user fa-3x type--white",
-          attrs: { title: "Profile", href: "#" }
-        },
-        [_vm._v("Profile")]
-      ),
-      _vm._v(" "),
-      _c(
-        "i",
-        {
-          staticClass: "fa fa-gamepad fa-3x type--white",
-          attrs: { title: "Game", href: "#" }
-        },
-        [_vm._v("Game")]
-      ),
-      _vm._v(" "),
-      _c(
-        "i",
-        {
-          staticClass: "fa fa-cog fa-3x type--white",
-          attrs: { title: "Settings", href: "#" }
-        },
-        [_vm._v("Settings")]
-      ),
-      _vm._v(" "),
-      _c(
-        "i",
-        {
-          staticClass: "fa fa-power-off fa-3x type--white",
-          attrs: { title: "Logout", href: "/logout" }
-        },
-        [_vm._v("Logout")]
-      )
-    ])
-  ])
+      })
+    ]
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }, [
+      _c("i", {
+        staticClass: "fa fa-user fa-2x type--white",
+        attrs: { title: "Profile", href: "#" }
+      }),
+      _vm._v("Profile\n            "),
+      _c("i", {
+        staticClass: "fa fa-gamepad fa-2x type--white",
+        attrs: { title: "Game", href: "#" }
+      }),
+      _vm._v("Game\n            "),
+      _c("i", {
+        staticClass: "fa fa-cog fa-2x type--white",
+        attrs: { title: "Settings", href: "#" }
+      }),
+      _vm._v("Settings\n            "),
+      _c("i", {
+        staticClass: "fa fa-power-off fa-2x type--white",
+        attrs: { title: "Logout", href: "/logout" }
+      }),
+      _vm._v("Logout\n        ")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

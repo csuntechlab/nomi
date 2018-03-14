@@ -7,7 +7,7 @@
         name: "side-bar-button",
         methods: {
              openNav: function() {
-                document.getElementById("sideNav").style.width = "100vw";
+                document.getElementById("sideNav").style.height = "50vw";
             }
         }
     }
