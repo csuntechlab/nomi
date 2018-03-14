@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
-import router from './routes';
+import router from './router';
 import Vuex from 'vuex';
 
 window.Vue = require('vue');
