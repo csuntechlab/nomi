@@ -8,6 +8,8 @@ import Vuex from 'vuex';
 window.Vue = require('vue');
 window.axios = require('axios');
 
+Vue.config.devtools = true;
+
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Croppa);
@@ -110,8 +112,6 @@ Vue.prototype.$store = new Vuex.Store({
         }
     }
 });
-
-Vue.config.devtools = true;
 
 const app = new Vue({
     el: '#app',
