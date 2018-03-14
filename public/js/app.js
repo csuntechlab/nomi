@@ -18581,8 +18581,6 @@ var render = function() {
     "div",
     { staticClass: "sidenav bg--red", attrs: { id: "sideNav" } },
     [
-      _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
-      _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
       _c("i", {
@@ -18603,27 +18601,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }, [
-      _c("i", {
-        staticClass: "fa fa-user fa-2x type--white",
-        attrs: { title: "Profile", href: "#" }
-      }),
-      _vm._v("Profile\n            "),
-      _c("i", {
-        staticClass: "fa fa-gamepad fa-2x type--white",
-        attrs: { title: "Game", href: "#" }
-      }),
-      _vm._v("Game\n            "),
-      _c("i", {
-        staticClass: "fa fa-cog fa-2x type--white",
-        attrs: { title: "Settings", href: "#" }
-      }),
-      _vm._v("Settings\n            "),
-      _c("i", {
-        staticClass: "fa fa-power-off fa-2x type--white",
-        attrs: { title: "Logout", href: "/logout" }
-      }),
-      _vm._v("Logout\n        ")
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }, [
+        _c("i", {
+          staticClass: "fa fa-user fa-2x type--white",
+          attrs: { title: "Profile", href: "#" }
+        }),
+        _vm._v("Profile\n            "),
+        _c("i", {
+          staticClass: "fa fa-gamepad fa-2x type--white",
+          attrs: { title: "Game", href: "#" }
+        }),
+        _vm._v("Game\n            "),
+        _c("i", {
+          staticClass: "fa fa-cog fa-2x type--white",
+          attrs: { title: "Settings", href: "#" }
+        }),
+        _vm._v("Settings\n            "),
+        _c("i", {
+          staticClass: "fa fa-power-off fa-2x type--white",
+          attrs: { title: "Logout", href: "/logout" }
+        }),
+        _vm._v("Logout\n        ")
+      ])
     ])
   }
 ]
