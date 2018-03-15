@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<body class="bg--gray">
+<body class="bg--cream">
 <div class="container">
     <router-view></router-view>
 </div>
