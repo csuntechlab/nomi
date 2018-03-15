@@ -20878,6 +20878,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseListItem_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -20888,8 +20890,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -20902,7 +20903,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses'])),
+
+    components: {
+        courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a
+    }
 });
 
 /***/ }),
@@ -20918,19 +20923,11 @@ var render = function() {
         _c(
           "ul",
           { staticClass: "list" },
-          _vm._l(_vm.courses, function(course) {
-            return _c(
-              "li",
-              { staticClass: "list__item" },
-              [
-                _c(
-                  "router-link",
-                  { attrs: { to: "/class/" + course.id + "/" + course.title } },
-                  [_vm._v(_vm._s(course.title))]
-                )
-              ],
-              1
-            )
+          _vm._l(this.courses, function(course) {
+            return _c("course-list-item", {
+              key: course.title,
+              attrs: { course: course }
+            })
           })
         )
       ])
@@ -21018,6 +21015,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21049,19 +21059,56 @@ var render = function() {
         _c("div", { staticClass: "panel" }, [
           _c("div", { staticClass: "grid-item panel-content" }, [
             _c("div", { staticClass: "card-title" }, [
-              _c(
-                "div",
-                { staticClass: "panel-heading" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      attrs: { to: "/class/" + course.id + "/" + course.title }
-                    },
-                    [_vm._v(_vm._s(course.title))]
-                  )
-                ],
-                1
+              _c("div", { staticClass: "panel-heading" }, [
+                _c(
+                  "strong",
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        attrs: {
+                          to: "/class/" + course.id + "/" + course.title
+                        }
+                      },
+                      [_vm._v(_vm._s(course.title))]
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "class_info" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(course.subject) +
+                  " " +
+                  _vm._s(course.catalog_number) +
+                  ": #" +
+                  _vm._s(course.id) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "time_location" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(course.meetings[0].location) +
+                  " " +
+                  _vm._s(course.meetings[0].days) +
+                  "\n                    " +
+                  _vm._s(course.meetings[0].start_time) +
+                  "-" +
+                  _vm._s(course.meetings[0].end_time) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "num_students" }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(course.enrollment_count) +
+                  " Students\n                "
               )
             ])
           ])
@@ -21111,6 +21158,210 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(102)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(104)
+/* template */
+var __vue_template__ = __webpack_require__(105)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-04dc0652"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/course_components/courseListItem.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-04dc0652", Component.options)
+  } else {
+    hotAPI.reload("data-v-04dc0652", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(103);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(14)("15661975", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04dc0652\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./courseListItem.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04dc0652\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./courseListItem.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list__item[data-v-04dc0652]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 104 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "course-list-item",
+
+    props: ['course']
+});
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("li", { staticClass: "list__item col-xs-12" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "strong",
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: "/class/" + _vm.course.id + "/" + _vm.course.title
+                }
+              },
+              [_vm._v(_vm._s(_vm.course.title))]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-4" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.subject) +
+              " " +
+              _vm._s(_vm.course.catalog_number) +
+              ": #" +
+              _vm._s(_vm.course.id) +
+              "\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-5" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.meetings[0].location) +
+              " " +
+              _vm._s(_vm.course.meetings[0].days) +
+              "\n                    " +
+              _vm._s(_vm.course.meetings[0].start_time) +
+              "-" +
+              _vm._s(_vm.course.meetings[0].end_time) +
+              "\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-2" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.enrollment_count) +
+              " Students\n                "
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-04dc0652", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
