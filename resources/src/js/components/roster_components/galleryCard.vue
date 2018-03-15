@@ -2,20 +2,16 @@
     <div class="col-xs-6">
         <div class="panel">
             <div class="grid-item panel-content">
-                <label class="grid-image" :for="display_name">
-
-                            <croppa v-model="myCroppa"
-                                    :prevent-white-space="false"
-                                    :show-remove-button="false"
-                                    :disabled="true"
-                                    :quality="2"
-                                    @init="styleCanvas()"
-                                    >
-                                <img slot="initial"
-                                    :src="imgUrl">
-                            </croppa>
+                <label class="grid-image" :for="student.display_name">
+                    <croppa v-model="myCroppa"
+                            :prevent-white-space="false"
+                            :show-remove-button="false"
+                            :disabled="true"
+                            :quality="2"
+                            @init="styleCanvas()">
+                        <img slot="initial" :src="imgUrl">
+                    </croppa>
                 </label>
-
                 <div class="card-title">
                     <div class="panel-heading align-center">
                         {{display_name}}

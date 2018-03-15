@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6">
         <div class="panel">
-            <div class="grid-item panel-content" @click="updateRecognized(student.student_id)">
+            <div class="grid-item panel-content" @click="updateRecognized">
                 <div v-if="known">
                     <div class="card-title">
                         <div class="panel-heading">
@@ -40,13 +40,9 @@ export default {
     },
 
     methods: {
-		updateRecognized: function(id) {
-            let data = new FormData();
-            data.append('student_id', id);
-
+		updateRecognized: function() {
             this.known = !this.known;
-
-            this.$eventBus.$emit('updateRecognized', id, this.known);
+            this.$emit('markRecognized', {student_id: this.student.student_id, known: this.known});
         }
     }
 }
