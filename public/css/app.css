@@ -1,1 +1,108 @@
-.grid-container{display:grid;grid-column-gap:5%;grid-row-gap:5%;grid-template-columns:auto auto auto;margin:auto}.grid-item{background-color:#fff;padding:5%;height:100%;width:100%;text-align:center;-webkit-box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);border-radius:25px}.panel{border:0}.mask{width:20vh;height:20vh;border-radius:50%;overflow:hidden}.hide{display:none}.panel{border-radius:25px}.panel-heading{height:60px}.grid-image{width:100%}.card-title{height:5em}.menu-bar{bottom:0;width:100%;height:50px;left:0}.menu-bar,.sidenav{position:fixed;right:0}.sidenav{height:100%;width:0;z-index:100;top:0;background-color:#cf0a2c;overflow-x:hidden;-webkit-transition:.5s;transition:.5s;padding-top:60px}.sidenav a{padding:8px 8px 8px 32px;text-decoration:none;font-size:30px;font-family:sans-serif;color:#fff;display:block;-webkit-transition:.3s;transition:.3s}.sidenav a:hover{color:#fff}.sidenav .closebtn{position:absolute;top:0;right:25px;font-size:36px;margin-left:50px}.list__item{background-color:#fff;padding:20px;-webkit-box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2)}
+.grid-container {
+  display: grid;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+}
+
+.grid-item {
+  background-color: white;
+  padding: 5%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+  border: 0px;
+}
+
+.mask {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+}
+
+.panel-heading {
+  height: 60px;
+}
+
+.grid-image {
+  width: 100%;
+}
+
+.card-title {
+  height: 5em;
+}
+
+.menu-bar {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  right: 0;
+  left: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background-color: #cf0a2c;
+  overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: sans-serif;
+  color: white;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: white;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.list__item {
+  background-color: white;
+  padding: 20px;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+}
+
