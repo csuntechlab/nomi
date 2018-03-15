@@ -5007,8 +5007,6 @@ Vue.component('card-toggle-button', __webpack_require__(85));
 
 Vue.component('courses-container', __webpack_require__(88));
 
-Vue.prototype.$eventBus = new Vue(); // Global event bus
-
 Vue.prototype.$store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     state: {
         courses: [],
@@ -19654,20 +19652,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "student-matrix",
-
-    created: function created() {
-        /** Create event listeners */
-        this.$eventBus.$on('updateRecognized', function (id, known) {
-            this.markStudentAsRecognized(id, known);
-        }.bind(this));
-    },
-
 
     data: function data() {
         return {
@@ -19686,10 +19682,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['roster', 'flashroster', 'flash'])),
 
     methods: {
-        markStudentAsRecognized: function markStudentAsRecognized(id, known) {
+        markStudentAsRecognized: function markStudentAsRecognized(payload) {
             this.flashroster[this.courseid].forEach(function (student) {
-                if (student.student_id === id) {
-                    student.recognized = known;
+                if (student.student_id === payload.student_id) {
+                    student.recognized = payload.known;
                 }
             });
         }
@@ -19789,13 +19785,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['student'],
 
     methods: {
-        updateRecognized: function updateRecognized(id) {
-            var data = new FormData();
-            data.append('student_id', id);
-
+        updateRecognized: function updateRecognized() {
             this.known = !this.known;
-
-            this.$eventBus.$emit('updateRecognized', id, this.known);
+            this.$emit('markRecognized', { student_id: this.student.student_id, known: this.known });
         }
     }
 });
@@ -19814,11 +19806,7 @@ var render = function() {
         "div",
         {
           staticClass: "grid-item panel-content",
-          on: {
-            click: function($event) {
-              _vm.updateRecognized(_vm.student.student_id)
-            }
-          }
+          on: { click: _vm.updateRecognized }
         },
         [
           _vm.known
@@ -20178,7 +20166,8 @@ var render = function() {
             _vm._l(this.flashroster[this.courseid], function(student) {
               return _c("flash-card", {
                 key: student.student_id,
-                attrs: { student: student }
+                attrs: { student: student },
+                on: { markRecognized: _vm.markStudentAsRecognized }
               })
             })
           )

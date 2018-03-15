@@ -24,8 +24,6 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
-Vue.prototype.$eventBus = new Vue(); // Global event bus
-
 Vue.prototype.$store = new Vuex.Store({
     state: {
         courses: [],
