@@ -2,8 +2,21 @@
     <div>
         <shuffle-button :courseid="this.courseid"></shuffle-button>
         <card-toggle-button></card-toggle-button>
-        <flash-card v-if="this.flash" v-for="student in this.flashroster[this.courseid]" :key="student.student_id" :student="student"></flash-card>
-        <gallery-card v-else v-for="student in this.roster[this.courseid]" :key="student.student_id" :student="student"></gallery-card>
+        <div v-if="this.flash">
+            <flash-card
+                v-for="student in this.flashroster[this.courseid]"
+                :key="student.student_id"
+                :student="student"
+                @markRecognized="markStudentAsRecognized"
+            ></flash-card>
+        </div>
+        <div v-else>
+            <gallery-card
+                v-for="student in this.roster[this.courseid]"
+                :key="student.student_id"
+                :student="student"
+            ></gallery-card>
+        </div>
     </div>
 </template>
 
@@ -14,17 +27,12 @@ import { mapGetters } from 'vuex';
 export default {
     name: "student-matrix",
 
-    created () {
-        /** Create event listeners */
-        this.$eventBus.$on('updateRecognized', function(id, known) {
-            this.markStudentAsRecognized(id, known);
-        }.bind(this));
-    },
-
     data: function () {
         return {
             messages: true,
             errors: [],
+            lastname: true,
+            descending: true
         }
     },
 
@@ -32,7 +40,7 @@ export default {
 
     components: {
         FlashCard,
-        GalleryCard
+        GalleryCard,
     },
 
     computed: {
@@ -44,10 +52,10 @@ export default {
     },
 
     methods: {
-        markStudentAsRecognized: function(id, known) {
+        markStudentAsRecognized: function(payload) {
             this.flashroster[this.courseid].forEach((student) => {
-                if(student.student_id === id) {
-                    student.recognized = known;
+                if(student.student_id === payload.student_id) {
+                    student.recognized = payload.known;
                 }
             });
         }

@@ -23,15 +23,15 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
-Vue.prototype.$eventBus = new Vue(); // Global event bus
-
 Vue.prototype.$store = new Vuex.Store({
     state: {
         courses: [],
         roster: [],
         flashroster: [],
         list: true,
-        flash: false
+        flash: true,
+        lastname: true,
+        descending: true,
     },
 
     getters: {
@@ -42,13 +42,25 @@ Vue.prototype.$store = new Vuex.Store({
         flash: state => state.flash
     },
 
+    actions: {
+        nameSort (context) {
+            context.commit('toggleName');
+            context.commit('sortRoster');
+        },
+
+        descSort (context) {
+            context.commit('toggleDesc');
+            context.commit('sortRoster');
+        },
+    },
+
     mutations: {
         getData (state) {
             axios.get(`data`)
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
-                    state.flashroster = response.data[1];
+                    state.flashroster = response.data[1].slice();
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -63,7 +75,7 @@ Vue.prototype.$store = new Vuex.Store({
             state.flash = !state.flash;
         },
 
-        shuffleFlash (state, courseid) {
+        shuffleFlash (state, { courseid }) {
             let unKnownStudents = [];
             let knownStudents = [];
 
@@ -105,7 +117,48 @@ Vue.prototype.$store = new Vuex.Store({
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            state.flashroster = unKnownStudents.concat(knownStudents);
+            state.flashroster[courseid] = unKnownStudents.concat(knownStudents);
+
+            state.flash = false;
+            state.flash = true;
+        },
+
+        sortRoster: function (state) {
+            state.roster.forEach((course) => {
+                function sortedRoster (self) {
+                    if (state.lastname === true) {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            }).reverse();
+                        }
+                    } else {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            }).reverse();
+                        }
+                    }
+                }
+
+                course = sortedRoster(course);
+            });
+        },
+
+        toggleName: function (state) {
+            state.lastname = !state.lastname;
+        },
+
+        toggleDesc: function (state) {
+            state.descending = !state.descending;
         }
     }
 });

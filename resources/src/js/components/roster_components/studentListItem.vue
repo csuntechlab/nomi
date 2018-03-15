@@ -3,10 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-3">
-                    <img :id="student.display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
+                    <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
                 </div>
                 <div class="col-xs-9">
-                    {{student.display_name}}
+                    {{display_name}}
                     <br />
                     nickname
                 </div>
@@ -21,12 +21,9 @@
 
         props:['student'],
 
-        // computed: {
-        //     getEmail: function() {
-        //
-        //         return this.student.email.replace('nr_', '')
-        //     }
-        // }
+        computed: {
+            display_name: function() { return this.student.first_name + " " + this.student.last_name; }
+        }
     }
 </script>
 
