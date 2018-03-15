@@ -1,15 +1,14 @@
-import VueRouter from 'vue-router'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import Croppa from 'vue-croppa';
-import router from './routes';
+import router from './router';
 import Vuex from 'vuex';
+import Home from './views/home.vue'
 
 window.Vue = require('vue');
 window.axios = require('axios');
 
 Vue.use(VueAxios, axios);
-Vue.use(VueRouter);
 Vue.use(Croppa);
 Vue.use(Vuex);
 
@@ -114,7 +113,10 @@ Vue.prototype.$store = new Vuex.Store({
 const app = new Vue({
     el: '#app',
     router,
-
+    // template: "<router-view></router-view>",
+    // components: {
+    //     Home
+    // },
     created () {
         this.$store.commit('getData');
     }

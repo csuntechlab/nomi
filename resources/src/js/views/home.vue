@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <courses-container></courses-container>
-    </div>
+    <body class="bg--gray">
+        <div class="container">
+            <courses-container></courses-container>
+        </div>
+    </body>
 </template>
 
 <script>

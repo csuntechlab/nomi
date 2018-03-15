@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>{{this.title}}</h1>
+        <toggle-view-button></toggle-view-button>
         <student-list v-if="this.list" :courseid="this.courseid"></student-list>
         <student-matrix v-else :courseid="this.courseid"></student-matrix>
     </div>

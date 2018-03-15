@@ -8,27 +8,20 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
 
-    <body>
+    <body class="bg--gray">
         @if ( $errors->count() > 0 )
             ...An error occured...
             @foreach( $errors->all() as $message )
                 ...{{ $message }}...
             @endforeach
         @endif
-        <div class="container">
-            {{Form::open()}}
-            Login
-            <br>
-            Username
-            {{Form::text('username')}}
-            <br>
-            Password
-            {{Form::password('password')}}
-            <br>
-            {{Form::submit('Log In')}}
-            {{Form::close()}}
+        <div id='app'>
+            <nav-bar></nav-bar>
+            <!-- <div class="container"> -->
+                <router-view></router-view>
+            <!-- </div> -->
+            <menu-bar></menu-bar>
         </div>
-
         <script src="{{ asset('js/metaphor.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
