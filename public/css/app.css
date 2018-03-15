@@ -60,6 +60,7 @@
   height: 50px;
   right: 0;
   left: 0;
+  background-color: #333333;
 }
 
 .sidenav {
@@ -93,5 +94,9 @@ i {
   padding: 20px;
   -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
   box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+}
+
+.background-color {
+  background-color: #4c4c4c;
 }
 

@@ -18266,7 +18266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "side-bar-button",
     methods: {
         openNav: function openNav() {
-            document.getElementById("sideNav").style.height = "50vw";
+            document.getElementById("sideNav").style.height = "25%";
         }
     }
 });
@@ -18308,7 +18308,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar bg--black" }, [
+  return _c("nav", { staticClass: "menu-bar" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xs-10 col-sm-10 col-md-10" }),
       _vm._v(" "),
