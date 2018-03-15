@@ -19791,7 +19791,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.list__item[data-v-17046c81]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n}\n.name_formatting[data-v-17046c81]{\n    padding: 5%;\n}\n", ""]);
+exports.push([module.i, "\n.list__item[data-v-17046c81]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    font-size: 200%;\n}\n.name_formatting[data-v-17046c81]{\n    padding: 5%;\n}\n", ""]);
 
 // exports
 
