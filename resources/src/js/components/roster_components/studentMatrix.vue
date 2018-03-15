@@ -8,11 +8,14 @@
                 :key="student.student_id"
                 :student="student"
                 @markRecognized="markStudentAsRecognized"
-            >
-            </flash-card>
+            ></flash-card>
         </div>
         <div v-else>
-            <gallery-card v-for="student in this.roster[this.courseid]" :key="student.student_id" :student="student"></gallery-card>
+            <gallery-card
+                    v-for="student in this.roster[this.courseid]"
+                    :key="student.student_id"
+                    :student="student"
+            ></gallery-card>
         </div>
     </div>
 </template>
@@ -28,6 +31,8 @@ export default {
         return {
             messages: true,
             errors: [],
+            lastname: true,
+            descending: true
         }
     },
 
@@ -53,6 +58,44 @@ export default {
                     student.recognized = payload.known;
                 }
             });
+        },
+
+        sortRoster: function () {
+            function sortedRoster (self) {
+                if (self.lastname === true) {
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
+                } else {
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
+                }
+            }
+
+            this.roster = sortedRoster(this);
+        },
+
+        toggleNameHandler: function () {
+            this.lastname = !this.lastname;
+            this.sortRoster();
+        },
+
+        toggleDescHandler: function () {
+            this.descending = !this.descending;
+            this.sortRoster();
         }
     },
 }

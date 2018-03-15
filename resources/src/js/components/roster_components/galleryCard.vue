@@ -14,7 +14,7 @@
                 </label>
                 <div class="card-title">
                     <div class="panel-heading align-center">
-                        {{student.display_name}}
+                        {{display_name}}
                         <br>
                         <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
                         <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
@@ -47,6 +47,10 @@ export default {
     },
 
     props: ['student'],
+
+    computed: {
+        display_name: function() { return this.student.first_name + " " + this.student.last_name; }
+    },
 
     methods: {
 		changePhoto: function(event, email) {

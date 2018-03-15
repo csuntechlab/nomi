@@ -1,6 +1,10 @@
 <template>
     <ul class="list">
-        <student-list-item v-for="student in this.roster[this.courseid]" :key="student.display_name" :student="student"></student-list-item>
+        <student-list-item
+            v-for="student in this.roster[this.courseid]"
+            :key="student.display_name"
+            :student="student"
+        ></student-list-item>
     </ul>
 </template>
 
@@ -15,6 +19,8 @@
                 show: true,
                 messages: true,
                 errors: [],
+                lastname: true,
+                descending: true
             }
         },
 

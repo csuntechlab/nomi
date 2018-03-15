@@ -1,5 +1,7 @@
 <template>
     <div>
+        <name-toggle-button></name-toggle-button>
+        <descending-toggle-button></descending-toggle-button>
         <h1>{{this.title}}</h1>
         <div v-if="this.list">
             <student-list :courseid="this.courseid"></student-list>
@@ -14,6 +16,8 @@
     import studentMatrix from "./studentMatrix"
     import studentList from "./studentList"
     import { mapGetters } from "vuex"
+    import nameToggleButton from "./nameToggleButton"
+    import descendingToggleButton from "./descendingToggleButton"
     export default {
         name: "roster-container",
 
