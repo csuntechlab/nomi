@@ -25,7 +25,9 @@
 
         components: {
             studentMatrix,
-            studentList
+            studentList,
+            nameToggleButton,
+            descendingToggleButton
         },
 
         computed: {

@@ -30,7 +30,9 @@ Vue.prototype.$store = new Vuex.Store({
         roster: [],
         flashroster: [],
         list: true,
-        flash: true
+        flash: true,
+        lastname: true,
+        descending: true,
     },
 
     getters: {
@@ -39,6 +41,18 @@ Vue.prototype.$store = new Vuex.Store({
         flashroster: state => state.flashroster,
         list: state => state.list,
         flash: state => state.flash
+    },
+
+    actions: {
+        nameSort (context) {
+            context.commit('toggleName');
+            context.commit('sortRoster');
+        },
+
+        descSort (context) {
+            context.commit('toggleDesc');
+            context.commit('sortRoster');
+        },
     },
 
     mutations: {
@@ -108,6 +122,44 @@ Vue.prototype.$store = new Vuex.Store({
 
             state.flash = false;
             state.flash = true;
+        },
+
+        sortRoster: function (state) {
+            state.roster.forEach((course) => {
+                function sortedRoster (self) {
+                    if (state.lastname === true) {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            }).reverse();
+                        }
+                    } else {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            }).reverse();
+                        }
+                    }
+                }
+
+                course = sortedRoster(course);
+            });
+        },
+
+        toggleName: function (state) {
+            state.lastname = !state.lastname;
+        },
+
+        toggleDesc: function (state) {
+            state.descending = !state.descending;
         }
     }
 });

@@ -1,5 +1,5 @@
 <template>
-    <button @click="this.$store.commit('toggleDesc')">Descending/Ascending</button>
+    <button @click="$store.dispatch('descSort')">Descending/Ascending</button>
 </template>
 
 <script>
