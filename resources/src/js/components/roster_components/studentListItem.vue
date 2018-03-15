@@ -5,7 +5,7 @@
                 <div class="col-xs-3">
                     <img :id="student.display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
                 </div>
-                <div class="col-xs-9">
+                <div class="col-xs-9 name_formatting">
                     {{student.display_name}}
                     <br />
                     nickname
@@ -35,5 +35,9 @@
         padding: 20px;
         -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
         box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
+    }
+
+    .name_formatting{
+        padding: 5%;
     }
 </style>
