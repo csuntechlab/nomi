@@ -2,8 +2,12 @@
     <div>
         <shuffle-button :courseid="this.courseid"></shuffle-button>
         <card-toggle-button></card-toggle-button>
-        <flash-card v-if="this.flash" v-for="student in this.flashroster[this.courseid]" :key="student.student_id" :student="student"></flash-card>
-        <gallery-card v-else v-for="student in this.roster[this.courseid]" :key="student.student_id" :student="student"></gallery-card>
+        <div v-if="this.flash">
+            <flash-card v-for="student in this.flashroster[this.courseid]" :key="student.student_id" :student="student"></flash-card>
+        </div>
+        <div v-else>
+            <gallery-card v-for="student in this.roster[this.courseid]" :key="student.student_id" :student="student"></gallery-card>
+        </div>
     </div>
 </template>
 

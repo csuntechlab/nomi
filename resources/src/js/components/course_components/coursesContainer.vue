@@ -1,7 +1,12 @@
 <template>
     <div>
-        <course-list v-if="this.list"></course-list>
-        <course-matrix v-else></course-matrix>
+        <h1>Class Sections</h1>
+        <div v-if="this.list">
+            <course-list></course-list>
+        </div>
+        <div v-else>
+            <course-matrix></course-matrix>
+        </div>
     </div>
 </template>
 

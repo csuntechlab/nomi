@@ -20,13 +20,6 @@
         name: "student-list-item",
 
         props:['student'],
-
-        // computed: {
-        //     getEmail: function() {
-        //
-        //         return this.student.email.replace('nr_', '')
-        //     }
-        // }
     }
 </script>
 

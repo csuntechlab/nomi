@@ -1,7 +1,7 @@
 <template>
     <div>
-        <button v-if="this.flash" role="button" class="btn btn-default" @click="$store.commit('shuffle', this.courseid)">Shuffle</button>
-        <button v-else role="button" class="btn btn-default">Shuffle</button>
+        <button v-if="this.flash" role="button" class="btn btn-default" @click="$store.commit('shuffleFlash', { courseid })">Shuffle</button>
+        <button v-else role="button" class="btn btn-default" disabled>Shuffle</button>
     </div>
 </template>
 <script>

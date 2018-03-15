@@ -32,7 +32,7 @@ Vue.prototype.$store = new Vuex.Store({
         roster: [],
         flashroster: [],
         list: true,
-        flash: false
+        flash: true
     },
 
     getters: {
@@ -49,7 +49,7 @@ Vue.prototype.$store = new Vuex.Store({
                 .then(response => {
                     state.courses = response.data[0];
                     state.roster = response.data[1];
-                    state.flashroster = response.data[1];
+                    state.flashroster = response.data[1].slice();
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -64,7 +64,7 @@ Vue.prototype.$store = new Vuex.Store({
             state.flash = !state.flash;
         },
 
-        shuffleFlash (state, courseid) {
+        shuffleFlash (state, { courseid }) {
             let unKnownStudents = [];
             let knownStudents = [];
 
@@ -106,7 +106,10 @@ Vue.prototype.$store = new Vuex.Store({
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            state.flashroster = unKnownStudents.concat(knownStudents);
+            state.flashroster[courseid] = unKnownStudents.concat(knownStudents);
+
+            state.flash = false;
+            state.flash = true;
         }
     }
 });

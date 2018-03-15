@@ -3,19 +3,15 @@
         <div class="panel">
             <div class="grid-item panel-content">
                 <label class="grid-image" :for="student.display_name">
-
-                            <croppa v-model="myCroppa"
-                                    :prevent-white-space="false"
-                                    :show-remove-button="false"
-                                    :disabled="true"
-                                    :quality="2"
-                                    @init="styleCanvas()"
-                                    >
-                                <img slot="initial"
-                                    :src="imgUrl">
-                            </croppa>
+                    <croppa v-model="myCroppa"
+                            :prevent-white-space="false"
+                            :show-remove-button="false"
+                            :disabled="true"
+                            :quality="2"
+                            @init="styleCanvas()">
+                        <img slot="initial" :src="imgUrl">
+                    </croppa>
                 </label>
-
                 <div class="card-title">
                     <div class="panel-heading align-center">
                         {{student.display_name}}

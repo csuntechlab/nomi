@@ -1,7 +1,7 @@
 <template>
     <div>
-        <router-link to="/home">Back to Courses</router-link>
-        <roster-container :courseid="this.$route.params.id" :title="this.$route.params.title"></roster-container>
+        <router-link to="/home">Back to Class Sections</router-link>
+        <roster-container :courseid="parseInt(this.$route.params.id)" :title="this.$route.params.title"></roster-container>
     </div>
 </template>
 
