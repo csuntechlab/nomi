@@ -50,12 +50,15 @@ export default {
 
 <style scoped>
     .back-of-card {
-        padding: 50% 50%;
         font-size: 300%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
     .panel-heading {
         display: flex;
         justify-content: center;
-        top: 0;
+        align-items: center;
+        flex: 0 0 25%;
     }
 </style>
