@@ -5,6 +5,8 @@
         @click="$store.commit('toggleFlash')"
     >Flash Card Mode</button>
 
+    <div v-else-if="this.list"></div>
+
     <button v-else
         role="button"
         class="btn btn-default"
@@ -18,7 +20,8 @@
         name: "card-toggle-button",
         computed: {
             ...mapGetters([
-                'flash'
+                'flash',
+                'list'
             ])
         }
     }

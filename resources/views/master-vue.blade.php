@@ -17,9 +17,7 @@
         @endif
         <div id='app'>
             <nav-bar></nav-bar>
-            <!-- <div class="container"> -->
-                <router-view></router-view>
-            <!-- </div> -->
+            <router-view></router-view>
             <menu-bar></menu-bar>
         </div>
         <script src="{{ asset('js/metaphor.js') }}"></script>
