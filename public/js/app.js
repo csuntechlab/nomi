@@ -4065,7 +4065,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(108);
+module.exports = __webpack_require__(114);
 
 
 /***/ }),
@@ -4101,10 +4101,10 @@ Vue.component('side-bar', __webpack_require__(60));
 Vue.component('toggle-view-button', __webpack_require__(63));
 
 Vue.component('roster-container', __webpack_require__(66));
-Vue.component('shuffle-button', __webpack_require__(88));
-Vue.component('card-toggle-button', __webpack_require__(91));
+Vue.component('shuffle-button', __webpack_require__(94));
+Vue.component('card-toggle-button', __webpack_require__(97));
 
-Vue.component('courses-container', __webpack_require__(94));
+Vue.component('courses-container', __webpack_require__(100));
 
 Vue.prototype.$eventBus = new Vue(); // Global event bus
 
@@ -18620,7 +18620,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18668,6 +18668,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__studentMatrix__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__studentList__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nameToggleButton__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__nameToggleButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__nameToggleButton__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__descendingToggleButton__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__descendingToggleButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__descendingToggleButton__);
 //
 //
 //
@@ -18677,6 +18681,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
+
 
 
 
@@ -18687,7 +18695,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     components: {
         studentMatrix: __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default.a,
-        studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a
+        studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a,
+        nameToggleButton: __WEBPACK_IMPORTED_MODULE_2__nameToggleButton___default.a,
+        descendingToggleButton: __WEBPACK_IMPORTED_MODULE_3__descendingToggleButton___default.a
     }
 });
 
@@ -18772,9 +18782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
-            if (this.flash) {
-                this.shuffleCardsHandler();
-            }
+            if (this.flash) this.shuffleCardsHandler();
         }.bind(this));
 
         this.$eventBus.$on('toggleCards', function () {
@@ -18788,6 +18796,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on('updateRecognized', function (id, known) {
             this.markStudentAsRecognized(id, known);
         }.bind(this));
+
+        this.$eventBus.$on('toggleName', function () {
+            this.toggleNameHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleDesc', function () {
+            this.toggleDescHandler();
+        }.bind(this));
     },
 
 
@@ -18798,7 +18814,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             show: false,
             flash: false,
             messages: true,
-            errors: []
+            errors: [],
+            lastname: true,
+            descending: true
         };
     },
 
@@ -18812,7 +18830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var unKnownStudents = [];
             var knownStudents = [];
 
-            this.roster.forEach(function (student) {
+            this.students.forEach(function (student) {
                 if (student.recognized === true) {
                     knownStudents.push(student);
                 } else {
@@ -18854,7 +18872,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.roster = unKnownStudents.concat(knownStudents);
+            this.students = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -18870,14 +18888,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         markStudentAsRecognized: function markStudentAsRecognized(id, known) {
-            this.roster.forEach(function (student) {
+            this.students.forEach(function (student) {
                 if (student.student_id === id) {
                     student.recognized = known;
                 }
             });
+        },
+
+        sortRoster: function sortRoster() {
+            function sortedRoster(self) {
+                if (self.lastname === true) {
+                    if (self.descending === true) {
+                        return self.roster.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
+                } else {
+                    if (self.descending === true) {
+                        return self.roster.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.roster.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
+                }
+            }
+
+            this.roster = sortedRoster(this);
+        },
+
+        toggleNameHandler: function toggleNameHandler() {
+            this.lastname = !this.lastname;
+            this.sortRoster();
+        },
+
+        toggleDescHandler: function toggleDescHandler() {
+            this.descending = !this.descending;
+            this.sortRoster();
         }
     }
-
 });
 
 /***/ }),
@@ -19078,6 +19133,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['student'],
 
+    computed: {
+        display_name: function display_name() {
+            return this.student.first_name + " " + this.student.last_name;
+        }
+    },
+
     methods: {
         changePhoto: function changePhoto(event, email) {
             var _this = this;
@@ -19179,10 +19240,7 @@ var render = function() {
       _c("div", { staticClass: "grid-item panel-content" }, [
         _c(
           "label",
-          {
-            staticClass: "grid-image",
-            attrs: { for: _vm.student.display_name }
-          },
+          { staticClass: "grid-image", attrs: { for: _vm.display_name } },
           [
             _c(
               "croppa",
@@ -19221,7 +19279,7 @@ var render = function() {
           _c("div", { staticClass: "panel-heading align-center" }, [
             _vm._v(
               "\n                    " +
-                _vm._s(_vm.student.display_name) +
+                _vm._s(_vm.display_name) +
                 "\n                    "
             ),
             _c("br"),
@@ -19314,6 +19372,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['student'],
 
+    computed: {
+        display_name: function display_name() {
+            return this.student.first_name + " " + this.student.last_name;
+        }
+    },
+
     methods: {
         updateRecognized: function updateRecognized(id) {
             var data = new FormData();
@@ -19353,18 +19417,18 @@ var render = function() {
                   _c("div", { staticClass: "panel-heading" }, [
                     _vm._v(
                       "\n                        " +
-                        _vm._s(_vm.student.display_name) +
+                        _vm._s(_vm.display_name) +
                         "\n                    "
                     )
                   ])
                 ])
               ])
             : _c("div", [
-                _c("label", { attrs: { for: _vm.student.display_name } }, [
+                _c("label", { attrs: { for: _vm.display_name } }, [
                   _c("img", {
                     staticClass: "img--circle grid-image",
                     attrs: {
-                      id: _vm.student.display_name + "-img",
+                      id: _vm.display_name + "-img",
                       src: _vm.student.image,
                       name: "photo",
                       accept: "image/*"
@@ -19428,18 +19492,18 @@ var render = function() {
           _vm.flash
             ? _c(
                 "div",
-                _vm._l(this.roster, function(student) {
+                _vm._l(this.students, function(student) {
                   return _c("student-card", {
-                    key: student.student_id,
+                    key: student.last_name,
                     attrs: { student: student, flash: _vm.flash }
                   })
                 })
               )
             : _c(
                 "div",
-                _vm._l(this.students, function(student) {
+                _vm._l(this.roster, function(student) {
                   return _c("student-card", {
-                    key: student.student_id,
+                    key: student.last_name,
                     attrs: { student: student, flash: _vm.flash }
                   })
                 })
@@ -19532,14 +19596,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$eventBus.$on('toggleView', function () {
             this.toggleViewHandler();
         }.bind(this));
-    },
 
+        this.$eventBus.$on('sortRoster', function () {
+            this.sortRosterHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleName', function () {
+            this.toggleNameHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleDesc', function () {
+            this.toggleDescHandler();
+        }.bind(this));
+    },
 
     data: function data() {
         return {
             show: true,
             messages: true,
-            errors: []
+            errors: [],
+            lastname: true,
+            descending: true
         };
     },
 
@@ -19552,6 +19629,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         toggleViewHandler: function toggleViewHandler() {
             this.show = !this.show;
+        },
+
+        sortRoster: function sortRoster() {
+            function sortedRoster(self) {
+                if (self.lastname === true) {
+                    if (self.descending === true) {
+                        return self.roster.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
+                } else {
+                    if (self.descending === true) {
+                        return self.roster.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.roster.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
+                }
+            }
+
+            this.roster = sortedRoster(this);
+        },
+
+        toggleNameHandler: function toggleNameHandler() {
+            this.lastname = !this.lastname;
+            this.sortRoster();
+        },
+
+        toggleDescHandler: function toggleDescHandler() {
+            this.descending = !this.descending;
+            this.sortRoster();
         }
     }
 });
@@ -19674,14 +19789,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "student-list-item",
 
-    props: ['student']
+    props: ['student'],
 
-    // computed: {
-    //     getEmail: function() {
-    //
-    //         return this.student.email.replace('nr_', '')
-    //     }
-    // }
+    computed: {
+        display_name: function display_name() {
+            return this.student.first_name + " " + this.student.last_name;
+        }
+    }
 });
 
 /***/ }),
@@ -19699,17 +19813,14 @@ var render = function() {
           _c("img", {
             staticClass: "img--circle",
             staticStyle: { width: "100%" },
-            attrs: {
-              id: _vm.student.display_name + "-img",
-              src: _vm.student.image
-            }
+            attrs: { id: _vm.display_name + "-img", src: _vm.student.image }
           })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-9" }, [
           _vm._v(
             "\n                " +
-              _vm._s(_vm.student.display_name) +
+              _vm._s(_vm.display_name) +
               "\n                "
           ),
           _c("br"),
@@ -19744,7 +19855,7 @@ var render = function() {
           { staticClass: "list" },
           _vm._l(this.roster, function(student) {
             return _c("student-list-item", {
-              key: student.display_name,
+              key: student.last_name,
               attrs: { student: student }
             })
           })
@@ -19766,6 +19877,186 @@ if (false) {
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(88)
+/* template */
+var __vue_template__ = __webpack_require__(89)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/nameToggleButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12da1bcc", Component.options)
+  } else {
+    hotAPI.reload("data-v-12da1bcc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "name-toggle-button",
+
+    methods: {
+        emitToggleName: function emitToggleName() {
+            this.$eventBus.$emit('toggleName');
+        }
+    }
+});
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("button", { on: { click: _vm.emitToggleName } }, [
+    _vm._v("First/Last Name")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-12da1bcc", module.exports)
+  }
+}
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(91)
+/* template */
+var __vue_template__ = __webpack_require__(92)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/descendingToggleButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ec3dc80e", Component.options)
+  } else {
+    hotAPI.reload("data-v-ec3dc80e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "descending-toggle-button",
+
+    methods: {
+        emitToggleDesc: function emitToggleDesc() {
+            this.$eventBus.$emit('toggleDesc');
+        }
+    }
+});
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("button", { on: { click: _vm.emitToggleDesc } }, [
+    _vm._v("Descending/Ascending")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ec3dc80e", module.exports)
+  }
+}
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -19774,6 +20065,10 @@ var render = function() {
     "div",
     [
       _c("toggle-view-button"),
+      _vm._v(" "),
+      _c("name-toggle-button"),
+      _vm._v(" "),
+      _c("descending-toggle-button"),
       _vm._v(" "),
       _c("h1", [_vm._v(_vm._s(this.title))]),
       _vm._v(" "),
@@ -19797,15 +20092,15 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(89)
+var __vue_script__ = __webpack_require__(95)
 /* template */
-var __vue_template__ = __webpack_require__(90)
+var __vue_template__ = __webpack_require__(96)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19844,7 +20139,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19864,7 +20159,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 90 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19898,15 +20193,15 @@ if (false) {
 }
 
 /***/ }),
-/* 91 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(92)
+var __vue_script__ = __webpack_require__(98)
 /* template */
-var __vue_template__ = __webpack_require__(93)
+var __vue_template__ = __webpack_require__(99)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19945,7 +20240,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 92 */
+/* 98 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19978,7 +20273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 93 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20028,15 +20323,15 @@ if (false) {
 }
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(95)
+var __vue_script__ = __webpack_require__(101)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(113)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20075,14 +20370,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__courseList__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseMatrix__);
 //
 //
@@ -20105,15 +20400,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(97)
+var __vue_script__ = __webpack_require__(103)
 /* template */
-var __vue_template__ = __webpack_require__(103)
+var __vue_template__ = __webpack_require__(109)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20152,12 +20447,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseListItem_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseListItem_vue__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__courseListItem_vue__);
 //
 //
@@ -20203,19 +20498,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(99)
+  __webpack_require__(105)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(101)
+var __vue_script__ = __webpack_require__(107)
 /* template */
-var __vue_template__ = __webpack_require__(102)
+var __vue_template__ = __webpack_require__(108)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20254,13 +20549,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(100);
+var content = __webpack_require__(106);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -20280,7 +20575,7 @@ if(false) {
 }
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -20294,7 +20589,7 @@ exports.push([module.i, "\n.list__item[data-v-04dc0652]{\n    padding: 20px;\n  
 
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20330,7 +20625,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 102 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20404,7 +20699,7 @@ if (false) {
 }
 
 /***/ }),
-/* 103 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20439,15 +20734,15 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(105)
+var __vue_script__ = __webpack_require__(111)
 /* template */
-var __vue_template__ = __webpack_require__(106)
+var __vue_template__ = __webpack_require__(112)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20486,7 +20781,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 105 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20551,7 +20846,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 106 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20636,7 +20931,7 @@ if (false) {
 }
 
 /***/ }),
-/* 107 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20666,7 +20961,7 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 114 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

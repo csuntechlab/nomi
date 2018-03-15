@@ -4,11 +4,11 @@
         <card-toggle-button></card-toggle-button>
 
         <div v-if="flash">
-            <student-card v-for="student in this.roster" :key="student.student_id" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.students" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
 
         <div v-else>
-            <student-card v-for="student in this.students" :key="student.student_id" :student="student" :flash="flash"></student-card>
+            <student-card v-for="student in this.roster" :key="student.last_name" :student="student" :flash="flash"></student-card>
         </div>
     </div>
 </template>
@@ -22,9 +22,8 @@ export default {
     created () {
         /** Create event listeners */
         this.$eventBus.$on('shuffleCards', function () {
-            if (this.flash) {
+            if (this.flash)
                 this.shuffleCardsHandler();
-            }
         }.bind(this));
 
         this.$eventBus.$on('toggleCards', function () {
@@ -39,6 +38,13 @@ export default {
             this.markStudentAsRecognized(id, known);
         }.bind(this));
 
+        this.$eventBus.$on('toggleName', function () {
+            this.toggleNameHandler();
+        }.bind(this));
+
+        this.$eventBus.$on('toggleDesc', function () {
+            this.toggleDescHandler();
+        }.bind(this));
     },
 
     props: ['roster', 'students'],
@@ -49,6 +55,8 @@ export default {
             flash: false,
             messages: true,
             errors: [],
+            lastname: true,
+            descending: true
         }
     },
 
@@ -62,7 +70,7 @@ export default {
             let unKnownStudents = [];
             let knownStudents = [];
 
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.recognized === true) {
                     knownStudents.push(student)
                 } else {
@@ -100,7 +108,7 @@ export default {
                 knownStudents[randomIndexTwo] = temporaryValueTwo;
             }
 
-            this.roster = unKnownStudents.concat(knownStudents);
+            this.students = unKnownStudents.concat(knownStudents);
 
             //hack, solve later
             this.show = !this.show;
@@ -116,14 +124,50 @@ export default {
         },
 
         markStudentAsRecognized: function(id, known) {
-            this.roster.forEach((student) => {
+            this.students.forEach((student) => {
                 if(student.student_id === id) {
                     student.recognized = known;
                 }
             });
+        },
+
+        sortRoster: function () {
+            function sortedRoster (self) {
+                if (self.lastname === true) {
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
+                } else {
+                    if(self.descending === true) {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.roster.sort((a, b) => {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
+                }
+            }
+
+            this.roster = sortedRoster(this);
+        },
+
+        toggleNameHandler: function () {
+            this.lastname = !this.lastname;
+            this.sortRoster();
+        },
+
+        toggleDescHandler: function () {
+            this.descending = !this.descending;
+            this.sortRoster();
         }
     },
-
 }
-
 </script>
