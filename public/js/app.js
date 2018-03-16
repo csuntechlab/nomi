@@ -20750,7 +20750,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.list__item[data-v-17046c81]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n}\n", ""]);
+exports.push([module.i, "\n.list__item[data-v-17046c81]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    font-size: 200%;\n}\n.name_formatting[data-v-17046c81]{\n    padding: 5%;\n}\n", ""]);
 
 // exports
 
@@ -20810,7 +20810,7 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-9" }, [
+        _c("div", { staticClass: "col-xs-9 name_formatting" }, [
           _vm._v(
             "\n                " +
               _vm._s(_vm.display_name) +
@@ -21604,7 +21604,7 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.courses, function(course) {
-      return _c("div", { staticClass: "col-xs-6" }, [
+      return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
         _c("div", { staticClass: "panel" }, [
           _c("div", { staticClass: "grid-item panel-content" }, [
             _c("div", { staticClass: "card-title" }, [
