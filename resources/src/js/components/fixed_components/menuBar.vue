@@ -6,6 +6,7 @@
                 <side-bar-button></side-bar-button>
             </div>
         </div>
+
     </nav>
 </template>
 
