@@ -2,10 +2,10 @@
     <li class="list__item">
         <div class="container">
             <div class="row">
-                <div class="">
+                <div class="col-xs-3">
                     <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
                 </div>
-                <div class="">
+                <div class="col-xs-9">
                     {{display_name}}
                     <br />
                     nickname
