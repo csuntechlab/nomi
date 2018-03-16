@@ -1,12 +1,16 @@
 <template>
     <div>
         <router-link to="/">Back to Class Sections</router-link>
-        <roster-container :courseid="parseInt(this.$route.params.id)" :title="this.$route.params.title"></roster-container>
+        <roster-container :title="this.$route.params.title"></roster-container>
     </div>
 </template>
 
 <script>
     export default {
         name: "class",
+
+        created () {
+            this.$store.dispatch('getCourseId', {courseid: parseInt(this.$route.params.id)})
+        }
     }
 </script>

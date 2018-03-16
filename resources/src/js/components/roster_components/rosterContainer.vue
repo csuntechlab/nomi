@@ -21,7 +21,7 @@
     export default {
         name: "roster-container",
 
-        props: [ 'title', 'courseid'],
+        props: [ 'title'],
 
         components: {
             studentMatrix,
@@ -32,7 +32,8 @@
 
         computed: {
             ...mapGetters([
-                'list'
+                'list',
+                'courseid',
             ])
         }
     }

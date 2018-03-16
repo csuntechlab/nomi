@@ -31,6 +31,7 @@ Vue.prototype.$store = new Vuex.Store({
         flash: true,
         lastname: true,
         descending: true,
+        courseid: 0,
     },
 
     getters: {
@@ -38,7 +39,8 @@ Vue.prototype.$store = new Vuex.Store({
         roster: state => state.roster,
         flashroster: state => state.flashroster,
         list: state => state.list,
-        flash: state => state.flash
+        flash: state => state.flash,
+        courseid: state => state.courseid,
     },
 
     actions: {
@@ -50,6 +52,10 @@ Vue.prototype.$store = new Vuex.Store({
         descSort (context) {
             context.commit('toggleDesc');
             context.commit('sortRoster');
+        },
+
+        getCourseId (context, payload) {
+            context.commit('GET_COURSE_ID', payload);
         },
     },
 
@@ -158,6 +164,10 @@ Vue.prototype.$store = new Vuex.Store({
 
         toggleDesc: function (state) {
             state.descending = !state.descending;
+        },
+
+        GET_COURSE_ID: function (state, payload) {
+            state.courseid = payload.courseid;
         }
     }
 });
