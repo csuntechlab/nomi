@@ -1,27 +1,13 @@
 <template>
-    <div>
-        <courses-container :courses="this.courses"></courses-container>
-    </div>
+    <body class="bg--gray">
+        <div class="container">
+            <courses-container></courses-container>
+        </div>
+    </body>
 </template>
 
 <script>
     export default {
         name: "home",
-
-        data: () => {
-            return {
-                courses: {}
-            }
-        },
-
-        props: ['json'],
-
-        mounted () {
-            this.courses = JSON.parse(this.json)[0];
-        }
     }
 </script>
-
-<style scoped>
-
-</style>

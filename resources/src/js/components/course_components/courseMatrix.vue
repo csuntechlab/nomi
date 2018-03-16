@@ -1,6 +1,6 @@
 <template>
-    <div v-if="show">
-        <div class="col-xs-6" v-for="course in this.courses">
+    <div>
+        <div class="col-xs-6" v-for="course in courses">
             <div class="panel">
                 <div class="grid-item panel-content">
                     <div class="card-title">
@@ -28,16 +28,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: "course-matrix",
-
-    created () {
-        /** Create event listeners */
-        this.$eventBus.$on('toggleView', function () {
-            this.toggleViewHandler();
-        }.bind(this));
-
-    },
 
     data: function () {
         return {
@@ -47,14 +40,10 @@ export default {
         }
     },
 
-    props: ['courses'],
-
-    methods: {
-        toggleViewHandler: function () {
-            this.show = !this.show;
-        }
+    computed: {
+        ...mapGetters([
+            'courses'
+        ])
     },
-
 }
-
 </script>

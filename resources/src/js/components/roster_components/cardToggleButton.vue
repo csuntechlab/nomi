@@ -1,27 +1,28 @@
 <template>
-    <div v-if="flash">
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Gallery Mode</button>
-    </div>
-    <div v-else>
-        <button role="button" class="btn btn-default" @click="emitToggleCards()">Flash Card Mode</button>
-    </div>
+    <button v-if="this.flash"
+        role="button"
+        class="btn btn-default"
+        @click="$store.commit('toggleFlash')"
+    >Flash Card Mode</button>
+
+    <div v-else-if="this.list"></div>
+
+    <button v-else
+        role="button"
+        class="btn btn-default"
+        @click="$store.commit('toggleFlash')"
+    >Gallery Mode</button>
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "card-toggle-button",
-
-        data: function () {
-            return {
-                flash: false
-            }
-        },
-
-        methods: {
-            emitToggleCards: function () {
-                this.$eventBus.$emit('toggleCards');
-                this.flash = !this.flash;
-            }
+        computed: {
+            ...mapGetters([
+                'flash',
+                'list'
+            ])
         }
     }
 </script>
