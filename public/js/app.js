@@ -20712,7 +20712,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n.list__item[data-v-1acc693a]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n}\n", ""]);
+exports.push([module.i, "\n.list__item[data-v-1acc693a]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    font-size: 200%;\n}\n.name_formatting[data-v-1acc693a]{\n    padding: 5%;\n}\n", ""]);
 
 // exports
 
@@ -20764,7 +20764,7 @@ var render = function() {
   return _c("li", { staticClass: "list__item" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "pull-left" }, [
+        _c("div", { staticClass: "col-xs-3" }, [
           _c("img", {
             staticClass: "img--circle",
             staticStyle: { width: "100%" },
@@ -20772,7 +20772,7 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "pull-right" }, [
+        _c("div", { staticClass: "col-xs-9 name_formatting" }, [
           _vm._v(
             "\n                " +
               _vm._s(_vm.display_name) +
