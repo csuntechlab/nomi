@@ -1,19 +1,20 @@
 <template>
     <div>
-        <button v-if="this.flash" role="button" class="btn btn-default" @click="$store.commit('shuffleFlash', { courseid })">Shuffle</button>
+        <i v-if="this.flash" class="fa fa-random fa-3x type--white" @click="$store.commit('shuffleFlash', { courseid })"></i>
         <div v-else-if="this.list"></div>
-        <button v-else role="button" class="btn btn-default" disabled>Shuffle</button>
+        <i v-else class="fa fa-random fa-3x type--white" disabled></i>
     </div>
 </template>
 <script>
     import { mapGetters } from 'vuex';
     export default {
         name: "shuffle-button",
-        props: ['courseid'],
+
         computed: {
             ...mapGetters([
                 'flash',
-                'list'
+                'list',
+                'courseid',
             ])
         }
     }

@@ -34,7 +34,7 @@ export default {
 
     data: function () {
         return {
-            show: false,
+            show: true,
             messages: true,
             errors: [],
         }

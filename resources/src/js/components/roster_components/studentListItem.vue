@@ -1,6 +1,6 @@
 <template>
     <li class="list__item">
-        <div class="container">
+        <div class="hello">
             <div class="row">
                 <div class="col-xs-3">
                     <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">

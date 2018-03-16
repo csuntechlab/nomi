@@ -1,17 +1,10 @@
 <template>
-    <button v-if="this.flash"
-        role="button"
-        class="btn btn-default"
-        @click="$store.commit('toggleFlash')"
-    >Flash Card Mode</button>
-
+    <i v-if="this.flash" class="fa fa-address-book fa-3x type--white" title="Gallery Card" @click="$store.commit('toggleFlash')"></i>
+    
     <div v-else-if="this.list"></div>
 
-    <button v-else
-        role="button"
-        class="btn btn-default"
-        @click="$store.commit('toggleFlash')"
-    >Gallery Mode</button>
+    <i v-else class="fa fa-id-card fa-3x type--white" title="Flashcard" @click="$store.commit('toggleFlash')"></i>
+
 </template>
 
 <script>
