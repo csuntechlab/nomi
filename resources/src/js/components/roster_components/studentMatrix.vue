@@ -1,7 +1,5 @@
 <template>
     <div>
-        <shuffle-button :courseid="this.courseid"></shuffle-button>
-        <card-toggle-button></card-toggle-button>
         <div v-if="this.flash">
             <flash-card
                 v-for="student in this.flashroster[this.courseid]"

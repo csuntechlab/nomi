@@ -1,6 +1,6 @@
 <template>
 <nav class="primary-nav">
-    <div class="position">
+    <div class="centered-position">
             <a href="https://www.csun.edu/" class="primary-nav__brand"><span class="sr-only">California State University, Northridge (CSUN)</span></a>
             <a href="https://www.csun.edu/" class="primary-nav__sub-brand">Nameface</a>
     </div>
@@ -12,10 +12,3 @@ export default {
 
 }
 </script>
-<style scoped>
-.position{
-    display: flex;
-    justify-content: center;
-}
-
-</style>

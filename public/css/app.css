@@ -54,17 +54,15 @@
 }
 
 .menu-bar {
-  bottom: 0;
+  padding: 15px;
   position: fixed;
-  width: 100%;
-  height: 50px;
-  right: 0;
+  bottom: 0;
   left: 0;
-  background-color: #333333;
+  right: 0;
 }
 
 .sidenav {
-  height: 0;
+  height: 0%;
   width: 100vw;
   position: fixed;
   z-index: 100;
@@ -94,9 +92,24 @@ i {
   padding: 20px;
   -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
   box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 0 5px 0;
+  font-size: 125%;
 }
 
 .background-color {
   background-color: #4c4c4c;
+}
+
+.spacing {
+  margin-bottom: 80px;
+}
+
+.centered-position {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 

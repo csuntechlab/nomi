@@ -1,5 +1,5 @@
 <template>
-    <div v-if="show">
+    <div>
         <ul class="list">
             <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
         </ul>
@@ -13,7 +13,6 @@
         name: "course-list",
         data: function () {
             return {
-                show: true,
                 messages: true,
                 errors: [],
             }
