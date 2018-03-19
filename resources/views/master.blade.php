@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
@@ -15,7 +15,8 @@
                 ...{{ $message }}...
             @endforeach
         @endif
-        <div class="container">
+        <div id="app" class="container">
+            <nav-bar></nav-bar>
             {{Form::open()}}
             Login
             <br>
@@ -25,7 +26,7 @@
             Password
             {{Form::password('password')}}
             <br>
-            {{Form::submit('Log In')}}
+            <loading-button></loading-button>
             {{Form::close()}}
         </div>
 
