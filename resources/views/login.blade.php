@@ -9,7 +9,7 @@
     Password
     {{Form::password('password')}}
     <br>
-    <button type="submit" class="btn btn-default">Log In</button>
+    <loading-button></loading-button>
     {{Form::close()}}
 </div>
 @stop

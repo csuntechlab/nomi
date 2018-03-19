@@ -12,7 +12,7 @@ export default new Vuex.Store({
         flash: true,
         lastname: true,
         descending: true,
-        courseid: 0,
+        courseid: -1,
     },
 
     getters: {

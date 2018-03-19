@@ -1,7 +1,5 @@
 <template>
     <div>
-        <name-toggle-button></name-toggle-button>
-        <descending-toggle-button></descending-toggle-button>
         <h1>{{this.title}}</h1>
         <div v-if="this.list">
             <student-list :courseid="this.courseid"></student-list>
@@ -26,8 +24,6 @@
         components: {
             studentMatrix,
             studentList,
-            nameToggleButton,
-            descendingToggleButton
         },
 
         computed: {
