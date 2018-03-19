@@ -20,6 +20,9 @@
         "vue-router": "^3.0.1"
     },
     "dependencies": {
-        "vue-axios": "latest"
+        "prod": "^1.0.1",
+        "vue-axios": "latest",
+        "vue-croppa": "^1.2.0",
+        "vuex": "^3.0.1"
     }
 }

@@ -1,59 +1,182 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-window.axios = require('axios');
-window.Vue = require('vue');
-
-import VueRouter from 'vue-router'
-import Splash from './views/Splash.vue'
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import Croppa from 'vue-croppa';
+import router from './router';
+import Vuex from 'vuex';
+
+window.Vue = require('vue');
+window.axios = require('axios');
 
 Vue.use(VueAxios, axios);
-Vue.use(VueRouter);
+Vue.use(Croppa);
+Vue.use(Vuex);
 
-const Router = new VueRouter({
-    mode: 'history',
-    routes : [
-        {
-            path: '/splash',
-            name: 'splash',
-            component: Splash
-
-        }
-    ]
-});
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-Vue.component('menu-bar', require('./components/menuBar.vue'));
+Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 
-Vue.component('roster-container', require('./components/rosterContainer.vue'));
-Vue.component('shuffle-button', require('./components/shuffleButton.vue'));
-Vue.component('card-toggle-button', require('./components/cardToggleButton.vue'));
-Vue.component('toggle-view-button', require('./components/toggleViewButton.vue'));
+Vue.component('toggle-view-button', require('./components/fixed_components/toggleViewButton.vue'));
+Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));
+Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
 
-Vue.component('student-matrix', require('./components/studentMatrix.vue'));
-Vue.component('student-list', require('./components/studentList.vue'));
+Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
+Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
+Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
 
-Vue.component('courses-container', require('./components/coursesContainer.vue'));
-Vue.component('course-matrix', require('./components/courseMatrix.vue'));
-Vue.component('course-list', require('./components/courseList.vue'));
+Vue.prototype.$store = new Vuex.Store({
+    state: {
+        courses: [],
+        roster: [],
+        flashroster: [],
+        list: true,
+        flash: true,
+        lastname: true,
+        descending: true,
+        courseid: 0,
+    },
 
-Vue.prototype.$eventBus = new Vue(); // Global event bus
+    getters: {
+        courses: state => state.courses,
+        roster: state => state.roster,
+        flashroster: state => state.flashroster,
+        list: state => state.list,
+        flash: state => state.flash,
+        courseid: state => state.courseid,
+    },
+
+    actions: {
+        nameSort (context) {
+            context.commit('toggleName');
+            context.commit('sortRoster');
+        },
+
+        descSort (context) {
+            context.commit('toggleDesc');
+            context.commit('sortRoster');
+        },
+
+        getCourseId (context, payload) {
+            context.commit('GET_COURSE_ID', payload);
+        },
+    },
+
+    mutations: {
+        getData (state) {
+            axios.get(`data`)
+                .then(response => {
+                    state.courses = response.data[0];
+                    state.roster = response.data[1];
+                    state.flashroster = response.data[1].slice();
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                })
+        },
+
+        toggleList (state) {
+            state.list = !state.list;
+        },
+
+        toggleFlash (state) {
+            state.flash = !state.flash;
+        },
+
+        shuffleFlash (state, { courseid }) {
+            let unKnownStudents = [];
+            let knownStudents = [];
+
+            state.flashroster[courseid].forEach((student) => {
+                if(student.recognized === true) {
+                    knownStudents.push(student)
+                } else {
+                    unKnownStudents.push(student)
+                }
+            });
+
+            let currentIndex = unKnownStudents.length, temporaryValue, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = unKnownStudents[currentIndex];
+                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                unKnownStudents[randomIndex] = temporaryValue;
+            }
+
+            let currentIndexTwo = knownStudents.length, temporaryValueTwo, randomIndexTwo;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndexTwo) {
+
+                // Pick a remaining element...
+                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                currentIndexTwo -= 1;
+
+                // And swap it with the current element.
+                temporaryValueTwo = knownStudents[currentIndexTwo];
+                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                knownStudents[randomIndexTwo] = temporaryValueTwo;
+            }
+
+            state.flashroster[courseid] = unKnownStudents.concat(knownStudents);
+
+            state.flash = false;
+            state.flash = true;
+        },
+
+        sortRoster: function (state) {
+            state.roster.forEach((course) => {
+                function sortedRoster (self) {
+                    if (state.lastname === true) {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.last_name.localeCompare(b.last_name);
+                            }).reverse();
+                        }
+                    } else {
+                        if(state.descending === true) {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            });
+                        } else {
+                            return self.sort((a, b) => {
+                                return a.first_name.localeCompare(b.first_name);
+                            }).reverse();
+                        }
+                    }
+                }
+
+                course = sortedRoster(course);
+            });
+        },
+
+        toggleName: function (state) {
+            state.lastname = !state.lastname;
+        },
+
+        toggleDesc: function (state) {
+            state.descending = !state.descending;
+        },
+
+        GET_COURSE_ID: function (state, payload) {
+            state.courseid = payload.courseid;
+        }
+    }
+});
 
 const app = new Vue({
     el: '#app',
-    router: Router,
-    components: {
-        Splash,
-    },
+    router,
+    created () {
+        this.$store.commit('getData');
+    }
 });

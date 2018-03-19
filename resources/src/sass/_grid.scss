@@ -8,13 +8,14 @@
 }
 
 .grid-item {
+  background-color: white;
   padding: 5%;
   height: 100%;
   width: 100%;
   text-align: center;
   -webkit-box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2); 
-box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
-border-radius: 25px;
+  box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
+  border-radius: 25px;
   
 }
 
@@ -25,6 +26,14 @@ border-radius: 25px;
 .panel {
   border-radius: 25px;
   border:0px;
+}
+.mask {
+  width: 20vh;
+  height: 20vh;
+  // height: auto;
+  // background-color: #8cffa0;
+  border-radius:50%;
+  overflow: hidden;
 }
   
 

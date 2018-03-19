@@ -25,35 +25,36 @@ class SPAController extends Controller
     }
 
     /**
+     * Description: Gets the course/roster data for the SPA.
+     */
+    public function getData()
+    {
+        $courses = Cache::remember('courses', $this->minutes, function () {
+            return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
+        });
+
+        $students = [];
+        $len = \count($courses);
+
+        for ($i = 0; $i < $len; ++$i) {
+            \array_push(
+                $students,
+                Cache::remember('students_' . $i, $this->minutes, function () use ($i) {
+                    return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
+                })
+            );
+        }
+
+        return [$courses, $students];
+    }
+
+    /**
      * Description: Gets the index page of the SPA.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //getStudentsFromRoster might need to be refactored, this call only grabs first class from current term
-        //If students exist in cache, webservice is not called again; cache times out in $minutes minutes
-        $students = Cache::remember('students', $this->minutes, function () {
-            return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), 0);
-        });
-
-        if ($students == null) {
-            return view('students')->with('students', $students)->withErrors(['Failed to retrieve students.']);
-        }
-        return view('students')->with('students', $students);
-    }
-
-    /**
-     * Description: Test method to retrieve course view.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function courses()
-    {
-        $courses = Cache::remember('courses', $this->minutes, function () {
-            return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
-        });
-
-        return view('courses')->with('courses', $courses);
+        return view('spa');
     }
 }

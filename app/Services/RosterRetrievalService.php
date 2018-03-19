@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use Illuminate\Support\Facades\DB;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
@@ -38,7 +37,8 @@ class RosterRetrievalService implements RosterRetrievalContract
             return [
                 [
                     'student_id' => 999999999,
-                    'display_name' => 'John Bingus',
+                    'first_name' => 'John',
+                    'last_name' => 'Bingus',
                     'email' => 'jbingus@dingus.com',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
@@ -46,8 +46,45 @@ class RosterRetrievalService implements RosterRetrievalContract
 
                 [
                     'student_id' => 999999998,
-                    'display_name' => 'Bob Dingus',
+                    'first_name' => 'Bob',
+                    'last_name' => 'Dingus',
                     'email' => 'bdingus@jingus.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999997,
+                    'first_name' => 'Flim',
+                    'last_name' => 'Flam',
+                    'email' => 'Flim@Flam.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999996,
+                    'first_name' => 'Real',
+                    'last_name' => 'Person',
+                    'email' => 'Real@Person.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999995,
+                    'first_name' => 'Some',
+                    'last_name' => 'Body',
+                    'email' => 'JustTold@Me.com',
+                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
+                    'recognized' => false,
+                ],
+
+                [
+                    'student_id' => 999999994,
+                    'first_name' => 'The',
+                    'last_name' => 'World',
+                    'email' => 'is@gonnaroll.me',
                     'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
                     'recognized' => false,
                 ],
@@ -79,21 +116,17 @@ class RosterRetrievalService implements RosterRetrievalContract
             $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)->encode('data-url');
             \array_push($sanitizedStudents, [
                 'student_id' => $unsanitizedStudent->members_id,
-                'display_name' => $unsanitizedStudent->first_name . ' ' . $unsanitizedStudent->last_name,
+                'first_name' => $unsanitizedStudent->first_name,
+                'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'image' => $image,
                 'recognized' => false,
             ]);
         }
 
-        // Checks to see if a student is recognized by the professor
-        // teaching this class
-        $relationships = DB::table('recognitions')->where('professor_id', auth()->user()->user_id)->pluck('student_id')->toArray();
-        foreach ($sanitizedStudents as &$sanitizedStudent) {
-            if (\in_array($sanitizedStudent['student_id'], $relationships)) {
-                $sanitizedStudent['recognized'] = true;
-            }
-        }
+        \usort($sanitizedStudents, function ($a, $b) {
+            return \strcmp($a['last_name'], $b['last_name']);
+        });
 
         return $sanitizedStudents;
     }

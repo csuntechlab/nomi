@@ -18,14 +18,11 @@ Route::post('/', 'LoginController@validateUser');
 
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
-
-/** Test route for course view */
-Route::get('/classes', 'SPAController@courses')->name('classes')->middleware('auth');
+Route::get('/data', 'SPAController@getData')->middleware('auth');
 
 /** Route for logout. */
 Route::get('/logout', function () {
     auth()->logout();
-
     return redirect('/');
 });
 
@@ -33,14 +30,14 @@ Route::get('/logout', function () {
 Route::get('/courses/{term}', 'WebResourceController@courses');
 Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
 Route::get('/media', 'WebResourceController@media');
+Route::get('/student/{email}', 'WebResourceController@student');
 
 /** Roster API Routes. */
 Route::get('/students/{term}/{course}', 'RosterController@getStudents');
 Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');
 
-/** Update recognized routes */
-Route::post('/markAsRecognized', 'RecognizedController@markAsRecognized')->middleware('auth');
-Route::post('/markAsUnrecognized', 'RecognizedController@markAsUnrecognized')->middleware('auth');
+/** Student API Routes */
+Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
 
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {

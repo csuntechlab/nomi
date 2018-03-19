@@ -22,9 +22,18 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return \json_decode($client->get(
+        $data = \json_decode($client->get(
             env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
         )->getBody()->getContents())->classes;
+
+        //add an id to each object to make vue stuff easier
+        $i = 0;
+        foreach ($data as $course) {
+            $course->id = $i;
+            ++$i;
+        }
+
+        return $data;
     }
 
     /**
@@ -64,6 +73,16 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
             . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0]
+        )->getBody()->getContents();
+    }
+
+    public function getStudent($email)
+    {
+        $client = new Client();
+
+        return $client->get(
+            'https://api.metalab.csun.edu/directory/api/members?email='
+            . \str_replace('nr_', '', $email)
         )->getBody()->getContents();
     }
 }
