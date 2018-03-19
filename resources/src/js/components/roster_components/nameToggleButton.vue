@@ -1,5 +1,5 @@
 <template>
-    <button @click="$store.dispatch('nameSort')">First/Last Name</button>
+    <button class="btn btn-default" @click="$store.dispatch('nameSort')">First/Last Name</button>
 </template>
 
 <script>
