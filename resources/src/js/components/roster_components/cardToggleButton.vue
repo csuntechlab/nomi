@@ -1,10 +1,7 @@
 <template>
-    <i v-if="this.flash" class="fa fa-address-book fa-3x type--white" title="Gallery Card" @click="$store.commit('toggleFlash')"></i>
-    
+    <i v-if="this.flash" class="fa fa-address-book fa-3x type--white" title="Gallery Card" @click="$store.dispatch('toggleFlash')"></i>
     <div v-else-if="this.list"></div>
-
-    <i v-else class="fa fa-id-card fa-3x type--white" title="Flashcard" @click="$store.commit('toggleFlash')"></i>
-
+    <i v-else class="fa fa-id-card fa-3x type--white" title="Flashcard" @click="$store.dispatch('toggleFlash')"></i>
 </template>
 
 <script>
