@@ -19828,42 +19828,81 @@ var render = function() {
     "div",
     { staticClass: "sidenav bg--black", attrs: { id: "sideNav" } },
     [
-      _c("div", { staticClass: "centered-position" }, [
-        _c("i", {
-          staticClass: "fa fa-user fa-2x type--white",
-          attrs: { title: "Profile", href: "#" }
-        }),
-        _vm._v("Profile\n        "),
-        _c("i", {
-          staticClass: "fa fa-gamepad fa-2x type--white",
-          attrs: { title: "Game", href: "#" }
-        }),
-        _vm._v("Game\n        "),
-        _c("i", {
-          staticClass: "fa fa-cog fa-2x type--white",
-          attrs: { title: "Settings", href: "#" }
-        }),
-        _vm._v("Settings\n        "),
-        _c("i", {
-          staticClass: "fa fa-power-off fa-2x type--white",
-          attrs: { title: "Logout", href: "/logout" }
-        }),
-        _vm._v("Logout\n        "),
-        _c("i", {
-          staticClass: "fa fa-times fa-2x type--white closebtn",
-          attrs: { title: "Close" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.closeNav()
+      _c("div", { staticClass: "pileContainer centered-position" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "pile" }, [
+          _c("i", {
+            staticClass: "fa fa-times fa-2x type--white",
+            attrs: { title: "Close" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.closeNav()
+              }
             }
-          }
-        })
+          })
+        ])
       ])
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pile" }, [
+      _c("i", {
+        staticClass: "fa fa-user fa-2x type--white",
+        attrs: { title: "Profile", href: "#" }
+      }),
+      _vm._v("Profile")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pile" }, [
+      _c("i", {
+        staticClass: "fa fa-gamepad fa-2x type--white",
+        attrs: { title: "Game", href: "#" }
+      }),
+      _vm._v("Game")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pile" }, [
+      _c("i", {
+        staticClass: "fa fa-cog fa-2x type--white",
+        attrs: { title: "Settings", href: "#" }
+      }),
+      _vm._v("Settings")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "pile" }, [
+      _c("i", {
+        staticClass: "fa fa-power-off fa-2x type--white",
+        attrs: { title: "Logout", href: "/logout" }
+      }),
+      _vm._v("Logout")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
