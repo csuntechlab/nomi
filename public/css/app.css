@@ -75,21 +75,24 @@
 }
 
 i {
-  font-size: 10px;
-  font-family: sans-serif;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  cursor: pointer;
 }
 
-.pileContainer {
-  display: table-cell;
-  vertical-align: bottom;
-  position: absolute;
+.text {
+  text-align: center;
+  color: white;
+  font-size: 125%;
+  font-family: sans-serif;
 }
 
 .pile {
   display: inline-block;
-  position: relative;
+}
+
+.sideHeight {
+  height: 75%;
 }
 
 .list__item {

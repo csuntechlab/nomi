@@ -1,12 +1,26 @@
 <template>
         <div id="sideNav" class="sidenav bg--black">
-            <div class="pileContainer centered-position">
-                <div class="pile"><i class="fa fa-user fa-2x type--white" title="Profile" href="#"></i>Profile</div>
-                <div class="pile"><i class="fa fa-gamepad fa-2x type--white" title="Game" href="#"></i>Game</div>
-                <div class="pile"><i class="fa fa-cog fa-2x type--white" title="Settings" href="#"></i>Settings</div>
-                <div class="pile"><i class="fa fa-power-off fa-2x type--white" title="Logout" href="/logout"></i>Logout</div>
-                <div class="pile"><i class="fa fa-times fa-2x type--white" title="Close" @click.prevent="closeNav()"></i></div>
-            </div>
+            <div class="centered-position">
+                    <div class="pile">
+                            <i class="fa fa-user fa-2x type--white" title="Profile"></i>
+                            <div class="text">Profile</div> 
+                    </div>
+                    <div class="pile">
+                            <i class="fa fa-gamepad fa-2x type--white" title="Game"></i>                       
+                            <div class="text">Game</div>
+                    </div>
+                    <div class="pile">
+                            <i class="fa fa-cog fa-2x type--white" title="Settings"></i>       
+                            <div class="text">Settings</div>
+                    </div>
+                    <div class="pile">
+                            <i class="fa fa-power-off fa-2x type--white" title="Logout" href="/logout"></i>           
+                            <div class="text">Logout</div>
+                    </div>
+                    <div class="pile">
+                            <i class="fa fa-times fa-2x type--white" title="Close" @click.prevent="closeNav()"></i>
+                    </div>
+                </div>
         </div>
 </template>
 

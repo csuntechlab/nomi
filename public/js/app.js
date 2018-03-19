@@ -19326,7 +19326,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -19806,6 +19805,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
@@ -19828,7 +19841,7 @@ var render = function() {
     "div",
     { staticClass: "sidenav bg--black", attrs: { id: "sideNav" } },
     [
-      _c("div", { staticClass: "pileContainer centered-position" }, [
+      _c("div", { staticClass: "centered-position" }, [
         _vm._m(0),
         _vm._v(" "),
         _vm._m(1),
@@ -19861,9 +19874,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pile" }, [
       _c("i", {
         staticClass: "fa fa-user fa-2x type--white",
-        attrs: { title: "Profile", href: "#" }
+        attrs: { title: "Profile" }
       }),
-      _vm._v("Profile")
+      _vm._v(" "),
+      _c("div", { staticClass: "text" }, [_vm._v("Profile")])
     ])
   },
   function() {
@@ -19873,9 +19887,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pile" }, [
       _c("i", {
         staticClass: "fa fa-gamepad fa-2x type--white",
-        attrs: { title: "Game", href: "#" }
+        attrs: { title: "Game" }
       }),
-      _vm._v("Game")
+      _vm._v(" "),
+      _c("div", { staticClass: "text" }, [_vm._v("Game")])
     ])
   },
   function() {
@@ -19885,9 +19900,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "pile" }, [
       _c("i", {
         staticClass: "fa fa-cog fa-2x type--white",
-        attrs: { title: "Settings", href: "#" }
+        attrs: { title: "Settings" }
       }),
-      _vm._v("Settings")
+      _vm._v(" "),
+      _c("div", { staticClass: "text" }, [_vm._v("Settings")])
     ])
   },
   function() {
@@ -19899,7 +19915,8 @@ var staticRenderFns = [
         staticClass: "fa fa-power-off fa-2x type--white",
         attrs: { title: "Logout", href: "/logout" }
       }),
-      _vm._v("Logout")
+      _vm._v(" "),
+      _c("div", { staticClass: "text" }, [_vm._v("Logout")])
     ])
   }
 ]
