@@ -19092,8 +19092,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         toggleFlash: function toggleFlash(context) {
             context.commit('TOGGLE_FLASH');
         },
-        shuffleFlash: function shuffleFlash(context) {
-            context.commit('SHUFFLE_FLASH');
+        shuffleFlash: function shuffleFlash(context, payload) {
+            context.commit('SHUFFLE_FLASH', payload);
         },
         nameSort: function nameSort(context) {
             context.commit('TOGGLE_NAME');

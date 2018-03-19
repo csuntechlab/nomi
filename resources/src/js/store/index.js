@@ -37,8 +37,8 @@ export default new Vuex.Store({
             context.commit('TOGGLE_FLASH');
         },
 
-        shuffleFlash (context) {
-            context.commit('SHUFFLE_FLASH');
+        shuffleFlash (context, payload) {
+            context.commit('SHUFFLE_FLASH', payload);
         },
 
         nameSort (context) {
