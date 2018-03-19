@@ -19820,6 +19820,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
@@ -19842,26 +19845,30 @@ var render = function() {
     "div",
     { staticClass: "sidenav bg--black", attrs: { id: "sideNav" } },
     [
-      _c("div", { staticClass: "centered-position" }, [
-        _vm._m(0),
+      _c("div", { staticClass: "centered-position sideHeight" }, [
+        _c("div", { staticClass: "img bg--red" }),
         _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _c("div", { staticClass: "pile" }, [
-          _c("i", {
-            staticClass: "fa fa-times fa-2x type--white",
-            attrs: { title: "Close" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.closeNav()
+        _c("div", [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "pile" }, [
+            _c("i", {
+              staticClass: "fa fa-times fa-2x type--white",
+              attrs: { title: "Close" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.closeNav()
+                }
               }
-            }
-          })
+            })
+          ])
         ])
       ])
     ]

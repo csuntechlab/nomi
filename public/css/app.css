@@ -87,12 +87,18 @@ i {
   font-family: sans-serif;
 }
 
+.img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
 .pile {
   display: inline-block;
 }
 
 .sideHeight {
-  height: 75%;
+  height: 100%;
 }
 
 .list__item {
