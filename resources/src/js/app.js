@@ -20,6 +20,7 @@ Vue.component('card-toggle-button', require('./components/roster_components/card
 
 Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
+Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
 
 const app = new Vue({
     el: '#app',
