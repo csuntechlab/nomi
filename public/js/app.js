@@ -19807,22 +19807,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
@@ -19845,89 +19829,46 @@ var render = function() {
     "div",
     { staticClass: "sidenav bg--black", attrs: { id: "sideNav" } },
     [
-      _c("div", { staticClass: "centered-position sideHeight" }, [
-        _c("div", { staticClass: "img bg--red" }),
-        _vm._v(" "),
-        _c("div", [
-          _vm._m(0),
+      _c(
+        "div",
+        { staticClass: "menu type--center" },
+        [
+          _c("shuffle-button"),
           _vm._v(" "),
-          _vm._m(1),
+          _c("h3", { staticClass: "text", attrs: { title: "Game" } }, [
+            _vm._v("Game")
+          ]),
           _vm._v(" "),
-          _vm._m(2),
+          _c(
+            "h3",
+            {
+              staticClass: "text",
+              attrs: { href: "https://www.csun.edu/faculty/scholarship" }
+            },
+            [_vm._v("Scholarship")]
+          ),
           _vm._v(" "),
-          _vm._m(3),
+          _c("h3", { staticClass: "text", attrs: { title: "Logout" } }, [
+            _vm._v("Logout")
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "pile" }, [
-            _c("i", {
-              staticClass: "fa fa-times fa-2x type--white",
-              attrs: { title: "Close" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.closeNav()
-                }
+          _c("i", {
+            staticClass: "fa fa-times fa-2x type--white close",
+            attrs: { title: "Close" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.closeNav()
               }
-            })
-          ])
-        ])
-      ])
+            }
+          })
+        ],
+        1
+      )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pile" }, [
-      _c("i", {
-        staticClass: "fa fa-user fa-2x type--white",
-        attrs: { title: "Profile" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text" }, [_vm._v("Profile")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pile" }, [
-      _c("i", {
-        staticClass: "fa fa-gamepad fa-2x type--white",
-        attrs: { title: "Game" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text" }, [_vm._v("Game")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pile" }, [
-      _c("i", {
-        staticClass: "fa fa-cog fa-2x type--white",
-        attrs: { title: "Settings" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text" }, [_vm._v("Settings")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pile" }, [
-      _c("i", {
-        staticClass: "fa fa-power-off fa-2x type--white",
-        attrs: { title: "Logout", href: "/logout" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "text" }, [_vm._v("Logout")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
