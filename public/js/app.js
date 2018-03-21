@@ -19853,7 +19853,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("i", {
-            staticClass: "fa fa-times fa-2x type--white close",
+            staticClass: "fa fa-times fa-1x type--white close",
             attrs: { title: "Close" },
             on: {
               click: function($event) {

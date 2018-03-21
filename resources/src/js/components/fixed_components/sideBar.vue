@@ -6,7 +6,7 @@
                     <h3 class="text" title="Game">Game</h3> 
                     <h3 class="text" href="https://www.csun.edu/faculty/scholarship">Scholarship</h3>       
                     <h3 class="text" title="Logout">Logout</h3>
-                    <i class="fa fa-times fa-2x type--white close" title="Close" @click.prevent="closeNav()"></i>
+                    <i class="fa fa-times fa-1x type--white close" title="Close" @click.prevent="closeNav()"></i>
                 </div>
         </div>
 </template>
