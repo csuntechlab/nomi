@@ -19414,6 +19414,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -19735,50 +19738,36 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-xs-11 col-sm-11 col-md-11" },
+        { staticClass: "col-xs-5 col-sm-5 col-md-5" },
         [
           _c("toggle-view-button", {
-            staticClass: "col-xs-2 col-sm-2 col-md-2"
+            staticClass: "col-xs-4 col-sm-4 col-md-4"
           }),
           _vm._v(" "),
-          this.courseid >= 0
-            ? _c(
-                "div",
-                [
-                  _c("name-toggle-button", {
-                    staticClass: "col-xs-2 col-sm-2 col-md-2"
-                  }),
-                  _vm._v(" "),
-                  _c("descending-toggle-button", {
-                    staticClass: "col-xs-2 col-sm-2 col-md-2"
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }),
-                  _vm._v(" "),
-                  !this.list
-                    ? _c(
-                        "div",
-                        [
-                          _c("card-toggle-button", {
-                            staticClass: "col-xs-2 col-sm-2 col-md-2"
-                          }),
-                          _vm._v(" "),
-                          _c("shuffle-button", {
-                            staticClass: "col-xs-2 col-sm-2 col-md-2"
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            : _vm._e()
+          _c("div", { staticClass: "col-xs-8 col-sm-8 col-md-8" }, [
+            this.courseid >= 0
+              ? _c(
+                  "div",
+                  [
+                    _c("name-toggle-button", {
+                      staticClass: "col-xs-4 col-sm-5 col-md-5"
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }),
+                    _vm._v(" "),
+                    _c("descending-toggle-button", {
+                      staticClass: "col-xs-4 col-sm-5 col-md-5"
+                    })
+                  ],
+                  1
+                )
+              : _vm._e()
+          ])
         ],
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }, [
+      _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
         _c("i", {
           staticClass: "fa fa-ellipsis-v fa-3x type--white",
           attrs: { title: "Menu" },
@@ -19789,6 +19778,24 @@ var render = function() {
             }
           }
         })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-5 col-sm-5 col-md-5" }, [
+        !this.list && this.courseid >= 0
+          ? _c(
+              "div",
+              [
+                _c("card-toggle-button", {
+                  staticClass: "col-xs-6 col-sm-6 col-md-6"
+                }),
+                _vm._v(" "),
+                _c("shuffle-button", {
+                  staticClass: "col-xs-6 col-sm-6 col-md-6"
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ])
     ])
   ])
