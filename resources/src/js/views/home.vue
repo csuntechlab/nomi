@@ -9,5 +9,9 @@
 <script>
     export default {
         name: "home",
+
+        created () {
+            this.$store.dispatch('getCourseId', {courseid: -1});
+        }
     }
 </script>
