@@ -29,7 +29,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('master');
+        return view('login');
     }
 
     /**
@@ -47,6 +47,6 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('login')->withErrors(['Login Failed']);
     }
 }

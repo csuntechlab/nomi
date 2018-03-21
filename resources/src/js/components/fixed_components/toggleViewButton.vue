@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input v-if="this.list" @click="$store.commit('toggleList')" type="image" src="/images/list.png">
-        <input v-else @click="$store.commit('toggleList')" type="image" src="/images/2x2grid.png">
+        <i v-if="this.list" class="fa fa-th-large fa-3x type--white" title="Grid" @click="$store.dispatch('toggleList')"></i>
+        <i v-else class="fa fa-list-ul fa-3x type--white" title="List" @click="$store.dispatch('toggleList')"></i>
     </div>
 </template>
 
