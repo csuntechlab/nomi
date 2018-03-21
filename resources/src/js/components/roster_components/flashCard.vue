@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6">
         <div class="panel">
-            <div class="grid-item panel-content" @click="updateRecognized">
+            <div class="grid-item light-grey panel-content" @click="updateRecognized">
                 <div v-if="known">
                     <div class="card-title">
                         <div class="panel-heading">

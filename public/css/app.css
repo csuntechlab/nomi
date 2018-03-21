@@ -7,7 +7,6 @@
 }
 
 .grid-item {
-  background-color: white;
   padding: 5%;
   height: 100%;
   width: 100%;
@@ -61,6 +60,10 @@
   right: 0;
 }
 
+.nav_title {
+  color: white;
+}
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -68,7 +71,6 @@
   z-index: 100;
   top: 0;
   right: 0;
-  background-color: #cf0a2c;
   overflow-x: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -109,5 +111,21 @@
 
 .spacing {
   margin-bottom: 80px;
+}
+
+.blue-green {
+  background-color: #4F9DA3;
+}
+
+.off-white {
+  background-color: #E5E5E5;
+}
+
+.light-grey {
+  background-color: #F4F4F4;
+}
+
+.navy-blue {
+  background-color: #0F1821;
 }
 
