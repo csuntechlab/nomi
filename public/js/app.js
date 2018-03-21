@@ -19543,7 +19543,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }, [
         _c("i", {
-          staticClass: "fa fa-ellipsis-v fa-3x blue-green",
+          staticClass: "fa fa-ellipsis-v fa-3x type--white",
           attrs: { title: "Menu" },
           on: {
             click: function($event) {
