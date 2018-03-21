@@ -112,6 +112,7 @@
 }
 
 .fa {
+  color: #f4f4f4;
   -webkit-transition: 25ms;
   transition: 25ms;
 }
