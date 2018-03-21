@@ -19364,7 +19364,7 @@ var render = function() {
   return _c("div", [
     this.flash
       ? _c("i", {
-          staticClass: "fa fa-random fa-3x type--white",
+          staticClass: "fa fa-random fa-3x ",
           on: {
             click: function($event) {
               _vm.$store.dispatch("shuffleFlash", { courseid: _vm.courseid })
@@ -19374,7 +19374,7 @@ var render = function() {
       : this.list
         ? _c("div")
         : _c("i", {
-            staticClass: "fa fa-random fa-3x type--white",
+            staticClass: "fa fa-random fa-3x ",
             attrs: { disabled: "" }
           })
   ])
@@ -19421,7 +19421,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return this.flash
     ? _c("i", {
-        staticClass: "fa fa-address-book fa-3x type--white",
+        staticClass: "fa fa-address-book fa-3x ",
         attrs: { title: "Gallery Card" },
         on: {
           click: function($event) {
@@ -19432,7 +19432,7 @@ var render = function() {
     : this.list
       ? _c("div")
       : _c("i", {
-          staticClass: "fa fa-id-card fa-3x type--white",
+          staticClass: "fa fa-id-card fa-3x ",
           attrs: { title: "Flashcard" },
           on: {
             click: function($event) {
@@ -19485,7 +19485,7 @@ var render = function() {
   return _c("div", [
     this.list
       ? _c("i", {
-          staticClass: "fa fa-th-large fa-3x type--white",
+          staticClass: "fa fa-th-large fa-3x ",
           attrs: { title: "Grid" },
           on: {
             click: function($event) {
@@ -19494,7 +19494,7 @@ var render = function() {
           }
         })
       : _c("i", {
-          staticClass: "fa fa-list-ul fa-3x type--white",
+          staticClass: "fa fa-list-ul fa-3x ",
           attrs: { title: "List" },
           on: {
             click: function($event) {

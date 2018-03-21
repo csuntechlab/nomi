@@ -113,6 +113,18 @@
   margin-bottom: 80px;
 }
 
+.fa {
+  color: #f4f4f4;
+  -webkit-transition: 25ms;
+  transition: 25ms;
+}
+
+.fa:active {
+  color: #4F9DA3;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 .blue-green {
   background-color: #4F9DA3;
 }
