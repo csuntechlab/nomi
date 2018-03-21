@@ -8,26 +8,17 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
 
-    <body>
+    <body class="off-white">
         @if ( $errors->count() > 0 )
             ...An error occured...
             @foreach( $errors->all() as $message )
                 ...{{ $message }}...
             @endforeach
         @endif
-        <div id="app" class="container">
+
+        <div id='app'>
             <nav-bar></nav-bar>
-            {{Form::open()}}
-            Login
-            <br>
-            Username
-            {{Form::text('username')}}
-            <br>
-            Password
-            {{Form::password('password')}}
-            <br>
-            <loading-button></loading-button>
-            {{Form::close()}}
+            @yield('content')
         </div>
 
         <script src="{{ asset('js/metaphor.js') }}"></script>

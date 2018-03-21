@@ -7,7 +7,6 @@
 }
 
 .grid-item {
-  background-color: white;
   padding: 5%;
   height: 100%;
   width: 100%;
@@ -61,6 +60,10 @@
   right: 0;
 }
 
+.nav_title {
+  color: white;
+}
+
 .sidebar {
   height: 0%;
   width: 100vw;
@@ -79,7 +82,7 @@ a:visited {
   text-decoration: none;
 }
 
-.text {
+.sidebar_text {
   color: white;
   font-size: 125%;
   font-family: sans-serif;
@@ -128,5 +131,21 @@ a:visited {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.blue-green {
+  background-color: #4F9DA3;
+}
+
+.off-white {
+  background-color: #E5E5E5;
+}
+
+.light-grey {
+  background-color: #F4F4F4;
+}
+
+.navy-blue {
+  background-color: #0F1821;
 }
 

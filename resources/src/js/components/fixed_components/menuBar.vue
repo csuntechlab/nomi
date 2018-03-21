@@ -1,5 +1,5 @@
 <template>
-  <nav class="menu-bar bg--black">
+  <nav class="menu-bar navy-blue">
     <div class="row">
       <div class="col-xs-11 col-sm-11 col-md-11">
         <toggle-view-button class="col-xs-3 col-sm-3 col-md-3"></toggle-view-button>

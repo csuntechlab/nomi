@@ -15,7 +15,7 @@ const router = new VueRouter({
            path: '/class/:id/:title',
            component: Class
        },
-   ]
+   ],
 });
 
 export default router;
