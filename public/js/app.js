@@ -18911,6 +18911,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -18924,9 +18925,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("body", { staticClass: "bg--gray" }, [
-    _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
-  ])
+  return _c(
+    "body",
+    { staticClass: "off-white" },
+    [
+      _c("div", { staticClass: "container" }, [_c("courses-container")], 1),
+      _vm._v(" "),
+      _c("menu-bar")
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19356,7 +19364,7 @@ var render = function() {
   return _c("div", [
     this.flash
       ? _c("i", {
-          staticClass: "fa fa-random fa-3x type--white",
+          staticClass: "fa fa-random fa-3x ",
           on: {
             click: function($event) {
               _vm.$store.dispatch("shuffleFlash", { courseid: _vm.courseid })
@@ -19366,7 +19374,7 @@ var render = function() {
       : this.list
         ? _c("div")
         : _c("i", {
-            staticClass: "fa fa-random fa-3x type--white",
+            staticClass: "fa fa-random fa-3x ",
             attrs: { disabled: "" }
           })
   ])
@@ -19413,7 +19421,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return this.flash
     ? _c("i", {
-        staticClass: "fa fa-address-book fa-3x type--white",
+        staticClass: "fa fa-address-book fa-3x ",
         attrs: { title: "Gallery Card" },
         on: {
           click: function($event) {
@@ -19424,7 +19432,7 @@ var render = function() {
     : this.list
       ? _c("div")
       : _c("i", {
-          staticClass: "fa fa-id-card fa-3x type--white",
+          staticClass: "fa fa-id-card fa-3x ",
           attrs: { title: "Flashcard" },
           on: {
             click: function($event) {
@@ -19477,7 +19485,7 @@ var render = function() {
   return _c("div", [
     this.list
       ? _c("i", {
-          staticClass: "fa fa-th-large fa-3x type--white",
+          staticClass: "fa fa-th-large fa-3x ",
           attrs: { title: "Grid" },
           on: {
             click: function($event) {
@@ -19486,7 +19494,7 @@ var render = function() {
           }
         })
       : _c("i", {
-          staticClass: "fa fa-list-ul fa-3x type--white",
+          staticClass: "fa fa-list-ul fa-3x ",
           attrs: { title: "List" },
           on: {
             click: function($event) {
@@ -19514,7 +19522,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar bg--black" }, [
+  return _c("nav", { staticClass: "menu-bar navy-blue" }, [
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
@@ -19715,7 +19723,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "primary-nav" }, [
+    return _c("nav", { staticClass: "primary-nav navy-blue" }, [
       _c("div", { staticClass: "position" }, [
         _c(
           "a",
@@ -19733,10 +19741,10 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "primary-nav__sub-brand",
+            staticClass: "primary-nav__sub-brand nav_title",
             attrs: { href: "https://www.csun.edu/" }
           },
-          [_vm._v("Nameface")]
+          [_vm._v("NAMEFACE")]
         )
       ])
     ])
@@ -19838,30 +19846,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "sidenav", attrs: { id: "mySidenav" } }, [
-      _c(
-        "a",
-        {
-          staticClass: "closebtn",
-          attrs: { href: "" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              _vm.closeNav()
+    _c(
+      "div",
+      { staticClass: "sidenav navy-blue", attrs: { id: "mySidenav" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "closebtn",
+            attrs: { href: "" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.closeNav()
+              }
             }
-          }
-        },
-        [_vm._v("×")]
-      ),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Profile")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Game")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Settings")]),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
-    ])
+          },
+          [_vm._v("×")]
+        ),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Profile")]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Game")]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Settings")]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "/logout" } }, [_vm._v("Logout")])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -20208,7 +20220,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "grid-item panel-content",
+          staticClass: "grid-item light-grey panel-content",
           on: { click: _vm.updateRecognized }
         },
         [
@@ -20461,7 +20473,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item panel-content" }, [
+      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
         _c(
           "label",
           {
@@ -20823,7 +20835,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item" }, [
+  return _c("li", { staticClass: "list__item light-grey" }, [
     _c("div", { staticClass: "hello" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xs-3" }, [
@@ -21421,7 +21433,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item col-xs-12" }, [
+  return _c("li", { staticClass: "list__item light-grey col-xs-12" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -21632,7 +21644,7 @@ var render = function() {
     _vm._l(_vm.courses, function(course) {
       return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
         _c("div", { staticClass: "panel" }, [
-          _c("div", { staticClass: "grid-item panel-content" }, [
+          _c("div", { staticClass: "grid-item light-grey panel-content" }, [
             _c("div", { staticClass: "card-title" }, [
               _c("div", { staticClass: "panel-heading" }, [
                 _c(

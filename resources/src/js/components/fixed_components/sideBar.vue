@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="mySidenav" class="sidenav">
+        <div id="mySidenav" class="sidenav navy-blue">
             <a href="" class="closebtn" @click.prevent="closeNav()">&times;</a>
             <a href="#">Profile</a>
             <a href="#">Game</a>
