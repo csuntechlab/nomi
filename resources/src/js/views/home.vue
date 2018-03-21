@@ -1,8 +1,9 @@
 <template>
-    <body class="bg--gray">
+    <body class="off-white">
         <div class="container">
             <courses-container></courses-container>
         </div>
+        <menu-bar></menu-bar>
     </body>
 </template>
 
