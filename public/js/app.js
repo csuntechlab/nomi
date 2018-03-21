@@ -19559,7 +19559,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("i", {
-    staticClass: "fa fa-ellipsis-v fa-3x type--white",
+    staticClass: "fa fa-angle-up fa-3x type--white",
     attrs: { title: "Menu" },
     on: {
       click: function($event) {
@@ -19601,7 +19601,7 @@ var render = function() {
             staticClass: "col-xs-3 col-sm-3 col-md-3"
           }),
           _vm._v(" "),
-          _c("shuffle-button", { staticClass: "col-xs-3 col-sm-3 col-md-3" })
+          _c("side-bar-button")
         ],
         1
       ),
@@ -19609,7 +19609,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-xs-1 col-sm-1 col-md-1" },
-        [_c("side-bar-button")],
+        [_c("shuffle-button", { staticClass: "col-xs-3 col-sm-3 col-md-3" })],
         1
       )
     ])
@@ -19807,6 +19807,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
@@ -19827,33 +19832,49 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "sidenav bg--black", attrs: { id: "sideNav" } },
+    { staticClass: "sidebar bg--black", attrs: { id: "sideNav" } },
     [
-      _c(
-        "div",
-        { staticClass: "menu type--center" },
-        [
-          _c("shuffle-button"),
-          _vm._v(" "),
-          _c("h3", { staticClass: "text", attrs: { title: "Game" } }, [
-            _vm._v("Game")
-          ]),
-          _vm._v(" "),
-          _c(
-            "h3",
-            {
-              staticClass: "text",
-              attrs: { href: "https://www.csun.edu/faculty/scholarship" }
-            },
-            [_vm._v("Scholarship")]
-          ),
-          _vm._v(" "),
-          _c("h3", { staticClass: "text", attrs: { title: "Logout" } }, [
-            _vm._v("Logout")
-          ]),
-          _vm._v(" "),
+      _c("div", { staticClass: "sidebar_container type--center" }, [
+        _c(
+          "div",
+          { staticClass: "menu type--center" },
+          [
+            _c("shuffle-button"),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "list" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "text", attrs: { to: "#", title: "Game" } },
+                  [_vm._v("Game")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text",
+                    attrs: { href: "https://www.csun.edu/faculty/scholarship" }
+                  },
+                  [_vm._v("Scholarship")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "text", attrs: { to: "#", title: "Logout" } },
+                  [_vm._v("Logout")]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "close" }, [
           _c("i", {
-            staticClass: "fa fa-times fa-1x type--white close",
+            staticClass: "fa fa-angle-down fa-3x type--white",
             attrs: { title: "Close" },
             on: {
               click: function($event) {
@@ -19862,9 +19883,8 @@ var render = function() {
               }
             }
           })
-        ],
-        1
-      )
+        ])
+      ])
     ]
   )
 }

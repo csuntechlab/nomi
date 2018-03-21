@@ -61,7 +61,7 @@
   right: 0;
 }
 
-.sidenav {
+.sidebar {
   height: 0%;
   width: 100vw;
   position: fixed;
@@ -69,6 +69,14 @@
   bottom: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: white;
+  text-decoration: none;
 }
 
 .text {
@@ -80,16 +88,20 @@
   padding: 1%;
 }
 
-.menu {
+.sidebar_container {
   height: 100%;
-  margin: 0;
   padding: 5%;
+  position: relative;
 }
 
 .close {
-  position: relative;
+  position: absolute;
   bottom: 0;
-  padding-top: 10%;
+  right: 50%;
+}
+
+.menu {
+  position: relative;
 }
 
 .list__item {
