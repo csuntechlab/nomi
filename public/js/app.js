@@ -19364,7 +19364,7 @@ var render = function() {
   return _c("div", [
     this.flash
       ? _c("i", {
-          staticClass: "fa fa-random fa-3x ",
+          staticClass: "fa fa-random fa-3x",
           on: {
             click: function($event) {
               _vm.$store.dispatch("shuffleFlash", { courseid: _vm.courseid })
@@ -19374,7 +19374,7 @@ var render = function() {
       : this.list
         ? _c("div")
         : _c("i", {
-            staticClass: "fa fa-random fa-3x ",
+            staticClass: "fa fa-random fa-3x",
             attrs: { disabled: "" }
           })
   ])
@@ -20187,7 +20187,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    height: 50vw;\n}\n.back-of-card[data-v-34872196] {\n    font-size: 8vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.panel-heading[data-v-34872196] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
+exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    height: 50vw;\n}\n.back-of-card[data-v-34872196] {\n    font-size: 7vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 7vw 0;\n}\n.panel-heading[data-v-34872196] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
 
 // exports
 
@@ -21920,7 +21920,7 @@ var render = function() {
     _vm._v(" "),
     _vm.ok
       ? _c("div", { staticClass: "type--center" }, [
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x type--red" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-4x type--red" })
         ])
       : _vm._e()
   ])

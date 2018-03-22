@@ -51,10 +51,11 @@ export default {
         height: 50vw;
     }
     .back-of-card {
-        font-size: 8vw;
+        font-size: 7vw;
         justify-content: center;
         align-items: center;
         display: flex;
+        padding: 7vw 0;
     }
     .panel-heading {
         display: flex;
