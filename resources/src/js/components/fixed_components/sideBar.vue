@@ -4,9 +4,9 @@
                 <div class="menu type--center">
                         <shuffle-button></shuffle-button> 
                         <div class="list">
-                            <router-link class="sidebar_text"  to="#" title="Game">Game</router-link> 
-                            <a class="sidebar_text" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>       
-                            <router-link class="sidebar_text"  to="#" title="Logout">Logout</router-link>     
+                            <router-link class="faculty-links"  to="#" title="Game">Game</router-link> 
+                            <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>       
+                            <router-link class="faculty-links"  to="#" title="Logout">Logout</router-link>     
                         </div>              
                 </div> 
                 <div class="close">

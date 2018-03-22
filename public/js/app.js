@@ -18962,6 +18962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -18980,6 +18981,8 @@ var render = function() {
     { staticClass: "off-white" },
     [
       _c("div", { staticClass: "container" }, [_c("courses-container")], 1),
+      _vm._v(" "),
+      _c("side-bar"),
       _vm._v(" "),
       _c("menu-bar")
     ],
@@ -19757,7 +19760,7 @@ var staticRenderFns = [
             staticClass: "primary-nav__sub-brand nav_title",
             attrs: { href: "https://www.csun.edu/" }
           },
-          [_vm._v("NAMEFACE")]
+          [_vm._v("Nameface")]
         )
       ])
     ])
@@ -19879,7 +19882,7 @@ var render = function() {
                 _c(
                   "router-link",
                   {
-                    staticClass: "sidebar_text",
+                    staticClass: "faculty-links",
                     attrs: { to: "#", title: "Game" }
                   },
                   [_vm._v("Game")]
@@ -19888,7 +19891,7 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "sidebar_text",
+                    staticClass: "faculty-links",
                     attrs: { href: "https://www.csun.edu/faculty/scholarship" }
                   },
                   [_vm._v("Scholarship")]
@@ -19897,7 +19900,7 @@ var render = function() {
                 _c(
                   "router-link",
                   {
-                    staticClass: "sidebar_text",
+                    staticClass: "faculty-links",
                     attrs: { to: "#", title: "Logout" }
                   },
                   [_vm._v("Logout")]

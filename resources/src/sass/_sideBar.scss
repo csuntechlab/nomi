@@ -7,18 +7,15 @@
   transition: 0.5s;
 }
 
- a:link, a:hover, a:active, a:visited {
+ a.faculty-links:link, a.faculty-links:hover, a.faculty-links:active, a.faculty-links:visited {
   color: white;
   text-decoration: none;
-}
-
-.sidebar_text {
-  color: white;
   font-size: 125%;
   font-family: sans-serif;
   margin: 0; 
   cursor: pointer;
   padding: 1%;
+  text-align:center;
 }
 
 .sidebar_container {
@@ -30,7 +27,7 @@
 .close {
   position: absolute;
   bottom: 0;
-  right:50%;
+  right:49%;
 }
 
 .menu {
