@@ -5,9 +5,7 @@
                 <div class="grid-item light-grey panel-content">
                     <div class="card-title">
                         <div class="panel-heading">
-                            <strong>
-                                <router-link :to="'/class/'+course.id+'/'+course.title">{{course.title}}</router-link>
-                            </strong>
+                            <router-link :to="'/class/'+course.id+'/'+course.title">{{course.title}}</router-link>
                         </div>
                     </div>
 
