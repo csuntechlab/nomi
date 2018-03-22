@@ -23,10 +23,6 @@ import { mapGetters } from 'vuex'
 export default {
     name: "list-grid-tabs",
 
-	components: {
-        toggleViewButton
-    },
-
     computed: {
         ...mapGetters([
             'list'

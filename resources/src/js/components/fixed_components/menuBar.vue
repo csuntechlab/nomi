@@ -14,12 +14,10 @@
 <script>
 import shuffleButton from '../roster_components/shuffleButton.vue'
 import cardToggleButton from '../roster_components/cardToggleButton.vue'
-import toggleViewButton from './toggleViewButton'
 export default {
 	components: {
         shuffleButton,
         cardToggleButton,
-        toggleViewButton
     },
 
     methods: {
