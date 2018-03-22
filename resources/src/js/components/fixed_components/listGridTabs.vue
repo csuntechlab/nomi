@@ -2,17 +2,14 @@
     <div class="tab-container">
         <ul class="tabs cf">
             <li :class="'col-xs-6 col-sm-6 col-md-6 '+this.gridBG" @click="gridHandler">
-                <i
-                    :class="'fa fa-th-large fa-3x '+this.gridFill"
-                    title="Grid"
-                > Grid</i>
+                <div :class="'fa fa-th-large fa-3x '+this.gridFill" title="Grid">
+                    <div class="tab-text">Grid</div>
+                </div>
             </li>
             <li :class="'col-xs-6 col-sm-6 col-md-6 '+this.listBG" @click="listHandler">
-                <i
-                    :class="'fa fa-list fa-3x '+this.listFill"
-                    title="List"
-                    @click="listHandler"
-                > List</i>
+                <div :class="'fa fa-list fa-3x '+this.listFill" title="List">
+                    <div class="tab-text">List</div>
+                </div>
             </li>
         </ul>
     </div>
@@ -76,6 +73,12 @@ export default {
 <style scoped>
     li {
         text-align: center;
+    }
+
+    .tab-text{
+        font-family: "museo-sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        float: right;
+        margin: 0 1vw;
     }
 
     .on-fill {

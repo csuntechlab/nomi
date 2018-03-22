@@ -19849,7 +19849,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\nli[data-v-6b673e6c] {\n    text-align: center;\n}\n.on-fill[data-v-6b673e6c] {\n    color: #F4F4F4;\n}\n.off-fill[data-v-6b673e6c]{\n    color: #F4F4F4;\n    -webkit-transition: 25ms;\n    transition: 25ms;\n}\n.off-fill[data-v-6b673e6c]:active {\n    color: #4F9DA3;\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2);\n}\n", ""]);
+exports.push([module.i, "\nli[data-v-6b673e6c] {\n    text-align: center;\n}\n.tab-text[data-v-6b673e6c]{\n    font-family: \"museo-sans\", \"Open Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n    float: right;\n    margin: 0 1vw;\n}\n.on-fill[data-v-6b673e6c] {\n    color: #F4F4F4;\n}\n.off-fill[data-v-6b673e6c]{\n    color: #F4F4F4;\n    -webkit-transition: 25ms;\n    transition: 25ms;\n}\n.off-fill[data-v-6b673e6c]:active {\n    color: #4F9DA3;\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2);\n}\n", ""]);
 
 // exports
 
@@ -19863,9 +19863,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
 //
 //
 //
@@ -19940,12 +19937,12 @@ var render = function() {
         },
         [
           _c(
-            "i",
+            "div",
             {
               class: "fa fa-th-large fa-3x " + this.gridFill,
               attrs: { title: "Grid" }
             },
-            [_vm._v(" Grid")]
+            [_c("div", { staticClass: "tab-text" }, [_vm._v("Grid")])]
           )
         ]
       ),
@@ -19958,13 +19955,12 @@ var render = function() {
         },
         [
           _c(
-            "i",
+            "div",
             {
               class: "fa fa-list fa-3x " + this.listFill,
-              attrs: { title: "List" },
-              on: { click: _vm.listHandler }
+              attrs: { title: "List" }
             },
-            [_vm._v(" List")]
+            [_c("div", { staticClass: "tab-text" }, [_vm._v("List")])]
           )
         ]
       )

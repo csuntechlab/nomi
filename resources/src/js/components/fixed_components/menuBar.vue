@@ -21,9 +21,9 @@ export default {
     },
 
     methods: {
-            openNav: function () {
-                document.getElementById("mySidenav").style.width = "100vw";
-            }
+        openNav: function () {
+            document.getElementById("mySidenav").style.width = "100vw";
         }
+    }
 }
 </script>
