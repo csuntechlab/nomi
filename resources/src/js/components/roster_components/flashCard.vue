@@ -3,15 +3,13 @@
         <div class="panel">
             <div class="grid-item light-grey panel-content" @click="updateRecognized">
                 <div v-if="known">
-                    <div class="card-title">
-                        <div class="panel-heading">
-                            {{display_name}}
-                        </div>
+                    <div class="back-of-card">
+                        {{display_name}}
                     </div>
                 </div>
                 <div v-else>
                     <label :for="display_name">
-                        <img :id="display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo" accept="image/*">
+                        <img :id="display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo"">
                     </label>
                 </div>
             </div>
@@ -47,3 +45,22 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .grid-item {
+        height: 50vw;
+    }
+    .back-of-card {
+        font-size: 7vw;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 7vw 0;
+    }
+    .panel-heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 25%;
+    }
+</style>
