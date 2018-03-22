@@ -13338,7 +13338,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(20);
-module.exports = __webpack_require__(117);
+module.exports = __webpack_require__(120);
 
 
 /***/ }),
@@ -13380,7 +13380,7 @@ Vue.component('card-toggle-button', __webpack_require__(17));
 
 Vue.component('roster-container', __webpack_require__(69));
 Vue.component('courses-container', __webpack_require__(98));
-Vue.component('loading-button', __webpack_require__(112));
+Vue.component('loading-button', __webpack_require__(115));
 
 var app = new Vue({
     el: '#app',
@@ -21259,7 +21259,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(99)
 /* template */
-var __vue_template__ = __webpack_require__(111)
+var __vue_template__ = __webpack_require__(114)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21540,8 +21540,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -21561,7 +21559,8 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c(
-          "strong",
+          "div",
+          { staticClass: "col-xs-4 course_list_title" },
           [
             _c(
               "router-link",
@@ -21570,44 +21569,42 @@ var render = function() {
                   to: "/class/" + _vm.course.id + "/" + _vm.course.title
                 }
               },
-              [_vm._v(_vm._s(_vm.course.title))]
+              [
+                _vm._v(
+                  _vm._s(_vm.course.subject) +
+                    " " +
+                    _vm._s(_vm.course.catalog_number) +
+                    ": #" +
+                    _vm._s(_vm.course.id)
+                )
+              ]
             )
           ],
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-4" }, [
+        _c("div", { staticClass: "col-xs-5 course_list_time" }, [
           _vm._v(
             "\n                    " +
-              _vm._s(_vm.course.subject) +
-              " " +
-              _vm._s(_vm.course.catalog_number) +
-              ": #" +
-              _vm._s(_vm.course.id) +
-              "\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-5" }, [
-          _vm._v(
-            "\n                    " +
-              _vm._s(_vm.course.meetings[0].location) +
-              " " +
-              _vm._s(_vm.course.meetings[0].days) +
-              "\n                    " +
               _vm._s(_vm.course.meetings[0].start_time) +
               "-" +
               _vm._s(_vm.course.meetings[0].end_time) +
+              "\n                    " +
+              _vm._s(_vm.course.meetings[0].location) +
+              " " +
+              _vm._s(_vm.course.meetings[0].days) +
               "\n                "
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-2" }, [
-          _vm._v(
-            "\n                    " +
-              _vm._s(_vm.course.enrollment_count) +
-              " Students\n                "
-          )
+        _c("div", { staticClass: "col-xs-2 course_list_specifications" }, [
+          _c("div", [
+            _vm._v(
+              "\n                        " +
+                _vm._s(_vm.course.enrollment_count) +
+                " Students\n                    "
+            )
+          ])
         ])
       ])
     ])
@@ -21663,7 +21660,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(109)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(113)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21708,6 +21705,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseCard__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseCard__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -21718,27 +21717,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21751,12 +21730,186 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             errors: []
         };
     },
+    components: {
+        courseCard: __WEBPACK_IMPORTED_MODULE_1__courseCard___default.a
+    },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 });
 
 /***/ }),
 /* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/course_components/courseCard.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e37d72d4", Component.options)
+  } else {
+    hotAPI.reload("data-v-e37d72d4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "course-card",
+
+    data: function data() {
+        return {
+            show: true,
+            messages: true,
+            errors: []
+        };
+    },
+
+    props: ['course']
+
+});
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "panel" }, [
+      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
+        _c("div", [
+          _c(
+            "div",
+            { staticClass: "course_title" },
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: "/class/" + _vm.course.id + "/" + _vm.course.title
+                  }
+                },
+                [
+                  _vm._v(
+                    _vm._s(_vm.course.subject) +
+                      " " +
+                      _vm._s(_vm.course.catalog_number) +
+                      ": #" +
+                      _vm._s(_vm.course.id)
+                  )
+                ]
+              )
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "time_location course_time" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.meetings[0].start_time) +
+              "-" +
+              _vm._s(_vm.course.meetings[0].end_time) +
+              "\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "time_location course_specifications" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.meetings[0].location) +
+              " " +
+              _vm._s(_vm.course.meetings[0].days) +
+              "\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "num_students course_specifications" }, [
+          _vm._v(
+            "\n                    " +
+              _vm._s(_vm.course.enrollment_count) +
+              " Students\n                "
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e37d72d4", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21766,65 +21919,17 @@ var render = function() {
   return _c(
     "div",
     _vm._l(_vm.courses, function(course) {
-      return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
-        _c("div", { staticClass: "panel" }, [
-          _c("div", { staticClass: "grid-item light-grey panel-content" }, [
-            _c("div", { staticClass: "card-title" }, [
-              _c("div", { staticClass: "panel-heading" }, [
-                _c(
-                  "strong",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        attrs: {
-                          to: "/class/" + course.id + "/" + course.title
-                        }
-                      },
-                      [_vm._v(_vm._s(course.title))]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "class_info" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(course.subject) +
-                  " " +
-                  _vm._s(course.catalog_number) +
-                  ": #" +
-                  _vm._s(course.id) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "time_location" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(course.meetings[0].location) +
-                  " " +
-                  _vm._s(course.meetings[0].days) +
-                  "\n                    " +
-                  _vm._s(course.meetings[0].start_time) +
-                  "-" +
-                  _vm._s(course.meetings[0].end_time) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "num_students" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(course.enrollment_count) +
-                  " Students\n                "
-              )
-            ])
-          ])
-        ])
-      ])
+      return _c(
+        "div",
+        { staticClass: "col-xs-6 col-md-4 col-lg-3" },
+        [
+          _c("course-card", {
+            key: course.course_id,
+            attrs: { course: course }
+          })
+        ],
+        1
+      )
     })
   )
 }
@@ -21839,7 +21944,7 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21865,19 +21970,19 @@ if (false) {
 }
 
 /***/ }),
-/* 112 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(113)
+  __webpack_require__(116)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(115)
+var __vue_script__ = __webpack_require__(118)
 /* template */
-var __vue_template__ = __webpack_require__(116)
+var __vue_template__ = __webpack_require__(119)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21916,13 +22021,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 113 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(114);
+var content = __webpack_require__(117);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -21942,7 +22047,7 @@ if(false) {
 }
 
 /***/ }),
-/* 114 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(false);
@@ -21956,7 +22061,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 115 */
+/* 118 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21982,7 +22087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 116 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22021,7 +22126,7 @@ if (false) {
 }
 
 /***/ }),
-/* 117 */
+/* 120 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
