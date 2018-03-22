@@ -1,30 +1,18 @@
 <template>
-    <nav class="menu-bar bg--black">
-        <div class="row">
-            <div class="col-xs-5 col-sm-5 col-md-5">
-                <toggle-view-button class="col-xs-4 col-sm-4 col-md-4"></toggle-view-button>
-                <div class="col-xs-8 col-sm-8 col-md-8">
-                    <div v-if="this.courseid >= 0">
-                        <name-toggle-button class="col-xs-4 col-sm-5 col-md-5"></name-toggle-button>
-                        <div class="col-xs-2 col-sm-2 col-md-2"></div>
-                        <descending-toggle-button class="col-xs-4 col-sm-5 col-md-5"></descending-toggle-button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <i class="fa fa-ellipsis-v fa-3x type--white" title="Menu" @click.prevent="openNav"></i>
-            </div>
-
-            <div class="col-xs-5 col-sm-5 col-md-5">
-                <div v-if="!this.list && this.courseid >= 0">
-                    <card-toggle-button class="col-xs-6 col-sm-6 col-md-6"></card-toggle-button>
-                    <shuffle-button class="col-xs-6 col-sm-6 col-md-6"></shuffle-button>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <nav class="menu-bar navy-blue">
+    <div class="row">
+      <div class="col-xs-11 col-sm-11 col-md-11">
+        <toggle-view-button class="col-xs-3 col-sm-3 col-md-3"></toggle-view-button>
+        <card-toggle-button class="col-xs-3 col-sm-3 col-md-3"></card-toggle-button>
+        <shuffle-button class="col-xs-3 col-sm-3 col-md-3"></shuffle-button>
+      </div>
+      <div class="col-xs-1 col-sm-1 col-md-1">
+          <i class="fa fa-ellipsis-v fa-3x type--white" title="Menu" @click.prevent="openNav()"></i>
+      </div>
+    </div>
+  </nav>
 </template>
+
 <script>
 import shuffleButton from '../roster_components/shuffleButton'
 import cardToggleButton from '../roster_components/cardToggleButton'

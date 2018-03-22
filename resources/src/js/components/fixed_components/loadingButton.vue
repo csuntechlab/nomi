@@ -2,7 +2,7 @@
     <div>
         <button class="btn btn-default" @click="ok = true">Log In</button>
         <div v-if="ok" class="type--center">
-            <i class="fa fa-spinner fa-spin fa-3x type--red"></i>
+            <i class="fa fa-spinner fa-spin fa-4x type--red"></i>
         </div>
     </div>
 </template>

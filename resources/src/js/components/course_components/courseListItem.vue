@@ -1,21 +1,19 @@
 <template>
-    <li class="list__item col-xs-12">
+    <li class="list__item light-grey col-xs-12">
         <div class="container">
             <div class="row">
-                    <strong>
-                        <router-link :to="'/class/'+course.id+'/'+course.title">{{course.title}}</router-link>
-                    </strong>
-                    <div class="col-xs-4">
-                        {{course.subject}} {{course.catalog_number}}: #{{course.id}}
+                    <div class="col-xs-4 course_list_title">
+                        <router-link :to="'/class/'+course.id+'/'+course.title">{{course.subject}} {{course.catalog_number}}: #{{course.id}}</router-link>
                     </div>
-                    <div class="col-xs-5">
-                        {{course.meetings[0].location}} {{course.meetings[0].days}}
+                    <div class="col-xs-5 course_list_time">
                         {{course.meetings[0].start_time}}-{{course.meetings[0].end_time}}
+                        {{course.meetings[0].location}} {{course.meetings[0].days}}
                     </div>
-                    <div class="col-xs-2">
-                        {{course.enrollment_count}} Students
+                    <div class="col-xs-2 course_list_specifications">
+                        <div>
+                            {{course.enrollment_count}} Students
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </li>
