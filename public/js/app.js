@@ -19120,7 +19120,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         flash: true,
         lastname: true,
         descending: true,
-        courseid: 0
+        courseid: 0,
+        faculty_email: "undefined",
+        faculty_name: "undefined",
+        faculty_profile: "underfined"
     },
 
     getters: {
@@ -19141,6 +19144,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         courseid: function courseid(state) {
             return state.courseid;
+        },
+        faculty_email: function faculty_email(state) {
+            return state.faculty_email;
+        },
+        faculty_name: function faculty_name(state) {
+            return state.faculty_name;
+        },
+        faculty_profile: function faculty_profile(state) {
+            return state.faculty_profile;
         }
     },
 
@@ -19178,6 +19190,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.courses = response.data[0];
                 state.roster = response.data[1];
                 state.flashroster = response.data[1].slice();
+                state.faculty_email = response.data[0][0].instructors[0].instructor;
+                state.faculty_name = state.faculty_email.replace("nr_", "");
+                state.faculty_name = state.faculty_name.substring(0, faculty_name.indexOf('@'));
+                state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19828,6 +19844,10 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
 //
 //
 //
@@ -19847,13 +19867,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "side-bar",
+
     methods: {
         closeNav: function closeNav(event) {
             document.getElementById("sideNav").style.height = "0%";
         }
-    }
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile']))
+
 });
 
 /***/ }),
@@ -19879,6 +19904,15 @@ var render = function() {
               "div",
               { staticClass: "list" },
               [
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: _vm.faculty_profile, title: "Profile" }
+                  },
+                  [_vm._v("Profile")]
+                ),
+                _vm._v(" "),
                 _c(
                   "router-link",
                   {

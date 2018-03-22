@@ -4,6 +4,7 @@
                 <div class="menu type--center">
                         <shuffle-button></shuffle-button> 
                         <div class="list">
+                            <a class="faculty-links" :href=faculty_profile title="Profile">Profile</a>      
                             <router-link class="faculty-links"  to="#" title="Game">Game</router-link> 
                             <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>       
                             <router-link class="faculty-links"  to="#" title="Logout">Logout</router-link>     
@@ -17,12 +18,22 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "side-bar",
+
         methods: {
             closeNav: function(event) {
                 document.getElementById("sideNav").style.height = "0%";
             }
-        }
+        }, 
+
+        computed: {
+            ...mapGetters([
+            'courses',
+            'faculty_profile'
+            ]),
+        },
+
     }
 </script>
