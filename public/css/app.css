@@ -40,10 +40,6 @@
   border-radius: 25px;
 }
 
-.panel-heading {
-  height: 60px;
-}
-
 .grid-image {
   width: 100%;
 }
@@ -142,13 +138,13 @@ a.faculty-links:visited {
   background-color: #0F1821;
 }
 
-.fa {
+.fa-3x {
   color: #f4f4f4;
   -webkit-transition: 25ms;
   transition: 25ms;
 }
 
-.fa:active {
+.fa-3x:active {
   color: #4F9DA3;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
