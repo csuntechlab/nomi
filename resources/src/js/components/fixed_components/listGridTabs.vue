@@ -78,7 +78,7 @@ export default {
     .tab-text{
         font-family: "museo-sans", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         float: right;
-        margin: 0 1vw;
+        margin: 0 0 0 1vw;
     }
 
     .on-fill {
