@@ -1,5 +1,5 @@
 <template>
-    <li class="list__item">
+    <li class="list__item light-grey">
         <div class="hello">
             <div class="row">
                 <div class="col-xs-3">

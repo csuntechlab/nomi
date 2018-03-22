@@ -29,5 +29,5 @@ const app = new Vue({
 
     mounted () {
         this.$store.dispatch('getData');
-    },
+    }
 });
