@@ -13241,50 +13241,9 @@ module.exports = Component.exports
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(57)
-/* template */
-var __vue_template__ = __webpack_require__(58)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/fixed_components/toggleViewButton.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ae719b5a", Component.options)
-  } else {
-    hotAPI.reload("data-v-ae719b5a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/maseca/Documents/metalab/nameface/resources/src/js/components/fixed_components/toggleViewButton.vue'");
 
 /***/ }),
 /* 18 */
@@ -13323,8 +13282,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_croppa___default.a);
 Vue.component('menu-bar', __webpack_require__(51));
 Vue.component('nav-bar', __webpack_require__(60));
 Vue.component('side-bar', __webpack_require__(66));
+Vue.component('list-grid-tabs', __webpack_require__(118));
 
-Vue.component('toggle-view-button', __webpack_require__(17));
 Vue.component('shuffle-button', __webpack_require__(15));
 Vue.component('card-toggle-button', __webpack_require__(16));
 
@@ -19306,27 +19265,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    shuffleButton: __WEBPACK_IMPORTED_MODULE_0__roster_components_shuffleButton_vue___default.a,
-    cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__roster_components_cardToggleButton_vue___default.a,
-    toggleViewButton: __WEBPACK_IMPORTED_MODULE_2__toggleViewButton___default.a
-  },
-  methods: {
-    openNav: function openNav(event) {
-      document.getElementById("mySidenav").style.width = "100vw";
-    }
+    components: {
+        shuffleButton: __WEBPACK_IMPORTED_MODULE_0__roster_components_shuffleButton_vue___default.a,
+        cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__roster_components_cardToggleButton_vue___default.a,
+        toggleViewButton: __WEBPACK_IMPORTED_MODULE_2__toggleViewButton__["default"]
+    },
 
-  }
+    methods: {
+        openNav: function openNav() {
+            document.getElementById("mySidenav").style.width = "100vw";
+        }
+    }
 });
 
 /***/ }),
@@ -19452,69 +19406,8 @@ if (false) {
 }
 
 /***/ }),
-/* 57 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "toggle-view-button",
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list']))
-});
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    this.list
-      ? _c("i", {
-          staticClass: "fa fa-th-large fa-3x ",
-          attrs: { title: "Grid" },
-          on: {
-            click: function($event) {
-              _vm.$store.dispatch("toggleList")
-            }
-          }
-        })
-      : _c("i", {
-          staticClass: "fa fa-list-ul fa-3x ",
-          attrs: { title: "List" },
-          on: {
-            click: function($event) {
-              _vm.$store.dispatch("toggleList")
-            }
-          }
-        })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ae719b5a", module.exports)
-  }
-}
-
-/***/ }),
+/* 57 */,
+/* 58 */,
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19528,27 +19421,23 @@ var render = function() {
         "div",
         { staticClass: "col-xs-11 col-sm-11 col-md-11" },
         [
-          _c("toggle-view-button", {
-            staticClass: "col-xs-3 col-sm-3 col-md-3"
-          }),
-          _vm._v(" "),
           _c("card-toggle-button", {
-            staticClass: "col-xs-3 col-sm-3 col-md-3"
+            staticClass: "col-xs-6 col-sm-6 col-md-6"
           }),
           _vm._v(" "),
-          _c("shuffle-button", { staticClass: "col-xs-3 col-sm-3 col-md-3" })
+          _c("shuffle-button", { staticClass: "col-xs-6 col-sm-6 col-md-6" })
         ],
         1
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-xs-1 col-sm-1 col-md-1" }, [
         _c("i", {
-          staticClass: "fa fa-ellipsis-v fa-3x type--white",
+          staticClass: "fa fa-ellipsis-v fa-3x ",
           attrs: { title: "Menu" },
           on: {
             click: function($event) {
               $event.preventDefault()
-              _vm.openNav()
+              _vm.openNav($event)
             }
           }
         })
@@ -21417,7 +21306,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -21454,35 +21342,35 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-4" }, [
           _vm._v(
-            "\n                    " +
+            "\n                " +
               _vm._s(_vm.course.subject) +
               " " +
               _vm._s(_vm.course.catalog_number) +
               ": #" +
               _vm._s(_vm.course.id) +
-              "\n                "
+              "\n            "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
           _vm._v(
-            "\n                    " +
+            "\n                " +
               _vm._s(_vm.course.meetings[0].location) +
               " " +
               _vm._s(_vm.course.meetings[0].days) +
-              "\n                    " +
+              "\n                " +
               _vm._s(_vm.course.meetings[0].start_time) +
               "-" +
               _vm._s(_vm.course.meetings[0].end_time) +
-              "\n                "
+              "\n            "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-2" }, [
           _vm._v(
-            "\n                    " +
+            "\n                " +
               _vm._s(_vm.course.enrollment_count) +
-              " Students\n                "
+              " Students\n            "
           )
         ])
       ])
@@ -21901,6 +21789,232 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(121)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(119)
+/* template */
+var __vue_template__ = __webpack_require__(123)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-6b673e6c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/listGridTabs.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b673e6c", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b673e6c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "list-grid-tabs",
+
+    components: {
+        toggleViewButton: toggleViewButton
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list']), {
+
+        listBG: function listBG() {
+            if (this.list) return "blue-green";else return "navy-blue";
+        },
+
+        gridBG: function gridBG() {
+            if (!this.list) return "blue-green";else return "navy-blue";
+        },
+
+        listFill: function listFill() {
+            if (this.list) return "on-fill";else return "off-fill";
+        },
+
+        gridFill: function gridFill() {
+            if (!this.list) return "on-fill";else return "off-fill";
+        }
+    }),
+
+    methods: {
+        listHandler: function listHandler() {
+            if (!this.list) {
+                this.$store.dispatch('toggleList');
+            }
+        },
+
+        gridHandler: function gridHandler() {
+            if (this.list) {
+                this.$store.dispatch('toggleList');
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 120 */,
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(122);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("06fb7188", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b673e6c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./listGridTabs.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b673e6c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./listGridTabs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nli[data-v-6b673e6c] {\n    text-align: center;\n}\n.on-fill[data-v-6b673e6c] {\n    color: #F4F4F4;\n}\n.off-fill[data-v-6b673e6c]{\n    color: #F4F4F4;\n    -webkit-transition: 25ms;\n    transition: 25ms;\n}\n.off-fill[data-v-6b673e6c]:active {\n    color: #4F9DA3;\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tab-container" }, [
+    _c("ul", { staticClass: "tabs cf" }, [
+      _c(
+        "li",
+        {
+          class: "col-xs-6 col-sm-6 col-md-6 " + this.gridBG,
+          on: { click: _vm.gridHandler }
+        },
+        [
+          _c(
+            "i",
+            {
+              class: "fa fa-th-large fa-3x " + this.gridFill,
+              attrs: { title: "Grid" }
+            },
+            [_vm._v(" Grid")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        {
+          class: "col-xs-6 col-sm-6 col-md-6 " + this.listBG,
+          on: { click: _vm.listHandler }
+        },
+        [
+          _c(
+            "i",
+            {
+              class: "fa fa-list fa-3x " + this.listFill,
+              attrs: { title: "List" },
+              on: { click: _vm.listHandler }
+            },
+            [_vm._v(" List")]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6b673e6c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
