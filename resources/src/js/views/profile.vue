@@ -4,7 +4,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid">Back to {{this.courseTitle}}</router-link>
+                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid">
+                            <h4>Back to {{this.courseTitle}}</h4>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -14,7 +16,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img :id="display_name+'-img'" :src="this.image" class="img--circle grid-image" name="photo">
+                        <img :id="this.display_name+'-img'" :src="this.image" class="img--circle grid-image" name="photo">
                         <h1 class="type--white type--thin type--marginless type--center">{{this.display_name}}</h1>
                     </div>
                 </div>
@@ -54,9 +56,21 @@
 
         created () {
             this.emailURI = this.$route.params.emailURI;
-            this.axios.get('the business/'+this.emailURI)
+            this.axios.get('student/'+this.emailURI+'@my.csun.edu')
                 .then(response => {
-                    console.log(response);
+                    this.bio = response['data']['people'].biography;
+
+                    if(this.bio === null)
+                        this.bio = "None"
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
+
+            this.axios.get('student_profile/'+this.emailURI+'@my.csun.edu')
+                .then(response => {
+                    this.display_name = response['data'].display_name;
+                    this.image = response['data'].image;
                 })
                 .catch(e => {
                     this.errors.push(e)
@@ -67,9 +81,9 @@
             return {
                 emailURI : 'undefined',
                 display_name: 'undefined',
-                major: 'undefined',
+                major: 'None',
                 bio: 'undefined',
-                image: 'https://media1.popsugar-assets.com/files/thumbor/KUz8kgLXYu2sy_nD0OMGgrN67ow/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2013/07/24/867/n/1922441/b69ef1b430939b50_1/i/College-Student-Discounts.jpg'
+                image: ''
             }
         },
 

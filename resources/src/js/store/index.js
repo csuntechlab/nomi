@@ -13,7 +13,7 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: ""
+        courseTitle: "Course"
     },
 
     getters: {

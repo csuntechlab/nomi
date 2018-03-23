@@ -19110,6 +19110,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19119,8 +19121,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         var _this = this;
 
         this.emailURI = this.$route.params.emailURI;
-        this.axios.get('the business/' + this.emailURI).then(function (response) {
-            console.log(response);
+        this.axios.get('student/' + this.emailURI + '@my.csun.edu').then(function (response) {
+            _this.bio = response['data']['people'].biography;
+
+            if (_this.bio === null) _this.bio = "None";
+        }).catch(function (e) {
+            _this.errors.push(e);
+        });
+
+        this.axios.get('student_profile/' + this.emailURI + '@my.csun.edu').then(function (response) {
+            _this.display_name = response['data'].display_name;
+            _this.image = response['data'].image;
         }).catch(function (e) {
             _this.errors.push(e);
         });
@@ -19131,9 +19142,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             emailURI: 'undefined',
             display_name: 'undefined',
-            major: 'undefined',
+            major: 'None',
             bio: 'undefined',
-            image: 'https://media1.popsugar-assets.com/files/thumbor/KUz8kgLXYu2sy_nD0OMGgrN67ow/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2013/07/24/867/n/1922441/b69ef1b430939b50_1/i/College-Student-Discounts.jpg'
+            image: ''
         };
     },
 
@@ -19162,7 +19173,7 @@ var render = function() {
                   staticStyle: { color: "#f4f4f4" },
                   attrs: { to: "/class/" + this.courseid }
                 },
-                [_vm._v("Back to " + _vm._s(this.courseTitle))]
+                [_c("h4", [_vm._v("Back to " + _vm._s(this.courseTitle))])]
               )
             ],
             1
@@ -19178,7 +19189,7 @@ var render = function() {
             _c("img", {
               staticClass: "img--circle grid-image",
               attrs: {
-                id: _vm.display_name + "-img",
+                id: this.display_name + "-img",
                 src: this.image,
                 name: "photo"
               }
@@ -19285,7 +19296,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: ""
+        courseTitle: "Course"
     },
 
     getters: {
