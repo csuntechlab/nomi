@@ -6,6 +6,7 @@
                 Go to profile page
             </router-link>
         </div>
+        <side-bar></side-bar>   
         <menu-bar></menu-bar>
     </body>
 </template>
