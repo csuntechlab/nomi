@@ -13,11 +13,10 @@ Vue.use(Croppa);
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
-
 Vue.component('side-bar-button', require('./components/fixed_components/sideBarButton.vue'));
-Vue.component('toggle-view-button', require('./components/fixed_components/toggleViewButton.vue'));
 
-Vue.component('toggle-view-button', require('./components/fixed_components/toggleViewButton.vue'));
+Vue.component('list-grid-tabs', require('./components/fixed_components/listGridTabs.vue'));
+
 Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
 Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
