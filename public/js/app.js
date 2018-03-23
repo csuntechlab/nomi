@@ -18867,6 +18867,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -18880,7 +18883,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
+  return _c(
+    "div",
+    [
+      _c("list-grid-tabs"),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18952,6 +18963,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "class",
@@ -18972,6 +18984,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("list-grid-tabs"),
+      _vm._v(" "),
       _c("router-link", { attrs: { to: "/" } }, [
         _vm._v("Back to Class Sections")
       ]),
@@ -19119,7 +19133,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             display_name: 'undefined',
             major: 'undefined',
             bio: 'undefined',
-            image: 'https://image.freepik.com/free-photo/student-man-with-back-pack-doing-okay-sign_1149-1793.jpg'
+            image: 'https://media1.popsugar-assets.com/files/thumbor/KUz8kgLXYu2sy_nD0OMGgrN67ow/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2013/07/24/867/n/1922441/b69ef1b430939b50_1/i/College-Student-Discounts.jpg'
         };
     },
 

@@ -1,6 +1,9 @@
 <template>
-    <div class="container">
-        <courses-container></courses-container>
+    <div>
+        <list-grid-tabs></list-grid-tabs>
+        <div class="container">
+            <courses-container></courses-container>
+        </div>
     </div>
 </template>
 

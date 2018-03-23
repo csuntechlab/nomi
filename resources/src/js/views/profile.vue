@@ -69,7 +69,7 @@
                 display_name: 'undefined',
                 major: 'undefined',
                 bio: 'undefined',
-                image: 'https://image.freepik.com/free-photo/student-man-with-back-pack-doing-okay-sign_1149-1793.jpg'
+                image: 'https://media1.popsugar-assets.com/files/thumbor/KUz8kgLXYu2sy_nD0OMGgrN67ow/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2013/07/24/867/n/1922441/b69ef1b430939b50_1/i/College-Student-Discounts.jpg'
             }
         },
 
