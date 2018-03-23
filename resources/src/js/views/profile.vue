@@ -4,41 +4,32 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--white type--thin type--marginless">Back</h4>
+                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid">Back to {{this.courseTitle}}</router-link>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
         <div class="section--lg section--md student-banner">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h1 class="type--white type--thin type--marginless type--center">Insert Photo</h1>
-                        <h1 class="type--white type--thin type--marginless type--center">Student Name</h1>
+                        <img :id="display_name+'-img'" :src="this.image" class="img--circle grid-image" name="photo">
+                        <h1 class="type--white type--thin type--marginless type--center">{{this.display_name}}</h1>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
         <div class="section type--center">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Nick Name</h4>
+                        <h4 class="type--black type--thin type--marginless">Major: {{this.major}}</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Major: Computer Science</h4>
+                        <h4 class="type--black type--thin type--marginless">Email: {{this.emailURI}}@my.csun.edu</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Email: student@my.csun.edu</h4>
-                        <br>
-
-                        <h4 class="type--black type--thin type--marginless">
-                            Bio:
-                        </h4>
+                        <h4 class="type--black type--thin type--marginless">Bio: {{this.bio}}</h4>
                         <br>
                         <form>
                             <div class="form__group">
@@ -53,25 +44,40 @@
                 </div>
             </div>
         </div>
-
-        <menu-bar></menu-bar>
-        <div class="menu__compensation">
-
-        </div>
     </div>
 </template>
+
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: 'profile',
 
+        created () {
+            this.emailURI = this.$route.params.emailURI;
+            this.axios.get('the business/'+this.emailURI)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
+        },
+
         data: function () {
             return {
-
+                emailURI : 'undefined',
+                display_name: 'undefined',
+                major: 'undefined',
+                bio: 'undefined',
+                image: 'https://image.freepik.com/free-photo/student-man-with-back-pack-doing-okay-sign_1149-1793.jpg'
             }
         },
 
-
-
-
+        computed : {
+            ...mapGetters([
+                'courseid',
+                'courseTitle'
+            ])
+        }
     }
 </script>

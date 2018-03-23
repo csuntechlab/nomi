@@ -13,6 +13,7 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
+        courseTitle: ""
     },
 
     getters: {
@@ -22,6 +23,7 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         courseid: state => state.courseid,
+        courseTitle: state => state.courseTitle
     },
 
     actions: {
@@ -165,6 +167,7 @@ export default new Vuex.Store({
 
         GET_COURSE_ID: function (state, payload) {
             state.courseid = payload.courseid;
+            state.courseTitle = state.courses[state.courseid].title;
         }
     }
 });

@@ -13,11 +13,11 @@ const router = new VueRouter({
            component: Home
        },
        {
-           path: '/class/:id/:title',
+           path: '/class/:id',
            component: Class
        },
        {
-           path: '/profile/',
+           path: '/profile/:emailURI',
            component: Profile
        }
    ],
