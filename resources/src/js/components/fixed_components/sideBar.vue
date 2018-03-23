@@ -7,7 +7,7 @@
                             <a class="faculty-links" :href=faculty_profile title="Profile">Profile</a>      
                             <router-link class="faculty-links"  to="#" title="Game">Game</router-link> 
                             <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>       
-                            <router-link class="faculty-links"  to="#" title="Logout">Logout</router-link>     
+                            <a class="faculty-links"  href= "/logout" title="Logout">Logout</a>     
                         </div>              
                 </div> 
                 <div class="close">
