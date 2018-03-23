@@ -2,7 +2,7 @@
     <div>
         <name-toggle-button></name-toggle-button>
         <descending-toggle-button></descending-toggle-button>
-        <h1>{{this.title}}</h1>
+        <h1>{{this.courseTitle}}</h1>
         <div v-if="this.list">
             <student-list :courseid="this.courseid"></student-list>
         </div>
@@ -21,8 +21,6 @@
     export default {
         name: "roster-container",
 
-        props: [ 'title'],
-
         components: {
             studentMatrix,
             studentList,
@@ -34,6 +32,7 @@
             ...mapGetters([
                 'list',
                 'courseid',
+                'courseTitle'
             ])
         }
     }

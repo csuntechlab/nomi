@@ -13,7 +13,8 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        faculty_email: "undefined", 
+        courseTitle: "Course",
+        faculty_email: "undefined",
         faculty_name: "undefined",
         faculty_profile: "underfined"
     },
@@ -25,6 +26,7 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         courseid: state => state.courseid,
+        courseTitle: state => state.courseTitle,
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
         faculty_profile: state => state.faculty_profile
@@ -175,6 +177,7 @@ export default new Vuex.Store({
 
         GET_COURSE_ID: function (state, payload) {
             state.courseid = payload.courseid;
+            state.courseTitle = state.courses[state.courseid].title;
         }
     }
 });

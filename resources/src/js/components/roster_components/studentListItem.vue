@@ -6,9 +6,9 @@
                     <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
                 </div>
                 <div class="col-xs-9 name_formatting">
-                    {{display_name}}
-                    <br />
-                    nickname
+                    <router-link :to="'/profile/'+email_uri">
+                        {{display_name}}
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -22,7 +22,13 @@
         props:['student'],
 
         computed: {
-            display_name: function() { return this.student.first_name + " " + this.student.last_name; }
+            display_name: function() {
+                return this.student.first_name + " " + this.student.last_name;
+            },
+
+            email_uri : function () {
+                return this.student.email.split('@')[0];
+            }
         }
     }
 </script>

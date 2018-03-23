@@ -15957,10 +15957,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/',
         component: __WEBPACK_IMPORTED_MODULE_2__views_home___default.a
     }, {
-        path: '/class/:id/:title',
+        path: '/class/:id',
         component: __WEBPACK_IMPORTED_MODULE_3__views_class___default.a
     }, {
-        path: '/profile/',
+        path: '/profile/:emailURI',
         component: __WEBPACK_IMPORTED_MODULE_4__views_profile___default.a
     }]
 });
@@ -18919,10 +18919,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home"
@@ -18937,25 +18933,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "body",
-    { staticClass: "off-white" },
+    "div",
     [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _c("courses-container"),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: "/profile/" } }, [
-            _vm._v("\n            Go to profile page\n        ")
-          ])
-        ],
-        1
-      ),
+      _c("list-grid-tabs"),
       _vm._v(" "),
-      _c("side-bar"),
-      _vm._v(" "),
-      _c("menu-bar")
+      _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
     ],
     1
   )
@@ -19030,6 +19012,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "class",
@@ -19050,11 +19033,13 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("list-grid-tabs"),
+      _vm._v(" "),
       _c("router-link", { attrs: { to: "/" } }, [
         _vm._v("Back to Class Sections")
       ]),
       _vm._v(" "),
-      _c("roster-container", { attrs: { title: this.$route.params.title } })
+      _c("roster-container")
     ],
     1
   )
@@ -19122,6 +19107,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -19173,25 +19161,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile',
 
-    data: function data() {
-        return {};
-    }
+    created: function created() {
+        var _this = this;
 
+        this.emailURI = this.$route.params.emailURI;
+        this.axios.get('student/' + this.emailURI + '@my.csun.edu').then(function (response) {
+            _this.bio = response['data']['people'].biography;
+
+            if (_this.bio === null) _this.bio = "None";
+        }).catch(function (e) {
+            _this.errors.push(e);
+        });
+
+        this.axios.get('student_profile/' + this.emailURI + '@my.csun.edu').then(function (response) {
+            _this.display_name = response['data'].display_name;
+            _this.image = response['data'].image;
+        }).catch(function (e) {
+            _this.errors.push(e);
+        });
+    },
+
+
+    data: function data() {
+        return {
+            emailURI: 'undefined',
+            display_name: 'undefined',
+            major: 'None',
+            bio: 'undefined',
+            image: ''
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle']))
 });
 
 /***/ }),
@@ -19202,135 +19208,107 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _c("menu-bar"),
-      _vm._v(" "),
-      _c("div", { staticClass: "menu__compensation" })
-    ],
-    1
-  )
+  return _c("div", [
+    _c("div", { staticClass: "banner__position blue-green" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-sm-12" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticStyle: { color: "#f4f4f4" },
+                  attrs: { to: "/class/" + this.courseid }
+                },
+                [_c("h4", [_vm._v("Back to " + _vm._s(this.courseTitle))])]
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "section--lg section--md student-banner" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("img", {
+              staticClass: "img--circle grid-image",
+              attrs: {
+                id: this.display_name + "-img",
+                src: this.image,
+                name: "photo"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "h1",
+              {
+                staticClass:
+                  "type--white type--thin type--marginless type--center"
+              },
+              [_vm._v(_vm._s(this.display_name))]
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "section type--center" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c(
+              "h4",
+              { staticClass: "type--black type--thin type--marginless" },
+              [_vm._v("Major: " + _vm._s(this.major))]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "h4",
+              { staticClass: "type--black type--thin type--marginless" },
+              [_vm._v("Email: " + _vm._s(this.emailURI) + "@my.csun.edu")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "h4",
+              { staticClass: "type--black type--thin type--marginless" },
+              [_vm._v("Bio: " + _vm._s(this.bio))]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _vm._m(0)
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "banner__position blue-green" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--white type--thin type--marginless" },
-              [_vm._v("Back")]
-            )
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "section--lg section--md student-banner" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-12" }, [
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "type--white type--thin type--marginless type--center"
-                },
-                [_vm._v("Insert Photo")]
-              ),
-              _vm._v(" "),
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "type--white type--thin type--marginless type--center"
-                },
-                [_vm._v("Student Name")]
-              )
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "section type--center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Nick Name")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Major: Computer Science")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Email: student@my.csun.edu")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("\n                        Bio:\n                    ")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("form", [
-              _c("div", { staticClass: "form__group" }, [
-                _c(
-                  "h4",
-                  { staticClass: "type--black type--thin type--marginless" },
-                  [
-                    _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
-                    _vm._v(
-                      "\n                                Add a Note:\n                            "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("textarea", {
-                  attrs: { id: "ex0", name: "ex0", placeholder: "Comment.." }
-                })
-              ])
-            ])
-          ])
-        ])
+    return _c("form", [
+      _c("div", { staticClass: "form__group" }, [
+        _c("h4", { staticClass: "type--black type--thin type--marginless" }, [
+          _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
+          _vm._v(
+            "\n                                Add a Note:\n                            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          attrs: { id: "ex0", name: "ex0", placeholder: "Comment.." }
+        })
       ])
     ])
   }
@@ -19367,6 +19345,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         lastname: true,
         descending: true,
         courseid: 0,
+        courseTitle: "Course",
         faculty_email: "undefined",
         faculty_name: "undefined",
         faculty_profile: "underfined"
@@ -19390,6 +19369,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         courseid: function courseid(state) {
             return state.courseid;
+        },
+        courseTitle: function courseTitle(state) {
+            return state.courseTitle;
         },
         faculty_email: function faculty_email(state) {
             return state.faculty_email;
@@ -19545,6 +19527,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
         GET_COURSE_ID: function GET_COURSE_ID(state, payload) {
             state.courseid = payload.courseid;
+            state.courseTitle = state.courses[state.courseid].title;
         }
     }
 }));
@@ -20449,8 +20432,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "roster-container",
 
-    props: ['title'],
-
     components: {
         studentMatrix: __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default.a,
         studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a,
@@ -20458,7 +20439,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         descendingToggleButton: __WEBPACK_IMPORTED_MODULE_4__descendingToggleButton___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['list', 'courseid']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['list', 'courseid', 'courseTitle']))
 });
 
 /***/ }),
@@ -20872,6 +20853,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -20897,6 +20880,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         display_name: function display_name() {
             return this.student.first_name + " " + this.student.last_name;
+        },
+
+        email_uri: function email_uri() {
+            return this.student.email.split('@')[0];
         }
     },
 
@@ -21040,42 +21027,57 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "card-title" }, [
-          _c("div", { staticClass: "panel-heading align-center" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.display_name) +
-                "\n                    "
-            ),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: { click: _vm.toggleCropper }
-              },
-              [_c("i", { staticClass: "fa fa-edit fa-4x" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
-              [_c("i", { staticClass: "fa fa-camera fa-4x" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: {
-                  click: function($event) {
-                    _vm.confirmImage(_vm.student.email)
+          _c(
+            "div",
+            { staticClass: "panel-heading align-center" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: "/profile/" + _vm.email_uri } },
+                [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.display_name) +
+                      "\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.toggleCropper }
+                },
+                [_c("i", { staticClass: "fa fa-edit fa-4x" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.uploadFile }
+                },
+                [_c("i", { staticClass: "fa fa-camera fa-4x" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: {
+                    click: function($event) {
+                      _vm.confirmImage(_vm.student.email)
+                    }
                   }
-                }
-              },
-              [_c("i", { staticClass: "fa fa-check fa-4x" })]
-            )
-          ])
+                },
+                [_c("i", { staticClass: "fa fa-check fa-4x" })]
+              )
+            ],
+            1
+          )
         ])
       ])
     ])
@@ -21356,6 +21358,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         display_name: function display_name() {
             return this.student.first_name + " " + this.student.last_name;
+        },
+
+        email_uri: function email_uri() {
+            return this.student.email.split('@')[0];
         }
     }
 });
@@ -21379,15 +21385,20 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-9 name_formatting" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.display_name) +
-              "\n                "
-          ),
-          _c("br"),
-          _vm._v("\n                nickname\n            ")
-        ])
+        _c(
+          "div",
+          { staticClass: "col-xs-9 name_formatting" },
+          [
+            _c("router-link", { attrs: { to: "/profile/" + _vm.email_uri } }, [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(_vm.display_name) +
+                  "\n                "
+              )
+            ])
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -21632,7 +21643,7 @@ var render = function() {
       _vm._v(" "),
       _c("descending-toggle-button"),
       _vm._v(" "),
-      _c("h1", [_vm._v(_vm._s(this.title))]),
+      _c("h1", [_vm._v(_vm._s(this.courseTitle))]),
       _vm._v(" "),
       this.list
         ? _c(
@@ -21971,15 +21982,9 @@ var render = function() {
         _c(
           "strong",
           [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: "/class/" + _vm.course.id + "/" + _vm.course.title
-                }
-              },
-              [_vm._v(_vm._s(_vm.course.title))]
-            )
+            _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
+              _vm._v(_vm._s(_vm.course.title))
+            ])
           ],
           1
         ),
@@ -22224,6 +22229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-card",
@@ -22256,23 +22262,9 @@ var render = function() {
             "div",
             { staticClass: "course_title" },
             [
-              _c(
-                "router-link",
-                {
-                  attrs: {
-                    to: "/class/" + _vm.course.id + "/" + _vm.course.title
-                  }
-                },
-                [
-                  _vm._v(
-                    _vm._s(_vm.course.subject) +
-                      " " +
-                      _vm._s(_vm.course.catalog_number) +
-                      ": #" +
-                      _vm._s(_vm.course.id)
-                  )
-                ]
-              )
+              _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
+                _vm._v(_vm._s(_vm.course.title))
+              ])
             ],
             1
           )
@@ -22281,6 +22273,12 @@ var render = function() {
         _c("div", { staticClass: "time_location course_time" }, [
           _vm._v(
             "\n                    " +
+              _vm._s(_vm.course.subject) +
+              " " +
+              _vm._s(_vm.course.catalog_number) +
+              ": #" +
+              _vm._s(_vm.course.id) +
+              "\n                    " +
               _vm._s(_vm.course.meetings[0].start_time) +
               "-" +
               _vm._s(_vm.course.meetings[0].end_time) +
