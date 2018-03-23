@@ -71,7 +71,7 @@ export default new Vuex.Store({
                     state.flashroster = response.data[1].slice();
                     state.faculty_email = response.data[0][0].instructors[0].instructor;
                     state.faculty_name = state.faculty_email.replace("nr_", "");
-                    state.faculty_name = state.faculty_name.substring(0, faculty_name.indexOf('@'));
+                    state.faculty_name = state.faculty_name.substring(0, state.faculty_name.indexOf('@'));
                     state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
                 })
                 .catch(e => {
