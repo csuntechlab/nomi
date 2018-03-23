@@ -64,40 +64,48 @@
   padding: 25px;
 }
 
-.sidenav {
-  height: 100%;
-  width: 0;
+.sidebar {
+  height: 0%;
+  width: 100vw;
   position: fixed;
   z-index: 100;
-  top: 0;
-  right: 0;
-  overflow-x: hidden;
+  bottom: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  padding-top: 60px;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
+a.faculty-links:link,
+a.faculty-links:hover,
+a.faculty-links:active,
+a.faculty-links:visited {
+  color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 125%;
   font-family: sans-serif;
-  color: white;
-  display: block;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center;
 }
 
-.sidenav a:hover {
-  color: white;
+a.faculty-links:hover {
+  color: #4F9DA3;
 }
 
-.sidenav .closebtn {
+.sidebar_container {
+  height: 100%;
+  padding: 5%;
+  position: relative;
+}
+
+.close {
   position: absolute;
-  bottom: 18px;
-  right: 52px;
-  font-size: 30px;
-  margin-left: 50px;
+  bottom: 0;
+  right: 49%;
+}
+
+.menu {
+  position: relative;
 }
 
 .list__item {
@@ -113,20 +121,13 @@
   margin-bottom: 80px;
 }
 
-.fa-3x {
-  color: #f4f4f4;
-  -webkit-transition: 20ms;
-  transition: 20ms;
-}
-
-.fa-blue {
-  color: #4F9DA3;
-}
-
-.fa-3x:active {
-  color: #4F9DA3;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+.centered-position {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .blue-green {
@@ -143,6 +144,22 @@
 
 .navy-blue {
   background-color: #0F1821;
+}
+
+.fa-3x {
+  color: #f4f4f4;
+  -webkit-transition: 20ms;
+  transition: 20ms;
+}
+
+.fa-blue {
+  color: #4F9DA3;
+}
+
+.fa-3x:active {
+  color: #4F9DA3;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .student-banner {

@@ -13,7 +13,10 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: "Course"
+        courseTitle: "Course",
+        faculty_email: "undefined",
+        faculty_name: "undefined",
+        faculty_profile: "underfined"
     },
 
     getters: {
@@ -23,7 +26,10 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         courseid: state => state.courseid,
-        courseTitle: state => state.courseTitle
+        courseTitle: state => state.courseTitle,
+        faculty_email: state => state.faculty_email,
+        faculty_name: state => state.faculty_name, 
+        faculty_profile: state => state.faculty_profile
     },
 
     actions: {
@@ -65,6 +71,10 @@ export default new Vuex.Store({
                     state.courses = response.data[0];
                     state.roster = response.data[1];
                     state.flashroster = response.data[1].slice();
+                    state.faculty_email = response.data[0][0].instructors[0].instructor;
+                    state.faculty_name = state.faculty_email.replace("nr_", "");
+                    state.faculty_name = state.faculty_name.substring(0, state.faculty_name.indexOf('@'));
+                    state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
                 })
                 .catch(e => {
                     this.errors.push(e);
