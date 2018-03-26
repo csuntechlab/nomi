@@ -1,7 +1,8 @@
 <template>
     <div>
+        <list-grid-tabs></list-grid-tabs>
         <router-link to="/">Back to Class Sections</router-link>
-        <roster-container :title="this.$route.params.title"></roster-container>
+        <roster-container></roster-container>
     </div>
 </template>
 

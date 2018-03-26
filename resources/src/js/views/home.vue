@@ -1,9 +1,10 @@
 <template>
-    <body class="bg--gray">
+    <div>
+        <list-grid-tabs></list-grid-tabs>
         <div class="container">
             <courses-container></courses-container>
         </div>
-    </body>
+    </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <button @click="$store.dispatch('descSort')">Descending/Ascending</button>
+    <button class="btn btn-default" @click="$store.dispatch('descSort')">Descending/Ascending</button>
 </template>
 
 <script>

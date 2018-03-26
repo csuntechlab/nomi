@@ -1,34 +1,40 @@
-.sidenav {
-  height: 100%;
-  width: 0;
+.sidebar {
+  height: 0%;
+  width: 100vw;
   position: fixed;
   z-index: 100;
-  top: 0;
-  right: 0;
-  background-color: rgb(207, 10, 44);
-  overflow-x: hidden;
+  bottom: 0;
   transition: 0.5s;
-  padding-top: 60px;
 }
 
-.sidenav a {
-  padding: 8px 8px 8px 32px;
+ a.faculty-links:link, a.faculty-links:hover, a.faculty-links:active, a.faculty-links:visited {
+  color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 125%;
   font-family: sans-serif;
-  color: white;
-  display: block;
-  transition: 0.3s;
+  margin: 0; 
+  cursor: pointer;
+  padding: 1%;
+  text-align:center;
+}
+a.faculty-links:hover{
+  color:#4F9DA3;
 }
 
-.sidenav a:hover {
-  color: white;
+.sidebar_container {
+  height:100%;
+  padding: 5%; 
+  position: relative;
 }
 
-.sidenav .closebtn {
+.close {
   position: absolute;
-  bottom: 18px;
-  right: 52px;
-  font-size: 30px;
-  margin-left: 50px;
+  bottom: 0;
+  right:49%;
 }
+
+.menu {
+  position: relative;
+}
+
+

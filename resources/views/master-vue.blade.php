@@ -18,6 +18,7 @@
         <div id='app'>
             <nav-bar></nav-bar>
             <router-view></router-view>
+            <side-bar></side-bar>
             <menu-bar></menu-bar>
         </div>
         <script src="{{ asset('js/metaphor.js') }}"></script>
