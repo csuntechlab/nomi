@@ -1,1 +1,206 @@
-.grid-container{display:grid;grid-column-gap:5%;grid-row-gap:5%;grid-template-columns:auto auto auto;margin:auto}.grid-item{padding:5%;height:100%;width:100%;text-align:center;-webkit-box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);border-radius:25px}.panel{border:0}.mask{width:20vh;height:20vh;border-radius:50%;overflow:hidden}.hide{display:none}.panel{border-radius:25px}.grid-image{width:100%}.card-title{height:5em}.menu-bar{padding:15px;position:fixed;bottom:0;left:0;right:0}.nav_title{color:#fff}.menu__compensation{padding:25px}.sidebar{height:0%;width:100vw;position:fixed;z-index:100;bottom:0;-webkit-transition:.5s;transition:.5s}a.faculty-links:active,a.faculty-links:hover,a.faculty-links:link,a.faculty-links:visited{color:#fff;text-decoration:none;font-size:125%;font-family:sans-serif;margin:0;cursor:pointer;padding:1%;text-align:center}a.faculty-links:hover{color:#4f9da3}.sidebar_container{height:100%;padding:5%;position:relative}.close{position:absolute;bottom:0;right:49%}.menu{position:relative}.list__item{background-color:#fff;padding:20px;-webkit-box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);box-shadow:-1px 5px 9px 5px rgba(0,0,0,.2);margin:0 0 5px;font-size:125%}.spacing{margin-bottom:80px}.centered-position{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.blue-green{background-color:#4f9da3}.off-white{background-color:#e5e5e5}.light-grey{background-color:#f4f4f4}.navy-blue{background-color:#0f1821}.fa-3x{color:#f4f4f4;-webkit-transition:20ms;transition:20ms}.fa-blue{color:#4f9da3}.fa-3x:active{color:#4f9da3;-webkit-transform:scale(1.2);transform:scale(1.2)}.student-banner{background:url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/CSUN_Central_Campus.JPG/1600px-CSUN_Central_Campus.JPG") 50%;position:relative;background-size:cover}.banner__position{padding:0}.course_title{padding-top:2.5%;font-size:125%;font-weight:700}.course_time{font-size:120%;padding-top:2%;padding-bottom:5%}.course_specifications{font-family:sans-serif;padding:1%}.course_list_title{font-size:100%;font-weight:700}.course_list_time{font-size:100%;padding-bottom:2%}.course_list_specifications{font-family:sans-serif;font-size:80%}
+.grid-container {
+  display: grid;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+}
+
+.grid-item {
+  padding: 5%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+  border: 0px;
+}
+
+.mask {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.panel {
+  border-radius: 25px;
+}
+
+.grid-image {
+  width: 100%;
+}
+
+.card-title {
+  height: 5em;
+}
+
+.menu-bar {
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav_title {
+  color: white;
+}
+
+.menu__compensation {
+  padding: 25px;
+}
+
+.sidebar {
+  height: 0%;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a.faculty-links:link,
+a.faculty-links:hover,
+a.faculty-links:active,
+a.faculty-links:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 125%;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center;
+}
+
+a.faculty-links:hover {
+  color: #4F9DA3;
+}
+
+.sidebar_container {
+  height: 100%;
+  padding: 5%;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  bottom: 0;
+  right: 49%;
+}
+
+.menu {
+  position: relative;
+}
+
+.list__item {
+  background-color: white;
+  padding: 20px;
+  -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 0 5px 0;
+  font-size: 125%;
+}
+
+.spacing {
+  margin-bottom: 80px;
+}
+
+.centered-position {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.blue-green {
+  background-color: #4F9DA3;
+}
+
+.off-white {
+  background-color: #E5E5E5;
+}
+
+.light-grey {
+  background-color: #F4F4F4;
+}
+
+.navy-blue {
+  background-color: #0F1821;
+}
+
+.fa-3x {
+  color: #f4f4f4;
+  -webkit-transition: 20ms;
+  transition: 20ms;
+}
+
+.fa-blue {
+  color: #4F9DA3;
+}
+
+.fa-3x:active {
+  color: #4F9DA3;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.student-banner {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/CSUN_Central_Campus.JPG/1600px-CSUN_Central_Campus.JPG") center;
+  position: relative;
+  background-size: cover;
+}
+
+.banner__position {
+  padding: 0px;
+}
+
+.course_title {
+  padding-top: 2.5%;
+  font-size: 125%;
+  font-weight: bold;
+}
+
+.course_time {
+  font-size: 120%;
+  padding-top: 2%;
+  padding-bottom: 5%;
+}
+
+.course_specifications {
+  font-family: sans-serif;
+  padding: 1%;
+}
+
+.course_list_title {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.course_list_time {
+  font-size: 100%;
+  padding-bottom: 2%;
+}
+
+.course_list_specifications {
+  font-family: sans-serif;
+  font-size: 80%;
+}
+
