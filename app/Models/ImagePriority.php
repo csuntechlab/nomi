@@ -11,4 +11,5 @@ class ImagePriority extends Model
     protected $table = 'image_priority';
     protected $fillable = ['image_priority'];
     protected $primaryKey = 'image_priority';
+    public $incrementing = false;
 }

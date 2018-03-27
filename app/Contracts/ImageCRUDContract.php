@@ -9,4 +9,6 @@ interface ImageCRUDContract
     public function upload();
 
     public function updatePriority();
+
+    public function getPriority(String $student_id);
 }

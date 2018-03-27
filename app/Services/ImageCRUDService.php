@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ImageCRUDContract;
-use App\ImagePriority;
+use App\Models\ImagePriority;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
@@ -43,6 +43,30 @@ class ImageCRUDService implements ImageCRUDContract
         }
 
         return 'Uploaded';
+    }
+
+    /** Retrieve image priority
+     * @param string $student_id
+     *
+     * @return array
+     */
+    public function getPriority(String $student_id)
+    {
+        $user = User::with('ImagePriority')
+            ->where('user_id', 'members:' . $student_id)
+            ->firstOrFail();
+
+        if (null !== $user->imagePriority) {
+            $out = \explode(',', $user->imagePriority->image_priority);
+        } else {
+            $out = ['likeness', 'avatar', 'official'];
+        }
+
+        for ($i = 0; $i < 10; ++$i) {
+            Cache::forget('students_' . $i);
+        }
+
+        return $out;
     }
 
     /** Update image_priority table */
