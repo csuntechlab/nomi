@@ -16,7 +16,11 @@ export default new Vuex.Store({
         courseTitle: "Course",
         faculty_email: "undefined",
         faculty_name: "undefined",
-        faculty_profile: "underfined"
+        faculty_profile: "undefined",
+        faculty_first_name: "undefined", 
+        faculty_last_name: "undefined",
+        faculty_full_name: "undefined",
+        //faculty_image: "undefined"
     },
 
     getters: {
@@ -29,7 +33,11 @@ export default new Vuex.Store({
         courseTitle: state => state.courseTitle,
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
-        faculty_profile: state => state.faculty_profile
+        faculty_profile: state => state.faculty_profile,
+        faculty_first_name: state => state.faculty_first_name,
+        faculty_last_name: state => state.faculty_last_name,
+        faculty_full_name: state => state.faculty_full_name,
+        //faculty_image: state => state.faculty_image
     },
 
     actions: {
@@ -75,6 +83,11 @@ export default new Vuex.Store({
                     state.faculty_name = state.faculty_email.replace("nr_", "");
                     state.faculty_name = state.faculty_name.substring(0, state.faculty_name.indexOf('@'));
                     state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
+                    state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
+                    state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
+                    state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
+                    state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
+                    //state.faculty_image = response.data[0][0].instructors[0].instructor;
                 })
                 .catch(e => {
                     this.errors.push(e);
