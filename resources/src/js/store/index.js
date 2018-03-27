@@ -80,12 +80,12 @@ export default new Vuex.Store({
         GET_DATA (state) {
             axios.get(`data`)
                 .then(response => {
-                    state.courses = response.data[0];
-                    state.roster = response.data[1];
-                    state.flashroster = response.data[1].slice();
-                    state.faculty_email = response.data[0][0].instructors[0].instructor;
+                    state.courses = response.data["courses"];
+                    state.roster = response.data["students"];
+                    state.flashroster = response.data["students"].slice();
+                    state.faculty_email = response.data["courses"][0].instructors[0].instructor;
                     state.faculty_name = state.faculty_email.replace("nr_", "");
-                    state.faculty_name = state.faculty_name.substring(0, state.faculty_name.indexOf('@'));
+                    state.faculty_name = state.faculty_name.split('@')[0];
                     state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
                     state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
