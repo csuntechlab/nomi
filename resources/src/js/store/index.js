@@ -20,7 +20,6 @@ export default new Vuex.Store({
         faculty_first_name: "undefined", 
         faculty_last_name: "undefined",
         faculty_full_name: "undefined",
-        //faculty_image: "undefined"
     },
 
     getters: {
@@ -36,8 +35,7 @@ export default new Vuex.Store({
         faculty_profile: state => state.faculty_profile,
         faculty_first_name: state => state.faculty_first_name,
         faculty_last_name: state => state.faculty_last_name,
-        faculty_full_name: state => state.faculty_full_name,
-        //faculty_image: state => state.faculty_image
+        faculty_full_name: state => state.faculty_full_name
     },
 
     actions: {
@@ -70,6 +68,10 @@ export default new Vuex.Store({
         getCourseId (context, payload) {
             context.commit('GET_COURSE_ID', payload);
         },
+
+        getFacultyProfile (context, payload) {
+            context.commit('GET_FACULTY_PROFILE', payload);
+        }
     },
 
     mutations: {
@@ -87,7 +89,6 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
-                    //state.faculty_image = response.data[0][0].instructors[0].instructor;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -191,7 +192,18 @@ export default new Vuex.Store({
         GET_COURSE_ID: function (state, payload) {
             state.courseid = payload.courseid;
             state.courseTitle = state.courses[state.courseid].title;
+        },
+
+        GET_FACULTY_PROFILE: function (state, payload) {
+            axios.get(`faculty_profile/${payload.email}`)
+            .then(
+                (success) => console.log(success),
+                (error) => console.log(error)
+            );
         }
+
+
+
     }
 });
 

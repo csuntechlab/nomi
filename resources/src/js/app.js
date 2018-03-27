@@ -30,5 +30,6 @@ const app = new Vue({
 
     mounted () {
         this.$store.dispatch('getData');
+        this.$store.dispatch('getFacultyProfile', {email: "sandbox@.sandy.cheese"});
     }
 });

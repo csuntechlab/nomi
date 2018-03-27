@@ -13340,6 +13340,7 @@ var app = new Vue({
 
     mounted: function mounted() {
         this.$store.dispatch('getData');
+        this.$store.dispatch('getFacultyProfile', { email: "sandbox@.sandy.cheese" });
     }
 });
 
@@ -19351,8 +19352,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         faculty_profile: "undefined",
         faculty_first_name: "undefined",
         faculty_last_name: "undefined",
-        faculty_full_name: "undefined",
-        faculty_image: "undefined"
+        faculty_full_name: "undefined"
+        //faculty_image: "undefined"
     },
 
     getters: {
@@ -19394,10 +19395,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         faculty_full_name: function faculty_full_name(state) {
             return state.faculty_full_name;
-        },
-        faculty_image: function faculty_image(state) {
-            return state.faculty_image;
         }
+        //faculty_image: state => state.faculty_image
     },
 
     actions: {
@@ -19423,6 +19422,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         getCourseId: function getCourseId(context, payload) {
             context.commit('GET_COURSE_ID', payload);
+        },
+        getFacultyProfile: function getFacultyProfile(context, payload) {
+            context.commit('GET_FACULTY_PROFILE', payload);
         }
     },
 
@@ -19431,7 +19433,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             var _this = this;
 
             axios.get('data').then(function (response) {
-                console.log(response);
                 state.courses = response.data[0];
                 state.roster = response.data[1];
                 state.flashroster = response.data[1].slice();
@@ -19443,7 +19444,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-                // state.faculty_image = response.data[0];
+                //state.faculty_image = response.data[0][0].instructors[0].instructor;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19550,7 +19551,17 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         GET_COURSE_ID: function GET_COURSE_ID(state, payload) {
             state.courseid = payload.courseid;
             state.courseTitle = state.courses[state.courseid].title;
+        },
+
+        GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
+            //state.faculty_image = payload.faculty_image;
+            axios.get('faculty_profile/' + payload.email).then(function (success) {
+                return console.log(success);
+            }, function (error) {
+                return console.log(error);
+            });
         }
+
     }
 }));
 
@@ -19906,7 +19917,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'faculty_image']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name']
+    // 'faculty_image'
+    ))
 
 });
 
