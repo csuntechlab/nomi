@@ -14,12 +14,13 @@ export default new Vuex.Store({
         descending: true,
         courseid: 0,
         courseTitle: "Course",
-        faculty_email: "undefined",
-        faculty_name: "undefined",
-        faculty_profile: "undefined",
-        faculty_first_name: "undefined", 
-        faculty_last_name: "undefined",
-        faculty_full_name: "undefined",
+        faculty_email: null,
+        faculty_name: null,
+        faculty_profile: null,
+        faculty_first_name: null, 
+        faculty_last_name: null,
+        faculty_full_name: null,
+        faculty_image: null
     },
 
     getters: {
@@ -35,7 +36,8 @@ export default new Vuex.Store({
         faculty_profile: state => state.faculty_profile,
         faculty_first_name: state => state.faculty_first_name,
         faculty_last_name: state => state.faculty_last_name,
-        faculty_full_name: state => state.faculty_full_name
+        faculty_full_name: state => state.faculty_full_name,
+        faculty_image: state => state.faculty_image
     },
 
     actions: {
@@ -89,6 +91,7 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
+                    state.faculty_image = response.data[0][0].instructors[0].instructor;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -195,11 +198,12 @@ export default new Vuex.Store({
         },
 
         GET_FACULTY_PROFILE: function (state, payload) {
+            //state.faculty_image = payload.faculty_image;
             axios.get(`faculty_profile/${payload.email}`)
             .then(
-                (success) => console.log(success),
-                (error) => console.log(error)
-            );
+                (success) => console.log(success)).catch(e => {
+                this.errors.push(e);
+            })
         }
 
 

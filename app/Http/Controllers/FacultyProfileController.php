@@ -15,7 +15,7 @@ class FacultyProfileController extends Controller
         $this->facultyProfileContract = $facultyProfileContract;
     }
 
-    public function getProfile($email)
+    public function getFacultyProfile($email)
     {
         return $this->facultyProfileContract->getFacultyProfile($email);
     }

@@ -38,7 +38,7 @@ Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudent
 
 /** Student API Routes */
 Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
-Route::get('/faculty_profile/{email}', 'FacultyProfileController@getProfile');
+Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile');
 
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {

@@ -13308,6 +13308,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_croppa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_croppa__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuex__ = __webpack_require__(2);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
 
 
 
@@ -13337,10 +13341,10 @@ var app = new Vue({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */],
     store: __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */],
-
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_5_vuex__["b" /* mapGetters */])(['faculty_email'])),
     mounted: function mounted() {
         this.$store.dispatch('getData');
-        this.$store.dispatch('getFacultyProfile', { email: "sandbox@.sandy.cheese" });
+        this.$store.dispatch('getFacultyProfile', { email: this.faculty_email });
     }
 });
 
@@ -19347,13 +19351,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         descending: true,
         courseid: 0,
         courseTitle: "Course",
-        faculty_email: "undefined",
-        faculty_name: "undefined",
-        faculty_profile: "undefined",
-        faculty_first_name: "undefined",
-        faculty_last_name: "undefined",
-        faculty_full_name: "undefined"
-        //faculty_image: "undefined"
+        faculty_email: null,
+        faculty_name: null,
+        faculty_profile: null,
+        faculty_first_name: null,
+        faculty_last_name: null,
+        faculty_full_name: null,
+        faculty_image: null
     },
 
     getters: {
@@ -19395,8 +19399,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         faculty_full_name: function faculty_full_name(state) {
             return state.faculty_full_name;
+        },
+        faculty_image: function faculty_image(state) {
+            return state.faculty_image;
         }
-        //faculty_image: state => state.faculty_image
     },
 
     actions: {
@@ -19444,7 +19450,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-                //state.faculty_image = response.data[0][0].instructors[0].instructor;
+                state.faculty_image = response.data[0][0].instructors[0].instructor;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19554,11 +19560,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
 
         GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
+            var _this2 = this;
+
             //state.faculty_image = payload.faculty_image;
             axios.get('faculty_profile/' + payload.email).then(function (success) {
                 return console.log(success);
-            }, function (error) {
-                return console.log(error);
+            }).catch(function (e) {
+                _this2.errors.push(e);
             });
         }
 
@@ -19917,9 +19925,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name']
-    // 'faculty_image'
-    ))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'faculty_image']))
 
 });
 
@@ -19940,11 +19946,7 @@ var render = function() {
           _c("div", { staticClass: "list" }, [
             _c("img", {
               staticClass: "img--circle grid-image",
-              attrs: {
-                id: _vm.faculty_full_name + "-img",
-                src: _vm.image,
-                name: "photo"
-              }
+              attrs: { id: _vm.faculty_full_name + "-img", name: "photo" }
             }),
             _vm._v(" "),
             _c(
