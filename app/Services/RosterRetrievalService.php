@@ -82,7 +82,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'images' => [
                     'likeness' => $unsanitizedStudent->likeness_image,
                     'avatar' => $image,
-                    'profile' => $unsanitizedStudent->profile_image,
+                    'official' => $unsanitizedStudent->profile_image,
                 ],
                 'image_priority' => $this->imageCRUDContract->getPriority($unsanitizedStudent->members_id),
                 'recognized' => false,
