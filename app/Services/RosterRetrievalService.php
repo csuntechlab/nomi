@@ -134,9 +134,12 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'first_name' => $unsanitizedStudent->first_name,
                 'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
-                'image' => $image,
-                'likeness_image' => $unsanitizedStudent->likeness_image,
-                'profile_image' => $unsanitizedStudent->profile_image,
+                'images' => [
+                    'likeness' => $unsanitizedStudent->likeness_image,
+                    'avatar' => $image,
+                    'profile' => $unsanitizedStudent->profile_image,
+                ],
+                'image_priority' => ['likeness', 'avatar', 'official'],
                 'recognized' => false,
             ]);
         }

@@ -3,7 +3,7 @@
         <div class="hello">
             <div class="row">
                 <div class="col-xs-3">
-                    <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
+                    <img :id="display_name+'-img'" :src="image" class="img--circle" style="width:100%;">
                 </div>
                 <div class="col-xs-9 name_formatting">
                     <router-link :to="'/profile/'+email_uri">
@@ -28,7 +28,9 @@
 
             email_uri : function () {
                 return this.student.email.split('@')[0];
-            }
+            },
+
+            image: function() { return this.student.images[this.student.image_priority[0]]}
         }
     }
 </script>

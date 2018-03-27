@@ -39,7 +39,7 @@ export default {
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: this.student.image,
+            imgUrl: this.student.images[this.student.image_priority[0]],
             enabled: true,
             canEdit: false,
             initalImage: null,

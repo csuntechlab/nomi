@@ -20705,6 +20705,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         display_name: function display_name() {
             return this.student.first_name + " " + this.student.last_name;
+        },
+        image: function image() {
+            return this.student.images[this.student.image_priority[0]];
         }
     },
 
@@ -20749,7 +20752,7 @@ var render = function() {
                     staticClass: "img--circle grid-image",
                     attrs: {
                       id: _vm.display_name + "-img",
-                      src: _vm.student.image,
+                      src: _vm.image,
                       name: "photo"
                     }
                   })
@@ -20866,7 +20869,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: this.student.image,
+            imgUrl: this.student.images[this.student.image_priority[0]],
             enabled: true,
             canEdit: false,
             initalImage: null,
@@ -21362,6 +21365,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         email_uri: function email_uri() {
             return this.student.email.split('@')[0];
+        },
+
+        image: function image() {
+            return this.student.images[this.student.image_priority[0]];
         }
     }
 });
@@ -21381,7 +21388,7 @@ var render = function() {
           _c("img", {
             staticClass: "img--circle",
             staticStyle: { width: "100%" },
-            attrs: { id: _vm.display_name + "-img", src: _vm.student.image }
+            attrs: { id: _vm.display_name + "-img", src: _vm.image }
           })
         ]),
         _vm._v(" "),
