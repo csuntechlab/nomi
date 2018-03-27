@@ -24,4 +24,9 @@ class ImageController extends Controller
     {
         return $this->imageCRUDContract->upload();
     }
+
+    public function updatePriority()
+    {
+        return $this->imageCRUDContract->updatePriority();
+    }
 }
