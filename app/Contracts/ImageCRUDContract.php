@@ -10,5 +10,5 @@ interface ImageCRUDContract
 
     public function updatePriority();
 
-    public function getPriority(String $student_id);
+    public function getPriority($student_ids);
 }

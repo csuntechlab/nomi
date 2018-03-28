@@ -39,11 +39,22 @@ class RosterRetrievalService implements RosterRetrievalContract
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $members = \json_decode($roster)->members;
         $unsanitizedStudents = [];
+        $memberIDs = [];
 
         foreach ($members as $member) {
             if ($member->position != 'Instructor') {
                 \array_push($unsanitizedStudents, $member);
             }
+        }
+
+        foreach ($unsanitizedStudents as $student) {
+            \array_push($memberIDs, $student->members_id);
+        }
+
+        $priorities = $this->imageCRUDContract->getPriority($memberIDs);
+
+        for ($i = 0; $i < \count($priorities); ++$i) {
+            $unsanitizedStudents[$i]->image_priority = $priorities[$i];
         }
 
         // Cleans the student info so we only grab the fields we need
@@ -84,7 +95,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                     'avatar' => $image,
                     'official' => $unsanitizedStudent->profile_image,
                 ],
-                'image_priority' => $this->imageCRUDContract->getPriority($unsanitizedStudent->members_id),
+                'image_priority' => $unsanitizedStudent->image_priority,
                 'recognized' => false,
             ]);
         }

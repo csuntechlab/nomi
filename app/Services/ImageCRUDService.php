@@ -46,20 +46,29 @@ class ImageCRUDService implements ImageCRUDContract
     }
 
     /** Retrieve image priority
-     * @param string $student_id
+     * @param $student_ids
      *
      * @return array
      */
-    public function getPriority(String $student_id)
+    public function getPriority($student_ids)
     {
-        $user = User::with('ImagePriority')
-            ->where('user_id', 'members:' . $student_id)
-            ->firstOrFail();
+        $array = [];
+        $out = [];
 
-        if (null !== $user->imagePriority) {
-            $out = \explode(',', $user->imagePriority->image_priority);
-        } else {
-            $out = ['likeness', 'avatar', 'official'];
+        foreach ($student_ids as $student_id) {
+            \array_push($array, 'members:' . $student_id);
+        }
+
+        $users = User::with('ImagePriority')
+            ->whereIn('user_id', $array)
+            ->get();
+
+        foreach ($users as $user) {
+            if (null !== $user->imagePriority) {
+                \array_push($out, \explode(',', $user->imagePriority->image_priority));
+            } else {
+                \array_push($out, ['likeness', 'avatar', 'official']);
+            }
         }
 
         for ($i = 0; $i < 10; ++$i) {
