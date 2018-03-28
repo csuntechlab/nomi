@@ -20,7 +20,7 @@ export default new Vuex.Store({
         faculty_first_name: null, 
         faculty_last_name: null,
         faculty_full_name: null,
-        faculty_image: null
+        profile_image: null
     },
 
     getters: {
@@ -37,7 +37,7 @@ export default new Vuex.Store({
         faculty_first_name: state => state.faculty_first_name,
         faculty_last_name: state => state.faculty_last_name,
         faculty_full_name: state => state.faculty_full_name,
-        faculty_image: state => state.faculty_image
+        profile_image: state => state.profile_image
     },
 
     actions: {
@@ -91,7 +91,7 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
-                    state.faculty_image = response.data[0][0].instructors[0].instructor;
+                    state.profile_image = response.data[0][0].instructors[0].instructor;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -198,12 +198,15 @@ export default new Vuex.Store({
         },
 
         GET_FACULTY_PROFILE: function (state, payload) {
-            //state.faculty_image = payload.faculty_image;
             axios.get(`faculty_profile/${payload.email}`)
-            .then(
-                (success) => console.log(success)).catch(e => {
-                this.errors.push(e);
+            //axios.get(`data`)
+            .then(response => {
+                state.profile_image = payload.profile_image;
+                //state.profile_image = response['data'].state.profile_image;
             })
+            .catch(e => {
+                this.errors.push(e)
+            });
         }
 
 

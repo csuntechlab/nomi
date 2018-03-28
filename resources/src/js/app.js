@@ -31,6 +31,7 @@ const app = new Vue({
     methods: {
         ...mapGetters([
             'faculty_email'
+            
         ])
     },
     mounted () {

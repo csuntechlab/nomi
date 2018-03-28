@@ -26,8 +26,10 @@ class FacultyProfileService implements FacultyProfileContract
 
         if ($profile['profile_image'] == null) {
             $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/faculty_profile_default.jpg')->encode('data-url');
-            $profile['profile_image'] = $image;
+            //$profile['profile_image'] = $image;
         }
+
+        $profile['profile_image'] = $image;
 
         return $profile['profile_image'];
     }
