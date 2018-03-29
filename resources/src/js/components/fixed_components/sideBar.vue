@@ -31,6 +31,10 @@
             }
         }, 
 
+        // created () {
+        //     this.$store.dispatch('getFacultyProfile', {{{faculty_email}}: parseInt(this.$route.params.id)})
+        // },
+
         computed: {
             ...mapGetters([
             'courses',

@@ -19450,7 +19450,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-                state.profile_image = response.data[0][0].instructors[0].instructor;
+                state.profile_image = response.data["courses"][0].instructors[0].instructor;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19926,6 +19926,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             document.getElementById("sideNav").style.height = "0%";
         }
     },
+
+    // created () {
+    //     this.$store.dispatch('getFacultyProfile', {{{faculty_email}}: parseInt(this.$route.params.id)})
+    // },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image']))
 
