@@ -36,7 +36,7 @@ class ImageCRUDService implements ImageCRUDContract
             return 'Failed';
         }
 
-        $image->move(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/', 'avatar.jpg');
+        $image->move(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/', 'likeness.jpg');
 
         for ($i = 0; $i < 10; ++$i) {
             Cache::forget('students_' . $i);

@@ -62,11 +62,11 @@ class RosterRetrievalService implements RosterRetrievalContract
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
             $email = \str_replace('nr_', '', $unsanitizedStudent->email);
             $email = \substr($email, 0, \strpos($email, '@'));
-            $imageLocation = '/' . 'avatar.png';
+            $imageLocation = '/' . 'likeness.jpg';
 
             // checks if image already exists
-            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'avatar.jpg')) {
-                $imageLocation = $email . '/' . 'avatar.jpg';
+            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'likeness.jpg')) {
+                $imageLocation = $email . '/' . 'likeness.jpg';
             }
 
             $image = (string) $imageManager
@@ -79,9 +79,9 @@ class RosterRetrievalService implements RosterRetrievalContract
                     ->encode('data-url');
             }
 
-            if (!\property_exists($unsanitizedStudent, 'likeness_image')) {
-                $unsanitizedStudent->likeness_image = (string) $imageManager
-                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_likeness_default.jpg')
+            if (!\property_exists($unsanitizedStudent, 'avatar_image')) {
+                $unsanitizedStudent->avatar_image = (string) $imageManager
+                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg')
                     ->encode('data-url');
             }
 
@@ -91,8 +91,8 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'images' => [
-                    'likeness' => $unsanitizedStudent->likeness_image,
-                    'avatar' => $image,
+                    'likeness' => $image,
+                    'avatar' => $unsanitizedStudent->avatar_image,
                     'official' => $unsanitizedStudent->profile_image,
                 ],
                 'image_priority' => $unsanitizedStudent->image_priority,
