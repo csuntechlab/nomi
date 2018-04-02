@@ -2,12 +2,12 @@
     <div class="col-xs-6">
         <div class="panel">
             <div class="grid-item light-grey panel-content">
-                <label class="grid-image" :for="student.display_name">
+                <label class="grid-image" :for="display_name">
                     <croppa v-model="myCroppa"
                             :prevent-white-space="false"
                             :show-remove-button="false"
                             :disabled="true"
-                            :initial-image="imgUrl"
+                            :initial-image="image"
                             :quality="2"
                             @init="styleCanvas()">
                     </croppa>
@@ -39,8 +39,7 @@ export default {
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: this.student.image,
-
+            imgUrl: null,
         }
     },
 
@@ -53,6 +52,14 @@ export default {
 
         email_uri : function () {
             return this.student.email.split('@')[0];
+        },
+
+        image: function() {
+            if (this.imgUrl == null) {
+                return this.student.images[this.student.image_priority[0]];
+            } else {
+                return this.imgUrl;
+            }
         }
     },
 
@@ -60,9 +67,7 @@ export default {
         confirmImage: function(email){
             let url = this.myCroppa.generateDataUrl();
 
-
-            if (!url)
-            {
+            if (!url) {
                 alert('no image');
                 return;
             }
@@ -70,14 +75,10 @@ export default {
             this.imgUrl = url;
 
             this.myCroppa.generateBlob(
-                blob => {
-                    var url = URL.createObjectURL(blob)
-                    this.objectUrl=url
-                },
+                blob => { this.objectUrl = URL.createObjectURL(blob); },
                 'image/jpeg',
                 .8
             );
-
 
             let data = new FormData();
             data.append('media', url);
@@ -105,15 +106,11 @@ export default {
         },
 
         toggleCropper: function() {
-
-            let cropper = this.myCroppa;
-
-            cropper.disabled = false;
+            this.myCroppa.disabled = false;
         },
 
         uploadFile: function() {
-            let cropper = this.myCroppa;
-            cropper.chooseFile();
+            this.myCroppa.chooseFile();
         }
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Contracts\ImageCRUDContract;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
 use Intervention\Image\Image;
@@ -12,10 +13,14 @@ use Intervention\Image\ImageManager;
 class RosterRetrievalService implements RosterRetrievalContract
 {
     protected $webResourceRetriever = null;
+    protected $imageCRUDContract = null;
 
-    public function __construct(WebResourceRetrieverContract $webResourceRetriever)
-    {
+    public function __construct(
+        WebResourceRetrieverContract $webResourceRetriever,
+        ImageCRUDContract $imageCRUDContract
+    ) {
         $this->webResourceRetriever = $webResourceRetriever;
+        $this->imageCRUDContract = $imageCRUDContract;
     }
 
     /**
@@ -30,75 +35,26 @@ class RosterRetrievalService implements RosterRetrievalContract
     public function getStudentsFromRoster($term, $course)
     {
         // Grabs the roster information without the instructor
-        $roster = $this->webResourceRetriever->getRoster($term, $course);
+        $roster = $this->webResourceRetriever->getRoster($term, $course)->getBody()->getContents();
         $imageManager = new ImageManager(['driver' => 'imagick']);
-
-        if ($roster->getStatusCode() == 204) {
-            return [
-                [
-                    'student_id' => 999999999,
-                    'first_name' => 'John',
-                    'last_name' => 'Bingus',
-                    'email' => 'jbingus@dingus.com',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-
-                [
-                    'student_id' => 999999998,
-                    'first_name' => 'Bob',
-                    'last_name' => 'Dingus',
-                    'email' => 'bdingus@jingus.com',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-
-                [
-                    'student_id' => 999999997,
-                    'first_name' => 'Flim',
-                    'last_name' => 'Flam',
-                    'email' => 'Flim@Flam.com',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-
-                [
-                    'student_id' => 999999996,
-                    'first_name' => 'Real',
-                    'last_name' => 'Person',
-                    'email' => 'Real@Person.com',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-
-                [
-                    'student_id' => 999999995,
-                    'first_name' => 'Some',
-                    'last_name' => 'Body',
-                    'email' => 'JustTold@Me.com',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-
-                [
-                    'student_id' => 999999994,
-                    'first_name' => 'The',
-                    'last_name' => 'World',
-                    'email' => 'is@gonnaroll.me',
-                    'image' => (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/avatar.png')->encode('data-url'),
-                    'recognized' => false,
-                ],
-            ];
-        }
-
-        $roster = $roster->getBody()->getContents();
-
         $members = \json_decode($roster)->members;
         $unsanitizedStudents = [];
+        $memberIDs = [];
+
         foreach ($members as $member) {
             if ($member->position != 'Instructor') {
                 \array_push($unsanitizedStudents, $member);
             }
+        }
+
+        foreach ($unsanitizedStudents as $student) {
+            \array_push($memberIDs, $student->members_id);
+        }
+
+        $priorities = $this->imageCRUDContract->getPriority($memberIDs);
+
+        for ($i = 0; $i < \count($priorities); ++$i) {
+            $unsanitizedStudents[$i]->image_priority = $priorities[$i];
         }
 
         // Cleans the student info so we only grab the fields we need
@@ -106,11 +62,11 @@ class RosterRetrievalService implements RosterRetrievalContract
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
             $email = \str_replace('nr_', '', $unsanitizedStudent->email);
             $email = \substr($email, 0, \strpos($email, '@'));
-            $imageLocation = '/' . 'avatar.png';
+            $imageLocation = '/' . 'likeness.jpg';
 
             // checks if image already exists
-            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'avatar.jpg')) {
-                $imageLocation = $email . '/' . 'avatar.jpg';
+            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'likeness.jpg')) {
+                $imageLocation = $email . '/' . 'likeness.jpg';
             }
 
             $image = (string) $imageManager
@@ -123,9 +79,9 @@ class RosterRetrievalService implements RosterRetrievalContract
                     ->encode('data-url');
             }
 
-            if (!\property_exists($unsanitizedStudent, 'likeness_image')) {
-                $unsanitizedStudent->likeness_image = (string) $imageManager
-                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_likeness_default.jpg')
+            if (!\property_exists($unsanitizedStudent, 'avatar_image')) {
+                $unsanitizedStudent->avatar_image = (string) $imageManager
+                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg')
                     ->encode('data-url');
             }
 
@@ -134,9 +90,12 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'first_name' => $unsanitizedStudent->first_name,
                 'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
-                'image' => $image,
-                'likeness_image' => $unsanitizedStudent->likeness_image,
-                'profile_image' => $unsanitizedStudent->profile_image,
+                'images' => [
+                    'likeness' => $image,
+                    'avatar' => $unsanitizedStudent->avatar_image,
+                    'official' => $unsanitizedStudent->profile_image,
+                ],
+                'image_priority' => $unsanitizedStudent->image_priority,
                 'recognized' => false,
             ]);
         }
