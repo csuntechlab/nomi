@@ -45,7 +45,7 @@ class SPAController extends Controller
             );
         }
 
-        return [$courses, $students];
+        return ['courses' => $courses, 'students' => $students];
     }
 
     /**

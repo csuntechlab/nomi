@@ -113,13 +113,30 @@ class RosterRetrievalService implements RosterRetrievalContract
                 $imageLocation = $email . '/' . 'avatar.jpg';
             }
 
-            $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)->encode('data-url');
+            $image = (string) $imageManager
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)
+                ->encode('data-url');
+
+            if (!\property_exists($unsanitizedStudent, 'profile_image')) {
+                $unsanitizedStudent->profile_image = (string) $imageManager
+                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
+                    ->encode('data-url');
+            }
+
+            if (!\property_exists($unsanitizedStudent, 'likeness_image')) {
+                $unsanitizedStudent->likeness_image = (string) $imageManager
+                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_likeness_default.jpg')
+                    ->encode('data-url');
+            }
+
             \array_push($sanitizedStudents, [
                 'student_id' => $unsanitizedStudent->members_id,
                 'first_name' => $unsanitizedStudent->first_name,
                 'last_name' => $unsanitizedStudent->last_name,
                 'email' => $unsanitizedStudent->email,
                 'image' => $image,
+                'likeness_image' => $unsanitizedStudent->likeness_image,
+                'profile_image' => $unsanitizedStudent->profile_image,
                 'recognized' => false,
             ]);
         }

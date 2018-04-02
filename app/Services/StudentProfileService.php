@@ -26,8 +26,9 @@ class StudentProfileService implements StudentProfileContract
         $profile = \json_decode($student, true)['people'];
 
         if ($profile['profile_image'] == null) {
-            $image = (string) $imageManager->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')->encode('data-url');
-            $profile['profile_image'] = $image;
+            $profile['profile_image'] = (string) $imageManager
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
+                ->encode('data-url');
         }
 
         $studentProfile = [
