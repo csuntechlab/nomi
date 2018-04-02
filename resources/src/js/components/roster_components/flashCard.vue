@@ -9,7 +9,7 @@
                 </div>
                 <div v-else>
                     <label :for="display_name">
-                        <img :id="display_name+'-img'" :src="image" class="img--circle grid-image" name="photo">
+                        <profile-picture :name="display_name" :image="image"></profile-picture>
                     </label>
                 </div>
             </div>
