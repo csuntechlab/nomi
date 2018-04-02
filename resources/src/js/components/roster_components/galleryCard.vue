@@ -7,9 +7,9 @@
                             :prevent-white-space="false"
                             :show-remove-button="false"
                             :disabled="true"
+                            :initial-image="imgUrl"
                             :quality="2"
                             @init="styleCanvas()">
-                        <img slot="initial" :src="imgUrl">
                     </croppa>
                 </label>
                 <div class="card-title">
@@ -39,12 +39,7 @@ export default {
             messages: true,
             errors: [],
             myCroppa: null,
-            imgUrl: this.student.images[this.student.image_priority[0]],
-            enabled: true,
-            canEdit: false,
-            initalImage: null,
-            firstLoad: true,
-            isCancelledPressed: false
+            imgUrl: this.student.image,
         }
     },
 
@@ -61,46 +56,8 @@ export default {
     },
 
     methods: {
-		changePhoto: function(event, email) {
-		    //grabs id of image
-            let imageId = document.getElementById(event.target.id + "-img");
-            //checks if empty and sets file instance to variable files
-            let files = event.target.files;
-            if (!files[0]) {
-                return;
-            }
-
-            let data = new FormData();
-            data.append('media', files[0]);
-            data.append('email', email);
-            let reader = new FileReader();
-            //On load of file, grab the image id's src that contains image
-            //and equal it to the add image file
-            reader.onload = (event) => {
-                imageId.src = event.target.result;
-            };
-
-            //this check is needed to prevent "blob error"
-            if(files[0]){
-                reader.readAsDataURL(files[0]);
-            }
-
-            this.axios.post('http://nameface.test/api/upload', data, {
-                headers: {
-                	'Content-Type': 'multipart/form-data'
-				}
-			})
-                .then(response => {
-                    console.log(response);
-				})
-                .catch(e => {
-                    this.errors.push(e)
-                });
-		},
-
         confirmImage: function(email){
             let url = this.myCroppa.generateDataUrl();
-            let newFile = this.myCroppa.getChosenFile();
 
 
             if (!url)
@@ -111,11 +68,21 @@ export default {
 
             this.imgUrl = url;
 
+            this.myCroppa.generateBlob(
+                blob => {
+                    var url = URL.createObjectURL(blob)
+                    this.objectUrl=url
+                },
+                'image/jpeg',
+                .8
+            );
+
+
             let data = new FormData();
-            data.append('media', newFile);
+            data.append('media', url);
             data.append('email', email);
-            console.log(email);
-            this.axios.post('http://nameface.test/api/upload', data, {
+            console.log(url);
+            axios.post('api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
