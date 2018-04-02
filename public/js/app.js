@@ -19155,6 +19155,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: 'profile',
 
     created: function created() {
+        this.$store.dispatch('sayHi');
+    },
+    mounted: function mounted() {
         var _this = this;
 
         this.emailURI = this.$route.params.emailURI;
@@ -19162,6 +19165,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             _this.bio = response['data']['people'].biography;
 
             if (_this.bio === null) _this.bio = "None";
+
+            console.log("hey");
         }).catch(function (e) {
             _this.errors.push(e);
         });
@@ -19169,6 +19174,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.axios.get('student_profile/' + this.emailURI + '@my.csun.edu').then(function (response) {
             _this.display_name = response['data'].display_name;
             _this.image = response['data'].image;
+            _this.notes = response['data'].notes;
+            console.log("yo");
         }).catch(function (e) {
             _this.errors.push(e);
         });
@@ -19181,7 +19188,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             display_name: 'undefined',
             major: 'None',
             bio: 'undefined',
-            image: ''
+            image: '',
+            notes: ''
         };
     },
 
@@ -19336,7 +19344,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         courseTitle: "Course",
         faculty_email: "undefined",
         faculty_name: "undefined",
-        faculty_profile: "undefined"
+        faculty_profile: "undefined",
+        hi: false
     },
 
     getters: {
@@ -19369,6 +19378,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         faculty_profile: function faculty_profile(state) {
             return state.faculty_profile;
+        },
+        hi: function hi(state) {
+            return state.hi;
         }
     },
 
@@ -19395,6 +19407,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         getCourseId: function getCourseId(context, payload) {
             context.commit('GET_COURSE_ID', payload);
+        },
+        sayHi: function sayHi(context) {
+            context.commit('SAY_HI');
         }
     },
 
@@ -19516,6 +19531,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         GET_COURSE_ID: function GET_COURSE_ID(state, payload) {
             state.courseid = payload.courseid;
             state.courseTitle = state.courses[state.courseid].title;
+        },
+
+        SAY_HI: function SAY_HI(state) {
+            state.hi = true;
         }
     }
 }));

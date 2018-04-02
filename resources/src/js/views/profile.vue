@@ -55,25 +55,33 @@
         name: 'profile',
 
         created () {
+            this.$store.dispatch('sayHi');
+        },
+
+        mounted () {
             this.emailURI = this.$route.params.emailURI;
             this.axios.get('student/'+this.emailURI+'@my.csun.edu')
                 .then(response => {
                     this.bio = response['data']['people'].biography;
 
                     if(this.bio === null)
-                        this.bio = "None"
+                        this.bio = "None";
+
+                    console.log("hey");
                 })
                 .catch(e => {
-                    this.errors.push(e)
+                    this.errors.push(e);
                 });
 
             this.axios.get('student_profile/'+this.emailURI+'@my.csun.edu')
                 .then(response => {
                     this.display_name = response['data'].display_name;
                     this.image = response['data'].image;
+                    this.notes = response['data'].notes;
+                    console.log("yo");
                 })
                 .catch(e => {
-                    this.errors.push(e)
+                    this.errors.push(e);
                 });
         },
 
@@ -83,7 +91,8 @@
                 display_name: 'undefined',
                 major: 'None',
                 bio: 'undefined',
-                image: ''
+                image: '',
+                notes: ''
             }
         },
 

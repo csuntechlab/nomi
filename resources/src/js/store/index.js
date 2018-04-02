@@ -16,7 +16,8 @@ export default new Vuex.Store({
         courseTitle: "Course",
         faculty_email: "undefined",
         faculty_name: "undefined",
-        faculty_profile: "undefined"
+        faculty_profile: "undefined",
+        hi: false
     },
 
     getters: {
@@ -29,7 +30,8 @@ export default new Vuex.Store({
         courseTitle: state => state.courseTitle,
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
-        faculty_profile: state => state.faculty_profile
+        faculty_profile: state => state.faculty_profile,
+        hi: state => state.hi
     },
 
     actions: {
@@ -62,6 +64,10 @@ export default new Vuex.Store({
         getCourseId (context, payload) {
             context.commit('GET_COURSE_ID', payload);
         },
+
+        sayHi (context) {
+            context.commit('SAY_HI');
+        }
     },
 
     mutations: {
@@ -178,6 +184,10 @@ export default new Vuex.Store({
         GET_COURSE_ID: function (state, payload) {
             state.courseid = payload.courseid;
             state.courseTitle = state.courses[state.courseid].title;
+        },
+
+        SAY_HI: function (state) {
+            state.hi = true;
         }
     }
 });

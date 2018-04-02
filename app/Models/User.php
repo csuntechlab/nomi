@@ -37,4 +37,9 @@ class User extends MetaUser
     {
         return $this->hasOne('App\Models\ImagePriority', 'student_id', 'user_id');
     }
+
+    public function note()
+    {
+        return $this->hasMany('App\Models\Note');
+    }
 }
