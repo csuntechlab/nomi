@@ -3,7 +3,7 @@
         <div class="hello">
             <div class="row">
                 <div class="col-xs-3">
-                    <img :id="display_name+'-img'" :src="student.image" class="img--circle" style="width:100%;">
+                    <profile-picture :student="this.student"></profile-picture>
                 </div>
                 <div class="col-xs-9 name_formatting">
                     <router-link :to="'/profile/'+email_uri">
