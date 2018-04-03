@@ -58,8 +58,21 @@
   transition: 0.5s;
 }
 
+a.faculty-name:link,
+a.faculty-name:active,
+a.faculty-name:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 125%;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center;
+  font-weight: bold;
+}
+
 a.faculty-links:link,
-a.faculty-links:hover,
 a.faculty-links:active,
 a.faculty-links:visited {
   color: white;
@@ -82,17 +95,15 @@ a.faculty-links:hover {
   position: relative;
 }
 
-.close {
+.menu_close {
   position: absolute;
-  bottom: 0;
-  right: 49%;
 }
 
-.menu {
+.side_bar_menu {
   position: relative;
 }
 
-.side_bar_button {
+.menu_open {
   padding: 15px;
   position: fixed;
   bottom: 0;
@@ -102,6 +113,10 @@ a.faculty-links:hover {
 
 .nav_title {
   color: white;
+}
+
+.faculty_image {
+  size: 50%;
 }
 
 .menu__compensation {

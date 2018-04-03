@@ -18,8 +18,8 @@
         <div id='app'>
             <nav-bar></nav-bar>
             <router-view></router-view>
-            <side-bar></side-bar>
-            <side-bar-button></side-bar-button>
+            <menu-up></menu-up>
+            <menu-button></menu-button>
         </div>
         <script src="{{ asset('js/metaphor.js') }}"></script>
         <script src="{{ asset('js/app.js') }}"></script>

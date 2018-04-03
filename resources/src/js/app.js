@@ -2,15 +2,15 @@ import axios from 'axios';
 import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
-
+import { mapGetters } from 'vuex';
 window.Vue = require('vue');
 window.axios = require('axios');
 
 Vue.use(Croppa);
 
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
-Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
-Vue.component('side-bar-button', require('./components/fixed_components/sideBarButton.vue'));
+Vue.component('menu-up', require('./components/fixed_components/menuUp.vue'));
+Vue.component('menu-button', require('./components/fixed_components/menuButton.vue'));
 Vue.component('croppa-profile', require('./components/fixed_components/croppaProfile.vue'));
 Vue.component('list-grid-tabs', require('./components/fixed_components/listGridTabs.vue'));
 Vue.component('profile-picture', require('./components/fixed_components/profilePicture.vue'));
@@ -24,8 +24,7 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-
-    mounted () {
+    created () {
         this.$store.dispatch('getData');
     }
 });

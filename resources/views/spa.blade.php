@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
     <router-view></router-view>
-    <side-bar></side-bar>
+    <menu-up></menu-up>
     <div class="menu__compensation">
-    <side-bar-button></side-bar-button></<side-bar-button></side-bar-button>
+    <menu-button></menu-button>
 @stop
