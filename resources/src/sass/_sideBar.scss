@@ -33,8 +33,22 @@ a.faculty-links:hover{
   right:49%;
 }
 
-.menu {
+.side_bar_menu {
   position: relative;
 }
 
+.side_bar_button {
+	padding:15px;
+	position:fixed;    
+  bottom:0;         
+  left:0; 
+	right:0; 
+}
 
+.nav_title {
+	color:white;
+}
+
+.menu__compensation{
+	padding: 25px;
+}

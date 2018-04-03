@@ -1,7 +1,7 @@
 <template>
         <div id="sideNav" class="sidebar navy-blue">
             <div class="sidebar_container type--center">  
-                <div class="menu type--center">
+                <div class="side_bar_menu type--center">
                         <shuffle-button></shuffle-button> 
                         <div class="list">
                             <a class="faculty-links" :href=faculty_profile title="Profile">Profile</a>      

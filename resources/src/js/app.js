@@ -8,7 +8,6 @@ window.axios = require('axios');
 
 Vue.use(Croppa);
 
-Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('side-bar', require('./components/fixed_components/sideBar.vue'));
 Vue.component('side-bar-button', require('./components/fixed_components/sideBarButton.vue'));

@@ -3,5 +3,5 @@
     <router-view></router-view>
     <side-bar></side-bar>
     <div class="menu__compensation">
-    <menu-bar></menu-bar>
+    <side-bar-button></side-bar-button></<side-bar-button></side-bar-button>
 @stop

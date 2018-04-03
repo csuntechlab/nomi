@@ -48,22 +48,6 @@
   height: 5em;
 }
 
-.menu-bar {
-  padding: 15px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.nav_title {
-  color: white;
-}
-
-.menu__compensation {
-  padding: 25px;
-}
-
 .sidebar {
   height: 0%;
   width: 100vw;
@@ -106,6 +90,22 @@ a.faculty-links:hover {
 
 .menu {
   position: relative;
+}
+
+.side_bar_button {
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav_title {
+  color: white;
+}
+
+.menu__compensation {
+  padding: 25px;
 }
 
 .list__item {
