@@ -14228,7 +14228,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
- * vue-croppa v1.2.1
+ * vue-croppa v1.2.0
  * https://github.com/zhanziyang/vue-croppa
  * 
  * Copyright (c) 2018 zhanziyang
@@ -15298,13 +15298,13 @@ var component = { render: function render() {
       if (!this._fileSizeIsValid(file)) {
         this.loading = false;
         this.$emit(events.FILE_SIZE_EXCEED_EVENT, file);
-        return false;
+        throw new Error('File size exceeds limit which is ' + this.fileSizeLimit + ' bytes.');
       }
       if (!this._fileTypeIsValid(file)) {
         this.loading = false;
         this.$emit(events.FILE_TYPE_MISMATCH_EVENT, file);
         var type = file.type || file.name.toLowerCase().split('.').pop();
-        return false;
+        throw new Error('File type (' + type + ') mimatches (' + this.accept + ').');
       }
       if (typeof window !== 'undefined' && typeof window.FileReader !== 'undefined') {
         var fr = new FileReader();
@@ -22256,7 +22256,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
 
-    props: ['course']
+    props: ['course'],
+
+    computed: {
+        classStartTime: function classStartTime() {
+            return this.convertTime(this.course.meetings[0].start_time);
+        },
+
+        classEndTime: function classEndTime() {
+            return this.convertTime(this.course.meetings[0].end_time);
+        }
+    },
+
+    methods: {
+        convertTime: function convertTime(OriginalTime) {
+            var time = OriginalTime;
+            var hour = parseInt(time.substring(0, 2));
+            var min = time.substring(2, 4) + "am";
+            if (hour > 12) {
+                hour = hour - 12;
+                min = min.substring(0, 2) + "pm";
+            }
+            time = hour + ":" + min;
+            return time;
+        }
+    }
+
 });
 
 /***/ }),
@@ -22299,9 +22324,9 @@ var render = function() {
               " " +
               _vm._s(_vm.course.meetings[0].days) +
               "\n                " +
-              _vm._s(_vm.course.meetings[0].start_time) +
-              "-" +
-              _vm._s(_vm.course.meetings[0].end_time) +
+              _vm._s(_vm.classStartTime) +
+              " - " +
+              _vm._s(_vm.classEndTime) +
               "\n            "
           )
         ]),
@@ -22533,7 +22558,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['course']
+    props: ['course'],
+
+    computed: {
+        classStartTime: function classStartTime() {
+            return this.convertTime(this.course.meetings[0].start_time);
+        },
+
+        classEndTime: function classEndTime() {
+            return this.convertTime(this.course.meetings[0].end_time);
+        }
+    },
+
+    methods: {
+        convertTime: function convertTime(OriginalTime) {
+            var time = OriginalTime;
+            var hour = parseInt(time.substring(0, 2));
+            var min = time.substring(2, 4) + "am";
+            if (hour > 12) {
+                hour = hour - 12;
+                min = min.substring(0, 2) + "pm";
+            }
+            time = hour + ":" + min;
+            return time;
+        }
+    }
 
 });
 
@@ -22570,9 +22619,9 @@ var render = function() {
               ": #" +
               _vm._s(_vm.course.id) +
               "\n                    " +
-              _vm._s(_vm.course.meetings[0].start_time) +
-              "-" +
-              _vm._s(_vm.course.meetings[0].end_time) +
+              _vm._s(_vm.classStartTime) +
+              " - " +
+              _vm._s(_vm.classEndTime) +
               "\n                "
           )
         ]),
