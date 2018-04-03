@@ -1,4 +1,4 @@
-.sidebar {
+.menu_slide_up_down {
   height: 0%;
   width: 100vw;
   position: fixed;
@@ -10,11 +10,11 @@
 a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
   color: white;
   text-decoration: none;
-  font-size: 125%;
+  font-size: 120%;
   font-family: sans-serif;
   margin: 0; 
   cursor: pointer;
-  padding: 1%;
+  //padding: 1%;
   text-align:center;
   font-weight: bold;
 }
@@ -22,48 +22,47 @@ a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
  a.faculty-links:link, a.faculty-links:active, a.faculty-links:visited {
   color: white;
   text-decoration: none;
-  font-size: 125%;
+  font-size: 120%;
   font-family: sans-serif;
   margin: 0; 
   cursor: pointer;
-  padding: 1%;
+  padding: 0.5%;
   text-align:center;
 }
 a.faculty-links:hover{
   color:#4F9DA3;
 }
 
-.sidebar_container {
+.menu_container {
   height:100%;
-  padding: 5%; 
+  padding: 3%; 
   position: relative;
 }
 
-.menu_close {
-  position: absolute;
-  // bottom: 0;
-  // right:49%;
-}
-
-.side_bar_menu {
+.menu_button {
   position: relative;
 }
 
-.menu_open {
-	padding:15px;
+.menu_selections {
+  position: relative;
+}
+
+.menu_bar {
+  height:8%;
 	position:fixed;    
   bottom:0;         
   left:0; 
-	right:0; 
+  right:0; 
+  z-index: 100;
 }
 
 .nav_title {
 	color:white;
 }
 .faculty_image{
-  size: 50%;
+  height:25%;
+  width: 25%;
 }
-
 
 .menu__compensation{
 	padding: 25px;

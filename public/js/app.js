@@ -13271,8 +13271,8 @@ window.axios = __webpack_require__(5);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_croppa___default.a);
 
 Vue.component('nav-bar', __webpack_require__(52));
-Vue.component('menu-up', __webpack_require__(137));
-Vue.component('menu-button', __webpack_require__(134));
+Vue.component('menu-up', __webpack_require__(55));
+Vue.component('menu-button', __webpack_require__(58));
 Vue.component('croppa-profile', __webpack_require__(61));
 Vue.component('list-grid-tabs', __webpack_require__(64));
 Vue.component('profile-picture', __webpack_require__(70));
@@ -19393,7 +19393,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-                // state.profile_image = response.data["courses"][0].instructors[0].profile_image;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19635,12 +19634,331 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/menuUp.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7e9602fc", Component.options)
+  } else {
+    hotAPI.reload("data-v-7e9602fc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "menu-up",
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image', 'menushow'])),
+    watch: {
+        'faculty_email': function faculty_email(email) {
+            this.$store.dispatch('getFacultyProfile', { email: email });
+        }
+    }
+
+});
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "menu_slide_up_down navy-blue",
+        attrs: { id: "menu-open-close" }
+      },
+      [
+        this.menushow
+          ? _c("div")
+          : _c("div", { staticClass: "menu_container type--center" }, [
+              _c("div", { staticClass: "menu_selections type--center" }, [
+                _c("div", { staticClass: "list" }, [
+                  _c("img", {
+                    staticClass: "img--circle faculty_image",
+                    attrs: {
+                      id: _vm.faculty_full_name + "-img",
+                      src: _vm.profile_image,
+                      name: "photo"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "faculty-name",
+                      attrs: { href: "faculty_profile", title: "User Name" }
+                    },
+                    [_vm._v(_vm._s(_vm.faculty_full_name))]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "list" }, [
+      _c(
+        "a",
+        { staticClass: "faculty-links", attrs: { href: "#", title: "Game" } },
+        [_vm._v("Game")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "faculty-links",
+          attrs: { href: "https://www.csun.edu/faculty/scholarship" }
+        },
+        [_vm._v("Scholarship")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "faculty-links",
+          attrs: { href: "/logout", title: "Logout" }
+        },
+        [_vm._v("Logout")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7e9602fc", module.exports)
+  }
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/menuButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-012ef419", Component.options)
+  } else {
+    hotAPI.reload("data-v-012ef419", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "menu-button",
+    methods: {
+        openMenu: function openMenu() {
+            document.getElementById("menu-open-close").style.height = "80%";
+        },
+        closeMenu: function closeMenu(event) {
+            document.getElementById("menu-open-close").style.height = "0%";
+        }
+    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menushow']))
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("nav", { staticClass: "menu_bar navy-blue" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "type--center" }, [
+        this.menushow
+          ? _c("div", { staticClass: "menu_button" }, [
+              _c("i", {
+                staticClass: "fa fa-angle-up fa-3x type--white",
+                attrs: { title: "Open Menu" },
+                on: {
+                  click: [
+                    function($event) {
+                      $event.preventDefault()
+                      _vm.openMenu()
+                    },
+                    function($event) {
+                      _vm.$store.dispatch("toggleMenu")
+                    }
+                  ]
+                }
+              })
+            ])
+          : _c("div", { staticClass: "menu_button" }, [
+              _c("i", {
+                staticClass: "fa fa-angle-down fa-3x type--white",
+                attrs: { title: "Close Menu" },
+                on: {
+                  click: [
+                    function($event) {
+                      $event.preventDefault()
+                      _vm.closeMenu()
+                    },
+                    function($event) {
+                      _vm.$store.dispatch("toggleMenu")
+                    }
+                  ]
+                }
+              })
+            ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-012ef419", module.exports)
+  }
+}
+
+/***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21876,7 +22194,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
 
-    props: ['course']
+    props: ['course'],
+
+    computed: {
+        classStartTime: function classStartTime() {
+            return this.convertTime(this.course.meetings[0].start_time);
+        },
+
+        classEndTime: function classEndTime() {
+            return this.convertTime(this.course.meetings[0].end_time);
+        }
+    },
+
+    methods: {
+        convertTime: function convertTime(OriginalTime) {
+            var time = OriginalTime;
+            var hour = parseInt(time.substring(0, 2));
+            var min = time.substring(2, 4) + "am";
+            if (hour > 12) {
+                hour = hour - 12;
+                min = min.substring(0, 2) + "pm";
+            }
+            time = hour + ":" + min;
+            return time;
+        }
+    }
+
 });
 
 /***/ }),
@@ -21919,9 +22262,9 @@ var render = function() {
               " " +
               _vm._s(_vm.course.meetings[0].days) +
               "\n                " +
-              _vm._s(_vm.course.meetings[0].start_time) +
-              "-" +
-              _vm._s(_vm.course.meetings[0].end_time) +
+              _vm._s(_vm.classStartTime) +
+              " - " +
+              _vm._s(_vm.classEndTime) +
               "\n            "
           )
         ]),
@@ -22153,7 +22496,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['course']
+    props: ['course'],
+
+    computed: {
+        classStartTime: function classStartTime() {
+            return this.convertTime(this.course.meetings[0].start_time);
+        },
+
+        classEndTime: function classEndTime() {
+            return this.convertTime(this.course.meetings[0].end_time);
+        }
+    },
+
+    methods: {
+        convertTime: function convertTime(OriginalTime) {
+            var time = OriginalTime;
+            var hour = parseInt(time.substring(0, 2));
+            var min = time.substring(2, 4) + "am";
+            if (hour > 12) {
+                hour = hour - 12;
+                min = min.substring(0, 2) + "pm";
+            }
+            time = hour + ":" + min;
+            return time;
+        }
+    }
 
 });
 
@@ -22190,9 +22557,9 @@ var render = function() {
               ": #" +
               _vm._s(_vm.course.id) +
               "\n                    " +
-              _vm._s(_vm.course.meetings[0].start_time) +
-              "-" +
-              _vm._s(_vm.course.meetings[0].end_time) +
+              _vm._s(_vm.classStartTime) +
+              " - " +
+              _vm._s(_vm.classEndTime) +
               "\n                "
           )
         ]),
@@ -22450,321 +22817,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(135)
-/* template */
-var __vue_template__ = __webpack_require__(136)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/fixed_components/menuButton.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-012ef419", Component.options)
-  } else {
-    hotAPI.reload("data-v-012ef419", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 135 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "menu-button",
-    methods: {
-        openMenu: function openMenu() {
-            document.getElementById("menuFunc").style.height = "85%";
-        }
-    },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menushow']))
-});
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu_open navy-blue" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "type--center" }, [
-        _c("div", { staticClass: "menu_close" }),
-        _vm._v(" "),
-        this.menushow
-          ? _c("i", {
-              staticClass: "fa fa-angle-up fa-3x type--white",
-              attrs: { id: "menuFunc", title: "Open Menu" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.openMenu()
-                }
-              }
-            })
-          : _c("i", {
-              staticClass: "fa fa-angle-down fa-3x type--white",
-              attrs: { id: "menuFunc", title: "Menu Close" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.closeMenu()
-                }
-              }
-            })
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-012ef419", module.exports)
-  }
-}
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(138)
-/* template */
-var __vue_template__ = __webpack_require__(139)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/fixed_components/menuUp.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7e9602fc", Component.options)
-  } else {
-    hotAPI.reload("data-v-7e9602fc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 138 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "menu-up",
-
-    methods: {
-        closeMenu: function closeMenu(event) {
-            document.getElementById("menuFunc").style.height = "0%";
-        }
-    },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image'])),
-    watch: {
-        'faculty_email': function faculty_email(email) {
-            this.$store.dispatch('getFacultyProfile', { email: email });
-        }
-    }
-
-});
-
-/***/ }),
-/* 139 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "sidebar navy-blue", attrs: { id: "menuFunc" } },
-    [
-      _c("div", { staticClass: "sidebar_container type--center" }, [
-        _c("div", { staticClass: "side_bar_menu type--center" }, [
-          _c("div", { staticClass: "list" }, [
-            _c("img", {
-              staticClass: "img--circle faculty_image",
-              attrs: {
-                id: _vm.faculty_full_name + "-img",
-                src: _vm.profile_image,
-                name: "photo"
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "faculty-name",
-                attrs: { href: _vm.faculty_profile, title: "User Name" }
-              },
-              [_vm._v(_vm._s(_vm.faculty_full_name))]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "list" }, [
-            _c(
-              "a",
-              {
-                staticClass: "faculty-links",
-                attrs: { href: _vm.faculty_profile, title: "Profile" }
-              },
-              [_vm._v("Profile")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "faculty-links",
-                attrs: { href: "#", title: "Game" }
-              },
-              [_vm._v("Game")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "faculty-links",
-                attrs: { href: "https://www.csun.edu/faculty/scholarship" }
-              },
-              [_vm._v("Scholarship")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "faculty-links",
-                attrs: { href: "/logout", title: "Logout" }
-              },
-              [_vm._v("Logout")]
-            )
-          ])
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7e9602fc", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

@@ -98,7 +98,6 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
-                    // state.profile_image = response.data["courses"][0].instructors[0].profile_image;
                 })
                 .catch(e => {
                     this.errors.push(e);

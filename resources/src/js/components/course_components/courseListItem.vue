@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-xs-5">
                     {{course.meetings[0].location}} {{course.meetings[0].days}}
-                    {{course.meetings[0].start_time}}-{{course.meetings[0].end_time}}
+                    {{classStartTime}} - {{classEndTime}}
                 </div>
                 <div class="col-xs-2">
                     {{course.enrollment_count}} Students
@@ -25,6 +25,32 @@
         name: "course-list-item",
 
         props:['course'],
+
+        computed: {
+            classStartTime: function () {
+                return this.convertTime(this.course.meetings[0].start_time)
+            },
+
+            classEndTime: function() {
+                return this.convertTime(this.course.meetings[0].end_time)
+            }
+        },
+
+        methods: {
+            convertTime: function (OriginalTime) {
+                var time = OriginalTime;
+                var hour = parseInt(time.substring(0, 2));
+                var min = time.substring(2, 4) + "am";
+                if(hour > 12) {
+                    hour = hour - 12;
+                    min = min.substring(0, 2) + "pm"
+                }
+                time = hour + ":" + min;
+                return time
+            }
+        }
+
+
     }
 </script>
 

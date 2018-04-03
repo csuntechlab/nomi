@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
 
-    <body class="bg--gray">
+    <body>
         @if ( $errors->count() > 0 )
             ...An error occured...
             @foreach( $errors->all() as $message )
@@ -18,6 +18,7 @@
         <div id='app'>
             <nav-bar></nav-bar>
             <router-view></router-view>
+            <div class="menu__compensation">
             <menu-up></menu-up>
             <menu-button></menu-button>
         </div>
