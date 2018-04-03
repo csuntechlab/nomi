@@ -39,7 +39,8 @@
                                     <i class="fa fa-plus-circle fa-blue"></i>
                                     Add a Note:
                                 </h4>
-                                <textarea id="ex0" name="ex0" placeholder="Comment..">{{this.sp_notes}}</textarea>
+                                <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
+                                <button class="button" @click="commitNotes">Commit</button>
                             </div>
                         </form>
                     </div>
@@ -51,6 +52,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import { mapState } from 'vuex'
     export default {
         name: 'profile',
 
@@ -58,7 +60,7 @@
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
-        computed : {
+        computed: {
             ...mapGetters([
                 'courseid',
                 'courseTitle',
@@ -67,8 +69,21 @@
                 'sp_major',
                 'sp_bio',
                 'sp_image',
-                'sp_notes'
-            ])
+            ]),
+
+            ...mapState({
+                sp_notes: state => state.sp_notes
+            })
+        },
+
+        methods: {
+            updateNotes (e) {
+                this.$store.dispatch('updateNotes', e.target.value);
+            },
+
+            commitNotes () {
+                this.$store.dispatch('commitNotes');
+            }
         }
     }
 </script>

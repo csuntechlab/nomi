@@ -179,7 +179,7 @@ module.exports = function normalizeComponent (
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* unused harmony export mapState */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapState; });
 /* unused harmony export mapMutations */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
 /* unused harmony export mapActions */
@@ -19149,6 +19149,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19159,7 +19161,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_image', 'sp_notes']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_image']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+        sp_notes: function sp_notes(state) {
+            return state.sp_notes;
+        }
+    })),
+
+    methods: {
+        updateNotes: function updateNotes(e) {
+            this.$store.dispatch('updateNotes', e.target.value);
+        },
+        commitNotes: function commitNotes() {
+            this.$store.dispatch('commitNotes');
+        }
+    }
 });
 
 /***/ }),
@@ -19254,9 +19269,16 @@ var render = function() {
                 _c(
                   "textarea",
                   {
-                    attrs: { id: "ex0", name: "ex0", placeholder: "Comment.." }
+                    attrs: { id: "ex0", name: "ex0" },
+                    on: { input: _vm.updateNotes }
                   },
                   [_vm._v(_vm._s(this.sp_notes))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "button", on: { click: _vm.commitNotes } },
+                  [_vm._v("Commit")]
                 )
               ])
             ])
@@ -19325,12 +19347,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         faculty_full_name: null,
         faculty_profile_image: null,
 
-        sp_emailURI: 'undefined',
-        sp_display_name: 'undefined',
-        sp_major: 'None',
-        sp_bio: 'undefined',
-        sp_image: '',
-        sp_notes: ''
+        sp_student_id: null,
+        sp_emailURI: null,
+        sp_display_name: null,
+        sp_major: "None",
+        sp_bio: null,
+        sp_image: null,
+        sp_notes: null
     },
 
     getters: {
@@ -19378,6 +19401,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             return state.faculty_profile_image;
         },
 
+        sp_student_id: function sp_student_id(state) {
+            return state.sp_student_id;
+        },
         sp_emailURI: function sp_emailURI(state) {
             return state.sp_emailURI;
         },
@@ -19427,6 +19453,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         getStudentProfile: function getStudentProfile(context, payload) {
             context.commit('GET_STUDENT_PROFILE', payload);
+        },
+        updateNotes: function updateNotes(context, notes) {
+            context.commit('UPDATE_NOTES', notes);
+        },
+        commitNotes: function commitNotes(context, payload) {
+            context.commit('COMMIT_NOTES', payload);
         }
     },
 
@@ -19580,8 +19612,25 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.sp_display_name = response['data'].display_name;
                 state.sp_image = response['data'].image;
                 state.sp_notes = response['data'].notes;
+                state.sp_student_id = response['data'].student_id;
             }).catch(function (e) {
                 _this3.errors.push(e);
+            });
+        },
+
+        UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
+            state.sp_notes = notes;
+        },
+
+        COMMIT_NOTES: function COMMIT_NOTES(state) {
+            var _this4 = this;
+
+            var data = new FormData();
+            data.append('student_id', state.sp_student_id);
+            data.append('notepad', state.sp_notes);
+
+            axios.post('update_note', data).catch(function (e) {
+                _this4.errors.push(e);
             });
         }
     }

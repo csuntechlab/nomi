@@ -23,12 +23,13 @@ export default new Vuex.Store({
         faculty_full_name: null,
         faculty_profile_image: null,
 
-        sp_emailURI : 'undefined',
-        sp_display_name: 'undefined',
-        sp_major: 'None',
-        sp_bio: 'undefined',
-        sp_image: '',
-        sp_notes: ''
+        sp_student_id: null,
+        sp_emailURI: null,
+        sp_display_name: null,
+        sp_major: "None",
+        sp_bio: null,
+        sp_image: null,
+        sp_notes: null,
     },
 
     getters: {
@@ -48,6 +49,7 @@ export default new Vuex.Store({
         faculty_full_name: state => state.faculty_full_name,
         faculty_profile_image: state => state.faculty_profile_image,
 
+        sp_student_id : state => state.sp_student_id,
         sp_emailURI : state => state.sp_emailURI,
         sp_display_name: state => state.sp_display_name,
         sp_major: state => state.sp_major,
@@ -94,6 +96,14 @@ export default new Vuex.Store({
         getStudentProfile (context, payload) {
             context.commit('GET_STUDENT_PROFILE', payload);
         },
+
+        updateNotes (context, notes) {
+            context.commit('UPDATE_NOTES', notes);
+        },
+
+        commitNotes (context, payload) {
+            context.commit('COMMIT_NOTES', payload);
+        }
     },
 
     mutations: {
@@ -244,9 +254,25 @@ export default new Vuex.Store({
                     state.sp_display_name = response['data'].display_name;
                     state.sp_image = response['data'].image;
                     state.sp_notes = response['data'].notes;
+                    state.sp_student_id = response['data'].student_id;
                 })
                 .catch(e => {
                     this.errors.push(e);
+                });
+        },
+
+        UPDATE_NOTES: function (state, notes) {
+            state.sp_notes = notes;
+        },
+
+        COMMIT_NOTES: function (state) {
+            let data = new FormData;
+            data.append('student_id', state.sp_student_id);
+            data.append('notepad', state.sp_notes);
+
+            axios.post('update_note', data)
+                .catch(e => {
+                    this.errors.push(e)
                 });
         }
     }
