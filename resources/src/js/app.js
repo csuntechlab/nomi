@@ -2,7 +2,7 @@ import axios from 'axios';
 import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
-
+import { mapGetters } from 'vuex';
 window.Vue = require('vue');
 window.axios = require('axios');
 
@@ -25,8 +25,7 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-
-    mounted () {
+    created () {
         this.$store.dispatch('getData');
     }
 });

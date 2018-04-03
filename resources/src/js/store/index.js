@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -14,10 +14,14 @@ export default new Vuex.Store({
         descending: true,
         courseid: 0,
         courseTitle: "Course",
-        faculty_email: "undefined",
-        faculty_name: "undefined",
-        faculty_profile: "undefined",
-        hi: false
+        faculty_email: null,
+        faculty_name: null,
+        faculty_profile: null,
+        faculty_first_name: null, 
+        faculty_last_name: null,
+        faculty_full_name: null,
+        profile_image: null,
+        hi: false,
     },
 
     getters: {
@@ -31,7 +35,11 @@ export default new Vuex.Store({
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
         faculty_profile: state => state.faculty_profile,
-        hi: state => state.hi
+        faculty_first_name: state => state.faculty_first_name,
+        faculty_last_name: state => state.faculty_last_name,
+        faculty_full_name: state => state.faculty_full_name,
+        profile_image: state => state.profile_image,
+        hi: state => state.hi,
     },
 
     actions: {
@@ -65,9 +73,13 @@ export default new Vuex.Store({
             context.commit('GET_COURSE_ID', payload);
         },
 
+        getFacultyProfile (context, payload) {
+            context.commit('GET_FACULTY_PROFILE', payload);
+        },
+
         sayHi (context) {
             context.commit('SAY_HI');
-        }
+        },
     },
 
     mutations: {
@@ -81,6 +93,10 @@ export default new Vuex.Store({
                     state.faculty_name = state.faculty_email.replace("nr_", "");
                     state.faculty_name = state.faculty_name.split('@')[0];
                     state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
+                    state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
+                    state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
+                    state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
+                    state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -186,9 +202,19 @@ export default new Vuex.Store({
             state.courseTitle = state.courses[state.courseid].title;
         },
 
+        GET_FACULTY_PROFILE: function (state, payload) {
+            axios.get(`faculty_profile/${state.faculty_email}`)
+            .then(response => {
+                state.profile_image = response.data;
+            })
+            .catch(e => {
+                this.errors.push(e);
+            });
+        },
+
         SAY_HI: function (state) {
             state.hi = true;
-        }
+        },
     }
 });
 

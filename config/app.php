@@ -172,6 +172,7 @@ return [
         App\Providers\RosterServiceProvider::class,
         App\Providers\ImageCRUDServiceProvider::class,
         App\Providers\StudentProfileServiceProvider::class,
+        App\Providers\FacultyProfileServiceProvider::class,
 
         /*
          * Application Service Providers...
