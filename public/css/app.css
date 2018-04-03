@@ -121,6 +121,10 @@ a.faculty-links:hover {
   position: relative;
 }
 
+.faculty_image {
+  size: 50%;
+}
+
 .list__item {
   background-color: white;
   padding: 20px;

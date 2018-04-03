@@ -13309,9 +13309,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-
 
 
 
@@ -13341,10 +13338,8 @@ var app = new Vue({
     el: '#app',
     router: __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */],
     store: __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */],
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_5_vuex__["b" /* mapGetters */])(['faculty_email'])),
-    mounted: function mounted() {
+    created: function created() {
         this.$store.dispatch('getData');
-        this.$store.dispatch('getFacultyProfile', { email: this.faculty_email });
     }
 });
 
@@ -19450,7 +19445,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-                state.profile_image = response.data["courses"][0].instructors[0].instructor;
+                // state.profile_image = response.data["courses"][0].instructors[0].profile_image;
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19562,11 +19557,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
             var _this2 = this;
 
-            axios.get('faculty_profile/' + payload.email)
-            //axios.get(`data`)
-            .then(function (response) {
-                state.profile_image = payload.profile_image;
-                //state.profile_image = response['data'].state.profile_image;
+            axios.get('faculty_profile/' + state.faculty_email).then(function (response) {
+                state.profile_image = response.data;
             }).catch(function (e) {
                 _this2.errors.push(e);
             });
@@ -19927,11 +19919,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    // created () {
-    //     this.$store.dispatch('getFacultyProfile', {{{faculty_email}}: parseInt(this.$route.params.id)})
-    // },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image'])),
+    watch: {
+        'faculty_email': function faculty_email(email) {
+            this.$store.dispatch('getFacultyProfile', { email: email });
+        }
+    }
 
 });
 
@@ -19951,7 +19944,7 @@ var render = function() {
         _c("div", { staticClass: "menu type--center" }, [
           _c("div", { staticClass: "list" }, [
             _c("img", {
-              staticClass: "img--circle grid-image",
+              staticClass: "img--circle faculty_image",
               attrs: {
                 id: _vm.faculty_full_name + "-img",
                 src: _vm.profile_image,

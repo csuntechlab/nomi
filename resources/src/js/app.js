@@ -4,7 +4,6 @@ import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
 import { mapGetters } from 'vuex';
-
 window.Vue = require('vue');
 window.axios = require('axios');
 
@@ -28,14 +27,7 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-    methods: {
-        ...mapGetters([
-            'faculty_email'
-            
-        ])
-    },
-    mounted () {
+    created () {
         this.$store.dispatch('getData');
-        this.$store.dispatch('getFacultyProfile', {email: this.faculty_email});
     }
 });

@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -91,7 +91,7 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
-                    state.profile_image = response.data["courses"][0].instructors[0].instructor;
+                    // state.profile_image = response.data["courses"][0].instructors[0].profile_image;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -198,14 +198,12 @@ export default new Vuex.Store({
         },
 
         GET_FACULTY_PROFILE: function (state, payload) {
-            axios.get(`faculty_profile/${payload.email}`)
-            //axios.get(`data`)
+            axios.get(`faculty_profile/${state.faculty_email}`)
             .then(response => {
-                state.profile_image = payload.profile_image;
-                //state.profile_image = response['data'].state.profile_image;
+                state.profile_image = response.data;
             })
             .catch(e => {
-                this.errors.push(e)
+                this.errors.push(e);
             });
         }
 
