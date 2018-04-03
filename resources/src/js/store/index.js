@@ -14,14 +14,21 @@ export default new Vuex.Store({
         descending: true,
         courseid: 0,
         courseTitle: "Course",
+
         faculty_email: null,
         faculty_name: null,
         faculty_profile: null,
         faculty_first_name: null, 
         faculty_last_name: null,
         faculty_full_name: null,
-        profile_image: null,
-        hi: false,
+        faculty_profile_image: null,
+
+        sp_emailURI : 'undefined',
+        sp_display_name: 'undefined',
+        sp_major: 'None',
+        sp_bio: 'undefined',
+        sp_image: '',
+        sp_notes: ''
     },
 
     getters: {
@@ -32,14 +39,21 @@ export default new Vuex.Store({
         flash: state => state.flash,
         courseid: state => state.courseid,
         courseTitle: state => state.courseTitle,
+
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
         faculty_profile: state => state.faculty_profile,
         faculty_first_name: state => state.faculty_first_name,
         faculty_last_name: state => state.faculty_last_name,
         faculty_full_name: state => state.faculty_full_name,
-        profile_image: state => state.profile_image,
-        hi: state => state.hi,
+        faculty_profile_image: state => state.faculty_profile_image,
+
+        sp_emailURI : state => state.sp_emailURI,
+        sp_display_name: state => state.sp_display_name,
+        sp_major: state => state.sp_major,
+        sp_bio: state => state.sp_bio,
+        sp_image: state => state.sp_image,
+        sp_notes: state => state.sp_notes,
     },
 
     actions: {
@@ -77,8 +91,8 @@ export default new Vuex.Store({
             context.commit('GET_FACULTY_PROFILE', payload);
         },
 
-        sayHi (context) {
-            context.commit('SAY_HI');
+        getStudentProfile (context, payload) {
+            context.commit('GET_STUDENT_PROFILE', payload);
         },
     },
 
@@ -205,16 +219,36 @@ export default new Vuex.Store({
         GET_FACULTY_PROFILE: function (state, payload) {
             axios.get(`faculty_profile/${state.faculty_email}`)
             .then(response => {
-                state.profile_image = response.data;
+                state.faculty_profile_image = response.data;
             })
             .catch(e => {
                 this.errors.push(e);
             });
         },
 
-        SAY_HI: function (state) {
-            state.hi = true;
-        },
+        GET_STUDENT_PROFILE: function (state, payload) {
+            state.sp_emailURI = payload.uri;
+            axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
+                .then(response => {
+                    state.sp_bio = response['data']['people'].biography;
+
+                    if(state.sp_bio === null)
+                        state.sp_bio = "None";
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                });
+
+            axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
+                .then(response => {
+                    state.sp_display_name = response['data'].display_name;
+                    state.sp_image = response['data'].image;
+                    state.sp_notes = response['data'].notes;
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                });
+        }
     }
 });
 

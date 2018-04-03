@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
-use App\Models\User;
+use App\Models\Note;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
@@ -32,15 +32,14 @@ class StudentProfileService implements StudentProfileContract
                 ->encode('data-url');
         }
 
-        $user = User::with('Note')
-            ->where('user_id', auth()->user()->user_id)
-            ->where('student_id', $profile['user_id'])
+        $note = Note::where('user_id', auth()->user()->user_id)
+            ->where('student_id', $profile['individuals_id'])
             ->first();
 
-        if ($user == null) {
+        if ($note == null) {
             $notes = 'Notes go here.';
         } else {
-            $notes = $user->notepad;
+            $notes = $note->notepad;
         }
 
         $studentProfile = [
