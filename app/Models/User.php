@@ -30,4 +30,11 @@ class User extends MetaUser
     ];
 
     public $incrementing = false;
+
+    protected $primaryKey = 'user_id';
+
+    public function imagePriority()
+    {
+        return $this->hasOne('App\Models\ImagePriority', 'student_id', 'user_id');
+    }
 }

@@ -9,7 +9,7 @@
                 </div>
                 <div v-else>
                     <label :for="display_name">
-                        <img :id="display_name+'-img'" :src="student.image" class="img--circle grid-image" name="photo">
+                        <profile-picture :name="display_name" :image="image"></profile-picture>
                     </label>
                 </div>
             </div>
@@ -34,7 +34,8 @@ export default {
     props: [ 'student' ],
 
     computed: {
-        display_name: function() { return this.student.first_name + " " + this.student.last_name; }
+        display_name: function() { return this.student.first_name + " " + this.student.last_name; },
+        image: function() { return this.student.images[this.student.image_priority[0]]; }
     },
 
     methods: {

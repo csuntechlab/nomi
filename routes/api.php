@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  * Image CRUD Routes.
  */
 Route::post('/upload', 'ImageController@uploadImage');
+Route::post('/priority', 'ImageController@updatePriority');
