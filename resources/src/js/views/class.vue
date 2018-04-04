@@ -1,5 +1,6 @@
 <template>
     <div>
+        <course-brand></course-brand>
         <list-grid-tabs></list-grid-tabs>
         <router-link to="/">Back to Class Sections</router-link>
         <roster-container></roster-container>

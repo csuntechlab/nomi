@@ -18,6 +18,7 @@ Vue.component('profile-picture', require('./components/fixed_components/profileP
 Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));
 Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
+Vue.component('course-brand', require('./components/roster_components/courseBrand.vue'));
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
 

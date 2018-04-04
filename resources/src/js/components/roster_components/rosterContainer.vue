@@ -2,7 +2,6 @@
     <div>
         <name-toggle-button></name-toggle-button>
         <descending-toggle-button></descending-toggle-button>
-        <h1>{{this.courseTitle}}</h1>
         <div v-if="this.list">
             <student-list :courseid="this.courseid"></student-list>
         </div>
@@ -18,6 +17,7 @@
     import { mapGetters } from "vuex"
     import nameToggleButton from "./nameToggleButton"
     import descendingToggleButton from "./descendingToggleButton"
+    import courseBrand from "./courseBrand"
     export default {
         name: "roster-container",
 
@@ -25,7 +25,8 @@
             studentMatrix,
             studentList,
             nameToggleButton,
-            descendingToggleButton
+            descendingToggleButton,
+            courseBrand
         },
 
         computed: {

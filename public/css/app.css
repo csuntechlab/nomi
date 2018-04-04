@@ -221,3 +221,10 @@ a.faculty-links:hover {
   font-size: 80%;
 }
 
+.course_brand {
+  font-size: 125%;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+}
+
