@@ -19228,52 +19228,68 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "section--lg section--md student-banner" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12" },
-            [
-              _c(
-                "carousel",
-                { attrs: { perPage: 1 } },
-                [
-                  _c(
-                    "slide",
-                    [_c("profile-picture", { attrs: { image: _vm.sp_image } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "slide",
-                    [_c("profile-picture", { attrs: { image: _vm.sp_image } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "slide",
-                    [_c("profile-picture", { attrs: { image: _vm.sp_image } })],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "h1",
-                {
-                  staticClass:
-                    "type--white type--thin type--marginless type--center"
-                },
-                [_vm._v(_vm._s(this.sp_display_name))]
-              )
-            ],
-            1
-          )
+    _c(
+      "div",
+      { staticClass: "section--lg section--md student-banner default_padding" },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-xs-12 col-md-12 col-lg-12 default_padding" },
+              [
+                _c(
+                  "carousel",
+                  { attrs: { perPage: 1 } },
+                  [
+                    _c(
+                      "slide",
+                      [
+                        _c("profile-picture", {
+                          attrs: { image: _vm.sp_image }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "slide",
+                      [
+                        _c("profile-picture", {
+                          attrs: { image: _vm.sp_image }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "slide",
+                      [
+                        _c("profile-picture", {
+                          attrs: { image: _vm.sp_image }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "h1",
+                  {
+                    staticClass:
+                      "type--white type--thin type--marginless type--center"
+                  },
+                  [_vm._v(_vm._s(this.sp_display_name))]
+                )
+              ],
+              1
+            )
+          ])
         ])
-      ])
-    ]),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "section type--center" }, [
       _c("div", { staticClass: "container" }, [
@@ -19290,7 +19306,11 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Email: " + _vm._s(this.sp_emailURI) + "@my.csun.edu")]
+              [
+                _vm._v("Email: " + _vm._s(this.sp_emailURI)),
+                _c("br"),
+                _vm._v("@my.csun.edu")
+              ]
             ),
             _vm._v(" "),
             _c("br"),
@@ -20668,7 +20688,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "img--circle" }, [
     _c("img", {
-      staticClass: "img--circle grid-image",
+      staticClass: "img--circle grid-image style__picture",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])

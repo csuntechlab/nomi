@@ -12,16 +12,16 @@
             </div>
         </div>
 
-        <div class="section--lg section--md student-banner">
+        <div class="section--lg section--md student-banner default_padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
                         <carousel
                             :perPage="1"
                         >
                             <slide>
                                 <profile-picture :image="sp_image"></profile-picture>
-                            </slide>
+                            </slide >
                             <slide>
                                 <profile-picture :image="sp_image"></profile-picture>
                             </slide>
@@ -41,7 +41,7 @@
                     <div class="col-sm-12">
                         <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
+                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
                         <br>
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
                         <br>
