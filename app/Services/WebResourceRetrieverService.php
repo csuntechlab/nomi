@@ -26,8 +26,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
                     env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
             )->getBody()
             ->getContents()
-            )
-            ->classes;
+            )->classes;
 
         //add an id to each object to make vue stuff easier
         $i = 0;

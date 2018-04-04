@@ -179,7 +179,7 @@ module.exports = function normalizeComponent (
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* unused harmony export mapState */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapState; });
 /* unused harmony export mapMutations */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
 /* unused harmony export mapActions */
@@ -19101,43 +19101,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile',
 
     created: function created() {
-        var _this = this;
-
-        this.emailURI = this.$route.params.emailURI;
-        this.axios.get('student/' + this.emailURI + '@my.csun.edu').then(function (response) {
-            _this.bio = response['data']['people'].biography;
-
-            if (_this.bio === null) _this.bio = "None";
-        }).catch(function (e) {
-            _this.errors.push(e);
-        });
-
-        this.axios.get('student_profile/' + this.emailURI + '@my.csun.edu').then(function (response) {
-            _this.display_name = response['data'].display_name;
-            _this.image = response['data'].image;
-        }).catch(function (e) {
-            _this.errors.push(e);
-        });
+        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
     },
 
 
-    data: function data() {
-        return {
-            emailURI: 'undefined',
-            display_name: 'undefined',
-            major: 'None',
-            bio: 'undefined',
-            image: ''
-        };
-    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_image']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+        sp_notes: function sp_notes(state) {
+            return state.sp_notes;
+        }
+    })),
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle']))
+    methods: {
+        updateNotes: function updateNotes(e) {
+            this.$store.dispatch('updateNotes', e.target.value);
+        },
+        commitNotes: function commitNotes() {
+            this.$store.dispatch('commitNotes');
+        }
+    }
 });
 
 /***/ }),
@@ -19178,8 +19167,8 @@ var render = function() {
             _c("img", {
               staticClass: "img--circle grid-image",
               attrs: {
-                id: this.display_name + "-img",
-                src: this.image,
+                id: this.sp_display_name + "-img",
+                src: this.sp_image,
                 name: "photo"
               }
             }),
@@ -19190,7 +19179,7 @@ var render = function() {
                 staticClass:
                   "type--white type--thin type--marginless type--center"
               },
-              [_vm._v(_vm._s(this.display_name))]
+              [_vm._v(_vm._s(this.sp_display_name))]
             )
           ])
         ])
@@ -19204,7 +19193,7 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Major: " + _vm._s(this.major))]
+              [_vm._v("Major: " + _vm._s(this.sp_major))]
             ),
             _vm._v(" "),
             _c("br"),
@@ -19212,7 +19201,7 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Email: " + _vm._s(this.emailURI) + "@my.csun.edu")]
+              [_vm._v("Email: " + _vm._s(this.sp_emailURI) + "@my.csun.edu")]
             ),
             _vm._v(" "),
             _c("br"),
@@ -19220,12 +19209,31 @@ var render = function() {
             _c(
               "h4",
               { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.bio))]
+              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
             ),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _vm._m(0)
+            _c("form", [
+              _c("div", { staticClass: "form__group" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "textarea",
+                  {
+                    attrs: { id: "ex0", name: "ex0" },
+                    on: { input: _vm.updateNotes }
+                  },
+                  [_vm._v(_vm._s(this.sp_notes))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "button", on: { click: _vm.commitNotes } },
+                  [_vm._v("Commit")]
+                )
+              ])
+            ])
           ])
         ])
       ])
@@ -19237,20 +19245,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "form__group" }, [
-        _c("h4", { staticClass: "type--black type--thin type--marginless" }, [
-          _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
-          _vm._v(
-            "\n                                Add a Note:\n                            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          attrs: { id: "ex0", name: "ex0", placeholder: "Comment.." }
-        })
-      ])
-    ])
+    return _c(
+      "h4",
+      { staticClass: "type--black type--thin type--marginless" },
+      [
+        _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
+        _vm._v(
+          "\n                                Add a Note:\n                            "
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -19287,14 +19291,22 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         descending: true,
         courseid: 0,
         courseTitle: "Course",
+
         faculty_email: null,
         faculty_name: null,
         faculty_profile: null,
         faculty_first_name: null,
         faculty_last_name: null,
         faculty_full_name: null,
-        profile_image: null
+        faculty_profile_image: null,
 
+        sp_student_id: null,
+        sp_emailURI: null,
+        sp_display_name: null,
+        sp_major: "None",
+        sp_bio: null,
+        sp_image: null,
+        sp_notes: null
     },
 
     getters: {
@@ -19322,6 +19334,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         courseTitle: function courseTitle(state) {
             return state.courseTitle;
         },
+
         faculty_email: function faculty_email(state) {
             return state.faculty_email;
         },
@@ -19340,8 +19353,30 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         faculty_full_name: function faculty_full_name(state) {
             return state.faculty_full_name;
         },
-        profile_image: function profile_image(state) {
-            return state.profile_image;
+        faculty_profile_image: function faculty_profile_image(state) {
+            return state.faculty_profile_image;
+        },
+
+        sp_student_id: function sp_student_id(state) {
+            return state.sp_student_id;
+        },
+        sp_emailURI: function sp_emailURI(state) {
+            return state.sp_emailURI;
+        },
+        sp_display_name: function sp_display_name(state) {
+            return state.sp_display_name;
+        },
+        sp_major: function sp_major(state) {
+            return state.sp_major;
+        },
+        sp_bio: function sp_bio(state) {
+            return state.sp_bio;
+        },
+        sp_image: function sp_image(state) {
+            return state.sp_image;
+        },
+        sp_notes: function sp_notes(state) {
+            return state.sp_notes;
         }
     },
 
@@ -19374,6 +19409,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         getFacultyProfile: function getFacultyProfile(context, payload) {
             context.commit('GET_FACULTY_PROFILE', payload);
+        },
+        getStudentProfile: function getStudentProfile(context, payload) {
+            context.commit('GET_STUDENT_PROFILE', payload);
+        },
+        updateNotes: function updateNotes(context, notes) {
+            context.commit('UPDATE_NOTES', notes);
+        },
+        commitNotes: function commitNotes(context, payload) {
+            context.commit('COMMIT_NOTES', payload);
         }
     },
 
@@ -19508,12 +19552,49 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             var _this2 = this;
 
             axios.get('faculty_profile/' + state.faculty_email).then(function (response) {
-                state.profile_image = response.data;
+                state.faculty_profile_image = response.data;
             }).catch(function (e) {
                 _this2.errors.push(e);
             });
-        }
+        },
 
+        GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+            var _this3 = this;
+
+            state.sp_emailURI = payload.uri;
+            axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
+                state.sp_bio = response['data']['people'].biography;
+
+                if (state.sp_bio === null) state.sp_bio = "None";
+            }).catch(function (e) {
+                _this3.errors.push(e);
+            });
+
+            axios.get('student_profile/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
+                state.sp_display_name = response['data'].display_name;
+                state.sp_image = response['data'].image;
+                state.sp_notes = response['data'].notes;
+                state.sp_student_id = response['data'].student_id;
+            }).catch(function (e) {
+                _this3.errors.push(e);
+            });
+        },
+
+        UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
+            state.sp_notes = notes;
+        },
+
+        COMMIT_NOTES: function COMMIT_NOTES(state) {
+            var _this4 = this;
+
+            var data = new FormData();
+            data.append('student_id', state.sp_student_id);
+            data.append('notepad', state.sp_notes);
+
+            axios.post('update_note', data).catch(function (e) {
+                _this4.errors.push(e);
+            });
+        }
     }
 }));
 
@@ -19715,7 +19796,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'profile_image', 'menushow'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'menushow', 'faculty_profile_image'])),
     watch: {
         'faculty_email': function faculty_email(email) {
             this.$store.dispatch('getFacultyProfile', { email: email });
@@ -19749,7 +19830,7 @@ var render = function() {
                     staticClass: "img--circle faculty_image",
                     attrs: {
                       id: _vm.faculty_full_name + "-img",
-                      src: _vm.profile_image,
+                      src: _vm.faculty_profile_image,
                       name: "photo"
                     }
                   }),
