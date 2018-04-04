@@ -12,13 +12,11 @@
             </div>
         </div>
 
-        <div class="section--lg section--md student-banner">
+        <div class="section--lg section--md student-banner default_padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <carousel
-                            :perPage="1"
-                        >
+                    <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
+                        <carousel :perPage="1" >
                             <slide>
                                 <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
                             </slide>
