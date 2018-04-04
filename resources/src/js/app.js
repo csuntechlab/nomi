@@ -3,9 +3,12 @@ import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
 import { mapGetters } from 'vuex';
+import VueCarousel from 'vue-carousel';
+
 window.Vue = require('vue');
 window.axios = require('axios');
 
+Vue.use(VueCarousel);
 Vue.use(Croppa);
 
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));

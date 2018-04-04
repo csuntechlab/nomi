@@ -16,7 +16,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <img :id="this.sp_display_name+'-img'" :src="this.sp_image" class="img--circle grid-image" name="photo">
+                        <carousel
+                            :perPage="1"
+                        >
+                            <slide>
+                                <profile-picture :image="sp_image"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_image"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_image"></profile-picture>
+                            </slide>
+                        </carousel>
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
@@ -59,6 +71,8 @@
         created () {
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
+
+        props: ['student'],
 
         computed: {
             ...mapGetters([
