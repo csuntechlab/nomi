@@ -20,13 +20,13 @@
                             :perPage="1"
                         >
                             <slide>
-                                <profile-picture :image="sp_image"></profile-picture>
+                                <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_image"></profile-picture>
+                                <profile-picture :image="sp_images[sp_image_priority[1]]"></profile-picture>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_image"></profile-picture>
+                                <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
                             </slide>
                         </carousel>
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
@@ -41,7 +41,7 @@
                     <div class="col-sm-12">
                         <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
+                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
                         <br>
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
                         <br>
@@ -82,7 +82,8 @@
                 'sp_display_name',
                 'sp_major',
                 'sp_bio',
-                'sp_image',
+                'sp_images',
+                'sp_image_priority',
             ]),
 
             ...mapState({

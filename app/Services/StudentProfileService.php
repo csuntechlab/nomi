@@ -4,20 +4,28 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Contracts\ImageCRUDContract;
+use App\Contracts\RosterRetrievalContract;
 use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Models\Note;
 use Illuminate\Http\Request;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
 class StudentProfileService implements StudentProfileContract
 {
     protected $webResourceRetriever = null;
+    protected $rosterRetriever = null;
+    protected $imageCRUD = null;
 
-    public function __construct(WebResourceRetrieverContract $webResourceRetriever)
-    {
+    public function __construct(
+        WebResourceRetrieverContract $webResourceRetriever,
+        RosterRetrievalContract $rosterRetriever,
+        ImageCRUDContract $imageCRUD
+    ) {
         $this->webResourceRetriever = $webResourceRetriever;
+        $this->rosterRetriever = $rosterRetriever;
+        $this->imageCRUD = $imageCRUD;
     }
 
     public function getStudentProfile($email)
@@ -35,15 +43,26 @@ class StudentProfileService implements StudentProfileContract
             ->where('student_id', $profile['individuals_id'])
             ->first();
 
-        $studentProfile = [
+        $imagePriority = $this
+            ->imageCRUD
+            ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
+
+        $studentProfile = (object) [
             'display_name' => $profile['display_name'],
-            'email' => $profile['email'],
-            'image' => $profile['profile_image'],
+            'first_name' => \explode(' ', $profile['display_name'])[0],
+            'last_name' => \substr(\strstr($profile['display_name'], ' '), 1),
+            'email' => $email,
             'student_id' => $profile['individuals_id'],
+            'members_id' => $profile['individuals_id'],
             'notes' => $note == null ? 'Notes go here.' : $note->notepad,
+            'image_priority' => $imagePriority,
         ];
 
-        return $studentProfile;
+        $moreInfo = $this->rosterRetriever->sanitizeStudent($studentProfile);
+
+        $studentProfile->images = $moreInfo['images'];
+
+        return \json_encode($studentProfile);
     }
 
     public function updateStudentNotes(Request $request)
