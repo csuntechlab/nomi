@@ -18,7 +18,8 @@ const router = new VueRouter({
        },
        {
            path: '/profile/:emailURI',
-           component: Profile
+           component: Profile,
+           props: true
        }
    ],
 });
