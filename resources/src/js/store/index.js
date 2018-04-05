@@ -77,13 +77,23 @@ export default new Vuex.Store({
             context.commit('SHUFFLE_FLASH', payload);
         },
 
-        nameSort (context) {
-            context.commit('TOGGLE_NAME');
+        sortFirstName (context) {
+            context.commit('SORT_FIRST_NAME');
             context.commit('SORT_ROSTER');
         },
 
-        descSort (context) {
-            context.commit('TOGGLE_DESC');
+        sortLastName (context) {
+            context.commit('SORT_LAST_NAME');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortDescending (context) {
+            context.commit('SORT_DESC');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortAscending (context) {
+            context.commit('SORT_ASC');
             context.commit('SORT_ROSTER');
         },
 
@@ -215,12 +225,20 @@ export default new Vuex.Store({
             });
         },
 
-        TOGGLE_NAME: function (state) {
-            state.lastname = !state.lastname;
+        SORT_FIRST_NAME: function (state) {
+            state.lastname = false;
         },
 
-        TOGGLE_DESC: function (state) {
-            state.descending = !state.descending;
+        SORT_LAST_NAME: function (state) {
+            state.lastname = true;
+        },
+
+        SORT_DESC: function (state) {
+            state.descending = true;
+        },
+
+        SORT_ASC: function (state) {
+            state.descending = false;
         },
 
         GET_COURSE_ID: function (state, payload) {

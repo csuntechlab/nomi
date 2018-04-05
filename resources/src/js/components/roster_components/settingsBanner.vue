@@ -1,28 +1,25 @@
 <template>
     <div class="banner__position light-grey">
         <div class="row">
-            <shuffle-button></shuffle-button>
-            <name-toggle-button></name-toggle-button>
-            <descending-toggle-button></descending-toggle-button>
-            <card-toggle-button></card-toggle-button>
+            <shuffle-button class="col-xs-4 col-sm-4 col-md-4"></shuffle-button>
+            <card-toggle-button class="col-xs-4 col-sm-4 col-md-4"></card-toggle-button>
+            <sort-selector class="col-xs-4 col-sm-4 col-md-4"></sort-selector>
         </div>
     </div>
 </template>
 
 <script>
-    import nameToggleButton from "./nameToggleButton"
-    import descendingToggleButton from "./descendingToggleButton"
     import shuffleButton from './shuffleButton.vue'
-    import cardToggleButton from './cardToggleButton.vue';
+    import cardToggleButton from './cardToggleButton.vue'
+    import sortSelector from './sortSelector.vue'
     import { mapGetters } from "vuex"
     export default {
         name: "settings-banner",
 
         components: {
             shuffleButton,
-            nameToggleButton,
-            descendingToggleButton,
             cardToggleButton,
+            sortSelector
         },
 
         computed: {
