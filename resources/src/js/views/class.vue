@@ -3,7 +3,6 @@
         <course-banner></course-banner>
         <list-grid-tabs></list-grid-tabs>
         <settings-banner></settings-banner>
-        <router-link to="/">Back to Class Sections</router-link>
         <roster-container></roster-container>
     </div>
 </template>

@@ -19010,7 +19010,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "class",
@@ -19036,10 +19035,6 @@ var render = function() {
       _c("list-grid-tabs"),
       _vm._v(" "),
       _c("settings-banner"),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/" } }, [
-        _vm._v("Back to Class Sections")
-      ]),
       _vm._v(" "),
       _c("roster-container")
     ],
@@ -21985,6 +21980,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22001,11 +21997,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "banner__position blue-green" }, [
-    _c("div", { staticClass: "type--center course_banner" }, [
-      _vm._v(_vm._s(this.courseTitle))
-    ])
-  ])
+  return _c(
+    "div",
+    { staticClass: "banner__position blue-green" },
+    [
+      _c("div", { staticClass: "type--center course_banner" }, [
+        _vm._v(_vm._s(this.courseTitle))
+      ]),
+      _vm._v(" "),
+      _c("router-link", { attrs: { to: "/" } }, [
+        _vm._v("Back to Class Sections")
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22159,6 +22164,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
 //
 //
 //
@@ -22173,8 +22183,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "sort-selector",
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list'])),
 
     methods: {
         handleSelect: function handleSelect(e) {
@@ -22210,34 +22223,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("label", { attrs: { for: "name-sorting" } }),
-    _vm._v(" "),
-    _c(
-      "select",
-      {
-        attrs: { name: "name-sorting", id: "name-sorting" },
-        on: { input: _vm.handleSelect }
-      },
-      [
-        _c("option", { attrs: { value: "" } }, [_vm._v("-- Select Sort --")]),
+  return this.flash && !this.list
+    ? _c("div")
+    : _c("div", [
+        _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [
-          _vm._v("First Name Descending")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "2" } }, [
-          _vm._v("Last Name Descending")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "3" } }, [
-          _vm._v("First Name Ascending")
-        ]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "4" } }, [_vm._v("Last Name Ascending")])
-      ]
-    )
-  ])
+        _c(
+          "select",
+          {
+            attrs: { name: "name-sorting", id: "name-sorting" },
+            on: { input: _vm.handleSelect }
+          },
+          [
+            _c("option", { attrs: { value: "" } }, [
+              _vm._v("-- Select Sort --")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v("First Name Descending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v("Last Name Descending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [
+              _vm._v("First Name Ascending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [
+              _vm._v("Last Name Ascending")
+            ])
+          ]
+        )
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div v-if="this.flash && !this.list">
+    </div>
+    <div v-else>
         <label for="name-sorting"></label>
         <select name="name-sorting" id="name-sorting" @input="handleSelect">
             <option value="">-- Select Sort --</option>
@@ -12,8 +14,16 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "sort-selector",
+
+        computed: {
+            ...mapGetters([
+                'flash',
+                'list'
+            ])
+        },
 
         methods: {
             handleSelect (e) {
