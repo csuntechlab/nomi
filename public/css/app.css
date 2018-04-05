@@ -147,24 +147,40 @@ a.faculty-links:hover {
           justify-content: center;
 }
 
-.blue-green {
+.bg--blue-green {
   background-color: #4F9DA3;
 }
 
-.off-white {
+.bg--off-white {
   background-color: #E5E5E5;
 }
 
-.light-grey {
+.bg--light-grey {
   background-color: #F4F4F4;
 }
 
-.navy-blue {
+.bg--navy-blue {
   background-color: #0F1821;
 }
 
+.blue-green {
+  color: #4F9DA3;
+}
+
+.off-white {
+  color: #E5E5E5;
+}
+
+.light-grey {
+  color: #F4F4F4;
+}
+
+.navy-blue {
+  color: #0F1821;
+}
+
 .fa-3x {
-  color: #f4f4f4;
+  color: #0F1821;
   -webkit-transition: 20ms;
   transition: 20ms;
 }

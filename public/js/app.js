@@ -19207,7 +19207,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "banner__position blue-green" }, [
+    _c("div", { staticClass: "banner__position bg--blue-green" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c(
@@ -19867,7 +19867,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar navy-blue" }, [
+  return _c("nav", { staticClass: "menu-bar bg--navy-blue" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "type--center" }, [_c("side-bar-button")], 1)
     ])
@@ -19963,7 +19963,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "primary-nav navy-blue" }, [
+    return _c("nav", { staticClass: "primary-nav bg--navy-blue" }, [
       _c("div", { staticClass: "centered-position" }, [
         _c(
           "a",
@@ -20107,7 +20107,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "sidebar navy-blue", attrs: { id: "sideNav" } },
+    { staticClass: "sidebar bg--navy-blue", attrs: { id: "sideNav" } },
     [
       _c("div", { staticClass: "sidebar_container type--center" }, [
         _c("div", { staticClass: "menu type--center" }, [
@@ -20553,11 +20553,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list']), {
 
         listBG: function listBG() {
-            if (this.list) return "blue-green";else return "navy-blue";
+            if (this.list) return "bg--blue-green";else return "bg--navy-blue";
         },
 
         gridBG: function gridBG() {
-            if (!this.list) return "blue-green";else return "navy-blue";
+            if (!this.list) return "bg--blue-green";else return "bg--navy-blue";
         },
 
         listFill: function listFill() {
@@ -20766,7 +20766,7 @@ var render = function() {
   return _c("div", [
     this.flash
       ? _c("i", {
-          staticClass: "fa fa-random fa-3x blue-green",
+          staticClass: "fa fa-random fa-3x",
           on: {
             click: function($event) {
               _vm.$store.dispatch("shuffleFlash", { courseid: _vm.courseid })
@@ -20776,7 +20776,7 @@ var render = function() {
       : this.list
         ? _c("div")
         : _c("i", {
-            staticClass: "fa fa-random fa-3x bg--gray",
+            staticClass: "fa fa-random fa-3x",
             attrs: { disabled: "" }
           })
   ])
@@ -20806,6 +20806,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -20821,27 +20823,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.flash
-    ? _c("i", {
-        staticClass: "fa fa-address-book fa-3x blue-green ",
-        attrs: { title: "Gallery Card" },
-        on: {
-          click: function($event) {
-            _vm.$store.dispatch("toggleFlash")
-          }
-        }
-      })
-    : this.list
-      ? _c("div")
-      : _c("i", {
-          staticClass: "fa fa-id-card fa-3x blue-green",
-          attrs: { title: "Flashcard" },
+  return _c("div", [
+    this.flash
+      ? _c("i", {
+          staticClass: "fa fa-address-book fa-3x",
+          attrs: { title: "Gallery Card" },
           on: {
             click: function($event) {
               _vm.$store.dispatch("toggleFlash")
             }
           }
         })
+      : this.list
+        ? _c("div")
+        : _c("i", {
+            staticClass: "fa fa-id-card fa-3x",
+            attrs: { title: "Flashcard" },
+            on: {
+              click: function($event) {
+                _vm.$store.dispatch("toggleFlash")
+              }
+            }
+          })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21220,7 +21224,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "grid-item light-grey panel-content",
+          staticClass: "grid-item bg--light-grey panel-content",
           on: { click: _vm.updateRecognized }
         },
         [
@@ -21441,7 +21445,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
+      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
         _c(
           "label",
           { staticClass: "grid-image", attrs: { for: _vm.display_name } },
@@ -21815,7 +21819,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item light-grey" }, [
+  return _c("li", { staticClass: "list__item bg--light-grey" }, [
     _c("div", { staticClass: "hello" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -21980,7 +21984,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21997,20 +22000,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "banner__position blue-green" },
-    [
-      _c("div", { staticClass: "type--center course_banner" }, [
-        _vm._v(_vm._s(this.courseTitle))
-      ]),
-      _vm._v(" "),
-      _c("router-link", { attrs: { to: "/" } }, [
-        _vm._v("Back to Class Sections")
-      ])
-    ],
-    1
-  )
+  return _c("div", { staticClass: "banner__position bg--navy-blue" }, [
+    _c("div", { staticClass: "type--center course_banner" }, [
+      _vm._v(_vm._s(this.courseTitle))
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22094,6 +22088,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -22108,7 +22107,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         sortSelector: __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['courseTitle']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['courseTitle', 'list', 'flash']))
 });
 
 /***/ }),
@@ -22276,16 +22275,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "banner__position light-grey" }, [
+  return _c("div", { staticClass: "banner__position bg--light-grey" }, [
     _c(
       "div",
       { staticClass: "row" },
       [
-        _c("shuffle-button", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
+        _c(
+          "router-link",
+          {
+            staticClass: "col-xs-3 col-sm-3 col-md-3 navy-blue",
+            attrs: { to: "/" }
+          },
+          [_vm._v("Back to Class Sections")]
+        ),
         _vm._v(" "),
-        _c("card-toggle-button", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
+        _c(
+          "div",
+          { staticClass: "col-xs-3 col-sm-3 col-md-3" },
+          [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
+          1
+        ),
         _vm._v(" "),
-        _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
+        _c(
+          "div",
+          { staticClass: "col-xs-3 col-sm-3 col-md-3" },
+          [!this.list ? _c("card-toggle-button") : _vm._e()],
+          1
+        ),
+        _vm._v(" "),
+        _c("sort-selector", { staticClass: "col-xs-3 col-sm-3 col-md-3" })
       ],
       1
     )
@@ -22632,7 +22650,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item light-grey col-xs-12" }, [
+  return _c("li", { staticClass: "list__item bg--light-grey col-xs-12" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -22936,7 +22954,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
+      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
         _c("div", [
           _c(
             "div",

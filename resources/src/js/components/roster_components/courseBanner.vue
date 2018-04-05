@@ -1,7 +1,6 @@
 <template>
-    <div class="banner__position blue-green">
+    <div class="banner__position bg--navy-blue">
         <div class="type--center course_banner">{{this.courseTitle}}</div>
-        <router-link to="/">Back to Class Sections</router-link>
     </div>
 </template>
 

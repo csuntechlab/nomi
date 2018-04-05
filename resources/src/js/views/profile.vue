@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="banner__position blue-green">
+        <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">

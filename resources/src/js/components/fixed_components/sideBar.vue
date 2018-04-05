@@ -1,5 +1,5 @@
 <template>
-        <div id="sideNav" class="sidebar navy-blue">
+        <div id="sideNav" class="sidebar bg--navy-blue">
             <div class="sidebar_container type--center">  
                 <div class="menu type--center">
                         <div class="list">

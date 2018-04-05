@@ -1,9 +1,14 @@
 <template>
-    <div class="banner__position light-grey">
+    <div class="banner__position bg--light-grey">
         <div class="row">
-            <shuffle-button class="col-xs-4 col-sm-4 col-md-4"></shuffle-button>
-            <card-toggle-button class="col-xs-4 col-sm-4 col-md-4"></card-toggle-button>
-            <sort-selector class="col-xs-4 col-sm-4 col-md-4"></sort-selector>
+            <router-link class="col-xs-3 col-sm-3 col-md-3 navy-blue" to="/">Back to Class Sections</router-link>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <shuffle-button v-if="!this.list && this.flash"></shuffle-button>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <card-toggle-button v-if="!this.list"></card-toggle-button>
+            </div>
+            <sort-selector class="col-xs-3 col-sm-3 col-md-3"></sort-selector>
         </div>
     </div>
 </template>
@@ -24,7 +29,9 @@
 
         computed: {
             ...mapGetters([
-                'courseTitle'
+                'courseTitle',
+                'list',
+                'flash'
             ])
         }
     }
