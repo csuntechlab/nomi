@@ -12,11 +12,21 @@
             </div>
         </div>
 
-        <div class="section--lg section--md student-banner">
+        <div class="section--lg section--md student-banner default_padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <img :id="this.sp_display_name+'-img'" :src="this.sp_image" class="img--circle grid-image" name="photo">
+                    <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
+                        <carousel :perPage="1" >
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[1]]"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
+                            </slide>
+                        </carousel>
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
@@ -29,7 +39,7 @@
                     <div class="col-sm-12">
                         <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
+                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
                         <br>
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
                         <br>
@@ -60,6 +70,8 @@
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
+        props: ['student'],
+
         computed: {
             ...mapGetters([
                 'courseid',
@@ -68,7 +80,8 @@
                 'sp_display_name',
                 'sp_major',
                 'sp_bio',
-                'sp_image',
+                'sp_images',
+                'sp_image_priority',
             ]),
 
             ...mapState({

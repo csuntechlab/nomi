@@ -36,8 +36,13 @@ class RosterRetrievalService implements RosterRetrievalContract
     {
         // Grabs the roster information without the instructor
         $roster = $this->webResourceRetriever->getRoster($term, $course)->getBody()->getContents();
+
+        return $this->processMembers(\json_decode($roster)->members);
+    }
+
+    private function processMembers($members)
+    {
         $imageManager = new ImageManager(['driver' => 'imagick']);
-        $members = \json_decode($roster)->members;
         $unsanitizedStudents = [];
         $memberIDs = [];
 
@@ -60,44 +65,7 @@ class RosterRetrievalService implements RosterRetrievalContract
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
-            $email = \str_replace('nr_', '', $unsanitizedStudent->email);
-            $email = \substr($email, 0, \strpos($email, '@'));
-            $imageLocation = '/' . 'likeness.jpg';
-
-            // checks if image already exists
-            if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'likeness.jpg')) {
-                $imageLocation = $email . '/' . 'likeness.jpg';
-            }
-
-            $image = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)
-                ->encode('data-url');
-
-            if (!\property_exists($unsanitizedStudent, 'profile_image')) {
-                $unsanitizedStudent->profile_image = (string) $imageManager
-                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
-                    ->encode('data-url');
-            }
-
-            if (!\property_exists($unsanitizedStudent, 'avatar_image')) {
-                $unsanitizedStudent->avatar_image = (string) $imageManager
-                    ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg')
-                    ->encode('data-url');
-            }
-
-            \array_push($sanitizedStudents, [
-                'student_id' => $unsanitizedStudent->members_id,
-                'first_name' => $unsanitizedStudent->first_name,
-                'last_name' => $unsanitizedStudent->last_name,
-                'email' => $unsanitizedStudent->email,
-                'images' => [
-                    'likeness' => $image,
-                    'avatar' => $unsanitizedStudent->avatar_image,
-                    'official' => $unsanitizedStudent->profile_image,
-                ],
-                'image_priority' => $unsanitizedStudent->image_priority,
-                'recognized' => false,
-            ]);
+            \array_push($sanitizedStudents, $this->sanitizeStudent($unsanitizedStudent, $imageManager));
         }
 
         \usort($sanitizedStudents, function ($a, $b) {
@@ -105,5 +73,51 @@ class RosterRetrievalService implements RosterRetrievalContract
         });
 
         return $sanitizedStudents;
+    }
+
+    public function sanitizeStudent($student, $imageManager = null)
+    {
+        if ($imageManager == null) {
+            $imageManager = new ImageManager(['driver' => 'imagick']);
+        }
+
+        $email = \str_replace('nr_', '', $student->email);
+        $email = \substr($email, 0, \strpos($email, '@'));
+        $imageLocation = '/' . 'likeness.jpg';
+
+        // checks if image already exists
+        if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'likeness.jpg')) {
+            $imageLocation = $email . '/' . 'likeness.jpg';
+        }
+
+        $image = (string) $imageManager
+            ->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)
+            ->encode('data-url');
+
+        if (!\property_exists($student, 'profile_image')) {
+            $student->profile_image = (string) $imageManager
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
+                ->encode('data-url');
+        }
+
+        if (!\property_exists($student, 'avatar_image')) {
+            $student->avatar_image = (string) $imageManager
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg')
+                ->encode('data-url');
+        }
+
+        return [
+            'student_id' => $student->members_id,
+            'first_name' => $student->first_name,
+            'last_name' => $student->last_name,
+            'email' => $student->email,
+            'images' => [
+                'likeness' => $image,
+                'avatar' => $student->avatar_image,
+                'official' => $student->profile_image,
+            ],
+            'image_priority' => $student->image_priority,
+            'recognized' => false,
+        ];
     }
 }

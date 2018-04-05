@@ -1,7 +1,7 @@
 <template>
-    <i v-if="this.flash" class="fa fa-address-book fa-3x " title="Gallery Card" @click="$store.dispatch('toggleFlash')"></i>
+    <i v-if="this.flash" class="fa fa-address-book fa-3x blue-green " title="Gallery Card" @click="$store.dispatch('toggleFlash')"></i>
     <div v-else-if="this.list"></div>
-    <i v-else class="fa fa-id-card fa-3x " title="Flashcard" @click="$store.dispatch('toggleFlash')"></i>
+    <i v-else class="fa fa-id-card fa-3x blue-green" title="Flashcard" @click="$store.dispatch('toggleFlash')"></i>
 </template>
 
 <script>

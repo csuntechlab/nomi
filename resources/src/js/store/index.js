@@ -13,7 +13,7 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: "Course",
+        courseTitle: "Course", 
 
         faculty_email: null,
         faculty_name: null,
@@ -28,7 +28,8 @@ export default new Vuex.Store({
         sp_display_name: null,
         sp_major: "None",
         sp_bio: null,
-        sp_image: null,
+        sp_images: null,
+        sp_image_priority: null,
         sp_notes: null,
     },
 
@@ -54,7 +55,8 @@ export default new Vuex.Store({
         sp_display_name: state => state.sp_display_name,
         sp_major: state => state.sp_major,
         sp_bio: state => state.sp_bio,
-        sp_image: state => state.sp_image,
+        sp_images: state => state.sp_images,
+        sp_image_priority: state => state.sp_image_priority,
         sp_notes: state => state.sp_notes,
     },
 
@@ -252,7 +254,8 @@ export default new Vuex.Store({
             axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
                 .then(response => {
                     state.sp_display_name = response['data'].display_name;
-                    state.sp_image = response['data'].image;
+                    state.sp_images = response['data'].images;
+                    state.sp_image_priority = response['data'].image_priority;
                     state.sp_notes = response['data'].notes;
                     state.sp_student_id = response['data'].student_id;
                 })

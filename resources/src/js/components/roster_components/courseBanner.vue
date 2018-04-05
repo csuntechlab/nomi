@@ -1,13 +1,13 @@
 <template>
     <div class="banner__position blue-green">
-        <div class="type--center course_brand">{{this.courseTitle}}</div>
+        <div class="type--center course_banner">{{this.courseTitle}}</div>
     </div>
 </template>
 
 <script>
     import { mapGetters } from "vuex"
     export default {
-        name: "course-brand",
+        name: "course-banner",
 
         computed: {
             ...mapGetters([

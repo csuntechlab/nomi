@@ -189,6 +189,14 @@ a.faculty-links:hover {
   padding: 0px;
 }
 
+.style__picture {
+  padding: 20%;
+}
+
+.default_padding {
+  padding: 0%;
+}
+
 .course_title {
   padding-top: 2.5%;
   font-size: 125%;
@@ -221,7 +229,7 @@ a.faculty-links:hover {
   font-size: 80%;
 }
 
-.course_brand {
+.course_banner {
   font-size: 125%;
   font-family: sans-serif;
   color: white;
