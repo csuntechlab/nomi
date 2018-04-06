@@ -14,7 +14,7 @@
                         </div>              
                 </div> 
                 <div class="close">
-                    <i class="fa fa-angle-down fa-3x type--white" title="Close" @click.prevent="closeNav()"></i>
+                    <i class="fa fa-angle-down fa-3x" id="caret" title="Close" @click.prevent="closeNav()"></i>
                 </div> 
             </div>
         </div>

@@ -179,6 +179,10 @@ a.faculty-links:hover {
   color: #0F1821;
 }
 
+#caret {
+  color: #F4F4F4;
+}
+
 .fa-3x {
   color: #0F1821;
   -webkit-transition: 20ms;

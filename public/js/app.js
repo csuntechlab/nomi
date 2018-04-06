@@ -19839,8 +19839,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("i", {
-    staticClass: "fa fa-angle-up fa-3x type--white",
-    attrs: { title: "Menu" },
+    staticClass: "fa fa-angle-up fa-3x",
+    attrs: { id: "caret", title: "Menu" },
     on: {
       click: function($event) {
         $event.preventDefault()
@@ -20177,8 +20177,8 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "close" }, [
           _c("i", {
-            staticClass: "fa fa-angle-down fa-3x type--white",
-            attrs: { title: "Close" },
+            staticClass: "fa fa-angle-down fa-3x",
+            attrs: { id: "caret", title: "Close" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -22234,9 +22234,7 @@ var render = function() {
             on: { input: _vm.handleSelect }
           },
           [
-            _c("option", { attrs: { value: "" } }, [
-              _vm._v("-- Select Sort --")
-            ]),
+            _c("option", { attrs: { value: "" } }, [_vm._v("Sorting")]),
             _vm._v(" "),
             _c("option", { attrs: { value: "1" } }, [
               _vm._v("First Name Descending")
@@ -22283,7 +22281,7 @@ var render = function() {
         _c(
           "router-link",
           {
-            staticClass: "col-xs-3 col-sm-3 col-md-3 navy-blue",
+            staticClass: "col-xs-4 col-sm-4 col-md-4 navy-blue",
             attrs: { to: "/" }
           },
           [_vm._v("Back to Class Sections")]
@@ -22291,19 +22289,19 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-xs-3 col-sm-3 col-md-3" },
+          { staticClass: "col-xs-2 col-sm-2 col-md-2" },
           [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
           1
         ),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "col-xs-3 col-sm-3 col-md-3" },
+          { staticClass: "col-xs-2 col-sm-2 col-md-2" },
           [!this.list ? _c("card-toggle-button") : _vm._e()],
           1
         ),
         _vm._v(" "),
-        _c("sort-selector", { staticClass: "col-xs-3 col-sm-3 col-md-3" })
+        _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
       ],
       1
     )

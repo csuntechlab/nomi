@@ -4,7 +4,7 @@
     <div v-else>
         <label for="name-sorting"></label>
         <select name="name-sorting" id="name-sorting" @input="handleSelect">
-            <option value="">-- Select Sort --</option>
+            <option value="">Sorting</option>
             <option value="1">First Name Descending</option>
             <option value="2">Last Name Descending</option>
             <option value="3">First Name Ascending</option>

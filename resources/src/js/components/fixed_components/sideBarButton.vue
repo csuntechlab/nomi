@@ -1,5 +1,5 @@
 <template>
-    <i class="fa fa-angle-up fa-3x type--white" title="Menu" @click.prevent="openNav()"></i>
+    <i class="fa fa-angle-up fa-3x" id="caret" title="Menu" @click.prevent="openNav()"></i>
 </template>
 
 <script>
