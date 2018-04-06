@@ -21570,58 +21570,55 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card-title" }, [
-          _c(
-            "div",
-            { staticClass: "panel-heading align-center" },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/profile/" + _vm.email_uri } },
-                [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.display_name) +
-                      "\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.toggleCropper }
-                },
-                [_c("i", { staticClass: "fa fa-edit fa-4x" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.uploadFile }
-                },
-                [_c("i", { staticClass: "fa fa-camera fa-4x" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: {
-                    click: function($event) {
-                      _vm.confirmImage(_vm.student.email)
-                    }
+        _c("div", { staticClass: "card-title font-style" }, [
+          _c("div", { staticClass: "panel-heading align-center" }, [
+            _c(
+              "div",
+              { staticClass: "font-style" },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: "/profile/" + _vm.email_uri } },
+                  [
+                    _vm._v(
+                      "\n                        " + _vm._s(_vm.display_name)
+                    )
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: { click: _vm.toggleCropper }
+              },
+              [_c("i", { staticClass: "fa fa-edit fa-4x" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
+              [_c("i", { staticClass: "fa fa-camera fa-4x" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default",
+                on: {
+                  click: function($event) {
+                    _vm.confirmImage(_vm.student.email)
                   }
-                },
-                [_c("i", { staticClass: "fa fa-check fa-4x" })]
-              )
-            ],
-            1
-          )
+                }
+              },
+              [_c("i", { staticClass: "fa fa-check fa-4x" })]
+            )
+          ])
         ])
       ])
     ])
