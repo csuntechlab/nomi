@@ -229,3 +229,8 @@ a.faculty-links:hover {
   font-size: 80%;
 }
 
+.font-style {
+  font-size: 1.1rem;
+  font-family: sans-serif;
+}
+
