@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="panel">
-                <div class="grid-item light-grey panel-content">
+                <div class="grid-item bg--light-grey panel-content">
                     <div>
                         <div class="course_title">
                             <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
