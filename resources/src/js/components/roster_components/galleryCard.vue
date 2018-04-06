@@ -12,7 +12,7 @@
                             @init="styleCanvas()">
                     </croppa>
                 </label>
-                <div class="card-title-font-style">
+                <div class="card-title font-style">
                     <div class="panel-heading align-center">
                         <div class="font-style"><router-link :to="'/profile/'+email_uri">
                             {{display_name}}</router-link>

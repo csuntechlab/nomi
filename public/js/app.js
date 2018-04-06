@@ -14235,7 +14235,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
- * vue-croppa v1.3.2
+ * vue-croppa v1.2.1
  * https://github.com/zhanziyang/vue-croppa
  * 
  * Copyright (c) 2018 zhanziyang
@@ -14484,11 +14484,8 @@ var u = {
     }
     return -1;
   },
-  parseDataUrl: function parseDataUrl(url) {
-    var reg = /^data:([^;]+)?(;base64)?,(.*)/gmi;
-    return reg.exec(url)[3];
-  },
   base64ToArrayBuffer: function base64ToArrayBuffer(base64) {
+    base64 = base64.replace(/^data:([^;]+);base64,/gmi, '');
     var binaryString = atob(base64);
     var len = binaryString.length;
     var bytes = new Uint8Array(len);
@@ -14660,9 +14657,7 @@ var props = {
   imageBorderRadius: {
     type: [Number, String],
     default: 0
-  },
-  autoSizing: Boolean,
-  videoEnabled: Boolean
+  }
 };
 
 var events = {
@@ -14708,8 +14703,6 @@ var component = { render: function render() {
           $event.stopPropagation();$event.preventDefault();_vm._handleDrop($event);
         } } }, [_c('input', _vm._b({ ref: "fileInput", staticStyle: { "height": "1px", "width": "1px", "overflow": "hidden", "margin-left": "-99999px", "position": "absolute" }, attrs: { "type": "file", "accept": _vm.accept, "disabled": _vm.disabled }, on: { "change": _vm._handleInputChange } }, 'input', _vm.inputAttrs)), _c('div', { staticClass: "slots", staticStyle: { "width": "0", "height": "0", "visibility": "hidden" } }, [_vm._t("initial"), _vm._t("placeholder")], 2), _c('canvas', { ref: "canvas", on: { "click": function click($event) {
           $event.stopPropagation();$event.preventDefault();_vm._handleClick($event);
-        }, "dblclick": function dblclick($event) {
-          $event.stopPropagation();$event.preventDefault();_vm._handleDblClick($event);
         }, "touchstart": function touchstart($event) {
           $event.stopPropagation();_vm._handlePointerStart($event);
         }, "mousedown": function mousedown($event) {
@@ -14757,7 +14750,6 @@ var component = { render: function render() {
       ctx: null,
       originalImage: null,
       img: null,
-      video: null,
       dragging: false,
       lastMovingCoord: null,
       imgData: {
@@ -14783,22 +14775,17 @@ var component = { render: function render() {
       imageSet: false,
       currentPointerCoord: null,
       currentIsInitial: false,
-      loading: false,
-      realWidth: 0,
-      realHeight: 0,
-      chosenFile: null
+      loading: false
     };
   },
 
 
   computed: {
     outputWidth: function outputWidth() {
-      var w = this.autoSizing ? this.realWidth : this.width;
-      return w * this.quality;
+      return this.width * this.quality;
     },
     outputHeight: function outputHeight() {
-      var h = this.autoSizing ? this.realHeight : this.height;
-      return h * this.quality;
+      return this.height * this.quality;
     },
     computedPlaceholderFontSize: function computedPlaceholderFontSize() {
       return this.placeholderFontSize * this.quality;
@@ -14854,8 +14841,6 @@ var component = { render: function render() {
         deep: true
       });
     }
-
-    this._autoSizingInit();
   },
 
 
@@ -14963,11 +14948,6 @@ var component = { render: function render() {
       } else {
         this.$emit(events.LOADING_END);
       }
-    },
-    autoSizing: function autoSizing(val) {
-      if (val) {
-        this._autoSizingInit();
-      }
     }
   },
 
@@ -14979,7 +14959,7 @@ var component = { render: function render() {
       return this.ctx;
     },
     getChosenFile: function getChosenFile() {
-      return this.chosenFile || this.$refs.fileInput.files[0];
+      return this.$refs.fileInput.files[0];
     },
     move: function move(offset) {
       if (!offset || this.passive) return;
@@ -15144,11 +15124,6 @@ var component = { render: function render() {
       this.userMetadata = null;
       this.imageSet = false;
       this.loading = false;
-      this.chosenFile = null;
-      if (this.video) {
-        this.video.pause();
-        this.video = null;
-      }
 
       if (hadImage) {
         this.$emit(events.IMAGE_REMOVE_EVENT);
@@ -15164,19 +15139,6 @@ var component = { render: function render() {
         throw Error('Clip plugins should be functions');
       }
     },
-    _autoSizingInit: function _autoSizingInit() {
-      var _this3 = this;
-
-      var setContainerSize = function setContainerSize() {
-        _this3.realWidth = +getComputedStyle(_this3.$refs.wrapper).width.slice(0, -2);
-        _this3.realHeight = +getComputedStyle(_this3.$refs.wrapper).height.slice(0, -2);
-      };
-      var useAutoSizing = this.autoSizing && this.$refs.wrapper && getComputedStyle;
-      if (useAutoSizing) {
-        setContainerSize();
-        window.addEventListener('resize', setContainerSize);
-      }
-    },
     _initialize: function _initialize() {
       this.canvas = this.$refs.canvas;
       this._setSize();
@@ -15185,7 +15147,6 @@ var component = { render: function render() {
       this.originalImage = null;
       this.img = null;
       this.imageSet = false;
-      this.chosenFile = null;
       this._setInitial();
       if (!this.passive) {
         this.$emit(events.INIT_EVENT, this);
@@ -15194,8 +15155,8 @@ var component = { render: function render() {
     _setSize: function _setSize() {
       this.canvas.width = this.outputWidth;
       this.canvas.height = this.outputHeight;
-      this.canvas.style.width = (this.realWidth || this.width) + 'px';
-      this.canvas.style.height = (this.realHeight || this.height) + 'px';
+      this.canvas.style.width = this.width + 'px';
+      this.canvas.style.height = this.height + 'px';
     },
     _rotateByStep: function _rotateByStep(step) {
       var orientation = 1;
@@ -15222,7 +15183,7 @@ var component = { render: function render() {
       this._setOrientation(orientation);
     },
     _setImagePlaceholder: function _setImagePlaceholder() {
-      var _this4 = this;
+      var _this3 = this;
 
       var img = void 0;
       if (this.$slots.placeholder && this.$slots.placeholder[0]) {
@@ -15238,7 +15199,7 @@ var component = { render: function render() {
       if (!img) return;
 
       var onLoad = function onLoad() {
-        _this4.ctx.drawImage(img, 0, 0, _this4.outputWidth, _this4.outputHeight);
+        _this3.ctx.drawImage(img, 0, 0, _this3.outputWidth, _this3.outputHeight);
       };
 
       if (u.imageLoaded(img)) {
@@ -15263,7 +15224,7 @@ var component = { render: function render() {
       this._setTextPlaceholder();
     },
     _setInitial: function _setInitial() {
-      var _this5 = this;
+      var _this4 = this;
 
       var src = void 0,
           img = void 0;
@@ -15298,11 +15259,11 @@ var component = { render: function render() {
         this.loading = true;
         img.onload = function () {
           // this.$emit(events.INITIAL_IMAGE_LOADED_EVENT)
-          _this5._onload(img, +img.dataset['exifOrientation'], true);
+          _this4._onload(img, +img.dataset['exifOrientation'], true);
         };
 
         img.onerror = function () {
-          _this5._setPlaceholders();
+          _this4._setPlaceholders();
         };
       }
     },
@@ -15323,58 +15284,9 @@ var component = { render: function render() {
         this.$emit(events.INITIAL_IMAGE_LOADED_EVENT);
       }
     },
-    _onVideoLoad: function _onVideoLoad(video, initial) {
-      var _this6 = this;
-
-      this.video = video;
-      var canvas = document.createElement('canvas');
-      var videoWidth = video.videoWidth,
-          videoHeight = video.videoHeight;
-
-      canvas.width = videoWidth;
-      canvas.height = videoHeight;
-      var ctx = canvas.getContext('2d');
-      this.loading = false;
-      var drawFrame = function drawFrame(initial) {
-        if (!_this6.video) return;
-        ctx.drawImage(_this6.video, 0, 0, videoWidth, videoHeight);
-        var frame = new Image();
-        frame.src = canvas.toDataURL();
-        frame.onload = function () {
-          _this6.img = frame;
-          // this._placeImage()
-          if (initial) {
-            _this6._placeImage();
-          } else {
-            _this6._draw();
-          }
-        };
-      };
-      drawFrame(true);
-      var keepDrawing = function keepDrawing() {
-        _this6.$nextTick(function () {
-          drawFrame();
-          if (!_this6.video || _this6.video.ended || _this6.video.paused) return;
-          requestAnimationFrame(keepDrawing);
-        });
-      };
-      this.video.addEventListener('play', function () {
-        requestAnimationFrame(keepDrawing);
-      });
-    },
     _handleClick: function _handleClick() {
       if (!this.hasImage() && !this.disableClickToChoose && !this.disabled && !this.supportTouch && !this.passive) {
         this.chooseFile();
-      }
-    },
-    _handleDblClick: function _handleDblClick() {
-      if (this.videoEnabled && this.video) {
-        if (this.video.paused || this.video.ended) {
-          this.video.play();
-        } else {
-          this.video.pause();
-        }
-        return;
       }
     },
     _handleInputChange: function _handleInputChange() {
@@ -15385,12 +15297,11 @@ var component = { render: function render() {
       this._onNewFileIn(file);
     },
     _onNewFileIn: function _onNewFileIn(file) {
-      var _this7 = this;
+      var _this5 = this;
 
       this.currentIsInitial = false;
       this.loading = true;
       this.$emit(events.FILE_CHOOSE_EVENT, file);
-      this.chosenFile = file;
       if (!this._fileSizeIsValid(file)) {
         this.loading = false;
         this.$emit(events.FILE_SIZE_EXCEED_EVENT, file);
@@ -15402,39 +15313,21 @@ var component = { render: function render() {
         var type = file.type || file.name.toLowerCase().split('.').pop();
         return false;
       }
-
       if (typeof window !== 'undefined' && typeof window.FileReader !== 'undefined') {
         var fr = new FileReader();
         fr.onload = function (e) {
           var fileData = e.target.result;
-          var base64 = u.parseDataUrl(fileData);
-          var isVideo = /^video/.test(file.type);
-          if (isVideo) {
-            var video = document.createElement('video');
-            video.src = fileData;
-            fileData = null;
-            if (video.readyState >= video.HAVE_FUTURE_DATA) {
-              _this7._onVideoLoad(video);
-            } else {
-              video.addEventListener('canplay', function () {
-                console.log('can play event');
-                _this7._onVideoLoad(video);
-              }, false);
-            }
-          } else {
-            var orientation = 1;
-            try {
-              orientation = u.getFileOrientation(u.base64ToArrayBuffer(base64));
-            } catch (err) {}
-            if (orientation < 1) orientation = 1;
-            var img = new Image();
-            img.src = fileData;
-            fileData = null;
-            img.onload = function () {
-              _this7._onload(img, orientation);
-              _this7.$emit(events.NEW_IMAGE);
-            };
-          }
+          var orientation = 1;
+          try {
+            orientation = u.getFileOrientation(u.base64ToArrayBuffer(fileData));
+          } catch (err) {}
+          if (orientation < 1) orientation = 1;
+          var img = new Image();
+          img.src = fileData;
+          img.onload = function () {
+            _this5._onload(img, orientation);
+            _this5.$emit(events.NEW_IMAGE);
+          };
         };
         fr.readAsDataURL(file);
       }
@@ -15446,8 +15339,6 @@ var component = { render: function render() {
       return file.size < this.fileSizeLimit;
     },
     _fileTypeIsValid: function _fileTypeIsValid(file) {
-      var acceptableMimeType = this.videoEnabled && /^video/.test(file.type) && document.createElement('video').canPlayType(file.type) || /^image/.test(file.type);
-      if (!acceptableMimeType) return false;
       if (!this.accept) return true;
       var accept = this.accept;
       var baseMimetype = accept.replace(/\/.*$/, '');
@@ -15555,13 +15446,11 @@ var component = { render: function render() {
         this.imgData.height = imgHeight / scaleRatio;
         this.imgData.width = this.outputWidth;
         this.imgData.startY = -(this.imgData.height - this.outputHeight) / 2;
-        this.imgData.startX = 0;
       } else {
         scaleRatio = imgHeight / this.outputHeight;
         this.imgData.width = imgWidth / scaleRatio;
         this.imgData.height = this.outputHeight;
         this.imgData.startX = -(this.imgData.width - this.outputWidth) / 2;
-        this.imgData.startY = 0;
       }
     },
     _naturalSize: function _naturalSize() {
@@ -15665,7 +15554,7 @@ var component = { render: function render() {
       this.currentPointerCoord = null;
     },
     _handleWheel: function _handleWheel(evt) {
-      var _this8 = this;
+      var _this6 = this;
 
       if (this.passive) return;
       if (this.disabled || this.disableScrollToZoom || !this.hasImage()) return;
@@ -15677,7 +15566,7 @@ var component = { render: function render() {
         this.zoom(!this.reverseScrollToZoom);
       }
       this.$nextTick(function () {
-        _this8.scrolling = false;
+        _this6.scrolling = false;
       });
     },
     _handleDragEnter: function _handleDragEnter(evt) {
@@ -15743,7 +15632,7 @@ var component = { render: function render() {
       }
     },
     _setOrientation: function _setOrientation() {
-      var _this9 = this;
+      var _this7 = this;
 
       var orientation = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 6;
       var applyMetadata = arguments[1];
@@ -15752,11 +15641,10 @@ var component = { render: function render() {
       if (orientation > 1 || useOriginal) {
         if (!this.img) return;
         this.rotating = true;
-        // u.getRotatedImageData(useOriginal ? this.originalImage : this.img, orientation)
         var _img = u.getRotatedImage(useOriginal ? this.originalImage : this.img, orientation);
         _img.onload = function () {
-          _this9.img = _img;
-          _this9._placeImage(applyMetadata);
+          _this7.img = _img;
+          _this7._placeImage(applyMetadata);
         };
       } else {
         this._placeImage(applyMetadata);
@@ -15792,18 +15680,18 @@ var component = { render: function render() {
       this.ctx.fillRect(0, 0, this.outputWidth, this.outputHeight);
     },
     _draw: function _draw() {
-      var _this10 = this;
+      var _this8 = this;
 
       this.$nextTick(function () {
+        if (!_this8.img) return;
         if (typeof window !== 'undefined' && window.requestAnimationFrame) {
-          requestAnimationFrame(_this10._drawFrame);
+          requestAnimationFrame(_this8._drawFrame);
         } else {
-          _this10._drawFrame();
+          _this8._drawFrame();
         }
       });
     },
     _drawFrame: function _drawFrame() {
-      if (!this.img) return;
       this.loading = false;
       var ctx = this.ctx;
       var _imgData2 = this.imgData,
@@ -15845,12 +15733,12 @@ var component = { render: function render() {
       ctx.closePath();
     },
     _createContainerClipPath: function _createContainerClipPath() {
-      var _this11 = this;
+      var _this9 = this;
 
       this._clipPathFactory(0, 0, this.outputWidth, this.outputHeight);
       if (this.clipPlugins && this.clipPlugins.length) {
         this.clipPlugins.forEach(function (func) {
-          func(_this11.ctx, 0, 0, _this11.outputWidth, _this11.outputHeight);
+          func(_this9.ctx, 0, 0, _this9.outputWidth, _this9.outputHeight);
         });
       }
     },
@@ -15882,7 +15770,7 @@ var component = { render: function render() {
       ctx.restore();
     },
     _applyMetadata: function _applyMetadata() {
-      var _this12 = this;
+      var _this10 = this;
 
       if (!this.userMetadata) return;
       var _userMetadata = this.userMetadata,
@@ -15904,7 +15792,7 @@ var component = { render: function render() {
       }
 
       this.$nextTick(function () {
-        _this12.userMetadata = null;
+        _this10.userMetadata = null;
       });
     },
     onDimensionChange: function onDimensionChange() {
@@ -21682,7 +21570,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "card-title-font-style" }, [
+        _c("div", { staticClass: "card-title font-style" }, [
           _c("div", { staticClass: "panel-heading align-center" }, [
             _c(
               "div",
