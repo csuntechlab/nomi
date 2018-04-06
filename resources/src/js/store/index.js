@@ -105,6 +105,10 @@ export default new Vuex.Store({
 
         commitNotes (context, payload) {
             context.commit('COMMIT_NOTES', payload);
+        },
+
+        updateImagePriority (context, payload) {
+            context.commit('UPDATE_IMAGE_PRIORITY', payload);
         }
     },
 
@@ -274,6 +278,20 @@ export default new Vuex.Store({
             data.append('notepad', state.sp_notes);
 
             axios.post('update_note', data)
+                .catch(e => {
+                    this.errors.push(e)
+                });
+        },
+
+        UPDATE_IMAGE_PRIORITY: function (state, payload) {
+            let data = new FormData;
+            data.append('student_id', state.sp_student_id.replace("members:", ""));
+            data.append('image_priority', payload.image_priority);
+
+            axios.post('api/priority', data)
+                .then(response => {
+                    state.sp_image_priority = payload.image_priority.split(",");
+                })
                 .catch(e => {
                     this.errors.push(e)
                 });

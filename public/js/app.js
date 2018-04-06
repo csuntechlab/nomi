@@ -19166,6 +19166,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -19176,6 +19179,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
     },
 
+
+    data: function data() {
+        return {
+            show: true
+        };
+    },
 
     props: ['student'],
 
@@ -19191,6 +19200,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         commitNotes: function commitNotes() {
             this.$store.dispatch('commitNotes');
+        },
+        updateImageHandler: function updateImageHandler(first) {
+            var _this = this;
+
+            switch (first) {
+                case 'likeness':
+                    this.$store.dispatch('updateImagePriority', { image_priority: 'likeness,avatar,official' }).then(function () {
+                        return _this.$store.dispatch('getData');
+                    });
+                    break;
+                case 'avatar':
+                    this.$store.dispatch('updateImagePriority', { image_priority: 'avatar,likeness,official' }).then(function () {
+                        return _this.$store.dispatch('getData');
+                    });
+                    break;
+                case 'official':
+                    this.$store.dispatch('updateImagePriority', { image_priority: 'official,likeness,avatar' }).then(function () {
+                        return _this.$store.dispatch('getData');
+                    });
+                    break;
+                default:
+                    console.log("oops");
+            }
+
+            this.show = !this.show;
+            this.show = !this.show;
         }
     }
 });
@@ -19215,7 +19250,12 @@ var render = function() {
                 "router-link",
                 {
                   staticStyle: { color: "#f4f4f4" },
-                  attrs: { to: "/class/" + this.courseid }
+                  attrs: { to: "/class/" + this.courseid },
+                  on: {
+                    click: function($event) {
+                      this.$store.dispatch("getData")
+                    }
+                  }
                 },
                 [_c("h4", [_vm._v("Back to " + _vm._s(this.courseTitle))])]
               )
@@ -19236,47 +19276,85 @@ var render = function() {
               "div",
               { staticClass: "col-xs-12 col-md-12 col-lg-12 default_padding" },
               [
-                _c(
-                  "carousel",
-                  { attrs: { perPage: 1 } },
-                  [
-                    _c(
-                      "slide",
+                this.show
+                  ? _c(
+                      "carousel",
+                      { attrs: { perPage: 1 } },
                       [
-                        _c("profile-picture", {
-                          attrs: {
-                            image: _vm.sp_images[_vm.sp_image_priority[0]]
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: {
-                            image: _vm.sp_images[_vm.sp_image_priority[1]]
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: {
-                            image: _vm.sp_images[_vm.sp_image_priority[2]]
-                          }
-                        })
+                        _c(
+                          "slide",
+                          [
+                            _c("profile-picture", {
+                              attrs: {
+                                image: _vm.sp_images[_vm.sp_image_priority[0]]
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "slide",
+                          [
+                            _c("profile-picture", {
+                              attrs: {
+                                image: _vm.sp_images[_vm.sp_image_priority[1]]
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "slide",
+                          [
+                            _c("profile-picture", {
+                              attrs: {
+                                image: _vm.sp_images[_vm.sp_image_priority[2]]
+                              }
+                            })
+                          ],
+                          1
+                        )
                       ],
                       1
                     )
-                  ],
-                  1
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.updateImageHandler("likeness")
+                      }
+                    }
+                  },
+                  [_vm._v("likeness")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.updateImageHandler("avatar")
+                      }
+                    }
+                  },
+                  [_vm._v("avatar")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    on: {
+                      click: function($event) {
+                        _vm.updateImageHandler("official")
+                      }
+                    }
+                  },
+                  [_vm._v("official")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -19528,6 +19606,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         commitNotes: function commitNotes(context, payload) {
             context.commit('COMMIT_NOTES', payload);
+        },
+        updateImagePriority: function updateImagePriority(context, payload) {
+            context.commit('UPDATE_IMAGE_PRIORITY', payload);
         }
     },
 
@@ -19701,6 +19782,20 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
             axios.post('update_note', data).catch(function (e) {
                 _this4.errors.push(e);
+            });
+        },
+
+        UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
+            var _this5 = this;
+
+            var data = new FormData();
+            data.append('student_id', state.sp_student_id.replace("members:", ""));
+            data.append('image_priority', payload.image_priority);
+
+            axios.post('api/priority', data).then(function (response) {
+                state.sp_image_priority = payload.image_priority.split(",");
+            }).catch(function (e) {
+                _this5.errors.push(e);
             });
         }
     }
