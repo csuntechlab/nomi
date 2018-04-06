@@ -18,18 +18,21 @@
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
                         <carousel v-if="this.show" :perPage="1" >
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
+                                <profile-picture :image="sp_images['likeness']"></profile-picture>
+                                <button @click="updateImageHandler('likeness')">likeness</button>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[1]]"></profile-picture>
+                                <profile-picture :image="sp_images['avatar']"></profile-picture>
+                                <button @click="updateImageHandler('avatar')">avatar</button>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
+                                <profile-picture :image="sp_images['official']"></profile-picture>
+                                <button @click="updateImageHandler('official')">official</button>
                             </slide>
                         </carousel>
-                        <button @click="updateImageHandler('likeness')">likeness</button>
-                        <button @click="updateImageHandler('avatar')">avatar</button>
-                        <button @click="updateImageHandler('official')">official</button>
+                        <!--<button @click="updateImageHandler('likeness')">likeness</button>-->
+                        <!--<button @click="updateImageHandler('avatar')">avatar</button>-->
+                        <!--<button @click="updateImageHandler('official')">official</button>-->
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
@@ -75,7 +78,8 @@
 
         data: function () {
             return {
-                show: true
+                show: true,
+                image_type: null
             }
         },
 
