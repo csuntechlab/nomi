@@ -1,7 +1,5 @@
 <template>
     <div>
-        <card-toggle-button></card-toggle-button>
-        <shuffle-button></shuffle-button>
         <div v-if="this.flash">
             <flash-card
                 v-for="student in this.flashroster[this.courseid]"
@@ -23,8 +21,6 @@
 <script>
 import FlashCard from './flashCard';
 import GalleryCard from "./galleryCard";
-import shuffleButton from './shuffleButton.vue';
-import cardToggleButton from './cardToggleButton.vue';
 import { mapGetters } from 'vuex';
 export default {
     name: "student-matrix",
@@ -43,8 +39,6 @@ export default {
     components: {
         FlashCard,
         GalleryCard,
-        shuffleButton,
-        cardToggleButton,
     },
 
     computed: {

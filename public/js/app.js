@@ -13291,7 +13291,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(131);
+module.exports = __webpack_require__(134);
 
 
 /***/ }),
@@ -13332,8 +13332,10 @@ Vue.component('profile-picture', __webpack_require__(74));
 Vue.component('shuffle-button', __webpack_require__(16));
 Vue.component('card-toggle-button', __webpack_require__(17));
 Vue.component('roster-container', __webpack_require__(81));
-Vue.component('courses-container', __webpack_require__(109));
-Vue.component('loading-button', __webpack_require__(126));
+Vue.component('course-banner', __webpack_require__(103));
+Vue.component('settings-banner', __webpack_require__(106));
+Vue.component('courses-container', __webpack_require__(112));
+Vue.component('loading-button', __webpack_require__(129));
 
 var app = new Vue({
     el: '#app',
@@ -19119,6 +19121,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "class",
@@ -19139,11 +19142,11 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("course-banner"),
+      _vm._v(" "),
       _c("list-grid-tabs"),
       _vm._v(" "),
-      _c("router-link", { attrs: { to: "/" } }, [
-        _vm._v("Back to Class Sections")
-      ]),
+      _c("settings-banner"),
       _vm._v(" "),
       _c("roster-container")
     ],
@@ -19351,7 +19354,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "banner__position blue-green" }, [
+    _c("div", { staticClass: "banner__position bg--blue-green" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c(
@@ -19696,12 +19699,20 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         shuffleFlash: function shuffleFlash(context, payload) {
             context.commit('SHUFFLE_FLASH', payload);
         },
-        nameSort: function nameSort(context) {
-            context.commit('TOGGLE_NAME');
+        sortFirstName: function sortFirstName(context) {
+            context.commit('SORT_FIRST_NAME');
             context.commit('SORT_ROSTER');
         },
-        descSort: function descSort(context) {
-            context.commit('TOGGLE_DESC');
+        sortLastName: function sortLastName(context) {
+            context.commit('SORT_LAST_NAME');
+            context.commit('SORT_ROSTER');
+        },
+        sortDescending: function sortDescending(context) {
+            context.commit('SORT_DESC');
+            context.commit('SORT_ROSTER');
+        },
+        sortAscending: function sortAscending(context) {
+            context.commit('SORT_ASC');
             context.commit('SORT_ROSTER');
         },
         getCourseId: function getCourseId(context, payload) {
@@ -19835,12 +19846,20 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             });
         },
 
-        TOGGLE_NAME: function TOGGLE_NAME(state) {
-            state.lastname = !state.lastname;
+        SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
+            state.lastname = false;
         },
 
-        TOGGLE_DESC: function TOGGLE_DESC(state) {
-            state.descending = !state.descending;
+        SORT_LAST_NAME: function SORT_LAST_NAME(state) {
+            state.lastname = true;
+        },
+
+        SORT_DESC: function SORT_DESC(state) {
+            state.descending = true;
+        },
+
+        SORT_ASC: function SORT_ASC(state) {
+            state.descending = false;
         },
 
         GET_COURSE_ID: function GET_COURSE_ID(state, payload) {
@@ -20027,8 +20046,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("i", {
-    staticClass: "fa fa-angle-up fa-3x type--white",
-    attrs: { title: "Menu" },
+    staticClass: "fa fa-angle-up fa-3x",
+    attrs: { id: "caret", title: "Menu" },
     on: {
       click: function($event) {
         $event.preventDefault()
@@ -20055,7 +20074,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar navy-blue" }, [
+  return _c("nav", { staticClass: "menu-bar bg--navy-blue" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "type--center" }, [_c("side-bar-button")], 1)
     ])
@@ -20151,7 +20170,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "primary-nav navy-blue" }, [
+    return _c("nav", { staticClass: "primary-nav bg--navy-blue" }, [
       _c("div", { staticClass: "centered-position" }, [
         _c(
           "a",
@@ -20295,7 +20314,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "sidebar navy-blue", attrs: { id: "sideNav" } },
+    { staticClass: "sidebar bg--navy-blue", attrs: { id: "sideNav" } },
     [
       _c("div", { staticClass: "sidebar_container type--center" }, [
         _c("div", { staticClass: "menu type--center" }, [
@@ -20365,8 +20384,8 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "close" }, [
           _c("i", {
-            staticClass: "fa fa-angle-down fa-3x type--white",
-            attrs: { title: "Close" },
+            staticClass: "fa fa-angle-down fa-3x",
+            attrs: { id: "caret", title: "Close" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -20741,11 +20760,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list']), {
 
         listBG: function listBG() {
-            if (this.list) return "blue-green";else return "navy-blue";
+            if (this.list) return "bg--blue-green";else return "bg--navy-blue";
         },
 
         gridBG: function gridBG() {
-            if (!this.list) return "blue-green";else return "navy-blue";
+            if (!this.list) return "bg--blue-green";else return "bg--navy-blue";
         },
 
         listFill: function listFill() {
@@ -20994,6 +21013,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21009,27 +21030,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.flash
-    ? _c("i", {
-        staticClass: "fa fa-address-book fa-3x ",
-        attrs: { title: "Gallery Card" },
-        on: {
-          click: function($event) {
-            _vm.$store.dispatch("toggleFlash")
-          }
-        }
-      })
-    : this.list
-      ? _c("div")
-      : _c("i", {
-          staticClass: "fa fa-id-card fa-3x ",
-          attrs: { title: "Flashcard" },
+  return _c("div", [
+    this.flash
+      ? _c("i", {
+          staticClass: "fa fa-address-book fa-3x",
+          attrs: { title: "Gallery Card" },
           on: {
             click: function($event) {
               _vm.$store.dispatch("toggleFlash")
             }
           }
         })
+      : this.list
+        ? _c("div")
+        : _c("i", {
+            staticClass: "fa fa-id-card fa-3x",
+            attrs: { title: "Flashcard" },
+            on: {
+              click: function($event) {
+                _vm.$store.dispatch("toggleFlash")
+              }
+            }
+          })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21050,7 +21073,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(82)
 /* template */
-var __vue_template__ = __webpack_require__(108)
+var __vue_template__ = __webpack_require__(102)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21099,10 +21122,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__studentList__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nameToggleButton__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__nameToggleButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__nameToggleButton__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descendingToggleButton__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__descendingToggleButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__descendingToggleButton__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -21116,11 +21135,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-
-
 
 
 
@@ -21130,9 +21144,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     components: {
         studentMatrix: __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default.a,
-        studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a,
-        nameToggleButton: __WEBPACK_IMPORTED_MODULE_3__nameToggleButton___default.a,
-        descendingToggleButton: __WEBPACK_IMPORTED_MODULE_4__descendingToggleButton___default.a
+        studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a
+
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['list', 'courseid', 'courseTitle']))
@@ -21195,11 +21208,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flashCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flashCard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__galleryCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shuffleButton_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shuffleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__shuffleButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cardToggleButton_vue__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__cardToggleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__cardToggleButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -21222,10 +21231,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-
-
 
 
 
@@ -21246,12 +21251,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     components: {
         FlashCard: __WEBPACK_IMPORTED_MODULE_0__flashCard___default.a,
-        GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a,
-        shuffleButton: __WEBPACK_IMPORTED_MODULE_2__shuffleButton_vue___default.a,
-        cardToggleButton: __WEBPACK_IMPORTED_MODULE_3__cardToggleButton_vue___default.a
+        GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["b" /* mapGetters */])(['roster', 'flashroster', 'flash'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['roster', 'flashroster', 'flash'])),
 
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
@@ -21428,7 +21431,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "grid-item light-grey panel-content",
+          staticClass: "grid-item bg--light-grey panel-content",
           on: { click: _vm.updateRecognized }
         },
         [
@@ -21649,7 +21652,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
+      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
         _c(
           "label",
           { staticClass: "grid-image", attrs: { for: _vm.display_name } },
@@ -21751,36 +21754,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("card-toggle-button"),
-      _vm._v(" "),
-      _c("shuffle-button"),
-      _vm._v(" "),
-      this.flash
-        ? _c(
-            "div",
-            _vm._l(this.flashroster[this.courseid], function(student) {
-              return _c("flash-card", {
-                key: student.student_id,
-                attrs: { student: student },
-                on: { markRecognized: _vm.markStudentAsRecognized }
-              })
+  return _c("div", [
+    this.flash
+      ? _c(
+          "div",
+          _vm._l(this.flashroster[this.courseid], function(student) {
+            return _c("flash-card", {
+              key: student.student_id,
+              attrs: { student: student },
+              on: { markRecognized: _vm.markStudentAsRecognized }
             })
-          )
-        : _c(
-            "div",
-            _vm._l(this.roster[this.courseid], function(student) {
-              return _c("gallery-card", {
-                key: student.student_id,
-                attrs: { student: student }
-              })
+          })
+        )
+      : _c(
+          "div",
+          _vm._l(this.roster[this.courseid], function(student) {
+            return _c("gallery-card", {
+              key: student.student_id,
+              attrs: { student: student }
             })
-          )
-    ],
-    1
-  )
+          })
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22028,7 +22023,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item light-grey" }, [
+  return _c("li", { staticClass: "list__item bg--light-grey" }, [
     _c("div", { staticClass: "hello" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -22103,219 +22098,23 @@ if (false) {
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(103)
-/* template */
-var __vue_template__ = __webpack_require__(104)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/roster_components/nameToggleButton.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12da1bcc", Component.options)
-  } else {
-    hotAPI.reload("data-v-12da1bcc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 103 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "name-toggle-button"
-});
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "btn btn-default",
-      on: {
-        click: function($event) {
-          _vm.$store.dispatch("nameSort")
-        }
-      }
-    },
-    [_vm._v("First/Last Name")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-12da1bcc", module.exports)
-  }
-}
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(106)
-/* template */
-var __vue_template__ = __webpack_require__(107)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/roster_components/descendingToggleButton.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ec3dc80e", Component.options)
-  } else {
-    hotAPI.reload("data-v-ec3dc80e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "descending-toggle-button"
-});
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "button",
-    {
-      staticClass: "btn btn-default",
-      on: {
-        click: function($event) {
-          _vm.$store.dispatch("descSort")
-        }
-      }
-    },
-    [_vm._v("Descending/Ascending")]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-ec3dc80e", module.exports)
-  }
-}
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("name-toggle-button"),
-      _vm._v(" "),
-      _c("descending-toggle-button"),
-      _vm._v(" "),
-      _c("h1", [_vm._v(_vm._s(this.courseTitle))]),
-      _vm._v(" "),
-      this.list
-        ? _c(
-            "div",
-            [_c("student-list", { attrs: { courseid: this.courseid } })],
-            1
-          )
-        : _c(
-            "div",
-            [_c("student-matrix", { attrs: { courseid: this.courseid } })],
-            1
-          )
-    ],
-    1
-  )
+  return _c("div", [
+    this.list
+      ? _c(
+          "div",
+          [_c("student-list", { attrs: { courseid: this.courseid } })],
+          1
+        )
+      : _c(
+          "div",
+          [_c("student-matrix", { attrs: { courseid: this.courseid } })],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22328,15 +22127,410 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(110)
+var __vue_script__ = __webpack_require__(104)
 /* template */
-var __vue_template__ = __webpack_require__(125)
+var __vue_template__ = __webpack_require__(105)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/courseBanner.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c8b1c0bc", Component.options)
+  } else {
+    hotAPI.reload("data-v-c8b1c0bc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 104 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "course-banner",
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseTitle']))
+});
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "banner__position bg--navy-blue" }, [
+    _c("div", { staticClass: "type--center course_banner" }, [
+      _vm._v(_vm._s(this.courseTitle))
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c8b1c0bc", module.exports)
+  }
+}
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(107)
+/* template */
+var __vue_template__ = __webpack_require__(111)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/settingsBanner.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-146bc4ea", Component.options)
+  } else {
+    hotAPI.reload("data-v-146bc4ea", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__sortSelector_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "settings-banner",
+
+    components: {
+        shuffleButton: __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default.a,
+        cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default.a,
+        sortSelector: __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default.a
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['courseTitle', 'list', 'flash']))
+});
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(109)
+/* template */
+var __vue_template__ = __webpack_require__(110)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/sortSelector.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-32e43918", Component.options)
+  } else {
+    hotAPI.reload("data-v-32e43918", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 109 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "sort-selector",
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list'])),
+
+    methods: {
+        handleSelect: function handleSelect(e) {
+            switch (e.target.value) {
+                case "":
+                    break;
+                case "1":
+                    this.$store.dispatch('sortFirstName');
+                    this.$store.dispatch('sortDescending');
+                    break;
+                case "2":
+                    this.$store.dispatch('sortLastName');
+                    this.$store.dispatch('sortDescending');
+                    break;
+                case "3":
+                    this.$store.dispatch('sortFirstName');
+                    this.$store.dispatch('sortAscending');
+                    break;
+                case "4":
+                    this.$store.dispatch('sortLastName');
+                    this.$store.dispatch('sortAscending');
+                    break;
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return this.flash && !this.list
+    ? _c("div")
+    : _c("div", [
+        _c("label", { attrs: { for: "name-sorting" } }),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            attrs: { name: "name-sorting", id: "name-sorting" },
+            on: { input: _vm.handleSelect }
+          },
+          [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Sorting")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v("First Name Descending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v("Last Name Descending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [
+              _vm._v("First Name Ascending")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [
+              _vm._v("Last Name Ascending")
+            ])
+          ]
+        )
+      ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-32e43918", module.exports)
+  }
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "banner__position bg--light-grey" }, [
+    _c(
+      "div",
+      { staticClass: "row" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "col-xs-4 col-sm-4 col-md-4 navy-blue",
+            attrs: { to: "/" }
+          },
+          [_vm._v("Back to Class Sections")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-xs-2 col-sm-2 col-md-2" },
+          [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-xs-2 col-sm-2 col-md-2" },
+          [!this.list ? _c("card-toggle-button") : _vm._e()],
+          1
+        ),
+        _vm._v(" "),
+        _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-146bc4ea", module.exports)
+  }
+}
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(113)
+/* template */
+var __vue_template__ = __webpack_require__(128)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22375,14 +22569,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 110 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__courseList__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseMatrix__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -22415,15 +22609,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 111 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(115)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(121)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22462,13 +22656,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseListItem_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -22500,19 +22694,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 113 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(114)
+  __webpack_require__(117)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(116)
+var __vue_script__ = __webpack_require__(119)
 /* template */
-var __vue_template__ = __webpack_require__(117)
+var __vue_template__ = __webpack_require__(120)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22551,13 +22745,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 114 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(115);
+var content = __webpack_require__(118);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -22577,7 +22771,7 @@ if(false) {
 }
 
 /***/ }),
-/* 115 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -22591,7 +22785,7 @@ exports.push([module.i, "\n.list__item[data-v-04dc0652]{\n    padding: 20px;\n  
 
 
 /***/ }),
-/* 116 */
+/* 119 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22651,14 +22845,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 117 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item light-grey col-xs-12" }, [
+  return _c("li", { staticClass: "list__item bg--light-grey col-xs-12" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c(
@@ -22719,7 +22913,7 @@ if (false) {
 }
 
 /***/ }),
-/* 118 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22750,15 +22944,15 @@ if (false) {
 }
 
 /***/ }),
-/* 119 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(120)
+var __vue_script__ = __webpack_require__(123)
 /* template */
-var __vue_template__ = __webpack_require__(124)
+var __vue_template__ = __webpack_require__(127)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22797,13 +22991,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseCard__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseCard__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseCard__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
@@ -22836,15 +23030,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 121 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(122)
+var __vue_script__ = __webpack_require__(125)
 /* template */
-var __vue_template__ = __webpack_require__(123)
+var __vue_template__ = __webpack_require__(126)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22883,7 +23077,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 122 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22953,7 +23147,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 123 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22962,7 +23156,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item light-grey panel-content" }, [
+      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
         _c("div", [
           _c(
             "div",
@@ -23024,7 +23218,7 @@ if (false) {
 }
 
 /***/ }),
-/* 124 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23059,7 +23253,7 @@ if (false) {
 }
 
 /***/ }),
-/* 125 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23085,19 +23279,19 @@ if (false) {
 }
 
 /***/ }),
-/* 126 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(127)
+  __webpack_require__(130)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(129)
+var __vue_script__ = __webpack_require__(132)
 /* template */
-var __vue_template__ = __webpack_require__(130)
+var __vue_template__ = __webpack_require__(133)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23136,13 +23330,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 127 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(128);
+var content = __webpack_require__(131);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -23162,7 +23356,7 @@ if(false) {
 }
 
 /***/ }),
-/* 128 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(false);
@@ -23176,7 +23370,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 
 /***/ }),
-/* 129 */
+/* 132 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23202,7 +23396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 130 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23241,7 +23435,7 @@ if (false) {
 }
 
 /***/ }),
-/* 131 */
+/* 134 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -1,7 +1,8 @@
 <template>
     <div>
+        <course-banner></course-banner>
         <list-grid-tabs></list-grid-tabs>
-        <router-link to="/">Back to Class Sections</router-link>
+        <settings-banner></settings-banner>
         <roster-container></roster-container>
     </div>
 </template>
