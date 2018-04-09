@@ -27,16 +27,16 @@ export default {
 
         listBG: function () {
             if(this.list)
-                return "blue-green";
+                return "bg--blue-green";
             else
-                return "navy-blue";
+                return "bg--navy-blue";
         },
 
         gridBG: function () {
             if(!this.list)
-                return "blue-green";
+                return "bg--blue-green";
             else
-                return "navy-blue";
+                return "bg--navy-blue";
         },
 
         listFill: function () {

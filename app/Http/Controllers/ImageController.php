@@ -24,4 +24,14 @@ class ImageController extends Controller
     {
         return $this->imageCRUDContract->upload();
     }
+
+    public function getPriority($student_id)
+    {
+        return $this->imageCRUDContract->getPriority($student_id);
+    }
+
+    public function updatePriority()
+    {
+        return $this->imageCRUDContract->updatePriority();
+    }
 }

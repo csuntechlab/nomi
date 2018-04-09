@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="banner__position blue-green">
+        <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid">
+                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid" @click="this.$store.dispatch('getData')">
                             <h4>Back to {{this.courseTitle}}</h4>
                         </router-link>
                     </div>
@@ -12,12 +12,25 @@
             </div>
         </div>
 
-        <div class="section--lg section--md student-banner">
+        <div class="section--lg section--md student-banner default_padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12">
-                        <img :id="this.display_name+'-img'" :src="this.image" class="img--circle grid-image" name="photo">
-                        <h1 class="type--white type--thin type--marginless type--center">{{this.display_name}}</h1>
+                    <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
+                        <carousel v-if="this.show" :perPage="1" >
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[1]]"></profile-picture>
+                            </slide>
+                            <slide>
+                                <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
+                            </slide>
+                        </carousel>
+                        <button @click="updateImageHandler('likeness')">likeness</button>
+                        <button @click="updateImageHandler('avatar')">avatar</button>
+                        <button @click="updateImageHandler('official')">official</button>
+                        <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
             </div>
@@ -27,11 +40,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Major: {{this.major}}</h4>
+                        <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.emailURI}}@my.csun.edu</h4>
+                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
                         <br>
-                        <h4 class="type--black type--thin type--marginless">Bio: {{this.bio}}</h4>
+                        <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
                         <br>
                         <form>
                             <div class="form__group">
@@ -39,7 +52,8 @@
                                     <i class="fa fa-plus-circle fa-blue"></i>
                                     Add a Note:
                                 </h4>
-                                <textarea id="ex0" name="ex0" placeholder="Comment.."></textarea>
+                                <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
+                                <button class="button" @click="commitNotes">Commit</button>
                             </div>
                         </form>
                     </div>
@@ -51,47 +65,69 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import { mapState } from 'vuex'
     export default {
         name: 'profile',
 
         created () {
-            this.emailURI = this.$route.params.emailURI;
-            this.axios.get('student/'+this.emailURI+'@my.csun.edu')
-                .then(response => {
-                    this.bio = response['data']['people'].biography;
-
-                    if(this.bio === null)
-                        this.bio = "None"
-                })
-                .catch(e => {
-                    this.errors.push(e)
-                });
-
-            this.axios.get('student_profile/'+this.emailURI+'@my.csun.edu')
-                .then(response => {
-                    this.display_name = response['data'].display_name;
-                    this.image = response['data'].image;
-                })
-                .catch(e => {
-                    this.errors.push(e)
-                });
+            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
         data: function () {
             return {
-                emailURI : 'undefined',
-                display_name: 'undefined',
-                major: 'None',
-                bio: 'undefined',
-                image: ''
+                show: true
             }
         },
 
-        computed : {
+        props: ['student'],
+
+        computed: {
             ...mapGetters([
                 'courseid',
-                'courseTitle'
-            ])
+                'courseTitle',
+                'sp_emailURI',
+                'sp_display_name',
+                'sp_major',
+                'sp_bio',
+                'sp_images',
+                'sp_image_priority',
+            ]),
+
+            ...mapState({
+                sp_notes: state => state.sp_notes
+            })
+        },
+
+        methods: {
+            updateNotes (e) {
+                this.$store.dispatch('updateNotes', e.target.value);
+            },
+
+            commitNotes () {
+                this.$store.dispatch('commitNotes');
+            },
+
+            updateImageHandler (first) {
+                switch (first) {
+                    case 'likeness':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'likeness,avatar,official'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    case 'avatar':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'avatar,likeness,official'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    case 'official':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'official,likeness,avatar'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    default:
+                        console.log("oops");
+                }
+
+                this.show = !this.show;
+                this.show = !this.show;
+            }
         }
     }
 </script>

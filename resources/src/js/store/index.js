@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
@@ -13,10 +13,24 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: "Course",
-        faculty_email: "undefined",
-        faculty_name: "undefined",
-        faculty_profile: "undefined"
+        courseTitle: "Course", 
+
+        faculty_email: null,
+        faculty_name: null,
+        faculty_profile: null,
+        faculty_first_name: null, 
+        faculty_last_name: null,
+        faculty_full_name: null,
+        faculty_profile_image: null,
+
+        sp_student_id: null,
+        sp_emailURI: null,
+        sp_display_name: null,
+        sp_major: "None",
+        sp_bio: null,
+        sp_images: null,
+        sp_image_priority: null,
+        sp_notes: null,
     },
 
     getters: {
@@ -27,9 +41,23 @@ export default new Vuex.Store({
         flash: state => state.flash,
         courseid: state => state.courseid,
         courseTitle: state => state.courseTitle,
+
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
-        faculty_profile: state => state.faculty_profile
+        faculty_profile: state => state.faculty_profile,
+        faculty_first_name: state => state.faculty_first_name,
+        faculty_last_name: state => state.faculty_last_name,
+        faculty_full_name: state => state.faculty_full_name,
+        faculty_profile_image: state => state.faculty_profile_image,
+
+        sp_student_id : state => state.sp_student_id,
+        sp_emailURI : state => state.sp_emailURI,
+        sp_display_name: state => state.sp_display_name,
+        sp_major: state => state.sp_major,
+        sp_bio: state => state.sp_bio,
+        sp_images: state => state.sp_images,
+        sp_image_priority: state => state.sp_image_priority,
+        sp_notes: state => state.sp_notes,
     },
 
     actions: {
@@ -49,19 +77,49 @@ export default new Vuex.Store({
             context.commit('SHUFFLE_FLASH', payload);
         },
 
-        nameSort (context) {
-            context.commit('TOGGLE_NAME');
+        sortFirstName (context) {
+            context.commit('SORT_FIRST_NAME');
             context.commit('SORT_ROSTER');
         },
 
-        descSort (context) {
-            context.commit('TOGGLE_DESC');
+        sortLastName (context) {
+            context.commit('SORT_LAST_NAME');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortDescending (context) {
+            context.commit('SORT_DESC');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortAscending (context) {
+            context.commit('SORT_ASC');
             context.commit('SORT_ROSTER');
         },
 
         getCourseId (context, payload) {
             context.commit('GET_COURSE_ID', payload);
         },
+
+        getFacultyProfile (context, payload) {
+            context.commit('GET_FACULTY_PROFILE', payload);
+        },
+
+        getStudentProfile (context, payload) {
+            context.commit('GET_STUDENT_PROFILE', payload);
+        },
+
+        updateNotes (context, notes) {
+            context.commit('UPDATE_NOTES', notes);
+        },
+
+        commitNotes (context, payload) {
+            context.commit('COMMIT_NOTES', payload);
+        },
+
+        updateImagePriority (context, payload) {
+            context.commit('UPDATE_IMAGE_PRIORITY', payload);
+        }
     },
 
     mutations: {
@@ -75,6 +133,10 @@ export default new Vuex.Store({
                     state.faculty_name = state.faculty_email.replace("nr_", "");
                     state.faculty_name = state.faculty_name.split('@')[0];
                     state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
+                    state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
+                    state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
+                    state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
+                    state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -167,17 +229,90 @@ export default new Vuex.Store({
             });
         },
 
-        TOGGLE_NAME: function (state) {
-            state.lastname = !state.lastname;
+        SORT_FIRST_NAME: function (state) {
+            state.lastname = false;
         },
 
-        TOGGLE_DESC: function (state) {
-            state.descending = !state.descending;
+        SORT_LAST_NAME: function (state) {
+            state.lastname = true;
+        },
+
+        SORT_DESC: function (state) {
+            state.descending = true;
+        },
+
+        SORT_ASC: function (state) {
+            state.descending = false;
         },
 
         GET_COURSE_ID: function (state, payload) {
             state.courseid = payload.courseid;
             state.courseTitle = state.courses[state.courseid].title;
+        },
+
+        GET_FACULTY_PROFILE: function (state, payload) {
+            axios.get(`faculty_profile/${state.faculty_email}`)
+            .then(response => {
+                state.faculty_profile_image = response.data;
+            })
+            .catch(e => {
+                this.errors.push(e);
+            });
+        },
+
+        GET_STUDENT_PROFILE: function (state, payload) {
+            state.sp_emailURI = payload.uri;
+            axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
+                .then(response => {
+                    state.sp_bio = response['data']['people'].biography;
+
+                    if(state.sp_bio === null)
+                        state.sp_bio = "None";
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                });
+
+            axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
+                .then(response => {
+                    state.sp_display_name = response['data'].display_name;
+                    state.sp_images = response['data'].images;
+                    state.sp_image_priority = response['data'].image_priority;
+                    state.sp_notes = response['data'].notes;
+                    state.sp_student_id = response['data'].student_id;
+                })
+                .catch(e => {
+                    this.errors.push(e);
+                });
+        },
+
+        UPDATE_NOTES: function (state, notes) {
+            state.sp_notes = notes;
+        },
+
+        COMMIT_NOTES: function (state) {
+            let data = new FormData;
+            data.append('student_id', state.sp_student_id);
+            data.append('notepad', state.sp_notes);
+
+            axios.post('update_note', data)
+                .catch(e => {
+                    this.errors.push(e)
+                });
+        },
+
+        UPDATE_IMAGE_PRIORITY: function (state, payload) {
+            let data = new FormData;
+            data.append('student_id', state.sp_student_id.replace("members:", ""));
+            data.append('image_priority', payload.image_priority);
+
+            axios.post('api/priority', data)
+                .then(response => {
+                    state.sp_image_priority = payload.image_priority.split(",");
+                })
+                .catch(e => {
+                    this.errors.push(e)
+                });
         }
     }
 });

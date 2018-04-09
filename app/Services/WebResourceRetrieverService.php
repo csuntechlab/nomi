@@ -6,8 +6,6 @@ namespace App\Services;
 
 use App\Contracts\WebResourceRetrieverContract;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Psr7\Response;
 
 class WebResourceRetrieverService implements WebResourceRetrieverContract
 {
@@ -22,9 +20,13 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        $data = \json_decode($client->get(
-            env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
-        )->getBody()->getContents())->classes;
+        $data =
+            \json_decode(
+                $client->get(
+                    env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
+            )->getBody()
+            ->getContents()
+            )->classes;
 
         //add an id to each object to make vue stuff easier
         $i = 0;
@@ -47,17 +49,9 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     public function getRoster($term, $course)
     {
         $client = new Client();
+        $class = $this->getCourses($term)[$course];
 
-        try {
-            $out = $client->get(
-                env('ROSTER_URL') . '/terms' . '/' . ($this->getCourses($term))[$course]->term
-                . '/classes' . '/' . ($this->getCourses($term))[$course]->class_number
-            );
-        } catch (BadResponseException $e) {
-            $out = new Response(204);
-        }
-
-        return $out;
+        return $client->get(env('ROSTER_URL') . '/terms' . '/' . $class->term . '/classes' . '/' . $class->class_number);
     }
 
     /**

@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" href="{{asset('images/logo.jpg')}}">
     </head>
 
-    <body class="off-white">
+    <body class="bg--off-white">
         @if ( $errors->count() > 0 )
             ...An error occured...
             @foreach( $errors->all() as $message )

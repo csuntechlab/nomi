@@ -1,16 +1,14 @@
 <template>
-    <div>
-        <div class="img--circle">
-            <img :id="display_name+'-img'" :src="this.student.image" class="img--circle grid-image" name="photo">
-        </div>
+    <div class="img--circle">
+        <img :id="this.name+'-img'" :src="this.image" class="img--circle grid-image style__picture" name="photo">
     </div>
-
 </template>
+
 <script>
     export default {
-
-        props:['student'],
-
+        props: [
+            'image',
+            'name'
+        ]
     }
-
 </script>
