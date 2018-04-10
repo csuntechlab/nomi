@@ -19179,9 +19179,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -19201,7 +19198,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['student'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
         }
@@ -19384,7 +19381,7 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
+    _c("div", { staticClass: "section" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-12" }, [
@@ -19400,28 +19397,24 @@ var render = function() {
               _c("br"),
               _vm._v(" "),
               _c(
-                "h4",
-                { staticClass: "type--black type--marginless pull-left" },
-                [_vm._v("Major: " + _vm._s(this.sp_major))]
+                "h2",
+                {
+                  staticClass:
+                    "profile_info type--black type--marginless pull-left"
+                },
+                [_vm._v("Email: " + _vm._s(this.sp_emailURI))]
               ),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
               _c(
-                "h4",
-                { staticClass: "type--black type--marginless pull-left" },
-                [_vm._v("Email: " + _vm._s(this.sp_emailURI) + "@my.csun.edu")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "h4",
-                { staticClass: "type--black type--marginless pull-left" },
+                "h2",
+                {
+                  staticClass:
+                    "profile_info type--black type--marginless pull-left"
+                },
                 [_vm._v("Bio: " + _vm._s(this.sp_bio))]
               ),
-              _vm._v(" "),
-              _c("br"),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -19444,7 +19437,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "save_button",
+                        staticClass: "save_button btn",
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -19645,6 +19638,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.courses = response.data["courses"];
                 state.roster = response.data["students"];
                 state.flashroster = response.data["students"].slice();
+
                 state.faculty_email = response.data["courses"][0].instructors[0].instructor;
                 state.faculty_name = state.faculty_email.replace("nr_", "");
                 state.faculty_name = state.faculty_name.split('@')[0];
@@ -19653,6 +19647,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
+
+                state.sp_emailURI = state.sp_emailURI.replace("nr_", "");
+                state.sp_emailURI = state.sp_emailURI + "@my.csun.edu";
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19786,7 +19783,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
                 state.sp_bio = response['data']['people'].biography;
 
-                if (state.sp_bio === null) state.sp_bio = "None";
+                if (state.sp_bio === null) state.sp_bio = "Pending biography from student.";
             }).catch(function (e) {
                 _this3.errors.push(e);
             });

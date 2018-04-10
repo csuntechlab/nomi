@@ -221,7 +221,7 @@ a.faculty-links:hover {
   background-color: #4F9DA3;
   border: none;
   color: white;
-  padding: 5%, 8%;
+  padding: 8%, 10%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -231,6 +231,10 @@ a.faculty-links:hover {
 
 .space_btwn_components {
   padding-top: 2%;
+}
+
+.profile_info {
+  font-size: 124%;
 }
 
 .course_title {

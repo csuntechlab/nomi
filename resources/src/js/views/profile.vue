@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="section type--center">
+        <div class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -47,12 +47,9 @@
                         </div>
                         <div class="col-sx-12">
                             <br>
-                            <h4 class="type--black type--marginless pull-left">Major: {{this.sp_major}}</h4>
+                            <h2 class="profile_info type--black type--marginless pull-left">Email: {{this.sp_emailURI}}</h2>
                             <br>
-                            <h4 class="type--black type--marginless pull-left">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
-                            <br>
-                            <h4 class="type--black type--marginless pull-left">Bio: {{this.sp_bio}}</h4>
-                            <br>
+                            <h2 class="profile_info type--black type--marginless pull-left">Bio: {{this.sp_bio}}</h2>
                             <br>
                             <br>
                         </div>
@@ -61,7 +58,7 @@
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
                                 <div class="col-sx-12 space_btwn_components">
                                     <div class="pull-right">
-                                        <button class="save_button" @click.prevent="commitNotes">Save</button>
+                                        <button class="save_button btn" @click.prevent="commitNotes">Save</button>
                                     </div>
                                 </div>  
                             </div>
@@ -97,7 +94,6 @@
                 'courseTitle',
                 'sp_emailURI',
                 'sp_display_name',
-                'sp_major',
                 'sp_bio',
                 'sp_images',
                 'sp_image_priority',
