@@ -51,7 +51,7 @@
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
                                 <div class="col-sx-12">
                                     <div class="pull-right">
-                                        <i class="button" @click="commitNotes">Commit</i>
+                                        <i class="fa fa-check-square fa-blue" @click="commitNotes">Commit</i>
                                         <i class="fa fa-edit fa-blue"></i>
                                     </div>
                                 </div>  

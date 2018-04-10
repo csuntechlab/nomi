@@ -19424,7 +19424,10 @@ var render = function() {
                   _c("div", { staticClass: "pull-right" }, [
                     _c(
                       "i",
-                      { staticClass: "button", on: { click: _vm.commitNotes } },
+                      {
+                        staticClass: "fa fa-check-square fa-blue",
+                        on: { click: _vm.commitNotes }
+                      },
                       [_vm._v("Commit")]
                     ),
                     _vm._v(" "),
