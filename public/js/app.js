@@ -13276,8 +13276,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_5_vue_carousel___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_croppa___default.a);
 
 Vue.component('nav-bar', __webpack_require__(53));
-Vue.component('menu-up', __webpack_require__(56));
-Vue.component('menu-button', __webpack_require__(59));
+Vue.component('menu-bar', __webpack_require__(132));
 Vue.component('croppa-profile', __webpack_require__(62));
 Vue.component('list-grid-tabs', __webpack_require__(65));
 Vue.component('profile-picture', __webpack_require__(71));
@@ -19800,17 +19799,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(135)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(57)
 /* template */
-var __vue_template__ = __webpack_require__(58)
+var __vue_template__ = __webpack_require__(137)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-7e9602fc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -19870,8 +19873,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19883,98 +19884,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$store.dispatch('getFacultyProfile', { email: email });
         }
     }
-
 });
 
 /***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "menu_slide_up_down navy-blue",
-        attrs: { id: "menu-open-close" }
-      },
-      [
-        this.menushow
-          ? _c("div")
-          : _c("div", { staticClass: "menu_container type--center" }, [
-              _c("div", { staticClass: "menu_selections type--center" }, [
-                _c("div", { staticClass: "list" }, [
-                  _c("img", {
-                    staticClass: "img--circle faculty_image",
-                    attrs: {
-                      id: _vm.faculty_full_name + "-img",
-                      src: _vm.faculty_profile_image,
-                      name: "photo"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "faculty-name",
-                      attrs: { href: "faculty_profile", title: "User Name" }
-                    },
-                    [_vm._v(_vm._s(_vm.faculty_full_name))]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(0)
-              ])
-            ])
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "list" }, [
-      _c(
-        "a",
-        { staticClass: "faculty-links", attrs: { href: "#", title: "Game" } },
-        [_vm._v("Game")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "faculty-links",
-          attrs: { href: "https://www.csun.edu/faculty/scholarship" }
-        },
-        [_vm._v("Scholarship")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "faculty-links",
-          attrs: { href: "/logout", title: "Logout" }
-        },
-        [_vm._v("Logout")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7e9602fc", module.exports)
-  }
-}
-
-/***/ }),
+/* 58 */,
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20051,10 +19964,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: "menu-button",
     methods: {
         openMenu: function openMenu() {
-            document.getElementById("menu-open-close").style.height = "80%";
+            var height = "60vh";
+
+            if (window.screen.height < window.screen.width) height = "66vh";
+
+            document.getElementById("menu-open-close").style.height = height;
+            this.$store.dispatch('toggleMenu');
         },
+
         closeMenu: function closeMenu(event) {
-            document.getElementById("menu-open-close").style.height = "0%";
+            document.getElementById("menu-open-close").style.height = "0";
+            this.$store.dispatch('toggleMenu');
         }
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menushow']))
@@ -20074,35 +19994,25 @@ var render = function() {
         this.menushow
           ? _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--white",
+                staticClass: "fa fa-angle-up fa-3x type--white type--center",
                 attrs: { title: "Open Menu" },
                 on: {
-                  click: [
-                    function($event) {
-                      $event.preventDefault()
-                      _vm.openMenu()
-                    },
-                    function($event) {
-                      _vm.$store.dispatch("toggleMenu")
-                    }
-                  ]
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.openMenu($event)
+                  }
                 }
               })
             ])
           : _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-down fa-3x type--white",
+                staticClass: "fa fa-angle-down fa-3x type--white type--center",
                 attrs: { title: "Close Menu" },
                 on: {
-                  click: [
-                    function($event) {
-                      $event.preventDefault()
-                      _vm.closeMenu()
-                    },
-                    function($event) {
-                      _vm.$store.dispatch("toggleMenu")
-                    }
-                  ]
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.closeMenu($event)
+                  }
                 }
               })
             ])
@@ -22979,6 +22889,217 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(133)
+/* template */
+var __vue_template__ = __webpack_require__(134)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/menuBar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-52d9443c", Component.options)
+  } else {
+    hotAPI.reload("data-v-52d9443c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 133 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuUp__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menuUp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__menuUp__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menuButton__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menuButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__menuButton__);
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        menuUp: __WEBPACK_IMPORTED_MODULE_0__menuUp___default.a,
+        menuButton: __WEBPACK_IMPORTED_MODULE_1__menuButton___default.a
+    }
+});
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_c("menu-up"), _vm._v(" "), _c("menu-button")], 1)
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-52d9443c", module.exports)
+  }
+}
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(136);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("b05bf794", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7e9602fc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./menuUp.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7e9602fc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./menuUp.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "navy-blue", attrs: { id: "menu-open-close" } }, [
+      this.menushow
+        ? _c("div")
+        : _c("div", { staticClass: "menu_container type--center" }, [
+            _c("div", { staticClass: "menu_selections type--center" }, [
+              _c("div", { staticClass: "list" }, [
+                _c("img", {
+                  staticClass: "img--circle faculty_image",
+                  attrs: {
+                    id: "faculty-img",
+                    src: _vm.faculty_profile_image,
+                    name: "photo"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-name",
+                    attrs: { href: "faculty_profile", title: "User Name" }
+                  },
+                  [_vm._v(_vm._s(_vm.faculty_full_name))]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: "#", title: "Game" }
+                  },
+                  [_vm._v("Game")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: "https://www.csun.edu/faculty/scholarship" }
+                  },
+                  [_vm._v("Scholarship")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: "/logout", title: "Logout" }
+                  },
+                  [_vm._v("Logout")]
+                )
+              ])
+            ])
+          ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7e9602fc", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

@@ -1,19 +1,17 @@
 <template>
     <div>
-        <div id="menu-open-close" class="menu_slide_up_down navy-blue">
+        <div id="menu-open-close" class="navy-blue">
             <div v-if="this.menushow"></div>
-            <div v-else class="menu_container type--center">  
+            <div v-else class="menu_container type--center">
                 <div class="menu_selections type--center">
-                        <div class="list">
-                            <img :id="faculty_full_name +'-img'" :src=faculty_profile_image class="img--circle faculty_image" name="photo">
-                            <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a> 
-                        </div>
-                        <div class="list">  
-                            <a class="faculty-links"  href="#" title="Game">Game</a> 
-                            <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>       
-                            <a class="faculty-links"  href= "/logout" title="Logout">Logout</a>     
-                        </div>              
-                </div> 
+                    <div class="list">
+                        <img id="faculty-img" :src=faculty_profile_image class="img--circle faculty_image" name="photo">
+                        <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a>
+                        <a class="faculty-links" href="#" title="Game">Game</a>
+                        <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>
+                        <a class="faculty-links" href= "/logout" title="Logout">Logout</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -26,14 +24,14 @@
 
         computed: {
             ...mapGetters([
-            'courses',
-            'faculty_profile', 
-            'faculty_email',
-            'faculty_first_name', 
-            'faculty_last_name', 
-            'faculty_full_name',
-            'menushow',
-            'faculty_profile_image'
+                'courses',
+                'faculty_profile',
+                'faculty_email',
+                'faculty_first_name',
+                'faculty_last_name',
+                'faculty_full_name',
+                'menushow',
+                'faculty_profile_image'
             ]),
         },
         watch: {
@@ -41,6 +39,7 @@
                 this.$store.dispatch('getFacultyProfile', {email: email} );
             }
         }
-
     }
 </script>
+<style scoped>
+</style>

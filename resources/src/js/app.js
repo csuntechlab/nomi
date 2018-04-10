@@ -12,8 +12,7 @@ Vue.use(VueCarousel);
 Vue.use(Croppa);
 
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
-Vue.component('menu-up', require('./components/fixed_components/menuUp.vue'));
-Vue.component('menu-button', require('./components/fixed_components/menuButton.vue'));
+Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('croppa-profile', require('./components/fixed_components/croppaProfile.vue'));
 Vue.component('list-grid-tabs', require('./components/fixed_components/listGridTabs.vue'));
 Vue.component('profile-picture', require('./components/fixed_components/profilePicture.vue'));
