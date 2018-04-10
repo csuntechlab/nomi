@@ -19173,6 +19173,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19325,50 +19334,48 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("likeness")
+                _c("div", { staticClass: "type--center" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("likeness")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("likeness")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("avatar")
+                    },
+                    [_vm._v("likeness")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("avatar")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("avatar")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("official")
+                    },
+                    [_vm._v("avatar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("official")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("official")]
-                ),
+                    },
+                    [_vm._v("official")]
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "h1",
-                  {
-                    staticClass:
-                      "type--white type--thin type--marginless type--center"
-                  },
-                  [_vm._v(_vm._s(this.sp_display_name))]
-                )
+                _c("br")
               ],
               1
             )
@@ -19381,33 +19388,45 @@ var render = function() {
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Major: " + _vm._s(this.sp_major))]
-            ),
+            _c("div", { staticClass: "col-sx-12" }, [
+              _c(
+                "h1",
+                { staticClass: "type--black type--marginless type--center" },
+                [_vm._v(_vm._s(this.sp_display_name))]
+              )
+            ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [
-                _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                _c("br"),
-                _vm._v("@my.csun.edu")
-              ]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-            ),
-            _vm._v(" "),
-            _c("br"),
+            _c("div", { staticClass: "col-sx-12" }, [
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "h4",
+                { staticClass: "type--black type--marginless pull-left" },
+                [_vm._v("Major: " + _vm._s(this.sp_major))]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "h4",
+                { staticClass: "type--black type--marginless pull-left" },
+                [_vm._v("Email: " + _vm._s(this.sp_emailURI) + "@my.csun.edu")]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "h4",
+                { staticClass: "type--black type--marginless pull-left" },
+                [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br")
+            ]),
             _vm._v(" "),
             _c("form", [
               _c("div", { staticClass: "form__group" }, [
@@ -19420,18 +19439,21 @@ var render = function() {
                   [_vm._v(_vm._s(this.sp_notes))]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-sx-12" }, [
+                _c("div", { staticClass: "col-sx-12 space_btwn_components" }, [
                   _c("div", { staticClass: "pull-right" }, [
                     _c(
-                      "i",
+                      "button",
                       {
-                        staticClass: "fa fa-check-square fa-blue",
-                        on: { click: _vm.commitNotes }
+                        staticClass: "save_button",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.commitNotes($event)
+                          }
+                        }
                       },
-                      [_vm._v("Commit")]
-                    ),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fa fa-edit fa-blue" })
+                      [_vm._v("Save")]
+                    )
                   ])
                 ])
               ])
@@ -20226,7 +20248,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "faculty-links",
-                  attrs: { href: _vm.faculty_profile, title: "Profile" }
+                  attrs: { href: "faculty_profile", title: "Profile" }
                 },
                 [_vm._v("Profile")]
               ),

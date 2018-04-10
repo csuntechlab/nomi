@@ -27,10 +27,12 @@
                                 <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
                             </slide>
                         </carousel>
-                        <button @click="updateImageHandler('likeness')">likeness</button>
-                        <button @click="updateImageHandler('avatar')">avatar</button>
-                        <button @click="updateImageHandler('official')">official</button>
-                        <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
+                        <div class="type--center">
+                            <button class="btn bg--navy-blue" @click="updateImageHandler('likeness')">likeness</button>
+                            <button class="btn bg--navy-blue" @click="updateImageHandler('avatar')">avatar</button>
+                            <button class="btn bg--navy-blue" @click="updateImageHandler('official')">official</button>
+                        </div>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -40,19 +42,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
-                        <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
-                        <br>
-                        <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
-                        <br>
+                        <div class="col-sx-12">
+                            <h1 class="type--black type--marginless type--center">{{this.sp_display_name}}</h1>
+                        </div>
+                        <div class="col-sx-12">
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Major: {{this.sp_major}}</h4>
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Bio: {{this.sp_bio}}</h4>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
                         <form>
                             <div class="form__group">
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
-                                <div class="col-sx-12">
+                                <div class="col-sx-12 space_btwn_components">
                                     <div class="pull-right">
-                                        <i class="fa fa-check-square fa-blue" @click="commitNotes">Commit</i>
-                                        <i class="fa fa-edit fa-blue"></i>
+                                        <button class="save_button" @click.prevent="commitNotes">Save</button>
                                     </div>
                                 </div>  
                             </div>
