@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6">
         <div class="panel">
-            <div class="grid-item light-grey panel-content">
+            <div class="grid-item bg--light-grey panel-content">
                 <label class="grid-image" :for="display_name">
                     <croppa v-model="myCroppa"
                             :prevent-white-space="false"
@@ -12,11 +12,11 @@
                             @init="styleCanvas()">
                     </croppa>
                 </label>
-                <div class="card-title">
+                <div class="card-title font-style">
                     <div class="panel-heading align-center">
-                        <router-link :to="'/profile/'+email_uri">
-                            {{display_name}}
-                        </router-link>
+                        <div class="font-style"><router-link :to="'/profile/'+email_uri">
+                            {{display_name}}</router-link>
+                        </div>
                         <br>
                         <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
                         <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>

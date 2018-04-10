@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="banner__position blue-green">
+        <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid">
+                        <router-link style="color:#f4f4f4" :to="'/class/'+this.courseid" @click="this.$store.dispatch('getData')">
                             <h4>Back to {{this.courseTitle}}</h4>
                         </router-link>
                     </div>
@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
-                        <carousel :perPage="1" >
+                        <carousel v-if="this.show" :perPage="1" >
                             <slide>
                                 <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
                             </slide>
@@ -27,6 +27,9 @@
                                 <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
                             </slide>
                         </carousel>
+                        <button @click="updateImageHandler('likeness')">likeness</button>
+                        <button @click="updateImageHandler('avatar')">avatar</button>
+                        <button @click="updateImageHandler('official')">official</button>
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
@@ -70,6 +73,12 @@
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
+        data: function () {
+            return {
+                show: true
+            }
+        },
+
         props: ['student'],
 
         computed: {
@@ -96,6 +105,28 @@
 
             commitNotes () {
                 this.$store.dispatch('commitNotes');
+            },
+
+            updateImageHandler (first) {
+                switch (first) {
+                    case 'likeness':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'likeness,avatar,official'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    case 'avatar':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'avatar,likeness,official'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    case 'official':
+                        this.$store.dispatch('updateImagePriority', {image_priority: 'official,likeness,avatar'})
+                            .then(() => this.$store.dispatch('getData'));
+                        break;
+                    default:
+                        console.log("oops");
+                }
+
+                this.show = !this.show;
+                this.show = !this.show;
             }
         }
     }

@@ -14,7 +14,7 @@ export default new Vuex.Store({
         lastname: true,
         descending: true,
         courseid: 0,
-        courseTitle: "Course",
+        courseTitle: "Course", 
 
         faculty_email: null,
         faculty_name: null,
@@ -83,13 +83,23 @@ export default new Vuex.Store({
             context.commit('SHUFFLE_FLASH', payload);
         },
 
-        nameSort (context) {
-            context.commit('TOGGLE_NAME');
+        sortFirstName (context) {
+            context.commit('SORT_FIRST_NAME');
             context.commit('SORT_ROSTER');
         },
 
-        descSort (context) {
-            context.commit('TOGGLE_DESC');
+        sortLastName (context) {
+            context.commit('SORT_LAST_NAME');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortDescending (context) {
+            context.commit('SORT_DESC');
+            context.commit('SORT_ROSTER');
+        },
+
+        sortAscending (context) {
+            context.commit('SORT_ASC');
             context.commit('SORT_ROSTER');
         },
 
@@ -111,6 +121,10 @@ export default new Vuex.Store({
 
         commitNotes (context, payload) {
             context.commit('COMMIT_NOTES', payload);
+        },
+
+        updateImagePriority (context, payload) {
+            context.commit('UPDATE_IMAGE_PRIORITY', payload);
         }
     },
 
@@ -225,12 +239,20 @@ export default new Vuex.Store({
             });
         },
 
-        TOGGLE_NAME: function (state) {
-            state.lastname = !state.lastname;
+        SORT_FIRST_NAME: function (state) {
+            state.lastname = false;
         },
 
-        TOGGLE_DESC: function (state) {
-            state.descending = !state.descending;
+        SORT_LAST_NAME: function (state) {
+            state.lastname = true;
+        },
+
+        SORT_DESC: function (state) {
+            state.descending = true;
+        },
+
+        SORT_ASC: function (state) {
+            state.descending = false;
         },
 
         GET_COURSE_ID: function (state, payload) {
@@ -284,6 +306,20 @@ export default new Vuex.Store({
             data.append('notepad', state.sp_notes);
 
             axios.post('update_note', data)
+                .catch(e => {
+                    this.errors.push(e)
+                });
+        },
+
+        UPDATE_IMAGE_PRIORITY: function (state, payload) {
+            let data = new FormData;
+            data.append('student_id', state.sp_student_id.replace("members:", ""));
+            data.append('image_priority', payload.image_priority);
+
+            axios.post('api/priority', data)
+                .then(response => {
+                    state.sp_image_priority = payload.image_priority.split(",");
+                })
                 .catch(e => {
                     this.errors.push(e)
                 });
