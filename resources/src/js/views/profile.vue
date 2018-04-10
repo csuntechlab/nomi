@@ -32,7 +32,6 @@
                             <button class="btn bg--navy-blue" @click="updateImageHandler('avatar')">avatar</button>
                             <button class="btn bg--navy-blue" @click="updateImageHandler('official')">official</button>
                         </div>
-                        <br>
                     </div>
                 </div>
             </div>
@@ -47,9 +46,9 @@
                         </div>
                         <div class="col-sx-12">
                             <br>
-                            <h2 class="profile_info type--black type--marginless pull-left">Email: {{this.sp_emailURI}}</h2>
+                            <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Email: {{this.sp_emailURI}}</h2>
                             <br>
-                            <h2 class="profile_info type--black type--marginless pull-left">Bio: {{this.sp_bio}}</h2>
+                            <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Bio: {{this.sp_bio}}</h2>
                             <br>
                             <br>
                         </div>

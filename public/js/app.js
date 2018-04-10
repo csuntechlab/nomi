@@ -19178,7 +19178,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -19370,9 +19369,7 @@ var render = function() {
                     },
                     [_vm._v("official")]
                   )
-                ]),
-                _vm._v(" "),
-                _c("br")
+                ])
               ],
               1
             )
@@ -19400,7 +19397,7 @@ var render = function() {
                 "h2",
                 {
                   staticClass:
-                    "profile_info type--black type--marginless pull-left"
+                    "profile_info type--black type--marginless pull-left space_btwn_components"
                 },
                 [_vm._v("Email: " + _vm._s(this.sp_emailURI))]
               ),
@@ -19411,7 +19408,7 @@ var render = function() {
                 "h2",
                 {
                   staticClass:
-                    "profile_info type--black type--marginless pull-left"
+                    "profile_info type--black type--marginless pull-left space_btwn_components"
                 },
                 [_vm._v("Bio: " + _vm._s(this.sp_bio))]
               ),
