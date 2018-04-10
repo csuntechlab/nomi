@@ -19178,6 +19178,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -19369,7 +19370,9 @@ var render = function() {
                     },
                     [_vm._v("official")]
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c("br")
               ],
               1
             )
