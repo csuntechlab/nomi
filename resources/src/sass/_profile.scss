@@ -14,5 +14,24 @@
 .default_padding{
   padding: 0%;
 }
+.save_button {
+  background-color:  #4F9DA3;
+  border: none;
+  color: white;
+  padding: 8%, 10%;  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: auto;
+  cursor: pointer;
+}
 
+.space_btwn_components {
+  padding-top: 2%;
+}
+
+.profile_info {
+ font-size: 124%;
+
+}
 
