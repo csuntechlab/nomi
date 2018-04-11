@@ -1,31 +1,47 @@
 <template>
-    <div>
-        <croppa v-model="myCroppa"
-                :prevent-white-space="false"
-                :show-remove-button="false"
-                :disabled="true"
-                :placeholder="this.student.image"
-                :initial-image="this.student.image"
-                :quality="2"
-                @init="styleCanvas()">
-        </croppa>
+    <div class="panel">
+        <div class="grid-item bg--light-grey panel-content">
+            <label class="grid-image" :for="display_name">
+                <croppa v-model="myCroppa"
+                        :prevent-white-space="false"
+                        :show-remove-button="false"
+                        :disabled="true"
+                        :initial-image="image"
+                        :quality="2"
+                        @init="styleCanvas()">
+                </croppa>
+            </label>
+            <div class="card-title">
+                <div class="panel-heading align-center">
+                    <router-link :to="'/profile/'+email_uri">
+                        {{display_name}}
+                    </router-link>
+                    <br>
+                    <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
+                    <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                    <button class="btn btn-default" @click="confirmImage(imgEmail)"><i class="fa fa-check fa-4x"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
 <script>
     export default {
+        name: "croppa-profile",
 
         data: function() {
             return{
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                imgUrl: this.student.image,
+                imgUrl: this.stdImg,
+                imgEmail: this.stdEmail,
             }
 
         },
 
-        props:['student'],
+        props: ['stdImg', 'stdEmail'],
 
         computed: {
             display_name: function () {

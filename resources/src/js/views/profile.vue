@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="banner__position blue-green">
+        <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -16,18 +16,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
-                        <carousel v-if="this.show" :perPage="1" >
+                        <carousel v-if="this.show" :perPage="1">
                             <slide>
-                                <profile-picture :image="sp_images['likeness']"></profile-picture>
-                                <button @click="updateImageHandler('likeness')">likeness</button>
+                                <profile-picture  v-if="!showcroppa" :image="sp_images['likeness']"></profile-picture>
+                                <image-handler :image_type="'likeness'"></image-handler>
+                                <button @click="showMeOff" >show croppa</button>
+                                <croppa-profile v-if="showcroppa" :stdImg="sp_images" :stdEmail="sp_emailURI" >
+                                    <button @click="dontShowMeOff" >exit</button>
+                                </croppa-profile>
                             </slide>
                             <slide>
                                 <profile-picture :image="sp_images['avatar']"></profile-picture>
-                                <button @click="updateImageHandler('avatar')">avatar</button>
+                                <image-handler :image_type="'avatar'"></image-handler>
                             </slide>
                             <slide>
                                 <profile-picture :image="sp_images['official']"></profile-picture>
-                                <button @click="updateImageHandler('official')">official</button>
+                                <image-handler :image_type="'official'"></image-handler>
                             </slide>
                         </carousel>
                         <!--<button @click="updateImageHandler('likeness')">likeness</button>-->
@@ -69,7 +73,10 @@
 <script>
     import { mapGetters } from 'vuex'
     import { mapState } from 'vuex'
+    import ImageHandler from "../components/fixed_components/imageHandler.vue";
+    import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+        components: {ImageHandler, croppaProfile},
         name: 'profile',
 
         created () {
@@ -79,7 +86,8 @@
         data: function () {
             return {
                 show: true,
-                image_type: null
+                image_type: null,
+                showcroppa: false
             }
         },
 
@@ -107,31 +115,15 @@
                 this.$store.dispatch('updateNotes', e.target.value);
             },
 
+            croppaToggle(){
+                this.showcroppa = !this.showcroppa;
+            },
+
+
             commitNotes () {
                 this.$store.dispatch('commitNotes');
             },
 
-            updateImageHandler (first) {
-                switch (first) {
-                    case 'likeness':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'likeness,avatar,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'avatar':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'avatar,likeness,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'official':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'official,likeness,avatar'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    default:
-                        console.log("oops");
-                }
-
-                this.show = !this.show;
-                this.show = !this.show;
-            }
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-        <div id="sideNav" class="sidebar navy-blue">
+        <div id="sideNav" class="sidebar bg--navy-blue">
             <div class="sidebar_container type--center">  
                 <div class="menu type--center">
                         <div class="list">
@@ -14,7 +14,7 @@
                         </div>              
                 </div> 
                 <div class="close">
-                    <i class="fa fa-angle-down fa-3x type--white" title="Close" @click.prevent="closeNav()"></i>
+                    <i class="fa fa-angle-down fa-3x" id="caret" title="Close" @click.prevent="closeNav()"></i>
                 </div> 
             </div>
         </div>
