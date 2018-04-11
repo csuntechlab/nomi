@@ -19444,7 +19444,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "save_button",
+                        staticClass: "save_button btn",
                         on: {
                           click: function($event) {
                             $event.preventDefault()

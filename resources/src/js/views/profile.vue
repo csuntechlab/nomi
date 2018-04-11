@@ -61,7 +61,7 @@
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
                                 <div class="col-sx-12 space_btwn_components">
                                     <div class="pull-right">
-                                        <button class="save_button" @click.prevent="commitNotes">Save</button>
+                                        <button class="save_button btn" @click.prevent="commitNotes">Save</button>
                                     </div>
                                 </div>  
                             </div>
