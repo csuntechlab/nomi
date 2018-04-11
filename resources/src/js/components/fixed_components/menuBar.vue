@@ -1,19 +1,17 @@
 <template>
-  <nav class="menu-bar bg--navy-blue">
-    <div class="row">
-        <div class="type--center">
-            <side-bar-button></side-bar-button>
-        </div>
+    <div>
+        <menu-up></menu-up>
+        <menu-button></menu-button>
     </div>
-  </nav>
-</template> 
-
+</template>
 
 <script>
-import sideBarButton from './sideBarButton'
-export default {
-	components: {
-        sideBarButton
+    import menuUp from './menuUp'
+    import menuButton from './menuButton'
+    export default {
+        components: {
+            menuUp,
+            menuButton
+        }
     }
-}
 </script>
