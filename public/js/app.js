@@ -13326,7 +13326,6 @@ Vue.component('menu-bar', __webpack_require__(60));
 Vue.component('nav-bar', __webpack_require__(65));
 Vue.component('side-bar', __webpack_require__(68));
 Vue.component('side-bar-button', __webpack_require__(15));
-//Vue.component('croppa-profile', require('./components/fixed_components/croppaProfile.vue'));
 Vue.component('list-grid-tabs', __webpack_require__(71));
 Vue.component('profile-picture', __webpack_require__(77));
 Vue.component('shuffle-button', __webpack_require__(16));
