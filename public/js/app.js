@@ -19183,6 +19183,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19201,7 +19217,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             show: true,
             image_type: null,
-            showcroppa: false
+            showBTN: false
         };
     },
 
@@ -19402,6 +19418,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -19425,11 +19444,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
@@ -19446,15 +19462,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     props: ['stdImg', 'stdEmail'],
 
-    computed: {
-        display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name;
-        },
-
-        email_uri: function email_uri() {
-            return this.student.email.split('@')[0];
-        }
-    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_display_name', 'sp_emailURI'])),
 
     methods: {
         confirmImage: function confirmImage(email) {
@@ -19520,18 +19528,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel" }, [
-    _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
+  return _c("div", {}, [
+    _c("div", { staticClass: "grid-image" }, [
       _c(
         "label",
-        { staticClass: "grid-image", attrs: { for: _vm.display_name } },
+        { attrs: { for: _vm.sp_display_name } },
         [
           _c("croppa", {
             attrs: {
               "prevent-white-space": false,
               "show-remove-button": false,
               disabled: true,
-              "initial-image": _vm.image,
+              "initial-image": _vm.imgUrl,
               quality: 2
             },
             on: {
@@ -19551,50 +19559,32 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "card-title" }, [
+      _c("div", {}, [
+        _c("br"),
+        _vm._v(" "),
         _c(
-          "div",
-          { staticClass: "panel-heading align-center" },
-          [
-            _c("router-link", { attrs: { to: "/profile/" + _vm.email_uri } }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.display_name) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: { click: _vm.toggleCropper }
-              },
-              [_c("i", { staticClass: "fa fa-edit fa-4x" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
-              [_c("i", { staticClass: "fa fa-camera fa-4x" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default",
-                on: {
-                  click: function($event) {
-                    _vm.confirmImage(_vm.imgEmail)
-                  }
-                }
-              },
-              [_c("i", { staticClass: "fa fa-check fa-4x" })]
-            )
-          ],
-          1
+          "button",
+          { staticClass: "btn btn-default", on: { click: _vm.toggleCropper } },
+          [_c("i", { staticClass: "fa fa-edit fa-4x" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
+          [_c("i", { staticClass: "fa fa-camera fa-4x" })]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default",
+            on: {
+              click: function($event) {
+                _vm.confirmImage(_vm.imgEmail)
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-check fa-4x" })]
         )
       ])
     ])
@@ -19664,38 +19654,27 @@ var render = function() {
                         _c(
                           "slide",
                           [
-                            !_vm.showcroppa
-                              ? _c("profile-picture", {
-                                  attrs: { image: _vm.sp_images["likeness"] }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("image-handler", {
-                              attrs: { image_type: "likeness" }
+                            _c("croppa-profile", {
+                              staticClass: "grid-image img--circle",
+                              attrs: {
+                                stdImg: _vm.sp_images["likeness"],
+                                stdEmail: _vm.sp_emailURI
+                              }
                             }),
                             _vm._v(" "),
-                            _c("button", { on: { click: _vm.showMeOff } }, [
-                              _vm._v("show croppa")
-                            ]),
-                            _vm._v(" "),
-                            _vm.showcroppa
-                              ? _c(
-                                  "croppa-profile",
-                                  {
-                                    attrs: {
-                                      stdImg: _vm.sp_images,
-                                      stdEmail: _vm.sp_emailURI
-                                    }
-                                  },
+                            _vm.sp_image_priority[0] == "likeness"
+                              ? _c("div", [
+                                  _c("h2", [_vm._v("This is the Active one")])
+                                ])
+                              : _c(
+                                  "div",
                                   [
-                                    _c(
-                                      "button",
-                                      { on: { click: _vm.dontShowMeOff } },
-                                      [_vm._v("exit")]
-                                    )
-                                  ]
+                                    _c("image-handler", {
+                                      attrs: { image_type: "likeness" }
+                                    })
+                                  ],
+                                  1
                                 )
-                              : _vm._e()
                           ],
                           1
                         ),
@@ -19707,9 +19686,19 @@ var render = function() {
                               attrs: { image: _vm.sp_images["avatar"] }
                             }),
                             _vm._v(" "),
-                            _c("image-handler", {
-                              attrs: { image_type: "avatar" }
-                            })
+                            _vm.sp_image_priority[0] == "avatar"
+                              ? _c("div", [
+                                  _c("h2", [_vm._v("This is the Active one")])
+                                ])
+                              : _c(
+                                  "div",
+                                  [
+                                    _c("image-handler", {
+                                      attrs: { image_type: "avatar" }
+                                    })
+                                  ],
+                                  1
+                                )
                           ],
                           1
                         ),
@@ -19721,9 +19710,19 @@ var render = function() {
                               attrs: { image: _vm.sp_images["official"] }
                             }),
                             _vm._v(" "),
-                            _c("image-handler", {
-                              attrs: { image_type: "official" }
-                            })
+                            _vm.sp_image_priority[0] == "official"
+                              ? _c("div", [
+                                  _c("h2", [_vm._v("This is the Active one")])
+                                ])
+                              : _c(
+                                  "div",
+                                  [
+                                    _c("image-handler", {
+                                      attrs: { image_type: "official" }
+                                    })
+                                  ],
+                                  1
+                                )
                           ],
                           1
                         )

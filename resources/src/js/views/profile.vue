@@ -18,25 +18,34 @@
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
                         <carousel v-if="this.show" :perPage="1">
                             <slide>
-                                <profile-picture  v-if="!showcroppa" :image="sp_images['likeness']"></profile-picture>
-                                <image-handler :image_type="'likeness'"></image-handler>
-                                <button @click="showMeOff" >show croppa</button>
-                                <croppa-profile v-if="showcroppa" :stdImg="sp_images" :stdEmail="sp_emailURI" >
-                                    <button @click="dontShowMeOff" >exit</button>
-                                </croppa-profile>
+
+                                <croppa-profile class="grid-image img--circle" :stdImg="sp_images['likeness']" :stdEmail="sp_emailURI" ></croppa-profile>
+                                <div v-if="sp_image_priority[0] == 'likeness'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'likeness'"></image-handler>
+                                </div>
                             </slide>
                             <slide>
                                 <profile-picture :image="sp_images['avatar']"></profile-picture>
-                                <image-handler :image_type="'avatar'"></image-handler>
+                                <div v-if="sp_image_priority[0] == 'avatar'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'avatar'"></image-handler>
+                                </div>
                             </slide>
                             <slide>
                                 <profile-picture :image="sp_images['official']"></profile-picture>
-                                <image-handler :image_type="'official'"></image-handler>
+                                <div v-if="sp_image_priority[0] == 'official'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'official'"></image-handler>
+                                </div>
                             </slide>
                         </carousel>
-                        <!--<button @click="updateImageHandler('likeness')">likeness</button>-->
-                        <!--<button @click="updateImageHandler('avatar')">avatar</button>-->
-                        <!--<button @click="updateImageHandler('official')">official</button>-->
                         <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
@@ -87,7 +96,7 @@
             return {
                 show: true,
                 image_type: null,
-                showcroppa: false
+                showBTN: false
             }
         },
 

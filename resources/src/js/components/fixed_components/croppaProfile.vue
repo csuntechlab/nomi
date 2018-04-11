@@ -1,32 +1,29 @@
 <template>
-    <div class="panel">
-        <div class="grid-item bg--light-grey panel-content">
-            <label class="grid-image" :for="display_name">
+    <div class="">
+        <div class="grid-image">
+            <label class="" :for="sp_display_name">
                 <croppa v-model="myCroppa"
                         :prevent-white-space="false"
                         :show-remove-button="false"
                         :disabled="true"
-                        :initial-image="image"
+                        :initial-image="imgUrl"
                         :quality="2"
                         @init="styleCanvas()">
                 </croppa>
             </label>
-            <div class="card-title">
-                <div class="panel-heading align-center">
-                    <router-link :to="'/profile/'+email_uri">
-                        {{display_name}}
-                    </router-link>
+            <div class="">
                     <br>
                     <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
                     <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
                     <button class="btn btn-default" @click="confirmImage(imgEmail)"><i class="fa fa-check fa-4x"></i></button>
-                </div>
             </div>
         </div>
     </div>
 
 </template>
 <script>
+    import { mapGetters } from "vuex";
+
     export default {
         name: "croppa-profile",
 
@@ -44,13 +41,11 @@
         props: ['stdImg', 'stdEmail'],
 
         computed: {
-            display_name: function () {
-                return this.student.first_name + " " + this.student.last_name;
-            },
 
-            email_uri : function () {
-                return this.student.email.split('@')[0];
-            }
+            ...mapGetters([
+                'sp_display_name',
+                'sp_emailURI'
+            ])
         },
 
         methods: {
