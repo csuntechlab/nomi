@@ -19125,6 +19125,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19144,7 +19151,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['student'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
         }
@@ -19277,50 +19284,48 @@ var render = function() {
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("likeness")
+                _c("div", { staticClass: "type--center" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("likeness")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("likeness")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("avatar")
+                    },
+                    [_vm._v("likeness")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("avatar")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("avatar")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        _vm.updateImageHandler("official")
+                    },
+                    [_vm._v("avatar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg--navy-blue",
+                      on: {
+                        click: function($event) {
+                          _vm.updateImageHandler("official")
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("official")]
-                ),
+                    },
+                    [_vm._v("official")]
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "h1",
-                  {
-                    staticClass:
-                      "type--white type--thin type--marginless type--center"
-                  },
-                  [_vm._v(_vm._s(this.sp_display_name))]
-                )
+                _c("br")
               ],
               1
             )
@@ -19329,42 +19334,48 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
+    _c("div", { staticClass: "section" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Major: " + _vm._s(this.sp_major))]
-            ),
+            _c("div", { staticClass: "col-sx-12" }, [
+              _c(
+                "h1",
+                { staticClass: "type--black type--marginless type--center" },
+                [_vm._v(_vm._s(this.sp_display_name))]
+              )
+            ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [
-                _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                _c("br"),
-                _vm._v("@my.csun.edu")
-              ]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-            ),
-            _vm._v(" "),
-            _c("br"),
+            _c("div", { staticClass: "col-sx-12" }, [
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "h2",
+                {
+                  staticClass:
+                    "profile_info type--black type--marginless pull-left space_btwn_components"
+                },
+                [_vm._v("Email: " + _vm._s(this.sp_emailURI))]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c(
+                "h2",
+                {
+                  staticClass:
+                    "profile_info type--black type--marginless pull-left space_btwn_components"
+                },
+                [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+              ),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br")
+            ]),
             _vm._v(" "),
             _c("form", [
               _c("div", { staticClass: "form__group" }, [
-                _vm._m(0),
-                _vm._v(" "),
                 _c(
                   "textarea",
                   {
@@ -19374,11 +19385,23 @@ var render = function() {
                   [_vm._v(_vm._s(this.sp_notes))]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "button", on: { click: _vm.commitNotes } },
-                  [_vm._v("Commit")]
-                )
+                _c("div", { staticClass: "col-sx-12 space_btwn_components" }, [
+                  _c("div", { staticClass: "pull-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "save_button btn",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.commitNotes($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ])
+                ])
               ])
             ])
           ])
@@ -19387,23 +19410,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "h4",
-      { staticClass: "type--black type--thin type--marginless" },
-      [
-        _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
-        _vm._v(
-          "\n                                Add a Note:\n                            "
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19599,6 +19606,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
+
+                state.sp_emailURI = state.sp_emailURI.replace("nr_", "");
+                state.sp_emailURI = state.sp_emailURI + "@my.csun.edu";
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -19735,7 +19745,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
                 state.sp_bio = response['data']['people'].biography;
 
-                if (state.sp_bio === null) state.sp_bio = "None";
+                if (state.sp_bio === null) state.sp_bio = "Pending biography from student.";
             }).catch(function (e) {
                 _this3.errors.push(e);
             });
