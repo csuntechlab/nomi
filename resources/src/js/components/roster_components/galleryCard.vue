@@ -12,11 +12,11 @@
                             @init="styleCanvas()">
                     </croppa>
                 </label>
-                <div class="card-title">
+                <div class="card-title font-style">
                     <div class="panel-heading align-center">
-                        <router-link :to="'/profile/'+email_uri">
-                            {{display_name}}
-                        </router-link>
+                        <div class="font-style"><router-link :to="'/profile/'+email_uri">
+                            {{display_name}}</router-link>
+                        </div>
                         <br>
                         <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
                         <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
