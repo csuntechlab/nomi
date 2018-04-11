@@ -19217,10 +19217,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         updateNotes: function updateNotes(e) {
             this.$store.dispatch('updateNotes', e.target.value);
         },
-        showMeOff: function showMeOff() {
+        croppaToggle: function croppaToggle() {
             this.showcroppa = !this.showcroppa;
         },
-        dontShowMeOff: function dontShowMeOff() {},
         commitNotes: function commitNotes() {
             this.$store.dispatch('commitNotes');
         }
