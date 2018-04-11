@@ -19132,6 +19132,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -19346,7 +19348,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-sx-12" }, [
+            _c("div", { staticClass: "col-xs-12" }, [
               _c("br"),
               _vm._v(" "),
               _c(
@@ -19358,8 +19360,10 @@ var render = function() {
                 [_vm._v("Email: " + _vm._s(this.sp_emailURI))]
               ),
               _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
+              _c("br")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-12" }, [
               _c(
                 "h2",
                 {

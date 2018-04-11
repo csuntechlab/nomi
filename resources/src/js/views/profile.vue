@@ -45,10 +45,12 @@
                         <div class="col-sx-12">
                             <h1 class="type--black type--marginless type--center">{{this.sp_display_name}}</h1>
                         </div>
-                        <div class="col-sx-12">
+                        <div class="col-xs-12">
                             <br>
                             <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Email: {{this.sp_emailURI}}</h2>
                             <br>
+                        </div>
+                        <div class="col-xs-12">
                             <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Bio: {{this.sp_bio}}</h2>
                             <br>
                             <br>
