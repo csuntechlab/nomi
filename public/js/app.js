@@ -20100,7 +20100,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             var _this3 = this;
 
             state.sp_emailURI = payload.uri;
-            axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
+            axios.get('student/' + state.sp_emailURI).then(function (response) {
                 state.sp_bio = response['data']['people'].biography;
 
                 if (state.sp_bio === null) state.sp_bio = "Pending biography from student.";

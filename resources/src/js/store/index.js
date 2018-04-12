@@ -275,7 +275,7 @@ export default new Vuex.Store({
 
         GET_STUDENT_PROFILE: function (state, payload) {
             state.sp_emailURI = payload.uri;
-            axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
+            axios.get('student/'+state.sp_emailURI)
                 .then(response => {
                     state.sp_bio = response['data']['people'].biography;
 
