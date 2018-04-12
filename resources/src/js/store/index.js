@@ -8,6 +8,7 @@ export default new Vuex.Store({
         courses: [],
         roster: [],
         flashroster: [],
+        menushow: true,
         list: true,
         flash: true,
         lastname: true,
@@ -39,6 +40,7 @@ export default new Vuex.Store({
         flashroster: state => state.flashroster,
         list: state => state.list,
         flash: state => state.flash,
+        menushow: state => state.menushow,
         courseid: state => state.courseid,
         courseTitle: state => state.courseTitle,
 
@@ -71,6 +73,10 @@ export default new Vuex.Store({
 
         toggleFlash (context) {
             context.commit('TOGGLE_FLASH');
+        },
+
+        toggleMenu (context) {
+            context.commit('TOGGLE_MENU');
         },
 
         shuffleFlash (context, payload) {
@@ -149,6 +155,10 @@ export default new Vuex.Store({
 
         TOGGLE_FLASH (state) {
             state.flash = !state.flash;
+        },
+
+        TOGGLE_MENU (state) {
+            state.menushow = !state.menushow;
         },
 
         SHUFFLE_FLASH (state, { courseid }) {

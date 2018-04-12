@@ -16,15 +16,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
-                        <carousel v-if="this.show" :perPage="1" >
+                        <carousel v-if="this.show" :perPage="1">
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[0]]"></profile-picture>
+
+                                <croppa-profile class="grid-image img--circle" :stdImg="sp_images['likeness']" :stdEmail="sp_emailURI" ></croppa-profile>
+                                <div v-if="sp_image_priority[0] == 'likeness'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'likeness'"></image-handler>
+                                </div>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[1]]"></profile-picture>
+                                <profile-picture :image="sp_images['avatar']"></profile-picture>
+                                <div v-if="sp_image_priority[0] == 'avatar'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'avatar'"></image-handler>
+                                </div>
                             </slide>
                             <slide>
-                                <profile-picture :image="sp_images[sp_image_priority[2]]"></profile-picture>
+                                <profile-picture :image="sp_images['official']"></profile-picture>
+                                <div v-if="sp_image_priority[0] == 'official'">
+                                    <h2>This is the Active one</h2>
+                                </div>
+                                <div v-else>
+                                    <image-handler :image_type="'official'"></image-handler>
+                                </div>
                             </slide>
                         </carousel>
                         <div class="type--center">
@@ -61,7 +80,7 @@
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
                                 <div class="col-sx-12 space_btwn_components">
                                     <div class="pull-right">
-                                        <button class="save_button" @click.prevent="commitNotes">Save</button>
+                                        <button class="save_button btn" @click.prevent="commitNotes">Save</button>
                                     </div>
                                 </div>  
                             </div>
@@ -76,7 +95,10 @@
 <script>
     import { mapGetters } from 'vuex'
     import { mapState } from 'vuex'
+    import ImageHandler from "../components/fixed_components/imageHandler.vue";
+    import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+        components: {ImageHandler, croppaProfile},
         name: 'profile',
 
         created () {
@@ -85,7 +107,9 @@
 
         data: function () {
             return {
-                show: true
+                show: true,
+                image_type: null,
+                showBTN: false
             }
         },
 
@@ -113,31 +137,15 @@
                 this.$store.dispatch('updateNotes', e.target.value);
             },
 
+            croppaToggle(){
+                this.showcroppa = !this.showcroppa;
+            },
+
+
             commitNotes () {
                 this.$store.dispatch('commitNotes');
             },
 
-            updateImageHandler (first) {
-                switch (first) {
-                    case 'likeness':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'likeness,avatar,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'avatar':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'avatar,likeness,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'official':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'official,likeness,avatar'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    default:
-                        console.log("oops");
-                }
-
-                this.show = !this.show;
-                this.show = !this.show;
-            }
         }
     }
 </script>
