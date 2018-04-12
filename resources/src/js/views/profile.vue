@@ -46,7 +46,6 @@
                                 </div>
                             </slide>
                         </carousel>
-                        <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
             </div>
@@ -56,20 +55,28 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
-                        <br>
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
-                        <br>
-                        <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
-                        <br>
+                        <div class="col-sx-12">
+                            <h1 class="type--black type--marginless type--center">{{this.sp_display_name}}</h1>
+                        </div>
+                        <div class="col-sx-12">
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Major: {{this.sp_major}}</h4>
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Email: {{this.sp_emailURI}}@my.csun.edu</h4>
+                            <br>
+                            <h4 class="type--black type--marginless pull-left">Bio: {{this.sp_bio}}</h4>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
                         <form>
                             <div class="form__group">
-                                <h4 class="type--black type--thin type--marginless">
-                                    <i class="fa fa-plus-circle fa-blue"></i>
-                                    Add a Note:
-                                </h4>
                                 <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
-                                <button class="button" @click="commitNotes">Commit</button>
+                                <div class="col-sx-12 space_btwn_components">
+                                    <div class="pull-right">
+                                        <button class="save_button btn" @click.prevent="commitNotes">Save</button>
+                                    </div>
+                                </div>  
                             </div>
                         </form>
                     </div>
