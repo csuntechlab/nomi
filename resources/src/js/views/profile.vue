@@ -46,12 +46,6 @@
                                 </div>
                             </slide>
                         </carousel>
-                        <div class="type--center">
-                            <button class="btn bg--navy-blue" @click="updateImageHandler('likeness')">likeness</button>
-                            <button class="btn bg--navy-blue" @click="updateImageHandler('avatar')">avatar</button>
-                            <button class="btn bg--navy-blue" @click="updateImageHandler('official')">official</button>
-                        </div>
-                        <br>
                     </div>
                 </div>
             </div>

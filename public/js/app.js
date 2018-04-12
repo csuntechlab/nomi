@@ -19199,12 +19199,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -19688,50 +19682,7 @@ var render = function() {
                       ],
                       1
                     )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "type--center" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg--navy-blue",
-                      on: {
-                        click: function($event) {
-                          _vm.updateImageHandler("likeness")
-                        }
-                      }
-                    },
-                    [_vm._v("likeness")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg--navy-blue",
-                      on: {
-                        click: function($event) {
-                          _vm.updateImageHandler("avatar")
-                        }
-                      }
-                    },
-                    [_vm._v("avatar")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn bg--navy-blue",
-                      on: {
-                        click: function($event) {
-                          _vm.updateImageHandler("official")
-                        }
-                      }
-                    },
-                    [_vm._v("official")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("br")
+                  : _vm._e()
               ],
               1
             )
