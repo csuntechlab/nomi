@@ -318,7 +318,7 @@ export default new Vuex.Store({
 
             axios.post('api/priority', data)
                 .then(response => {
-                    state.sp_image_priority = payload.image_priority.split(",");
+                    state.sp_image_priority = payload.image_priority;
                 })
                 .catch(e => {
                     this.errors.push(e)

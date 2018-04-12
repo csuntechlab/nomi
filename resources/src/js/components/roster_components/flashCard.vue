@@ -35,7 +35,7 @@ export default {
 
     computed: {
         display_name: function() { return this.student.first_name + " " + this.student.last_name; },
-        image: function() { return this.student.images[this.student.image_priority[0]]; }
+        image: function() { return this.student.images[this.student.image_priority]; }
     },
 
     methods: {

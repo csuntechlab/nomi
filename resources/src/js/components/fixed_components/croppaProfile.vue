@@ -6,16 +6,16 @@
                         :prevent-white-space="false"
                         :show-remove-button="false"
                         :disabled="true"
-                        :initial-image="imgUrl"
+                        :initial-image="sp_images['likeness']"
                         :quality="2"
                         @init="styleCanvas()">
                 </croppa>
             </label>
             <div class="">
-                    <br>
-                    <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                    <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
-                    <button class="btn btn-default" @click="confirmImage(imgEmail)"><i class="fa fa-check fa-4x"></i></button>
+                <br>
+                <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
+                <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
             </div>
         </div>
     </div>
@@ -32,29 +32,22 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                imgUrl: this.stdImg,
-                imgEmail: this.stdEmail,
             }
-
         },
 
-        props: ['stdImg', 'stdEmail'],
-
         computed: {
-
             ...mapGetters([
                 'sp_display_name',
-                'sp_emailURI'
+                'sp_emailURI',
+                'sp_images'
             ])
         },
 
         methods: {
-            confirmImage: function(email){
+            confirmImage: function () {
                 let url = this.myCroppa.generateDataUrl();
 
-
-                if (!url)
-                {
+                if (!url) {
                     alert('no image');
                     return;
                 }
@@ -62,19 +55,15 @@
                 this.imgUrl = url;
 
                 this.myCroppa.generateBlob(
-                    blob => {
-                        var url = URL.createObjectURL(blob)
-                        this.objectUrl=url
-                    },
+                    blob => { this.objectUrl = URL.createObjectURL(blob); },
                     'image/jpeg',
                     .8
                 );
 
-
                 let data = new FormData();
                 data.append('media', url);
-                data.append('email', email);
-                console.log(url);
+                data.append('email', this.sp_emailURI);
+
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'

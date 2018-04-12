@@ -53,9 +53,9 @@ class ImageCRUDService implements ImageCRUDContract
 
         foreach ($users as $user) {
             if (null !== $user->imagePriority) {
-                \array_push($out, \explode(',', $user->imagePriority->image_priority));
+                \array_push($out, $user->imagePriority->image_priority);
             } else {
-                \array_push($out, ['likeness', 'avatar', 'official']);
+                \array_push($out, 'likeness');
             }
         }
 
