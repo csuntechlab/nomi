@@ -24,7 +24,7 @@ class ImageCRUDService implements ImageCRUDContract
         $email = \str_replace('nr_', '', request()->email);
         $email = \explode('@', $email)[0];
 
-        $image->save(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/avatar.jpg');
+        $image->save(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/likeness.jpg');
 
         for ($i = 0; $i < 10; ++$i) {
             Cache::forget('students_' . $i);
