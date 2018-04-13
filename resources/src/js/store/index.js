@@ -144,8 +144,6 @@ export default new Vuex.Store({
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
 
-                    state.sp_emailURI = state.sp_emailURI.replace("nr_", "");
-                    state.sp_emailURI = state.sp_emailURI + "@my.csun.edu";
                 })
                 .catch(e => {
                     this.errors.push(e);

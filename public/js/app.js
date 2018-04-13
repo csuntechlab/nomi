@@ -19711,7 +19711,7 @@ var render = function() {
                   staticClass:
                     "profile_info type--black type--marginless pull-left space_btwn_components"
                 },
-                [_vm._v("Email: " + _vm._s(this.sp_emailURI))]
+                [_vm._v("Email: " + _vm._s(this.sp_emailURI) + "@my.csun.edu")]
               ),
               _vm._v(" "),
               _c("br")
@@ -19965,8 +19965,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
 
-                state.sp_emailURI = state.sp_emailURI.replace("nr_", "");
-                state.sp_emailURI = state.sp_emailURI + "@my.csun.edu";
+                // state.sp_emailURI = state.sp_emailURI.replace("nr_", "");
+                //state.sp_emailURI = state.sp_emailURI + "@my.csun.edu";
             }).catch(function (e) {
                 _this.errors.push(e);
             });
@@ -22152,7 +22152,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         email_uri: function email_uri() {
-            return this.student.email.split('@')[0];
+            var email = this.student.email;
+            if (email) {
+                return email.replace("nr_", "");
+            }
         },
 
         image: function image() {

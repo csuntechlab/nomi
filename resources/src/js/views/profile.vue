@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-xs-12">
                             <br>
-                            <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Email: {{this.sp_emailURI}}</h2>
+                            <h2 class="profile_info type--black type--marginless pull-left space_btwn_components">Email: {{this.sp_emailURI}}@my.csun.edu</h2>
                             <br>
                         </div>
                         <div class="col-xs-12">
