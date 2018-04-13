@@ -1,34 +1,30 @@
 <template>
-    <div>
-        <button @click="updateImageHandler(image_type)">Choose Default Image</button>
+    <div v-if="sp_image_priority === image_type">
+        <h2>This is the Active one</h2>
+    </div>
+    <div v-else>
+        <button @click="updateImageHandler">Choose Default Image</button>
     </div>
 </template>
+
 <script>
+    import { mapGetters } from 'vuex'
     export default {
         name: "image-handler",
 
         props: ['image_type'],
 
+        computed: {
+            ...mapGetters([
+                'sp_image_priority'
+            ])
+        },
+
         methods: {
-            updateImageHandler (first) {
-                switch (first) {
-                    case 'likeness':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'likeness,avatar,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'avatar':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'avatar,likeness,official'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    case 'official':
-                        this.$store.dispatch('updateImagePriority', {image_priority: 'official,likeness,avatar'})
-                            .then(() => this.$store.dispatch('getData'));
-                        break;
-                    default:
-                        console.log("oops");
-                }
+            updateImageHandler() {
+                this.$store.dispatch('updateImagePriority', {image_priority: this.image_type})
+                    .then(() => this.$store.dispatch('getData'));
             }
         }
     }
-
 </script>

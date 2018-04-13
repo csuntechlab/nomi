@@ -56,7 +56,7 @@ export default {
 
         image: function() {
             if (this.imgUrl == null) {
-                return this.student.images[this.student.image_priority[0]];
+                return this.student.images[this.student.image_priority];
             } else {
                 return this.imgUrl;
             }
