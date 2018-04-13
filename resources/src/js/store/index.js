@@ -27,7 +27,6 @@ export default new Vuex.Store({
         sp_student_id: null,
         sp_emailURI: null,
         sp_display_name: null,
-        sp_major: "None",
         sp_bio: null,
         sp_images: null,
         sp_image_priority: null,
@@ -277,7 +276,7 @@ export default new Vuex.Store({
                     state.sp_bio = response['data']['people'].biography;
 
                     if(state.sp_bio === null)
-                        state.sp_bio = "None";
+                        state.sp_bio = "Pending biography from student.";
                 })
                 .catch(e => {
                     this.errors.push(e);

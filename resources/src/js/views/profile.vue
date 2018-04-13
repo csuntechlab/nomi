@@ -38,8 +38,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Major: {{this.sp_major}}</h4>
-                        <br>
                         <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
                         <br>
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
