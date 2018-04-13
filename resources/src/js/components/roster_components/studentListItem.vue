@@ -27,7 +27,10 @@
             },
 
             email_uri : function () {
-                return this.student.email.split('@')[0];
+                const email =  this.student.email;
+                if(email){
+                    return email.replace("nr_","");
+                }
             },
 
             image: function() { return this.student.images[this.student.image_priority[0]]}

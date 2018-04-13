@@ -142,7 +142,8 @@ export default new Vuex.Store({
                     state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
                     state.faculty_last_name = state.faculty_name.substring((state.faculty_name.indexOf('.') + 2), state.faculty_name.length);
                     state.faculty_last_name = state.faculty_name.charAt((state.faculty_name.indexOf('.') + 1)).toUpperCase() + state.faculty_last_name;
-                    state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
+                    state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
+
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -277,7 +278,7 @@ export default new Vuex.Store({
                     state.sp_bio = response['data']['people'].biography;
 
                     if(state.sp_bio === null)
-                        state.sp_bio = "None";
+                        state.sp_bio = "Pending biography from student.";
                 })
                 .catch(e => {
                     this.errors.push(e);
