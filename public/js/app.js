@@ -19356,6 +19356,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -19366,7 +19368,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             messages: true,
             errors: [],
-            myCroppa: null
+            myCroppa: null,
+            disabled: true
         };
     },
 
@@ -19413,18 +19416,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         toggleCropper: function toggleCropper() {
-
-            var cropper = this.myCroppa;
-
-            cropper.disabled = false;
+            this.disabled = !this.disabled;
         },
 
         uploadFile: function uploadFile() {
-            var cropper = this.myCroppa;
-            cropper.chooseFile();
+            this.myCroppa.chooseFile();
         }
     }
-
 });
 
 /***/ }),
@@ -19441,27 +19439,31 @@ var render = function() {
         "label",
         { attrs: { for: _vm.sp_display_name } },
         [
-          _c("croppa", {
-            attrs: {
-              "prevent-white-space": false,
-              "show-remove-button": false,
-              disabled: true,
-              "initial-image": _vm.sp_images["likeness"],
-              quality: 2
-            },
-            on: {
-              init: function($event) {
-                _vm.styleCanvas()
-              }
-            },
-            model: {
-              value: _vm.myCroppa,
-              callback: function($$v) {
-                _vm.myCroppa = $$v
-              },
-              expression: "myCroppa"
-            }
-          })
+          _vm.disabled
+            ? _c("profile-picture", {
+                attrs: { image: _vm.sp_images["likeness"] }
+              })
+            : _c("croppa", {
+                attrs: {
+                  "prevent-white-space": false,
+                  "show-remove-button": false,
+                  disabled: _vm.disabled,
+                  "initial-image": _vm.sp_images["likeness"],
+                  quality: 2
+                },
+                on: {
+                  init: function($event) {
+                    _vm.styleCanvas()
+                  }
+                },
+                model: {
+                  value: _vm.myCroppa,
+                  callback: function($$v) {
+                    _vm.myCroppa = $$v
+                  },
+                  expression: "myCroppa"
+                }
+              })
         ],
         1
       ),

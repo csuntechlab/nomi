@@ -2,10 +2,12 @@
     <div class="">
         <div class="grid-image">
             <label class="" :for="sp_display_name">
-                <croppa v-model="myCroppa"
+                <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
+                <croppa v-else
+                        v-model="myCroppa"
                         :prevent-white-space="false"
                         :show-remove-button="false"
-                        :disabled="true"
+                        :disabled="disabled"
                         :initial-image="sp_images['likeness']"
                         :quality="2"
                         @init="styleCanvas()">
@@ -32,6 +34,7 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
+                disabled: true
             }
         },
 
@@ -86,18 +89,12 @@
             },
 
             toggleCropper: function() {
-
-                let cropper = this.myCroppa;
-
-                cropper.disabled = false;
+                this.disabled = !this.disabled;
             },
 
             uploadFile: function() {
-                let cropper = this.myCroppa;
-                cropper.chooseFile();
+                this.myCroppa.chooseFile();
             }
         }
-
     }
-
 </script>
