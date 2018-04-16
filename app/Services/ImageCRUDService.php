@@ -8,6 +8,7 @@ use App\Contracts\ImageCRUDContract;
 use App\Models\ImagePriority;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 
 /**
@@ -18,13 +19,16 @@ class ImageCRUDService implements ImageCRUDContract
     /** Image uploading functionality. */
     public function upload()
     {
-        $manager = new ImageManager();
+        $manager = new ImageManager(['driver' => 'imagick']);
 
         $image = $manager->make(request()->media);
         $email = \str_replace('nr_', '', request()->email);
-        $email = \explode('@', $email)[0];
+        $uri = \explode('@', $email)[0];
 
-        $image->save(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/likeness.jpg');
+        File::exists(storage_path(env('IMAGE_UPLOAD_LOCATION') . $uri)) or
+        File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri);
+
+        $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
 
         for ($i = 0; $i < 10; ++$i) {
             Cache::forget('students_' . $i);
