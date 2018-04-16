@@ -43,14 +43,9 @@
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
                         <br>
                         <form>
-                            <div class="form__group">
-                                <h4 class="type--black type--thin type--marginless">
-                                    <i class="fa fa-plus-circle fa-blue"></i>
-                                    Add a Note:
-                                </h4>
-                                <textarea id="ex0" name="ex0" @input="updateNotes">{{this.sp_notes}}</textarea>
-                                <button class="button" @click="commitNotes">Commit</button>
-                            </div>
+                            <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i></label>
+                            <input type="text" id="ex0" name="ex0"  :placeholder="sp_notes" @input="updateNotes">
+                            <button class="btn-default btn" @click="commitNotes">Commit</button>
                         </form>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ export default new Vuex.Store({
         roster: [],
         flashroster: [],
         menushow: true,
+        errors: [],
         list: true,
         flash: true,
         lastname: true,
