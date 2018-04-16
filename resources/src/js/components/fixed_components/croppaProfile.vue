@@ -1,49 +1,56 @@
 <template>
-    <div>
-        <croppa v-model="myCroppa"
-                :prevent-white-space="false"
-                :show-remove-button="false"
-                :disabled="true"
-                :placeholder="this.student.image"
-                :initial-image="this.student.image"
-                :quality="2"
-                @init="styleCanvas()">
-        </croppa>
+    <div class="">
+        <div class="grid-image">
+            <label class="" :for="sp_display_name">
+                <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
+                <croppa v-else
+                        v-model="myCroppa"
+                        :prevent-white-space="false"
+                        :show-remove-button="false"
+                        :disabled="disabled"
+                        :initial-image="sp_images['likeness']"
+                        :quality="2"
+                        @init="styleCanvas()">
+                </croppa>
+            </label>
+            <div class="">
+                <br>
+                <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
+                <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
+            </div>
+        </div>
     </div>
 
 </template>
 <script>
+    import { mapGetters } from "vuex";
+
     export default {
+        name: "croppa-profile",
 
         data: function() {
             return{
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                imgUrl: this.student.image,
+                disabled: true
             }
-
         },
 
-        props:['student'],
-
         computed: {
-            display_name: function () {
-                return this.student.first_name + " " + this.student.last_name;
-            },
-
-            email_uri : function () {
-                return this.student.email.split('@')[0];
-            }
+            ...mapGetters([
+                'sp_display_name',
+                'sp_emailURI',
+                'sp_images'
+            ])
         },
 
         methods: {
-            confirmImage: function(email){
+            confirmImage: function () {
                 let url = this.myCroppa.generateDataUrl();
 
-
-                if (!url)
-                {
+                if (!url) {
                     alert('no image');
                     return;
                 }
@@ -51,19 +58,15 @@
                 this.imgUrl = url;
 
                 this.myCroppa.generateBlob(
-                    blob => {
-                        var url = URL.createObjectURL(blob)
-                        this.objectUrl=url
-                    },
+                    blob => { this.objectUrl = URL.createObjectURL(blob); },
                     'image/jpeg',
                     .8
                 );
 
-
                 let data = new FormData();
                 data.append('media', url);
-                data.append('email', email);
-                console.log(url);
+                data.append('email', this.sp_emailURI);
+
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -86,18 +89,12 @@
             },
 
             toggleCropper: function() {
-
-                let cropper = this.myCroppa;
-
-                cropper.disabled = false;
+                this.disabled = !this.disabled;
             },
 
             uploadFile: function() {
-                let cropper = this.myCroppa;
-                cropper.chooseFile();
+                this.myCroppa.chooseFile();
             }
         }
-
     }
-
 </script>

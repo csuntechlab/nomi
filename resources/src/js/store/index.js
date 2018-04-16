@@ -8,6 +8,7 @@ export default new Vuex.Store({
         courses: [],
         roster: [],
         flashroster: [],
+        menushow: true,
         list: true,
         flash: true,
         lastname: true,
@@ -26,7 +27,6 @@ export default new Vuex.Store({
         sp_student_id: null,
         sp_emailURI: null,
         sp_display_name: null,
-        sp_major: "None",
         sp_bio: null,
         sp_images: null,
         sp_image_priority: null,
@@ -39,6 +39,7 @@ export default new Vuex.Store({
         flashroster: state => state.flashroster,
         list: state => state.list,
         flash: state => state.flash,
+        menushow: state => state.menushow,
         courseid: state => state.courseid,
         courseTitle: state => state.courseTitle,
 
@@ -71,6 +72,10 @@ export default new Vuex.Store({
 
         toggleFlash (context) {
             context.commit('TOGGLE_FLASH');
+        },
+
+        toggleMenu (context) {
+            context.commit('TOGGLE_MENU');
         },
 
         shuffleFlash (context, payload) {
@@ -149,6 +154,10 @@ export default new Vuex.Store({
 
         TOGGLE_FLASH (state) {
             state.flash = !state.flash;
+        },
+
+        TOGGLE_MENU (state) {
+            state.menushow = !state.menushow;
         },
 
         SHUFFLE_FLASH (state, { courseid }) {
@@ -267,7 +276,7 @@ export default new Vuex.Store({
                     state.sp_bio = response['data']['people'].biography;
 
                     if(state.sp_bio === null)
-                        state.sp_bio = "None";
+                        state.sp_bio = "Pending biography from student.";
                 })
                 .catch(e => {
                     this.errors.push(e);
@@ -308,7 +317,7 @@ export default new Vuex.Store({
 
             axios.post('api/priority', data)
                 .then(response => {
-                    state.sp_image_priority = payload.image_priority.split(",");
+                    state.sp_image_priority = payload.image_priority;
                 })
                 .catch(e => {
                     this.errors.push(e)

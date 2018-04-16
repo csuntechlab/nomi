@@ -1,7 +1,6 @@
 @extends('master')
 @section('content')
     <router-view></router-view>
-    <side-bar></side-bar>
-    <div class="menu__compensation">
+    <div id="menu-bar-padding" style="height:60px"></div>
     <menu-bar></menu-bar>
 @stop

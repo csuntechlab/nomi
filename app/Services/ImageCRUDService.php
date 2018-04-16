@@ -22,7 +22,9 @@ class ImageCRUDService implements ImageCRUDContract
         $image = $manager->make(request()->media);
         $email = \str_replace('nr_', '', request()->email);
         $email = \explode('@', $email)[0];
-        $image->save(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/avatar.jpg');
+
+        $image->save(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/likeness.jpg');
+
         for ($i = 0; $i < 10; ++$i) {
             Cache::forget('students_' . $i);
         }
@@ -47,9 +49,9 @@ class ImageCRUDService implements ImageCRUDContract
             ->get();
         foreach ($users as $user) {
             if (null !== $user->imagePriority) {
-                \array_push($out, \explode(',', $user->imagePriority->image_priority));
+                \array_push($out, $user->imagePriority->image_priority);
             } else {
-                \array_push($out, ['likeness', 'avatar', 'official']);
+                \array_push($out, 'likeness');
             }
         }
         for ($i = 0; $i < 10; ++$i) {

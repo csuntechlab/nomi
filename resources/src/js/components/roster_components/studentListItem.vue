@@ -27,10 +27,11 @@
             },
 
             email_uri : function () {
-                return this.student.email.split('@')[0];
+                return this.student.email.split('@')[0].replace("nr_", "");
+
             },
 
-            image: function() { return this.student.images[this.student.image_priority[0]]}
+            image: function() { return this.student.images[this.student.image_priority]}
         }
     }
 </script>

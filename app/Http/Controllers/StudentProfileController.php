@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 
 class StudentProfileController extends Controller
 {
-    protected $studentProfileRetriever;
+    protected $studentProfileService;
 
     public function __construct(StudentProfileContract $studentProfileContract)
     {
-        $this->studentProfileRetriever = $studentProfileContract;
+        $this->studentProfileService = $studentProfileContract;
     }
 
     public function getProfile($email)
     {
-        return $this->studentProfileRetriever->getStudentProfile($email);
+        return $this->studentProfileService->getStudentProfile($email);
     }
 
     public function updateNotes(Request $request)
     {
-        return $this->studentProfileRetriever->updateStudentNotes($request);
+        return $this->studentProfileService->updateStudentNotes($request);
     }
 }
