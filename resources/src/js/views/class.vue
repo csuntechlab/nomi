@@ -1,7 +1,6 @@
 <template>
     <div>
         <course-banner></course-banner>
-        <list-grid-tabs></list-grid-tabs>
         <settings-banner></settings-banner>
         <div class="container">
             <roster-container></roster-container>

@@ -66,6 +66,14 @@ export default new Vuex.Store({
             context.commit('GET_DATA');
         },
 
+        setList (context) {
+            context.commit('SET_LIST');
+        },
+
+        setGrid (context) {
+            context.commit('SET_GRID');
+        },
+
         toggleList (context) {
             context.commit('TOGGLE_LIST');
         },
@@ -148,8 +156,12 @@ export default new Vuex.Store({
                 })
         },
 
-        TOGGLE_LIST (state) {
-            state.list = !state.list;
+        SET_LIST (state) {
+            state.list = true;
+        },
+
+        SET_GRID (state) {
+            state.list = false;
         },
 
         TOGGLE_FLASH (state) {
