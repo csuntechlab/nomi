@@ -19636,7 +19636,7 @@ var render = function() {
                   type: "text",
                   id: "ex0",
                   name: "ex0",
-                  "aria-placeholder": _vm.sp_notes
+                  placeholder: _vm.sp_notes
                 },
                 on: { input: _vm.updateNotes }
               }),
