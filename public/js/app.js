@@ -20373,7 +20373,7 @@ var render = function() {
                     "a",
                     {
                       staticClass: "faculty-name",
-                      attrs: { href: "#", title: "User Name" }
+                      attrs: { href: _vm.faculty_profile, title: "User Name" }
                     },
                     [_vm._v(_vm._s(_vm.faculty_full_name))]
                   ),
@@ -22339,7 +22339,7 @@ var render = function() {
                   "router-link",
                   {
                     staticClass: "light-grey",
-                    staticStyle: { "font-size": "1.2rem" },
+                    staticStyle: { "font-size": "1.1rem" },
                     attrs: { to: "/class/" + course.id },
                     nativeOn: {
                       click: function($event) {

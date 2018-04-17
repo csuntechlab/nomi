@@ -5,7 +5,7 @@
                 <div :class="bgcolor(course.id)+' type--center'">
                     <router-link
                         class="light-grey"
-                        style="font-size: 1.2rem"
+                        style="font-size: 1.1rem"
                         :to="'/class/'+course.id"
                         @click.native="$store.dispatch('setCourse', {id: course.id, title: course.title})"
                     >
