@@ -29,6 +29,9 @@ export default new Vuex.Store({
         sp_images: null,
         sp_image_priority: null,
         sp_notes: null,
+
+        courseid: null,
+        courseTitle: null,
     },
 
     getters: {
@@ -38,8 +41,6 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         menushow: state => state.menushow,
-        courseid: state => state.courseid,
-        courseTitle: state => state.courseTitle,
 
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
@@ -57,6 +58,9 @@ export default new Vuex.Store({
         sp_images: state => state.sp_images,
         sp_image_priority: state => state.sp_image_priority,
         sp_notes: state => state.sp_notes,
+
+        courseid: state => state.courseid,
+        courseTitle: state => state.courseTitle,
     },
 
     actions: {
@@ -130,6 +134,10 @@ export default new Vuex.Store({
 
         refreshRoster (context) {
             context.commit('REFRESH_ROSTER');
+        },
+
+        setCourse (context, payload) {
+            context.commit('SET_COURSE', payload);
         }
     },
 
@@ -328,6 +336,11 @@ export default new Vuex.Store({
                     this.errors.push(e)
                 });
         },
+
+        SET_COURSE: function (state, payload) {
+            state.courseid = payload.id;
+            state.courseTitle = payload.title;
+        }
     }
 });
 

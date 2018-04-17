@@ -19524,9 +19524,9 @@ var render = function() {
                 {
                   staticClass: "light-grey",
                   attrs: { to: "/class/" + this.courseid },
-                  on: {
+                  nativeOn: {
                     click: function($event) {
-                      this.$store.dispatch("getData")
+                      _vm.$store.dispatch("getData")
                     }
                   }
                 },
@@ -19726,7 +19726,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         sp_bio: null,
         sp_images: null,
         sp_image_priority: null,
-        sp_notes: null
+        sp_notes: null,
+
+        courseid: null,
+        courseTitle: null
     },
 
     getters: {
@@ -19747,12 +19750,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         menushow: function menushow(state) {
             return state.menushow;
-        },
-        courseid: function courseid(state) {
-            return state.courseid;
-        },
-        courseTitle: function courseTitle(state) {
-            return state.courseTitle;
         },
 
         faculty_email: function faculty_email(state) {
@@ -19800,6 +19797,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
+        },
+
+        courseid: function courseid(state) {
+            return state.courseid;
+        },
+        courseTitle: function courseTitle(state) {
+            return state.courseTitle;
         }
     },
 
@@ -19858,6 +19862,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         refreshRoster: function refreshRoster(context) {
             context.commit('REFRESH_ROSTER');
+        },
+        setCourse: function setCourse(context, payload) {
+            context.commit('SET_COURSE', payload);
         }
     },
 
@@ -20055,6 +20062,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             }).catch(function (e) {
                 _this5.errors.push(e);
             });
+        },
+
+        SET_COURSE: function SET_COURSE(state, payload) {
+            state.courseid = payload.id;
+            state.courseTitle = payload.title;
         }
     }
 }));
@@ -22276,6 +22288,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22321,9 +22340,23 @@ var render = function() {
                   {
                     staticClass: "light-grey",
                     staticStyle: { "font-size": "1.2rem" },
-                    attrs: { to: "/class/" + course.id }
+                    attrs: { to: "/class/" + course.id },
+                    nativeOn: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setCourse", {
+                          id: course.id,
+                          title: course.title
+                        })
+                      }
+                    }
                   },
-                  [_vm._v(_vm._s(course.title))]
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(course.title) +
+                        "\n                "
+                    )
+                  ]
                 )
               ],
               1
@@ -23024,6 +23057,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -23070,9 +23107,27 @@ var render = function() {
         _c(
           "strong",
           [
-            _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
-              _vm._v(_vm._s(_vm.course.title))
-            ])
+            _c(
+              "router-link",
+              {
+                attrs: { to: "/class/" + _vm.course.id },
+                nativeOn: {
+                  click: function($event) {
+                    _vm.$store.dispatch("setCourse", {
+                      id: _vm.course.id,
+                      title: _vm.course.title
+                    })
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.course.title) +
+                    "\n                "
+                )
+              ]
+            )
           ],
           1
         ),

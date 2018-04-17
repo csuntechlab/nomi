@@ -3,7 +3,14 @@
         <carousel :perPage="pageSize" :pagination-enabled="false">
             <slide v-for="course in this.courses" :key="course.title" :course="course">
                 <div :class="bgcolor(course.id)+' type--center'">
-                    <router-link class="light-grey" style="font-size: 1.2rem" :to="'/class/'+course.id">{{course.title}}</router-link>
+                    <router-link
+                        class="light-grey"
+                        style="font-size: 1.2rem"
+                        :to="'/class/'+course.id"
+                        @click.native="$store.dispatch('setCourse', {id: course.id, title: course.title})"
+                    >
+                        {{course.title}}
+                    </router-link>
                 </div>
             </slide>
         </carousel>
