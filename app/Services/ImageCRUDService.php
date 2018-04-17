@@ -25,8 +25,9 @@ class ImageCRUDService implements ImageCRUDContract
         $email = \str_replace('nr_', '', request()->email);
         $uri = \explode('@', $email)[0];
 
-        File::exists(storage_path(env('IMAGE_UPLOAD_LOCATION') . $uri)) or
-        File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri);
+        if (!File::exists(env('IMAGE_UPLOAD_LOCATION') . $uri)) {
+            File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri);
+        }
 
         $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
 
