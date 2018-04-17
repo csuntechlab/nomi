@@ -25,13 +25,15 @@ class ImageCRUDService implements ImageCRUDContract
         $email = \str_replace('nr_', '', request()->email);
         $uri = \explode('@', $email)[0];
 
+        $oldmask = \umask(0);
+
         if (!File::exists(env('IMAGE_UPLOAD_LOCATION') . $uri)) {
-            $oldmask = \umask(0);
-            File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri);
-            \umask($oldmask);
+            File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri, 0777);
         }
 
         $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
+
+        \umask($oldmask);
 
         for ($i = 0; $i < 10; ++$i) {
             Cache::forget('students_' . $i);
