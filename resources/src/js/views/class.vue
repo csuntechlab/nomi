@@ -3,17 +3,13 @@
         <course-banner></course-banner>
         <settings-banner></settings-banner>
         <div class="container">
-            <roster-container></roster-container>
+            <roster-container :courseid="this.$route.params.id"></roster-container>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "class",
-
-        created () {
-            this.$store.dispatch('getCourseId', {courseid: parseInt(this.$route.params.id)})
-        }
+        name: "class"
     }
 </script>

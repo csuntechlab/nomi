@@ -13,8 +13,6 @@ export default new Vuex.Store({
         flash: true,
         lastname: true,
         descending: true,
-        courseid: 0,
-        courseTitle: "Course", 
 
         faculty_email: null,
         faculty_name: null,
@@ -110,10 +108,6 @@ export default new Vuex.Store({
             context.commit('SORT_ROSTER');
         },
 
-        getCourseId (context, payload) {
-            context.commit('GET_COURSE_ID', payload);
-        },
-
         getFacultyProfile (context, payload) {
             context.commit('GET_FACULTY_PROFILE', payload);
         },
@@ -132,6 +126,10 @@ export default new Vuex.Store({
 
         updateImagePriority (context, payload) {
             context.commit('UPDATE_IMAGE_PRIORITY', payload);
+        },
+
+        refreshRoster (context) {
+            context.commit('REFRESH_ROSTER');
         }
     },
 
@@ -266,11 +264,6 @@ export default new Vuex.Store({
             state.descending = false;
         },
 
-        GET_COURSE_ID: function (state, payload) {
-            state.courseid = payload.courseid;
-            state.courseTitle = state.courses[state.courseid].title;
-        },
-
         GET_FACULTY_PROFILE: function (state, payload) {
             axios.get(`faculty_profile/${state.faculty_email}`)
             .then(response => {
@@ -334,7 +327,7 @@ export default new Vuex.Store({
                 .catch(e => {
                     this.errors.push(e)
                 });
-        }
+        },
     }
 });
 
