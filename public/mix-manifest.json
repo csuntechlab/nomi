@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/js/metaphor.js": "/js/metaphor.js",
     "/css/metaphor.css": "/css/metaphor.css",
     "/css/vue-croppa.min.css": "/css/vue-croppa.min.css",
