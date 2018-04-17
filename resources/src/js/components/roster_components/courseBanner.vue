@@ -1,7 +1,10 @@
 <template>
     <div class="banner__position bg--navy-blue">
-        <div class="type--center course_banner">{{this.courseTitle}}</div>
-        <router-link class="type--left light-grey" to="/">Back</router-link>
+        <carousel :perPage="3">
+            <slide v-for="course in this.courses" :key="course.title" :course="course">
+                <router-link class="light-grey" :to="'/class/'+course.id">{{course.title}}</router-link>
+            </slide>
+        </carousel>
     </div>
 </template>
 
@@ -12,7 +15,7 @@
 
         computed: {
             ...mapGetters([
-                'courseTitle'
+                'courses'
             ])
         }
     }
