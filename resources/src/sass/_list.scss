@@ -7,7 +7,7 @@
   font-size: 125%;
 }
 
-input[type=text] {
+textarea[type=text] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -18,6 +18,6 @@ input[type=text] {
   
 }
 
-input[type=text]:focus{
+textarea[type=text]:focus{
   border: 3px solid lightblue;
 }

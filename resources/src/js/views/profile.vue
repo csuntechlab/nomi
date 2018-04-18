@@ -44,7 +44,7 @@
                         <br>
                         <form>
                             <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i></label>
-                            <input type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes">
+                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"                            ></textarea>
                             <button class="btn-default btn" @click="commitNotes">Commit</button>
                         </form>
                     </div>

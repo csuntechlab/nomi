@@ -19631,7 +19631,7 @@ var render = function() {
             _c("form", [
               _vm._m(0),
               _vm._v(" "),
-              _c("input", {
+              _c("textarea", {
                 attrs: { type: "text", id: "ex0", name: "ex0" },
                 domProps: { value: _vm.sp_notes },
                 on: { input: _vm.updateNotes }
