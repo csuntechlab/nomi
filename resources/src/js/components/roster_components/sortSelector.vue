@@ -21,7 +21,7 @@
         computed: {
             ...mapGetters([
                 'flash',
-                'list'
+                'list',
             ])
         },
 
