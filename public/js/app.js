@@ -19632,12 +19632,8 @@ var render = function() {
               _vm._m(0),
               _vm._v(" "),
               _c("input", {
-                attrs: {
-                  type: "text",
-                  id: "ex0",
-                  name: "ex0",
-                  placeholder: _vm.sp_notes
-                },
+                attrs: { type: "text", id: "ex0", name: "ex0" },
+                domProps: { value: _vm.sp_notes },
                 on: { input: _vm.updateNotes }
               }),
               _vm._v(" "),
