@@ -19170,11 +19170,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -19401,10 +19396,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
-            }).then(function (response) {
-                console.log(response);
             }).catch(function (e) {
-                _this.errors.push(e);
+                console.log(e);
             });
         },
 
@@ -19637,24 +19630,22 @@ var render = function() {
             _c("br"),
             _vm._v(" "),
             _c("form", [
-              _c("div", { staticClass: "form__group" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "textarea",
-                  {
-                    attrs: { id: "ex0", name: "ex0" },
-                    on: { input: _vm.updateNotes }
-                  },
-                  [_vm._v(_vm._s(this.sp_notes))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "button", on: { click: _vm.commitNotes } },
-                  [_vm._v("Commit")]
-                )
-              ])
+              _vm._m(0),
+              _vm._v(" "),
+              _c("textarea", {
+                attrs: { type: "text", id: "ex0", name: "ex0" },
+                domProps: { value: _vm.sp_notes },
+                on: { input: _vm.updateNotes }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn-default btn",
+                  on: { click: _vm.commitNotes }
+                },
+                [_vm._v("Commit")]
+              )
             ])
           ])
         ])
@@ -19667,16 +19658,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "h4",
-      { staticClass: "type--black type--thin type--marginless" },
-      [
-        _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
-        _vm._v(
-          "\n                                Add a Note:\n                            "
-        )
-      ]
-    )
+    return _c("label", [
+      _vm._v("Add a Note: "),
+      _c("i", { staticClass: "fa fa-plus-circle fa-blue" })
+    ])
   }
 ]
 render._withStripped = true
@@ -19870,8 +19855,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
     mutations: {
         GET_DATA: function GET_DATA(state) {
-            var _this = this;
-
             axios.get('data').then(function (response) {
                 state.courses = response.data["courses"];
                 state.roster = response.data["students"];
@@ -19885,7 +19868,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
                 state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
             }).catch(function (e) {
-                _this.errors.push(e);
+                console.log(e);
             });
         },
         SET_LIST: function SET_LIST(state) {
@@ -20002,25 +19985,21 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
 
         GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
-            var _this2 = this;
-
             axios.get('faculty_profile/' + state.faculty_email).then(function (response) {
                 state.faculty_profile_image = response.data;
             }).catch(function (e) {
-                _this2.errors.push(e);
+                console.log(e);
             });
         },
 
         GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
-            var _this3 = this;
-
             state.sp_emailURI = payload.uri;
             axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
                 state.sp_bio = response['data']['people'].biography;
 
                 if (state.sp_bio === null) state.sp_bio = "Pending biography from student.";
             }).catch(function (e) {
-                _this3.errors.push(e);
+                console.log(e);
             });
 
             axios.get('student_profile/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
@@ -20030,7 +20009,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
                 state.sp_notes = response['data'].notes;
                 state.sp_student_id = response['data'].student_id;
             }).catch(function (e) {
-                _this3.errors.push(e);
+                console.log(e);
             });
         },
 
@@ -20039,20 +20018,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
 
         COMMIT_NOTES: function COMMIT_NOTES(state) {
-            var _this4 = this;
-
             var data = new FormData();
             data.append('student_id', state.sp_student_id);
             data.append('notepad', state.sp_notes);
 
             axios.post('update_note', data).catch(function (e) {
-                _this4.errors.push(e);
+                console.log(e);
             });
         },
 
         UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
-            var _this5 = this;
-
             var data = new FormData();
             data.append('student_id', state.sp_student_id.replace("members:", ""));
             data.append('image_priority', payload.image_priority);
@@ -20060,7 +20035,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             axios.post('api/priority', data).then(function (response) {
                 state.sp_image_priority = payload.image_priority;
             }).catch(function (e) {
-                _this5.errors.push(e);
+                console.log(e);
             });
         },
 
@@ -21714,7 +21689,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).then(function (response) {
                 console.log(response);
             }).catch(function (e) {
-                _this.errors.push(e);
+                console.log(e);
             });
         },
 

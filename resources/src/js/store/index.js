@@ -158,7 +158,7 @@ export default new Vuex.Store({
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 })
         },
 
@@ -278,7 +278,7 @@ export default new Vuex.Store({
                 state.faculty_profile_image = response.data;
             })
             .catch(e => {
-                this.errors.push(e);
+                console.log(e);
             });
         },
 
@@ -292,7 +292,7 @@ export default new Vuex.Store({
                         state.sp_bio = "Pending biography from student.";
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 });
 
             axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
@@ -304,7 +304,7 @@ export default new Vuex.Store({
                     state.sp_student_id = response['data'].student_id;
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 });
         },
 
@@ -319,7 +319,7 @@ export default new Vuex.Store({
 
             axios.post('update_note', data)
                 .catch(e => {
-                    this.errors.push(e)
+                    console.log(e)
                 });
         },
 
@@ -333,7 +333,7 @@ export default new Vuex.Store({
                     state.sp_image_priority = payload.image_priority;
                 })
                 .catch(e => {
-                    this.errors.push(e)
+                    console.log(e)
                 });
         },
 

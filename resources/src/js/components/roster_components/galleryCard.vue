@@ -93,7 +93,7 @@ export default {
                     console.log(response);
                 })
                 .catch(e => {
-                    this.errors.push(e)
+                    console.log(e)
                 });
         },
 
