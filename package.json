@@ -20,6 +20,7 @@
         "vue-router": "^3.0.1"
     },
     "dependencies": {
+        "bower": "^1.8.4",
         "prod": "^1.0.1",
         "vue-axios": "latest",
         "vue-carousel": "^0.6.11",
