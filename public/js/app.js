@@ -19699,13 +19699,15 @@ if (false) {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
-    plugins: [Object(__WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__["a" /* default */])()],
+    plugins: [Object(__WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__["a" /* default */])({
+        key: 'nameface'
+    })],
 
     state: {
         courses: [],
         roster: [],
         flashroster: [],
-        menushow: true,
+        menushow: false,
         list: true,
         flash: true,
         lastname: true,
@@ -20443,7 +20445,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -20506,7 +20508,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -20533,8 +20534,7 @@ var render = function() {
     { staticClass: "bg--navy-blue", attrs: { id: "menu-open-close" } },
     [
       this.menushow
-        ? _c("div")
-        : _c("div", { staticClass: "menu_container type--center" }, [
+        ? _c("div", { staticClass: "menu_container type--center" }, [
             _c("div", { staticClass: "menu_selections type--center" }, [
               _c("div", { staticClass: "list" }, [
                 _c("img", {
@@ -20550,7 +20550,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "faculty-name",
-                    attrs: { href: "faculty_profile", title: "User Name" }
+                    attrs: { href: _vm.faculty_profile, title: "User Name" }
                   },
                   [_vm._v(_vm._s(_vm.faculty_full_name))]
                 ),
@@ -20584,6 +20584,7 @@ var render = function() {
               ])
             ])
           ])
+        : _vm._e()
     ]
   )
 }
@@ -20748,24 +20749,24 @@ var render = function() {
         this.menushow
           ? _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--center light-grey",
-                attrs: { title: "Open Menu" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.openMenu($event)
-                  }
-                }
-              })
-            ])
-          : _c("div", { staticClass: "menu_button" }, [
-              _c("i", {
                 staticClass: "fa fa-angle-down fa-3x type--center light-grey",
                 attrs: { title: "Close Menu" },
                 on: {
                   click: function($event) {
                     $event.preventDefault()
                     _vm.closeMenu($event)
+                  }
+                }
+              })
+            ])
+          : _c("div", { staticClass: "menu_button" }, [
+              _c("i", {
+                staticClass: "fa fa-angle-up fa-3x type--center light-grey",
+                attrs: { title: "Open Menu" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.openMenu($event)
                   }
                 }
               })
