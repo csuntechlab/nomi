@@ -9,20 +9,4 @@ export default {
     descending: true,
     courseid: 0,
     courseTitle: "Course",
-
-    faculty_email: null,
-    faculty_name: null,
-    faculty_profile: null,
-    faculty_first_name: null,
-    faculty_last_name: null,
-    faculty_full_name: null,
-    faculty_profile_image: null,
-
-    sp_student_id: null,
-    sp_emailURI: null,
-    sp_display_name: null,
-    sp_bio: null,
-    sp_images: null,
-    sp_image_priority: null,
-    sp_notes: null,
 }
