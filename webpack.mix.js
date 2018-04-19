@@ -22,3 +22,6 @@ mix.copy('node_modules/vue-croppa/dist/vue-croppa.min.css', 'public/css')
 
 mix.copy('bower_components/font-awesome/fonts', 'public/fonts')
     .copy('bower_components/font-awesome/css/font-awesome.min.css', 'public/css');
+
+mix.copy('bower_components/font-awesome/fonts', 'public/fonts')
+    .copy('bower_components/font-awesome/css/font-awesome.css', 'public/css');
