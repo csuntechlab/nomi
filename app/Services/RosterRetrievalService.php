@@ -83,28 +83,26 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         $email = \str_replace('nr_', '', $student->email);
         $email = \substr($email, 0, \strpos($email, '@'));
-        $imageLocation = '/' . 'likeness.jpg';
+        $imageLocation = 'likeness.jpg';
 
         // checks if image already exists
-        if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . '/' . $email . '/' . 'likeness.jpg')) {
-            $imageLocation = $email . '/' . 'likeness.jpg';
+        if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . $email . '/likeness.jpg')) {
+            $imageLocation = $email . '/likeness.jpg';
         }
 
-        $image = (string) $imageManager
-            ->make(env('IMAGE_UPLOAD_LOCATION') . '/' . $imageLocation)
-            ->encode('data-url');
+        $image = 'images/' . $imageLocation;
 
+        /*
         if (!\property_exists($student, 'profile_image')) {
             $student->profile_image = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
-                ->encode('data-url');
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg');
         }
 
         if (!\property_exists($student, 'avatar_image')) {
             $student->avatar_image = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg')
-                ->encode('data-url');
+                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg');
         }
+        */
 
         return [
             'student_id' => $student->members_id,
@@ -113,8 +111,8 @@ class RosterRetrievalService implements RosterRetrievalContract
             'email' => $student->email,
             'images' => [
                 'likeness' => $image,
-                'avatar' => $student->avatar_image,
-                'official' => $student->profile_image,
+                'avatar' => 'images/student_avatar_default.jpg',
+                'official' => 'images/student_profile_default.jpg',
             ],
             'image_priority' => $student->image_priority,
             'recognized' => false,
