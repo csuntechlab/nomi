@@ -1,6 +1,12 @@
 <template>
     <div>
-        <div class="banner__position bg--blue-green">
+         <div v-if="sp_bio == null" class="type--center">
+             <br>
+             <br>
+            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+        </div>
+        <div v-else>
+            <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -51,6 +57,8 @@
                 </div>
             </div>
         </div>
+    </div>
+        
     </div>
 </template>
 

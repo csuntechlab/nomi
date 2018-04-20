@@ -19167,6 +19167,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19502,152 +19510,174 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "banner__position bg--blue-green" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "light-grey",
-                  attrs: { to: "/class/" + this.courseid },
-                  on: {
-                    click: function($event) {
-                      this.$store.dispatch("getData")
-                    }
-                  }
-                },
-                [_c("h4", [_vm._v("Back to " + _vm._s(this.courseTitle))])]
-              )
-            ],
-            1
-          )
+    _vm.sp_bio == null
+      ? _c("div", { staticClass: "type--center" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "section--lg section--md student-banner default_padding" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-xs-12 col-md-12 col-lg-12 default_padding" },
-              [
+      : _c("div", [
+          _c("div", { staticClass: "banner__position bg--blue-green" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
                 _c(
-                  "carousel",
-                  { attrs: { perPage: 1 } },
+                  "div",
+                  { staticClass: "col-sm-12" },
                   [
                     _c(
-                      "slide",
+                      "router-link",
+                      {
+                        staticClass: "light-grey",
+                        attrs: { to: "/class/" + this.courseid },
+                        on: {
+                          click: function($event) {
+                            this.$store.dispatch("getData")
+                          }
+                        }
+                      },
                       [
-                        _c("croppa-profile", {
-                          staticClass: "grid-image img--circle"
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "likeness" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["avatar"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", { attrs: { image_type: "avatar" } })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["official"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "official" }
-                        })
-                      ],
-                      1
+                        _c("h4", [
+                          _vm._v("Back to " + _vm._s(this.courseTitle))
+                        ])
+                      ]
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "h1",
-                  {
-                    staticClass:
-                      "type--white type--thin type--marginless type--center"
-                  },
-                  [_vm._v(_vm._s(this.sp_display_name))]
                 )
-              ],
-              1
-            )
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [
-                _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                _c("br"),
-                _vm._v("@my.csun.edu")
-              ]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("form", [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("textarea", {
-                attrs: { type: "text", id: "ex0", name: "ex0" },
-                domProps: { value: _vm.sp_notes },
-                on: { input: _vm.updateNotes }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn-default btn",
-                  on: { click: _vm.commitNotes }
-                },
-                [_vm._v("Commit")]
-              )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "section--lg section--md student-banner default_padding"
+            },
+            [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-xs-12 col-md-12 col-lg-12 default_padding"
+                    },
+                    [
+                      _c(
+                        "carousel",
+                        { attrs: { perPage: 1 } },
+                        [
+                          _c(
+                            "slide",
+                            [
+                              _c("croppa-profile", {
+                                staticClass: "grid-image img--circle"
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "likeness" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["avatar"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "avatar" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["official"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "official" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "type--white type--thin type--marginless type--center"
+                        },
+                        [_vm._v(_vm._s(this.sp_display_name))]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "section type--center" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-12" }, [
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [
+                      _vm._v("Email: " + _vm._s(this.sp_emailURI)),
+                      _c("br"),
+                      _vm._v("@my.csun.edu")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("form", [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      attrs: { type: "text", id: "ex0", name: "ex0" },
+                      domProps: { value: _vm.sp_notes },
+                      on: { input: _vm.updateNotes }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn-default btn",
+                        on: { click: _vm.commitNotes }
+                      },
+                      [_vm._v("Commit")]
+                    )
+                  ])
+                ])
+              ])
             ])
           ])
         ])
-      ])
-    ])
   ])
 }
 var staticRenderFns = [
