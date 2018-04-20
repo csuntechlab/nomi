@@ -18,8 +18,6 @@ export default new Vuex.Store({
         flash: true,
         lastname: true,
         descending: true,
-        courseid: 0,
-        courseTitle: "Course", 
 
         faculty_email: null,
         faculty_name: null,
@@ -36,6 +34,9 @@ export default new Vuex.Store({
         sp_images: null,
         sp_image_priority: null,
         sp_notes: null,
+
+        courseid: null,
+        courseTitle: null,
     },
 
     getters: {
@@ -45,8 +46,6 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         menushow: state => state.menushow,
-        courseid: state => state.courseid,
-        courseTitle: state => state.courseTitle,
 
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
@@ -64,11 +63,22 @@ export default new Vuex.Store({
         sp_images: state => state.sp_images,
         sp_image_priority: state => state.sp_image_priority,
         sp_notes: state => state.sp_notes,
+
+        courseid: state => state.courseid,
+        courseTitle: state => state.courseTitle,
     },
 
     actions: {
         getData (context) {
             context.commit('GET_DATA');
+        },
+
+        setList (context) {
+            context.commit('SET_LIST');
+        },
+
+        setGrid (context) {
+            context.commit('SET_GRID');
         },
 
         toggleList (context) {
@@ -107,10 +117,6 @@ export default new Vuex.Store({
             context.commit('SORT_ROSTER');
         },
 
-        getCourseId (context, payload) {
-            context.commit('GET_COURSE_ID', payload);
-        },
-
         getFacultyProfile (context, payload) {
             context.commit('GET_FACULTY_PROFILE', payload);
         },
@@ -130,6 +136,14 @@ export default new Vuex.Store({
         updateImagePriority (context, payload) {
             context.commit('UPDATE_IMAGE_PRIORITY', payload);
         },
+
+        refreshRoster (context) {
+            context.commit('REFRESH_ROSTER');
+        },
+
+        setCourse (context, payload) {
+            context.commit('SET_COURSE', payload);
+        }
     },
 
     mutations: {
@@ -153,8 +167,12 @@ export default new Vuex.Store({
                 })
         },
 
-        TOGGLE_LIST (state) {
-            state.list = !state.list;
+        SET_LIST (state) {
+            state.list = true;
+        },
+
+        SET_GRID (state) {
+            state.list = false;
         },
 
         TOGGLE_FLASH (state) {
@@ -259,11 +277,6 @@ export default new Vuex.Store({
             state.descending = false;
         },
 
-        GET_COURSE_ID: function (state, payload) {
-            state.courseid = payload.courseid;
-            state.courseTitle = state.courses[state.courseid].title;
-        },
-
         GET_FACULTY_PROFILE: function (state, payload) {
             axios.get(`faculty_profile/${state.faculty_email}`)
             .then(response => {
@@ -328,6 +341,11 @@ export default new Vuex.Store({
                     console.log(e)
                 });
         },
+
+        SET_COURSE: function (state, payload) {
+            state.courseid = payload.id;
+            state.courseTitle = payload.title;
+        }
     }
-});
+})
 
