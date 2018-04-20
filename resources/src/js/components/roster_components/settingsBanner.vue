@@ -1,6 +1,6 @@
 <template>
     <nav class="banner__position bg--light-grey" style="height: 55px">
-        <router-link class="col-xs-4 col-sm-4 col-md-4 navy-blue" to="/" @click="this.$store.dispatch('getFacultyProfile')">Back to Class Sections</router-link>
+        <list-grid-selector class="col-xs-4 col-sm-4 col-md-4"></list-grid-selector>
         <div class="col-xs-2 col-sm-2 col-md-2">
             <shuffle-button v-if="!this.list && this.flash"></shuffle-button>
         </div>
@@ -22,7 +22,7 @@
         components: {
             shuffleButton,
             cardToggleButton,
-            sortSelector
+            sortSelector,
         },
 
         computed: {

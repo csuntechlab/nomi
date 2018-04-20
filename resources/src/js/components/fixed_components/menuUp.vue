@@ -14,7 +14,7 @@
                         <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a>
                     </div>
                     <a class="faculty-links" href="#" title="Game">Game</a>
-                    <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>
+                    <router-link class="faculty-links" to="/">Courses</router-link>
                     <a class="faculty-links" href= "/logout" title="Logout">Logout</a>
                 </div>
             </div>
@@ -61,5 +61,4 @@
         }
     }
 </script>
-<style scoped>
-</style>
+

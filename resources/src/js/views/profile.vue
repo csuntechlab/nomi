@@ -10,7 +10,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <router-link class="light-grey" :to="'/class/'+this.courseid" @click="this.$store.dispatch('getData')">
+                        <router-link class="light-grey" :to="'/class/'+this.courseid" @click.native="$store.dispatch('getData')">
                             <h4>Back to {{this.courseTitle}}</h4>
                         </router-link>
                     </div>
