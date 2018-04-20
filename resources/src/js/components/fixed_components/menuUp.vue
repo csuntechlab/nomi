@@ -1,7 +1,6 @@
 <template>
     <div id="menu-open-close" class="bg--navy-blue">
-        <div v-if="this.menushow"></div>
-        <div v-else class="menu_container type--center">
+        <div v-if="this.menushow" class="menu_container type--center">
             <div class="menu_selections type--center">
                 <div class="list">
                     <img id="faculty-img" :src=faculty_profile_image class="img--circle faculty_image" name="photo">

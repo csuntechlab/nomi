@@ -2,7 +2,6 @@ import axios from 'axios';
 import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
-import { mapGetters } from 'vuex';
 import VueCarousel from 'vue-carousel';
 
 window.Vue = require('vue');
@@ -31,7 +30,4 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-    created () {
-        this.$store.dispatch('getData');
-    }
 });

@@ -24,6 +24,7 @@
         "vue-axios": "latest",
         "vue-carousel": "^0.6.11",
         "vue-croppa": "^1.2.0",
-        "vuex": "^3.0.1"
+        "vuex": "^3.0.1",
+        "vuex-persistedstate": "^2.5.2"
     }
 }

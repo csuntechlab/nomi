@@ -10,5 +10,8 @@
 <script>
     export default {
         name: "home",
+        created () {
+            this.$store.dispatch('getData');
+        },
     }
 </script>

@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<div class="container">
+    <div class="container">
         {{Form::open()}}
         <h1>Log In</h1>
         Username
@@ -11,5 +11,8 @@
         <br>
         <loading-button></loading-button>
         {{Form::close()}}
-</div>
+    </div>
+    <script>
+        localStorage.removeItem('nameface');
+    </script>
 @stop
