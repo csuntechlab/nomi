@@ -1,7 +1,6 @@
 <template>
     <div id="menu-open-close" class="bg--navy-blue">
-        <div v-if="this.menushow"></div>
-        <div v-else class="menu_container type--center">
+        <div v-if="this.menushow" class="menu_container type--center">
             <div class="menu_selections type--center">
                 <div class="list">
                     <div v-if="this.loading" class="type--center">
