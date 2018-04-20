@@ -20467,19 +20467,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            loading: true
+            //loading: true,
         };
     },
 
-    created: function created() {
-        var _this = this;
-
-        this.$store.subscribe(function (mutation) {
-            if (mutation.type === 'GET_FACULTY_PROFILE') {
-                _this.loading = !_this.loading;
-            }
-        });
-    },
+    // created () {
+    //     this.$store.subscribe(mutation => {
+    //         if (mutation.type === 'GET_FACULTY_PROFILE') {
+    //             this.loading = !this.loading; 
+    //         }
+    //     })
+    // },
 
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'menushow', 'faculty_profile_image'])),
@@ -20509,7 +20507,7 @@ var render = function() {
                 "div",
                 { staticClass: "list" },
                 [
-                  this.loading
+                  _vm.faculty_profile == null
                     ? _c("div", { staticClass: "type--center" }, [
                         _c("br"),
                         _vm._v(" "),
@@ -23119,21 +23117,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             messages: true,
-            errors: [],
-            loading: true
+            errors: []
+            //loading: true,
         };
     },
 
-    created: function created() {
-        var _this = this;
-
-        this.$store.subscribe(function (mutation) {
-            if (mutation.type === 'GET_FACULTY_PROFILE') {
-                _this.loading = !_this.loading;
-            }
-        });
-    },
-
+    // created () {
+    //     this.$store.subscribe(mutation => {
+    //         if (mutation.type === 'GET_FACULTY_PROFILE') {
+    //             this.loading = !this.loading; 
+    //         }
+    //     })
+    // },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile'])),
 
@@ -23393,7 +23388,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.loading
+    _vm.faculty_profile == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])

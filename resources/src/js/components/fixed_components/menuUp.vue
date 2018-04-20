@@ -3,7 +3,7 @@
         <div v-if="this.menushow" class="menu_container type--center">
             <div class="menu_selections type--center">
                 <div class="list">
-                    <div v-if="this.loading" class="type--center">
+                    <div v-if="faculty_profile == null" class="type--center">
                         <br>
                         <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
                         <br>
@@ -29,17 +29,17 @@
 
         data: function() {
             return{
-                loading: true,
+                //loading: true,
             }
         },
 
-        created () {
-            this.$store.subscribe(mutation => {
-                if (mutation.type === 'GET_FACULTY_PROFILE') {
-                    this.loading = !this.loading; 
-                }
-            })
-        },
+        // created () {
+        //     this.$store.subscribe(mutation => {
+        //         if (mutation.type === 'GET_FACULTY_PROFILE') {
+        //             this.loading = !this.loading; 
+        //         }
+        //     })
+        // },
 
 
         computed: {

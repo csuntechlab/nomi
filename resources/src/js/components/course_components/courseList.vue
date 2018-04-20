@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="loading" class="type--center">
+        <div v-if="faculty_profile == null" class="type--center">
                     <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
         <ul v-else class="list">
@@ -18,17 +18,17 @@
             return {
                 messages: true,
                 errors: [],
-                loading: true,
+                //loading: true,
             }
         },
 
-        created () {
-            this.$store.subscribe(mutation => {
-                if (mutation.type === 'GET_FACULTY_PROFILE') {
-                    this.loading = !this.loading; 
-                }
-            })
-        },
+        // created () {
+        //     this.$store.subscribe(mutation => {
+        //         if (mutation.type === 'GET_FACULTY_PROFILE') {
+        //             this.loading = !this.loading; 
+        //         }
+        //     })
+        // },
 
         computed: {
             ...mapGetters([
