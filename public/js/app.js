@@ -19511,7 +19511,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.sp_bio == null
+    _vm.sp_images == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -20465,21 +20465,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    data: function data() {
-        return {
-            //loading: true,
-        };
-    },
-
-    // created () {
-    //     this.$store.subscribe(mutation => {
-    //         if (mutation.type === 'GET_FACULTY_PROFILE') {
-    //             this.loading = !this.loading; 
-    //         }
-    //     })
-    // },
-
-
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'menushow', 'faculty_profile_image'])),
     watch: {
         'faculty_email': function faculty_email(email) {
@@ -20507,7 +20492,7 @@ var render = function() {
                 "div",
                 { staticClass: "list" },
                 [
-                  _vm.faculty_profile == null
+                  _vm.faculty_profile_image == null
                     ? _c("div", { staticClass: "type--center" }, [
                         _c("br"),
                         _vm._v(" "),
@@ -22116,12 +22101,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -22135,18 +22114,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             errors: [],
             lastname: true,
             descending: true
-            //loading: true,
         };
     },
-
-    // created () {
-    //     this.$store.subscribe(mutation => {
-    //         if (mutation.type === 'GET_COURSE_ID') {
-    //             this.$socket.emit('loading', mutation.payload)
-    //             this.loading = !this.loading; 
-    //         }
-    //     })
-    // },
 
     components: {
         studentListItem: __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue___default.a
@@ -22154,9 +22123,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['roster']
-    //'courseid',
-    ))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['roster']))
 });
 
 /***/ }),
@@ -23118,17 +23085,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             messages: true,
             errors: []
-            //loading: true,
         };
     },
-
-    // created () {
-    //     this.$store.subscribe(mutation => {
-    //         if (mutation.type === 'GET_FACULTY_PROFILE') {
-    //             this.loading = !this.loading; 
-    //         }
-    //     })
-    // },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile'])),
 
@@ -23480,9 +23438,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -23493,18 +23448,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             show: true,
             messages: true,
-            errors: [],
-            loading: true
+            errors: []
         };
     },
-
-    // created () {
-    //         this.$store.subscribe(mutation => {
-    //             if (mutation.type === 'GET_FACULTY_PROFILE') {
-    //                 this.loading = false; 
-    //             }
-    //         })
-    // },
 
     components: {
         courseCard: __WEBPACK_IMPORTED_MODULE_1__courseCard___default.a

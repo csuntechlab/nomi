@@ -18,17 +18,8 @@
             return {
                 messages: true,
                 errors: [],
-                //loading: true,
             }
         },
-
-        // created () {
-        //     this.$store.subscribe(mutation => {
-        //         if (mutation.type === 'GET_FACULTY_PROFILE') {
-        //             this.loading = !this.loading; 
-        //         }
-        //     })
-        // },
 
         computed: {
             ...mapGetters([
