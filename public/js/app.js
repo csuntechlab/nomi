@@ -19182,6 +19182,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
     components: {
         ImageHandler: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default.a,
         croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a
@@ -20026,6 +20027,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
 
         GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+            state.sp_display_name = null;
+            state.sp_images = null;
+            state.sp_image_priority = null;
+            state.sp_notes = null;
+            state.sp_student_id = null;
+
             state.sp_emailURI = payload.uri;
             axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
                 state.sp_bio = response['data']['people'].biography;

@@ -68,6 +68,7 @@
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+
         components: {
             ImageHandler,
             croppaProfile
