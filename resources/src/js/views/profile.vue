@@ -1,6 +1,12 @@
 <template>
     <div>
-        <div class="banner__position bg--blue-green">
+         <div v-if="sp_images == null" class="type--center">
+             <br>
+             <br>
+            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+        </div>
+        <div v-else>
+            <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -52,6 +58,8 @@
             </div>
         </div>
     </div>
+        
+    </div>
 </template>
 
 <script>
@@ -60,6 +68,7 @@
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+
         components: {
             ImageHandler,
             croppaProfile

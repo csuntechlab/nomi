@@ -19168,12 +19168,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+
     components: {
         ImageHandler: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default.a,
         croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a
@@ -19503,152 +19512,174 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "banner__position bg--blue-green" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12" },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "light-grey",
-                  attrs: { to: "/class/" + this.courseid },
-                  nativeOn: {
-                    click: function($event) {
-                      _vm.$store.dispatch("getData")
-                    }
-                  }
-                },
-                [_c("h4", [_vm._v("Back to " + _vm._s(this.courseTitle))])]
-              )
-            ],
-            1
-          )
+    _vm.sp_images == null
+      ? _c("div", { staticClass: "type--center" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "section--lg section--md student-banner default_padding" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-xs-12 col-md-12 col-lg-12 default_padding" },
-              [
+      : _c("div", [
+          _c("div", { staticClass: "banner__position bg--blue-green" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
                 _c(
-                  "carousel",
-                  { attrs: { perPage: 1 } },
+                  "div",
+                  { staticClass: "col-sm-12" },
                   [
                     _c(
-                      "slide",
+                      "router-link",
+                      {
+                        staticClass: "light-grey",
+                        attrs: { to: "/class/" + this.courseid },
+                        nativeOn: {
+                          click: function($event) {
+                            _vm.$store.dispatch("getData")
+                          }
+                        }
+                      },
                       [
-                        _c("croppa-profile", {
-                          staticClass: "grid-image img--circle"
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "likeness" }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["avatar"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", { attrs: { image_type: "avatar" } })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["official"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "official" }
-                        })
-                      ],
-                      1
+                        _c("h4", [
+                          _vm._v("Back to " + _vm._s(this.courseTitle))
+                        ])
+                      ]
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c(
-                  "h1",
-                  {
-                    staticClass:
-                      "type--white type--thin type--marginless type--center"
-                  },
-                  [_vm._v(_vm._s(this.sp_display_name))]
                 )
-              ],
-              1
-            )
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [
-                _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                _c("br"),
-                _vm._v("@my.csun.edu")
-              ]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("form", [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("textarea", {
-                attrs: { type: "text", id: "ex0", name: "ex0" },
-                domProps: { value: _vm.sp_notes },
-                on: { input: _vm.updateNotes }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn-default btn",
-                  on: { click: _vm.commitNotes }
-                },
-                [_vm._v("Commit")]
-              )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "section--lg section--md student-banner default_padding"
+            },
+            [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-xs-12 col-md-12 col-lg-12 default_padding"
+                    },
+                    [
+                      _c(
+                        "carousel",
+                        { attrs: { perPage: 1 } },
+                        [
+                          _c(
+                            "slide",
+                            [
+                              _c("croppa-profile", {
+                                staticClass: "grid-image img--circle"
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "likeness" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["avatar"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "avatar" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["official"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                attrs: { image_type: "official" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "type--white type--thin type--marginless type--center"
+                        },
+                        [_vm._v(_vm._s(this.sp_display_name))]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "section type--center" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-12" }, [
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [
+                      _vm._v("Email: " + _vm._s(this.sp_emailURI)),
+                      _c("br"),
+                      _vm._v("@my.csun.edu")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("form", [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      attrs: { type: "text", id: "ex0", name: "ex0" },
+                      domProps: { value: _vm.sp_notes },
+                      on: { input: _vm.updateNotes }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn-default btn",
+                        on: { click: _vm.commitNotes }
+                      },
+                      [_vm._v("Commit")]
+                    )
+                  ])
+                ])
+              ])
             ])
           ])
         ])
-      ])
-    ])
   ])
 }
 var staticRenderFns = [
@@ -19680,7 +19711,6 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(58);
-
 
 
 
@@ -19997,6 +20027,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
 
         GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+            state.sp_display_name = null;
+            state.sp_images = null;
+            state.sp_image_priority = null;
+            state.sp_notes = null;
+            state.sp_student_id = null;
+
             state.sp_emailURI = payload.uri;
             axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
                 state.sp_bio = response['data']['people'].biography;
@@ -20423,6 +20459,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -20431,7 +20475,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'menushow', 'faculty_profile_image'])),
     watch: {
         'faculty_email': function faculty_email(email) {
-            this.$store.dispatch('getFacultyProfile', { email: email });
+            this.$store.dispatch('getFacultyProfile', { faculty_email: email });
         }
     }
 });
@@ -20455,23 +20499,40 @@ var render = function() {
                 "div",
                 { staticClass: "list" },
                 [
-                  _c("img", {
-                    staticClass: "img--circle faculty_image",
-                    attrs: {
-                      id: "faculty-img",
-                      src: _vm.faculty_profile_image,
-                      name: "photo"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "faculty-name",
-                      attrs: { href: _vm.faculty_profile, title: "User Name" }
-                    },
-                    [_vm._v(_vm._s(_vm.faculty_full_name))]
-                  ),
+                  _vm.faculty_profile_image == null
+                    ? _c("div", { staticClass: "type--center" }, [
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("i", {
+                          staticClass: "fa fa-spinner fa-spin fa-3x fa-blue"
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("br")
+                      ])
+                    : _c("div", [
+                        _c("img", {
+                          staticClass: "img--circle faculty_image",
+                          attrs: {
+                            id: "faculty-img",
+                            src: _vm.faculty_profile_image,
+                            name: "photo"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "faculty-name",
+                            attrs: {
+                              href: "faculty_profile",
+                              title: "User Name"
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.faculty_full_name))]
+                        )
+                      ]),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -22045,6 +22106,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -22263,16 +22326,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "ul",
-    { staticClass: "list" },
-    _vm._l(this.roster[this.courseid], function(student) {
-      return _c("student-list-item", {
-        key: student.display_name,
-        attrs: { student: student }
+  return _c("div", [
+    _c(
+      "ul",
+      { staticClass: "list" },
+      _vm._l(this.roster[this.courseid], function(student) {
+        return _c("student-list-item", {
+          key: student.display_name,
+          attrs: { student: student }
+        })
       })
-    })
-  )
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23015,6 +23080,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -23027,11 +23095,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile'])),
 
     components: {
         courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a
     }
+
 });
 
 /***/ }),
@@ -23284,16 +23353,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "ul",
-      { staticClass: "list" },
-      _vm._l(this.courses, function(course) {
-        return _c("course-list-item", {
-          key: course.title,
-          attrs: { course: course }
-        })
-      })
-    )
+    _vm.faculty_profile == null
+      ? _c("div", { staticClass: "type--center" }, [
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+        ])
+      : _c(
+          "ul",
+          { staticClass: "list" },
+          _vm._l(this.courses, function(course) {
+            return _c("course-list-item", {
+              key: course.title,
+              attrs: { course: course }
+            })
+          })
+        )
   ])
 }
 var staticRenderFns = []
@@ -23385,11 +23458,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             errors: []
         };
     },
+
     components: {
         courseCard: __WEBPACK_IMPORTED_MODULE_1__courseCard___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile']))
 });
 
 /***/ }),

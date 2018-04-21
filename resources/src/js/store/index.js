@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -288,6 +287,12 @@ export default new Vuex.Store({
         },
 
         GET_STUDENT_PROFILE: function (state, payload) {
+            state.sp_display_name = null;
+            state.sp_images = null;
+            state.sp_image_priority = null;
+            state.sp_notes = null;
+            state.sp_student_id = null;
+            
             state.sp_emailURI = payload.uri;
             axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
                 .then(response => {
