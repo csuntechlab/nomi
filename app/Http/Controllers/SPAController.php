@@ -33,18 +33,26 @@ class SPAController extends Controller
             return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
         });
 
+        if (\is_string($courses)) {
+            $courses = \json_decode($courses);
+        }
+
         $students = [];
         $len = \count($courses);
 
         for ($i = 0; $i < $len; ++$i) {
-            \array_push(
-                $students,
+            $student =
                 Cache::remember('students_' . $i, $this->minutes, function () use ($i) {
                     return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
-                })
-            );
+                });
 
-            $courses[$i]->roster = $students[$i];
+            if (\is_string($student)) {
+                $student = \json_decode($student);
+            }
+
+            \array_push($students, $student);
+
+            $courses[$i]->roster = $student;
         }
 
         return ['courses' => $courses, 'students' => $students];
