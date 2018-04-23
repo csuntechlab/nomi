@@ -1,20 +1,22 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    plugins: [createPersistedState({
+        key: 'nameface'
+    })],
+
     state: {
         courses: [],
         roster: [],
         flashroster: [],
-        menushow: true,
+        menushow: false,
         list: true,
         flash: true,
         lastname: true,
         descending: true,
-        courseid: 0,
-        courseTitle: "Course", 
 
         faculty_email: null,
         faculty_name: null,
@@ -31,6 +33,9 @@ export default new Vuex.Store({
         sp_images: null,
         sp_image_priority: null,
         sp_notes: null,
+
+        courseid: null,
+        courseTitle: null,
     },
 
     getters: {
@@ -40,8 +45,6 @@ export default new Vuex.Store({
         list: state => state.list,
         flash: state => state.flash,
         menushow: state => state.menushow,
-        courseid: state => state.courseid,
-        courseTitle: state => state.courseTitle,
 
         faculty_email: state => state.faculty_email,
         faculty_name: state => state.faculty_name, 
@@ -59,11 +62,22 @@ export default new Vuex.Store({
         sp_images: state => state.sp_images,
         sp_image_priority: state => state.sp_image_priority,
         sp_notes: state => state.sp_notes,
+
+        courseid: state => state.courseid,
+        courseTitle: state => state.courseTitle,
     },
 
     actions: {
         getData (context) {
             context.commit('GET_DATA');
+        },
+
+        setList (context) {
+            context.commit('SET_LIST');
+        },
+
+        setGrid (context) {
+            context.commit('SET_GRID');
         },
 
         toggleList (context) {
@@ -102,10 +116,6 @@ export default new Vuex.Store({
             context.commit('SORT_ROSTER');
         },
 
-        getCourseId (context, payload) {
-            context.commit('GET_COURSE_ID', payload);
-        },
-
         getFacultyProfile (context, payload) {
             context.commit('GET_FACULTY_PROFILE', payload);
         },
@@ -124,6 +134,14 @@ export default new Vuex.Store({
 
         updateImagePriority (context, payload) {
             context.commit('UPDATE_IMAGE_PRIORITY', payload);
+        },
+
+        refreshRoster (context) {
+            context.commit('REFRESH_ROSTER');
+        },
+
+        setCourse (context, payload) {
+            context.commit('SET_COURSE', payload);
         }
     },
 
@@ -144,12 +162,16 @@ export default new Vuex.Store({
                     state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name ;
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 })
         },
 
-        TOGGLE_LIST (state) {
-            state.list = !state.list;
+        SET_LIST (state) {
+            state.list = true;
+        },
+
+        SET_GRID (state) {
+            state.list = false;
         },
 
         TOGGLE_FLASH (state) {
@@ -254,22 +276,23 @@ export default new Vuex.Store({
             state.descending = false;
         },
 
-        GET_COURSE_ID: function (state, payload) {
-            state.courseid = payload.courseid;
-            state.courseTitle = state.courses[state.courseid].title;
-        },
-
         GET_FACULTY_PROFILE: function (state, payload) {
             axios.get(`faculty_profile/${state.faculty_email}`)
             .then(response => {
                 state.faculty_profile_image = response.data;
             })
             .catch(e => {
-                this.errors.push(e);
+                console.log(e);
             });
         },
 
         GET_STUDENT_PROFILE: function (state, payload) {
+            state.sp_display_name = null;
+            state.sp_images = null;
+            state.sp_image_priority = null;
+            state.sp_notes = null;
+            state.sp_student_id = null;
+            
             state.sp_emailURI = payload.uri;
             axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
                 .then(response => {
@@ -279,7 +302,7 @@ export default new Vuex.Store({
                         state.sp_bio = "Pending biography from student.";
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 });
 
             axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
@@ -291,7 +314,7 @@ export default new Vuex.Store({
                     state.sp_student_id = response['data'].student_id;
                 })
                 .catch(e => {
-                    this.errors.push(e);
+                    console.log(e);
                 });
         },
 
@@ -306,7 +329,7 @@ export default new Vuex.Store({
 
             axios.post('update_note', data)
                 .catch(e => {
-                    this.errors.push(e)
+                    console.log(e)
                 });
         },
 
@@ -320,9 +343,14 @@ export default new Vuex.Store({
                     state.sp_image_priority = payload.image_priority;
                 })
                 .catch(e => {
-                    this.errors.push(e)
+                    console.log(e)
                 });
+        },
+
+        SET_COURSE: function (state, payload) {
+            state.courseid = payload.id;
+            state.courseTitle = payload.title;
         }
     }
-});
+})
 

@@ -19,14 +19,15 @@
         components: {
             studentMatrix,
             studentList,
-        
         },
+
+        props: [
+            'courseid'
+        ],
 
         computed: {
             ...mapGetters([
                 'list',
-                'courseid',
-                'courseTitle'
             ])
         }
     }

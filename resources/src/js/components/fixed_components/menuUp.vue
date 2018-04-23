@@ -1,13 +1,20 @@
 <template>
     <div id="menu-open-close" class="bg--navy-blue">
-        <div v-if="this.menushow"></div>
-        <div v-else class="menu_container type--center">
+        <div v-if="this.menushow" class="menu_container type--center">
             <div class="menu_selections type--center">
                 <div class="list">
-                    <img id="faculty-img" :src=faculty_profile_image class="img--circle faculty_image" name="photo">
-                    <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a>
+                    <div v-if="faculty_profile_image == null" class="type--center">
+                        <br>
+                        <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+                        <br>
+                        <br>
+                    </div>
+                    <div v-else>
+                        <img id="faculty-img" :src=faculty_profile_image class="img--circle faculty_image" name="photo">
+                        <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a>
+                    </div>
                     <a class="faculty-links" href="#" title="Game">Game</a>
-                    <a class="faculty-links" href="https://www.csun.edu/faculty/scholarship">Scholarship</a>
+                    <router-link class="faculty-links" to="/">Courses</router-link>
                     <a class="faculty-links" href= "/logout" title="Logout">Logout</a>
                 </div>
             </div>
@@ -34,10 +41,9 @@
         },
         watch: {
             'faculty_email': function(email){
-                this.$store.dispatch('getFacultyProfile', {email: email} );
+                this.$store.dispatch('getFacultyProfile', {faculty_email: email} );
             }
         }
     }
 </script>
-<style scoped>
-</style>
+

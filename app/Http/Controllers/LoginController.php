@@ -29,6 +29,10 @@ class LoginController extends Controller
      */
     public function index()
     {
+        if (auth()->user()) {
+            return redirect('home');
+        }
+
         return view('login');
     }
 

@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Contracts\FacultyProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
-use Intervention\Image\ImageManager;
 
 class FacultyProfileService implements FacultyProfileContract
 {
@@ -20,7 +19,6 @@ class FacultyProfileService implements FacultyProfileContract
     public function getFacultyProfile($email)
     {
         $faculty = $this->webResourceRetriever->getStudent($email);
-        $imageManager = new ImageManager(['driver' => 'imagick']);
 
         $profile = \json_decode($faculty, true)['people'];
 

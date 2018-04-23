@@ -1,6 +1,9 @@
 <template>
     <div>
-        <ul class="list">
+        <div v-if="faculty_profile == null" class="type--center">
+                    <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+        </div>
+        <ul v-else class="list">
             <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
         </ul>
     </div>
@@ -20,12 +23,14 @@
 
         computed: {
             ...mapGetters([
-                'courses'
+                'courses',
+                'faculty_profile',
             ])
         },
 
         components: {
             courseListItem
-        }
+        },
+
     }
 </script>
