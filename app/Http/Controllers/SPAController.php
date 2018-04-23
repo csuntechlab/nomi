@@ -43,6 +43,8 @@ class SPAController extends Controller
                     return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
                 })
             );
+
+            $courses[$i]->roster = $students[$i];
         }
 
         return ['courses' => $courses, 'students' => $students];
