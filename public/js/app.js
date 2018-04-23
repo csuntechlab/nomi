@@ -20277,30 +20277,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "primary-nav bg--navy-blue" }, [
-      _c("div", { staticClass: "centered-position" }, [
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__brand",
-            attrs: { href: "https://www.csun.edu/" }
-          },
-          [
-            _c("span", { staticClass: "sr-only" }, [
-              _vm._v("California State University, Northridge (CSUN)")
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "primary-nav__sub-brand nav_title",
-            attrs: { href: "https://www.csun.edu/" }
-          },
-          [_vm._v("Nameface")]
-        )
-      ])
+    return _c("nav", { staticClass: "primary-nav" }, [
+      _c(
+        "a",
+        {
+          staticClass: "primary-nav__brand",
+          attrs: { href: "https://www.csun.edu/" }
+        },
+        [
+          _c("span", { staticClass: "sr-only" }, [
+            _vm._v("California State University, Northridge (CSUN)")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "primary-nav__sub-brand nav_title",
+          attrs: { href: "https://www.csun.edu/" }
+        },
+        [_vm._v("Nameface")]
+      )
     ])
   }
 ]
@@ -20488,83 +20486,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "bg--navy-blue", attrs: { id: "menu-open-close" } },
-    [
-      this.menushow
-        ? _c("div", { staticClass: "menu_container type--center" }, [
-            _c("div", { staticClass: "menu_selections type--center" }, [
-              _c(
-                "div",
-                { staticClass: "list" },
-                [
-                  _vm.faculty_profile_image == null
-                    ? _c("div", { staticClass: "type--center" }, [
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("i", {
-                          staticClass: "fa fa-spinner fa-spin fa-3x fa-blue"
-                        }),
-                        _vm._v(" "),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("br")
-                      ])
-                    : _c("div", [
-                        _c("img", {
-                          staticClass: "img--circle faculty_image",
-                          attrs: {
-                            id: "faculty-img",
-                            src: _vm.faculty_profile_image,
-                            name: "photo"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "faculty-name",
-                            attrs: {
-                              href: "faculty_profile",
-                              title: "User Name"
-                            }
-                          },
-                          [_vm._v(_vm._s(_vm.faculty_full_name))]
-                        )
-                      ]),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "faculty-links",
-                      attrs: { href: "#", title: "Game" }
-                    },
-                    [_vm._v("Game")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    { staticClass: "faculty-links", attrs: { to: "/" } },
-                    [_vm._v("Courses")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "faculty-links",
-                      attrs: { href: "/logout", title: "Logout" }
-                    },
-                    [_vm._v("Logout")]
-                  )
-                ],
-                1
-              )
-            ])
+  return _c("div", { attrs: { id: "menu-bar-toggle" } }, [
+    this.menushow
+      ? _c("div", { staticClass: "menu-bar-open type--center" }, [
+          _c("div", { staticClass: "men-bar-button type--center" }, [
+            _c(
+              "div",
+              { staticClass: "list" },
+              [
+                _vm.faculty_profile_image == null
+                  ? _c("div", { staticClass: "type--center" }, [
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("i", {
+                        staticClass: "fa fa-spinner fa-spin fa-3x fa-blue"
+                      }),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("br")
+                    ])
+                  : _c("div", [
+                      _c("img", {
+                        staticClass: "img--circle faculty_image",
+                        attrs: {
+                          id: "faculty-img",
+                          src: _vm.faculty_profile_image,
+                          name: "photo"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "faculty-name",
+                          attrs: { href: "faculty_profile", title: "User Name" }
+                        },
+                        [_vm._v(_vm._s(_vm.faculty_full_name))]
+                      )
+                    ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: "#", title: "Game" }
+                  },
+                  [_vm._v("Game")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { staticClass: "faculty-links", attrs: { to: "/" } },
+                  [_vm._v("Courses")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "faculty-links",
+                    attrs: { href: "/logout", title: "Logout" }
+                  },
+                  [_vm._v("Logout")]
+                )
+              ],
+              1
+            )
           ])
-        : _vm._e()
-    ]
-  )
+        ])
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20734,12 +20725,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             if (window.screen.height < window.screen.width) height = "66vh";
 
-            document.getElementById("menu-open-close").style.height = height;
+            document.getElementById("menu-bar-toggle").style.height = height;
             this.$store.dispatch('toggleMenu');
         },
 
         closeMenu: function closeMenu(event) {
-            document.getElementById("menu-open-close").style.height = "0";
+            document.getElementById("menu-bar-toggle").style.height = "0";
             this.$store.dispatch('toggleMenu');
         }
     },
@@ -20754,13 +20745,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu_bar bg--navy-blue" }, [
+  return _c("nav", { staticClass: "menu-bar" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "type--center" }, [
+      _c("div", { staticClass: "menu-bar-button type--center" }, [
         this.menushow
-          ? _c("div", { staticClass: "menu_button" }, [
+          ? _c("div", { staticClass: "menu-bar-button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-down fa-3x type--center light-grey",
+                staticClass: "fa fa-angle-down fa-3x",
                 attrs: { title: "Close Menu" },
                 on: {
                   click: function($event) {
@@ -20770,9 +20761,9 @@ var render = function() {
                 }
               })
             ])
-          : _c("div", { staticClass: "menu_button" }, [
+          : _c("div", { staticClass: "menu-bar-button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--center light-grey",
+                staticClass: "fa fa-angle-up fa-3x",
                 attrs: { title: "Open Menu" },
                 on: {
                   click: function($event) {
@@ -20888,9 +20879,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "img--circle" }, [
+  return _c("div", [
     _c("img", {
-      staticClass: "img--circle grid-image style__picture",
+      staticClass: "profile img--circle col-md-12 col-xs-12",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])
@@ -22243,10 +22234,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "student-list-item",
@@ -22276,36 +22263,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item bg--light-grey" }, [
-    _c("div", { staticClass: "hello" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-xs-3" },
-          [
-            _c("profile-picture", {
-              attrs: { name: _vm.display_name, image: _vm.image }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xs-9 name_formatting" },
-          [
-            _c("router-link", { attrs: { to: "/profile/" + _vm.email_uri } }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(_vm.display_name) +
-                  "\n                "
-              )
-            ])
-          ],
-          1
-        )
-      ])
-    ])
+  return _c("div", { staticClass: "panel col-xs-6 col-md-4 col-lg-4" }, [
+    _c(
+      "div",
+      { staticClass: "panel__img" },
+      [
+        _c("profile-picture", {
+          attrs: { name: _vm.display_name, image: _vm.image }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "panel__content type--center" },
+      [
+        _c("router-link", { attrs: { to: "/profile/" + _vm.email_uri } }, [
+          _vm._v("\n            " + _vm._s(_vm.display_name) + "\n        ")
+        ])
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -22328,8 +22307,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c(
-      "ul",
-      { staticClass: "list" },
+      "div",
       _vm._l(this.roster[this.courseid], function(student) {
         return _c("student-list-item", {
           key: student.display_name,
@@ -23266,70 +23244,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "list__item bg--light-grey col-xs-12" }, [
-    _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
+  return _c("div", { staticClass: "panel col-lg-12 col-md-12 col-xs-12" }, [
+    _c(
+      "div",
+      { staticClass: "panel__header type--center" },
+      [
         _c(
-          "strong",
+          "router-link",
+          {
+            attrs: { to: "/class/" + _vm.course.id },
+            nativeOn: {
+              click: function($event) {
+                _vm.$store.dispatch("setCourse", {
+                  id: _vm.course.id,
+                  title: _vm.course.title
+                })
+              }
+            }
+          },
           [
-            _c(
-              "router-link",
-              {
-                attrs: { to: "/class/" + _vm.course.id },
-                nativeOn: {
-                  click: function($event) {
-                    _vm.$store.dispatch("setCourse", {
-                      id: _vm.course.id,
-                      title: _vm.course.title
-                    })
-                  }
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.title) +
-                    "\n                "
-                )
-              ]
+            _vm._v(
+              "\n                " + _vm._s(_vm.course.title) + "\n            "
             )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-4" }, [
-          _vm._v(
+          ]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "panel__content" }, [
+      _c("div", { staticClass: "col-xs-4 col-md-3 type--left" }, [
+        _vm._v(
+          "\n                " +
+            _vm._s(_vm.course.subject) +
+            " " +
+            _vm._s(_vm.course.catalog_number) +
+            ": #" +
+            _vm._s(_vm.course.id) +
+            "\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-5 col-md-6 type--center" }, [
+        _vm._v(
+          "\n                " +
+            _vm._s(_vm.course.meetings[0].location) +
+            " " +
+            _vm._s(_vm.course.meetings[0].days) +
             "\n                " +
-              _vm._s(_vm.course.subject) +
-              " " +
-              _vm._s(_vm.course.catalog_number) +
-              ": #" +
-              _vm._s(_vm.course.id) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-5" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.course.meetings[0].location) +
-              " " +
-              _vm._s(_vm.course.meetings[0].days) +
-              "\n                " +
-              _vm._s(_vm.classStartTime) +
-              " - " +
-              _vm._s(_vm.classEndTime) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-2" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.course.enrollment_count) +
-              " Students\n            "
-          )
-        ])
+            _vm._s(_vm.classStartTime) +
+            " - " +
+            _vm._s(_vm.classEndTime) +
+            "\n            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-3 col-md-3 type--right" }, [
+        _vm._v(
+          "\n                " +
+            _vm._s(_vm.course.enrollment_count) +
+            " Students\n            "
+        )
       ])
     ])
   ])
@@ -23358,8 +23333,7 @@ var render = function() {
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
       : _c(
-          "ul",
-          { staticClass: "list" },
+          "div",
           _vm._l(this.courses, function(course) {
             return _c("course-list-item", {
               key: course.title,
@@ -23541,8 +23515,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-card",
@@ -23593,53 +23565,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
-        _c("div", [
-          _c(
-            "div",
-            { staticClass: "course_title" },
-            [
-              _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
-                _vm._v(_vm._s(_vm.course.title))
-              ])
-            ],
-            1
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time_location course_time" }, [
-          _vm._v(
+      _c("div", [
+        _c(
+          "div",
+          { staticClass: "panel__header" },
+          [
+            _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
+              _vm._v(_vm._s(_vm.course.title))
+            ])
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel__content" }, [
+        _vm._v(
+          "\n                    " +
+            _vm._s(_vm.course.subject) +
+            " " +
+            _vm._s(_vm.course.catalog_number) +
+            ": #" +
+            _vm._s(_vm.course.id) +
             "\n                    " +
-              _vm._s(_vm.course.subject) +
-              " " +
-              _vm._s(_vm.course.catalog_number) +
-              ": #" +
-              _vm._s(_vm.course.id) +
-              "\n                    " +
-              _vm._s(_vm.classStartTime) +
-              " - " +
-              _vm._s(_vm.classEndTime) +
-              "\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "time_location course_specifications" }, [
-          _vm._v(
-            "\n                    " +
-              _vm._s(_vm.course.meetings[0].location) +
-              " " +
-              _vm._s(_vm.course.meetings[0].days) +
-              "\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "num_students course_specifications" }, [
-          _vm._v(
-            "\n                    " +
-              _vm._s(_vm.course.enrollment_count) +
-              " Students\n                "
-          )
-        ])
+            _vm._s(_vm.classStartTime) +
+            " - " +
+            _vm._s(_vm.classEndTime) +
+            "\n                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v(
+          "\n                    " +
+            _vm._s(_vm.course.meetings[0].location) +
+            " " +
+            _vm._s(_vm.course.meetings[0].days) +
+            "\n                "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v(
+          "\n                    " +
+            _vm._s(_vm.course.enrollment_count) +
+            " Students\n                "
+        )
       ])
     ])
   ])

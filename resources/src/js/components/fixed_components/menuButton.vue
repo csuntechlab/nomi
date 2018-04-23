@@ -1,12 +1,12 @@
 <template>
-    <nav class="menu_bar bg--navy-blue">
+    <nav class="menu-bar">
         <div class="row">
-            <div class="type--center">
-                <div v-if="this.menushow" class="menu_button">
-                    <i class="fa fa-angle-down fa-3x type--center light-grey" title="Close Menu" @click.prevent="closeMenu"></i>
+            <div class="menu-bar-button type--center">
+                <div v-if="this.menushow" class="menu-bar-button">
+                    <i class="fa fa-angle-down fa-3x" title="Close Menu" @click.prevent="closeMenu"></i>
                 </div>
-                <div v-else class="menu_button">
-                    <i class="fa fa-angle-up fa-3x type--center light-grey" title="Open Menu" @click.prevent="openMenu"></i>
+                <div v-else class="menu-bar-button">
+                    <i class="fa fa-angle-up fa-3x" title="Open Menu" @click.prevent="openMenu"></i>
                 </div>
             </div>
         </div>
@@ -24,12 +24,12 @@
                 if(window.screen.height < window.screen.width)
                     height = "66vh";
 
-                document.getElementById("menu-open-close").style.height = height;
+                document.getElementById("menu-bar-toggle").style.height = height;
                 this.$store.dispatch('toggleMenu');
             },
 
             closeMenu: function(event) {
-                document.getElementById("menu-open-close").style.height = "0";
+                document.getElementById("menu-bar-toggle").style.height = "0";
                 this.$store.dispatch('toggleMenu');
             }
         },

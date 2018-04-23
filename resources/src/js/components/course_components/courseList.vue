@@ -1,11 +1,11 @@
 <template>
     <div>
         <div v-if="faculty_profile == null" class="type--center">
-                    <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
-        <ul v-else class="list">
+        <div v-else>
             <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
-        </ul>
+        </div>
     </div>
 </template>
 

@@ -1,18 +1,14 @@
 <template>
-    <li class="list__item bg--light-grey">
-        <div class="hello">
-            <div class="row">
-                <div class="col-xs-3">
-                    <profile-picture :name="display_name" :image="image"></profile-picture>
-                </div>
-                <div class="col-xs-9 name_formatting">
-                    <router-link :to="'/profile/'+email_uri">
-                        {{display_name}}
-                    </router-link>
-                </div>
-            </div>
+    <div class="panel col-xs-6 col-md-4 col-lg-4">
+        <div class="panel__img">
+            <profile-picture :name="display_name" :image="image"></profile-picture>
         </div>
-    </li>
+        <div class="panel__content type--center">
+            <router-link :to="'/profile/'+email_uri">
+                {{display_name}}
+            </router-link>
+        </div>
+    </div>
 </template>
 
 <script>
