@@ -11,6 +11,10 @@ export default {
         context.commit('SET_GRID');
     },
 
+    toggleList (context) {
+        context.commit('TOGGLE_LIST');
+    },
+
     toggleFlash (context) {
         context.commit('TOGGLE_FLASH');
     },
@@ -19,8 +23,8 @@ export default {
         context.commit('TOGGLE_MENU');
     },
 
-    shuffleFlash (context, payload) {
-        context.commit('SHUFFLE_FLASH', payload);
+    shuffleFlash (context) {
+        context.commit('SHUFFLE_FLASH');
     },
 
     sortFirstName (context) {
@@ -41,9 +45,5 @@ export default {
     sortAscending (context) {
         context.commit('SORT_ASC');
         context.commit('SORT_ROSTER');
-    },
-
-    getCourseId (context, payload) {
-        context.commit('GET_COURSE_ID', payload);
-    },
+    }
 }
