@@ -1,10 +1,12 @@
 export default {
     GET_DATA (state) {
+        let email;
+
         axios.get(`data`)
             .then(response => {
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
-                state.faculty_email = response.data["courses"][0].instructors[0].instructor;
+                email = state.faculty_email = response.data["courses"][0].instructors[0].instructor;
                 state.faculty_name = state.faculty_email.replace("nr_", "");
                 state.faculty_name = state.faculty_name.split('@')[0];
                 state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
@@ -15,7 +17,15 @@ export default {
             })
             .catch(e => {
                 console.log(e);
+            });
+
+        axios.get(`faculty_profile/${email}`)
+            .then(response => {
+                state.faculty_profile_image = response.data;
             })
+            .catch(e => {
+                console.log(e);
+            });
     },
 
     SET_LIST (state) {
@@ -130,5 +140,8 @@ export default {
 
     SORT_ASC: function (state) {
         state.descending = false;
-    }
+    },
+
+    GET_FACULTY_PROFILE: function (state) {
+    },
 }

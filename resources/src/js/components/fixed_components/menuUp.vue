@@ -3,15 +3,15 @@
         <div v-if="this.menushow" class="menu_container type--center">
             <div class="menu_selections type--center">
                 <div class="list">
-                    <div v-if="faculty_profile_image == null" class="type--center">
+                    <div v-if="faculty_profile_image === null" class="type--center">
                         <br>
                         <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
                         <br>
                         <br>
                     </div>
                     <div v-else>
-                        <img id="faculty-img" :src=faculty_profile_image class="img--circle faculty_image" name="photo">
-                        <a class="faculty-name" href=faculty_profile title="User Name">{{faculty_full_name}}</a>
+                        <img id="faculty-img" :src="faculty_profile_image" class="img--circle faculty_image" name="photo">
+                        <a class="faculty-name" :href="faculty_profile" title="User Name">{{faculty_full_name}}</a>
                     </div>
                     <a class="faculty-links" href="#" title="Game">Game</a>
                     <router-link class="faculty-links" to="/">Courses</router-link>
@@ -31,14 +31,12 @@
             ...mapGetters([
                 'courses',
                 'faculty_profile',
-                'faculty_email',
-                'faculty_first_name',
-                'faculty_last_name',
                 'faculty_full_name',
-                'menushow',
-                'faculty_profile_image'
+                'faculty_profile_image',
+                'menushow'
             ]),
         },
+
         watch: {
             'faculty_email': function(email){
                 this.$store.dispatch('getFacultyProfile', {faculty_email: email} );

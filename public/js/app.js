@@ -19684,13 +19684,12 @@ if (false) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_base__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_faculty__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_game__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_profile__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex_persistedstate__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_game__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_profile__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex_persistedstate__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuex__ = __webpack_require__(1);
 
 
 
@@ -19698,19 +19697,17 @@ if (false) {
 
 
 
+__WEBPACK_IMPORTED_MODULE_4_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */]);
 
-__WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */]);
-
-var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
-    plugins: [Object(__WEBPACK_IMPORTED_MODULE_4_vuex_persistedstate__["a" /* default */])({
+var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
+    plugins: [Object(__WEBPACK_IMPORTED_MODULE_3_vuex_persistedstate__["a" /* default */])({
         key: 'nameface'
     })],
 
     modules: {
         base: __WEBPACK_IMPORTED_MODULE_0__modules_base__["a" /* default */],
-        faculty: __WEBPACK_IMPORTED_MODULE_1__modules_faculty__["a" /* default */],
-        game: __WEBPACK_IMPORTED_MODULE_2__modules_game__["a" /* default */],
-        profile: __WEBPACK_IMPORTED_MODULE_3__modules_profile__["a" /* default */]
+        game: __WEBPACK_IMPORTED_MODULE_1__modules_game__["a" /* default */],
+        profile: __WEBPACK_IMPORTED_MODULE_2__modules_profile__["a" /* default */]
     }
 });
 
@@ -19745,11 +19742,19 @@ var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = ({
     courses: [],
     flashroster: [],
-    menushow: true,
+    menushow: false,
     list: true,
     flash: true,
     lastname: true,
-    descending: true
+    descending: true,
+
+    faculty_email: null,
+    faculty_name: null,
+    faculty_profile: null,
+    faculty_first_name: null,
+    faculty_last_name: null,
+    faculty_full_name: null,
+    faculty_profile_image: null
 });
 
 /***/ }),
@@ -19772,6 +19777,28 @@ var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
     },
     menushow: function menushow(state) {
         return state.menushow;
+    },
+
+    faculty_email: function faculty_email(state) {
+        return state.faculty_email;
+    },
+    faculty_name: function faculty_name(state) {
+        return state.faculty_name;
+    },
+    faculty_profile: function faculty_profile(state) {
+        return state.faculty_profile;
+    },
+    faculty_first_name: function faculty_first_name(state) {
+        return state.faculty_first_name;
+    },
+    faculty_last_name: function faculty_last_name(state) {
+        return state.faculty_last_name;
+    },
+    faculty_full_name: function faculty_full_name(state) {
+        return state.faculty_full_name;
+    },
+    faculty_profile_image: function faculty_profile_image(state) {
+        return state.faculty_profile_image;
     }
 });
 
@@ -19827,10 +19854,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_DATA: function GET_DATA(state) {
+        var email = void 0;
+
         axios.get("data").then(function (response) {
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
-            state.faculty_email = response.data["courses"][0].instructors[0].instructor;
+            email = state.faculty_email = response.data["courses"][0].instructors[0].instructor;
             state.faculty_name = state.faculty_email.replace("nr_", "");
             state.faculty_name = state.faculty_name.split('@')[0];
             state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
@@ -19838,6 +19867,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
             state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
             state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
             state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
+        }).catch(function (e) {
+            console.log(e);
+        });
+
+        axios.get("faculty_profile/" + email).then(function (response) {
+            state.faculty_profile_image = response.data;
         }).catch(function (e) {
             console.log(e);
         });
@@ -19959,101 +19994,17 @@ var store = new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
 
     SORT_ASC: function SORT_ASC(state) {
         state.descending = false;
-    }
+    },
+
+    GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state) {}
 });
 
 /***/ }),
-/* 63 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(67);
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
-    getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
-    actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
-    mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
-});
-
-/***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    faculty_email: null,
-    faculty_name: null,
-    faculty_profile: null,
-    faculty_first_name: null,
-    faculty_last_name: null,
-    faculty_full_name: null,
-    faculty_profile_image: null
-});
-
-/***/ }),
-/* 65 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    faculty_email: function faculty_email(state) {
-        return state.faculty_email;
-    },
-    faculty_name: function faculty_name(state) {
-        return state.faculty_name;
-    },
-    faculty_profile: function faculty_profile(state) {
-        return state.faculty_profile;
-    },
-    faculty_first_name: function faculty_first_name(state) {
-        return state.faculty_first_name;
-    },
-    faculty_last_name: function faculty_last_name(state) {
-        return state.faculty_last_name;
-    },
-    faculty_full_name: function faculty_full_name(state) {
-        return state.faculty_full_name;
-    },
-    faculty_profile_image: function faculty_profile_image(state) {
-        return state.faculty_profile_image;
-    }
-});
-
-/***/ }),
-/* 66 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    getFacultyProfile: function getFacultyProfile(context, payload) {
-        context.commit('GET_FACULTY_PROFILE', payload);
-    }
-});
-
-/***/ }),
-/* 67 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
-        axios.get("faculty_profile/" + state.faculty_email).then(function (response) {
-            state.faculty_profile_image = response.data;
-        }).catch(function (e) {
-            console.log(e);
-        });
-    }
-});
-
-/***/ }),
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
 /* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -20644,7 +20595,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_email', 'faculty_first_name', 'faculty_last_name', 'faculty_full_name', 'menushow', 'faculty_profile_image'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menushow'])),
+
     watch: {
         'faculty_email': function faculty_email(email) {
             this.$store.dispatch('getFacultyProfile', { faculty_email: email });
@@ -20671,7 +20623,7 @@ var render = function() {
                 "div",
                 { staticClass: "list" },
                 [
-                  _vm.faculty_profile_image == null
+                  _vm.faculty_profile_image === null
                     ? _c("div", { staticClass: "type--center" }, [
                         _c("br"),
                         _vm._v(" "),
@@ -20698,7 +20650,7 @@ var render = function() {
                           {
                             staticClass: "faculty-name",
                             attrs: {
-                              href: "faculty_profile",
+                              href: _vm.faculty_profile,
                               title: "User Name"
                             }
                           },
