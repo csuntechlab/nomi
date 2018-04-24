@@ -1,19 +1,19 @@
 <template>
     <div>
-         <div v-if="sp_images == null" class="type--center">
-             <br>
-             <br>
+        <div v-if="sp_images == null" class="type--center">
+            <br>
+            <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
         <div v-else>
-            <div class="banner__position bg--blue-green">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <router-link class="light-grey" :to="'/class/'+this.courseid" @click.native="$store.dispatch('getData')">
-                            <h4>Back to {{this.courseTitle}}</h4>
-                        </router-link>
+            <div class="section--lg section--md student-banner default_padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -57,8 +57,6 @@
             </div>
         </div>
     </div>
-        
-    </div>
 </template>
 
 <script>
@@ -83,8 +81,6 @@
 
         computed: {
             ...mapGetters([
-                'courseid',
-                'courseTitle',
                 'sp_emailURI',
                 'sp_display_name',
                 'sp_major',

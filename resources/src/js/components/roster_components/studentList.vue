@@ -2,7 +2,7 @@
     <div>
         <ul class="list">
             <student-list-item
-                v-for="student in this.roster[this.courseid]"
+                v-for="student in this.courses[this.courseid].roster"
                 :key="student.display_name"
                 :student="student"
             ></student-list-item>
@@ -34,7 +34,7 @@
 
         computed: {
             ...mapGetters([
-                'roster',
+                'courses',
             ]),
         },
     }

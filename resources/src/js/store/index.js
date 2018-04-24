@@ -10,7 +10,6 @@ export default new Vuex.Store({
 
     state: {
         courses: [],
-        roster: [],
         flashroster: [],
         menushow: false,
         list: true,
@@ -33,14 +32,10 @@ export default new Vuex.Store({
         sp_images: null,
         sp_image_priority: null,
         sp_notes: null,
-
-        courseid: null,
-        courseTitle: null,
     },
 
     getters: {
         courses: state => state.courses,
-        roster: state => state.roster,
         flashroster: state => state.flashroster,
         list: state => state.list,
         flash: state => state.flash,
@@ -62,9 +57,6 @@ export default new Vuex.Store({
         sp_images: state => state.sp_images,
         sp_image_priority: state => state.sp_image_priority,
         sp_notes: state => state.sp_notes,
-
-        courseid: state => state.courseid,
-        courseTitle: state => state.courseTitle,
     },
 
     actions: {
@@ -92,8 +84,8 @@ export default new Vuex.Store({
             context.commit('TOGGLE_MENU');
         },
 
-        shuffleFlash (context, payload) {
-            context.commit('SHUFFLE_FLASH', payload);
+        shuffleFlash (context) {
+            context.commit('SHUFFLE_FLASH');
         },
 
         sortFirstName (context) {
@@ -139,10 +131,6 @@ export default new Vuex.Store({
         refreshRoster (context) {
             context.commit('REFRESH_ROSTER');
         },
-
-        setCourse (context, payload) {
-            context.commit('SET_COURSE', payload);
-        }
     },
 
     mutations: {
@@ -150,8 +138,7 @@ export default new Vuex.Store({
             axios.get(`data`)
                 .then(response => {
                     state.courses = response.data["courses"];
-                    state.roster = response.data["students"];
-                    state.flashroster = response.data["students"].slice();
+                    state.flashroster = response.data["students"];
                     state.faculty_email = response.data["courses"][0].instructors[0].instructor;
                     state.faculty_name = state.faculty_email.replace("nr_", "");
                     state.faculty_name = state.faculty_name.split('@')[0];
@@ -182,49 +169,53 @@ export default new Vuex.Store({
             state.menushow = !state.menushow;
         },
 
-        SHUFFLE_FLASH (state, { courseid }) {
-            let unKnownStudents = [];
-            let knownStudents = [];
+        SHUFFLE_FLASH (state) {
+            let len = state.flashroster.length;
 
-            state.flashroster[courseid].forEach((student) => {
-                if(student.recognized === true) {
-                    knownStudents.push(student)
-                } else {
-                    unKnownStudents.push(student)
+            for (let i = 0; i < len; ++i) {
+                let unKnownStudents = [];
+                let knownStudents = [];
+
+                state.flashroster[i].forEach((student) => {
+                    if (student.recognized === true) {
+                        knownStudents.push(student)
+                    } else {
+                        unKnownStudents.push(student)
+                    }
+                });
+
+                let currentIndex = unKnownStudents.length, temporaryValue, randomIndex;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = unKnownStudents[currentIndex];
+                    unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                    unKnownStudents[randomIndex] = temporaryValue;
                 }
-            });
 
-            let currentIndex = unKnownStudents.length, temporaryValue, randomIndex;
+                let currentIndexTwo = knownStudents.length, temporaryValueTwo, randomIndexTwo;
 
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+                // While there remain elements to shuffle...
+                while (0 !== currentIndexTwo) {
 
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
+                    // Pick a remaining element...
+                    randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                    currentIndexTwo -= 1;
 
-                // And swap it with the current element.
-                temporaryValue = unKnownStudents[currentIndex];
-                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
-                unKnownStudents[randomIndex] = temporaryValue;
+                    // And swap it with the current element.
+                    temporaryValueTwo = knownStudents[currentIndexTwo];
+                    knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                    knownStudents[randomIndexTwo] = temporaryValueTwo;
+                }
+
+                state.flashroster[i] = unKnownStudents.concat(knownStudents);
             }
-
-            let currentIndexTwo = knownStudents.length, temporaryValueTwo, randomIndexTwo;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndexTwo) {
-
-                // Pick a remaining element...
-                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
-                currentIndexTwo -= 1;
-
-                // And swap it with the current element.
-                temporaryValueTwo = knownStudents[currentIndexTwo];
-                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
-                knownStudents[randomIndexTwo] = temporaryValueTwo;
-            }
-
-            state.flashroster[courseid] = unKnownStudents.concat(knownStudents);
 
             state.flash = false;
             state.flash = true;
@@ -346,11 +337,6 @@ export default new Vuex.Store({
                     console.log(e)
                 });
         },
-
-        SET_COURSE: function (state, payload) {
-            state.courseid = payload.id;
-            state.courseTitle = payload.title;
-        }
     }
 })
 
