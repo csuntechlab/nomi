@@ -14,10 +14,15 @@
                 </croppa>
             </label>
             <div class="">
-                <br>
-                <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
-                <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
+                <div v-if="show=true">
+                    <button class="btn btn-default" @click="edit = true"><i class="fa fa-pencil-alt fa-3x"></i></button>
+                </div>
+                <div v-else></div>
+                <div v-if="edit">
+                    <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-3x"></i></button>
+                    <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-3x"></i></button>
+                    <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-3x"></i></button>
+                </div>
             </div>
         </div>
     </div>
@@ -34,7 +39,9 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                disabled: true
+                disabled: true,
+                edit: false,
+                show:true,
             }
         },
 

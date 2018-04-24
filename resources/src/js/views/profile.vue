@@ -21,6 +21,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
+                        <h1 class="type--white type--marginless type--center">{{this.sp_display_name}}</h1>
                         <carousel :perPage="1">
                             <slide>
                                 <croppa-profile class="grid-image img--circle"></croppa-profile>
@@ -35,7 +36,6 @@
                                 <image-handler image_type="official"></image-handler>
                             </slide>
                         </carousel>
-                        <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
                     </div>
                 </div>
             </div>
@@ -44,15 +44,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
+                        <form>
+                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
+                            <button class="btn-default btn" @click="commitNotes">Save</button>
+                        </form>
+                        <br>
+                        <h4 class="type--black type--thin type--marginless">{{this.sp_emailURI}}@my.csun.edu</h4>
                         <br>
                         <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
-                        <br>
-                        <form>
-                            <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i></label>
-                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"                            ></textarea>
-                            <button class="btn-default btn" @click="commitNotes">Commit</button>
-                        </form>
                     </div>
                 </div>
             </div>

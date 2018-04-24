@@ -1,9 +1,10 @@
 <template>
     <div v-if="sp_image_priority === image_type">
-        <h2>This is the Active one</h2>
+        <h2 class="type--center">Active Image</h2>
     </div>
-    <div v-else>
-        <button @click="updateImageHandler">Choose Default Image</button>
+    <div v-else class="type--center">
+        <br>
+        <button class="btn" @click="updateImageHandler">Choose Default Image</button>
     </div>
 </template>
 

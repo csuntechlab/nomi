@@ -19175,7 +19175,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -19281,6 +19280,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19310,11 +19310,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.sp_image_priority === _vm.image_type
-    ? _c("div", [_c("h2", [_vm._v("This is the Active one")])])
-    : _c("div", [
-        _c("button", { on: { click: _vm.updateImageHandler } }, [
-          _vm._v("Choose Default Image")
-        ])
+    ? _c("div", [
+        _c("h2", { staticClass: "type--center" }, [_vm._v("Active Image")])
+      ])
+    : _c("div", { staticClass: "type--center" }, [
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "button",
+          { staticClass: "btn", on: { click: _vm.updateImageHandler } },
+          [_vm._v("Choose Default Image")]
+        )
       ])
 }
 var staticRenderFns = []
@@ -19361,6 +19367,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -19372,7 +19383,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             messages: true,
             errors: [],
             myCroppa: null,
-            disabled: true
+            disabled: true,
+            edit: false,
+            show: true
         };
     },
 
@@ -19470,25 +19483,53 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", {}, [
-        _c("br"),
+        (_vm.show = true)
+          ? _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: {
+                    click: function($event) {
+                      _vm.edit = true
+                    }
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-pencil-alt fa-3x" })]
+              )
+            ])
+          : _c("div"),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-default", on: { click: _vm.toggleCropper } },
-          [_c("i", { staticClass: "fa fa-edit fa-4x" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
-          [_c("i", { staticClass: "fa fa-camera fa-4x" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-default", on: { click: _vm.confirmImage } },
-          [_c("i", { staticClass: "fa fa-check fa-4x" })]
-        )
+        _vm.edit
+          ? _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.toggleCropper }
+                },
+                [_c("i", { staticClass: "fa fa-edit fa-3x" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.uploadFile }
+                },
+                [_c("i", { staticClass: "fa fa-camera fa-3x" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.confirmImage }
+                },
+                [_c("i", { staticClass: "fa fa-check fa-3x" })]
+              )
+            ])
+          : _vm._e()
       ])
     ])
   ])
@@ -19569,6 +19610,15 @@ var render = function() {
                     },
                     [
                       _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "type--white type--marginless type--center"
+                        },
+                        [_vm._v(_vm._s(this.sp_display_name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "carousel",
                         { attrs: { perPage: 1 } },
                         [
@@ -19615,15 +19665,6 @@ var render = function() {
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "type--white type--thin type--marginless type--center"
-                        },
-                        [_vm._v(_vm._s(this.sp_display_name))]
                       )
                     ],
                     1
@@ -19637,29 +19678,7 @@ var render = function() {
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-sm-12" }, [
-                  _c(
-                    "h4",
-                    { staticClass: "type--black type--thin type--marginless" },
-                    [
-                      _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                      _c("br"),
-                      _vm._v("@my.csun.edu")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "h4",
-                    { staticClass: "type--black type--thin type--marginless" },
-                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
                   _c("form", [
-                    _vm._m(0),
-                    _vm._v(" "),
                     _c("textarea", {
                       attrs: { type: "text", id: "ex0", name: "ex0" },
                       domProps: { value: _vm.sp_notes },
@@ -19672,9 +19691,25 @@ var render = function() {
                         staticClass: "btn-default btn",
                         on: { click: _vm.commitNotes }
                       },
-                      [_vm._v("Commit")]
+                      [_vm._v("Save")]
                     )
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+                  )
                 ])
               ])
             ])
@@ -19682,17 +19717,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Add a Note: "),
-      _c("i", { staticClass: "fa fa-plus-circle fa-blue" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -20298,7 +20323,7 @@ var staticRenderFns = [
             staticClass: "primary-nav__sub-brand nav_title",
             attrs: { href: "https://www.csun.edu/" }
           },
-          [_vm._v("Nameface")]
+          [_vm._v("NOMI")]
         )
       ])
     ])
