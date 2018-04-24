@@ -44,6 +44,12 @@ html *
 
 }
 
+.fa{
+    @include themify($themes){
+        color: themed('buttonpress');
+    }
+}
+
 .primary-nav {
     @include themify($themes) {
         background-color: themed('bars'); 

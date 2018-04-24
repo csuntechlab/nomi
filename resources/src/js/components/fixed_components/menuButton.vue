@@ -1,5 +1,5 @@
 <template>
-    <nav class="menu_bar bg--navy-blue">
+    <nav class="menu_bar">
         <div class="row">
             <div class="type--center">
                 <div v-if="this.menushow" class="menu_button">
