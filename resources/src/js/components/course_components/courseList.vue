@@ -1,9 +1,7 @@
 <template>
-    <div>
-        <ul class="list">
-            <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
-        </ul>
-    </div>
+    <ul class="list">
+        <course-list-item v-for="course in this.courses" :key="course.title" :course="course"></course-list-item>
+    </ul>
 </template>
 
 <script>
@@ -20,12 +18,14 @@
 
         computed: {
             ...mapGetters([
-                'courses'
+                'courses',
+                'faculty_profile',
             ])
         },
 
         components: {
             courseListItem
-        }
+        },
+
     }
 </script>

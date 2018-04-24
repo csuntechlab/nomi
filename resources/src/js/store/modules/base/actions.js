@@ -3,8 +3,12 @@ export default {
         context.commit('GET_DATA');
     },
 
-    toggleList (context) {
-        context.commit('TOGGLE_LIST');
+    setList (context) {
+        context.commit('SET_LIST');
+    },
+
+    setGrid (context) {
+        context.commit('SET_GRID');
     },
 
     toggleFlash (context) {

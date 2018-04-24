@@ -19,13 +19,15 @@ export default {
             errors: [],
         }
     },
+
     components: {
         courseCard
     },
 
     computed: {
         ...mapGetters([
-            'courses'
+            'courses',
+            'faculty_profile',
         ])
     },
 }

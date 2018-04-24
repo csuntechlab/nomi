@@ -1,11 +1,13 @@
 <template>
-    <ul class="list">
-        <student-list-item
-            v-for="student in this.roster[this.courseid]"
-            :key="student.display_name"
-            :student="student"
-        ></student-list-item>
-    </ul>
+    <div>
+        <ul class="list">
+            <student-list-item
+                v-for="student in this.roster[this.courseid]"
+                :key="student.display_name"
+                :student="student"
+            ></student-list-item>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -20,7 +22,7 @@
                 messages: true,
                 errors: [],
                 lastname: true,
-                descending: true
+                descending: true,
             }
         },
 
@@ -32,7 +34,7 @@
 
         computed: {
             ...mapGetters([
-                'roster'
+                'roster',
             ]),
         },
     }

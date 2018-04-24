@@ -1,10 +1,16 @@
 <template>
     <div>
-        <div class="banner__position bg--blue-green">
+         <div v-if="sp_images == null" class="type--center">
+             <br>
+             <br>
+            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+        </div>
+        <div v-else>
+            <div class="banner__position bg--blue-green">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <router-link class="light-grey" :to="'/class/'+this.courseid" @click="this.$store.dispatch('getData')">
+                        <router-link class="light-grey" :to="'/class/'+this.courseid" @click.native="$store.dispatch('getData')">
                             <h4>Back to {{this.courseTitle}}</h4>
                         </router-link>
                     </div>
@@ -44,13 +50,15 @@
                         <br>
                         <form>
                             <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i></label>
-                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"                            ></textarea>
+                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
                             <button class="btn-default btn" @click="commitNotes">Commit</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+        
     </div>
 </template>
 
@@ -60,6 +68,7 @@
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+
         components: {
             ImageHandler,
             croppaProfile

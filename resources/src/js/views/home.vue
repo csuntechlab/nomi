@@ -1,6 +1,6 @@
 <template>
     <div>
-        <list-grid-tabs></list-grid-tabs>
+        <home-settings-banner></home-settings-banner>
         <div class="container">
             <courses-container></courses-container>
         </div>
@@ -10,5 +10,8 @@
 <script>
     export default {
         name: "home",
+        created () {
+            this.$store.dispatch('getData');
+        },
     }
 </script>
