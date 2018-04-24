@@ -1,7 +1,7 @@
 <template>
-    <div id="menu-bar-toggle">
-        <div v-if="this.menushow" class="menu-bar-open type--center">
-            <div class="men-bar-button type--center">
+    <div id="menu-open-close">
+        <div v-if="this.menushow" class="menu_container type--center">
+            <div class="menu_selections type--center">
                 <div class="list">
                     <div v-if="faculty_profile_image == null" class="type--center">
                         <br>

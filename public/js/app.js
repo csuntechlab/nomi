@@ -20294,7 +20294,7 @@ var staticRenderFns = [
       _c(
         "a",
         {
-          staticClass: "primary-nav__sub-brand nav_title",
+          staticClass: "primary-nav__sub-brand",
           attrs: { href: "https://www.csun.edu/" }
         },
         [_vm._v("Nameface")]
@@ -20486,10 +20486,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "menu-bar-toggle" } }, [
+  return _c("div", { attrs: { id: "menu-open-close" } }, [
     this.menushow
-      ? _c("div", { staticClass: "menu-bar-open type--center" }, [
-          _c("div", { staticClass: "men-bar-button type--center" }, [
+      ? _c("div", { staticClass: "menu_container type--center" }, [
+          _c("div", { staticClass: "menu_selections type--center" }, [
             _c(
               "div",
               { staticClass: "list" },
@@ -20725,12 +20725,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             if (window.screen.height < window.screen.width) height = "66vh";
 
-            document.getElementById("menu-bar-toggle").style.height = height;
+            document.getElementById("menu-open-close").style.height = height;
             this.$store.dispatch('toggleMenu');
         },
 
         closeMenu: function closeMenu(event) {
-            document.getElementById("menu-bar-toggle").style.height = "0";
+            document.getElementById("menu-open-close").style.height = "0";
             this.$store.dispatch('toggleMenu');
         }
     },
@@ -20745,13 +20745,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu-bar" }, [
+  return _c("nav", { staticClass: "menu_bar bg--navy-blue" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "menu-bar-button type--center" }, [
+      _c("div", { staticClass: "type--center" }, [
         this.menushow
-          ? _c("div", { staticClass: "menu-bar-button" }, [
+          ? _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-down fa-3x",
+                staticClass: "fa fa-angle-down fa-3x type--center light-grey",
                 attrs: { title: "Close Menu" },
                 on: {
                   click: function($event) {
@@ -20761,9 +20761,9 @@ var render = function() {
                 }
               })
             ])
-          : _c("div", { staticClass: "menu-bar-button" }, [
+          : _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-up fa-3x",
+                staticClass: "fa fa-angle-up fa-3x type--center light-grey",
                 attrs: { title: "Open Menu" },
                 on: {
                   click: function($event) {
