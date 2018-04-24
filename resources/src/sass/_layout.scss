@@ -21,6 +21,9 @@ html *
         .primary-nav__sub-brand{
             color: themed('looksGray')
         }
+        nav{
+            background-color: themed('bars');
+        }
     }
 }
 
@@ -44,7 +47,7 @@ html *
 
 }
 
-.fa{
+.fa-blue{
     @include themify($themes){
         color: themed('buttonpress');
     }
@@ -89,8 +92,4 @@ html *
 //             position: relative;
 //         }
 //     }
-// }
-
-// .profile{
-//     transform: scale(.5,.5);
 // }

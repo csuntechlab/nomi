@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :id="this.name+'-img'" :src="this.image" class="profile img--circle col-md-12 col-xs-12" name="photo">
+        <img :id="this.name+'-img'" :src="this.image" class="img--circle col-md-12 col-xs-12" name="photo">
     </div>
 </template>
 

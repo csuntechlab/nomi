@@ -3,10 +3,10 @@
         <div class="row">
             <div class="type--center">
                 <div v-if="this.menushow" class="menu_button">
-                    <i class="fa fa-angle-down fa-3x type--center light-grey" title="Close Menu" @click.prevent="closeMenu"></i>
+                    <i class="fa fa-angle-down fa-3x type--center" title="Close Menu" @click.prevent="closeMenu"></i>
                 </div>
                 <div v-else class="menu_button">
-                    <i class="fa fa-angle-up fa-3x type--center light-grey" title="Open Menu" @click.prevent="openMenu"></i>
+                    <i class="fa fa-angle-up fa-3x type--center" title="Open Menu" @click.prevent="openMenu"></i>
                 </div>
             </div>
         </div>

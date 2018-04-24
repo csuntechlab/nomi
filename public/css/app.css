@@ -16,6 +16,10 @@
   color: #E5E5E5;
 }
 
+.theme-main .primary-nav nav {
+  background-color: #0F1821;
+}
+
 .theme-main .panel {
   border-radius: 7px;
   background-color: #F4F4F4;
@@ -34,7 +38,7 @@
   border-bottom: 0;
 }
 
-.theme-main .fa {
+.theme-main .fa-blue {
   color: #4F9DA3;
 }
 

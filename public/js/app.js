@@ -19434,7 +19434,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
+  return _c("div", [
     _c("div", { staticClass: "grid-image" }, [
       _c(
         "label",
@@ -20751,7 +20751,7 @@ var render = function() {
         this.menushow
           ? _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-down fa-3x type--center light-grey",
+                staticClass: "fa fa-angle-down fa-3x type--center",
                 attrs: { title: "Close Menu" },
                 on: {
                   click: function($event) {
@@ -20763,7 +20763,7 @@ var render = function() {
             ])
           : _c("div", { staticClass: "menu_button" }, [
               _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--center light-grey",
+                staticClass: "fa fa-angle-up fa-3x type--center",
                 attrs: { title: "Open Menu" },
                 on: {
                   click: function($event) {
@@ -20881,7 +20881,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "profile img--circle col-md-12 col-xs-12",
+      staticClass: "img--circle col-md-12 col-xs-12",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])
@@ -22888,12 +22888,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "banner__position bg--light-grey" },
-    [_c("list-grid-selector")],
-    1
-  )
+  return _c("nav", [_c("list-grid-selector")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
