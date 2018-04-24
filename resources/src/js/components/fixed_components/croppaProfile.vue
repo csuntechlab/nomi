@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="grid-image">
+        <div>
             <label :for="sp_display_name">
                 <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
                 <croppa v-else

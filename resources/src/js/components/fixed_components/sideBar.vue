@@ -1,5 +1,5 @@
 <template>
-        <div id="sideNav" class="sidebar">
+        <div id="sideNav" class="sidebar makeBlue">
             <div class="sidebar_container type--center">  
                 <div class="menu type--center">
                         <div class="list">

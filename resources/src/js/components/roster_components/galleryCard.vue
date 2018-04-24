@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6">
         <div class="panel">
-            <div class="grid-item bg--light-grey panel-content">
+            <div>
                 <label class="grid-image" :for="display_name">
                     <croppa v-model="myCroppa"
                             :prevent-white-space="false"

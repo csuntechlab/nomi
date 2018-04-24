@@ -19435,7 +19435,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "grid-image" }, [
+    _c("div", [
       _c(
         "label",
         { attrs: { for: _vm.sp_display_name } },
@@ -19521,7 +19521,7 @@ var render = function() {
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
       : _c("div", [
-          _c("div", { staticClass: "banner__position bg--blue-green" }, [
+          _c("div", [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c(
@@ -20488,7 +20488,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "menu-open-close" } }, [
     this.menushow
-      ? _c("div", { staticClass: "menu_container type--center" }, [
+      ? _c("div", { staticClass: "menu_container makeBlue type--center" }, [
           _c("div", { staticClass: "menu_selections type--center" }, [
             _c(
               "div",
@@ -20745,7 +20745,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu_bar" }, [
+  return _c("nav", { staticClass: "menu_bar makeBlue" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "type--center" }, [
         this.menushow
@@ -21673,7 +21673,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "grid-item bg--light-grey panel-content",
+          staticClass: "grid-item panel-content",
           on: { click: _vm.updateRecognized }
         },
         [
@@ -21894,7 +21894,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-xs-6" }, [
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "grid-item bg--light-grey panel-content" }, [
+      _c("div", [
         _c(
           "label",
           { staticClass: "grid-image", attrs: { for: _vm.display_name } },
@@ -22234,6 +22234,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "student-list-item",
@@ -22263,28 +22265,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel col-xs-6 col-md-4 col-lg-4" }, [
-    _c(
-      "div",
-      { staticClass: "panel__img" },
-      [
-        _c("profile-picture", {
-          attrs: { name: _vm.display_name, image: _vm.image }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "panel__content type--center" },
-      [
-        _c("router-link", { attrs: { to: "/profile/" + _vm.email_uri } }, [
-          _vm._v("\n            " + _vm._s(_vm.display_name) + "\n        ")
-        ])
-      ],
-      1
-    )
+  return _c("div", { staticClass: "panel col-xs-12 col-md-12 col-lg-12" }, [
+    _c("div", { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" }, [
+      _c(
+        "div",
+        { staticClass: "pull-left col-xs-5 col-md-3 col-lg-3" },
+        [
+          _c("profile-picture", {
+            staticClass: "pull-left ",
+            attrs: { name: _vm.display_name, image: _vm.image }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-xs-7 col-md-9 col-lg-9" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "pull-right",
+              attrs: { to: "/profile/" + _vm.email_uri }
+            },
+            [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.display_name) +
+                  "\n            "
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -22432,8 +22448,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22441,7 +22455,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         bgcolor: function bgcolor(id) {
-            if (id.toString() === this.$route.params.id) return "bg--blue-green";else return "bg--navy-blue";
+            if (id.toString() === this.$route.params.id) return "buttonPressBlue";else return "makeBlue";
         }
     },
 
@@ -22463,7 +22477,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "banner__position bg--off-white" },
+    { staticClass: "nav-bars" },
     [
       _c(
         "carousel",
@@ -22477,8 +22491,6 @@ var render = function() {
                 _c(
                   "router-link",
                   {
-                    staticClass: "light-grey",
-                    staticStyle: { "font-size": "1.1rem" },
                     attrs: { to: "/class/" + course.id },
                     nativeOn: {
                       click: function($event) {
@@ -22774,10 +22786,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    {
-      staticClass: "banner__position bg--light-grey",
-      staticStyle: { height: "55px" }
-    },
+    { staticStyle: { height: "55px" } },
     [
       _c("list-grid-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
       _vm._v(" "),

@@ -6,7 +6,7 @@
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
         <div v-else>
-            <div class="banner__position bg--blue-green">
+            <div>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">

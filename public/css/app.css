@@ -1,3 +1,140 @@
+#menu-open-close {
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a.faculty-name:link,
+a.faculty-name:active,
+a.faculty-name:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+a.faculty-links:link,
+a.faculty-links:active,
+a.faculty-links:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  margin-bottom: 0;
+  cursor: pointer;
+  padding: 0.5%;
+  text-align: center;
+}
+
+a.faculty-links:hover {
+  color: #4F9DA3;
+}
+
+.menu_container {
+  height: 100%;
+  padding: 3%;
+  position: relative;
+}
+
+.menu_button {
+  position: relative;
+}
+
+.menu_selections {
+  position: relative;
+}
+
+.menu_bar {
+  height: 8vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.nav_title {
+  color: white;
+}
+
+.faculty_image {
+  height: 25vh;
+  width: 25vh;
+}
+
+.menu__compensation {
+  height: 30px;
+}
+
+.sidebar {
+  height: 0%;
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a.faculty-name:link,
+a.faculty-name:active,
+a.faculty-name:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 125%;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center;
+  font-weight: bold;
+}
+
+a.faculty-links:link,
+a.faculty-links:active,
+a.faculty-links:visited {
+  color: white;
+  text-decoration: none;
+  font-size: 125%;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center;
+}
+
+a.faculty-links:hover {
+  color: #4F9DA3;
+}
+
+.sidebar_container {
+  height: 100%;
+  padding: 5%;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  bottom: 0;
+  right: 49%;
+}
+
+.menu {
+  position: relative;
+}
+
+.faculty_image {
+  size: 50%;
+}
+
 .theme-main body {
   background-color: #E5E5E5;
 }
@@ -8,16 +145,33 @@
   color: #E5E5E5;
 }
 
+textarea[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+textarea[type=text]:focus {
+  border: 3px solid lightblue;
+}
+
 .theme-main .primary-nav {
   background-color: #0F1821;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .theme-main .primary-nav .primary-nav__sub-brand {
   color: #E5E5E5;
-}
-
-.theme-main .primary-nav nav {
-  background-color: #0F1821;
 }
 
 .theme-main .panel {
@@ -38,17 +192,37 @@
   border-bottom: 0;
 }
 
+textarea[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+textarea[type=text]:focus {
+  border: 3px solid lightblue;
+}
+
+.theme-main .makeBlue {
+  background-color: #0F1821;
+}
+
+.theme-main .buttonPressBlue {
+  background-color: #4F9DA3;
+}
+
 .theme-main .fa-blue {
   color: #4F9DA3;
 }
 
-.theme-main .primary-nav {
+.theme-main .nav-bars {
   background-color: #0F1821;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  color: #E5E5E5;
 }
 
