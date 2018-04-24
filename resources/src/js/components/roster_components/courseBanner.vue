@@ -7,7 +7,6 @@
                         class="light-grey"
                         style="font-size: 1.1rem"
                         :to="'/class/'+course.id"
-                        @click.native="$store.dispatch('setCourse', {id: course.id, title: course.title})"
                     >
                         {{course.title}}
                     </router-link>

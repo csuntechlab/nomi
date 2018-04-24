@@ -1,6 +1,6 @@
 <template>
     <div>
-        <i v-if="this.flash" class="fa fa-random fa-3x" @click="$store.dispatch('shuffleFlash', { courseid })"></i>
+        <i v-if="this.flash" class="fa fa-random fa-3x" @click="$store.dispatch('shuffleFlash')"></i>
         <div v-else-if="this.list"></div>
         <i v-else class="fa fa-random fa-3x" disabled></i>
     </div>
@@ -14,7 +14,6 @@
             ...mapGetters([
                 'flash',
                 'list',
-                'courseid',
             ])
         }
     }
