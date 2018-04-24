@@ -1,13 +1,19 @@
+.theme-main body {
+  background-color: #E5E5E5;
+}
+
+.theme-main html * {
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  color: #E5E5E5;
+}
+
 .theme-main .primary-nav {
   background-color: #0F1821;
 }
 
 .theme-main .primary-nav .primary-nav__sub-brand {
   color: #E5E5E5;
-}
-
-.theme-main body {
-  background-color: #E5E5E5;
 }
 
 .theme-main .panel {
@@ -28,6 +34,10 @@
   border-bottom: 0;
 }
 
+.theme-main .fa {
+  color: #4F9DA3;
+}
+
 .theme-main .primary-nav {
   background-color: #0F1821;
   display: -webkit-box;
@@ -36,11 +46,5 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.theme-main html * {
-  font-size: 1.1rem;
-  font-family: sans-serif;
-  color: #E5E5E5;
 }
 
