@@ -45,5 +45,5 @@ export default {
     sortAscending (context) {
         context.commit('SORT_ASC');
         context.commit('SORT_ROSTER');
-    }
+    },
 }

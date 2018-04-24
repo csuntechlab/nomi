@@ -35,12 +35,6 @@
                 'faculty_profile_image',
                 'menushow'
             ]),
-        },
-
-        watch: {
-            'faculty_email': function(email){
-                this.$store.dispatch('getFacultyProfile', {faculty_email: email} );
-            }
         }
     }
 </script>

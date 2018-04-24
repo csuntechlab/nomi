@@ -19854,12 +19854,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_DATA: function GET_DATA(state) {
-        var email = void 0;
-
         axios.get("data").then(function (response) {
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
-            email = state.faculty_email = response.data["courses"][0].instructors[0].instructor;
+            state.faculty_email = response.data["courses"][0].instructors[0].instructor;
             state.faculty_name = state.faculty_email.replace("nr_", "");
             state.faculty_name = state.faculty_name.split('@')[0];
             state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
@@ -19867,12 +19865,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
             state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
             state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
-        }).catch(function (e) {
-            console.log(e);
-        });
 
-        axios.get("faculty_profile/" + email).then(function (response) {
-            state.faculty_profile_image = response.data;
+            axios.get("faculty_profile/" + response.data["courses"][0].instructors[0].instructor).then(function (response) {
+                state.faculty_profile_image = response.data;
+            }).catch(function (e) {
+                console.log(e);
+            });
         }).catch(function (e) {
             console.log(e);
         });
@@ -19994,9 +19992,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     SORT_ASC: function SORT_ASC(state) {
         state.descending = false;
-    },
-
-    GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state) {}
+    }
 });
 
 /***/ }),
@@ -20595,13 +20591,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menushow'])),
-
-    watch: {
-        'faculty_email': function faculty_email(email) {
-            this.$store.dispatch('getFacultyProfile', { faculty_email: email });
-        }
-    }
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menushow']))
 });
 
 /***/ }),
