@@ -1,0 +1,96 @@
+body {
+    @include themify($themes) {
+        background-color: themed('looksGray');
+  }
+}
+
+html *
+{
+    @include themify($themes) {
+        font-size: themed('mainFontSize');
+        font-family: themed('mainFontFamily');
+        color: themed('looksGray');
+    }
+
+}
+
+.primary-nav {
+    @include themify($themes) {
+        background-color: themed('bars'); 
+
+        .primary-nav__sub-brand{
+            color: themed('looksGray')
+        }
+    }
+}
+
+.panel {
+    @include themify($themes){
+        border-radius: 7px;
+        background-color: themed('offWhite');
+        box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
+        padding: 20px;
+
+        .panel__img{
+            height: auto;
+            background-color: themed('offWhite');
+        }
+        .panel__header{
+            font-weight: bold;
+            border-bottom: 0;
+        }
+
+    }
+
+}
+
+.fa{
+    @include themify($themes){
+        color: themed('buttonpress');
+    }
+}
+
+.primary-nav {
+    @include themify($themes) {
+        background-color: themed('bars'); 
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+
+// .menu-bar{
+//     @include themify($themes) {
+//         background-color: themed('bars');
+//         height: 8vh;
+//         position: fixed;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         z-index: 100;
+        
+//         .menu-bar-toggle{
+//             height: 0;
+//             width: 100%;
+//             position: fixed;
+//             z-index: 100;
+//             bottom: 0;
+//             transition: 0.5s;
+
+//         }
+//         .menu-bar-open{
+//             height: 100%;
+//             padding: 3%;
+//             position: relative;
+    
+//         }
+//         .menu-bar-button{
+//             position: relative;
+//         }
+//     }
+// }
+
+// .profile{
+//     transform: scale(.5,.5);
+// }
