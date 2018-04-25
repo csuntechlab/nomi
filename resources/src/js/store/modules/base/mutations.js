@@ -95,7 +95,8 @@ export default {
     },
 
     SORT_ROSTER: function (state) {
-        state.roster.forEach((course) => {
+        let len = state.courses.length;
+        for(let i = 0; i < len; ++i) {
             function sortedRoster (self) {
                 if (state.lastname === true) {
                     if(state.descending === true) {
@@ -120,8 +121,8 @@ export default {
                 }
             }
 
-            course = sortedRoster(course);
-        });
+            state.courses[i].roster = sortedRoster(state.courses[i].roster);
+        }
     },
 
     SORT_FIRST_NAME: function (state) {
