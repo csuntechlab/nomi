@@ -192,6 +192,10 @@ textarea[type=text]:focus {
   border-bottom: 0;
 }
 
+.theme-main .fa {
+  color: #0F1821;
+}
+
 textarea[type=text] {
   width: 100%;
   padding: 12px 20px;
