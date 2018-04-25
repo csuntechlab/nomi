@@ -19169,13 +19169,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -19197,7 +19190,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['student'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courseid', 'courseTitle', 'sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
         }
@@ -19521,37 +19514,6 @@ var render = function() {
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
       : _c("div", [
-          _c("div", [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
-                  { staticClass: "col-sm-12" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "light-grey",
-                        attrs: { to: "/class/" + this.courseid },
-                        nativeOn: {
-                          click: function($event) {
-                            _vm.$store.dispatch("getData")
-                          }
-                        }
-                      },
-                      [
-                        _c("h4", [
-                          _vm._v("Back to " + _vm._s(this.courseTitle))
-                        ])
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
           _c(
             "div",
             {
@@ -19560,6 +19522,8 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "container" }, [
+                _vm._m(0),
+                _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c(
                     "div",
@@ -19658,7 +19622,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("form", [
-                    _vm._m(0),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("textarea", {
                       attrs: { type: "text", id: "ex0", name: "ex0" },
@@ -19683,6 +19647,18 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
+          _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -19723,7 +19699,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
     state: {
         courses: [],
-        roster: [],
         flashroster: [],
         menushow: false,
         list: true,
@@ -19745,18 +19720,12 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         sp_bio: null,
         sp_images: null,
         sp_image_priority: null,
-        sp_notes: null,
-
-        courseid: null,
-        courseTitle: null
+        sp_notes: null
     },
 
     getters: {
         courses: function courses(state) {
             return state.courses;
-        },
-        roster: function roster(state) {
-            return state.roster;
         },
         flashroster: function flashroster(state) {
             return state.flashroster;
@@ -19816,13 +19785,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
-        },
-
-        courseid: function courseid(state) {
-            return state.courseid;
-        },
-        courseTitle: function courseTitle(state) {
-            return state.courseTitle;
         }
     },
 
@@ -19845,8 +19807,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         toggleMenu: function toggleMenu(context) {
             context.commit('TOGGLE_MENU');
         },
-        shuffleFlash: function shuffleFlash(context, payload) {
-            context.commit('SHUFFLE_FLASH', payload);
+        shuffleFlash: function shuffleFlash(context) {
+            context.commit('SHUFFLE_FLASH');
         },
         sortFirstName: function sortFirstName(context) {
             context.commit('SORT_FIRST_NAME');
@@ -19881,9 +19843,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         },
         refreshRoster: function refreshRoster(context) {
             context.commit('REFRESH_ROSTER');
-        },
-        setCourse: function setCourse(context, payload) {
-            context.commit('SET_COURSE', payload);
         }
     },
 
@@ -19891,8 +19850,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         GET_DATA: function GET_DATA(state) {
             axios.get('data').then(function (response) {
                 state.courses = response.data["courses"];
-                state.roster = response.data["students"];
-                state.flashroster = response.data["students"].slice();
+                state.flashroster = response.data["students"];
                 state.faculty_email = response.data["courses"][0].instructors[0].instructor;
                 state.faculty_name = state.faculty_email.replace("nr_", "");
                 state.faculty_name = state.faculty_name.split('@')[0];
@@ -19917,55 +19875,61 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
         TOGGLE_MENU: function TOGGLE_MENU(state) {
             state.menushow = !state.menushow;
         },
-        SHUFFLE_FLASH: function SHUFFLE_FLASH(state, _ref) {
-            var courseid = _ref.courseid;
+        SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
+            var len = state.flashroster.length;
 
-            var unKnownStudents = [];
-            var knownStudents = [];
+            var _loop = function _loop(i) {
+                var unKnownStudents = [];
+                var knownStudents = [];
 
-            state.flashroster[courseid].forEach(function (student) {
-                if (student.recognized === true) {
-                    knownStudents.push(student);
-                } else {
-                    unKnownStudents.push(student);
+                state.flashroster[i].forEach(function (student) {
+                    if (student.recognized === true) {
+                        knownStudents.push(student);
+                    } else {
+                        unKnownStudents.push(student);
+                    }
+                });
+
+                var currentIndex = unKnownStudents.length,
+                    temporaryValue = void 0,
+                    randomIndex = void 0;
+
+                // While there remain elements to shuffle...
+                while (0 !== currentIndex) {
+
+                    // Pick a remaining element...
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+
+                    // And swap it with the current element.
+                    temporaryValue = unKnownStudents[currentIndex];
+                    unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
+                    unKnownStudents[randomIndex] = temporaryValue;
                 }
-            });
 
-            var currentIndex = unKnownStudents.length,
-                temporaryValue = void 0,
-                randomIndex = void 0;
+                var currentIndexTwo = knownStudents.length,
+                    temporaryValueTwo = void 0,
+                    randomIndexTwo = void 0;
 
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
+                // While there remain elements to shuffle...
+                while (0 !== currentIndexTwo) {
 
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
+                    // Pick a remaining element...
+                    randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
+                    currentIndexTwo -= 1;
 
-                // And swap it with the current element.
-                temporaryValue = unKnownStudents[currentIndex];
-                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
-                unKnownStudents[randomIndex] = temporaryValue;
+                    // And swap it with the current element.
+                    temporaryValueTwo = knownStudents[currentIndexTwo];
+                    knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
+                    knownStudents[randomIndexTwo] = temporaryValueTwo;
+                }
+
+                state.flashroster[i] = unKnownStudents.concat(knownStudents);
+            };
+
+            for (var i = 0; i < len; ++i) {
+                _loop(i);
             }
-
-            var currentIndexTwo = knownStudents.length,
-                temporaryValueTwo = void 0,
-                randomIndexTwo = void 0;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndexTwo) {
-
-                // Pick a remaining element...
-                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
-                currentIndexTwo -= 1;
-
-                // And swap it with the current element.
-                temporaryValueTwo = knownStudents[currentIndexTwo];
-                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
-                knownStudents[randomIndexTwo] = temporaryValueTwo;
-            }
-
-            state.flashroster[courseid] = unKnownStudents.concat(knownStudents);
 
             state.flash = false;
             state.flash = true;
@@ -20077,11 +20041,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
             }).catch(function (e) {
                 console.log(e);
             });
-        },
-
-        SET_COURSE: function SET_COURSE(state, payload) {
-            state.courseid = payload.id;
-            state.courseTitle = payload.title;
         }
     }
 }));
@@ -21200,7 +21159,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "shuffle-button",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list', 'courseid']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list']))
 });
 
 /***/ }),
@@ -21217,7 +21176,7 @@ var render = function() {
           staticClass: "fa fa-random fa-3x",
           on: {
             click: function($event) {
-              _vm.$store.dispatch("shuffleFlash", { courseid: _vm.courseid })
+              _vm.$store.dispatch("shuffleFlash")
             }
           }
         })
@@ -21496,7 +21455,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['roster', 'flashroster', 'flash'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
 
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
@@ -22010,7 +21969,7 @@ var render = function() {
         )
       : _c(
           "div",
-          _vm._l(this.roster[this.courseid], function(student) {
+          _vm._l(this.courses[this.courseid].roster, function(student) {
             return _c("gallery-card", {
               key: student.student_id,
               attrs: { student: student }
@@ -22121,7 +22080,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['roster']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['courses']))
 });
 
 /***/ }),
@@ -22324,7 +22283,7 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      _vm._l(this.roster[this.courseid], function(student) {
+      _vm._l(this.courses[this.courseid].roster, function(student) {
         return _c("student-list-item", {
           key: student.display_name,
           attrs: { student: student }
@@ -22447,7 +22406,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22488,27 +22446,13 @@ var render = function() {
               "div",
               { class: _vm.bgcolor(course.id) + " type--center" },
               [
-                _c(
-                  "router-link",
-                  {
-                    attrs: { to: "/class/" + course.id },
-                    nativeOn: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setCourse", {
-                          id: course.id,
-                          title: course.title
-                        })
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(course.title) +
-                        "\n                "
-                    )
-                  ]
-                )
+                _c("router-link", { attrs: { to: "/class/" + course.id } }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.title) +
+                      "\n                "
+                  )
+                ])
               ],
               1
             )
@@ -23204,10 +23148,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -23253,25 +23193,9 @@ var render = function() {
       "div",
       { staticClass: "panel__header type--center" },
       [
-        _c(
-          "router-link",
-          {
-            attrs: { to: "/class/" + _vm.course.id },
-            nativeOn: {
-              click: function($event) {
-                _vm.$store.dispatch("setCourse", {
-                  id: _vm.course.id,
-                  title: _vm.course.title
-                })
-              }
-            }
-          },
-          [
-            _vm._v(
-              "\n                " + _vm._s(_vm.course.title) + "\n            "
-            )
-          ]
-        )
+        _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
+          _vm._v(_vm._s(_vm.course.title))
+        ])
       ],
       1
     ),

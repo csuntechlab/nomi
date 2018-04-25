@@ -1,11 +1,7 @@
 <template>
     <div class="panel col-lg-12 col-md-12 col-xs-12">
         <div class="panel__header type--center">
-                <router-link :to="'/class/'+course.id"
-                    @click.native="$store.dispatch('setCourse', {id: course.id, title: course.title})"
-                >
-                    {{course.title}}
-                </router-link>
+                <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
             </div>
         <div class="panel__content">
             
@@ -42,9 +38,9 @@
 
         methods: {
             convertTime: function (OriginalTime) {
-                var time = OriginalTime;
-                var hour = parseInt(time.substring(0, 2));
-                var min = time.substring(2, 4) + "am";
+                let time = OriginalTime;
+                let hour = parseInt(time.substring(0, 2));
+                let min = time.substring(2, 4) + "am";
                 if(hour > 12) {
                     hour = hour - 12;
                     min = min.substring(0, 2) + "pm"
