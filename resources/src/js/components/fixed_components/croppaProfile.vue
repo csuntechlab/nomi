@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="grid-image">
-            <label class="" :for="sp_display_name">
+            <label class="col-sm-12" :for="sp_display_name">
                 <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
                 <croppa v-else
                         v-model="myCroppa"
@@ -12,18 +12,18 @@
                         :quality="2"
                         @init="styleCanvas()">
                 </croppa>
+                <div class="">
+                    <div v-if="edit" class="type--center">
+                        <br>
+                        <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-2x"></i></button>
+                        <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-2x"></i></button>
+                        <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-2x"></i></button>
+                    </div>
+                    <div v-else>
+                        <button class="btn btn-default profile_button" @click="editImage"><i class="fa fa-edit fa-2x"></i></button>
+                    </div>
+                </div>
             </label>
-            <div class="">
-                <div v-if="show=true">
-                    <button class="btn btn-default" @click="edit = true"><i class="fa fa-pencil-alt fa-3x"></i></button>
-                </div>
-                <div v-else></div>
-                <div v-if="edit">
-                    <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-3x"></i></button>
-                    <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-3x"></i></button>
-                    <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-3x"></i></button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -40,8 +40,7 @@
                 errors: [],
                 myCroppa: null,
                 disabled: true,
-                edit: false,
-                show:true,
+                edit: false, 
             }
         },
 
@@ -98,6 +97,12 @@
 
             uploadFile: function() {
                 this.myCroppa.chooseFile();
+            }, 
+
+            editImage: function(){
+                this.edit = true; 
+                toggleCropper();
+                
             }
         }
     }

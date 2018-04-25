@@ -19168,11 +19168,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -19279,6 +19274,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19307,19 +19303,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.sp_image_priority === _vm.image_type
-    ? _c("div", [
-        _c("h2", { staticClass: "type--center" }, [_vm._v("Active Image")])
-      ])
-    : _c("div", { staticClass: "type--center" }, [
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn", on: { click: _vm.updateImageHandler } },
-          [_vm._v("Choose Default Image")]
-        )
-      ])
+  return _c("div", [
+    _vm.sp_image_priority === _vm.image_type
+      ? _c("div", [
+          _c("h2", { staticClass: "type--center" }, [_vm._v("Active Image")])
+        ])
+      : _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "btn profile_button",
+              on: { click: _vm.updateImageHandler }
+            },
+            [_vm._v("Choose Default")]
+          )
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19382,8 +19381,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             errors: [],
             myCroppa: null,
             disabled: true,
-            edit: false,
-            show: true
+            edit: false
         };
     },
 
@@ -19433,6 +19431,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
         uploadFile: function uploadFile() {
             this.myCroppa.chooseFile();
+        },
+
+        editImage: function editImage() {
+            this.edit = true;
+            toggleCropper();
         }
     }
 });
@@ -19449,7 +19452,7 @@ var render = function() {
     _c("div", { staticClass: "grid-image" }, [
       _c(
         "label",
-        { attrs: { for: _vm.sp_display_name } },
+        { staticClass: "col-sm-12", attrs: { for: _vm.sp_display_name } },
         [
           _vm.disabled
             ? _c("profile-picture", {
@@ -19475,60 +19478,54 @@ var render = function() {
                   },
                   expression: "myCroppa"
                 }
-              })
+              }),
+          _vm._v(" "),
+          _c("div", {}, [
+            _vm.edit
+              ? _c("div", { staticClass: "type--center" }, [
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: { click: _vm.toggleCropper }
+                    },
+                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: { click: _vm.uploadFile }
+                    },
+                    [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: { click: _vm.confirmImage }
+                    },
+                    [_c("i", { staticClass: "fa fa-check fa-2x" })]
+                  )
+                ])
+              : _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default profile_button",
+                      on: { click: _vm.editImage }
+                    },
+                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
+                  )
+                ])
+          ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("div", {}, [
-        (_vm.show = true)
-          ? _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: {
-                    click: function($event) {
-                      _vm.edit = true
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-pencil-alt fa-3x" })]
-              )
-            ])
-          : _c("div"),
-        _vm._v(" "),
-        _vm.edit
-          ? _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.toggleCropper }
-                },
-                [_c("i", { staticClass: "fa fa-edit fa-3x" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.uploadFile }
-                },
-                [_c("i", { staticClass: "fa fa-camera fa-3x" })]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: { click: _vm.confirmImage }
-                },
-                [_c("i", { staticClass: "fa fa-check fa-3x" })]
-              )
-            ])
-          : _vm._e()
-      ])
+      )
     ])
   ])
 }
@@ -19559,118 +19556,139 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      : _c("div", [_vm._m(0)]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "section--lg section--md student-banner default_padding" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              { staticClass: "col-xs-12 col-md-12 col-lg-12 default_padding" },
-              [
-                _c(
-                  "h1",
-                  { staticClass: "type--white type--marginless type--center" },
-                  [_vm._v(_vm._s(this.sp_display_name))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "carousel",
-                  { attrs: { perPage: 1 } },
-                  [
-                    _c(
-                      "slide",
-                      [
-                        _c("croppa-profile", {
-                          staticClass: "grid-image img--circle"
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "likeness" }
-                        })
-                      ],
-                      1
-                    ),
+      : _c("div", [
+          _c(
+            "div",
+            {
+              staticClass:
+                "section--lg section--md student-banner default_padding"
+            },
+            [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-xs-12 col-md-12 col-lg-12 default_padding"
+                    },
+                    [
+                      _c(
+                        "h1",
+                        {
+                          staticClass:
+                            "type--white type--marginless type--center"
+                        },
+                        [_vm._v(_vm._s(this.sp_display_name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "carousel",
+                        { attrs: { perPage: 1 } },
+                        [
+                          _c(
+                            "slide",
+                            [
+                              _c("croppa-profile", {
+                                staticClass: "grid-image img--circle"
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                staticClass: "image_handler",
+                                attrs: { image_type: "likeness" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["avatar"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                staticClass: "image_handler",
+                                attrs: { image_type: "avatar" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "slide",
+                            [
+                              _c("profile-picture", {
+                                attrs: { image: _vm.sp_images["official"] }
+                              }),
+                              _vm._v(" "),
+                              _c("image-handler", {
+                                staticClass: "image_handler",
+                                attrs: { image_type: "official" }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "section type--center" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-sm-12" }, [
+                  _c("form", [
+                    _c("textarea", {
+                      attrs: { type: "text", id: "ex0", name: "ex0" },
+                      domProps: { value: _vm.sp_notes },
+                      on: { input: _vm.updateNotes }
+                    }),
                     _vm._v(" "),
                     _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["avatar"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", { attrs: { image_type: "avatar" } })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "slide",
-                      [
-                        _c("profile-picture", {
-                          attrs: { image: _vm.sp_images["official"] }
-                        }),
-                        _vm._v(" "),
-                        _c("image-handler", {
-                          attrs: { image_type: "official" }
-                        })
-                      ],
-                      1
+                      "button",
+                      {
+                        staticClass: "btn-default btn",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.commitNotes($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save")]
                     )
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ])
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]
+                  ),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "h4",
+                    { staticClass: "type--black type--thin type--marginless" },
+                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ])
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-sm-12" }, [
-            _c("form", [
-              _c("textarea", {
-                attrs: { type: "text", id: "ex0", name: "ex0" },
-                domProps: { value: _vm.sp_notes },
-                on: { input: _vm.updateNotes }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn-default btn",
-                  on: { click: _vm.commitNotes }
-                },
-                [_vm._v("Save")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]
-            ),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "h4",
-              { staticClass: "type--black type--thin type--marginless" },
-              [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-            )
-          ])
-        ])
-      ])
-    ])
   ])
 }
 var staticRenderFns = [
@@ -19678,21 +19696,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "section--lg section--md student-banner default_padding" },
-      [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-12" }, [
-              _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
-                _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "type--center" }, [
+      _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
+        _c("i", { staticClass: "fa fa-angle-left fa-3x type--center" })
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c("br")
+    ])
   }
 ]
 render._withStripped = true

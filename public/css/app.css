@@ -224,11 +224,18 @@ textarea[type=text]:focus {
 }
 
 .style__picture {
-  padding: 20%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 .default_padding {
   padding: 0;
+}
+
+.profile_button {
+  position: relative;
+  z-index: 1;
+  float: right;
 }
 
 .course_title {
