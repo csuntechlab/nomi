@@ -19577,7 +19577,7 @@ var render = function() {
                         "h1",
                         {
                           staticClass:
-                            "type--white type--marginless type--center"
+                            "student_name type--marginless type--center"
                         },
                         [_vm._v(_vm._s(this.sp_display_name))]
                       ),
@@ -20295,7 +20295,7 @@ var staticRenderFns = [
             staticClass: "primary-nav__sub-brand nav_title",
             attrs: { href: "https://www.csun.edu/" }
           },
-          [_vm._v("NOMI")]
+          [_vm._v("Nameface")]
         )
       ])
     ])

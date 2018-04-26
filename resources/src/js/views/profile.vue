@@ -10,7 +10,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-md-12 col-lg-12 default_padding">
-                                <h1 class="type--white type--marginless type--center">{{this.sp_display_name}}</h1>
+                                <h1 class="student_name type--marginless type--center">{{this.sp_display_name}}</h1>
                             <carousel :perPage="1">
                                 <slide>
                                     <croppa-profile class="grid-image img--circle"></croppa-profile>
