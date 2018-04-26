@@ -20,6 +20,7 @@
         "vue-router": "^3.0.1"
     },
     "dependencies": {
+        "font-awesome": "^4.7.0",
         "prod": "^1.0.1",
         "vue-axios": "latest",
         "vue-carousel": "^0.6.11",
