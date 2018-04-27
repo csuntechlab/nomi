@@ -1,8 +1,8 @@
 <template>
     <div class="panel col-xs-12 col-md-12 col-lg-12">
         <div class="panel__content col-xs-12 col-md-12 col-lg-12">
-            <div class="pull-left col-xs-5 col-md-3 col-lg-3">
-                <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
+            <div class="pull-left col-xs-5 col-md-3 col-lg-3 clearPadding">
+                <profile-picture class="pull-left" :name="display_name" :image="image"></profile-picture>
             </div>
             <div class="col-xs-7 col-md-9 col-lg-9">
                 <router-link class="pull-left" :to="'/profile/'+email_uri">
