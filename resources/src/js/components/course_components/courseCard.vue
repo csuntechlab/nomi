@@ -1,23 +1,21 @@
 <template>
     <div>
         <div class="panel">
-                <div class="grid-item bg--light-grey panel-content">
                     <div>
-                        <div class="course_title">
+                        <div class="panel__header">
                             <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
                         </div>
                     </div>
-                    <div class="time_location course_time">
+                    <div class="panel__content">
                         {{course.subject}} {{course.catalog_number}}: #{{course.id}}
                         {{classStartTime}} - {{classEndTime}}
                     </div>
-                    <div class="time_location course_specifications">
+                    <div>
                         {{course.meetings[0].location}} {{course.meetings[0].days}}
                     </div>
-                    <div class="num_students course_specifications">
+                    <div>
                         {{course.enrollment_count}} Students
                     </div>
-                </div>
             </div>
     </div>
 </template>

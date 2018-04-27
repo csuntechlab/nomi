@@ -1,0 +1,45 @@
+textarea[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+textarea[type=text]:focus{
+  border: 3px solid lightblue;
+}
+
+.makeBlue{
+  @include themify($themes){
+      background-color: themed('bars');
+  }
+}
+.buttonPressBlue{
+  @include themify($themes){
+      background-color: themed('buttonpress');
+  }
+}
+
+.fa-blue{
+  @include themify($themes){
+      color: themed('buttonpress');
+  }
+}
+
+.nav-bars {
+  @include themify($themes) {
+      background-color: themed('bars');
+      font-size: themed('mainFontSize');
+      font-family: themed('mainFontFamily');
+      color: themed('looksGray'); 
+  }
+}
+
+.textOverflow{
+  height: 50px; 
+  word-wrap: break-word;
+}

@@ -1,5 +1,5 @@
 <template>
-    <nav class="banner__position bg--light-grey">
+    <nav>
         <list-grid-selector></list-grid-selector>
     </nav>
 </template>
