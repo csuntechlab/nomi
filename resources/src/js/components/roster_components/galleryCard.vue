@@ -14,13 +14,17 @@
                 </label>
                 <div class="card-title font-style">
                     <div class="panel-heading align-center">
-                        <div class="font-style"><router-link :to="'/profile/'+email_uri">
-                            {{display_name}}</router-link>
+                        <div class="textOverflow type--center">
+                            <router-link :to="'/profile/'+email_uri">
+                            {{display_name}}
+                            </router-link>
                         </div>
                         <br>
-                        <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                        <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
-                        <button class="btn btn-default" @click="confirmImage(student.email)"><i class="fa fa-check fa-4x"></i></button>
+                        <div class="type--center">
+                            <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-3x"></i></button>
+                            <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-3x"></i></button>
+                            <button class="btn btn-default" @click="confirmImage(student.email)"><i class="fa fa-check fa-3x"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -38,3 +38,8 @@ textarea[type=text]:focus{
       color: themed('looksGray'); 
   }
 }
+
+.textOverflow{
+  height: 50px; 
+  word-wrap: break-word;
+}
