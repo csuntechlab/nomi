@@ -1,13 +1,14 @@
 .underlineStyling{
     @include themify($themes) {
         border-bottom:  5px solid themed('looksGray');
-  }
-   
+    }
   }
 .underlineStyling--red{
-    border-bottom: 5px solid rgb(191, 44, 53);
-   
+  @include themify($themes) {
+    border-bottom:  5px solid themed('buttonpress');
   }
+}
+
 .underline{
     float: left;
     width: 30px;

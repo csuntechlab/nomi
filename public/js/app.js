@@ -19713,7 +19713,7 @@ var render = function() {
                 [
                   _c(
                     "carousel",
-                    { attrs: { perPage: 1, paginationActiveColor: "#BF2C35" } },
+                    { attrs: { perPage: 1, paginationActiveColor: "#4F9DA3" } },
                     [
                       _c("slide", [
                         _c(
@@ -19863,11 +19863,7 @@ var render = function() {
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("h4", [
-              _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-              _c("br"),
-              _vm._v("@my.csun.edu")
-            ]),
+            _c("h4", [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
