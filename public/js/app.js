@@ -20159,24 +20159,24 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         });
 
         axios.get('student_profile/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
-            state.studentProfile.display_name = response['data'].display_name;
+            state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
-            state.studentProfile.image_priority = response['data'].image_priority;
+            state.studentProfile.imagePriority = response['data'].imagePriority;
             state.studentProfile.notes = response['data'].notes;
-            state.studentProfile.student_id = response['data'].student_id;
+            state.studentProfile.id = response['data'].id;
         }).catch(function (e) {
             console.log(e);
         });
     },
 
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
-        state.sp_notes = notes;
+        state.studentProfile.notes = notes;
     },
 
     COMMIT_NOTES: function COMMIT_NOTES(state) {
         var data = new FormData();
-        data.append('student_id', state.sp_student_id);
-        data.append('notepad', state.sp_notes);
+        data.append('student_id', state.studentProfile.student_id);
+        data.append('notepad', state.studentProfile.notes);
 
         axios.post('update_note', data).catch(function (e) {
             console.log(e);
@@ -20189,7 +20189,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         data.append('image_priority', payload.image_priority);
 
         axios.post('api/priority', data).then(function (response) {
-            state.sp_image_priority = payload.image_priority;
+            state.studentProfile.imagePriority = payload.image_priority;
         }).catch(function (e) {
             console.log(e);
         });

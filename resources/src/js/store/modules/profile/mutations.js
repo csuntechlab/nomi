@@ -14,11 +14,11 @@ export default {
 
         axios.get('student_profile/'+state.studentProfile.emailURI+'@my.csun.edu')
             .then(response => {
-                state.studentProfile.display_name = response['data'].display_name;
+                state.studentProfile.displayName = response['data'].display_name;
                 state.studentProfile.images = response['data'].images;
-                state.studentProfile.image_priority = response['data'].image_priority;
+                state.studentProfile.imagePriority = response['data'].imagePriority;
                 state.studentProfile.notes = response['data'].notes;
-                state.studentProfile.student_id = response['data'].student_id;
+                state.studentProfile.id = response['data'].id;
             })
             .catch(e => {
                 console.log(e);
@@ -26,13 +26,13 @@ export default {
     },
 
     UPDATE_NOTES: function (state, notes) {
-        state.sp_notes = notes;
+        state.studentProfile.notes = notes;
     },
 
     COMMIT_NOTES: function (state) {
         let data = new FormData;
-        data.append('student_id', state.sp_student_id);
-        data.append('notepad', state.sp_notes);
+        data.append('student_id', state.studentProfile.student_id);
+        data.append('notepad', state.studentProfile.notes);
 
         axios.post('update_note', data)
             .catch(e => {
@@ -47,7 +47,7 @@ export default {
 
         axios.post('api/priority', data)
             .then(response => {
-                state.sp_image_priority = payload.image_priority;
+                state.studentProfile.imagePriority = payload.image_priority;
             })
             .catch(e => {
                 console.log(e)
