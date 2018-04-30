@@ -16,9 +16,9 @@ export default {
             .then(response => {
                 state.studentProfile.displayName = response['data'].display_name;
                 state.studentProfile.images = response['data'].images;
-                state.studentProfile.imagePriority = response['data'].imagePriority;
-                state.studentProfile.notes = response['data'].notes;
-                state.studentProfile.id = response['data'].id;
+                state.studentProfile.imagePriority = response['data'].image_priority;
+                state.spNotes = response['data'].notes;
+                state.studentProfile.id = response['data'].student_id;
             })
             .catch(e => {
                 console.log(e);
@@ -26,13 +26,13 @@ export default {
     },
 
     UPDATE_NOTES: function (state, notes) {
-        state.studentProfile.notes = notes;
+        state.spNotes = notes;
     },
 
     COMMIT_NOTES: function (state) {
         let data = new FormData;
-        data.append('student_id', state.studentProfile.student_id);
-        data.append('notepad', state.studentProfile.notes);
+        data.append('student_id', state.studentProfile.id);
+        data.append('notepad', state.spNotes);
 
         axios.post('update_note', data)
             .catch(e => {
@@ -42,7 +42,7 @@ export default {
 
     UPDATE_IMAGE_PRIORITY: function (state, payload) {
         let data = new FormData;
-        data.append('student_id', state.sp_student_id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.student_id.replace("members:", ""));
         data.append('image_priority', payload.image_priority);
 
         axios.post('api/priority', data)

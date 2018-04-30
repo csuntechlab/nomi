@@ -27,7 +27,6 @@ export default {
     computed: {
         ...mapGetters([
             'courses',
-            'faculty_profile',
         ])
     },
 }

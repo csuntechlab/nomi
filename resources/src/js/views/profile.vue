@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="sp_images == null" class="type--center">
+        <div v-if="studentProfile.images == null" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
@@ -21,15 +21,15 @@
                                     <image-handler image_type="likeness"></image-handler>
                                 </slide>
                                 <slide>
-                                    <profile-picture :image="sp_images['avatar']"></profile-picture>
+                                    <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
                                     <image-handler image_type="avatar"></image-handler>
                                 </slide>
                                 <slide>
-                                    <profile-picture :image="sp_images['official']"></profile-picture>
+                                    <profile-picture :image="studentProfile.images['official']"></profile-picture>
                                     <image-handler image_type="official"></image-handler>
                                 </slide>
                             </carousel>
-                            <h1 class="type--white type--thin type--marginless type--center">{{this.sp_display_name}}</h1>
+                            <h1 class="type--white type--thin type--marginless type--center">{{this.studentProfile.displayName}}</h1>
                         </div>
                     </div>
                 </div>
@@ -38,13 +38,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h4 class="type--black type--thin type--marginless">Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
+                            <h4 class="type--black type--thin type--marginless">Email: {{this.studentProfile.emailURI}}<br>@my.csun.edu</h4>
                             <br>
-                            <h4 class="type--black type--thin type--marginless">Bio: {{this.sp_bio}}</h4>
+                            <h4 class="type--black type--thin type--marginless">Bio: {{this.studentProfile.bio}}</h4>
                             <br>
                             <form>
-                                <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i></label>
-                                <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
+                                <label>Add a Note: <i class="fa fa-plus-circle fa-blue"></i>
+                                    <textarea id="ex0" name="ex0" :value="this.sp_notes" @input="updateNotes"></textarea>
+                                </label>
                                 <button class="btn-default btn" @click="commitNotes">Commit</button>
                             </form>
                         </div>
@@ -73,19 +74,13 @@
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
-        props: ['student'],
-
         computed: {
             ...mapGetters([
-                'sp_emailURI',
-                'sp_display_name',
-                'sp_bio',
-                'sp_images',
-                'sp_image_priority',
+                'studentProfile'
             ]),
 
             ...mapState({
-                sp_notes: state => state.sp_notes
+                sp_notes: state => state.spNotes
             })
         },
 

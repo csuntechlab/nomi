@@ -19169,6 +19169,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -19188,11 +19189,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    props: ['student'],
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_emailURI', 'sp_display_name', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
-            return state.sp_notes;
+            return state.spNotes;
         }
     })),
 
@@ -19281,7 +19280,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['image_type'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_image_priority'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile'])),
 
     methods: {
         updateImageHandler: function updateImageHandler() {
@@ -19302,7 +19301,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.sp_image_priority === _vm.image_type
+  return _vm.studentProfile.image_priority === _vm.image_type
     ? _c("div", [_c("h2", [_vm._v("This is the Active one")])])
     : _c("div", [
         _c("button", { on: { click: _vm.updateImageHandler } }, [
@@ -19353,7 +19352,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -19369,7 +19367,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_display_name', 'sp_emailURI', 'sp_images'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile'])),
 
     methods: {
         confirmImage: function confirmImage() {
@@ -19390,7 +19388,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
             var data = new FormData();
             data.append('media', url);
-            data.append('email', this.sp_emailURI);
+            data.append('email', this.studentProfile.emailURI);
 
             axios.post('api/upload', data, {
                 headers: {
@@ -19431,18 +19429,18 @@ var render = function() {
     _c("div", [
       _c(
         "label",
-        { attrs: { for: _vm.sp_display_name } },
+        { attrs: { for: _vm.studentProfile.displayName } },
         [
           _vm.disabled
             ? _c("profile-picture", {
-                attrs: { image: _vm.sp_images["likeness"] }
+                attrs: { image: _vm.studentProfile.images["likeness"] }
               })
             : _c("croppa", {
                 attrs: {
                   "prevent-white-space": false,
                   "show-remove-button": false,
                   disabled: _vm.disabled,
-                  "initial-image": _vm.sp_images["likeness"],
+                  "initial-image": _vm.studentProfile.images["likeness"],
                   quality: 2
                 },
                 on: {
@@ -19505,7 +19503,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.sp_images == null
+    _vm.studentProfile.images == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -19554,7 +19552,9 @@ var render = function() {
                             "slide",
                             [
                               _c("profile-picture", {
-                                attrs: { image: _vm.sp_images["avatar"] }
+                                attrs: {
+                                  image: _vm.studentProfile.images["avatar"]
+                                }
                               }),
                               _vm._v(" "),
                               _c("image-handler", {
@@ -19568,7 +19568,9 @@ var render = function() {
                             "slide",
                             [
                               _c("profile-picture", {
-                                attrs: { image: _vm.sp_images["official"] }
+                                attrs: {
+                                  image: _vm.studentProfile.images["official"]
+                                }
                               }),
                               _vm._v(" "),
                               _c("image-handler", {
@@ -19587,7 +19589,7 @@ var render = function() {
                           staticClass:
                             "type--white type--thin type--marginless type--center"
                         },
-                        [_vm._v(_vm._s(this.sp_display_name))]
+                        [_vm._v(_vm._s(this.studentProfile.displayName))]
                       )
                     ],
                     1
@@ -19605,7 +19607,7 @@ var render = function() {
                     "h4",
                     { staticClass: "type--black type--thin type--marginless" },
                     [
-                      _vm._v("Email: " + _vm._s(this.sp_emailURI)),
+                      _vm._v("Email: " + _vm._s(this.studentProfile.emailURI)),
                       _c("br"),
                       _vm._v("@my.csun.edu")
                     ]
@@ -19616,19 +19618,22 @@ var render = function() {
                   _c(
                     "h4",
                     { staticClass: "type--black type--thin type--marginless" },
-                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
+                    [_vm._v("Bio: " + _vm._s(this.studentProfile.bio))]
                   ),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
                   _c("form", [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      attrs: { type: "text", id: "ex0", name: "ex0" },
-                      domProps: { value: _vm.sp_notes },
-                      on: { input: _vm.updateNotes }
-                    }),
+                    _c("label", [
+                      _vm._v("Add a Note: "),
+                      _c("i", { staticClass: "fa fa-plus-circle fa-blue" }),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        attrs: { id: "ex0", name: "ex0" },
+                        domProps: { value: this.sp_notes },
+                        on: { input: _vm.updateNotes }
+                      })
+                    ]),
                     _vm._v(" "),
                     _c(
                       "button",
@@ -19657,15 +19662,6 @@ var staticRenderFns = [
           _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Add a Note: "),
-      _c("i", { staticClass: "fa fa-plus-circle fa-blue" })
     ])
   }
 ]
@@ -19783,26 +19779,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     facultyMember: function facultyMember(state) {
         return state.facultyMember;
     },
-    faculty_email: function faculty_email(state) {
-        return state.facultyMember.email;
-    },
-    faculty_name: function faculty_name(state) {
-        return state.facultyMember.emailURI;
-    },
-    faculty_profile: function faculty_profile(state) {
-        return state.facultyMember.profile;
-    },
-    faculty_first_name: function faculty_first_name(state) {
-        return state.facultyMember.firstName;
-    },
-    faculty_last_name: function faculty_last_name(state) {
-        return state.facultyMember.lastName;
-    },
-    faculty_full_name: function faculty_full_name(state) {
+    facultyFullName: function facultyFullName(state) {
         return state.facultyMember.firstName + " " + state.facultyMember.lastName;
-    },
-    faculty_profile_image: function faculty_profile_image(state) {
-        return state.facultyMember.image;
     }
 });
 
@@ -20085,9 +20063,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         displayName: null,
         bio: null,
         images: null,
-        imagePriority: null,
-        notes: null
-    }
+        imagePriority: null
+    },
+
+    spNotes: null
 });
 
 /***/ }),
@@ -20098,24 +20077,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = ({
     studentProfile: function studentProfile(state) {
         return state.studentProfile;
-    },
-    sp_student_id: function sp_student_id(state) {
-        return state.studentProfile.id;
-    },
-    sp_emailURI: function sp_emailURI(state) {
-        return state.studentProfile.emailURI;
-    },
-    sp_display_name: function sp_display_name(state) {
-        return state.studentProfile.displayName;
-    },
-    sp_bio: function sp_bio(state) {
-        return state.studentProfile.bio;
-    },
-    sp_images: function sp_images(state) {
-        return state.studentProfile.images;
-    },
-    sp_image_priority: function sp_image_priority(state) {
-        return state.studentProfile.imagePriority;
     },
     sp_notes: function sp_notes(state) {
         return state.studentProfile.notes;
@@ -20161,22 +20122,22 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         axios.get('student_profile/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
             state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
-            state.studentProfile.imagePriority = response['data'].imagePriority;
-            state.studentProfile.notes = response['data'].notes;
-            state.studentProfile.id = response['data'].id;
+            state.studentProfile.imagePriority = response['data'].image_priority;
+            state.spNotes = response['data'].notes;
+            state.studentProfile.id = response['data'].student_id;
         }).catch(function (e) {
             console.log(e);
         });
     },
 
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
-        state.studentProfile.notes = notes;
+        state.spNotes = notes;
     },
 
     COMMIT_NOTES: function COMMIT_NOTES(state) {
         var data = new FormData();
-        data.append('student_id', state.studentProfile.student_id);
-        data.append('notepad', state.studentProfile.notes);
+        data.append('student_id', state.studentProfile.id);
+        data.append('notepad', state.spNotes);
 
         axios.post('update_note', data).catch(function (e) {
             console.log(e);
@@ -20185,7 +20146,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
-        data.append('student_id', state.sp_student_id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.student_id.replace("members:", ""));
         data.append('image_priority', payload.image_priority);
 
         axios.post('api/priority', data).then(function (response) {
@@ -20580,7 +20541,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menuShow']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'facultyMember', 'facultyFullName', 'menuShow']))
 });
 
 /***/ }),
@@ -20599,7 +20560,7 @@ var render = function() {
               "div",
               { staticClass: "list" },
               [
-                _vm.faculty_profile_image === null
+                _vm.facultyMember.image === null
                   ? _c("div", { staticClass: "type--center" }, [
                       _c("br"),
                       _vm._v(" "),
@@ -20616,7 +20577,7 @@ var render = function() {
                         staticClass: "img--circle faculty_image",
                         attrs: {
                           id: "faculty-img",
-                          src: _vm.faculty_profile_image,
+                          src: _vm.facultyMember.image,
                           name: "photo"
                         }
                       }),
@@ -20626,11 +20587,11 @@ var render = function() {
                         {
                           staticClass: "faculty-name",
                           attrs: {
-                            href: _vm.faculty_profile,
+                            href: _vm.facultyMember.profile,
                             title: "User Name"
                           }
                         },
-                        [_vm._v(_vm._s(_vm.faculty_full_name))]
+                        [_vm._v(_vm._s(_vm.facultyFullName))]
                       )
                     ]),
                 _vm._v(" "),
@@ -23169,11 +23130,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -23186,7 +23142,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses'])),
 
     components: {
         courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a
@@ -23420,21 +23376,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm.faculty_profile == null
-      ? _c("div", { staticClass: "type--center" }, [
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
-        ])
-      : _c(
-          "div",
-          _vm._l(this.courses, function(course) {
-            return _c("course-list-item", {
-              key: course.title,
-              attrs: { course: course }
-            })
-          })
-        )
-  ])
+  return _c(
+    "div",
+    _vm._l(this.courses, function(course) {
+      return _c("course-list-item", {
+        key: course.title,
+        attrs: { course: course }
+      })
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23530,7 +23480,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         courseCard: __WEBPACK_IMPORTED_MODULE_1__courseCard___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 });
 
 /***/ }),

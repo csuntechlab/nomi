@@ -1,5 +1,5 @@
 <template>
-    <div v-if="sp_image_priority === image_type">
+    <div v-if="studentProfile.image_priority === image_type">
         <h2>This is the Active one</h2>
     </div>
     <div v-else>
@@ -16,7 +16,7 @@
 
         computed: {
             ...mapGetters([
-                'sp_image_priority'
+                'studentProfile'
             ])
         },
 
