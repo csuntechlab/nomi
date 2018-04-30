@@ -81,7 +81,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="section type--center">
+            <div class="container type--center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
