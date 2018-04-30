@@ -6,7 +6,6 @@ export default {
         bio: null,
         images: null,
         imagePriority: null,
-    },
-
-    spNotes: null,
+        notes: null
+    }
 }

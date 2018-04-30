@@ -19176,22 +19176,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'profile',
 
     components: {
         ImageHandler: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default.a,
         croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a
     },
 
-    name: 'profile',
-
     created: function created() {
         this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'fetched']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
-            return state.spNotes;
+            return state.profile.studentProfile.notes;
         }
     })),
 
@@ -19301,7 +19300,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.studentProfile.image_priority === _vm.image_type
+  return _vm.studentProfile.imagePriority === _vm.image_type
     ? _c("div", [_c("h2", [_vm._v("This is the Active one")])])
     : _c("div", [
         _c("button", { on: { click: _vm.updateImageHandler } }, [
@@ -19503,7 +19502,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.studentProfile.images === null
+    !_vm.fetched
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -19515,12 +19514,33 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass:
-                "section--lg section--md student-banner default_padding"
+              staticClass: "section--lg section--md student-banner",
+              staticStyle: { padding: "1rem 0" }
             },
             [
               _c("div", { staticClass: "container" }, [
-                _vm._m(0),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-12" }, [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "javascript:history.go(-1)" },
+                        on: {
+                          click: function($event) {
+                            _vm.$store.dispatch("resetFetched")
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-arrow-left fa-3x" })]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "h1",
+                  { staticClass: "type--thin type--marginless type--center" },
+                  [_vm._v(_vm._s(this.studentProfile.displayName))]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c(
@@ -19581,15 +19601,6 @@ var render = function() {
                           )
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "type--white type--thin type--marginless type--center"
-                        },
-                        [_vm._v(_vm._s(this.studentProfile.displayName))]
                       )
                     ],
                     1
@@ -19651,20 +19662,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
-          _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -20063,10 +20061,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         displayName: null,
         bio: null,
         images: null,
-        imagePriority: null
+        imagePriority: null,
+        notes: null
     },
 
-    spNotes: null
+    fetched: false
 });
 
 /***/ }),
@@ -20078,8 +20077,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     studentProfile: function studentProfile(state) {
         return state.studentProfile;
     },
-    sp_notes: function sp_notes(state) {
-        return state.spNotes;
+    fetched: function fetched(state) {
+        return state.fetched;
     }
 });
 
@@ -20123,21 +20122,23 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
             state.studentProfile.imagePriority = response['data'].image_priority;
-            state.spNotes = response['data'].notes;
+            state.studentProfile.notes = response['data'].notes;
             state.studentProfile.id = response['data'].student_id;
         }).catch(function (e) {
             console.log(e);
         });
+
+        state.fetched = true;
     },
 
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
-        state.spNotes = notes;
+        state.studentProfile.notes = notes;
     },
 
     COMMIT_NOTES: function COMMIT_NOTES(state) {
         var data = new FormData();
         data.append('student_id', state.studentProfile.id);
-        data.append('notepad', state.spNotes);
+        data.append('notepad', state.studentProfile.notes);
 
         axios.post('update_note', data).catch(function (e) {
             console.log(e);
@@ -20154,6 +20155,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         }).catch(function (e) {
             console.log(e);
         });
+    },
+
+    RESET_FETCHED: function RESET_FETCHED(state) {
+        state.fetched = false;
     }
 });
 

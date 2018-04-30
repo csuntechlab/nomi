@@ -1,5 +1,5 @@
 <template>
-    <div v-if="studentProfile.image_priority === image_type">
+    <div v-if="studentProfile.imagePriority === image_type">
         <h2>This is the Active one</h2>
     </div>
     <div v-else>
