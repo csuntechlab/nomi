@@ -19503,7 +19503,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.studentProfile.images == null
+    _vm.studentProfile.images === null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -20079,7 +20079,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         return state.studentProfile;
     },
     sp_notes: function sp_notes(state) {
-        return state.studentProfile.notes;
+        return state.spNotes;
     }
 });
 
