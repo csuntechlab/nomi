@@ -1,24 +1,24 @@
 export default {
     GET_STUDENT_PROFILE: function (state, payload) {
-        state.sp_emailURI = payload.uri;
-        axios.get('student/'+state.sp_emailURI+'@my.csun.edu')
+        state.studentProfile.emailURI = payload.uri;
+        axios.get('student/'+state.studentProfile.emailURI+'@my.csun.edu')
             .then(response => {
-                state.sp_bio = response['data']['people'].biography;
+                state.studentProfile.bio = response['data']['people'].biography;
 
-                if(state.sp_bio === null)
-                    state.sp_bio = "Pending biography from student.";
+                if(state.studentProfile.bio === null)
+                    state.studentProfile.bio = "Pending biography from student.";
             })
             .catch(e => {
                 console.log(e);
             });
 
-        axios.get('student_profile/'+state.sp_emailURI+'@my.csun.edu')
+        axios.get('student_profile/'+state.studentProfile.emailURI+'@my.csun.edu')
             .then(response => {
-                state.sp_display_name = response['data'].display_name;
-                state.sp_images = response['data'].images;
-                state.sp_image_priority = response['data'].image_priority;
-                state.sp_notes = response['data'].notes;
-                state.sp_student_id = response['data'].student_id;
+                state.studentProfile.display_name = response['data'].display_name;
+                state.studentProfile.images = response['data'].images;
+                state.studentProfile.image_priority = response['data'].image_priority;
+                state.studentProfile.notes = response['data'].notes;
+                state.studentProfile.student_id = response['data'].student_id;
             })
             .catch(e => {
                 console.log(e);

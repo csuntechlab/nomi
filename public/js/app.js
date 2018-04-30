@@ -19190,7 +19190,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['student'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_emailURI', 'sp_display_name', 'sp_major', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['sp_emailURI', 'sp_display_name', 'sp_bio', 'sp_images', 'sp_image_priority']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.sp_notes;
         }
@@ -19742,19 +19742,20 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = ({
     courses: [],
     flashroster: [],
-    menushow: false,
+    menuShow: false,
     list: true,
     flash: true,
-    lastname: true,
-    descending: true,
+    sortLastName: true,
+    sortDescending: true,
 
-    faculty_email: null,
-    faculty_name: null,
-    faculty_profile: null,
-    faculty_first_name: null,
-    faculty_last_name: null,
-    faculty_full_name: null,
-    faculty_profile_image: null
+    facultyMember: {
+        email: null,
+        emailURI: null,
+        profile: null,
+        firstName: null,
+        lastName: null,
+        image: null
+    }
 });
 
 /***/ }),
@@ -19775,30 +19776,33 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     flash: function flash(state) {
         return state.flash;
     },
-    menushow: function menushow(state) {
-        return state.menushow;
+    menuShow: function menuShow(state) {
+        return state.menuShow;
     },
 
+    facultyMember: function facultyMember(state) {
+        return state.facultyMember;
+    },
     faculty_email: function faculty_email(state) {
-        return state.faculty_email;
+        return state.facultyMember.email;
     },
     faculty_name: function faculty_name(state) {
-        return state.faculty_name;
+        return state.facultyMember.emailURI;
     },
     faculty_profile: function faculty_profile(state) {
-        return state.faculty_profile;
+        return state.facultyMember.profile;
     },
     faculty_first_name: function faculty_first_name(state) {
-        return state.faculty_first_name;
+        return state.facultyMember.firstName;
     },
     faculty_last_name: function faculty_last_name(state) {
-        return state.faculty_last_name;
+        return state.facultyMember.lastName;
     },
     faculty_full_name: function faculty_full_name(state) {
-        return state.faculty_full_name;
+        return state.facultyMember.firstName + " " + state.facultyMember.lastName;
     },
     faculty_profile_image: function faculty_profile_image(state) {
-        return state.faculty_profile_image;
+        return state.facultyMember.image;
     }
 });
 
@@ -19854,20 +19858,21 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_DATA: function GET_DATA(state) {
+        function capitalize(name) {
+            return name.charAt(0).toUpperCase() + name.substr(1);
+        }
+
         axios.get("data").then(function (response) {
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
-            state.faculty_email = response.data["courses"][0].instructors[0].instructor;
-            state.faculty_name = state.faculty_email.replace("nr_", "");
-            state.faculty_name = state.faculty_name.split('@')[0];
-            state.faculty_profile = "http://www.csun.edu/faculty/profiles/" + state.faculty_name;
-            state.faculty_first_name = state.faculty_name.charAt(0).toUpperCase() + state.faculty_name.substring(1, state.faculty_name.indexOf('.'));
-            state.faculty_last_name = state.faculty_name.substring(state.faculty_name.indexOf('.') + 2, state.faculty_name.length);
-            state.faculty_last_name = state.faculty_name.charAt(state.faculty_name.indexOf('.') + 1).toUpperCase() + state.faculty_last_name;
-            state.faculty_full_name = state.faculty_first_name + " " + state.faculty_last_name;
+            state.facultyMember.email = response.data["courses"][0].instructors[0].instructor;
+            state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+            state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+            state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+            state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
             axios.get("faculty_profile/" + response.data["courses"][0].instructors[0].instructor).then(function (response) {
-                state.faculty_profile_image = response.data;
+                state.facultyMember.image = response.data;
             }).catch(function (e) {
                 console.log(e);
             });
@@ -19885,9 +19890,28 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         state.flash = !state.flash;
     },
     TOGGLE_MENU: function TOGGLE_MENU(state) {
-        state.menushow = !state.menushow;
+        state.menuShow = !state.menuShow;
     },
     SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
+        function shuffle(students) {
+            var currentIndex = students.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
+
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = students[currentIndex];
+                students[currentIndex] = students[randomIndex];
+                students[randomIndex] = temporaryValue;
+            }
+        }
+
         var len = state.flashroster.length;
 
         var _loop = function _loop(i) {
@@ -19902,39 +19926,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 }
             });
 
-            var currentIndex = unKnownStudents.length,
-                temporaryValue = void 0,
-                randomIndex = void 0;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-
-                // And swap it with the current element.
-                temporaryValue = unKnownStudents[currentIndex];
-                unKnownStudents[currentIndex] = unKnownStudents[randomIndex];
-                unKnownStudents[randomIndex] = temporaryValue;
-            }
-
-            var currentIndexTwo = knownStudents.length,
-                temporaryValueTwo = void 0,
-                randomIndexTwo = void 0;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndexTwo) {
-
-                // Pick a remaining element...
-                randomIndexTwo = Math.floor(Math.random() * currentIndexTwo);
-                currentIndexTwo -= 1;
-
-                // And swap it with the current element.
-                temporaryValueTwo = knownStudents[currentIndexTwo];
-                knownStudents[currentIndexTwo] = knownStudents[randomIndexTwo];
-                knownStudents[randomIndexTwo] = temporaryValueTwo;
-            }
+            shuffle(unKnownStudents);
+            shuffle(knownStudents);
 
             state.flashroster[i] = unKnownStudents.concat(knownStudents);
         };
@@ -19952,8 +19945,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         var len = state.courses.length;
         for (var i = 0; i < len; ++i) {
             var sortedRoster = function sortedRoster(self) {
-                if (state.lastname === true) {
-                    if (state.descending === true) {
+                if (state.sortLastName === true) {
+                    if (state.sortDescending === true) {
                         return self.sort(function (a, b) {
                             return a.last_name.localeCompare(b.last_name);
                         });
@@ -19963,7 +19956,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                         }).reverse();
                     }
                 } else {
-                    if (state.descending === true) {
+                    if (state.sortDescending === true) {
                         return self.sort(function (a, b) {
                             return a.first_name.localeCompare(b.first_name);
                         });
@@ -19980,19 +19973,19 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
 
     SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
-        state.lastname = false;
+        state.sortLastName = false;
     },
 
     SORT_LAST_NAME: function SORT_LAST_NAME(state) {
-        state.lastname = true;
+        state.sortLastName = true;
     },
 
     SORT_DESC: function SORT_DESC(state) {
-        state.descending = true;
+        state.sortDescending = true;
     },
 
     SORT_ASC: function SORT_ASC(state) {
-        state.descending = false;
+        state.sortDescending = false;
     }
 });
 
@@ -20086,13 +20079,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    sp_student_id: null,
-    sp_emailURI: null,
-    sp_display_name: null,
-    sp_bio: null,
-    sp_images: null,
-    sp_image_priority: null,
-    sp_notes: null
+    studentProfile: {
+        id: null,
+        emailURI: null,
+        displayName: null,
+        bio: null,
+        images: null,
+        imagePriority: null,
+        notes: null
+    }
 });
 
 /***/ }),
@@ -20101,29 +20096,29 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    studentProfile: function studentProfile(state) {
+        return state.studentProfile;
+    },
     sp_student_id: function sp_student_id(state) {
-        return state.sp_student_id;
+        return state.studentProfile.id;
     },
     sp_emailURI: function sp_emailURI(state) {
-        return state.sp_emailURI;
+        return state.studentProfile.emailURI;
     },
     sp_display_name: function sp_display_name(state) {
-        return state.sp_display_name;
-    },
-    sp_major: function sp_major(state) {
-        return state.sp_major;
+        return state.studentProfile.displayName;
     },
     sp_bio: function sp_bio(state) {
-        return state.sp_bio;
+        return state.studentProfile.bio;
     },
     sp_images: function sp_images(state) {
-        return state.sp_images;
+        return state.studentProfile.images;
     },
     sp_image_priority: function sp_image_priority(state) {
-        return state.sp_image_priority;
+        return state.studentProfile.imagePriority;
     },
     sp_notes: function sp_notes(state) {
-        return state.sp_notes;
+        return state.studentProfile.notes;
     }
 });
 
@@ -20154,21 +20149,21 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
-        state.sp_emailURI = payload.uri;
-        axios.get('student/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
-            state.sp_bio = response['data']['people'].biography;
+        state.studentProfile.emailURI = payload.uri;
+        axios.get('student/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+            state.studentProfile.bio = response['data']['people'].biography;
 
-            if (state.sp_bio === null) state.sp_bio = "Pending biography from student.";
+            if (state.studentProfile.bio === null) state.studentProfile.bio = "Pending biography from student.";
         }).catch(function (e) {
             console.log(e);
         });
 
-        axios.get('student_profile/' + state.sp_emailURI + '@my.csun.edu').then(function (response) {
-            state.sp_display_name = response['data'].display_name;
-            state.sp_images = response['data'].images;
-            state.sp_image_priority = response['data'].image_priority;
-            state.sp_notes = response['data'].notes;
-            state.sp_student_id = response['data'].student_id;
+        axios.get('student_profile/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+            state.studentProfile.display_name = response['data'].display_name;
+            state.studentProfile.images = response['data'].images;
+            state.studentProfile.image_priority = response['data'].image_priority;
+            state.studentProfile.notes = response['data'].notes;
+            state.studentProfile.student_id = response['data'].student_id;
         }).catch(function (e) {
             console.log(e);
         });
@@ -20585,7 +20580,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menushow']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'faculty_profile', 'faculty_full_name', 'faculty_profile_image', 'menuShow']))
 });
 
 /***/ }),
@@ -20597,7 +20592,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "menu-open-close" } }, [
-    this.menushow
+    this.menuShow
       ? _c("div", { staticClass: "menu_container makeBlue type--center" }, [
           _c("div", { staticClass: "menu_selections type--center" }, [
             _c(
@@ -20847,7 +20842,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$store.dispatch('toggleMenu');
         }
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menushow']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menuShow']))
 });
 
 /***/ }),
@@ -20861,7 +20856,7 @@ var render = function() {
   return _c("nav", { staticClass: "menu_bar makeBlue" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "type--center" }, [
-        this.menushow
+        this.menuShow
           ? _c("div", { staticClass: "menu_button" }, [
               _c("i", {
                 staticClass: "fa fa-angle-down fa-3x type--center",
@@ -21597,8 +21592,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             messages: true,
             errors: [],
-            lastname: true,
-            descending: true
+            sortLastName: true,
+            sortDescending: true
         };
     },
 
@@ -22234,8 +22229,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             show: false,
             messages: true,
             errors: [],
-            lastname: true,
-            descending: true
+            sortLastName: true,
+            sortDescending: true
         };
     },
 

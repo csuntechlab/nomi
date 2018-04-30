@@ -1,6 +1,6 @@
 <template>
     <div id="menu-open-close">
-        <div v-if="this.menushow" class="menu_container makeBlue type--center">
+        <div v-if="this.menuShow" class="menu_container makeBlue type--center">
             <div class="menu_selections type--center">
                 <div class="list">
                     <div v-if="faculty_profile_image === null" class="type--center">
@@ -33,7 +33,7 @@
                 'faculty_profile',
                 'faculty_full_name',
                 'faculty_profile_image',
-                'menushow'
+                'menuShow'
             ]),
         }
     }

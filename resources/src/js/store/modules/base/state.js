@@ -1,17 +1,18 @@
 export default {
     courses: [],
     flashroster: [],
-    menushow: false,
+    menuShow: false,
     list: true,
     flash: true,
-    lastname: true,
-    descending: true,
+    sortLastName: true,
+    sortDescending: true,
 
-    faculty_email: null,
-    faculty_name: null,
-    faculty_profile: null,
-    faculty_first_name: null,
-    faculty_last_name: null,
-    faculty_full_name: null,
-    faculty_profile_image: null,
+    facultyMember: {
+        email: null,
+        emailURI: null,
+        profile: null,
+        firstName: null,
+        lastName: null,
+        image: null
+    },
 }

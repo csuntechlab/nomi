@@ -79,7 +79,6 @@
             ...mapGetters([
                 'sp_emailURI',
                 'sp_display_name',
-                'sp_major',
                 'sp_bio',
                 'sp_images',
                 'sp_image_priority',
