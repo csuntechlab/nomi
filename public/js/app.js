@@ -19300,13 +19300,58 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-
     components: {
         ImageHandler: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default.a,
         croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a
@@ -19434,11 +19479,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.sp_image_priority === _vm.image_type
-    ? _c("div", [_c("h2", [_vm._v("This is the Active one")])])
+    ? _c("div")
     : _c("div", [
-        _c("button", { on: { click: _vm.updateImageHandler } }, [
-          _vm._v("Choose Default Image")
-        ])
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default",
+            on: { click: _vm.updateImageHandler }
+          },
+          [_vm._v("Make Default Image")]
+        )
       ])
 }
 var staticRenderFns = []
@@ -19644,137 +19694,190 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      : _c("div", [
-          _c(
-            "div",
-            {
-              staticClass:
-                "section--lg section--md student-banner default_padding"
-            },
-            [
-              _c("div", { staticClass: "container" }, [
+      : _c("div", { staticClass: "profileArea" }, [
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-sm-12" }, [
                 _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
+                _c("h1", { staticClass: "type--center" }, [
+                  _vm._v(_vm._s(this.sp_display_name))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "type--center" },
+                [
                   _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-xs-12 col-md-12 col-lg-12 default_padding"
-                    },
+                    "carousel",
+                    { attrs: { perPage: 1, paginationActiveColor: "#BF2C35" } },
                     [
-                      _c(
-                        "carousel",
-                        { attrs: { perPage: 1 } },
-                        [
-                          _c(
-                            "slide",
-                            [
-                              _c("croppa-profile", {
-                                staticClass: "grid-image img--circle"
-                              }),
-                              _vm._v(" "),
-                              _c("image-handler", {
-                                attrs: { image_type: "likeness" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "slide",
-                            [
-                              _c("profile-picture", {
-                                attrs: { image: _vm.sp_images["avatar"] }
-                              }),
-                              _vm._v(" "),
-                              _c("image-handler", {
-                                attrs: { image_type: "avatar" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "slide",
-                            [
-                              _c("profile-picture", {
-                                attrs: { image: _vm.sp_images["official"] }
-                              }),
-                              _vm._v(" "),
-                              _c("image-handler", {
-                                attrs: { image_type: "official" }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
+                      _c("slide", [
+                        _c(
+                          "div",
+                          { staticClass: "imagewrap" },
+                          [
+                            _c("croppa-profile", {}),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-xs-6 col-md-6 col-lg-6 pull-right"
+                              },
+                              [
+                                _c("image-handler", {
+                                  attrs: { image_type: "likeness" }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-xs-6 col-md-6 col-lg-6 pull-left"
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  { staticClass: "btn btn-default" },
+                                  [_vm._v(" Croppa Button Future ")]
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "h1",
-                        {
-                          staticClass:
-                            "type--white type--thin type--marginless type--center"
-                        },
-                        [_vm._v(_vm._s(this.sp_display_name))]
-                      )
+                      _c("slide", [
+                        _c(
+                          "div",
+                          { staticClass: "imagewrap" },
+                          [
+                            _c("profile-picture", {
+                              attrs: { image: _vm.sp_images["avatar"] }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-xs-6 col-md-6 col-lg-6 pull-right"
+                              },
+                              [
+                                _c("image-handler", {
+                                  attrs: { image_type: "avatar" }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("slide", [
+                        _c(
+                          "div",
+                          { staticClass: "imagewrap" },
+                          [
+                            _c("profile-picture", {
+                              attrs: { image: _vm.sp_images["official"] }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-xs-6 col-md-6 col-lg-6 pull-right"
+                              },
+                              [
+                                _c("image-handler", {
+                                  attrs: { image_type: "official" }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ])
                     ],
                     1
                   )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "section type--center" }, [
-            _c("div", { staticClass: "container" }, [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-sm-12" }, [
-                  _c(
-                    "h4",
-                    { staticClass: "type--black type--thin type--marginless" },
-                    [
-                      _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-                      _c("br"),
-                      _vm._v("@my.csun.edu")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c(
-                    "h4",
-                    { staticClass: "type--black type--thin type--marginless" },
-                    [_vm._v("Bio: " + _vm._s(this.sp_bio))]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("form", [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      attrs: { type: "text", id: "ex0", name: "ex0" },
-                      domProps: { value: _vm.sp_notes },
-                      on: { input: _vm.updateNotes }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn-default btn",
-                        on: { click: _vm.commitNotes }
-                      },
-                      [_vm._v("Commit")]
-                    )
-                  ])
-                ])
-              ])
+                ],
+                1
+              )
             ])
           ])
+        ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "addedUnderline" }, [
+      _c("ul", { staticClass: "underlineContainer" }, [
+        _c("li", { staticClass: "underline" }, [
+          _vm.sp_image_priority === "likeness"
+            ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
+            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "underline" }, [
+          _vm.sp_image_priority === "avatar"
+            ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
+            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "underline" }, [
+          _vm.sp_image_priority === "official"
+            ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
+            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
         ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "section type--center" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-sm-12" }, [
+            _c("form", [
+              _c("textarea", {
+                attrs: { type: "text", id: "ex0", name: "ex0" },
+                domProps: { value: _vm.sp_notes },
+                on: { input: _vm.updateNotes }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  on: { click: _vm.commitNotes }
+                },
+                [_vm._v("Add a Note")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("h4", [
+              _vm._v("Email: " + _vm._s(this.sp_emailURI)),
+              _c("br"),
+              _vm._v("@my.csun.edu")
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("h4", [_vm._v("Bio: " + _vm._s(this.sp_bio))]),
+            _vm._v(" "),
+            _c("br")
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -19782,21 +19885,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
-          _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _vm._v("Add a Note: "),
-      _c("i", { staticClass: "fa fa-plus-circle fa-blue" })
+    return _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
+      _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
     ])
   }
 ]
