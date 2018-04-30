@@ -22460,7 +22460,7 @@ var render = function() {
     _c("div", { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" }, [
       _c(
         "div",
-        { staticClass: "pull-left col-xs-5 col-md-3 col-lg-3" },
+        { staticClass: "pull-left col-xs-5 col-md-3 col-lg-3 clearPadding" },
         [
           _c("profile-picture", {
             staticClass: "pull-left ",
