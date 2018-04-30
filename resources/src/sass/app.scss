@@ -1,17 +1,11 @@
-@import "grid";
-@import "hideUpload";
-@import "panelModifications";
 @import "menu";
-@import "list";
-@import "appSpacing";
-@import "centerItem";
-@import "colorScheme";
-@import "fa";
-@import "profile";
-@import "courseCard";
+//new edits
+@import "themes";
+@import "layout";
+@import "helpers";
 
-@import "names";
+//fixed safari font-awesome issue
+@import "node_modules/font-awesome/scss/font-awesome";
 
-@import "text";
-
-
+//added nonreusable styling
+@import "student-profile-page";

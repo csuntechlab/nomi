@@ -10,7 +10,7 @@
         </div>
         <div v-else>
             <gallery-card
-                v-for="student in this.roster[this.courseid]"
+                v-for="student in this.courses[this.courseid].roster"
                 :key="student.student_id"
                 :student="student"
             ></gallery-card>
@@ -43,7 +43,7 @@ export default {
 
     computed: {
         ...mapGetters([
-            'roster',
+            'courses',
             'flashroster',
             'flash'
         ]),

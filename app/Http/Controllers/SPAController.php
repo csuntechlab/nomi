@@ -29,20 +29,27 @@ class SPAController extends Controller
      */
     public function getData()
     {
-        $courses = Cache::remember('courses', $this->minutes, function () {
-            return $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
-        });
+        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+
+        if (Cache::has('courses:' . $id)) {
+            $courses = Cache::get('courses:' . $id);
+        } else {
+            $courses = $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
+            Cache::put('courses:' . auth()->user(), $courses, $this->minutes);
+        }
 
         $students = [];
         $len = \count($courses);
 
         for ($i = 0; $i < $len; ++$i) {
-            \array_push(
-                $students,
-                Cache::remember('students_' . $i, $this->minutes, function () use ($i) {
-                    return $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
-                })
-            );
+            if (Cache::has('students:' . $i . ':' . $id)) {
+                $students[$i] = Cache::get('students:' . $i . ':' . $id);
+            } else {
+                $students[$i] = $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
+                Cache::put('students:' . $i . ':' . $id, $students[$i], $this->minutes);
+            }
+
+            $courses[$i]->roster = $students[$i];
         }
 
         return ['courses' => $courses, 'students' => $students];
