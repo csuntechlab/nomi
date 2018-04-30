@@ -37,6 +37,7 @@ class SPAControllerTest extends TestCase
 
         $this->webResourceRetriever
             ->shouldReceive('getCourses')
+            ->andReturn([])
             ->once();
 
         $controller->getData();
@@ -46,8 +47,8 @@ class SPAControllerTest extends TestCase
     public function getData_does_not_hit_webservice_if_cache_not_empty()
     {
         $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever);
-        Cache::forever('courses', 'courses');
-        Cache::forever('students_0', 'students_0');
+        Cache::forever('courses:default', []);
+        Cache::forever('students:0:default', []);
 
         $this->rosterRetriever
             ->shouldReceive('getStudentsFromRoster')
@@ -59,7 +60,7 @@ class SPAControllerTest extends TestCase
 
         $controller->getData();
 
-        Cache::forget('courses');
-        Cache::forget('students_0');
+        Cache::forget('courses:default', []);
+        Cache::forget('students:0:default', []);
     }
 }

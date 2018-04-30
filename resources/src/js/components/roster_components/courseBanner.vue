@@ -1,11 +1,9 @@
 <template>
-    <div class="banner__position bg--off-white">
+    <div class="nav-bars">
         <carousel :perPage="pageSize" :pagination-enabled="false">
             <slide v-for="course in this.courses" :key="course.title" :course="course">
                 <div :class="bgcolor(course.id)+' type--center'">
                     <router-link
-                        class="light-grey"
-                        style="font-size: 1.1rem"
                         :to="'/class/'+course.id"
                     >
                         {{course.title}}
@@ -24,9 +22,9 @@
         methods: {
             bgcolor: function (id) {
                 if(id.toString() === this.$route.params.id)
-                    return "bg--blue-green";
+                    return "buttonPressBlue";
                 else
-                    return "bg--navy-blue";
+                    return "makeBlue";
             }
         },
 

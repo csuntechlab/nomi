@@ -1,6 +1,6 @@
 <template>
-    <div class="img--circle">
-        <img :id="this.name+'-img'" :src="this.image" class="img--circle grid-image style__picture" name="photo">
+    <div>
+        <img :id="this.name+'-img'" :src="this.image" class="img--circle col-md-12 col-xs-12" name="photo">
     </div>
 </template>
 
