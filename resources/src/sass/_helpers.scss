@@ -44,6 +44,11 @@ textarea[type=text]:focus{
   word-wrap: break-word;
 }
 
+.imagewrap {
+  display:inline-block;
+  position:relative;
+}
+
 .clearPadding{
   padding: 0;
 }

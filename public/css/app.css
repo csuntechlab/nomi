@@ -237,6 +237,11 @@ textarea[type=text]:focus {
   word-wrap: break-word;
 }
 
+.imagewrap {
+  display: inline-block;
+  position: relative;
+}
+
 .clearPadding {
   padding: 0;
 }
@@ -3292,5 +3297,39 @@ textarea[type=text]:focus {
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+.theme-main .underlineStyling {
+  border-bottom: 5px solid #E5E5E5;
+}
+
+.underlineStyling--red {
+  border-bottom: 5px solid #bf2c35;
+}
+
+.underline {
+  float: left;
+  width: 30px;
+  display: block;
+}
+
+.underlineContainer {
+  width: 90px;
+  display: inline-block;
+  float: none;
+  list-style-type: square;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  padding: 0px;
+}
+
+.addedUnderline {
+  width: 100%;
+  text-align: center;
+}
+
+.profileArea {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/1/1d/CSUN_Central_Campus.JPG") no-repeat center center fixed;
+  background-size: cover;
 }
 
