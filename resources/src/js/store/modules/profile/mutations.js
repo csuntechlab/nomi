@@ -52,5 +52,17 @@ export default {
             .catch(e => {
                 console.log(e)
             });
+    },
+
+    NULLIFY_STUDENT_PROFILE: function (state) {
+        state.studentProfile = {
+            id: null,
+            emailURI: null,
+            displayName: null,
+            bio: null,
+            images: null,
+            imagePriority: null,
+            notes: null
+        }
     }
 }

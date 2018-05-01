@@ -13,5 +13,9 @@ export default {
 
     updateImagePriority (context, payload) {
         context.commit('UPDATE_IMAGE_PRIORITY', payload);
+    },
+
+    nullifyStudentProfile (context) {
+        context.commit('NULLIFY_STUDENT_PROFILE');
     }
 }

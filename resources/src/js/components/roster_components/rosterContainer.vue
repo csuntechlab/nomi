@@ -29,6 +29,10 @@
             ...mapGetters([
                 'list',
             ])
+        },
+
+        created () {
+            this.$store.dispatch('nullifyStudentProfile');
         }
     }
 </script>
