@@ -1,5 +1,5 @@
 <template>
-    <div class="panel col-lg-12 col-md-12 col-xs-12">
+    <div class="panel row">
         <div class="panel__header type--center">
                 <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
             </div>
