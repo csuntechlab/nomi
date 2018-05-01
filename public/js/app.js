@@ -19167,7 +19167,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -19229,7 +19228,7 @@ var render = function() {
                 _vm._m(0),
                 _vm._v(" "),
                 _c("h1", { staticClass: "type--center" }, [
-                  _vm._v(_vm._s(this.studentProfile.display_name))
+                  _vm._v(_vm._s(this.studentProfile.displayName))
                 ])
               ])
             ]),
@@ -19353,19 +19352,19 @@ var render = function() {
     _c("div", { staticClass: "addedUnderline" }, [
       _c("ul", { staticClass: "underlineContainer" }, [
         _c("li", { staticClass: "underline" }, [
-          _vm.studentProfile.image_priority === "likeness"
+          _vm.studentProfile.imagePriority === "likeness"
             ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
             : _c("div", [_c("div", { staticClass: "underlineStyling" })])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "underline" }, [
-          _vm.studentProfile.image_priority === "avatar"
+          _vm.studentProfile.imagePriority === "avatar"
             ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
             : _c("div", [_c("div", { staticClass: "underlineStyling" })])
         ]),
         _vm._v(" "),
         _c("li", { staticClass: "underline" }, [
-          _vm.studentProfile.image_priority === "official"
+          _vm.studentProfile.imagePriority === "official"
             ? _c("div", [_c("div", { staticClass: "underlineStyling--red" })])
             : _c("div", [_c("div", { staticClass: "underlineStyling" })])
         ])
@@ -19912,7 +19911,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
-        data.append('student_id', state.studentProfile.student_id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.id.replace("members:", ""));
         data.append('image_priority', payload.image_priority);
 
         axios.post('api/priority', data).then(function (response) {
@@ -23844,7 +23843,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.sp_image_priority === _vm.image_type
+  return _vm.studentProfile.imagePriority === _vm.image_type
     ? _c("div")
     : _c("div", [
         _c(

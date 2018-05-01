@@ -1,5 +1,5 @@
 <template>
-    <div v-if="sp_image_priority === image_type"></div>
+    <div v-if="studentProfile.imagePriority === image_type"></div>
     <div v-else>
         <button class="btn btn-default" @click="updateImageHandler">Make Default Image</button>
     </div>

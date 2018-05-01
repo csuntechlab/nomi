@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
-                        <h1 class="type--center">{{this.studentProfile.display_name}}</h1>
+                        <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -48,7 +48,6 @@
                                 </div>
                             </slide>
                         </carousel>
-
                     </div>
                 </div>
             </div>
@@ -56,7 +55,7 @@
         <div class="addedUnderline">
             <ul class="underlineContainer">
                 <li class="underline">
-                    <div v-if="studentProfile.image_priority === 'likeness'">
+                    <div v-if="studentProfile.imagePriority === 'likeness'">
                         <div class="underlineStyling--red"></div>
                     </div>
                     <div v-else>
@@ -64,7 +63,7 @@
                     </div>
                 </li>
                 <li class="underline">
-                    <div v-if="studentProfile.image_priority === 'avatar'">
+                    <div v-if="studentProfile.imagePriority === 'avatar'">
                         <div class="underlineStyling--red"></div>
                     </div>
                     <div v-else>
@@ -72,7 +71,7 @@
                     </div>
                 </li>
                 <li class="underline">
-                    <div v-if="studentProfile.image_priority === 'official'">
+                    <div v-if="studentProfile.imagePriority === 'official'">
                         <div class="underlineStyling--red"></div>
                     </div>
                     <div v-else>

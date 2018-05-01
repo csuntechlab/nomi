@@ -42,7 +42,7 @@ export default {
 
     UPDATE_IMAGE_PRIORITY: function (state, payload) {
         let data = new FormData;
-        data.append('student_id', state.studentProfile.student_id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.id.replace("members:", ""));
         data.append('image_priority', payload.image_priority);
 
         axios.post('api/priority', data)
