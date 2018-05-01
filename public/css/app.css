@@ -3303,8 +3303,8 @@ textarea[type=text]:focus {
   border-bottom: 5px solid #E5E5E5;
 }
 
-.underlineStyling--red {
-  border-bottom: 5px solid #bf2c35;
+.theme-main .underlineStyling--red {
+  border-bottom: 5px solid #4F9DA3;
 }
 
 .underline {
