@@ -1,18 +1,18 @@
 <template>
-    <div class="panel row">
+    <div class="panel col-xs-12 col-md-12 col-lg-12">
         <div class="panel__header type--center">
                 <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
             </div>
         <div class="panel__content">
             
-                <div class="col-xs-4 col-md-3 type--left">
+                <div class="row">
                     {{course.subject}} {{course.catalog_number}}: #{{course.id}}
                 </div>
-                <div class="col-xs-5 col-md-6 type--center">
+                <div class="row">
                     {{course.meetings[0].location}} {{course.meetings[0].days}}
                     {{classStartTime}} - {{classEndTime}}
                 </div>
-                <div class="col-xs-3 col-md-3 type--right">
+                <div class="row">
                     {{course.enrollment_count}} Students
                 </div>
 

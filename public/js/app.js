@@ -23285,7 +23285,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel row" }, [
+  return _c("div", { staticClass: "panel col-xs-12 col-md-12 col-lg-12" }, [
     _c(
       "div",
       { staticClass: "panel__header type--center" },
@@ -23298,7 +23298,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "panel__content" }, [
-      _c("div", { staticClass: "col-xs-4 col-md-3 type--left" }, [
+      _c("div", { staticClass: "row" }, [
         _vm._v(
           "\n                " +
             _vm._s(_vm.course.subject) +
@@ -23310,7 +23310,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-5 col-md-6 type--center" }, [
+      _c("div", { staticClass: "row" }, [
         _vm._v(
           "\n                " +
             _vm._s(_vm.course.meetings[0].location) +
@@ -23324,7 +23324,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-3 col-md-3 type--right" }, [
+      _c("div", { staticClass: "row" }, [
         _vm._v(
           "\n                " +
             _vm._s(_vm.course.enrollment_count) +
