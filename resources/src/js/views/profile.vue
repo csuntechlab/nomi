@@ -17,7 +17,7 @@
                         <div class="type--center">
                             <carousel 
                             :perPage="1" 
-                            :paginationActiveColor="'#BF2C35'"
+                            :paginationActiveColor="'#4F9DA3'"
                             >
                                 <slide>
                                     <div class="imagewrap">
@@ -81,7 +81,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="section type--center">
+            <div class="container type--center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -90,7 +90,7 @@
                                 <button class="btn btn-default" @click="commitNotes">Add a Note</button>
                             </form>
                             <br>
-                            <h4>Email: {{this.sp_emailURI}}<br>@my.csun.edu</h4>
+                            <h4>{{this.sp_emailURI}}@my.csun.edu</h4>
                             <br>
                             <h4>Bio: {{this.sp_bio}}</h4>
                             <br>
