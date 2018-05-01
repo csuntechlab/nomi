@@ -32,11 +32,8 @@ class StudentProfileService implements StudentProfileContract
     {
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];
-
         if ($profile['profile_image'] == null) {
-            $profile['profile_image'] = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
-                ->encode('data-url');
+            $profile['profile_image'] = url('images/student_profile_default.jpg');
         }
 
         $note = Note::where('user_id', auth()->user()->user_id)
