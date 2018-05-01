@@ -12,87 +12,87 @@
                         <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
                         <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="type--center">
-                        <carousel
-                                :perPage="1"
-                                :paginationActiveColor="'#BF2C35'"
-                        >
-                            <slide>
-                                <div class="imagewrap">
-                                    <croppa-profile class=""></croppa-profile>
+                    <div class="row">
+                        <div class="type--center">
+                            <carousel 
+                            :perPage="1" 
+                            :paginationActiveColor="'#4F9DA3'"
+                            >
+                                <slide>
+                                        <div class="imagewrap">
+                                            <croppa-profile class=""></croppa-profile>
 
-                                    <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                        <image-handler image_type="likeness"></image-handler>
+                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                                <image-handler image_type="likeness"></image-handler>
+                                            </div>
+                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
+                                                <button class="btn btn-default"> Croppa Button Future </button>
+                                            </div>
+                                        </div>
+                                </slide>
+                                <slide>
+                                    <div class="imagewrap">
+                                        <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                            <image-handler image_type="avatar"></image-handler>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                        <button class="btn btn-default"> Croppa Button Future </button>
+                                </slide>
+                                <slide>
+                                    <div class="imagewrap">
+                                        <profile-picture :image="studentProfile.images['official']"></profile-picture>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                            <image-handler image_type="official"></image-handler>
+                                        </div>
                                     </div>
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="imagewrap">
-                                    <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
-                                    <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                        <image-handler image_type="avatar"></image-handler>
-                                    </div>
-                                </div>
-                            </slide>
-                            <slide>
-                                <div class="imagewrap">
-                                    <profile-picture :image="studentProfile.images['official']"></profile-picture>
-                                    <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                        <image-handler image_type="official"></image-handler>
-                                    </div>
-                                </div>
-                            </slide>
-                        </carousel>
+                                </slide>
+                            </carousel>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="addedUnderline">
-            <ul class="underlineContainer">
-                <li class="underline">
-                    <div v-if="studentProfile.imagePriority === 'likeness'">
-                        <div class="underlineStyling--red"></div>
-                    </div>
-                    <div v-else>
-                        <div class="underlineStyling"></div>
-                    </div>
-                </li>
-                <li class="underline">
-                    <div v-if="studentProfile.imagePriority === 'avatar'">
-                        <div class="underlineStyling--red"></div>
-                    </div>
-                    <div v-else>
-                        <div class="underlineStyling"></div>
-                    </div>
-                </li>
-                <li class="underline">
-                    <div v-if="studentProfile.imagePriority === 'official'">
-                        <div class="underlineStyling--red"></div>
-                    </div>
-                    <div v-else>
-                        <div class="underlineStyling"></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="section type--center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <form>
-                            <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
-                            <button class="btn btn-default" @clicstudentProfile.k="commitNotes">Add a Note</button>
-                        </form>
-                        <br>
-                        <h4>Email: {{this.studentProfile.emailURI}}<br>@my.csun.edu</h4>
-                        <br>
-                        <h4>Bio: {{this.studentProfile.bio}}</h4>
-                        <br>
+            <div class="addedUnderline">
+                <ul class="underlineContainer">
+                    <li class="underline">
+                        <div v-if="sp_image_priority === 'likeness'">
+                            <div class="underlineStyling--red"></div>
+                        </div>
+                        <div v-else>
+                            <div class="underlineStyling"></div>
+                        </div>
+                    </li>
+                    <li class="underline">
+                         <div v-if="sp_image_priority === 'avatar'">
+                            <div class="underlineStyling--red"></div>
+                        </div>
+                        <div v-else>
+                            <div class="underlineStyling"></div>
+                        </div>
+                    </li>
+                    <li class="underline">
+                         <div v-if="sp_image_priority === 'official'">
+                            <div class="underlineStyling--red"></div>
+                        </div>
+                        <div v-else>
+                            <div class="underlineStyling"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="container type--center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form>
+                                <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
+                                <button class="btn btn-default" @click="commitNotes">Add a Note</button>
+                            </form>
+                            <br>
+                            <h4>{{this.sp_emailURI}}@my.csun.edu</h4>
+                            <br>
+                            <h4>Bio: {{this.sp_bio}}</h4>
+                            <br>
+                        </div>
                     </div>
                 </div>
             </div>
