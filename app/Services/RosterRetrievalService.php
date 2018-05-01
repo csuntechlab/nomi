@@ -83,14 +83,14 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         $email = \str_replace('nr_', '', $student->email);
         $email = \substr($email, 0, \strpos($email, '@'));
-        $imageLocation = 'likeness.jpg';
+        $imageLocation = url('images/likeness.jpg');
 
         // checks if image already exists
         if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . $email . '/likeness.jpg')) {
-            $imageLocation = $email . '/likeness.jpg';
+            $imageLocation = url('images/' . $email . '/likeness.jpg');
         }
 
-        $image = 'images/' . $imageLocation;
+        $image = $imageLocation;
 
         /*
         if (!\property_exists($student, 'profile_image')) {
