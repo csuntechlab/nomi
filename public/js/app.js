@@ -19582,7 +19582,7 @@ var render = function() {
                 [
                   _c(
                     "carousel",
-                    { attrs: { perPage: 1, paginationActiveColor: "#BF2C35" } },
+                    { attrs: { perPage: 1, paginationActiveColor: "#4F9DA3" } },
                     [
                       _c("slide", [
                         _c(
@@ -19709,7 +19709,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "section type--center" }, [
+    _c("div", { staticClass: "container type--center" }, [
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-sm-12" }, [
@@ -19732,11 +19732,7 @@ var render = function() {
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("h4", [
-              _vm._v("Email: " + _vm._s(this.sp_emailURI)),
-              _c("br"),
-              _vm._v("@my.csun.edu")
-            ]),
+            _c("h4", [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
