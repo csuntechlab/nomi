@@ -1,12 +1,12 @@
 <template>
     <div>
-        <ul class="list">
+        <div>
             <student-list-item
                 v-for="student in this.courses[this.courseid].roster"
                 :key="student.display_name"
                 :student="student"
             ></student-list-item>
-        </ul>
+        </div>
     </div>
 </template>
 
