@@ -22,12 +22,9 @@
 
         methods: {
             updateImageHandler() {
-                this.$store.dispatch('updateImagePriority', {image_priority: this.image_type})
-                    .then(() => this.$store.dispatch('getData'));
-            },
-
-           
-
+                this.$store.dispatch('updateImagePriority', {image_priority: this.image_type});
+                this.$store.dispatch('getData');
+            }
         }
     }
 </script>

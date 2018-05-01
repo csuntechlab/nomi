@@ -19330,11 +19330,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         updateImageHandler: function updateImageHandler() {
-            var _this = this;
-
-            this.$store.dispatch('updateImagePriority', { image_priority: this.image_type }).then(function () {
-                return _this.$store.dispatch('getData');
-            });
+            this.$store.dispatch('updateImagePriority', { image_priority: this.image_type });
+            this.$store.dispatch('getData');
         }
     }
 });

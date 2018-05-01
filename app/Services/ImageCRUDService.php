@@ -19,13 +19,12 @@ class ImageCRUDService implements ImageCRUDContract
     /** Image uploading functionality. */
     public function upload()
     {
+        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
         $manager = new ImageManager(['driver' => 'imagick']);
 
         $image = $manager->make(request()->media);
         $email = \str_replace('nr_', '', request()->email);
         $uri = \explode('@', $email)[0];
-
-        $oldmask = \umask(0);
 
         if (!File::exists(env('IMAGE_UPLOAD_LOCATION') . $uri)) {
             File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri, 0777);
@@ -33,10 +32,13 @@ class ImageCRUDService implements ImageCRUDContract
 
         $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
 
-        \umask($oldmask);
-
         for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
+            if (Cache::has('students:' . $i . ':' . $id)) {
+                Cache::forget('students:' . $i . ':' . $id);
+            }
+            if (Cache::has('courses:' . $id)) {
+                Cache::forget('courses:' . $id);
+            }
         }
 
         return 'Uploaded';
@@ -68,16 +70,14 @@ class ImageCRUDService implements ImageCRUDContract
             }
         }
 
-        for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
-        }
-
         return $out;
     }
 
     /** Update image_priority table */
     public function updatePriority()
     {
+        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+
         $user = User::with('ImagePriority')
             ->where('user_id', 'members:' . request()->student_id)
             ->firstOrFail();
@@ -90,7 +90,12 @@ class ImageCRUDService implements ImageCRUDContract
         }
 
         for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
+            if (Cache::has('students:' . $i . ':' . $id)) {
+                Cache::forget('students:' . $i . ':' . $id);
+            }
+            if (Cache::has('courses:' . $id)) {
+                Cache::forget('courses:' . $id);
+            }
         }
 
         return "Completed.\n";
