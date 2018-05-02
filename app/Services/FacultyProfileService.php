@@ -20,8 +20,11 @@ class FacultyProfileService implements FacultyProfileContract
     {
         $faculty = $this->webResourceRetriever->getStudent($email);
 
-        $profile = \json_decode($faculty, true)['people'];
+        $member = \json_decode($faculty, true)['people'];
 
-        return $profile['profile_image'];
+        return [
+            'image' => $member['profile_image'],
+            'id' => $member['individuals_id'],
+        ];
     }
 }

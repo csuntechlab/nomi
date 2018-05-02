@@ -13,6 +13,7 @@ export default {
         profile: null,
         firstName: null,
         lastName: null,
-        image: null
+        image: null,
+        id: null
     },
 }

@@ -19,12 +19,14 @@ class ImageCRUDService implements ImageCRUDContract
     /** Image uploading functionality. */
     public function upload()
     {
-        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+        $id = request()->id;
         $manager = new ImageManager(['driver' => 'imagick']);
 
         $image = $manager->make(request()->media);
         $email = \str_replace('nr_', '', request()->email);
         $uri = \explode('@', $email)[0];
+
+        $oldmask = \umask(0);
 
         if (!File::exists(env('IMAGE_UPLOAD_LOCATION') . $uri)) {
             File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri, 0777);
@@ -32,16 +34,21 @@ class ImageCRUDService implements ImageCRUDContract
 
         $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
 
+        \umask($oldmask);
+
+        $msg = $id;
         for ($i = 0; $i < 10; ++$i) {
             if (Cache::has('students:' . $i . ':' . $id)) {
                 Cache::forget('students:' . $i . ':' . $id);
+                $msg .= "forgot students\n";
             }
             if (Cache::has('courses:' . $id)) {
                 Cache::forget('courses:' . $id);
+                $msg .= "forgot courses\n\n";
             }
         }
 
-        return 'Uploaded';
+        return $msg;
     }
 
     /** Retrieve image priority

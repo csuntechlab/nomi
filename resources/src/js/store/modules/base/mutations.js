@@ -16,7 +16,8 @@ export default {
 
                 axios.get(`faculty_profile/${response.data["courses"][0].instructors[0].instructor}`)
                     .then(response => {
-                        state.facultyMember.image = response.data;
+                        state.facultyMember.image = response.data.image;
+                        state.facultyMember.id = response.data.id;
                     })
                     .catch(e => {
                         console.log(e);

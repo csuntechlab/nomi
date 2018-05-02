@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Contracts\ImageCRUDContract;
+use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
@@ -20,18 +21,18 @@ class ImageController extends Controller
         $this->imageCRUDContract = $imageCRUDContract;
     }
 
-    public function uploadImage()
+    public function uploadImage(Request $request)
     {
-        return $this->imageCRUDContract->upload();
+        return $this->imageCRUDContract->upload($request);
+    }
+
+    public function updatePriority(Request $request)
+    {
+        return $this->imageCRUDContract->updatePriority($request);
     }
 
     public function getPriority($student_id)
     {
         return $this->imageCRUDContract->getPriority($student_id);
-    }
-
-    public function updatePriority()
-    {
-        return $this->imageCRUDContract->updatePriority();
     }
 }

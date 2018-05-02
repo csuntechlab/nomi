@@ -54,7 +54,7 @@
             <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
-                        <div v-if="sp_image_priority === 'likeness'">
+                        <div v-if="studentProfile.imagePriority === 'likeness'">
                             <div class="underlineStyling--red"></div>
                         </div>
                         <div v-else>
@@ -62,7 +62,7 @@
                         </div>
                     </li>
                     <li class="underline">
-                         <div v-if="sp_image_priority === 'avatar'">
+                         <div v-if="studentProfile.imagePriority === 'avatar'">
                             <div class="underlineStyling--red"></div>
                         </div>
                         <div v-else>
@@ -70,7 +70,7 @@
                         </div>
                     </li>
                     <li class="underline">
-                         <div v-if="sp_image_priority === 'official'">
+                         <div v-if="studentProfile.imagePriority === 'official'">
                             <div class="underlineStyling--red"></div>
                         </div>
                         <div v-else>
@@ -88,9 +88,9 @@
                                 <button class="btn btn-default" @click="commitNotes">Add a Note</button>
                             </form>
                             <br>
-                            <h4>{{this.sp_emailURI}}@my.csun.edu</h4>
+                            <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
-                            <h4>Bio: {{this.sp_bio}}</h4>
+                            <h4>Bio: {{this.studentProfile.bio}}</h4>
                             <br>
                         </div>
                     </div>

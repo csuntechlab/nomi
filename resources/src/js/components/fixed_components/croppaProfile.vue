@@ -39,7 +39,8 @@
 
         computed: {
             ...mapGetters([
-                'studentProfile'
+                'studentProfile',
+                'facultyMember'
             ])
         },
 
@@ -61,6 +62,7 @@
                 );
 
                 let data = new FormData();
+                data.append('id', this.facultyMember.id);
                 data.append('media', url);
                 data.append('email', this.studentProfile.emailURI);
 
