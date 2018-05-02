@@ -36,7 +36,7 @@ class RosterRetrievalServiceTest extends TestCase
         $recognized = false;
 
         $images = [
-            'likeness' => 'images/likeness.jpg',
+            'likeness' => 'http://localhost/images/likeness.jpg',
             'avatar' => 'images/student_avatar_default.jpg',
             'official' => 'images/student_profile_default.jpg',
         ];

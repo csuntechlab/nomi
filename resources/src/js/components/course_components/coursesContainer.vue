@@ -17,7 +17,8 @@
 
         computed: {
             ...mapGetters([
-                'list'
+                'list',
+                'courses'
             ])
         }
     }
