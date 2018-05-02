@@ -22,7 +22,7 @@ class AuthVerifierService implements AuthVerifierContract
     {
         if (auth()->attempt($cred)) {
             $user = auth()->user();
-            if ($user->rank != null) {
+            if (\property_exists($user, 'rank') && $user->rank != null) {
                 return true;
             }
 

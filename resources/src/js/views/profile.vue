@@ -1,17 +1,16 @@
 <template>
     <div>
-        <div v-if="sp_images == null" class="type--center">
+        <div v-if="studentProfile.images == null" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
         <div v-else class="profileArea">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
-                            <h1 class="type--center">{{this.sp_display_name}}</h1>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
+                        <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
                     </div>
                     <div class="row">
                         <div class="type--center">
@@ -20,20 +19,20 @@
                             :paginationActiveColor="'#4F9DA3'"
                             >
                                 <slide>
-                                    <div class="imagewrap">
-                                        <croppa-profile class=""></croppa-profile>
-                                    
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                            <image-handler image_type="likeness"></image-handler>
+                                        <div class="imagewrap">
+                                            <croppa-profile class=""></croppa-profile>
+
+                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                                <image-handler image_type="likeness"></image-handler>
+                                            </div>
+                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
+                                                <button class="btn btn-default"> Croppa Button Future </button>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                            <button class="btn btn-default"> Croppa Button Future </button>
-                                        </div>
-                                    </div>
                                 </slide>
                                 <slide>
                                     <div class="imagewrap">
-                                        <profile-picture :image="sp_images['avatar']"></profile-picture>
+                                        <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
                                             <image-handler image_type="avatar"></image-handler>
                                         </div>
@@ -41,14 +40,13 @@
                                 </slide>
                                 <slide>
                                     <div class="imagewrap">
-                                        <profile-picture :image="sp_images['official']"></profile-picture>
+                                        <profile-picture :image="studentProfile.images['official']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
                                             <image-handler image_type="official"></image-handler>
                                         </div>
                                     </div>
                                 </slide>
                             </carousel>
-                            
                         </div>
                     </div>
                 </div>
@@ -99,6 +97,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <script>
@@ -107,31 +106,24 @@
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
+        name: 'profile',
+
         components: {
             ImageHandler,
             croppaProfile
         },
 
-        name: 'profile',
-
         created () {
             this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
         },
 
-        props: ['student'],
-
         computed: {
             ...mapGetters([
-                'sp_emailURI',
-                'sp_display_name',
-                'sp_major',
-                'sp_bio',
-                'sp_images',
-                'sp_image_priority',
+                'studentProfile',
             ]),
 
             ...mapState({
-                sp_notes: state => state.sp_notes
+                sp_notes: state => state.profile.studentProfile.notes
             })
         },
 

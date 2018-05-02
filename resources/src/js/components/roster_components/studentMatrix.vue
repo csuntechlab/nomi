@@ -29,8 +29,8 @@ export default {
         return {
             messages: true,
             errors: [],
-            lastname: true,
-            descending: true
+            sortLastName: true,
+            sortDescending: true
         }
     },
 
