@@ -23,7 +23,6 @@ Vue.component('roster-container', require('./components/roster_components/roster
 Vue.component('course-banner', require('./components/roster_components/courseBanner.vue'));
 Vue.component('settings-banner', require('./components/roster_components/settingsBanner.vue'));
 
-Vue.component('home-settings-banner', require('./components/course_components/homeSettingsBanner.vue'));
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 
 const app = new Vue({

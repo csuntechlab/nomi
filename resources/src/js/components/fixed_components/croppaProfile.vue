@@ -1,14 +1,14 @@
 <template>
     <div>
         <div>
-            <label :for="sp_display_name">
-                <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
+            <label :for="studentProfile.displayName">
+                <profile-picture v-if="disabled" :image="studentProfile.images['likeness']"></profile-picture>
                 <croppa v-else
                         v-model="myCroppa"
                         :prevent-white-space="false"
                         :show-remove-button="false"
                         :disabled="disabled"
-                        :initial-image="sp_images['likeness']"
+                        :initial-image="studentProfile.images['likeness']"
                         :quality="2"
                         @init="styleCanvas()">
                 </croppa>
@@ -21,7 +21,6 @@
             </div>
         </div>
     </div>
-
 </template>
 <script>
     import { mapGetters } from "vuex";
@@ -40,9 +39,7 @@
 
         computed: {
             ...mapGetters([
-                'sp_display_name',
-                'sp_emailURI',
-                'sp_images'
+                'studentProfile'
             ])
         },
 
@@ -65,7 +62,7 @@
 
                 let data = new FormData();
                 data.append('media', url);
-                data.append('email', this.sp_emailURI);
+                data.append('email', this.studentProfile.emailURI);
 
                 axios.post('api/upload', data, {
                     headers: {

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <home-settings-banner></home-settings-banner>
         <div class="container">
             <courses-container></courses-container>
         </div>
