@@ -37,8 +37,8 @@ class RosterRetrievalServiceTest extends TestCase
 
         $images = [
             'likeness' => 'http://localhost/images/likeness.jpg',
-            'avatar' => 'http://localhost/images/student_avatar_default.jpg',
-            'official' => 'http://localhost/images/student_profile_default.jpg',
+            'avatar' => '/images/student_avatar_default.jpg',
+            'official' => '/images/student_profile_default.jpg',
         ];
 
         $this->assertEquals(
