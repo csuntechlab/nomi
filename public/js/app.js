@@ -22448,43 +22448,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel col-xs-12 col-md-12 col-lg-12" }, [
-    _c("div", { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" }, [
+  return _c(
+    "router-link",
+    {
+      staticClass: "panel col-xs-12 col-md-12 col-lg-12",
+      attrs: { to: "/profile/" + _vm.email_uri }
+    },
+    [
       _c(
         "div",
-        { staticClass: "pull-left col-xs-5 col-md-3 col-lg-3 clearPadding" },
-        [
-          _c("profile-picture", {
-            staticClass: "pull-left ",
-            attrs: { name: _vm.display_name, image: _vm.image }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-7 col-md-9 col-lg-9" },
+        { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" },
         [
           _c(
-            "router-link",
+            "div",
             {
-              staticClass: "pull-left",
-              attrs: { to: "/profile/" + _vm.email_uri }
+              staticClass: "pull-left col-xs-5 col-md-3 col-lg-3 clearPadding"
             },
             [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.display_name) +
-                  "\n            "
+              _c("profile-picture", {
+                staticClass: "pull-left ",
+                attrs: { name: _vm.display_name, image: _vm.image }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-xs-7 col-md-9 col-lg-9" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "pull-left",
+                  attrs: { to: "/profile/" + _vm.email_uri }
+                },
+                [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm.display_name) +
+                      "\n            "
+                  )
+                ]
               )
-            ]
+            ],
+            1
           )
-        ],
-        1
+        ]
       )
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23308,54 +23321,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel col-lg-12 col-md-12 col-xs-12" }, [
-    _c(
-      "div",
-      { staticClass: "panel__header type--center" },
-      [
-        _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
-          _vm._v(_vm._s(_vm.course.title))
-        ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "panel__content" }, [
-      _c("div", { staticClass: "col-xs-4 col-md-3 type--left" }, [
-        _vm._v(
-          "\n                " +
-            _vm._s(_vm.course.subject) +
-            " " +
-            _vm._s(_vm.course.catalog_number) +
-            ": #" +
-            _vm._s(_vm.course.id) +
-            "\n            "
-        )
-      ]),
+  return _c(
+    "router-link",
+    {
+      staticClass: "panel col-lg-12 col-md-12 col-xs-12",
+      attrs: { to: "/class/" + _vm.course.id }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "panel__header type--center" },
+        [
+          _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
+            _vm._v(_vm._s(_vm.course.title))
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-5 col-md-6 type--center" }, [
-        _vm._v(
-          "\n                " +
-            _vm._s(_vm.course.meetings[0].location) +
-            " " +
-            _vm._s(_vm.course.meetings[0].days) +
+      _c("div", { staticClass: "panel__content" }, [
+        _c("div", { staticClass: "col-xs-4 col-md-3 type--left" }, [
+          _vm._v(
             "\n                " +
-            _vm._s(_vm.classStartTime) +
-            " - " +
-            _vm._s(_vm.classEndTime) +
-            "\n            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-3 col-md-3 type--right" }, [
-        _vm._v(
-          "\n                " +
-            _vm._s(_vm.course.enrollment_count) +
-            " Students\n            "
-        )
+              _vm._s(_vm.course.subject) +
+              " " +
+              _vm._s(_vm.course.catalog_number) +
+              ": #" +
+              _vm._s(_vm.course.id) +
+              "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-5 col-md-6 type--center" }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.course.meetings[0].location) +
+              " " +
+              _vm._s(_vm.course.meetings[0].days) +
+              "\n                " +
+              _vm._s(_vm.classStartTime) +
+              " - " +
+              _vm._s(_vm.classEndTime) +
+              "\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-3 col-md-3 type--right" }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.course.enrollment_count) +
+              " Students\n            "
+          )
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
