@@ -23,7 +23,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $data =
             \json_decode(
                 $client->get(
-                    env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email
+                    env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email,
+                    ['verify' => false]
             )->getBody()
             ->getContents()
             )->classes;
@@ -51,7 +52,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
         $class = $this->getCourses($term)[$course];
 
-        return $client->get(env('ROSTER_URL') . '/terms' . '/' . $class->term . '/classes' . '/' . $class->class_number);
+        return $client->get(env('ROSTER_URL') . '/terms' . '/' . $class->term . '/classes' . '/' . $class->class_number, ['verify'=>false]);
     }
 
     /**
@@ -66,7 +67,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         //hacky fix to remove @csun.edu
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
-            . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0]
+            . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0],
+            ['verify'=>false]
         )->getBody()->getContents();
     }
 
@@ -76,7 +78,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
 
         return $client->get(
             'https://api.metalab.csun.edu/directory/api/members?email='
-            . \str_replace('nr_', '', $email)
+            . \str_replace('nr_', '', $email),
+            ['verify'=>false]
         )->getBody()->getContents();
     }
 }
