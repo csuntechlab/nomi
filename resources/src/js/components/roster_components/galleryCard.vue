@@ -113,7 +113,7 @@ export default {
             this.myCroppa.disabled = false;
         },
 
-        uploadFile: function() {
+        chooseImage: function() {
             this.myCroppa.chooseFile();
         }
     }

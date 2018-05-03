@@ -19313,12 +19313,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['image_type'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     methods: {
         updateImageHandler: function updateImageHandler() {
-            this.$store.dispatch('updateImagePriority', { image_priority: this.image_type });
-            this.$store.dispatch('getData');
+            var _this = this;
+
+            this.$store.dispatch('updateImagePriority', {
+                image_priority: this.image_type,
+                faculty_id: this.facultyMember.id
+            }).then(function () {
+                _this.$store.dispatch('getData');
+            });
         }
     }
 });
@@ -19424,12 +19430,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var data = new FormData();
             data.append('id', this.facultyMember.id);
             data.append('media', url);
-            data.append('email', this.studentProfile.emailURI);
+            data.append('uri', this.studentProfile.emailURI);
 
             axios.post('api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
+            }).then(function () {
+                _this.$store.dispatch('getData');
             }).catch(function (e) {
                 console.log(e);
             });
@@ -19447,7 +19455,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.disabled = !this.disabled;
         },
 
-        uploadFile: function uploadFile() {
+        chooseImage: function chooseImage() {
             this.myCroppa.chooseFile();
         }
     }
@@ -19507,7 +19515,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
+          { staticClass: "btn btn-default", on: { click: _vm.chooseImage } },
           [_c("i", { staticClass: "fa fa-camera fa-4x" })]
         ),
         _vm._v(" "),
@@ -20237,8 +20245,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
-        data.append('student_id', state.studentProfile.id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
+        data.append('faculty_id', payload.faculty_id);
 
         axios.post('api/priority', data).then(function (response) {
             state.studentProfile.imagePriority = payload.image_priority;
@@ -22058,7 +22067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.myCroppa.disabled = false;
         },
 
-        uploadFile: function uploadFile() {
+        chooseImage: function chooseImage() {
             this.myCroppa.chooseFile();
         }
     }

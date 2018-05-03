@@ -16,7 +16,7 @@
             <div class="">
                 <br>
                 <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                <button class="btn btn-default" @click="chooseImage"><i class="fa fa-camera fa-4x"></i></button>
                 <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
             </div>
         </div>
@@ -64,16 +64,18 @@
                 let data = new FormData();
                 data.append('id', this.facultyMember.id);
                 data.append('media', url);
-                data.append('email', this.studentProfile.emailURI);
+                data.append('uri', this.studentProfile.emailURI);
 
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
-                })
-                    .catch(e => {
-                        console.log(e)
-                    });
+                }).then(() => {
+                    this.$store.dispatch('getData')
+                }).catch(e => {
+                    console.log(e)
+                });
+
             },
 
             styleCanvas: function() {
@@ -88,7 +90,7 @@
                 this.disabled = !this.disabled;
             },
 
-            uploadFile: function() {
+            chooseImage: function() {
                 this.myCroppa.chooseFile();
             }
         }

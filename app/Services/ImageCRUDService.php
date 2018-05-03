@@ -23,8 +23,7 @@ class ImageCRUDService implements ImageCRUDContract
         $manager = new ImageManager(['driver' => 'imagick']);
 
         $image = $manager->make(request()->media);
-        $email = \str_replace('nr_', '', request()->email);
-        $uri = \explode('@', $email)[0];
+        $uri = \str_replace('nr_', '', request()->uri);
 
         $oldmask = \umask(0);
 
@@ -83,28 +82,31 @@ class ImageCRUDService implements ImageCRUDContract
     /** Update image_priority table */
     public function updatePriority()
     {
-        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+        $facultyID = request()->faculty_id;
+        $priority = ImagePriority::where('student_id', request()->student_id)->first();
 
-        $user = User::with('ImagePriority')
-            ->where('user_id', 'members:' . request()->student_id)
-            ->firstOrFail();
-
-        if (null !== $user->imagePriority) {
-            $user->imagePriority->image_priority = request()->image_priority;
-            $user->imagePriority->save();
+        if ($priority !== null) {
+            $priority->image_priority = request()->image_priority;
+            $priority->save();
         } else {
-            $user->imagePriority()->create(['image_priority' => request()->image_priority]);
+            ImagePriority::create([
+                'image_priority' => request()->image_priority,
+                'student_id' => request()->student_id,
+            ]);
         }
 
+        $msg = $facultyID;
         for ($i = 0; $i < 10; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $id)) {
-                Cache::forget('students:' . $i . ':' . $id);
+            if (Cache::has('students:' . $i . ':' . $facultyID)) {
+                Cache::forget('students:' . $i . ':' . $facultyID);
+                $msg .= "forgot students\n";
             }
-            if (Cache::has('courses:' . $id)) {
-                Cache::forget('courses:' . $id);
+            if (Cache::has('courses:' . $facultyID)) {
+                Cache::forget('courses:' . $facultyID);
+                $msg .= "forgot courses\n\n";
             }
         }
 
-        return "Completed.\n";
+        return $msg;
     }
 }
