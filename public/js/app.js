@@ -22493,7 +22493,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "pull-left",
+                  staticClass: "type--center student_list_name",
                   attrs: { to: "/profile/" + _vm.email_uri }
                 },
                 [

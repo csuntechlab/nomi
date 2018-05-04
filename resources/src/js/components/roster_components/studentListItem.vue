@@ -5,7 +5,7 @@
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
             <div class="col-xs-7 col-md-9 col-lg-9">
-                <router-link class="pull-left" :to="'/profile/'+email_uri">
+                <router-link class="type--center student_list_name" :to="'/profile/'+email_uri">
                     {{display_name}}
                 </router-link>
             </div>
