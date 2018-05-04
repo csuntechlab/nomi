@@ -19,11 +19,11 @@ class ImageCRUDService implements ImageCRUDContract
     /** Image uploading functionality. */
     public function upload()
     {
+        $id = request()->id;
         $manager = new ImageManager(['driver' => 'imagick']);
 
         $image = $manager->make(request()->media);
-        $email = \str_replace('nr_', '', request()->email);
-        $uri = \explode('@', $email)[0];
+        $uri = \str_replace('nr_', '', request()->uri);
 
         $oldmask = \umask(0);
 
@@ -35,11 +35,19 @@ class ImageCRUDService implements ImageCRUDContract
 
         \umask($oldmask);
 
+        $msg = $id;
         for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
+            if (Cache::has('students:' . $i . ':' . $id)) {
+                Cache::forget('students:' . $i . ':' . $id);
+                $msg .= "forgot students\n";
+            }
+            if (Cache::has('courses:' . $id)) {
+                Cache::forget('courses:' . $id);
+                $msg .= "forgot courses\n\n";
+            }
         }
 
-        return 'Uploaded';
+        return $msg;
     }
 
     /** Retrieve image priority
@@ -68,31 +76,37 @@ class ImageCRUDService implements ImageCRUDContract
             }
         }
 
-        for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
-        }
-
         return $out;
     }
 
     /** Update image_priority table */
     public function updatePriority()
     {
-        $user = User::with('ImagePriority')
-            ->where('user_id', 'members:' . request()->student_id)
-            ->firstOrFail();
+        $facultyID = request()->faculty_id;
+        $priority = ImagePriority::where('student_id', request()->student_id)->first();
 
-        if (null !== $user->imagePriority) {
-            $user->imagePriority->image_priority = request()->image_priority;
-            $user->imagePriority->save();
+        if ($priority !== null) {
+            $priority->image_priority = request()->image_priority;
+            $priority->save();
         } else {
-            $user->imagePriority()->create(['image_priority' => request()->image_priority]);
+            ImagePriority::create([
+                'image_priority' => request()->image_priority,
+                'student_id' => request()->student_id,
+            ]);
         }
 
+        $msg = $facultyID;
         for ($i = 0; $i < 10; ++$i) {
-            Cache::forget('students_' . $i);
+            if (Cache::has('students:' . $i . ':' . $facultyID)) {
+                Cache::forget('students:' . $i . ':' . $facultyID);
+                $msg .= "forgot students\n";
+            }
+            if (Cache::has('courses:' . $facultyID)) {
+                Cache::forget('courses:' . $facultyID);
+                $msg .= "forgot courses\n\n";
+            }
         }
 
-        return "Completed.\n";
+        return $msg;
     }
 }

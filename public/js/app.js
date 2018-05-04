@@ -19313,14 +19313,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['image_type'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     methods: {
         updateImageHandler: function updateImageHandler() {
             var _this = this;
 
-            this.$store.dispatch('updateImagePriority', { image_priority: this.image_type }).then(function () {
-                return _this.$store.dispatch('getData');
+            this.$store.dispatch('updateImagePriority', {
+                image_priority: this.image_type,
+                faculty_id: this.facultyMember.id
+            }).then(function () {
+                _this.$store.dispatch('getData');
             });
         }
     }
@@ -19405,7 +19408,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     methods: {
         confirmImage: function confirmImage() {
@@ -19425,13 +19428,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }, 'image/jpeg', .8);
 
             var data = new FormData();
+            data.append('id', this.facultyMember.id);
             data.append('media', url);
-            data.append('email', this.studentProfile.emailURI);
+            data.append('uri', this.studentProfile.emailURI);
 
             axios.post('api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
+            }).then(function () {
+                _this.$store.dispatch('getData');
             }).catch(function (e) {
                 console.log(e);
             });
@@ -19449,7 +19455,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.disabled = !this.disabled;
         },
 
-        uploadFile: function uploadFile() {
+        chooseImage: function chooseImage() {
             this.myCroppa.chooseFile();
         }
     }
@@ -19509,7 +19515,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-default", on: { click: _vm.uploadFile } },
+          { staticClass: "btn btn-default", on: { click: _vm.chooseImage } },
           [_c("i", { staticClass: "fa fa-camera fa-4x" })]
         ),
         _vm._v(" "),
@@ -19681,7 +19687,7 @@ var render = function() {
           _c("div", { staticClass: "addedUnderline" }, [
             _c("ul", { staticClass: "underlineContainer" }, [
               _c("li", { staticClass: "underline" }, [
-                _vm.sp_image_priority === "likeness"
+                _vm.studentProfile.imagePriority === "likeness"
                   ? _c("div", [
                       _c("div", { staticClass: "underlineStyling--red" })
                     ])
@@ -19689,7 +19695,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "underline" }, [
-                _vm.sp_image_priority === "avatar"
+                _vm.studentProfile.imagePriority === "avatar"
                   ? _c("div", [
                       _c("div", { staticClass: "underlineStyling--red" })
                     ])
@@ -19697,7 +19703,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "underline" }, [
-                _vm.sp_image_priority === "official"
+                _vm.studentProfile.imagePriority === "official"
                   ? _c("div", [
                       _c("div", { staticClass: "underlineStyling--red" })
                     ])
@@ -19729,11 +19735,15 @@ var render = function() {
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
-                  _c("h4", [_vm._v(_vm._s(this.sp_emailURI) + "@my.csun.edu")]),
+                  _c("h4", [
+                    _vm._v(
+                      _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
-                  _c("h4", [_vm._v("Bio: " + _vm._s(this.sp_bio))]),
+                  _c("h4", [_vm._v("Bio: " + _vm._s(this.studentProfile.bio))]),
                   _vm._v(" "),
                   _c("br")
                 ])
@@ -19838,7 +19848,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         profile: null,
         firstName: null,
         lastName: null,
-        image: null
+        image: null,
+        id: null
     }
 });
 
@@ -19938,7 +19949,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
             axios.get("faculty_profile/" + response.data["courses"][0].instructors[0].instructor).then(function (response) {
-                state.facultyMember.image = response.data;
+                state.facultyMember.image = response.data.image;
+                state.facultyMember.id = response.data.id;
             }).catch(function (e) {
                 console.log(e);
             });
@@ -20233,8 +20245,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
-        data.append('student_id', state.studentProfile.id.replace("members:", ""));
+        data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
+        data.append('faculty_id', payload.faculty_id);
 
         axios.post('api/priority', data).then(function (response) {
             state.studentProfile.imagePriority = payload.image_priority;
@@ -22054,7 +22067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.myCroppa.disabled = false;
         },
 
-        uploadFile: function uploadFile() {
+        chooseImage: function chooseImage() {
             this.myCroppa.chooseFile();
         }
     }

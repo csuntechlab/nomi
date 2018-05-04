@@ -14,18 +14,24 @@
 
         computed: {
             ...mapGetters([
-                'studentProfile'
+                'studentProfile',
+                'facultyMember'
             ])
         },
 
         methods: {
             updateImageHandler() {
-                this.$store.dispatch('updateImagePriority', {image_priority: this.image_type})
-                    .then(() => this.$store.dispatch('getData'));
-            },
+                this.$store.dispatch(
+                    'updateImagePriority',
+                    {
+                        image_priority: this.image_type,
+                        faculty_id: this.facultyMember.id,
+                    }
+                ).then(() => {
+                    this.$store.dispatch('getData')
+                });
 
-           
-
+            }
         }
     }
 </script>
