@@ -19,7 +19,7 @@ export default {
                 console.log(e);
             });
 
-        axios.get('student_profile/', data)
+        axios.get('student_profile/'+email)
             .then(response => {
                 state.studentProfile.displayName = response['data'].display_name;
                 state.studentProfile.images = response['data'].images;

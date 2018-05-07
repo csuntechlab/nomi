@@ -20225,7 +20225,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             console.log(e);
         });
 
-        axios.get('student_profile/', data).then(function (response) {
+        axios.get('student_profile/' + email).then(function (response) {
             state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
             state.studentProfile.imagePriority = response['data'].image_priority;
