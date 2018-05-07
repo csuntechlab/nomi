@@ -19235,7 +19235,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$store.dispatch('updateNotes', e.target.value);
         },
         commitNotes: function commitNotes() {
-            this.$store.dispatch('commitNotes', this.facultyMember.id);
+            this.$store.dispatch('commitNotes');
         },
         croppaToggle: function croppaToggle() {
             this.showcroppa = !this.showcroppa;
@@ -20191,8 +20191,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
     },
-    commitNotes: function commitNotes(context, facultyID) {
-        context.commit('COMMIT_NOTES', facultyID);
+    commitNotes: function commitNotes(context) {
+        context.commit('COMMIT_NOTES');
     },
     updateImagePriority: function updateImagePriority(context, payload) {
         context.commit('UPDATE_IMAGE_PRIORITY', payload);
@@ -20240,9 +20240,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         state.studentProfile.notes = notes;
     },
 
-    COMMIT_NOTES: function COMMIT_NOTES(state, facultyID) {
+    COMMIT_NOTES: function COMMIT_NOTES(state) {
         var data = new FormData();
-        data.append('faculty_id', facultyID);
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 

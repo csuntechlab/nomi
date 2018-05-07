@@ -36,9 +36,8 @@ export default {
         state.studentProfile.notes = notes;
     },
 
-    COMMIT_NOTES: function (state, facultyID) {
+    COMMIT_NOTES: function (state) {
         let data = new FormData;
-        data.append('faculty_id', facultyID);
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 

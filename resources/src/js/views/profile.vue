@@ -134,7 +134,7 @@
             },
 
             commitNotes () {
-                this.$store.dispatch('commitNotes', this.facultyMember.id);
+                this.$store.dispatch('commitNotes');
             },
 
             croppaToggle(){
