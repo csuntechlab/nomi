@@ -114,12 +114,13 @@
         },
 
         created () {
-            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
+            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
         },
 
         computed: {
             ...mapGetters([
                 'studentProfile',
+                'facultyMember'
             ]),
 
             ...mapState({
@@ -133,7 +134,7 @@
             },
 
             commitNotes () {
-                this.$store.dispatch('commitNotes');
+                this.$store.dispatch('commitNotes', this.facultyMember.id);
             },
 
             croppaToggle(){

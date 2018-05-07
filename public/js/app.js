@@ -19220,11 +19220,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     created: function created() {
-        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
+        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.profile.studentProfile.notes;
         }
@@ -19235,7 +19235,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$store.dispatch('updateNotes', e.target.value);
         },
         commitNotes: function commitNotes() {
-            this.$store.dispatch('commitNotes');
+            this.$store.dispatch('commitNotes', this.facultyMember.id);
         },
         croppaToggle: function croppaToggle() {
             this.showcroppa = !this.showcroppa;
@@ -20191,8 +20191,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
     },
-    commitNotes: function commitNotes(context, payload) {
-        context.commit('COMMIT_NOTES', payload);
+    commitNotes: function commitNotes(context, facultyID) {
+        context.commit('COMMIT_NOTES', facultyID);
     },
     updateImagePriority: function updateImagePriority(context, payload) {
         context.commit('UPDATE_IMAGE_PRIORITY', payload);
@@ -20209,8 +20209,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+        var email = payload.uri + '@my.csun.edu';
+        var data = new FormData();
+
+        data.append('faculty_id', payload.faculty_id);
+        data.append('email', email);
+
         state.studentProfile.emailURI = payload.uri;
-        axios.get('student/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+
+        axios.get('student/' + email).then(function (response) {
             state.studentProfile.bio = response['data']['people'].biography;
 
             if (state.studentProfile.bio === null) state.studentProfile.bio = "Pending biography from student.";
@@ -20218,7 +20225,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             console.log(e);
         });
 
-        axios.get('student_profile/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+        axios.get('student_profile/', data).then(function (response) {
             state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
             state.studentProfile.imagePriority = response['data'].image_priority;
@@ -20233,8 +20240,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         state.studentProfile.notes = notes;
     },
 
-    COMMIT_NOTES: function COMMIT_NOTES(state) {
+    COMMIT_NOTES: function COMMIT_NOTES(state, facultyID) {
         var data = new FormData();
+        data.append('faculty_id', facultyID);
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 

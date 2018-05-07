@@ -68,7 +68,7 @@ class StudentProfileService implements StudentProfileContract
     public function updateStudentNotes(Request $request)
     {
         $note = Note::updateOrCreate(
-            ['user_id' => auth()->user()->user_id, 'student_id' => $request->student_id],
+            ['user_id' => $request->faculty_id, 'student_id' => $request->student_id],
             ['notepad' => $request->notepad]
         );
     }
