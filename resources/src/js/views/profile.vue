@@ -83,10 +83,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form>
-                                <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
-                                <button class="btn btn-default" @click="commitNotes">Add a Note</button>
-                            </form>
+                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Add a Note</button>
                             <br>
                             <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>

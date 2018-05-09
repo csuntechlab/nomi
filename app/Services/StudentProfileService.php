@@ -71,7 +71,7 @@ class StudentProfileService implements StudentProfileContract
             ->where('student_id', $request->student_id)
             ->first();
 
-        if ($note !== null) {
+        if ($note) {
             $note->notepad = $request->notepad;
             $note->save();
 

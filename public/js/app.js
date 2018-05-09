@@ -19204,8 +19204,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -19716,22 +19714,25 @@ var render = function() {
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-sm-12" }, [
-                  _c("form", [
-                    _c("textarea", {
-                      attrs: { type: "text", id: "ex0", name: "ex0" },
-                      domProps: { value: _vm.sp_notes },
-                      on: { input: _vm.updateNotes }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-default",
-                        on: { click: _vm.commitNotes }
-                      },
-                      [_vm._v("Add a Note")]
-                    )
-                  ]),
+                  _c("textarea", {
+                    attrs: { type: "text", id: "ex0", name: "ex0" },
+                    domProps: { value: _vm.sp_notes },
+                    on: { input: _vm.updateNotes }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.commitNotes($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Add a Note")]
+                  ),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
@@ -20245,9 +20246,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 
+        console.log("before");
         axios.post('update_note', data).catch(function (e) {
             console.log(e);
         });
+        console.log("after");
     },
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
