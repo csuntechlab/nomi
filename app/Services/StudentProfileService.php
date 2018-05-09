@@ -72,18 +72,11 @@ class StudentProfileService implements StudentProfileContract
             ->where('student_id', $request->student_id)
             ->first();
 
-        if ($note) {
-            $note->notepad = Crypt::encrypt($request->notepad);
-            $note->save();
+        $note = Note::updateOrCreate(
+            ['user_id' => auth()->user()->user_id, 'student_id' => $request->student_id],
+            ['notepad' => Crypt::encrypt($request->notepad)]
+        );
 
-            return 'Updated';
-        }
-        $note = new Note();
-        $note->user_id = auth()->user()->user_id;
-        $note->student_id = $request->student_id;
-        $note->notepad = Crypt::encrypt($request->notepad);
-        $note->save();
-
-        return 'Created';
+        return 'Updated';
     }
 }
