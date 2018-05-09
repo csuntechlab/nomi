@@ -41,12 +41,10 @@ export default {
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 
-        console.log("before");
         axios.post('update_note', data)
             .catch(e => {
                 console.log(e)
             });
-        console.log("after");
     },
 
     UPDATE_IMAGE_PRIORITY: function (state, payload) {

@@ -20246,11 +20246,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 
-        console.log("before");
         axios.post('update_note', data).catch(function (e) {
             console.log(e);
         });
-        console.log("after");
     },
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
