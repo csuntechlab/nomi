@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 interface UserSettingsContract
 {
-    public function getSettings(Request $request);
+    public function getSettings();
 
     public function updateTheme(Request $request);
 }

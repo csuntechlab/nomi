@@ -5,17 +5,25 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\UserSettingsContract;
+use App\Models\Theme;
 use Illuminate\Http\Request;
 
 class UserSettingsService implements UserSettingsContract
 {
-    public function getSettings(Request $request)
+    public function getSettings()
     {
-        // TODO: Implement getSettings() method.
+        $settings = new \stdClass();
+
+        $settings->theme = Theme::where('user_id', auth()->user()->user_id)->first();
+
+        return $settings;
     }
 
     public function updateTheme(Request $request)
     {
-        // TODO: Implement updateTheme() method.
+        $theme = Theme::updateOrCreate(
+            ['user_id' => auth()->user()->user_id],
+            ['theme' => $request->theme]
+        );
     }
 }
