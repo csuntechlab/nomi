@@ -13326,6 +13326,7 @@ Vue.component('croppa-profile', __webpack_require__(15));
 Vue.component('profile-picture', __webpack_require__(91));
 Vue.component('loading-button', __webpack_require__(94));
 Vue.component('list-grid-selector', __webpack_require__(99));
+Vue.component('back-button', __webpack_require__(158));
 
 Vue.component('shuffle-button', __webpack_require__(16));
 Vue.component('card-toggle-button', __webpack_require__(17));
@@ -19558,13 +19559,18 @@ var render = function() {
       : _c("div", { staticClass: "profileArea" }, [
           _c("div", { staticClass: "container" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-12" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("h1", { staticClass: "type--center" }, [
-                  _vm._v(_vm._s(this.studentProfile.displayName))
-                ])
-              ]),
+              _c(
+                "div",
+                { staticClass: "col-sm-12" },
+                [
+                  _c("back-button", { attrs: { destination: "/class/0" } }),
+                  _vm._v(" "),
+                  _c("h1", { staticClass: "type--center" }, [
+                    _vm._v(_vm._s(this.studentProfile.displayName))
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c(
@@ -19753,16 +19759,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
-      _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -19838,7 +19835,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     flashroster: [],
     menuShow: false,
     list: true,
-    flash: true,
+    flash: false,
     sortLastName: true,
     sortDescending: true,
 
@@ -21455,7 +21452,7 @@ var render = function() {
   return _c("div", [
     this.flash
       ? _c("i", {
-          staticClass: "fa fa-address-book fa-3x",
+          staticClass: "fa fa-arrow-left fa-3x",
           attrs: { title: "Gallery Card" },
           on: {
             click: function($event) {
@@ -22150,7 +22147,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-default",
-                  on: { click: _vm.uploadFile }
+                  on: { click: _vm.chooseImage }
                 },
                 [_c("i", { staticClass: "fa fa-camera fa-3x" })]
               ),
@@ -22795,9 +22792,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -22982,21 +22976,24 @@ var render = function() {
     "nav",
     { staticStyle: { height: "55px" } },
     [
+      this.list || !this.flash
+        ? _c("back-button", {
+            staticClass: "col-xs-2 col-sm-2 col-md-2",
+            attrs: { destination: "/" }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      !this.list
+        ? _c("card-toggle-button", {
+            staticClass: "col-xs-2 col-sm-2 col-md-2"
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      !this.list && this.flash
+        ? _c("shuffle-button", { staticClass: "col-xs-2 col-sm-2 col-md-2" })
+        : _vm._e(),
+      _vm._v(" "),
       _c("list-grid-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list ? _c("card-toggle-button") : _vm._e()],
-        1
-      ),
       _vm._v(" "),
       _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
     ],
@@ -23457,6 +23454,106 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(159)
+/* template */
+var __vue_template__ = __webpack_require__(160)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/backButton.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d0a19a1", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d0a19a1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 159 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "back-button",
+
+    props: ['destination']
+});
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("router-link", { attrs: { to: _vm.destination } }, [
+    _c("i", {
+      staticClass: "fa fa-arrow-left fa-3x type--center",
+      attrs: { title: "Go Back" }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6d0a19a1", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

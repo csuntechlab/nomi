@@ -1,12 +1,9 @@
 <template>
     <nav class="" style="height: 55px">
+        <back-button class="col-xs-2 col-sm-2 col-md-2" v-if="this.list || !this.flash" destination="/"></back-button>
+        <card-toggle-button class="col-xs-2 col-sm-2 col-md-2" v-if="!this.list"></card-toggle-button>
+        <shuffle-button class="col-xs-2 col-sm-2 col-md-2" v-if="!this.list && this.flash"></shuffle-button>
         <list-grid-selector class="col-xs-4 col-sm-4 col-md-4"></list-grid-selector>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            <shuffle-button v-if="!this.list && this.flash"></shuffle-button>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            <card-toggle-button v-if="!this.list"></card-toggle-button>
-        </div>
         <sort-selector class="col-xs-4 col-sm-4 col-md-4"></sort-selector>
     </nav>
 </template>

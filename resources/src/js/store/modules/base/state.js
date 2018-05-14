@@ -3,7 +3,7 @@ export default {
     flashroster: [],
     menuShow: false,
     list: true,
-    flash: true,
+    flash: false,
     sortLastName: true,
     sortDescending: true,
 
