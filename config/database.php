@@ -3,6 +3,11 @@
 declare(strict_types=1);
 
 return [
+    'sqlite_testing' => [
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name

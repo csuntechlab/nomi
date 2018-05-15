@@ -1,12 +1,8 @@
 <?php
-
 declare(strict_types=1);
-
 namespace App\Services;
-
 use App\Contracts\WebResourceRetrieverContract;
 use GuzzleHttp\Client;
-
 class WebResourceRetrieverService implements WebResourceRetrieverContract
 {
     /**
@@ -19,26 +15,22 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     public function getCourses($term)
     {
         $client = new Client();
-
         $data =
             \json_decode(
                 $client->get(
                     env('COURSES_URL') . '/' . $term . '/classes?instructor=' . auth()->user()->email,
-                    ['verify'=>false]
-            )->getBody()
-            ->getContents()
+                    ['verify' => false]
+                )->getBody()
+                    ->getContents()
             )->classes;
-
         //add an id to each object to make vue stuff easier
         $i = 0;
         foreach ($data as $course) {
             $course->id = $i;
             ++$i;
         }
-
         return $data;
     }
-
     /**
      * Retrieves roster from META+LAB Roster web service.
      *
@@ -51,10 +43,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
         $class = $this->getCourses($term)[$course];
-
         return $client->get(env('ROSTER_URL') . '/terms' . '/' . $class->term . '/classes' . '/' . $class->class_number, ['verify'=>false]);
     }
-
     /**
      * Retrieves media from META+LAB Media web service.
      *
@@ -63,7 +53,6 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     public function getMedia()
     {
         $client = new Client();
-
         //hacky fix to remove @csun.edu
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
@@ -71,11 +60,9 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             ['verify'=>false]
         )->getBody()->getContents();
     }
-
     public function getStudent($email)
     {
         $client = new Client();
-
         return $client->get(
             'https://api.metalab.csun.edu/directory/api/members?email='
             . \str_replace('nr_', '', $email),

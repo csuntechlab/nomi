@@ -35,7 +35,7 @@ class SPAController extends Controller
             $courses = Cache::get('courses:' . $id);
         } else {
             $courses = $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
-            Cache::put('courses:' . auth()->user(), $courses, $this->minutes);
+            Cache::put('courses:' . $id, $courses, $this->minutes);
         }
 
         $students = [];

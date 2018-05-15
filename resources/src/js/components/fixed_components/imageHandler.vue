@@ -1,7 +1,5 @@
 <template>
-    <div v-if="sp_image_priority === image_type">
-
-    </div>
+    <div v-if="studentProfile.imagePriority === image_type"></div>
     <div v-else>
         <button class="btn btn-default" @click="updateImageHandler">Make Default Image</button>
     </div>
@@ -16,18 +14,24 @@
 
         computed: {
             ...mapGetters([
-                'sp_image_priority'
+                'studentProfile',
+                'facultyMember'
             ])
         },
 
         methods: {
             updateImageHandler() {
-                this.$store.dispatch('updateImagePriority', {image_priority: this.image_type})
-                    .then(() => this.$store.dispatch('getData'));
-            },
+                this.$store.dispatch(
+                    'updateImagePriority',
+                    {
+                        image_priority: this.image_type,
+                        faculty_id: this.facultyMember.id,
+                    }
+                ).then(() => {
+                    this.$store.dispatch('getData')
+                });
 
-           
-
+            }
         }
     }
 </script>

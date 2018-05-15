@@ -6,6 +6,7 @@ namespace Tests\Controllers;
 
 use App\Contracts\ImageCRUDContract;
 use App\Http\Controllers\ImageController;
+use Illuminate\Http\Request;
 use Mockery;
 use Tests\TestCase;
 
@@ -34,6 +35,6 @@ class ImageControllerTest extends TestCase
             ->shouldReceive('upload')
             ->once();
 
-        $controller->uploadImage();
+        $controller->uploadImage(new Request());
     }
 }

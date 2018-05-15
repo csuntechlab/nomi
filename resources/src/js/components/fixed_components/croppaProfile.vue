@@ -1,14 +1,14 @@
 <template>
     <div>
         <div>
-            <label :for="sp_display_name">
-                <profile-picture v-if="disabled" :image="sp_images['likeness']"></profile-picture>
+            <label :for="studentProfile.displayName">
+                <profile-picture v-if="disabled" :image="studentProfile.images['likeness']"></profile-picture>
                 <croppa v-else
                         v-model="myCroppa"
                         :prevent-white-space="false"
                         :show-remove-button="false"
                         :disabled="disabled"
-                        :initial-image="sp_images['likeness']"
+                        :initial-image="studentProfile.images['likeness']"
                         :quality="2"
                         @init="styleCanvas()">
                 </croppa>
@@ -16,12 +16,11 @@
             <div class="">
                 <br>
                 <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-4x"></i></button>
+                <button class="btn btn-default" @click="chooseImage"><i class="fa fa-camera fa-4x"></i></button>
                 <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
             </div>
         </div>
     </div>
-
 </template>
 <script>
     import { mapGetters } from "vuex";
@@ -40,9 +39,8 @@
 
         computed: {
             ...mapGetters([
-                'sp_display_name',
-                'sp_emailURI',
-                'sp_images'
+                'studentProfile',
+                'facultyMember'
             ])
         },
 
@@ -64,17 +62,20 @@
                 );
 
                 let data = new FormData();
+                data.append('id', this.facultyMember.id);
                 data.append('media', url);
-                data.append('email', this.sp_emailURI);
+                data.append('uri', this.studentProfile.emailURI);
 
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
-                })
-                    .catch(e => {
-                        console.log(e)
-                    });
+                }).then(() => {
+                    this.$store.dispatch('getData')
+                }).catch(e => {
+                    console.log(e)
+                });
+
             },
 
             styleCanvas: function() {
@@ -89,7 +90,7 @@
                 this.disabled = !this.disabled;
             },
 
-            uploadFile: function() {
+            chooseImage: function() {
                 this.myCroppa.chooseFile();
             }
         }

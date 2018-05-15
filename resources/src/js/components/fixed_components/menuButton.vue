@@ -2,7 +2,7 @@
     <nav class="menu_bar makeBlue">
         <div class="row">
             <div class="type--center">
-                <div v-if="this.menushow" class="menu_button">
+                <div v-if="this.menuShow" class="menu_button">
                     <i class="fa fa-angle-down fa-3x type--center" title="Close Menu" @click.prevent="closeMenu"></i>
                 </div>
                 <div v-else class="menu_button">
@@ -35,7 +35,7 @@
         },
         computed: {
             ...mapGetters([
-                'menushow'
+                'menuShow'
             ])
         }
     }
