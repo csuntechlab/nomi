@@ -46,4 +46,8 @@ export default {
         context.commit('SORT_ASC');
         context.commit('SORT_ROSTER');
     },
+
+    clearErrors (context) {
+        context.commit('CLEAR_ERRORS');
+    }
 }
