@@ -33,16 +33,3 @@
         }
     }
 </script>
-
-<style scoped>
-    .list__item{
-        padding: 20px;
-        -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
-        box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);
-        font-size: 200%;
-    }
-
-    .name_formatting{
-        padding: 5%;
-    }
-</style>
