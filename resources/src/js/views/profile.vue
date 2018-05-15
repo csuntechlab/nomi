@@ -5,7 +5,7 @@
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
-        <div v-else class="profileArea">
+        <div v-else class="">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -20,13 +20,14 @@
                             >
                                 <slide>
                                         <div class="imagewrap">
-                                            <croppa-profile class=""></croppa-profile>
+                                            <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
 
                                             <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
                                                 <image-handler image_type="likeness"></image-handler>
                                             </div>
                                             <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                                <button class="btn btn-default"> Croppa Button Future </button>
+                                                <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
+
                                             </div>
                                         </div>
                                 </slide>
@@ -79,7 +80,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="container type--center">
+        </div>
+        <div class="container type--center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -95,8 +97,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <div>
+                <modal v-if="showModal" @close="showModal = false">
+                    <h3 slot="header"> Custom Header </h3>
+                    <div slot="body"><croppa-profile></croppa-profile></div>
+                </modal>
         </div>
+    </div>        
     </div>
 </template>
 
@@ -105,12 +112,20 @@
     import { mapState } from 'vuex'
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
+    import modal from "../components/fixed_components/modal.vue";
     export default {
         name: 'profile',
 
         components: {
             ImageHandler,
-            croppaProfile
+            croppaProfile,
+            modal
+        },
+        
+        data() {
+            return {
+                showModal: false
+            }
         },
 
         created () {
