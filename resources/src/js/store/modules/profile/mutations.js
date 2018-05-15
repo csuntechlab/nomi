@@ -1,7 +1,14 @@
 export default {
     GET_STUDENT_PROFILE: function (state, payload) {
+        let email = payload.uri+'@my.csun.edu';
+        let data = new FormData;
+
+        data.append('faculty_id', payload.faculty_id);
+        data.append('email', email);
+
         state.studentProfile.emailURI = payload.uri;
-        axios.get('student/'+state.studentProfile.emailURI+'@my.csun.edu')
+
+        axios.get('student/'+email)
             .then(response => {
                 state.studentProfile.bio = response['data']['people'].biography;
 
@@ -12,7 +19,7 @@ export default {
                 console.log(e);
             });
 
-        axios.get('student_profile/'+state.studentProfile.emailURI+'@my.csun.edu')
+        axios.get('student_profile/'+email)
             .then(response => {
                 state.studentProfile.displayName = response['data'].display_name;
                 state.studentProfile.images = response['data'].images;

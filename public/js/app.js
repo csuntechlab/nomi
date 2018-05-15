@@ -19204,8 +19204,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -19220,11 +19218,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     created: function created() {
-        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
+        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.profile.studentProfile.notes;
         }
@@ -19716,22 +19714,25 @@ var render = function() {
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-sm-12" }, [
-                  _c("form", [
-                    _c("textarea", {
-                      attrs: { type: "text", id: "ex0", name: "ex0" },
-                      domProps: { value: _vm.sp_notes },
-                      on: { input: _vm.updateNotes }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-default",
-                        on: { click: _vm.commitNotes }
-                      },
-                      [_vm._v("Add a Note")]
-                    )
-                  ]),
+                  _c("textarea", {
+                    attrs: { type: "text", id: "ex0", name: "ex0" },
+                    domProps: { value: _vm.sp_notes },
+                    on: { input: _vm.updateNotes }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-default",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.commitNotes($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Add a Note")]
+                  ),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
@@ -20191,8 +20192,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
     },
-    commitNotes: function commitNotes(context, payload) {
-        context.commit('COMMIT_NOTES', payload);
+    commitNotes: function commitNotes(context) {
+        context.commit('COMMIT_NOTES');
     },
     updateImagePriority: function updateImagePriority(context, payload) {
         context.commit('UPDATE_IMAGE_PRIORITY', payload);
@@ -20209,8 +20210,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+        var email = payload.uri + '@my.csun.edu';
+        var data = new FormData();
+
+        data.append('faculty_id', payload.faculty_id);
+        data.append('email', email);
+
         state.studentProfile.emailURI = payload.uri;
-        axios.get('student/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+
+        axios.get('student/' + email).then(function (response) {
             state.studentProfile.bio = response['data']['people'].biography;
 
             if (state.studentProfile.bio === null) state.studentProfile.bio = "Pending biography from student.";
@@ -20218,7 +20226,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             console.log(e);
         });
 
-        axios.get('student_profile/' + state.studentProfile.emailURI + '@my.csun.edu').then(function (response) {
+        axios.get('student_profile/' + email).then(function (response) {
             state.studentProfile.displayName = response['data'].display_name;
             state.studentProfile.images = response['data'].images;
             state.studentProfile.imagePriority = response['data'].image_priority;
