@@ -20716,15 +20716,6 @@ var render = function() {
                     ]),
                 _vm._v(" "),
                 _c(
-                  "a",
-                  {
-                    staticClass: "faculty-links",
-                    attrs: { href: "#", title: "Game" }
-                  },
-                  [_vm._v("Game")]
-                ),
-                _vm._v(" "),
-                _c(
                   "router-link",
                   { staticClass: "faculty-links", attrs: { to: "/" } },
                   [_vm._v("Courses")]
