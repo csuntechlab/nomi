@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs-6">
+    <div class="col-xs-6 col_padding">
         <div class="panel">
             <div class="grid-item panel__content" @click="updateRecognized">
                 <div v-if="known">

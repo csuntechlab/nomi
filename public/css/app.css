@@ -181,7 +181,7 @@ textarea[type=text]:focus {
   background-color: #F4F4F4;
   -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
           box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 0px;
 }
 
 .theme-main .panel .panel__img {
@@ -196,6 +196,11 @@ textarea[type=text]:focus {
 
 .theme-main .fa {
   color: #0F1821;
+}
+
+.col_padding {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
 }
 
 textarea[type=text] {
