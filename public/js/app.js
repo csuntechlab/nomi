@@ -15953,7 +15953,11 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: '/profile/:emailURI',
         component: __WEBPACK_IMPORTED_MODULE_4__views_profile___default.a,
         props: true
-    }]
+    }],
+
+    scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
