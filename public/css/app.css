@@ -198,11 +198,6 @@ textarea[type=text]:focus {
   color: #0F1821;
 }
 
-.col_padding {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-}
-
 textarea[type=text] {
   width: 100%;
   padding: 12px 20px;
@@ -249,6 +244,11 @@ textarea[type=text]:focus {
 
 .clearPadding {
   padding: 0;
+}
+
+.col_padding {
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
 }
 
 /*!

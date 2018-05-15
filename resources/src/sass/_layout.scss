@@ -46,7 +46,7 @@ textarea[type=text] {
         border-radius: 7px;
         background-color: themed('offWhite');
         box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
-        padding: 20px;
+        padding: 0px;
 
         .panel__img{
             height: auto;
@@ -66,14 +66,6 @@ textarea[type=text] {
         color: themed('bars');
     } 
 }
-
-.col_padding{
-    padding-left:0.5rem !important;
-    padding-right: 0.5rem !important;
-}
-
-
-
 
 // .menu-bar{
 //     @include themify($themes) {
