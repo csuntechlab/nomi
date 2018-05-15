@@ -246,6 +246,11 @@ textarea[type=text]:focus {
   padding: 0;
 }
 
+.student_list_name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
