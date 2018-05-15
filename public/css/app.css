@@ -181,7 +181,7 @@ textarea[type=text]:focus {
   background-color: #F4F4F4;
   -webkit-box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
           box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
-  padding: 0px;
+  padding: 20px;
 }
 
 .theme-main .panel .panel__img {
@@ -249,6 +249,11 @@ textarea[type=text]:focus {
 .col_padding {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
+}
+
+.student_list_name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
 }
 
 /*!
