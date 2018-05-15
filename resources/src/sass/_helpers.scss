@@ -39,9 +39,17 @@ textarea[type=text]:focus{
   }
 }
 
-.textOverflow{
-  height: 50px; 
-  word-wrap: break-word;
+.textOverflow{ 
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.courseBannerBorder {
+  @include themify($themes){
+    color: themed('offWhite');
+    border-left: 0.25px solid; 
+    border-right: 0.25px solid; 
+  }
 }
 
 .imagewrap {

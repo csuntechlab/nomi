@@ -233,8 +233,14 @@ textarea[type=text]:focus {
 }
 
 .textOverflow {
-  height: 50px;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.theme-main .courseBannerBorder {
+  color: #F4F4F4;
+  border-left: 0.25px solid;
+  border-right: 0.25px solid;
 }
 
 .imagewrap {

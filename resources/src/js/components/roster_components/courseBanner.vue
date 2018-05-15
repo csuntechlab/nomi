@@ -2,7 +2,7 @@
     <div class="nav-bars">
         <carousel :perPage="pageSize" :pagination-enabled="false">
             <slide v-for="course in this.courses" :key="course.title" :course="course">
-                <div :class="bgcolor(course.id)+' type--center'">
+                <div :class="bgcolor(course.id)+' textOverflow courseBannerBorder type--center'">
                     <router-link
                         :to="'/class/'+course.id"
                     >
