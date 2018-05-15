@@ -67,6 +67,11 @@ textarea[type=text] {
     } 
 }
 
+.col-xs-6{
+    padding-left:0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
 // .menu-bar{
 //     @include themify($themes) {
 //         background-color: themed('bars');

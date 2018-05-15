@@ -1,18 +1,3 @@
-textarea[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  
-}
-
-textarea[type=text]:focus{
-  border: 3px solid lightblue;
-}
-
 .makeBlue{
   @include themify($themes){
       background-color: themed('bars');
@@ -51,11 +36,6 @@ textarea[type=text]:focus{
 
 .clearPadding{
   padding: 0;
-}
-
-.col_padding{
-    padding-left:0.5rem !important;
-    padding-right: 0.5rem !important;
 }
 
 .student_list_name {
