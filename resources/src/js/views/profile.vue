@@ -84,7 +84,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
-                            <button class="btn btn-default" @click.prevent="commitNotes">Add a Note</button>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                            <div v-if="noteSaved">Notes Saved!</div>
                             <br>
                             <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
@@ -105,6 +106,12 @@
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     export default {
         name: 'profile',
+
+        data: function () {
+            return {
+                noteSaved: false
+            }
+        },
 
         components: {
             ImageHandler,
@@ -128,11 +135,17 @@
 
         methods: {
             updateNotes (e) {
-                this.$store.dispatch('updateNotes', e.target.value);
+                this.$store.dispatch('updateNotes', e.target.value)
+                    .then(() => {
+                        this.noteSaved = false;
+                    });
             },
 
             commitNotes () {
-                this.$store.dispatch('commitNotes');
+                this.$store.dispatch('commitNotes')
+                    .then(() => {
+                        this.noteSaved = true;
+                    });
             },
 
             croppaToggle(){
