@@ -194,6 +194,24 @@ textarea[type=text]:focus {
   border-bottom: 0;
 }
 
+.theme-main .courseTabs {
+  color: #0F1821;
+  background-color: #E5E5E5;
+}
+
+.theme-main .tab__link--active {
+  border-bottom: none;
+}
+
+.tab__link {
+  padding-left: 33%;
+  padding-right: 33%;
+}
+
+.theme-main .tab__link:hover {
+  border-color: #0F1821;
+}
+
 .theme-main .fa {
   color: #0F1821;
 }
@@ -230,17 +248,6 @@ textarea[type=text]:focus {
   font-size: 1.1rem;
   font-family: sans-serif;
   color: #E5E5E5;
-}
-
-.textOverflow {
-  overflow-wrap: break-word;
-  word-break: break-all;
-}
-
-.theme-main .courseBannerBorder {
-  color: #F4F4F4;
-  border-left: 0.25px solid;
-  border-right: 0.25px solid;
 }
 
 .imagewrap {

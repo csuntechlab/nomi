@@ -61,6 +61,27 @@ textarea[type=text] {
 
 }
 
+.courseTabs {
+    @include themify($themes){
+      color: themed('bars'); 
+      background-color: themed('looksGray');
+    }
+}
+.tab__link--active{
+    @include themify($themes){
+      border-bottom: none;
+    }
+  }
+.tab__link {
+    padding-left: 33%;
+    padding-right: 33%
+  }
+.tab__link:hover {
+    @include themify($themes){
+      border-color: themed('bars');
+    }
+}
+
 .fa {
     @include themify($themes){
         color: themed('bars');

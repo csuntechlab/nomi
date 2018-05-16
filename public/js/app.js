@@ -22612,26 +22612,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-banner",
-
-    methods: {
-        bgcolor: function bgcolor(id) {
-            if (id.toString() === this.$route.params.id) return "buttonPressBlue";else return "makeBlue";
-        }
-    },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']), {
-
-        pageSize: function pageSize() {
-            if (this.courses.length >= 3) return 3;else return this.courses.length;
-        }
-    })
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 });
 
 /***/ }),
@@ -22642,39 +22627,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "nav-bars" },
-    [
+  return _c("nav", [
+    _c("div", { staticClass: "tab-container" }, [
       _c(
-        "carousel",
-        { attrs: { perPage: _vm.pageSize, "pagination-enabled": false } },
+        "ul",
+        { staticClass: "tabs cf col-xs-12 col-sm-12" },
         _vm._l(this.courses, function(course) {
-          return _c("slide", { key: course.title, attrs: { course: course } }, [
-            _c(
-              "div",
-              {
-                class:
-                  _vm.bgcolor(course.id) +
-                  " textOverflow courseBannerBorder type--center"
-              },
-              [
-                _c("router-link", { attrs: { to: "/class/" + course.id } }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(course.title) +
-                      "\n                "
-                  )
-                ])
-              ],
-              1
-            )
-          ])
+          return _c(
+            "li",
+            {
+              key: course.title,
+              staticClass: "tab__list",
+              attrs: { course: course }
+            },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "courseTabs tab__link tab__link--active",
+                  attrs: { to: "/class/" + course.id }
+                },
+                [_vm._v("\n                    COMP 182")]
+              )
+            ],
+            1
+          )
         })
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
