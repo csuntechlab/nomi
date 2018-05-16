@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Note extends Model
 {
-    protected $fillable = ['notepad', 'student_id', 'user_id'];
+    protected $fillable = ['student_id', 'user_id', 'notepad'];
 }
