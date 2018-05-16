@@ -16,6 +16,15 @@
                 <li>View your list of classes for the current semester</li>
             </ul>
         </p>
+
+        <h3>Supported Browsers</h3>
+        <p>
+            <ul>
+                <li>Chrome</li>
+                <li>Safari</li>
+                <li>Firefox</li>
+            </ul>
+        </p>
     </div>
 </template>
 
