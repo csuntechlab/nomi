@@ -19,6 +19,7 @@
                             :paginationActiveColor="'#4F9DA3'"
                             >
                                 <slide>
+                                    <h2>Likeness Photo</h2>
                                         <div class="imagewrap">
                                             <croppa-profile class=""></croppa-profile>
 
@@ -31,6 +32,7 @@
                                         </div>
                                 </slide>
                                 <slide>
+                                    <h2>Student-Uploaded Photo</h2>
                                     <div class="imagewrap">
                                         <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
@@ -39,6 +41,7 @@
                                     </div>
                                 </slide>
                                 <slide>
+                                    <h2>Official Photo</h2>
                                     <div class="imagewrap">
                                         <profile-picture :image="studentProfile.images['official']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
