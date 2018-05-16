@@ -19211,6 +19211,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -19584,8 +19587,6 @@ var render = function() {
                       },
                       [
                         _c("slide", [
-                          _c("h2", [_vm._v("Likeness Photo")]),
-                          _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "imagewrap" },
@@ -19623,68 +19624,6 @@ var render = function() {
                             ],
                             1
                           )
-                        ]),
-                        _vm._v(" "),
-                        _c("slide", [
-                          _c("h2", [_vm._v("Student-Uploaded Photo")]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "imagewrap" },
-                            [
-                              _c("profile-picture", {
-                                attrs: {
-                                  image: _vm.studentProfile.images["avatar"]
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "col-xs-6 col-md-6 col-lg-6 pull-right"
-                                },
-                                [
-                                  _c("image-handler", {
-                                    attrs: { image_type: "avatar" }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("slide", [
-                          _c("h2", [_vm._v("Official Photo")]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "imagewrap" },
-                            [
-                              _c("profile-picture", {
-                                attrs: {
-                                  image: _vm.studentProfile.images["official"]
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "col-xs-6 col-md-6 col-lg-6 pull-right"
-                                },
-                                [
-                                  _c("image-handler", {
-                                    attrs: { image_type: "official" }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
                         ])
                       ],
                       1
@@ -19692,34 +19631,6 @@ var render = function() {
                   ],
                   1
                 )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "addedUnderline" }, [
-            _c("ul", { staticClass: "underlineContainer" }, [
-              _c("li", { staticClass: "underline" }, [
-                _vm.studentProfile.imagePriority === "likeness"
-                  ? _c("div", [
-                      _c("div", { staticClass: "underlineStyling--red" })
-                    ])
-                  : _c("div", [_c("div", { staticClass: "underlineStyling" })])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "underline" }, [
-                _vm.studentProfile.imagePriority === "avatar"
-                  ? _c("div", [
-                      _c("div", { staticClass: "underlineStyling--red" })
-                    ])
-                  : _c("div", [_c("div", { staticClass: "underlineStyling" })])
-              ]),
-              _vm._v(" "),
-              _c("li", { staticClass: "underline" }, [
-                _vm.studentProfile.imagePriority === "official"
-                  ? _c("div", [
-                      _c("div", { staticClass: "underlineStyling--red" })
-                    ])
-                  : _c("div", [_c("div", { staticClass: "underlineStyling" })])
               ])
             ])
           ]),
