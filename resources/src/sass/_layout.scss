@@ -69,16 +69,16 @@ textarea[type=text] {
 }
 .tab__link--active{
     @include themify($themes){
-      border-bottom: none;
+      border-bottom: 5px solid themed('looksGray');
     }
   }
-.tab__link {
-    padding-left: 33%;
-    padding-right: 33%
-  }
+// .tab__link {
+//     margin-left: 33%;
+//     margin-right: 33%;
+//   }
 .tab__link:hover {
     @include themify($themes){
-      border-color: themed('bars');
+        border-bottom: 5px solid themed('bars');
     }
 }
 

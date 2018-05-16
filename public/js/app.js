@@ -22557,7 +22557,7 @@ var render = function() {
     _c("div", { staticClass: "tab-container" }, [
       _c(
         "ul",
-        { staticClass: "tabs cf col-xs-12 col-sm-12" },
+        { staticClass: "tabs cf" },
         _vm._l(this.courses, function(course) {
           return _c(
             "li",

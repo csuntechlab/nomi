@@ -200,16 +200,11 @@ textarea[type=text]:focus {
 }
 
 .theme-main .tab__link--active {
-  border-bottom: none;
-}
-
-.tab__link {
-  padding-left: 33%;
-  padding-right: 33%;
+  border-bottom: 5px solid #E5E5E5;
 }
 
 .theme-main .tab__link:hover {
-  border-color: #0F1821;
+  border-bottom: 5px solid #0F1821;
 }
 
 .theme-main .fa {
