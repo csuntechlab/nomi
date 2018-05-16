@@ -5,50 +5,48 @@
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
-        <div v-else class="">
+        <div v-else>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
-                        <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
+                        <h1 class="type--center">{{studentProfile.displayName}}</h1>
                     </div>
-                    <div class="row">
-                        <div class="type--center">
-                            <carousel 
-                            :perPage="1" 
-                            :paginationActiveColor="'#4F9DA3'"
-                            >
-                                <slide>
-                                        <div class="imagewrap">
-                                            <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
-
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                                <image-handler image_type="likeness"></image-handler>
-                                            </div>
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                                <!-- <button id="show-modal" @click="showModal = true">Show Modal</button> -->
-
-                                            </div>
-                                        </div>
-                                </slide>
-                                <slide>
+                    <div class="type--center">
+                        <carousel 
+                        :perPage="1" 
+                        :paginationActiveColor="'#4F9DA3'"
+                        >
+                            <slide class="slidewrap">
                                     <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                            <image-handler image_type="avatar"></image-handler>
+                                        <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
+
+                                        <div class="type--center">
+                                            <image-handler image_type="likeness"></image-handler>
+                                        </div>
+                                        <div class="type--center">
+                                            <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                            <br>
                                         </div>
                                     </div>
-                                </slide>
-                                <slide>
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['official']"></profile-picture>
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                            <image-handler image_type="official"></image-handler>
-                                        </div>
+                            </slide>
+                            <slide class="slidewrap">
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
+                                    <div class="type--center">
+                                        <image-handler image_type="avatar"></image-handler>
                                     </div>
-                                </slide>
-                            </carousel>
-                        </div>
+                                </div>
+                            </slide>
+                            <slide class="slidewrap">
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['official']"></profile-picture>
+                                    <div class="type--center">
+                                        <image-handler image_type="official"></image-handler>
+                                    </div>
+                                </div>
+                            </slide>
+                        </carousel>
                     </div>
                 </div>
             </div>
@@ -90,21 +88,28 @@
                                 <button class="btn btn-default" @click="commitNotes">Add a Note</button>
                             </form>
                             <br>
-                            <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
+                            <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
                             <h4>Bio: {{this.studentProfile.bio}}</h4>
                             <br>
                         </div>
                     </div>
                 </div>
-                <div>
+        </div>     
+                   <div>
                 <modal v-if="showModal" @close="showModal = false">
-                    <h3 slot="header"> Custom Header </h3>
-                    <div slot="body"><croppa-profile></croppa-profile></div>
+                    <div slot="header">
+                    
+                    </div>
+                    
+                    <div slot="body">
+                        <croppa-profile></croppa-profile>
+                        </div>
+                    
                 </modal>
-        </div>
-    </div>        
+        </div>   
     </div>
+    
 </template>
 
 <script>

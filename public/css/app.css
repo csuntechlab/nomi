@@ -240,6 +240,12 @@ textarea[type=text]:focus {
 .imagewrap {
   display: inline-block;
   position: relative;
+  width: 60%;
+}
+
+.slidewrap {
+  width: 55%;
+  height: 45%;
 }
 
 .clearPadding {
@@ -3348,7 +3354,7 @@ textarea[type=text]:focus {
 }
 
 .modal-container {
-  width: 300px;
+  width: 332px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -3375,15 +3381,6 @@ textarea[type=text]:focus {
 .modal-default-button {
   float: right;
 }
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
 
 .modal-enter {
   opacity: 0;

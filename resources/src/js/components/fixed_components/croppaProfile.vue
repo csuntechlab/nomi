@@ -1,24 +1,23 @@
 <template>
     <div>
-        <div>
-            <label :for="studentProfile.displayName">
-                <profile-picture v-if="disabled" :image="studentProfile.images['likeness']"></profile-picture>
-                <croppa v-else
-                        v-model="myCroppa"
-                        :prevent-white-space="false"
-                        :show-remove-button="false"
-                        :disabled="disabled"
-                        :initial-image="studentProfile.images['likeness']"
-                        :quality="2"
-                        @init="styleCanvas()">
-                </croppa>
-            </label>
-            <div class="">
-                <br>
-                <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                <button class="btn btn-default" @click="chooseImage"><i class="fa fa-camera fa-4x"></i></button>
-                <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
-            </div>
+        <div class="pull-right textOverflow">
+            <h3>{{studentProfile.displayName}}</h3>
+        </div>
+        <div class="type--center" >
+        <croppa
+                v-model="myCroppa"
+                :prevent-white-space="false"
+                :show-remove-button="false"
+                :initial-image="studentProfile.images['likeness']"
+                :quality="2"
+                @init="styleCanvas()">
+        </croppa>
+
+        
+            <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
+        </div>
+        <div v-if="this.switch === true" class="type--center">
+            <div @click="confirmImage"><i class="fa fa-check fa-3x"></i></div>
         </div>
     </div>
 </template>
@@ -33,7 +32,8 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                disabled: true
+                disabled: true,
+                switch: true
             }
         },
 
@@ -75,6 +75,8 @@
                 }).catch(e => {
                     console.log(e)
                 });
+                this.$parent.$emit('close')
+                this.reset;
 
             },
 
@@ -85,13 +87,9 @@
                 elm.style.height="100%";
                 elm.style.borderRadius="50%";
             },
-
-            toggleCropper: function() {
-                this.disabled = !this.disabled;
-            },
-
             chooseImage: function() {
                 this.myCroppa.chooseFile();
+                this.switch = false;
             }
         }
     }
