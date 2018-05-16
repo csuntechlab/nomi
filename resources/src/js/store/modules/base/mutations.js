@@ -32,12 +32,14 @@ export default {
         state.list = true;
     },
 
-    SET_GRID (state) {
+    SET_GALLERY (state) {
         state.list = false;
+        state.flash = false;
     },
 
-    TOGGLE_FLASH (state) {
-        state.flash = !state.flash;
+    SET_FLASH (state) {
+        state.list = false;
+        state.flash = true;
     },
 
     TOGGLE_MENU (state) {
