@@ -3,7 +3,6 @@
         <div class="pull-right textOverflow">
             <h3>{{studentProfile.displayName}}</h3>
         </div>
-        <div class="type--center" >
         <croppa
                 v-model="myCroppa"
                 :prevent-white-space="false"
@@ -13,10 +12,10 @@
                 @init="styleCanvas()">
         </croppa>
 
-        
+        <div class="type--center">
             <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
         </div>
-        <div v-if="this.switch === true" class="type--center">
+        <div class="type--center">
             <div @click="confirmImage"><i class="fa fa-check fa-3x"></i></div>
         </div>
     </div>
@@ -32,8 +31,7 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                disabled: true,
-                switch: true
+                disabled: true
             }
         },
 

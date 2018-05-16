@@ -19462,7 +19462,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -19474,8 +19473,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             messages: true,
             errors: [],
             myCroppa: null,
-            disabled: true,
-            switch: true
+            disabled: true
         };
     },
 
@@ -19538,51 +19536,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "pull-right textOverflow" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.studentProfile.displayName))])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "type--center" },
-      [
-        _c("croppa", {
-          attrs: {
-            "prevent-white-space": false,
-            "show-remove-button": false,
-            "initial-image": _vm.studentProfile.images["likeness"],
-            quality: 2
-          },
-          on: {
-            init: function($event) {
-              _vm.styleCanvas()
-            }
-          },
-          model: {
-            value: _vm.myCroppa,
-            callback: function($$v) {
-              _vm.myCroppa = $$v
-            },
-            expression: "myCroppa"
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "pull-right textOverflow" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.studentProfile.displayName))])
+      ]),
+      _vm._v(" "),
+      _c("croppa", {
+        attrs: {
+          "prevent-white-space": false,
+          "show-remove-button": false,
+          "initial-image": _vm.studentProfile.images["likeness"],
+          quality: 2
+        },
+        on: {
+          init: function($event) {
+            _vm.styleCanvas()
           }
-        }),
-        _vm._v(" "),
+        },
+        model: {
+          value: _vm.myCroppa,
+          callback: function($$v) {
+            _vm.myCroppa = $$v
+          },
+          expression: "myCroppa"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "type--center" }, [
         _c("div", { on: { click: _vm.chooseImage } }, [
           _c("i", { staticClass: "fa fa-camera fa-3x" })
         ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    this.switch === true
-      ? _c("div", { staticClass: "type--center" }, [
-          _c("div", { on: { click: _vm.confirmImage } }, [
-            _c("i", { staticClass: "fa fa-check fa-3x" })
-          ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "type--center" }, [
+        _c("div", { on: { click: _vm.confirmImage } }, [
+          _c("i", { staticClass: "fa fa-check fa-3x" })
         ])
-      : _vm._e()
-  ])
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
