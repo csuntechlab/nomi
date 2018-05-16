@@ -22943,16 +22943,14 @@ var render = function() {
     "nav",
     { staticStyle: { height: "55px" } },
     [
-      _c("list-grid-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
+      _c("list-grid-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-xs-4 col-sm-4 col-md-4" },
-        [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
+        { staticClass: "col-xs-6 col-sm-6 col-md-6" },
+        [!this.list && this.flash ? _c("shuffle-button") : _c("sort-selector")],
         1
-      ),
-      _vm._v(" "),
-      _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
+      )
     ],
     1
   )
