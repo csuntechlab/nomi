@@ -7,21 +7,25 @@ import Profile from '../views/profile';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-   routes: [
-       {
-           path: '/',
-           component: Home
-       },
-       {
-           path: '/class/:id',
-           component: Class
-       },
-       {
-           path: '/profile/:emailURI',
-           component: Profile,
-           props: true
-       }
-   ],
+    routes: [
+        {
+            path: '/',
+            component: Home
+        },
+        {
+            path: '/class/:id',
+            component: Class
+        },
+        {
+            path: '/profile/:emailURI',
+            component: Profile,
+            props: true
+        }
+    ],
+
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 });
 
 export default router;
