@@ -1,15 +1,20 @@
 <template>
     <div>
         <about-banner></about-banner>
-        <h1>What is NOMI?</h1>
+        <div>
+            <about-container></about-container>
+        </div>
     </div>
 </template>
 
 <script>
     import AboutBanner from "../components/about_components/aboutBanner";
+    import AboutContainer from "../components/about_components/aboutContainer";
 
     export default {
-        components: {AboutBanner},
-        name: "class"
+        components: {
+            AboutContainer,
+            AboutBanner},
+        name: "About"
     }
 </script>
