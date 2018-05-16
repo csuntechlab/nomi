@@ -19900,14 +19900,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     setList: function setList(context) {
         context.commit('SET_LIST');
     },
-    setGrid: function setGrid(context) {
-        context.commit('SET_GRID');
+    setGallery: function setGallery(context) {
+        context.commit('SET_GALLERY');
     },
-    toggleList: function toggleList(context) {
-        context.commit('TOGGLE_LIST');
-    },
-    toggleFlash: function toggleFlash(context) {
-        context.commit('TOGGLE_FLASH');
+    setFlash: function setFlash(context) {
+        context.commit('SET_FLASH');
     },
     toggleMenu: function toggleMenu(context) {
         context.commit('TOGGLE_MENU');
@@ -19966,11 +19963,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     SET_LIST: function SET_LIST(state) {
         state.list = true;
     },
-    SET_GRID: function SET_GRID(state) {
+    SET_GALLERY: function SET_GALLERY(state) {
         state.list = false;
+        state.flash = false;
     },
-    TOGGLE_FLASH: function TOGGLE_FLASH(state) {
-        state.flash = !state.flash;
+    SET_FLASH: function SET_FLASH(state) {
+        state.list = false;
+        state.flash = true;
     },
     TOGGLE_MENU: function TOGGLE_MENU(state) {
         state.menuShow = !state.menuShow;
@@ -21303,6 +21302,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21319,7 +21319,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     this.$store.dispatch('setList');
                     break;
                 case "1":
-                    this.$store.dispatch('setGrid');
+                    this.$store.dispatch('setGallery');
+                    break;
+                case "2":
+                    this.$store.dispatch('setFlash');
                     break;
             }
         }
@@ -21346,9 +21349,11 @@ var render = function() {
       [
         _c("option", { attrs: { value: "" } }, [_vm._v("Mode Select")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "0" } }, [_vm._v("List")]),
+        _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Grid")])
+        _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
       ]
     )
   ])
@@ -22153,7 +22158,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-default",
-                  on: { click: _vm.uploadFile }
+                  on: { click: _vm.chooseImage }
                 },
                 [_c("i", { staticClass: "fa fa-camera fa-3x" })]
               ),
@@ -22739,9 +22744,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -22926,23 +22928,14 @@ var render = function() {
     "nav",
     { staticStyle: { height: "55px" } },
     [
-      _c("list-grid-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
+      _c("list-grid-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
+        { staticClass: "col-xs-6 col-sm-6 col-md-6" },
+        [!this.list && this.flash ? _c("shuffle-button") : _c("sort-selector")],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list ? _c("card-toggle-button") : _vm._e()],
-        1
-      ),
-      _vm._v(" "),
-      _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
+      )
     ],
     1
   )

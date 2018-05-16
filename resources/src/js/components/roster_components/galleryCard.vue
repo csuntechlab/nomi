@@ -22,7 +22,7 @@
                         <br>
                         <div class="type--center">
                             <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-3x"></i></button>
-                            <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-3x"></i></button>
+                            <button class="btn btn-default" @click="chooseImage"><i class="fa fa-camera fa-3x"></i></button>
                             <button class="btn btn-default" @click="confirmImage(student.email)"><i class="fa fa-check fa-3x"></i></button>
                         </div>
                     </div>
