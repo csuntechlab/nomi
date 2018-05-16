@@ -1,39 +1,42 @@
 <template>
+<div>
     <div class="col-xs-6">
         <div class="panel">
             <div>
                 <label class="grid-image" :for="display_name">
-                    <croppa v-model="myCroppa"
-                            :prevent-white-space="false"
-                            :show-remove-button="false"
-                            :disabled="true"
-                            :initial-image="image"
-                            :quality="2"
-                            @init="styleCanvas()">
-                    </croppa>
+                    <profile-picture :image="image"></profile-picture>
                 </label>
                 <div class="card-title font-style">
                     <div class="panel-heading align-center">
-                        <div class="textOverflow type--center">
-                            <router-link :to="'/profile/'+email_uri">
+                    <div class="textOverflow type--center">
+                        <router-link :to="'/profile/'+email_uri">
                             {{display_name}}
-                            </router-link>
-                        </div>
+                        </router-link>
+                    </div>
+                    <br>
+                    <div class="type--center">
+                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
                         <br>
-                        <div class="type--center">
-                            <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-3x"></i></button>
-                            <button class="btn btn-default" @click="uploadFile"><i class="fa fa-camera fa-3x"></i></button>
-                            <button class="btn btn-default" @click="confirmImage(student.email)"><i class="fa fa-check fa-3x"></i></button>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <modal v-if="showModal" @close="showModal = false">
+        <div slot="header">
+        </div>
+        <div slot="body">
+            <croppa-profile></croppa-profile>
+        </div>
+    </modal>
+</div>
 </template>
 
 <script>
 import axios from 'axios';
+import modal from "../../components/fixed_components/modal.vue";
+import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
 
 export default {
     name: "gallery-card",
@@ -44,7 +47,12 @@ export default {
             errors: [],
             myCroppa: null,
             imgUrl: null,
+            showModal: false
         }
+    },
+    components: {
+        modal,
+        croppaProfile
     },
 
     props: ['student'],
