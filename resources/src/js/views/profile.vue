@@ -9,26 +9,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
                         <h1 class="type--center">{{studentProfile.displayName}}</h1>
                     </div>
                     <div class="type--center">
-                        <carousel 
-                        :perPage="1" 
-                        :paginationActiveColor="'#4F9DA3'"
+                        <carousel
+                                :perPage="1"
+                                :paginationActiveColor="'#4F9DA3'"
                         >
                             <slide class="slidewrap">
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
 
-                                        <div class="type--center">
-                                            <image-handler image_type="likeness"></image-handler>
-                                        </div>
-                                        <div class="type--center">
-                                            <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
-                                            <br>
-                                        </div>
+                                    <div class="type--center">
+                                        <image-handler image_type="likeness"></image-handler>
                                     </div>
+                                    <div class="type--center">
+                                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                        <br>
+                                    </div>
+                                </div>
                             </slide>
                             <slide class="slidewrap">
                                 <div class="imagewrap">
@@ -61,7 +60,7 @@
                         </div>
                     </li>
                     <li class="underline">
-                         <div v-if="studentProfile.imagePriority === 'avatar'">
+                        <div v-if="studentProfile.imagePriority === 'avatar'">
                             <div class="underlineStyling--red"></div>
                         </div>
                         <div v-else>
@@ -69,7 +68,7 @@
                         </div>
                     </li>
                     <li class="underline">
-                         <div v-if="studentProfile.imagePriority === 'official'">
+                        <div v-if="studentProfile.imagePriority === 'official'">
                             <div class="underlineStyling--red"></div>
                         </div>
                         <div v-else>
@@ -80,35 +79,29 @@
             </div>
         </div>
         <div class="container type--center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
-                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
-                            <div v-if="noteSaved">Notes Saved!</div>
-                            <br>
-                            <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
-                            <br>
-                            <h4>Bio: {{this.studentProfile.bio}}</h4>
-                            <br>
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                        <div v-if="noteSaved">Notes Saved!</div>
+                        <div v-if="unsavedChanges">There are unsaved changes.</div>
+                        <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                        <br>
+                        <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
+                        <br>
+                        <h4>Bio: {{this.studentProfile.bio}}</h4>
+                        <br>
                     </div>
                 </div>
-        </div>     
-                   <div>
-                <modal v-if="showModal" @close="showModal = false">
-                    <div slot="header">
-                    
-                    </div>
-                    
-                    <div slot="body">
-                        <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
-                        </div>
-                    
-                </modal>
-        </div>   
+            </div>
+        </div>
+        <modal v-if="showModal" @close="showModal = false">
+            <div slot="header"></div>
+            <div slot="body">
+                <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+            </div>
+        </modal>
     </div>
-    
 </template>
 
 <script>
@@ -122,7 +115,9 @@
 
         data: function () {
             return {
-                noteSaved: false
+                unsavedChanges: false,
+                noteSaved: false,
+                showModal: false
             }
         },
 
@@ -131,15 +126,29 @@
             croppaProfile,
             modal
         },
-        
-        data() {
-            return {
-                showModal: false
-            }
-        },
 
         created () {
-            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
+            this.$store.dispatch(
+                'getStudentProfile',
+                {
+                    uri: this.$route.params.emailURI,
+                    faculty_id: this.facultyMember.id
+                }
+            );
+        },
+
+        beforeRouteLeave (to, from, next) {
+            if(this.unsavedChanges) {
+                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+                if (answer) {
+                    next();
+                } else {
+                    next(false);
+                }
+            } else {
+                next();
+            }
         },
 
         computed: {
@@ -158,6 +167,7 @@
                 this.$store.dispatch('updateNotes', e.target.value)
                     .then(() => {
                         this.noteSaved = false;
+                        this.unsavedChanges = true;
                     });
             },
 
@@ -165,6 +175,7 @@
                 this.$store.dispatch('commitNotes')
                     .then(() => {
                         this.noteSaved = true;
+                        this.unsavedChanges = false;
                     });
             },
 
