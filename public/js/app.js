@@ -19468,6 +19468,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
 
+    props: ['studentImage'],
+
     data: function data() {
         return {
             messages: true,
@@ -19547,7 +19549,7 @@ var render = function() {
         attrs: {
           "prevent-white-space": false,
           "show-remove-button": false,
-          "initial-image": _vm.studentProfile.images["likeness"],
+          "initial-image": _vm.studentImage,
           quality: 2
         },
         on: {
@@ -19919,7 +19921,13 @@ var render = function() {
                 _c(
                   "div",
                   { attrs: { slot: "body" }, slot: "body" },
-                  [_c("croppa-profile")],
+                  [
+                    _c("croppa-profile", {
+                      attrs: {
+                        studentImage: _vm.studentProfile.images["likeness"]
+                      }
+                    })
+                  ],
                   1
                 )
               ]
@@ -20072,14 +20080,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     setList: function setList(context) {
         context.commit('SET_LIST');
     },
-    setGrid: function setGrid(context) {
-        context.commit('SET_GRID');
+    setGallery: function setGallery(context) {
+        context.commit('SET_GALLERY');
     },
-    toggleList: function toggleList(context) {
-        context.commit('TOGGLE_LIST');
-    },
-    toggleFlash: function toggleFlash(context) {
-        context.commit('TOGGLE_FLASH');
+    setFlash: function setFlash(context) {
+        context.commit('SET_FLASH');
     },
     toggleMenu: function toggleMenu(context) {
         context.commit('TOGGLE_MENU');
@@ -20138,11 +20143,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     SET_LIST: function SET_LIST(state) {
         state.list = true;
     },
-    SET_GRID: function SET_GRID(state) {
+    SET_GALLERY: function SET_GALLERY(state) {
         state.list = false;
+        state.flash = false;
     },
-    TOGGLE_FLASH: function TOGGLE_FLASH(state) {
-        state.flash = !state.flash;
+    SET_FLASH: function SET_FLASH(state) {
+        state.list = false;
+        state.flash = true;
     },
     TOGGLE_MENU: function TOGGLE_MENU(state) {
         state.menuShow = !state.menuShow;
@@ -21475,6 +21482,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21491,7 +21499,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     this.$store.dispatch('setList');
                     break;
                 case "1":
-                    this.$store.dispatch('setGrid');
+                    this.$store.dispatch('setGallery');
+                    break;
+                case "2":
+                    this.$store.dispatch('setFlash');
                     break;
             }
         }
@@ -21518,9 +21529,11 @@ var render = function() {
       [
         _c("option", { attrs: { value: "" } }, [_vm._v("Mode Select")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "0" } }, [_vm._v("List")]),
+        _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Grid")])
+        _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
       ]
     )
   ])
@@ -22127,12 +22140,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__);
 //
 //
 //
@@ -22168,6 +22180,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -22186,8 +22204,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     components: {
-        modal: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue___default.a,
-        croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a
+        modal: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default.a,
+        croppaProfile: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default.a
     },
 
     props: ['student'],
@@ -22231,7 +22249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             data.append('media', url);
             data.append('email', email);
             console.log(url);
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('api/upload', data, {
+            axios.post('api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -22268,89 +22286,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "col-xs-6" }, [
-        _c("div", { staticClass: "panel" }, [
-          _c("div", [
-            _c(
-              "label",
-              { staticClass: "grid-image", attrs: { for: _vm.display_name } },
-              [_c("profile-picture", { attrs: { image: _vm.image } })],
-              1
-            ),
+  return _c("div", [
+    _c("div", { staticClass: "col-xs-6" }, [
+      _c("div", { staticClass: "panel grid-image" }, [
+        _c(
+          "div",
+          { staticClass: "panel__content " },
+          [
+            _c("profile-picture", { attrs: { image: _vm.image } }),
             _vm._v(" "),
-            _c("div", { staticClass: "card-title font-style" }, [
-              _c("div", { staticClass: "panel-heading align-center" }, [
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    _vm.showModal = true
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-edit fa-3x" })]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-title font-style" }, [
+          _c("div", { staticClass: "panel-heading align-center" }, [
+            _c(
+              "div",
+              { staticClass: "textOverflow type--center" },
+              [
                 _c(
-                  "div",
-                  { staticClass: "textOverflow type--center" },
+                  "router-link",
+                  { attrs: { to: "/profile/" + _vm.email_uri } },
                   [
-                    _c(
-                      "router-link",
-                      { attrs: { to: "/profile/" + _vm.email_uri } },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(_vm.display_name) +
-                            "\n                        "
-                        )
-                      ]
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(_vm.display_name) +
+                        "\n                            "
                     )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "type--center" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default",
-                      on: {
-                        click: function($event) {
-                          _vm.showModal = true
-                        }
-                      }
-                    },
-                    [_vm._v("Edit Photo")]
-                  ),
-                  _vm._v(" "),
-                  _c("br")
-                ])
-              ])
-            ])
+                  ]
+                )
+              ],
+              1
+            )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm.showModal
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModal = false
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _vm.showModal
+          ? _c(
+              "modal",
+              {
+                on: {
+                  close: function($event) {
+                    _vm.showModal = false
+                  }
                 }
-              }
-            },
-            [
-              _c("div", { attrs: { slot: "header" }, slot: "header" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { attrs: { slot: "body" }, slot: "body" },
-                [_c("croppa-profile")],
-                1
-              )
-            ]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+              },
+              [
+                _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { slot: "body" }, slot: "body" },
+                  [
+                    _c("croppa-profile", { attrs: { studentImage: _vm.image } })
+                  ],
+                  1
+                )
+              ]
+            )
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22929,9 +22944,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -23116,23 +23128,14 @@ var render = function() {
     "nav",
     { staticStyle: { height: "55px" } },
     [
-      _c("list-grid-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" }),
+      _c("list-grid-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list && this.flash ? _c("shuffle-button") : _vm._e()],
+        { staticClass: "col-xs-6 col-sm-6 col-md-6" },
+        [!this.list && this.flash ? _c("shuffle-button") : _c("sort-selector")],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-2 col-sm-2 col-md-2" },
-        [!this.list ? _c("card-toggle-button") : _vm._e()],
-        1
-      ),
-      _vm._v(" "),
-      _c("sort-selector", { staticClass: "col-xs-4 col-sm-4 col-md-4" })
+      )
     ],
     1
   )

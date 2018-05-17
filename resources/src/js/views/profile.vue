@@ -101,7 +101,7 @@
                     </div>
                     
                     <div slot="body">
-                        <croppa-profile></croppa-profile>
+                        <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
                         </div>
                     
                 </modal>

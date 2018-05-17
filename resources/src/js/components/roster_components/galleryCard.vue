@@ -1,42 +1,48 @@
 <template>
 <div>
     <div class="col-xs-6">
-        <div class="panel">
-            <div>
-                <label class="grid-image" :for="display_name">
-                    <profile-picture :image="image"></profile-picture>
-                </label>
-                <div class="card-title font-style">
+        <div class="panel grid-image">
+            <div class="panel__content ">
+                 <profile-picture :image="image"></profile-picture>
+                  <button @click="showModal = true">
+                      <i class="fa fa-edit fa-3x"></i>
+                  </button>
+        </div>
+               <div class="card-title font-style">
                     <div class="panel-heading align-center">
-                    <div class="textOverflow type--center">
-                        <router-link :to="'/profile/'+email_uri">
+                        <div class="textOverflow type--center">
+                            <router-link :to="'/profile/'+email_uri">
                             {{display_name}}
-                        </router-link>
+                            </router-link>
+                        </div>
                     </div>
-                    <br>
-                    <div class="type--center">
-                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
-                        <br>
-                    </div>
-                    </div>
+               </div>
+                
+                    
+                    
                 </div>
-            </div>
-        </div>
+               
     </div>
-    <modal v-if="showModal" @close="showModal = false">
-        <div slot="header">
-        </div>
-        <div slot="body">
-            <croppa-profile></croppa-profile>
-        </div>
-    </modal>
+    <div>
+                <modal v-if="showModal" @close="showModal = false">
+                    <div slot="header">
+                    
+                    </div>
+                    
+                    <div slot="body">
+                        <croppa-profile :studentImage="image"></croppa-profile>
+                        </div>
+                    
+                </modal>
+        </div>   
 </div>
 </template>
 
 <script>
-import axios from 'axios';
-import modal from "../../components/fixed_components/modal.vue";
+import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
+import modal from "../../components/fixed_components/modal.vue";
 
 export default {
     name: "gallery-card",

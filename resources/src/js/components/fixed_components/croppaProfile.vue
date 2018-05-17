@@ -7,7 +7,7 @@
                 v-model="myCroppa"
                 :prevent-white-space="false"
                 :show-remove-button="false"
-                :initial-image="studentProfile.images['likeness']"
+                :initial-image="studentImage"
                 :quality="2"
                 @init="styleCanvas()">
         </croppa>
@@ -25,6 +25,8 @@
 
     export default {
         name: "croppa-profile",
+
+        props:['studentImage'],
 
         data: function() {
             return{
