@@ -19281,12 +19281,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -19296,19 +19290,38 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile',
 
+    data: function data() {
+        return {
+            unsavedChanges: false,
+            noteSaved: false,
+            showModal: false
+        };
+    },
+
     components: {
         ImageHandler: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default.a,
         croppaProfile: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default.a,
         modal: __WEBPACK_IMPORTED_MODULE_3__components_fixed_components_modal_vue___default.a
     },
 
-    data: function data() {
-        return {
-            showModal: false
-        };
-    },
     created: function created() {
-        this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
+        this.$store.dispatch('getStudentProfile', {
+            uri: this.$route.params.emailURI,
+            faculty_id: this.facultyMember.id
+        });
+    },
+    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+        if (this.unsavedChanges) {
+            var answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+            if (answer) {
+                next();
+            } else {
+                next(false);
+            }
+        } else {
+            next();
+        }
     },
 
 
@@ -19320,10 +19333,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         updateNotes: function updateNotes(e) {
-            this.$store.dispatch('updateNotes', e.target.value);
+            var _this = this;
+
+            this.$store.dispatch('updateNotes', e.target.value).then(function () {
+                _this.noteSaved = false;
+                _this.unsavedChanges = true;
+            });
         },
         commitNotes: function commitNotes() {
-            this.$store.dispatch('commitNotes');
+            var _this2 = this;
+
+            this.$store.dispatch('commitNotes').then(function () {
+                _this2.noteSaved = true;
+                _this2.unsavedChanges = false;
+            });
         },
         croppaToggle: function croppaToggle() {
             this.showcroppa = !this.showcroppa;
@@ -19733,166 +19756,164 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      : _c("div", [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-sm-12" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("h1", { staticClass: "type--center" }, [
-                  _vm._v(_vm._s(_vm.studentProfile.displayName))
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "type--center" },
-                [
-                  _c(
-                    "carousel",
-                    { attrs: { perPage: 1, paginationActiveColor: "#4F9DA3" } },
-                    [
-                      _c("slide", { staticClass: "slidewrap" }, [
-                        _c(
-                          "div",
-                          { staticClass: "imagewrap" },
-                          [
-                            _c("profile-picture", {
-                              attrs: {
-                                image: _vm.studentProfile.images["likeness"]
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "type--center" },
-                              [
-                                _c("image-handler", {
-                                  attrs: { image_type: "likeness" }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "type--center" }, [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-default",
-                                  on: {
-                                    click: function($event) {
-                                      _vm.showModal = true
-                                    }
-                                  }
-                                },
-                                [_vm._v("Edit Photo")]
-                              ),
-                              _vm._v(" "),
-                              _c("br")
-                            ])
-                          ],
-                          1
-                        )
-                      ])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "container type--center" }, [
+      : _c(
+          "div",
+          [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-sm-12" }, [
-                  _c("textarea", {
-                    attrs: { type: "text", id: "ex0", name: "ex0" },
-                    domProps: { value: _vm.sp_notes },
-                    on: { input: _vm.updateNotes }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.commitNotes($event)
-                        }
-                      }
-                    },
-                    [_vm._v("Add a Note")]
-                  ),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "textOverflow" }, [
-                    _vm._v(
-                      _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                  _c("h1", { staticClass: "type--center" }, [
+                    _vm._v(_vm._s(_vm.studentProfile.displayName))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "type--center" },
+                  [
+                    _c(
+                      "carousel",
+                      {
+                        attrs: { perPage: 1, paginationActiveColor: "#4F9DA3" }
+                      },
+                      [
+                        _c("slide", { staticClass: "slidewrap" }, [
+                          _c(
+                            "div",
+                            { staticClass: "imagewrap" },
+                            [
+                              _c("profile-picture", {
+                                attrs: {
+                                  image: _vm.studentProfile.images["likeness"]
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "type--center" },
+                                [
+                                  _c("image-handler", {
+                                    attrs: { image_type: "likeness" }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "type--center" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-default",
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showModal = true
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Edit Photo")]
+                                ),
+                                _vm._v(" "),
+                                _c("br")
+                              ])
+                            ],
+                            1
+                          )
+                        ])
+                      ],
+                      1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Bio: " + _vm._s(this.studentProfile.bio))]),
-                  _vm._v(" "),
-                  _c("br")
+                  ],
+                  1
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "container type--center" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-12" }, [
+                    _c("textarea", {
+                      attrs: { type: "text", id: "ex0", name: "ex0" },
+                      domProps: { value: _vm.sp_notes },
+                      on: { input: _vm.updateNotes }
+                    }),
+                    _vm._v(" "),
+                    _vm.noteSaved
+                      ? _c("div", [_vm._v("Notes Saved!")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.unsavedChanges
+                      ? _c("div", [_vm._v("There are unsaved changes.")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.commitNotes($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "textOverflow" }, [
+                      _vm._v(
+                        _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Bio: " + _vm._s(this.studentProfile.bio))
+                    ]),
+                    _vm._v(" "),
+                    _c("br")
+                  ])
                 ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _vm.showModal
-                ? _c(
-                    "modal",
-                    {
-                      on: {
-                        close: function($event) {
-                          _vm.showModal = false
-                        }
+            ]),
+            _vm._v(" "),
+            _vm.showModal
+              ? _c(
+                  "modal",
+                  {
+                    on: {
+                      close: function($event) {
+                        _vm.showModal = false
                       }
-                    },
-                    [
-                      _c("div", { attrs: { slot: "header" }, slot: "header" }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { attrs: { slot: "body" }, slot: "body" },
-                        [
-                          _c("croppa-profile", {
-                            attrs: {
-                              studentImage:
-                                _vm.studentProfile.images["likeness"]
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ],
-            1
-          )
-        ])
+                    }
+                  },
+                  [
+                    _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { slot: "body" }, slot: "body" },
+                      [
+                        _c("croppa-profile", {
+                          attrs: {
+                            studentImage: _vm.studentProfile.images["likeness"]
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
+        )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "javascript:history.go(-1)" } }, [
-      _c("i", { staticClass: "fa fa-arrow-left fa-3x" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
