@@ -22094,7 +22094,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.courses[0] && this.$route.path !== "/"
+  return this.courses[0]
     ? _c("i", {
         staticClass: "fa fa-angle-left fa-3x",
         attrs: { title: "Go Back" },

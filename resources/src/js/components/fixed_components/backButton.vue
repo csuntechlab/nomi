@@ -1,5 +1,5 @@
 <template>
-    <i v-if="this.courses[0] && this.$route.path !== '/'" class="fa fa-angle-left fa-3x" title="Go Back" @click="goBack"></i>
+    <i v-if="this.courses[0]" class="fa fa-angle-left fa-3x" title="Go Back" @click="goBack"></i>
 </template>
 
 <script>
