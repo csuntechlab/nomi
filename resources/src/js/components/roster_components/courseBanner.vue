@@ -1,30 +1,25 @@
 <template>
-    <div class="nav-bars">
-        <carousel :perPage="pageSize" :pagination-enabled="false">
-            <slide v-for="course in this.courses" :key="course.title" :course="course">
-                <div :class="bgcolor(course.id)+' type--center'">
-                    <router-link
-                        :to="'/class/'+course.id"
-                    >
+        <div class="tab-container">
+            <ul class="tabs cf">
+                <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
+                    <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                         {{course.title}}
                     </router-link>
-                </div>
-            </slide>
-        </carousel>
-    </div>
+                </li>
+            </ul>
+        </div>
 </template>
-
 <script>
     import { mapGetters } from "vuex"
     export default {
         name: "course-banner",
 
-        methods: {
-            bgcolor: function (id) {
+         methods: {
+            activeTab: function (id) {
                 if(id.toString() === this.$route.params.id)
-                    return "buttonPressBlue";
+                    return "tab__link--active";
                 else
-                    return "makeBlue";
+                    return "tab__link";
             }
         },
 
@@ -32,13 +27,8 @@
             ...mapGetters([
                 'courses'
             ]),
-
-            pageSize: function () {
-                if(this.courses.length >= 3)
-                    return 3;
-                else
-                    return this.courses.length;
-            }
         },
+
+
     }
 </script>

@@ -25,10 +25,10 @@
   }
 }
 
-.textOverflow{
-  height: 50px; 
-  word-wrap: break-word;
+.textOverflow{ 
+  word-break: break-all;
 }
+
 
 .imagewrap {
   display:inline-block;
