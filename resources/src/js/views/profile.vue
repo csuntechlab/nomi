@@ -19,18 +19,18 @@
                             :paginationActiveColor="'#4F9DA3'"
                             >
                                 <slide>
-                                        <div class="imagewrap">
-                                            <croppa-profile class=""></croppa-profile>
+                                    <div class="imagewrap">
+                                        <croppa-profile class=""></croppa-profile>
 
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                                <image-handler image_type="likeness"></image-handler>
-                                            </div>
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                                <button class="btn btn-default"> Croppa Button Future </button>
-                                            </div>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                            <image-handler image_type="likeness"></image-handler>
                                         </div>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
+                                            <button class="btn btn-default"> Croppa Button Future </button>
+                                        </div>
+                                    </div>
                                 </slide>
-                                <slide>
+                                <!-- <slide>
                                     <div class="imagewrap">
                                         <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
@@ -78,6 +78,12 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+            -->
+                            </carousel>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="container type--center">
                 <div class="container">
