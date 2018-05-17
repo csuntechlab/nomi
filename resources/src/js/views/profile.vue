@@ -9,7 +9,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
                         <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
                     </div>
                     <div class="row">

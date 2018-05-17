@@ -15,7 +15,7 @@
                 <div class="card-title font-style">
                     <div class="panel-heading align-center">
                         <div class="textOverflow type--center">
-                            <router-link :to="'/profile/'+email_uri">
+                            <router-link class="pull-left" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                             {{display_name}}
                             </router-link>
                         </div>

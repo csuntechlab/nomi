@@ -3,6 +3,7 @@
       background-color: themed('bars');
   }
 }
+
 .buttonPressBlue{
   @include themify($themes){
       background-color: themed('buttonpress');
@@ -48,4 +49,14 @@
   margin-right: 7%;
   margin-top: 7%;
   margin-bottom: 7%;
+}
+
+.back_button {
+  position: absolute;
+  left: 15px;
+  transition: 25ms;
+}
+
+.back_button:active {
+  transform: scale(1.2);
 }
