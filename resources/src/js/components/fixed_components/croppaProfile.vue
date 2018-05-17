@@ -26,7 +26,7 @@
     export default {
         name: "croppa-profile",
 
-        props:['studentImage'],
+        props:['studentImage', 'emailURI'],
 
         data: function() {
             return{
@@ -45,7 +45,7 @@
         },
 
         methods: {
-            confirmImage: function () {
+            confirmImage: function (emailURI) {
                 let url = this.myCroppa.generateDataUrl();
 
                 if (!url) {
@@ -64,8 +64,13 @@
                 let data = new FormData();
                 data.append('id', this.facultyMember.id);
                 data.append('media', url);
-                data.append('uri', this.studentProfile.emailURI);
 
+                if (this.studentProfile.emailURI == null){
+                    data.append('uri', this.emailURI);
+                } else {
+                    data.append('uri', this.studentProfile.emailURI);
+                }
+                
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'

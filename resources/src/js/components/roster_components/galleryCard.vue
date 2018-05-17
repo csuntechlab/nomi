@@ -30,7 +30,7 @@
                     </div>
                     
                     <div slot="body">
-                        <croppa-profile :studentImage="image"></croppa-profile>
+                        <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
                         </div>
                     
                 </modal>

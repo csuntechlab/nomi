@@ -19479,7 +19479,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
 
-    props: ['studentImage'],
+    props: ['studentImage', 'emailURI'],
 
     data: function data() {
         return {
@@ -19493,7 +19493,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     methods: {
-        confirmImage: function confirmImage() {
+        confirmImage: function confirmImage(emailURI) {
             var _this = this;
 
             var url = this.myCroppa.generateDataUrl();
@@ -19512,7 +19512,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var data = new FormData();
             data.append('id', this.facultyMember.id);
             data.append('media', url);
-            data.append('uri', this.studentProfile.emailURI);
+
+            if (this.studentProfile.emailURI == null) {
+                data.append('uri', this.emailURI);
+            } else {
+                data.append('uri', this.studentProfile.emailURI);
+            }
 
             axios.post('api/upload', data, {
                 headers: {
@@ -23038,7 +23043,12 @@ var render = function() {
                   "div",
                   { attrs: { slot: "body" }, slot: "body" },
                   [
-                    _c("croppa-profile", { attrs: { studentImage: _vm.image } })
+                    _c("croppa-profile", {
+                      attrs: {
+                        emailURI: _vm.email_uri,
+                        studentImage: _vm.image
+                      }
+                    })
                   ],
                   1
                 )
