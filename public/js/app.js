@@ -19855,8 +19855,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -20189,27 +20187,28 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "nav-bars" }, [
-      _c("div", { staticClass: "tab-container" }, [
-        _c("ul", { staticClass: "tabs cf type--center" }, [
-          _c("li", { staticClass: "tab__list" }, [
-            _c(
-              "a",
-              {
-                staticClass: "tab__link tab__link--active",
-                on: { click: _vm.selectAbout }
-              },
-              [_vm._v("About")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "tab__list" }, [
-            _c(
-              "a",
-              { staticClass: "tab__link", on: { click: _vm.selectVersion } },
-              [_vm._v("Version History")]
-            )
-          ])
+    _c("div", { staticClass: "tab-container" }, [
+      _c("ul", { staticClass: "tabs cf type--center" }, [
+        _c("li", { staticClass: "tab__list" }, [
+          _c(
+            "a",
+            {
+              staticClass: "tab__link tab__link--active courseTabs",
+              on: { click: _vm.selectAbout }
+            },
+            [_vm._v("About")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "tab__list" }, [
+          _c(
+            "a",
+            {
+              staticClass: "tab__link  tab__link--active courseTabs",
+              on: { click: _vm.selectVersion }
+            },
+            [_vm._v("Version History")]
+          )
         ])
       ])
     ]),
