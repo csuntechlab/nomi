@@ -1,7 +1,7 @@
 <template>
     <div v-if="studentProfile.imagePriority === image_type"></div>
     <div v-else>
-        <button class="btn btn-default" @click="updateImageHandler" disabled>Make Default Image</button>
+        <button class="btn btn-default textOverflow" @click="updateImageHandler">Set Default Image</button>
     </div>
 </template>
 

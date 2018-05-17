@@ -1,24 +1,22 @@
 <template>
     <div>
-        <div>
-            <label :for="studentProfile.displayName">
-                <profile-picture v-if="disabled" :image="studentProfile.images['likeness']"></profile-picture>
-                <croppa v-else
-                        v-model="myCroppa"
-                        :prevent-white-space="false"
-                        :show-remove-button="false"
-                        :disabled="disabled"
-                        :initial-image="studentProfile.images['likeness']"
-                        :quality="2"
-                        @init="styleCanvas()">
-                </croppa>
-            </label>
-            <div class="">
-                <br>
-                <button class="btn btn-default" @click="toggleCropper"><i class="fa fa-edit fa-4x"></i></button>
-                <button class="btn btn-default" @click="chooseImage"><i class="fa fa-camera fa-4x"></i></button>
-                <button class="btn btn-default" @click="confirmImage"><i class="fa fa-check fa-4x"></i></button>
-            </div>
+        <div class="pull-right textOverflow">
+            <h3>{{studentProfile.displayName}}</h3>
+        </div>
+        <croppa
+                v-model="myCroppa"
+                :prevent-white-space="false"
+                :show-remove-button="false"
+                :initial-image="studentImage"
+                :quality="2"
+                @init="styleCanvas()">
+        </croppa>
+
+        <div class="type--center">
+            <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
+        </div>
+        <div class="type--center">
+            <div @click="confirmImage"><i class="fa fa-check fa-3x"></i></div>
         </div>
     </div>
 </template>
@@ -27,6 +25,8 @@
 
     export default {
         name: "croppa-profile",
+
+        props:['studentImage', 'emailURI'],
 
         data: function() {
             return{
@@ -45,7 +45,7 @@
         },
 
         methods: {
-            confirmImage: function () {
+            confirmImage: function (emailURI) {
                 let url = this.myCroppa.generateDataUrl();
 
                 if (!url) {
@@ -64,8 +64,13 @@
                 let data = new FormData();
                 data.append('id', this.facultyMember.id);
                 data.append('media', url);
-                data.append('uri', this.studentProfile.emailURI);
 
+                if (this.studentProfile.emailURI == null){
+                    data.append('uri', this.emailURI);
+                } else {
+                    data.append('uri', this.studentProfile.emailURI);
+                }
+                
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
@@ -75,6 +80,8 @@
                 }).catch(e => {
                     console.log(e)
                 });
+                this.$parent.$emit('close')
+                this.reset;
 
             },
 
@@ -85,13 +92,9 @@
                 elm.style.height="100%";
                 elm.style.borderRadius="50%";
             },
-
-            toggleCropper: function() {
-                this.disabled = !this.disabled;
-            },
-
             chooseImage: function() {
                 this.myCroppa.chooseFile();
+                this.switch = false;
             }
         }
     }
