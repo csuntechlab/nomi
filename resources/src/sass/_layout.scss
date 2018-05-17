@@ -72,10 +72,7 @@ textarea[type=text] {
       border-bottom: 5px solid themed('looksGray');
     }
   }
-// .tab__link {
-//     margin-left: 33%;
-//     margin-right: 33%;
-//   }
+
 .tab__link:hover {
     @include themify($themes){
         border-bottom: 5px solid themed('bars');

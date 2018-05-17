@@ -22573,7 +22573,13 @@ var render = function() {
                   staticClass: "courseTabs tab__link tab__link--active",
                   attrs: { to: "/class/" + course.id }
                 },
-                [_vm._v("\n                    COMP 182")]
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.title) +
+                      "\n                "
+                  )
+                ]
               )
             ],
             1
