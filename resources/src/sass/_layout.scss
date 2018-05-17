@@ -64,7 +64,12 @@ textarea[type=text] {
 .fa {
     @include themify($themes){
         color: themed('bars');
-    }
+    } 
+}
+
+.col-xs-6{
+    padding-left:0.5rem !important;
+    padding-right: 0.5rem !important;
 }
 
 // .menu-bar{

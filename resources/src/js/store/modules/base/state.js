@@ -6,6 +6,7 @@ export default {
     flash: true,
     sortLastName: true,
     sortDescending: true,
+    errors: null,
 
     facultyMember: {
         email: null,
