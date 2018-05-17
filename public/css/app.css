@@ -254,6 +254,18 @@ textarea[type=text]:focus {
   margin-bottom: 7%;
 }
 
+.back_button {
+  position: absolute;
+  left: 15px;
+  -webkit-transition: 25ms;
+  transition: 25ms;
+}
+
+.back_button:active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
