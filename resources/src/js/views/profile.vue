@@ -54,7 +54,9 @@
                 <ul class="underlineContainer">
                     <li class="underline">
                         <div v-if="studentProfile.imagePriority === 'likeness'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -62,7 +64,9 @@
                     </li>
                     <li class="underline">
                          <div v-if="studentProfile.imagePriority === 'avatar'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -70,7 +74,9 @@
                     </li>
                     <li class="underline">
                          <div v-if="studentProfile.imagePriority === 'official'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -79,7 +85,7 @@
                 </ul>
             </div>
         </div>
-        <div class="container type--center">
+        <div class="container type--center margin_between_containers">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
