@@ -20958,14 +20958,9 @@ var render = function() {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "primary-nav__sub-brand",
-          attrs: { href: "https://www.csun.edu/" }
-        },
-        [_vm._v("Nameface")]
-      )
+      _c("div", { staticClass: "primary-nav__sub-brand subbrand_center" }, [
+        _vm._v("NOMI    ")
+      ])
     ],
     1
   )
@@ -20975,18 +20970,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "primary-nav__brand",
-        attrs: { href: "https://www.csun.edu/" }
-      },
-      [
-        _c("span", { staticClass: "sr-only" }, [
-          _vm._v("California State University, Northridge (CSUN)")
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "primary-nav__brand" }, [
+      _c("span", { staticClass: "sr-only" }, [
+        _vm._v("California State University, Northridge (CSUN)")
+      ])
+    ])
   }
 ]
 render._withStripped = true
