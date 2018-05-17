@@ -42,6 +42,10 @@ Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfi
 Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
 Route::post('/update_note', 'StudentProfileController@updateNotes');
 
+/** User Settings API Routes */
+Route::get('/get_settings', 'UserSettingsController@getSettings');
+Route::post('/update_theme', 'UserSettingsController@updateTheme');
+
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {
 //     Route::get('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@create')->name('support.create');

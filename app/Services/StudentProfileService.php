@@ -10,6 +10,7 @@ use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Intervention\Image\ImageManager;
 
 class StudentProfileService implements StudentProfileContract
@@ -54,7 +55,7 @@ class StudentProfileService implements StudentProfileContract
             'email' => $email,
             'student_id' => $profile['individuals_id'],
             'members_id' => $profile['individuals_id'],
-            'notes' => $note == null ? 'Notes go here.' : $note->notepad,
+            'notes' => $note == null ? 'Notes go here.' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
         ];
 
@@ -67,9 +68,15 @@ class StudentProfileService implements StudentProfileContract
 
     public function updateStudentNotes(Request $request)
     {
+        $note = Note::where('user_id', auth()->user()->user_id)
+            ->where('student_id', $request->student_id)
+            ->first();
+
         $note = Note::updateOrCreate(
             ['user_id' => auth()->user()->user_id, 'student_id' => $request->student_id],
-            ['notepad' => $request->notepad]
+            ['notepad' => Crypt::encrypt($request->notepad)]
         );
+
+        return 'Updated';
     }
 }

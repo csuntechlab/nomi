@@ -19,18 +19,18 @@
                             :paginationActiveColor="'#4F9DA3'"
                             >
                                 <slide>
-                                        <div class="imagewrap">
-                                            <croppa-profile class=""></croppa-profile>
+                                    <div class="imagewrap">
+                                        <croppa-profile class=""></croppa-profile>
 
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                                <image-handler image_type="likeness"></image-handler>
-                                            </div>
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                                <button class="btn btn-default"> Croppa Button Future </button>
-                                            </div>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
+                                            <image-handler image_type="likeness"></image-handler>
                                         </div>
+                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
+                                            <button class="btn btn-default"> Croppa Button Future </button>
+                                        </div>
+                                    </div>
                                 </slide>
-                                <slide>
+                                <!-- <slide>
                                     <div class="imagewrap">
                                         <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
                                         <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
@@ -79,14 +79,18 @@
                     </li>
                 </ul>
             </div>
+            -->
+                            </carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container type--center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form>
-                                <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
-                                <button class="btn btn-default" @click="commitNotes">Add a Note</button>
-                            </form>
+                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Add a Note</button>
                             <br>
                             <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
@@ -114,12 +118,13 @@
         },
 
         created () {
-            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
+            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
         },
 
         computed: {
             ...mapGetters([
                 'studentProfile',
+                'facultyMember'
             ]),
 
             ...mapState({

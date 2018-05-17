@@ -1,10 +1,10 @@
 <template>
     <nav class="" style="height: 55px">
-        <back-button class="col-xs-2 col-sm-2 col-md-2" v-if="this.list || !this.flash" destination="/"></back-button>
-        <card-toggle-button class="col-xs-2 col-sm-2 col-md-2" v-if="!this.list"></card-toggle-button>
-        <shuffle-button class="col-xs-2 col-sm-2 col-md-2" v-if="!this.list && this.flash"></shuffle-button>
-        <list-grid-selector class="col-xs-4 col-sm-4 col-md-4"></list-grid-selector>
-        <sort-selector class="col-xs-4 col-sm-4 col-md-4"></sort-selector>
+        <list-grid-selector class="col-xs-6 col-sm-6 col-md-6"></list-grid-selector>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <shuffle-button v-if="!this.list && this.flash"></shuffle-button>
+            <sort-selector v-else></sort-selector>
+        </div>
     </nav>
 </template>
 

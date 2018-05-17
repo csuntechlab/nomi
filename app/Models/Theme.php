@@ -6,7 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class Theme extends Model
 {
-    protected $fillable = ['student_id', 'user_id', 'notepad'];
+    protected $fillable = ['user_id', 'theme'];
 }

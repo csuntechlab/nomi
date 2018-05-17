@@ -7,8 +7,8 @@ export default {
         context.commit('UPDATE_NOTES', notes);
     },
 
-    commitNotes (context, payload) {
-        context.commit('COMMIT_NOTES', payload);
+    commitNotes (context) {
+        context.commit('COMMIT_NOTES');
     },
 
     updateImagePriority (context, payload) {
