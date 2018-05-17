@@ -12,6 +12,7 @@ Vue.use(Croppa);
 
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
+Vue.component('error-bar', require('./components/fixed_components/errorBar.vue'));
 Vue.component('croppa-profile', require('./components/fixed_components/croppaProfile.vue'));
 Vue.component('profile-picture', require('./components/fixed_components/profilePicture.vue'));
 Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
