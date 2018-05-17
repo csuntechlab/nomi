@@ -3,8 +3,9 @@
         <label for="list-grid"></label>
         <select name="list-grid" id="list-grid" @input="handleSelect">
             <option value="">Mode Select</option>
-            <option value="0">List</option>
-            <option value="1">Grid</option>
+            <option value="0">List View</option>
+            <option value="1">Gallery</option>
+            <option value="2">Flash Cards</option>
         </select>
     </div>
 </template>
@@ -29,8 +30,11 @@ export default {
                     this.$store.dispatch('setList');
                     break;
                 case "1":
-                    this.$store.dispatch('setGrid');
+                    this.$store.dispatch('setGallery');
                     break;
+                case "2":
+                    this.$store.dispatch('setFlash');
+                    break
             }
         }
     }

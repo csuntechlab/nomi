@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/home';
 import Class from '../views/class';
 import Profile from '../views/profile';
+import About from '../views/about';
 
 Vue.use(VueRouter);
 
@@ -17,9 +18,13 @@ const router = new VueRouter({
             component: Class
         },
         {
-            path: '/profile/:emailURI',
+            path: '/profile/:courseID/:emailURI',
             component: Profile,
             props: true
+        },
+        {
+            path: '/about',
+            component: About
         }
     ],
 

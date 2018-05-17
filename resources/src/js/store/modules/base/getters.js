@@ -4,6 +4,7 @@ export default {
     list: state => state.list,
     flash: state => state.flash,
     menuShow: state => state.menuShow,
+    errors: state => state.errors,
 
     facultyMember: state => state.facultyMember,
     facultyFullName: state => state.facultyMember.firstName + " " + state.facultyMember.lastName,

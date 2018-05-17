@@ -20,11 +20,11 @@ export default {
                         state.facultyMember.id = response.data.id;
                     })
                     .catch(e => {
-                        console.log(e);
+                        state.errors = e.response.data.message;
                     });
             })
             .catch(e => {
-                console.log(e);
+                state.errors = e.response.data.message;
             });
     },
 
@@ -32,12 +32,14 @@ export default {
         state.list = true;
     },
 
-    SET_GRID (state) {
+    SET_GALLERY (state) {
         state.list = false;
+        state.flash = false;
     },
 
-    TOGGLE_FLASH (state) {
-        state.flash = !state.flash;
+    SET_FLASH (state) {
+        state.list = false;
+        state.flash = true;
     },
 
     TOGGLE_MENU (state) {
@@ -132,4 +134,8 @@ export default {
     SORT_ASC: function (state) {
         state.sortDescending = false;
     },
+
+    CLEAR_ERRORS: function (state) {
+        state.errors = null;
+    }
 }
