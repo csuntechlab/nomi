@@ -13,23 +13,24 @@
                         <h1 class="type--center">{{studentProfile.displayName}}</h1>
                     </div>
                     <div class="type--center">
-                        <carousel 
-                        :perPage="1" 
-                        :paginationActiveColor="'#4F9DA3'"
+                        <carousel
+                                :perPage="1"
+                                :paginationActiveColor="'#4F9DA3'"
                         >
                             <slide class="slidewrap">
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
 
-                                        <div class="type--center">
-                                            <image-handler image_type="likeness"></image-handler>
-                                        </div>
-                                        <div class="type--center">
-                                            <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
-                                            <br>
-                                        </div>
+                                    <div class="type--center">
+                                        <image-handler image_type="likeness"></image-handler>
                                     </div>
+                                    <div class="type--center">
+                                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                        <br>
+                                    </div>
+                                </div>
                             </slide>
+                            <!--
                             <slide class="slidewrap">
                                 <div class="imagewrap">
                                     <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
@@ -46,10 +47,12 @@
                                     </div>
                                 </div>
                             </slide>
+                            -->
                         </carousel>
                     </div>
                 </div>
             </div>
+            <!--
             <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
@@ -79,7 +82,8 @@
                 </ul>
             </div>
         </div>
-        <div class="container type--center">
+        -->
+            <div class="container type--center">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -93,21 +97,22 @@
                         </div>
                     </div>
                 </div>
-        </div>     
-                   <div>
+            </div>
+            <div>
                 <modal v-if="showModal" @close="showModal = false">
                     <div slot="header">
-                    
+
                     </div>
-                    
+
                     <div slot="body">
                         <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
-                        </div>
-                    
+                    </div>
+
                 </modal>
-        </div>   
+            </div>
+        </div>
     </div>
-    
+
 </template>
 
 <script>
@@ -124,7 +129,7 @@
             croppaProfile,
             modal
         },
-        
+
         data() {
             return {
                 showModal: false
