@@ -19276,6 +19276,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -19742,18 +19747,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.studentProfile.images == null
-        ? _c("div", { staticClass: "type--center" }, [
-            _c("br"),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
-          ])
-        : _c("div", [
+  return _c("div", [
+    _vm.studentProfile.images == null
+      ? _c("div", { staticClass: "type--center" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+        ])
+      : _c(
+          "div",
+          [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-sm-12" }, [
@@ -19813,58 +19818,6 @@ var render = function() {
                             ],
                             1
                           )
-                        ]),
-                        _vm._v(" "),
-                        _c("slide", { staticClass: "slidewrap" }, [
-                          _c(
-                            "div",
-                            { staticClass: "imagewrap" },
-                            [
-                              _c("profile-picture", {
-                                attrs: {
-                                  image: _vm.studentProfile.images["avatar"]
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "type--center" },
-                                [
-                                  _c("image-handler", {
-                                    attrs: { image_type: "avatar" }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("slide", { staticClass: "slidewrap" }, [
-                          _c(
-                            "div",
-                            { staticClass: "imagewrap" },
-                            [
-                              _c("profile-picture", {
-                                attrs: {
-                                  image: _vm.studentProfile.images["official"]
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "type--center" },
-                                [
-                                  _c("image-handler", {
-                                    attrs: { image_type: "official" }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
                         ])
                       ],
                       1
@@ -19875,118 +19828,90 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "addedUnderline" }, [
-              _c("ul", { staticClass: "underlineContainer" }, [
-                _c("li", { staticClass: "underline" }, [
-                  _vm.studentProfile.imagePriority === "likeness"
-                    ? _c("div", [
-                        _c("div", { staticClass: "underlineStyling--red" })
-                      ])
-                    : _c("div", [
-                        _c("div", { staticClass: "underlineStyling" })
-                      ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "underline" }, [
-                  _vm.studentProfile.imagePriority === "avatar"
-                    ? _c("div", [
-                        _c("div", { staticClass: "underlineStyling--red" })
-                      ])
-                    : _c("div", [
-                        _c("div", { staticClass: "underlineStyling" })
-                      ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "underline" }, [
-                  _vm.studentProfile.imagePriority === "official"
-                    ? _c("div", [
-                        _c("div", { staticClass: "underlineStyling--red" })
-                      ])
-                    : _c("div", [
-                        _c("div", { staticClass: "underlineStyling" })
-                      ])
+            _c("div", { staticClass: "container type--center" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-sm-12" }, [
+                    _c("textarea", {
+                      attrs: { type: "text", id: "ex0", name: "ex0" },
+                      domProps: { value: _vm.sp_notes },
+                      on: { input: _vm.updateNotes }
+                    }),
+                    _vm._v(" "),
+                    _vm.noteSaved
+                      ? _c("div", [_vm._v("Notes Saved!")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.unsavedChanges
+                      ? _c("div", [_vm._v("There are unsaved changes.")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-default",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.commitNotes($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Save Notes")]
+                    ),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h4", { staticClass: "textOverflow" }, [
+                      _vm._v(
+                        _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("br"),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Bio: " + _vm._s(this.studentProfile.bio))
+                    ]),
+                    _vm._v(" "),
+                    _c("br")
+                  ])
                 ])
               ])
-            ])
-          ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container type--center" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-sm-12" }, [
-              _c("textarea", {
-                attrs: { type: "text", id: "ex0", name: "ex0" },
-                domProps: { value: _vm.sp_notes },
-                on: { input: _vm.updateNotes }
-              }),
-              _vm._v(" "),
-              _vm.noteSaved ? _c("div", [_vm._v("Notes Saved!")]) : _vm._e(),
-              _vm._v(" "),
-              _vm.unsavedChanges
-                ? _c("div", [_vm._v("There are unsaved changes.")])
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-default",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.commitNotes($event)
+            ]),
+            _vm._v(" "),
+            _vm.showModal
+              ? _c(
+                  "modal",
+                  {
+                    on: {
+                      close: function($event) {
+                        _vm.showModal = false
+                      }
                     }
-                  }
-                },
-                [_vm._v("Save Notes")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("h4", { staticClass: "textOverflow" }, [
-                _vm._v(_vm._s(this.studentProfile.emailURI) + "@my.csun.edu")
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("h4", [_vm._v("Bio: " + _vm._s(this.studentProfile.bio))]),
-              _vm._v(" "),
-              _c("br")
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.showModal
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showModal = false
-                }
-              }
-            },
-            [
-              _c("div", { attrs: { slot: "header" }, slot: "header" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { attrs: { slot: "body" }, slot: "body" },
-                [
-                  _c("croppa-profile", {
-                    attrs: {
-                      studentImage: _vm.studentProfile.images["likeness"]
-                    }
-                  })
-                ],
-                1
-              )
-            ]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+                  },
+                  [
+                    _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { slot: "body" }, slot: "body" },
+                      [
+                        _c("croppa-profile", {
+                          attrs: {
+                            studentImage: _vm.studentProfile.images["likeness"]
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22999,12 +22924,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -23107,58 +23026,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "col-xs-6" }, [
-      _c("div", { staticClass: "panel grid-image" }, [
-        _c(
-          "div",
-          { staticClass: "panel__content " },
-          [
-            _c("profile-picture", { attrs: { image: _vm.image } }),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                on: {
-                  click: function($event) {
-                    _vm.showModal = true
-                  }
-                }
-              },
-              [_c("i", { staticClass: "fa fa-edit fa-3x" })]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-title font-style" }, [
-          _c("div", { staticClass: "panel-heading align-center" }, [
-            _c(
-              "div",
-              { staticClass: "textOverflow type--center" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "pull-left",
-                    attrs: {
-                      to:
-                        "/profile/" +
-                        this.$route.params.id +
-                        "/" +
-                        _vm.email_uri
+    _c("div", [
+      _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "panel grid-image" }, [
+          _c(
+            "div",
+            { staticClass: "panel__content " },
+            [
+              _c("profile-picture", { attrs: { image: _vm.image } }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.showModal = true
                     }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(_vm.display_name) +
-                        "\n                            "
-                    )
-                  ]
-                )
-              ],
-              1
-            )
+                  }
+                },
+                [_c("i", { staticClass: "fa fa-edit fa-3x" })]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-title font-style" }, [
+            _c("div", { staticClass: "panel-heading align-center" }, [
+              _c(
+                "div",
+                { staticClass: "textOverflow type--center" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "pull-left",
+                      attrs: {
+                        to:
+                          "/profile/" +
+                          this.$route.params.id +
+                          "/" +
+                          _vm.email_uri
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(_vm.display_name) +
+                          "\n                            "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
           ])
         ])
       ])

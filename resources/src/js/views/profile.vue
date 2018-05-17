@@ -29,6 +29,7 @@
                                     </div>
                                 </div>
                             </slide>
+                            <!--
                             <slide class="slidewrap">
                                 <div class="imagewrap">
                                     <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
@@ -45,10 +46,12 @@
                                     </div>
                                 </div>
                             </slide>
+                            -->
                         </carousel>
                     </div>
                 </div>
             </div>
+            <!--
             <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
@@ -78,29 +81,31 @@
                 </ul>
             </div>
         </div>
-        <div class="container type--center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
-                        <div v-if="noteSaved">Notes Saved!</div>
-                        <div v-if="unsavedChanges">There are unsaved changes.</div>
-                        <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
-                        <br>
-                        <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
-                        <br>
-                        <h4>Bio: {{this.studentProfile.bio}}</h4>
-                        <br>
+        -->
+            <div class="container type--center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                            <div v-if="noteSaved">Notes Saved!</div>
+                            <div v-if="unsavedChanges">There are unsaved changes.</div>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                            <br>
+                            <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
+                            <br>
+                            <h4>Bio: {{this.studentProfile.bio}}</h4>
+                            <br>
+                        </div>
                     </div>
                 </div>
             </div>
+            <modal v-if="showModal" @close="showModal = false">
+                <div slot="header"></div>
+                <div slot="body">
+                    <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+                </div>
+            </modal>
         </div>
-        <modal v-if="showModal" @close="showModal = false">
-            <div slot="header"></div>
-            <div slot="body">
-                <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
-            </div>
-        </modal>
     </div>
 </template>
 

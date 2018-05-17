@@ -1,135 +1,129 @@
 <template>
-<div>
-    <div class="col-xs-6">
-        <div class="panel grid-image">
-            <div class="panel__content ">
-                 <profile-picture :image="image"></profile-picture>
-                  <button @click="showModal = true">
-                      <i class="fa fa-edit fa-3x"></i>
-                  </button>
-        </div>
-               <div class="card-title font-style">
-                    <div class="panel-heading align-center">
-                        <div class="textOverflow type--center">
-                            <router-link class="pull-left" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                            {{display_name}}
-                            </router-link>
-                        </div>
-                    </div>
-               </div>
-                
-                    
-                    
-                </div>
-               
-    </div>
     <div>
-                <modal v-if="showModal" @close="showModal = false">
-                    <div slot="header">
-                    
+        <div>
+            <div class="col-xs-6">
+                <div class="panel grid-image">
+                    <div class="panel__content ">
+                        <profile-picture :image="image"></profile-picture>
+                        <button @click="showModal = true">
+                            <i class="fa fa-edit fa-3x"></i>
+                        </button>
                     </div>
-                    
-                    <div slot="body">
-                        <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
+                    <div class="card-title font-style">
+                        <div class="panel-heading align-center">
+                            <div class="textOverflow type--center">
+                                <router-link class="pull-left" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                                    {{display_name}}
+                                </router-link>
+                            </div>
                         </div>
-                    
-                </modal>
-        </div>   
-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <modal v-if="showModal" @close="showModal = false">
+                <div slot="header"></div>
+                <div slot="body">
+                    <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
+                </div>
+            </modal>
+        </div>
+    </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { mapState } from 'vuex'
-import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
-import modal from "../../components/fixed_components/modal.vue";
+    import { mapGetters } from 'vuex'
+    import { mapState } from 'vuex'
+    import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
+    import modal from "../../components/fixed_components/modal.vue";
 
-export default {
-    name: "gallery-card",
+    export default {
+        name: "gallery-card",
 
-    data: function () {
-        return {
-            messages: true,
-            errors: [],
-            myCroppa: null,
-            imgUrl: null,
-            showModal: false
-        }
-    },
-    components: {
-        modal,
-        croppaProfile
-    },
-
-    props: ['student'],
-
-    computed: {
-        display_name: function () {
-            return this.student.first_name + " " + this.student.last_name;
+        data: function () {
+            return {
+                messages: true,
+                errors: [],
+                myCroppa: null,
+                imgUrl: null,
+                showModal: false
+            }
+        },
+        components: {
+            modal,
+            croppaProfile
         },
 
-        email_uri : function () {
-            return this.student.email.split('@')[0].replace("nr_", "");;
-        },
+        props: ['student'],
 
-        image: function() {
-            if (this.imgUrl == null) {
-                return this.student.images[this.student.image_priority];
-            } else {
-                return this.imgUrl;
-            }
-        }
-    },
+        computed: {
+            display_name: function () {
+                return this.student.first_name + " " + this.student.last_name;
+            },
 
-    methods: {
-        confirmImage: function(email){
-            let url = this.myCroppa.generateDataUrl();
+            email_uri : function () {
+                return this.student.email.split('@')[0].replace("nr_", "");;
+            },
 
-            if (!url) {
-                alert('no image');
-                return;
-            }
-
-            this.imgUrl = url;
-
-            this.myCroppa.generateBlob(
-                blob => { this.objectUrl = URL.createObjectURL(blob); },
-                'image/jpeg',
-                .8
-            );
-
-            let data = new FormData();
-            data.append('media', url);
-            data.append('email', email);
-            console.log(url);
-            axios.post('api/upload', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+            image: function() {
+                if (this.imgUrl == null) {
+                    return this.student.images[this.student.image_priority];
+                } else {
+                    return this.imgUrl;
                 }
-            })
-                .then(response => {
-                    console.log(response);
+            }
+        },
+
+        methods: {
+            confirmImage: function(email){
+                let url = this.myCroppa.generateDataUrl();
+
+                if (!url) {
+                    alert('no image');
+                    return;
+                }
+
+                this.imgUrl = url;
+
+                this.myCroppa.generateBlob(
+                    blob => { this.objectUrl = URL.createObjectURL(blob); },
+                    'image/jpeg',
+                    .8
+                );
+
+                let data = new FormData();
+                data.append('media', url);
+                data.append('email', email);
+                console.log(url);
+                axios.post('api/upload', data, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 })
-                .catch(e => {
-                    console.log(e)
-                });
-        },
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(e => {
+                        console.log(e)
+                    });
+            },
 
-        styleCanvas: function() {
-            let elm = this.myCroppa.getCanvas();
+            styleCanvas: function() {
+                let elm = this.myCroppa.getCanvas();
 
-            elm.style.width="100%";
-            elm.style.height="100%";
-            elm.style.borderRadius="50%";
-        },
+                elm.style.width="100%";
+                elm.style.height="100%";
+                elm.style.borderRadius="50%";
+            },
 
-        toggleCropper: function() {
-            this.myCroppa.disabled = false;
-        },
+            toggleCropper: function() {
+                this.myCroppa.disabled = false;
+            },
 
-        chooseImage: function() {
-            this.myCroppa.chooseFile();
+            chooseImage: function() {
+                this.myCroppa.chooseFile();
+            }
         }
     }
-}
 </script>

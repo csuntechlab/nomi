@@ -80,7 +80,7 @@
                 }).catch(e => {
                     console.log(e)
                 });
-                this.$parent.$emit('close')
+                this.$parent.$emit('close');
                 this.reset;
 
             },
