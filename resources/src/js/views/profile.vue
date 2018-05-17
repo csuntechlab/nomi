@@ -9,7 +9,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <back-button :destination="'/class/'+this.$route.params.courseID"></back-button>
                         <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
                     </div>
                     <div class="row">
