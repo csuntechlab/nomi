@@ -13373,7 +13373,7 @@ Vue.component('croppa-profile', __webpack_require__(9));
 Vue.component('profile-picture', __webpack_require__(106));
 Vue.component('loading-button', __webpack_require__(109));
 Vue.component('list-grid-selector', __webpack_require__(114));
-Vue.component('loading-button', __webpack_require__(10));
+Vue.component('modal', __webpack_require__(10));
 
 Vue.component('shuffle-button', __webpack_require__(17));
 Vue.component('card-toggle-button', __webpack_require__(18));
