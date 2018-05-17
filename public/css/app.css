@@ -237,6 +237,10 @@ textarea[type=text]:focus {
   color: #E5E5E5;
 }
 
+.textOverflow {
+  word-break: break-all;
+}
+
 .imagewrap {
   display: inline-block;
   position: relative;
