@@ -10,6 +10,9 @@
 
 <script>
     export default {
-        name: "class"
+        name: "class",
+        created () {
+            this.$store.dispatch('clearErrors');
+        }
     }
 </script>

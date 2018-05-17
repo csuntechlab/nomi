@@ -16,7 +16,7 @@ export default {
                     state.studentProfile.bio = "Pending biography from student.";
             })
             .catch(e => {
-                console.log(e);
+                state.profileErrors = e.response.data.message;
             });
 
         axios.get('student_profile/'+email)
@@ -28,7 +28,7 @@ export default {
                 state.studentProfile.id = response['data'].student_id;
             })
             .catch(e => {
-                console.log(e);
+                state.profileErrors = e.response.data.message;
             });
     },
 
@@ -43,7 +43,7 @@ export default {
 
         axios.post('update_note', data)
             .catch(e => {
-                console.log(e)
+                state.profileErrors = e.response.data.message;
             });
     },
 
@@ -58,7 +58,7 @@ export default {
                 state.studentProfile.imagePriority = payload.image_priority;
             })
             .catch(e => {
-                console.log(e)
+                state.profileErrors = e.response.data.message;
             });
     },
 
@@ -71,6 +71,8 @@ export default {
             images: null,
             imagePriority: null,
             notes: null
-        }
+        };
+
+        state.profileErrors = null;
     }
 }

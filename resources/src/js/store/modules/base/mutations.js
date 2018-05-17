@@ -20,11 +20,11 @@ export default {
                         state.facultyMember.id = response.data.id;
                     })
                     .catch(e => {
-                        console.log(e);
+                        state.errors = e.response.data.message;
                     });
             })
             .catch(e => {
-                console.log(e);
+                state.errors = e.response.data.message;
             });
     },
 
@@ -134,4 +134,8 @@ export default {
     SORT_ASC: function (state) {
         state.sortDescending = false;
     },
+
+    CLEAR_ERRORS: function (state) {
+        state.errors = null;
+    }
 }
