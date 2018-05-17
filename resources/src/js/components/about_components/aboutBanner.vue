@@ -1,12 +1,20 @@
 <template>
     <div>
             <div class="tab-container">
-                <ul class="tabs cf type--center">
+                <ul v-if="showAbout" class="tabs cf type--center">
                     <li class="tab__list">
-                        <a class="tab__link tab__link--active courseTabs" @click="selectAbout">About</a>
+                        <a class="tab__link--active" @click="selectAbout">About</a>
                     </li>
                     <li class="tab__list">
-                        <a class="tab__link  tab__link--active courseTabs" @click="selectVersion">Version History</a>
+                        <a class="tab__link" @click="selectVersion">Version History</a>
+                    </li>
+                </ul>
+                <ul v-if="showAbout === false" class="tabs cf type--center">
+                    <li class="tab__list">
+                        <a class="tab__link" @click="selectAbout">About</a>
+                    </li>
+                    <li class="tab__list">
+                        <a class="tab__link--active" @click="selectVersion">Version History</a>
                     </li>
                 </ul>
             </div>

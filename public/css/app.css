@@ -194,16 +194,18 @@ textarea[type=text]:focus {
   border-bottom: 0;
 }
 
-.theme-main .courseTabs {
+.theme-main .tab__link {
+  border-bottom: 5px solid #E5E5E5;
   color: #0F1821;
   background-color: #E5E5E5;
 }
 
 .theme-main .tab__link--active {
-  border-bottom: 5px solid #E5E5E5;
-}
-
-.theme-main .tab__link:hover {
+  display: block;
+  padding: 10px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #0F1821;
   border-bottom: 5px solid #0F1821;
 }
 

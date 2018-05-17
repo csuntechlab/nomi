@@ -19855,6 +19855,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -20188,29 +20196,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "tab-container" }, [
-      _c("ul", { staticClass: "tabs cf type--center" }, [
-        _c("li", { staticClass: "tab__list" }, [
-          _c(
-            "a",
-            {
-              staticClass: "tab__link tab__link--active courseTabs",
-              on: { click: _vm.selectAbout }
-            },
-            [_vm._v("About")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "tab__list" }, [
-          _c(
-            "a",
-            {
-              staticClass: "tab__link  tab__link--active courseTabs",
-              on: { click: _vm.selectVersion }
-            },
-            [_vm._v("Version History")]
-          )
-        ])
-      ])
+      _vm.showAbout
+        ? _c("ul", { staticClass: "tabs cf type--center" }, [
+            _c("li", { staticClass: "tab__list" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "tab__link--active",
+                  on: { click: _vm.selectAbout }
+                },
+                [_vm._v("About")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "tab__list" }, [
+              _c(
+                "a",
+                { staticClass: "tab__link", on: { click: _vm.selectVersion } },
+                [_vm._v("Version History")]
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showAbout === false
+        ? _c("ul", { staticClass: "tabs cf type--center" }, [
+            _c("li", { staticClass: "tab__list" }, [
+              _c(
+                "a",
+                { staticClass: "tab__link", on: { click: _vm.selectAbout } },
+                [_vm._v("About")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "tab__list" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "tab__link--active",
+                  on: { click: _vm.selectVersion }
+                },
+                [_vm._v("Version History")]
+              )
+            ])
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel center" }, [
@@ -23095,13 +23125,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-banner",
+
+    methods: {
+        activeTab: function activeTab(id) {
+            if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
+        }
+    },
+
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+
 });
 
 /***/ }),
@@ -23112,40 +23148,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", [
-    _c("div", { staticClass: "tab-container" }, [
-      _c(
-        "ul",
-        { staticClass: "tabs cf" },
-        _vm._l(this.courses, function(course) {
-          return _c(
-            "li",
-            {
-              key: course.title,
-              staticClass: "tab__list",
-              attrs: { course: course }
-            },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "courseTabs tab__link tab__link--active",
-                  attrs: { to: "/class/" + course.id }
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(course.title) +
-                      "\n                "
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        })
-      )
-    ])
+  return _c("div", { staticClass: "tab-container" }, [
+    _c(
+      "ul",
+      { staticClass: "tabs cf" },
+      _vm._l(this.courses, function(course) {
+        return _c(
+          "li",
+          {
+            key: course.title,
+            staticClass: "tab__list",
+            attrs: { course: course }
+          },
+          [
+            _c(
+              "router-link",
+              {
+                class: _vm.activeTab(course.id),
+                attrs: { to: "/class/" + course.id }
+              },
+              [
+                _vm._v(
+                  "\n                " + _vm._s(course.title) + "\n            "
+                )
+              ]
+            )
+          ],
+          1
+        )
+      })
+    )
   ])
 }
 var staticRenderFns = []

@@ -61,23 +61,24 @@ textarea[type=text] {
 
 }
 
-.courseTabs {
+.tab__link {
     @include themify($themes){
-      color: themed('bars'); 
-      background-color: themed('looksGray');
-    }
-}
+        border-bottom: 5px solid themed('looksGray');
+        color: themed('bars'); 
+        background-color: themed('looksGray');
+      }
+  } 
+
 .tab__link--active{
     @include themify($themes){
-      border-bottom: 5px solid themed('looksGray');
-    }
-  }
-
-.tab__link:hover {
-    @include themify($themes){
+        display: block;
+        padding: 10px 20px;
+        font-weight: normal;
+        text-decoration: none;
+        color: themed('bars');      
         border-bottom: 5px solid themed('bars');
     }
-}
+  }
 
 .fa {
     @include themify($themes){
@@ -85,7 +86,7 @@ textarea[type=text] {
     } 
 }
 
-.col-xs-6{
+.col-xs-6 {
     padding-left:0.5rem !important;
     padding-right: 0.5rem !important;
 }
