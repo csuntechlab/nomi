@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/home';
 import Class from '../views/class';
 import Profile from '../views/profile';
+import About from '../views/about';
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,10 @@ const router = new VueRouter({
             path: '/profile/:emailURI',
             component: Profile,
             props: true
+        },
+        {
+            path: '/about',
+            component: About
         }
     ],
 
