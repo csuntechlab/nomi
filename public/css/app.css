@@ -194,6 +194,21 @@ textarea[type=text]:focus {
   border-bottom: 0;
 }
 
+.theme-main .tab__link {
+  border-bottom: 5px solid #E5E5E5;
+  color: #0F1821;
+  background-color: #E5E5E5;
+}
+
+.theme-main .tab__link--active {
+  display: block;
+  padding: 10px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #0F1821;
+  border-bottom: 5px solid #0F1821;
+}
+
 .theme-main .fa {
   color: #0F1821;
 }
@@ -223,8 +238,7 @@ textarea[type=text]:focus {
 }
 
 .textOverflow {
-  height: 50px;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .imagewrap {

@@ -9,27 +9,27 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
                         <h1 class="type--center">{{studentProfile.displayName}}</h1>
                     </div>
                     <div class="type--center">
-                        <carousel 
-                        :perPage="1" 
-                        :paginationActiveColor="'#4F9DA3'"
+                        <carousel
+                                :perPage="1"
+                                :paginationActiveColor="'#4F9DA3'"
                         >
                             <slide class="slidewrap">
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
 
-                                        <div class="type--center">
-                                            <image-handler image_type="likeness"></image-handler>
-                                        </div>
-                                        <div class="type--center">
-                                            <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
-                                            <br>
-                                        </div>
+                                    <div class="type--center">
+                                        <image-handler image_type="likeness"></image-handler>
                                     </div>
+                                    <div class="type--center">
+                                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                        <br>
+                                    </div>
+                                </div>
                             </slide>
+                            <!--
                             <slide class="slidewrap">
                                 <div class="imagewrap">
                                     <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
@@ -46,10 +46,12 @@
                                     </div>
                                 </div>
                             </slide>
+                            -->
                         </carousel>
                     </div>
                 </div>
             </div>
+            <!--
             <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
@@ -63,20 +65,30 @@
                         </div>
                     </li>
                     <li class="underline">
+<<<<<<< HEAD
                          <div v-if="studentProfile.imagePriority === 'avatar'">
                             <div class="">
                                 <i class="fa fa-chevron-up fa-blue fa-2x"></i>
                             </div>
+=======
+                        <div v-if="studentProfile.imagePriority === 'avatar'">
+                            <div class="underlineStyling--red"></div>
+>>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
                         </div>
                     </li>
                     <li class="underline">
+<<<<<<< HEAD
                          <div v-if="studentProfile.imagePriority === 'official'">
                             <div class="">
                                 <i class="fa fa-chevron-up fa-blue fa-2x"></i>
                             </div>
+=======
+                        <div v-if="studentProfile.imagePriority === 'official'">
+                            <div class="underlineStyling--red"></div>
+>>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -85,12 +97,19 @@
                 </ul>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="container type--center margin_between_containers">
+=======
+        -->
+            <div class="container type--center">
+>>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
                             <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
-                            <button class="btn btn-default" @click.prevent="commitNotes">Add a Note</button>
+                            <div v-if="noteSaved">Notes Saved!</div>
+                            <div v-if="unsavedChanges">There are unsaved changes.</div>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
                             <br>
                             <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
@@ -99,21 +118,15 @@
                         </div>
                     </div>
                 </div>
-        </div>     
-                   <div>
-                <modal v-if="showModal" @close="showModal = false">
-                    <div slot="header">
-                    
-                    </div>
-                    
-                    <div slot="body">
-                        <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
-                        </div>
-                    
-                </modal>
-        </div>   
+            </div>
+            <modal v-if="showModal" @close="showModal = false">
+                <div slot="header"></div>
+                <div slot="body">
+                    <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+                </div>
+            </modal>
+        </div>
     </div>
-    
 </template>
 
 <script>
@@ -125,20 +138,42 @@
     export default {
         name: 'profile',
 
+        data: function () {
+            return {
+                unsavedChanges: false,
+                noteSaved: false,
+                showModal: false
+            }
+        },
+
         components: {
             ImageHandler,
             croppaProfile,
             modal
         },
-        
-        data() {
-            return {
-                showModal: false
-            }
-        },
 
         created () {
-            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI, faculty_id: this.facultyMember.id });
+            this.$store.dispatch(
+                'getStudentProfile',
+                {
+                    uri: this.$route.params.emailURI,
+                    faculty_id: this.facultyMember.id
+                }
+            );
+        },
+
+        beforeRouteLeave (to, from, next) {
+            if(this.unsavedChanges) {
+                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+                if (answer) {
+                    next();
+                } else {
+                    next(false);
+                }
+            } else {
+                next();
+            }
         },
 
         computed: {
@@ -154,11 +189,19 @@
 
         methods: {
             updateNotes (e) {
-                this.$store.dispatch('updateNotes', e.target.value);
+                this.$store.dispatch('updateNotes', e.target.value)
+                    .then(() => {
+                        this.noteSaved = false;
+                        this.unsavedChanges = true;
+                    });
             },
 
             commitNotes () {
-                this.$store.dispatch('commitNotes');
+                this.$store.dispatch('commitNotes')
+                    .then(() => {
+                        this.noteSaved = true;
+                        this.unsavedChanges = false;
+                    });
             },
 
             croppaToggle(){
