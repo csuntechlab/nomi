@@ -20627,6 +20627,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortLastName: true,
     sortDescending: true,
     errors: null,
+    themeName: 'theme-OnceAMatadorAlwaysAMatador',
 
     facultyMember: {
         email: null,
@@ -20736,6 +20737,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
             state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
             state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+
+            axios.get('get_settings').then(function (response) {
+                state.themeName = response.data.theme.theme;
+                document.getElementById("mainBody").className = state.themeName;
+            }).catch(function (e) {
+                state.errors = e.response.data.message;
+            });
 
             axios.get("faculty_profile/" + response.data["courses"][0].instructors[0].instructor).then(function (response) {
                 state.facultyMember.image = response.data.image;
