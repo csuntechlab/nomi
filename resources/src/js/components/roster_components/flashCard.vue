@@ -1,9 +1,9 @@
 <template>
     <div class="col-xs-6">
-        <div class="panel">
+        <div class="panel card">
             <div class="grid-item panel__content" @click="updateRecognized">
                 <div v-if="known">
-                    <div class="back-of-card">
+                    <div class="type--center textOverflow back-of-card">
                         {{display_name}}
                     </div>
                 </div>
@@ -49,6 +49,7 @@ export default {
 
 <style scoped>
     .grid-item {
+        padding:0 !important;
         height: 50vw;
     }
     .back-of-card {

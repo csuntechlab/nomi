@@ -2,8 +2,8 @@
     <div>
         <div>
             <div class="col-xs-6">
-                <div class="panel grid-image galleryCard">
-                    <div class="panel__content ">
+                <div class="panel grid-image card">
+                    <div class="panel__content">
                         <profile-picture :image="image"></profile-picture>
                         <div class="card-title font-style">
                             <div class="panel-heading align-center">
