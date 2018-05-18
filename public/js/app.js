@@ -13375,6 +13375,7 @@ Vue.component('profile-picture', __webpack_require__(109));
 Vue.component('loading-button', __webpack_require__(112));
 Vue.component('list-grid-selector', __webpack_require__(117));
 Vue.component('modal', __webpack_require__(10));
+Vue.component('theme-selector', __webpack_require__(177));
 Vue.component('back-button', __webpack_require__(120));
 
 Vue.component('shuffle-button', __webpack_require__(17));
@@ -21390,6 +21391,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSelector_vue__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSelector_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -21417,6 +21420,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21481,6 +21486,8 @@ var render = function() {
                   { staticClass: "faculty-links", attrs: { to: "/" } },
                   [_vm._v("Courses")]
                 ),
+                _vm._v(" "),
+                _c("theme-selector"),
                 _vm._v(" "),
                 _c(
                   "router-link",
@@ -24384,6 +24391,244 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(178)
+/* template */
+var __vue_template__ = __webpack_require__(179)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/fixed_components/themeSelector.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-86760660", Component.options)
+  } else {
+    hotAPI.reload("data-v-86760660", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 178 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_modal_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "theme-selector",
+
+    data: function data() {
+        return {
+            showModal: false
+        };
+    },
+
+    methods: {
+        updateTheme: function updateTheme(theme) {
+            var data = new FormData();
+            data.append('theme', theme);
+
+            axios.post('/update_theme', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(function () {
+                document.getElementById("mainBody").className = theme;
+            }).catch(function (e) {
+                console.log(e);
+            });
+        }
+    }
+
+});
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        {
+          staticClass: "matchText",
+          on: {
+            click: function($event) {
+              _vm.showModal = true
+            }
+          }
+        },
+        [_vm._v("\n        Change Theme\n    ")]
+      ),
+      _vm._v(" "),
+      _vm.showModal
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showModal = false
+                }
+              }
+            },
+            [
+              _c("div", { attrs: { slot: "header" }, slot: "header" }),
+              _vm._v(" "),
+              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("ul", { staticClass: "list list--arrows list--hover" }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "list__item",
+                      attrs: { name: "navy" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-main")
+                        }
+                      }
+                    },
+                    [_vm._v(" Navy Theme")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "list__item",
+                      attrs: { name: "bluesTheme" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-bluesTheme")
+                        }
+                      }
+                    },
+                    [_vm._v(" Blue Theme")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "list__item",
+                      attrs: { name: "cloudyWithAChanceSunflowers" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-cloudyWithAChanceSunflowers")
+                        }
+                      }
+                    },
+                    [_vm._v(" Sunflower THeme")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "list__item",
+                      attrs: { name: "OnceAMatadorAlwaysAMatador" },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
+                        }
+                      }
+                    },
+                    [_vm._v(" Matador Color")]
+                  )
+                ])
+              ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-86760660", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
