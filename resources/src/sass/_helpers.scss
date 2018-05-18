@@ -26,7 +26,8 @@
 }
 
 .textOverflow{ 
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 
@@ -69,4 +70,12 @@
 
 .margin_between_containers{
   margin-top: 7%;
+}
+
+.galleryCard {
+  height: 65vw;
+}
+
+.editButton {
+  margin-top: 5%;
 }

@@ -2,18 +2,18 @@
     <div>
         <div>
             <div class="col-xs-6">
-                <div class="panel grid-image">
+                <div class="panel grid-image galleryCard">
                     <div class="panel__content ">
                         <profile-picture :image="image"></profile-picture>
                         <div class="card-title font-style">
                             <div class="panel-heading align-center">
-                                <div class="textOverflow type--center">
-                                    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                                <div class="type--center">
+                                    <router-link class=" textOverflow" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                                         {{display_name}}
                                     </router-link>
                                 </div>
                             </div>
-                            <div class="type--center">
+                            <div class="type--center editButton">
                                 <button @click="showModal = true">
                                 <i class="fa fa-edit fa-2x"></i>
                                 </button>

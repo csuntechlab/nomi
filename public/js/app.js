@@ -23069,7 +23069,7 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _c("div", { staticClass: "col-xs-6" }, [
-        _c("div", { staticClass: "panel grid-image" }, [
+        _c("div", { staticClass: "panel grid-image galleryCard" }, [
           _c(
             "div",
             { staticClass: "panel__content " },
@@ -23080,11 +23080,12 @@ var render = function() {
                 _c("div", { staticClass: "panel-heading align-center" }, [
                   _c(
                     "div",
-                    { staticClass: "textOverflow type--center" },
+                    { staticClass: "type--center" },
                     [
                       _c(
                         "router-link",
                         {
+                          staticClass: " textOverflow",
                           attrs: {
                             to:
                               "/profile/" +
@@ -23106,7 +23107,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "type--center" }, [
+                _c("div", { staticClass: "type--center editButton" }, [
                   _c(
                     "button",
                     {
