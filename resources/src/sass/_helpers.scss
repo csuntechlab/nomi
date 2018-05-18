@@ -25,14 +25,20 @@
   }
 }
 
-.textOverflow{
-  height: 50px; 
-  word-wrap: break-word;
+.textOverflow{ 
+  word-break: break-all;
 }
+
 
 .imagewrap {
   display:inline-block;
   position:relative;
+  width: 60%;
+}
+
+.slidewrap{
+  width: 55%;
+  height:45%;
 }
 
 .clearPadding{

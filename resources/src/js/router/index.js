@@ -20,7 +20,7 @@ const router = new VueRouter({
         {
             path: '/profile/:courseID/:emailURI',
             component: Profile,
-            props: true
+            props: true,
         },
         {
             path: '/about',
