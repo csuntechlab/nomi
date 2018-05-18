@@ -5,16 +5,18 @@
                 <div class="panel grid-image">
                     <div class="panel__content ">
                         <profile-picture :image="image"></profile-picture>
-                        <button @click="showModal = true">
-                            <i class="fa fa-edit fa-3x"></i>
-                        </button>
-                    </div>
-                    <div class="card-title font-style">
-                        <div class="panel-heading align-center">
-                            <div class="textOverflow type--center">
-                                <router-link class="pull-left" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                                    {{display_name}}
-                                </router-link>
+                        <div class="card-title font-style">
+                            <div class="panel-heading align-center">
+                                <div class="textOverflow type--center">
+                                    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                                        {{display_name}}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="type--center">
+                                <button @click="showModal = true">
+                                <i class="fa fa-edit fa-2x"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -22953,6 +22953,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -23064,52 +23066,53 @@ var render = function() {
             [
               _c("profile-picture", { attrs: { image: _vm.image } }),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.showModal = true
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-edit fa-3x" })]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-title font-style" }, [
-            _c("div", { staticClass: "panel-heading align-center" }, [
-              _c(
-                "div",
-                { staticClass: "textOverflow type--center" },
-                [
+              _c("div", { staticClass: "card-title font-style" }, [
+                _c("div", { staticClass: "panel-heading align-center" }, [
                   _c(
-                    "router-link",
+                    "div",
+                    { staticClass: "textOverflow type--center" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: {
+                            to:
+                              "/profile/" +
+                              this.$route.params.id +
+                              "/" +
+                              _vm.email_uri
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.display_name) +
+                              "\n                                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--center" }, [
+                  _c(
+                    "button",
                     {
-                      staticClass: "pull-left",
-                      attrs: {
-                        to:
-                          "/profile/" +
-                          this.$route.params.id +
-                          "/" +
-                          _vm.email_uri
+                      on: {
+                        click: function($event) {
+                          _vm.showModal = true
+                        }
                       }
                     },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.display_name) +
-                          "\n                            "
-                      )
-                    ]
+                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
                   )
-                ],
-                1
-              )
-            ])
-          ])
+                ])
+              ])
+            ],
+            1
+          )
         ])
       ])
     ]),
