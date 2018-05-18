@@ -21620,7 +21620,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(" Sunflower THeme")]
+                    [_vm._v(" Sunflower Theme")]
                   ),
                   _vm._v(" "),
                   _c(
@@ -21634,7 +21634,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(" Matador Color")]
+                    [_vm._v(" Matador Theme")]
                   )
                 ])
               ])
