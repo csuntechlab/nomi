@@ -12,7 +12,7 @@ class UserSettingServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'App\Contracts\UserSettingsContract',
-            'App\Services\UserSettingService'
+            'App\Services\UserSettingsService'
         );
     }
 }

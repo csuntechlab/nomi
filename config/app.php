@@ -173,6 +173,7 @@ return [
         App\Providers\ImageCRUDServiceProvider::class,
         App\Providers\StudentProfileServiceProvider::class,
         App\Providers\FacultyProfileServiceProvider::class,
+        App\Providers\UserSettingServiceProvider::class,
 
         /*
          * Application Service Providers...
