@@ -282,7 +282,8 @@ textarea[type=text]:focus {
 
 .subbrand_center {
   margin-left: 1%;
-  margin-right: 3%;
+  padding-left: 1%;
+  margin-right: 1%;
 }
 
 .margin_between_containers {
