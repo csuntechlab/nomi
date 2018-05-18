@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-main" lang="{{ app()->getLocale() }}">
+<html class="theme-OnceAMatadorAlwaysAMatador" id="mainBody" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

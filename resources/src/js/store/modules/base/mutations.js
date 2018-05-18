@@ -14,6 +14,14 @@ export default {
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
+                axios.get('get_settings')
+                    .then(response =>{
+                        state.themeName = response.data.theme.theme;
+                        document.getElementById("mainBody").className = state.themeName;
+                    }).catch(e => {
+                        state.errors = e.response.data.message;
+                    });
+
                 axios.get(`faculty_profile/${response.data["courses"][0].instructors[0].instructor}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;

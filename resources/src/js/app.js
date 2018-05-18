@@ -18,6 +18,7 @@ Vue.component('profile-picture', require('./components/fixed_components/profileP
 Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
 Vue.component('list-grid-selector', require('./components/fixed_components/listGridSelector.vue'));
 Vue.component('modal', require('./components/fixed_components/modal.vue'));
+Vue.component('theme-selector', require('./components/fixed_components/themeSelector.vue'));
 Vue.component('back-button', require('./components/fixed_components/backButton.vue'));
 
 Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));

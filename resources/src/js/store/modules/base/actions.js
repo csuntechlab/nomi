@@ -2,7 +2,7 @@ export default {
     getData (context) {
         context.commit('GET_DATA');
     },
-
+    
     setList (context) {
         context.commit('SET_LIST');
     },
