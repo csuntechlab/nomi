@@ -24245,6 +24245,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -24255,7 +24261,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
 });
 
 /***/ }),
@@ -24603,11 +24609,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [_c("h1", [_vm._v("Class Sections")]), _vm._v(" "), _c("course-list")],
-    1
-  )
+  return _c("div", [
+    _c("h1", [_vm._v("Class Sections")]),
+    _vm._v(" "),
+    _vm.facultyMember.image === null
+      ? _c("div", { staticClass: "type--center" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+        ])
+      : _c("div", [_c("course-list")], 1)
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -1,7 +1,13 @@
 <template>
-    <div>
+     <div>
         <h1>Class Sections</h1>
-        <course-list></course-list>
+         <div v-if="facultyMember.image === null" class="type--center">
+            <br>
+            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
+         </div>       
+         <div v-else>        
+            <course-list></course-list>
+        </div>
     </div>
 </template>
 
@@ -18,7 +24,10 @@
         computed: {
             ...mapGetters([
                 'list',
-                'courses'
+                'courses',
+                'facultyMember',
+                'facultyFullName',
+
             ])
         }
     }
