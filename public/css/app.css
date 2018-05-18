@@ -238,7 +238,8 @@ textarea[type=text]:focus {
 }
 
 .textOverflow {
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .imagewrap {
@@ -288,6 +289,15 @@ textarea[type=text]:focus {
 
 .margin_between_containers {
   margin-top: 7%;
+}
+
+.card {
+  height: 60vw;
+  padding: 5px !important;
+}
+
+.editButton {
+  margin-top: 5%;
 }
 
 /*!

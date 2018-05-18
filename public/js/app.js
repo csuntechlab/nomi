@@ -22740,7 +22740,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    height: 50vw;\n}\n.back-of-card[data-v-34872196] {\n    font-size: 7vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 7vw 0;\n}\n.panel-heading[data-v-34872196] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
+exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    padding:0 !important;\n    height: 50vw;\n}\n.back-of-card[data-v-34872196] {\n    font-size: 7vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 7vw 0;\n}\n.panel-heading[data-v-34872196] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
 
 // exports
 
@@ -22814,7 +22814,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-xs-6" }, [
-    _c("div", { staticClass: "panel" }, [
+    _c("div", { staticClass: "panel card" }, [
       _c(
         "div",
         {
@@ -22824,13 +22824,17 @@ var render = function() {
         [
           _vm.known
             ? _c("div", [
-                _c("div", { staticClass: "back-of-card" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.display_name) +
-                      "\n                "
-                  )
-                ])
+                _c(
+                  "div",
+                  { staticClass: "type--center textOverflow back-of-card" },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.display_name) +
+                        "\n                "
+                    )
+                  ]
+                )
               ])
             : _c("div", [
                 _c(
@@ -22917,6 +22921,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__);
+//
+//
 //
 //
 //
@@ -23055,59 +23061,61 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _c("div", { staticClass: "col-xs-6" }, [
-        _c("div", { staticClass: "panel grid-image" }, [
+        _c("div", { staticClass: "panel grid-image card" }, [
           _c(
             "div",
-            { staticClass: "panel__content " },
+            { staticClass: "panel__content" },
             [
               _c("profile-picture", { attrs: { image: _vm.image } }),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.showModal = true
-                    }
-                  }
-                },
-                [_c("i", { staticClass: "fa fa-edit fa-3x" })]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-title font-style" }, [
-            _c("div", { staticClass: "panel-heading align-center" }, [
-              _c(
-                "div",
-                { staticClass: "textOverflow type--center" },
-                [
+              _c("div", { staticClass: "card-title font-style" }, [
+                _c("div", { staticClass: "panel-heading align-center" }, [
                   _c(
-                    "router-link",
+                    "div",
+                    { staticClass: "type--center" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: " textOverflow",
+                          attrs: {
+                            to:
+                              "/profile/" +
+                              this.$route.params.id +
+                              "/" +
+                              _vm.email_uri
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.display_name) +
+                              "\n                                "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--center editButton" }, [
+                  _c(
+                    "button",
                     {
-                      staticClass: "pull-left",
-                      attrs: {
-                        to:
-                          "/profile/" +
-                          this.$route.params.id +
-                          "/" +
-                          _vm.email_uri
+                      on: {
+                        click: function($event) {
+                          _vm.showModal = true
+                        }
                       }
                     },
-                    [
-                      _vm._v(
-                        "\n                                " +
-                          _vm._s(_vm.display_name) +
-                          "\n                            "
-                      )
-                    ]
+                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
                   )
-                ],
-                1
-              )
-            ])
-          ])
+                ])
+              ])
+            ],
+            1
+          )
         ])
       ])
     ]),
