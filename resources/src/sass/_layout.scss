@@ -82,7 +82,7 @@ textarea[type=text] {
 
 .fa {
     @include themify($themes){
-        color: themed('bars');
+        color: themed('white');
     } 
 }
 

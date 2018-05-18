@@ -380,22 +380,6 @@ textarea[type=text]:focus {
   border-bottom: 5px solid #D00D2D;
 }
 
-.theme-main .fa {
-  color: #0F1821;
-}
-
-.theme-bluesTheme .fa {
-  color: #0D3753;
-}
-
-.theme-cloudyWithAChanceSunflowers .fa {
-  color: #747474;
-}
-
-.theme-OnceAMatadorAlwaysAMatador .fa {
-  color: #D00D2D;
-}
-
 .col-xs-6 {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
@@ -494,7 +478,8 @@ textarea[type=text]:focus {
 }
 
 .textOverflow {
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .imagewrap {
@@ -525,6 +510,7 @@ textarea[type=text]:focus {
 }
 
 .back_button {
+  color: white;
   position: absolute;
   left: 15px;
   -webkit-transition: 25ms;
@@ -534,6 +520,12 @@ textarea[type=text]:focus {
 .back_button:active {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+.subbrand_center {
+  margin-left: 1%;
+  padding-left: 1%;
+  margin-right: 1%;
 }
 
 .margin_between_containers {
@@ -549,6 +541,20 @@ textarea[type=text]:focus {
   cursor: pointer;
   padding: 1%;
   text-align: center;
+}
+
+.card {
+  height: 60vw;
+  padding: 5px !important;
+}
+
+.editButton {
+  margin-top: 5%;
+}
+
+.makeWhite {
+  -webkit-filter: grayScale(100%);
+          filter: grayScale(100%);
 }
 
 /*!

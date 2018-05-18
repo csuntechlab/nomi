@@ -2,19 +2,21 @@
     <div>
         <div>
             <div class="col-xs-6">
-                <div class="panel grid-image">
-                    <div class="panel__content ">
+                <div class="panel grid-image card">
+                    <div class="panel__content">
                         <profile-picture :image="image"></profile-picture>
-                        <button @click="showModal = true">
-                            <i class="fa fa-edit fa-3x"></i>
-                        </button>
-                    </div>
-                    <div class="card-title font-style">
-                        <div class="panel-heading align-center">
-                            <div class="textOverflow type--center">
-                                <router-link class="pull-left" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                                    {{display_name}}
-                                </router-link>
+                        <div class="card-title font-style">
+                            <div class="panel-heading align-center">
+                                <div class="type--center">
+                                    <router-link class=" textOverflow" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                                        {{display_name}}
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="type--center editButton">
+                                <button @click="showModal = true">
+                                <i class="fa fa-edit fa-2x"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

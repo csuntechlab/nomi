@@ -26,7 +26,8 @@
 }
 
 .textOverflow{ 
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 
@@ -58,6 +59,7 @@
 }
 
 .back_button {
+  color: white;
   position: absolute;
   left: 15px;
   transition: 25ms;
@@ -65,6 +67,12 @@
 
 .back_button:active {
   transform: scale(1.2);
+}
+
+.subbrand_center {
+  margin-left: 1%;
+  padding-left: 1%;
+  margin-right: 1%;
 }
 
 .margin_between_containers{
@@ -79,4 +87,17 @@
   cursor: pointer;
   padding: 1%;
   text-align: center
+}
+
+.card {
+  height: 60vw;
+  padding: 5px !important;
+}
+
+.editButton {
+  margin-top: 5%;
+}
+
+.makeWhite{
+   filter: grayScale(100%);
 }
