@@ -19281,6 +19281,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -19828,57 +19832,63 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "container type--center" }, [
-              _c("div", { staticClass: "container" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-sm-12" }, [
-                    _c("textarea", {
-                      attrs: { type: "text", id: "ex0", name: "ex0" },
-                      domProps: { value: _vm.sp_notes },
-                      on: { input: _vm.updateNotes }
-                    }),
-                    _vm._v(" "),
-                    _vm.noteSaved
-                      ? _c("div", [_vm._v("Notes Saved!")])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.unsavedChanges
-                      ? _c("div", [_vm._v("There are unsaved changes.")])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-default",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.commitNotes($event)
+            _c(
+              "div",
+              {
+                staticClass: "container type--center margin_between_containers"
+              },
+              [
+                _c("div", { staticClass: "container" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-sm-12" }, [
+                      _c("textarea", {
+                        attrs: { type: "text", id: "ex0", name: "ex0" },
+                        domProps: { value: _vm.sp_notes },
+                        on: { input: _vm.updateNotes }
+                      }),
+                      _vm._v(" "),
+                      _vm.noteSaved
+                        ? _c("div", [_vm._v("Notes Saved!")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.unsavedChanges
+                        ? _c("div", [_vm._v("There are unsaved changes.")])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              _vm.commitNotes($event)
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("Save Notes")]
-                    ),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("h4", { staticClass: "textOverflow" }, [
-                      _vm._v(
-                        _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c("h4", [
-                      _vm._v("Bio: " + _vm._s(this.studentProfile.bio))
-                    ]),
-                    _vm._v(" "),
-                    _c("br")
+                        },
+                        [_vm._v("Save Notes")]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("h4", { staticClass: "textOverflow" }, [
+                        _vm._v(
+                          _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("h4", [
+                        _vm._v("Bio: " + _vm._s(this.studentProfile.bio))
+                      ]),
+                      _vm._v(" "),
+                      _c("br")
+                    ])
                   ])
                 ])
-              ])
-            ]),
+              ]
+            ),
             _vm._v(" "),
             _vm.showModal
               ? _c(
