@@ -51,8 +51,7 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="addedUnderline">
+            <!-- <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
                         <div v-if="studentProfile.imagePriority === 'likeness'">
@@ -65,30 +64,20 @@
                         </div>
                     </li>
                     <li class="underline">
-<<<<<<< HEAD
                          <div v-if="studentProfile.imagePriority === 'avatar'">
                             <div class="">
                                 <i class="fa fa-chevron-up fa-blue fa-2x"></i>
                             </div>
-=======
-                        <div v-if="studentProfile.imagePriority === 'avatar'">
-                            <div class="underlineStyling--red"></div>
->>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
                         </div>
                     </li>
                     <li class="underline">
-<<<<<<< HEAD
                          <div v-if="studentProfile.imagePriority === 'official'">
                             <div class="">
                                 <i class="fa fa-chevron-up fa-blue fa-2x"></i>
                             </div>
-=======
-                        <div v-if="studentProfile.imagePriority === 'official'">
-                            <div class="underlineStyling--red"></div>
->>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -96,13 +85,8 @@
                     </li>
                 </ul>
             </div>
-        </div>
-<<<<<<< HEAD
+        </div> -->
         <div class="container type--center margin_between_containers">
-=======
-        -->
-            <div class="container type--center">
->>>>>>> 2ab2aa012872bbee51165e03828e906262e45a7a
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
@@ -118,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <modal v-if="showModal" @close="showModal = false">
                 <div slot="header"></div>
                 <div slot="body">
