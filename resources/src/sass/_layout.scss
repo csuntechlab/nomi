@@ -82,7 +82,7 @@ textarea[type=text] {
 
 .fa {
     @include themify($themes){
-        color: themed('bars');
+        color: themed('white');
     } 
 }
 
@@ -91,6 +91,17 @@ textarea[type=text] {
     padding-right: 0.5rem !important;
 }
 
+.btn{
+    @include themify ($themes){
+        background-color: themed('buttonColor');
+    }
+}
+
+.sr-only{
+    @include themify ($themes){
+        color: themed('white');
+    }
+}
 // .menu-bar{
 //     @include themify($themes) {
 //         background-color: themed('bars');

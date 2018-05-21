@@ -16,7 +16,7 @@ class UserSettingsService implements UserSettingsContract
 
         $settings->theme = Theme::where('user_id', auth()->user()->user_id)->first();
 
-        return $settings;
+        return json_encode($settings);
     }
 
     public function updateTheme(Request $request)
