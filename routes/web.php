@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 /** Routes associated with login. */
 Route::get('/', 'LoginController@index')->name('login');
-Route::post('/', 'LoginController@validateUser');
+Route::post('/login', 'LoginController@validateUser')->name('post.login');
 
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');

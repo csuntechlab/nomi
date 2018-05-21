@@ -21902,7 +21902,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         openMenu: function openMenu() {
             var height = "60vh";
 
-            if (window.screen.height < window.screen.width) height = "66vh";
+            if (window.screen.height < window.screen.width) height = "76vh";
 
             document.getElementById("menu-open-close").style.height = height;
             this.$store.dispatch('toggleMenu');

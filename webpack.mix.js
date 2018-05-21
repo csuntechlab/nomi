@@ -15,10 +15,7 @@ mix.js('resources/src/js/app.js', 'public/js')
    .sass('resources/src/sass/app.scss', 'public/css');
 
 mix.copy('bower_components/metaphor/dist/js/metaphor.js', 'public/js')
-	.copy('bower_components/metaphor/dist/css/metaphor.css', 'public/css');
-
-mix.copy('node_modules/vue-croppa/dist/vue-croppa.min.css', 'public/css')
-	.copy('node_modules/vue-croppa/dist/vue-croppa.min.js', 'public/js');
-
-mix.copy('bower_components/font-awesome/fonts', 'public/fonts')
-    .copy('bower_components/font-awesome/css/font-awesome.min.css', 'public/css');
+	.copy('bower_components/metaphor/dist/css/metaphor.css', 'public/css')
+	.copy('node_modules/vue-croppa/dist/vue-croppa.min.css', 'public/css')
+	.copy('node_modules/vue-croppa/dist/vue-croppa.min.js', 'public/js')
+	.copy('bower_components/metaphor/dist/fonts', 'public/fonts');

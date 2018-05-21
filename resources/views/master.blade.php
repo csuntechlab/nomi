@@ -20,8 +20,8 @@
             <nav-bar></nav-bar>
             @yield('content')
         </div>
-
-        <script src="{{ asset('js/metaphor.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
     </body>
+    <script src="{{ asset('js/metaphor.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </html>
