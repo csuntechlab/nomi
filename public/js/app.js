@@ -21464,13 +21464,42 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses', 'facultyMember', 'facultyFullName', 'menuShow']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["courses", "facultyMember", "facultyFullName", "menuShow"])),
+
+    methods: {
+        openMenu: function openMenu() {
+            document.getElementById("myMenu").style.height = "66%";
+        },
+
+        closeMenu: function closeMenu() {
+            document.getElementById("myMenu").style.height = "0";
+        }
+    }
 });
 
 /***/ }),
@@ -21663,77 +21692,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "menu-open-close" } }, [
-    this.menuShow
-      ? _c("div", { staticClass: "menu_container makeBlue type--center" }, [
-          _c("div", { staticClass: "menu_selections type--center" }, [
-            _c(
-              "div",
-              { staticClass: "list" },
-              [
-                _vm.facultyMember.image === null
-                  ? _c("div", { staticClass: "type--center" }, [
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("i", {
-                        staticClass: "fa fa-spinner fa-spin fa-3x fa-blue"
-                      }),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("br")
-                    ])
-                  : _c("div", [
-                      _c("img", {
-                        staticClass: "img--circle faculty_image",
-                        attrs: {
-                          id: "faculty-img",
-                          src: _vm.facultyMember.image,
-                          name: "photo"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "faculty-name",
-                          attrs: {
-                            href: _vm.facultyMember.profile,
-                            title: "User Name"
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.facultyFullName))]
-                      )
-                    ]),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "faculty-links", attrs: { to: "/" } },
-                  [_vm._v("Courses")]
-                ),
-                _vm._v(" "),
-                _c("theme-selector"),
-                _vm._v(" "),
-                _c(
-                  "router-link",
-                  { staticClass: "faculty-links", attrs: { to: "/about" } },
-                  [_vm._v("About")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "faculty-links",
-                    attrs: { href: "/logout", title: "Logout" }
-                  },
-                  [_vm._v("Logout")]
-                )
-              ],
-              1
-            )
-          ])
-        ])
-      : _vm._e()
+  return _c("div", [
+    _c(
+      "span",
+      {
+        staticStyle: { "font-size": "30px", cursor: "pointer" },
+        on: { click: _vm.openMenu }
+      },
+      [_vm._v("☰ open")]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "menu", attrs: { id: "myMenu" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "closebtn",
+            attrs: { href: "javascript:void(0)" },
+            on: { click: _vm.closeMenu }
+          },
+          [_vm._v("×")]
+        ),
+        _vm._v(" "),
+        _vm.facultyMember.image === null
+          ? _c("div", { staticClass: "type--center" }, [
+              _c("br"),
+              _vm._v(" "),
+              _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br")
+            ])
+          : _c("div", [
+              _c("img", {
+                staticClass: "img--circle faculty_image",
+                attrs: {
+                  id: "faculty-img",
+                  src: _vm.facultyMember.image,
+                  name: "photo"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "faculty-name",
+                  attrs: { href: _vm.facultyMember.profile, title: "User Name" }
+                },
+                [_vm._v(_vm._s(_vm.facultyFullName))]
+              )
+            ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          { staticClass: "faculty-links", attrs: { href: "#", title: "Game" } },
+          [_vm._v("Nomi Game (coming soon)")]
+        ),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "faculty-links", attrs: { to: "/" } },
+          [_vm._v("Courses")]
+        ),
+        _vm._v(" "),
+        _c("theme-selector"),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          { staticClass: "faculty-links", attrs: { to: "/about" } },
+          [_vm._v("About")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "faculty-links",
+            attrs: { href: "/logout", title: "Logout" }
+          },
+          [_vm._v("Logout")]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -21750,22 +21793,17 @@ if (false) {
 /* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(103)
-}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = null
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
-var __vue_scopeId__ = "data-v-012ef419"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -21778,66 +21816,12 @@ var Component = normalizeComponent(
 )
 Component.options.__file = "resources/src/js/components/fixed_components/menuButton.vue"
 
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-012ef419", Component.options)
-  } else {
-    hotAPI.reload("data-v-012ef419", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
 module.exports = Component.exports
 
 
 /***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(104);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(6)("58aa1ab8", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-012ef419\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./menuButton.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-012ef419\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./menuButton.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(5)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.fa-3x[data-v-012ef419]{\n    color: #F4F4F4;\n    -webkit-transition: 25ms;\n    transition: 25ms;\n}\n.fa-3x[data-v-012ef419]:active {\n    color: #4F9DA3;\n    -webkit-transform: scale(1.2);\n            transform: scale(1.2);\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 103 */,
+/* 104 */,
 /* 105 */
 /***/ (function(module, exports) {
 
@@ -21871,102 +21855,8 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 106 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "menu-button",
-    methods: {
-        openMenu: function openMenu() {
-            var height = "60vh";
-
-            if (window.screen.height < window.screen.width) height = "76vh";
-
-            document.getElementById("menu-open-close").style.height = height;
-            this.$store.dispatch('toggleMenu');
-        },
-
-        closeMenu: function closeMenu(event) {
-            document.getElementById("menu-open-close").style.height = "0";
-            this.$store.dispatch('toggleMenu');
-        }
-    },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['menuShow']))
-});
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "menu_bar makeBlue" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "type--center" }, [
-        this.menuShow
-          ? _c("div", { staticClass: "menu_button" }, [
-              _c("i", {
-                staticClass: "fa fa-angle-down fa-3x type--center",
-                attrs: { title: "Close Menu" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.closeMenu($event)
-                  }
-                }
-              })
-            ])
-          : _c("div", { staticClass: "menu_button" }, [
-              _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--center",
-                attrs: { title: "Open Menu" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.openMenu($event)
-                  }
-                }
-              })
-            ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-012ef419", module.exports)
-  }
-}
-
-/***/ }),
+/* 106 */,
+/* 107 */,
 /* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 

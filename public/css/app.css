@@ -1,138 +1,37 @@
-#menu-open-close {
+.menu {
+  z-index: 1;
+  background-color: #111;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
   height: 0;
   width: 100%;
-  position: fixed;
-  z-index: 100;
-  bottom: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
-a.faculty-name:link,
-a.faculty-name:active,
-a.faculty-name:visited {
-  color: white;
+.menu a {
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 2rem;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-a.faculty-links:link,
-a.faculty-links:active,
-a.faculty-links:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  margin-bottom: 0;
-  cursor: pointer;
-  padding: 0.5%;
-  text-align: center;
+.menu a:hover {
+  color: #f1f1f1;
 }
 
-a.faculty-links:hover {
-  color: #4F9DA3;
-}
-
-.menu_container {
-  height: 100%;
-  padding: 3%;
-  position: relative;
-}
-
-.menu_button {
-  position: relative;
-}
-
-.menu_selections {
-  position: relative;
-}
-
-.menu_bar {
-  height: 8vh;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-
-.nav_title {
-  color: white;
-}
-
-.faculty_image {
-  height: 25vh;
-  width: 25vh;
-}
-
-.menu__compensation {
-  height: 30px;
-}
-
-.sidebar {
-  height: 0%;
-  width: 100vw;
-  position: fixed;
-  z-index: 100;
-  bottom: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-a.faculty-name:link,
-a.faculty-name:active,
-a.faculty-name:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center;
-  font-weight: bold;
-}
-
-a.faculty-links:link,
-a.faculty-links:active,
-a.faculty-links:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center;
-}
-
-a.faculty-links:hover {
-  color: #4F9DA3;
-}
-
-.sidebar_container {
-  height: 100%;
-  padding: 5%;
-  position: relative;
-}
-
-.close {
+.menu .closebtn {
   position: absolute;
-  bottom: 0;
-  right: 49%;
-}
-
-.menu {
-  position: relative;
-}
-
-.faculty_image {
-  size: 50%;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
 .theme-main body {
