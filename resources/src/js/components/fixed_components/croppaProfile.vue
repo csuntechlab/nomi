@@ -82,6 +82,7 @@
                 });
                 this.$parent.$emit('close');
                 this.reset;
+                location.reload(true);
 
             },
 
