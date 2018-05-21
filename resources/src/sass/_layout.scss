@@ -85,11 +85,11 @@ textarea[type=text] {
         color: themed('white');
     } 
 }
-//font awesome icon
+//font awesome icon and menu
 .menu {
     @include themify($themes){
-        color: white;
         background-color: themed('bars');
+        color: white;
     } 
 }
 

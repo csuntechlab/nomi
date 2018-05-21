@@ -18,7 +18,7 @@
             <a class="faculty_links" :href="facultyMember.profile" title="User Name">{{facultyFullName}}</a>
         </div>
         <router-link class="menu_links" to="/">Courses</router-link>
-        <theme-selector></theme-selector>
+        <theme-selector class="menu_links"></theme-selector>
         <router-link class="menu_links" to="/about">About</router-link>
         <a class="menu_links" href= "/logout" title="Logout">Logout</a>
         </div>

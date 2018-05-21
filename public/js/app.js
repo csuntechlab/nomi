@@ -19759,7 +19759,7 @@ var render = function() {
             { staticClass: "modal-header" },
             [
               _c("div", {
-                staticClass: "fa fa-times-circle fa-3x pull-right",
+                staticClass: "fa fa-times-circle fa-3x pull-right modal_exit",
                 on: {
                   click: function($event) {
                     _vm.$emit("close")
@@ -21568,7 +21568,6 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "menu_links",
           on: {
             click: function($event) {
               _vm.showModal = true
@@ -21729,7 +21728,7 @@ var render = function() {
           _vm._v("Courses")
         ]),
         _vm._v(" "),
-        _c("theme-selector"),
+        _c("theme-selector", { staticClass: "menu_links" }),
         _vm._v(" "),
         _c(
           "router-link",

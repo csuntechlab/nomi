@@ -20,7 +20,7 @@
   margin: 0;
   text-decoration: none;
   text-align: center;
-  padding: 8px 8px 8px 32px;
+  padding: 8px 8px 8px 8px;
   display: block;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -300,23 +300,23 @@ textarea[type=text]:focus {
 }
 
 .theme-main .menu {
-  color: white;
   background-color: #0F1821;
+  color: white;
 }
 
 .theme-bluesTheme .menu {
-  color: white;
   background-color: #0D3753;
+  color: white;
 }
 
 .theme-cloudyWithAChanceSunflowers .menu {
-  color: white;
   background-color: #747474;
+  color: white;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .menu {
-  color: white;
   background-color: #D00D2D;
+  color: white;
 }
 
 .col-xs-6 {
@@ -488,6 +488,10 @@ textarea[type=text]:focus {
 .makeWhite {
   -webkit-filter: grayScale(100%);
           filter: grayScale(100%);
+}
+
+.modal_exit {
+  color: black;
 }
 
 .theme-main .underlineStyling {
