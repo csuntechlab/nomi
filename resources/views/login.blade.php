@@ -1,18 +1,21 @@
 @extends('master')
 @section('content')
     <div class="container">
-        {{Form::open()}}
+        {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
         <h1>Log In</h1>
         Username
-        {{Form::text('username')}}
+        {{ Form::text('username') }}
         <br>
         Password
-        {{Form::password('password')}}
+        {{ Form::password('password') }}
         <br>
         <loading-button></loading-button>
-        {{Form::close()}}
+        {{ Form::close() }}
     </div>
-    <script>
-        localStorage.removeItem('nameface');
-    </script>
+@stop
+
+@section('scripts')
+<script>
+    localStorage.removeItem('nameface');
+</script>
 @stop

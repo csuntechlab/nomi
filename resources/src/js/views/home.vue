@@ -10,6 +10,7 @@
     export default {
         name: "home",
         created () {
+            this.$store.dispatch('clearErrors');
             this.$store.dispatch('getData');
         },
     }

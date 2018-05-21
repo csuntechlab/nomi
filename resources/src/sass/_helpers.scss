@@ -1,23 +1,9 @@
-textarea[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  
-}
-
-textarea[type=text]:focus{
-  border: 3px solid lightblue;
-}
-
 .makeBlue{
   @include themify($themes){
       background-color: themed('bars');
   }
 }
+
 .buttonPressBlue{
   @include themify($themes){
       background-color: themed('buttonpress');
@@ -39,16 +25,79 @@ textarea[type=text]:focus{
   }
 }
 
-.textOverflow{
-  height: 50px; 
+.textOverflow{ 
+  overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
 
 .imagewrap {
   display:inline-block;
   position:relative;
+  width: 60%;
+}
+
+.slidewrap{
+  width: 55%;
+  height:45%;
 }
 
 .clearPadding{
   padding: 0;
+}
+
+.student_list_name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+}
+
+.center {
+  margin-left:  7%;
+  margin-right: 7%;
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
+
+.back_button {
+  color: white;
+  position: absolute;
+  left: 15px;
+  transition: 25ms;
+}
+
+.back_button:active {
+  transform: scale(1.2);
+}
+
+.subbrand_center {
+  margin-left: 1%;
+  padding-left: 1%;
+  margin-right: 1%;
+}
+
+.margin_between_containers{
+  margin-top: 7%;
+}
+.matchText{
+  color: white;
+  text-decoration: none;
+  font-size: 125%;
+  font-family: sans-serif;
+  margin: 0;
+  cursor: pointer;
+  padding: 1%;
+  text-align: center
+}
+
+.card {
+  height: 60vw;
+  padding: 5px !important;
+}
+
+.editButton {
+  margin-top: 5%;
+}
+
+.makeWhite{
+   filter: grayScale(100%);
 }

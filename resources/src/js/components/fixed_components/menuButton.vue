@@ -22,7 +22,7 @@
                 let height = "60vh";
 
                 if(window.screen.height < window.screen.width)
-                    height = "66vh";
+                    height = "76vh";
 
                 document.getElementById("menu-open-close").style.height = height;
                 this.$store.dispatch('toggleMenu');

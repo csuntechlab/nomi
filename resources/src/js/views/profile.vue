@@ -5,57 +5,59 @@
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
         </div>
-        <div v-else class="profileArea">
+        <div v-else>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="javascript:history.go(-1)"><i class="fa fa-arrow-left fa-3x"></i></a>
-                        <h1 class="type--center">{{this.studentProfile.displayName}}</h1>
+                        <h1 class="type--center">{{studentProfile.displayName}}</h1>
                     </div>
-                    <div class="row">
-                        <div class="type--center">
-                            <carousel 
-                            :perPage="1" 
-                            :paginationActiveColor="'#4F9DA3'"
-                            >
-                                <slide>
-                                        <div class="imagewrap">
-                                            <croppa-profile class=""></croppa-profile>
+                    <div class="type--center">
+                        <carousel
+                                :perPage="1"
+                                :paginationActiveColor="'#4F9DA3'"
+                        >
+                            <slide class="slidewrap">
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
 
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                                <image-handler image_type="likeness"></image-handler>
-                                            </div>
-                                            <div class="col-xs-6 col-md-6 col-lg-6 pull-left">
-                                                <button class="btn btn-default"> Croppa Button Future </button>
-                                            </div>
-                                        </div>
-                                </slide>
-                                <slide>
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                            <image-handler image_type="avatar"></image-handler>
-                                        </div>
+                                    <div class="type--center">
+                                        <image-handler image_type="likeness"></image-handler>
                                     </div>
-                                </slide>
-                                <slide>
-                                    <div class="imagewrap">
-                                        <profile-picture :image="studentProfile.images['official']"></profile-picture>
-                                        <div class="col-xs-6 col-md-6 col-lg-6 pull-right">
-                                            <image-handler image_type="official"></image-handler>
-                                        </div>
+                                    <div class="type--center">
+                                        <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                        <br>
                                     </div>
-                                </slide>
-                            </carousel>
-                        </div>
+                                </div>
+                            </slide>
+                            <!--
+                            <slide class="slidewrap">
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
+                                    <div class="type--center">
+                                        <image-handler image_type="avatar"></image-handler>
+                                    </div>
+                                </div>
+                            </slide>
+                            <slide class="slidewrap">
+                                <div class="imagewrap">
+                                    <profile-picture :image="studentProfile.images['official']"></profile-picture>
+                                    <div class="type--center">
+                                        <image-handler image_type="official"></image-handler>
+                                    </div>
+                                </div>
+                            </slide>
+                            -->
+                        </carousel>
                     </div>
                 </div>
             </div>
-            <div class="addedUnderline">
+            <!-- <div class="addedUnderline">
                 <ul class="underlineContainer">
                     <li class="underline">
                         <div v-if="studentProfile.imagePriority === 'likeness'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -63,7 +65,9 @@
                     </li>
                     <li class="underline">
                          <div v-if="studentProfile.imagePriority === 'avatar'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -71,7 +75,9 @@
                     </li>
                     <li class="underline">
                          <div v-if="studentProfile.imagePriority === 'official'">
-                            <div class="underlineStyling--red"></div>
+                            <div class="">
+                                <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                            </div>
                         </div>
                         <div v-else>
                             <div class="underlineStyling"></div>
@@ -79,23 +85,30 @@
                     </li>
                 </ul>
             </div>
-            <div class="container type--center">
+        </div> -->
+        <div class="container type--center margin_between_containers">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <form>
-                                <textarea type="text" id="ex0" name="ex0"  :value="sp_notes" @input="updateNotes"></textarea>
-                                <button class="btn btn-default" @click="commitNotes">Add a Note</button>
-                            </form>
+                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                            <div v-if="noteSaved">Notes Saved!</div>
+                            <div v-if="unsavedChanges">There are unsaved changes.</div>
+                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
                             <br>
-                            <h4>{{this.studentProfile.emailURI}}@my.csun.edu</h4>
+                            <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
                             <br>
                             <h4>Bio: {{this.studentProfile.bio}}</h4>
                             <br>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
+            <modal v-if="showModal" @close="showModal = false">
+                <div slot="header"></div>
+                <div slot="body">
+                    <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+                </div>
+            </modal>
         </div>
     </div>
 </template>
@@ -105,21 +118,52 @@
     import { mapState } from 'vuex'
     import ImageHandler from "../components/fixed_components/imageHandler.vue";
     import croppaProfile from "../components/fixed_components/croppaProfile.vue";
+    import modal from "../components/fixed_components/modal.vue";
     export default {
         name: 'profile',
 
+        data: function () {
+            return {
+                unsavedChanges: false,
+                noteSaved: false,
+                showModal: false
+            }
+        },
+
         components: {
             ImageHandler,
-            croppaProfile
+            croppaProfile,
+            modal
         },
 
         created () {
-            this.$store.dispatch('getStudentProfile', { uri: this.$route.params.emailURI });
+            this.$store.dispatch(
+                'getStudentProfile',
+                {
+                    uri: this.$route.params.emailURI,
+                    faculty_id: this.facultyMember.id
+                }
+            );
+        },
+
+        beforeRouteLeave (to, from, next) {
+            if(this.unsavedChanges) {
+                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+                if (answer) {
+                    next();
+                } else {
+                    next(false);
+                }
+            } else {
+                next();
+            }
         },
 
         computed: {
             ...mapGetters([
                 'studentProfile',
+                'facultyMember'
             ]),
 
             ...mapState({
@@ -129,11 +173,19 @@
 
         methods: {
             updateNotes (e) {
-                this.$store.dispatch('updateNotes', e.target.value);
+                this.$store.dispatch('updateNotes', e.target.value)
+                    .then(() => {
+                        this.noteSaved = false;
+                        this.unsavedChanges = true;
+                    });
             },
 
             commitNotes () {
-                this.$store.dispatch('commitNotes');
+                this.$store.dispatch('commitNotes')
+                    .then(() => {
+                        this.noteSaved = true;
+                        this.unsavedChanges = false;
+                    });
             },
 
             croppaToggle(){

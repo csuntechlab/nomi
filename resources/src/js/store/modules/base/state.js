@@ -3,9 +3,11 @@ export default {
     flashroster: [],
     menuShow: false,
     list: true,
-    flash: true,
+    flash: false,
     sortLastName: true,
     sortDescending: true,
+    errors: null,
+    themeName: 'theme-OnceAMatadorAlwaysAMatador',
 
     facultyMember: {
         email: null,

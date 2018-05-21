@@ -14,17 +14,25 @@ export default {
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
+                axios.get('get_settings')
+                    .then(response =>{
+                        state.themeName = response.data.theme.theme;
+                        document.getElementById("mainBody").className = state.themeName;
+                    }).catch(e => {
+                        state.errors = e.response.data.message;
+                    });
+
                 axios.get(`faculty_profile/${response.data["courses"][0].instructors[0].instructor}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
                         state.facultyMember.id = response.data.id;
                     })
                     .catch(e => {
-                        console.log(e);
+                        state.errors = e.response.data.message;
                     });
             })
             .catch(e => {
-                console.log(e);
+                state.errors = e.response.data.message;
             });
     },
 
@@ -32,12 +40,14 @@ export default {
         state.list = true;
     },
 
-    SET_GRID (state) {
+    SET_GALLERY (state) {
         state.list = false;
+        state.flash = false;
     },
 
-    TOGGLE_FLASH (state) {
-        state.flash = !state.flash;
+    SET_FLASH (state) {
+        state.list = false;
+        state.flash = true;
     },
 
     TOGGLE_MENU (state) {
@@ -132,4 +142,8 @@ export default {
     SORT_ASC: function (state) {
         state.sortDescending = false;
     },
+
+    CLEAR_ERRORS: function (state) {
+        state.errors = null;
+    }
 }

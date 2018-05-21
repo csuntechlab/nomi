@@ -12,10 +12,14 @@ Vue.use(Croppa);
 
 Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
+Vue.component('error-bar', require('./components/fixed_components/errorBar.vue'));
 Vue.component('croppa-profile', require('./components/fixed_components/croppaProfile.vue'));
 Vue.component('profile-picture', require('./components/fixed_components/profilePicture.vue'));
 Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
 Vue.component('list-grid-selector', require('./components/fixed_components/listGridSelector.vue'));
+Vue.component('modal', require('./components/fixed_components/modal.vue'));
+Vue.component('theme-selector', require('./components/fixed_components/themeSelector.vue'));
+Vue.component('back-button', require('./components/fixed_components/backButton.vue'));
 
 Vue.component('shuffle-button', require('./components/roster_components/shuffleButton.vue'));
 Vue.component('card-toggle-button', require('./components/roster_components/cardToggleButton.vue'));

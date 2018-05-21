@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-main" lang="{{ app()->getLocale() }}">
+<html class="theme-OnceAMatadorAlwaysAMatador" id="mainBody" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,8 +23,8 @@
             <nav-bar></nav-bar>
             @yield('content')
         </div>
-
-        <script src="{{ asset('js/metaphor.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}"></script>
     </body>
+    <script src="{{ asset('js/metaphor.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </html>

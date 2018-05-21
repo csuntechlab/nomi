@@ -13,8 +13,10 @@
                         <img id="faculty-img" :src="facultyMember.image" class="img--circle faculty_image" name="photo">
                         <a class="faculty-name" :href="facultyMember.profile" title="User Name">{{facultyFullName}}</a>
                     </div>
-                    <a class="faculty-links" href="#" title="Game">Game</a>
+                    <!--<a class="faculty-links" href="#" title="Game">Nomi Game (coming soon)</a>-->
                     <router-link class="faculty-links" to="/">Courses</router-link>
+                    <theme-selector></theme-selector>
+                    <router-link class="faculty-links" to="/about">About</router-link>
                     <a class="faculty-links" href= "/logout" title="Logout">Logout</a>
                 </div>
             </div>
@@ -24,6 +26,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import themeSelector from "../../components/fixed_components/themeSelector.vue"
     export default {
         name: "menu-up",
 

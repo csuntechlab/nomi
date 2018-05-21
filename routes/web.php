@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 /** Routes associated with login. */
 Route::get('/', 'LoginController@index')->name('login');
-Route::post('/', 'LoginController@validateUser');
+Route::post('/login', 'LoginController@validateUser')->name('post.login');
 
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
@@ -41,6 +41,10 @@ Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudent
 Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile');
 Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
 Route::post('/update_note', 'StudentProfileController@updateNotes');
+
+/** User Settings API Routes */
+Route::get('/get_settings', 'UserSettingsController@getSettings');
+Route::post('/update_theme', 'UserSettingsController@updateTheme');
 
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {

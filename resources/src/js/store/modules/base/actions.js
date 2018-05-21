@@ -2,21 +2,17 @@ export default {
     getData (context) {
         context.commit('GET_DATA');
     },
-
+    
     setList (context) {
         context.commit('SET_LIST');
     },
 
-    setGrid (context) {
-        context.commit('SET_GRID');
+    setGallery (context) {
+        context.commit('SET_GALLERY');
     },
 
-    toggleList (context) {
-        context.commit('TOGGLE_LIST');
-    },
-
-    toggleFlash (context) {
-        context.commit('TOGGLE_FLASH');
+    setFlash (context) {
+        context.commit('SET_FLASH');
     },
 
     toggleMenu (context) {
@@ -46,4 +42,8 @@ export default {
         context.commit('SORT_ASC');
         context.commit('SORT_ROSTER');
     },
+
+    clearErrors (context) {
+        context.commit('CLEAR_ERRORS');
+    }
 }
