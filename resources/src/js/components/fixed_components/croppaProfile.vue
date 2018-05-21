@@ -82,7 +82,7 @@
                 });
                 this.$parent.$emit('close');
                 this.reset;
-                location.reload();
+                location.reload(true);
 
             },
 
