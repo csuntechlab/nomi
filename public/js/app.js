@@ -1503,88 +1503,6 @@ module.exports = Component.exports
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1812,13 +1730,13 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(22);
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1918,7 +1836,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12735,7 +12653,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(42).setImmediate))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -12779,6 +12697,88 @@ if (false) {(function () {
 })()}
 
 module.exports = Component.exports
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
@@ -13394,7 +13394,7 @@ module.exports = __webpack_require__(170);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_croppa__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_croppa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_croppa__);
@@ -13408,8 +13408,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-window.Vue = __webpack_require__(9);
-window.axios = __webpack_require__(7);
+window.Vue = __webpack_require__(8);
+window.axios = __webpack_require__(6);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_4_vue_carousel___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_croppa___default.a);
@@ -13417,7 +13417,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_croppa___default.a);
 Vue.component('nav-bar', __webpack_require__(93));
 Vue.component('menu-bar', __webpack_require__(95));
 Vue.component('error-bar', __webpack_require__(109));
-Vue.component('croppa-profile', __webpack_require__(10));
+Vue.component('croppa-profile', __webpack_require__(9));
 Vue.component('profile-picture', __webpack_require__(112));
 Vue.component('loading-button', __webpack_require__(115));
 Vue.component('list-grid-selector', __webpack_require__(120));
@@ -13449,7 +13449,7 @@ var app = new Vue({
 var utils = __webpack_require__(2);
 var bind = __webpack_require__(11);
 var Axios = __webpack_require__(24);
-var defaults = __webpack_require__(8);
+var defaults = __webpack_require__(7);
 
 /**
  * Create an instance of Axios
@@ -13532,7 +13532,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(8);
+var defaults = __webpack_require__(7);
 var utils = __webpack_require__(2);
 var InterceptorManager = __webpack_require__(33);
 var dispatchRequest = __webpack_require__(34);
@@ -14073,7 +14073,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(2);
 var transformData = __webpack_require__(35);
 var isCancel = __webpack_require__(15);
-var defaults = __webpack_require__(8);
+var defaults = __webpack_require__(7);
 var isAbsoluteURL = __webpack_require__(36);
 var combineURLs = __webpack_require__(37);
 
@@ -16023,7 +16023,7 @@ return VueCroppa;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_home__ = __webpack_require__(45);
@@ -19212,7 +19212,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_imageHandler_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_croppaProfile_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_fixed_components_modal_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_fixed_components_modal_vue__);
@@ -20566,7 +20566,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_game__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_profile__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex_persistedstate__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuex__ = __webpack_require__(1);
 
@@ -21466,38 +21466,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "menu-up",
 
+    data: function data() {
+        return {
+            show: false
+        };
+    },
+
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["courses", "facultyMember", "facultyFullName", "menuShow"])),
 
     methods: {
         openMenu: function openMenu() {
             document.getElementById("myMenu").style.height = "66%";
+            this.show = true;
         },
 
         closeMenu: function closeMenu() {
             document.getElementById("myMenu").style.height = "0";
+            this.show = false;
         }
     }
 });
@@ -21692,29 +21683,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "span",
-      {
-        staticStyle: { "font-size": "30px", cursor: "pointer" },
-        on: { click: _vm.openMenu }
-      },
-      [_vm._v("☰ open")]
-    ),
-    _vm._v(" "),
+  return _c("div", { staticClass: "type--center" }, [
     _c(
       "div",
       { staticClass: "menu", attrs: { id: "myMenu" } },
       [
-        _c(
-          "a",
-          {
-            staticClass: "closebtn",
-            attrs: { href: "javascript:void(0)" },
-            on: { click: _vm.closeMenu }
-          },
-          [_vm._v("×")]
-        ),
+        _vm.show == true
+          ? _c("div", [
+              _c("i", {
+                staticClass: "fa fa-angle-down fa-3x type--center",
+                on: { click: _vm.closeMenu }
+              })
+            ])
+          : _c("div", [
+              _c("i", {
+                staticClass: "fa fa-angle-up fa-3x type--center",
+                on: { click: _vm.openMenu }
+              })
+            ]),
         _vm._v(" "),
         _vm.facultyMember.image === null
           ? _c("div", { staticClass: "type--center" }, [
@@ -21864,7 +21850,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("menu-up"), _vm._v(" "), _c("menu-button")], 1)
+  return _c("div", [_c("menu-up")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22127,7 +22113,7 @@ var content = __webpack_require__(117);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("56033202", content, false, {});
+var update = __webpack_require__(5)("56033202", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -22146,7 +22132,7 @@ if(false) {
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -22850,7 +22836,7 @@ var content = __webpack_require__(136);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("0c95c97e", content, false, {});
+var update = __webpack_require__(5)("0c95c97e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -22869,7 +22855,7 @@ if(false) {
 /* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -22885,7 +22871,7 @@ exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    padding:0 !importa
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -23051,7 +23037,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__);
@@ -24300,7 +24286,7 @@ var content = __webpack_require__(165);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(6)("15661975", content, false, {});
+var update = __webpack_require__(5)("15661975", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -24319,7 +24305,7 @@ if(false) {
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <menu-up></menu-up>
-        <menu-button></menu-button>
+        <!-- <menu-button></menu-button> -->
     </div>
 </template>
 
