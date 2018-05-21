@@ -21584,7 +21584,7 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item",
+                      staticClass: "list__item colorTheme_list_item ",
                       attrs: { name: "navy" },
                       on: {
                         click: function($event) {
@@ -21598,7 +21598,7 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item",
+                      staticClass: "list__item colorTheme_list_item ",
                       attrs: { name: "bluesTheme" },
                       on: {
                         click: function($event) {
@@ -21612,7 +21612,7 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item",
+                      staticClass: "list__item colorTheme_list_item ",
                       attrs: { name: "cloudyWithAChanceSunflowers" },
                       on: {
                         click: function($event) {
@@ -21626,7 +21626,7 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item",
+                      staticClass: "list__item colorTheme_list_item ",
                       attrs: { name: "OnceAMatadorAlwaysAMatador" },
                       on: {
                         click: function($event) {
