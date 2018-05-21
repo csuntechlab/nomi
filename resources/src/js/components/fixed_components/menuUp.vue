@@ -2,10 +2,10 @@
     <div class="type--center">
         <div id="myMenu" class="menu">
             <div v-if="show == true">
-                <i class="fa fa-angle-down fa-3x type--center" @click="closeMenu"></i>
+                <i class="fa fa-angle-down fa-3x type--center extra_padding" @click="closeMenu"></i>
             </div>
             <div v-else>
-                <i class="fa fa-angle-up fa-3x type--center" @click="openMenu"></i>
+                <i class="fa fa-angle-up fa-3x type--center extra_padding" @click="openMenu"></i>
             </div>
             <div v-if="facultyMember.image === null" class="type--center">
             <br>
@@ -14,14 +14,13 @@
             <br>
         </div>
         <div v-else>
-            <img id="faculty-img" :src="facultyMember.image" class="img--circle faculty_image" name="photo">
-            <a class="faculty-name" :href="facultyMember.profile" title="User Name">{{facultyFullName}}</a>
+            <img :src="facultyMember.image" class="img--circle faculty_image" name="photo">
+            <a class="faculty_links" :href="facultyMember.profile" title="User Name">{{facultyFullName}}</a>
         </div>
-        <a class="faculty-links" href="#" title="Game">Nomi Game (coming soon)</a>
-        <router-link class="faculty-links" to="/">Courses</router-link>
+        <router-link class="menu_links" to="/">Courses</router-link>
         <theme-selector></theme-selector>
-        <router-link class="faculty-links" to="/about">About</router-link>
-        <a class="faculty-links" href= "/logout" title="Logout">Logout</a>
+        <router-link class="menu_links" to="/about">About</router-link>
+        <a class="menu_links" href= "/logout" title="Logout">Logout</a>
         </div>
     </div>
 </template>
@@ -49,7 +48,7 @@ export default {
       },
 
       closeMenu: function () {
-          document.getElementById("myMenu").style.height = "0";
+          document.getElementById("myMenu").style.height = "8%";
           this.show = false;
       }
   }

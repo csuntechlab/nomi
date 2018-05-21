@@ -7,11 +7,9 @@
 
 <script>
     import menuUp from './menuUp'
-    import menuButton from './menuButton'
     export default {
         components: {
-            menuUp,
-            menuButton
+            menuUp
         }
     }
 </script>

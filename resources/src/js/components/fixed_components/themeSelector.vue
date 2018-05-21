@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="matchText" @click="showModal=true">
+        <div class="menu_links" @click="showModal=true">
             Change Theme
         </div>
         

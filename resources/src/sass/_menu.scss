@@ -9,21 +9,45 @@
   padding: 0;
   position: fixed;
   bottom: 0;
-  height: 0;
+  height: 8%;
   width: 100%;
 }
 
-.menu a {
-  padding: 8px 8px 8px 32px;
+
+.menu_links {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: sans-serif;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+
+    padding: 8px 8px 8px 32px;
+    display: block;
+    transition: 0.3s;
+}
+
+.faculty_links{
+  color: white;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
+  font-size: 125%;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: 0; 
+  padding: 1%;
+  text-align:center;
   display: block;
   transition: 0.3s;
 }
 
+
 .menu a:hover {
   color: #f1f1f1;
+}
+
+.extra_padding{
+  padding-bottom: 8%;
 }
 
 .menu .closebtn {
