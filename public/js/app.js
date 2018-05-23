@@ -21462,6 +21462,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -21478,7 +21482,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         openMenu: function openMenu() {
-            document.getElementById("myMenu").style.height = "76%";
+            document.getElementById("myMenu").style.height = "66%";
             this.show = true;
         },
 
@@ -21679,74 +21683,79 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "type--center" }, [
-    _c(
-      "div",
-      { staticClass: "menu", attrs: { id: "myMenu" } },
-      [
-        _vm.show == true
-          ? _c("div", [
-              _c("i", {
-                staticClass:
-                  "fa fa-angle-down fa-3x type--center extra_padding",
-                on: { click: _vm.closeMenu }
-              })
-            ])
-          : _c("div", [
-              _c("i", {
-                staticClass: "fa fa-angle-up fa-3x type--center extra_padding",
-                on: { click: _vm.openMenu }
-              })
-            ]),
-        _vm._v(" "),
-        _vm.facultyMember.image === null
-          ? _c("div", { staticClass: "type--center" }, [
-              _c("br"),
-              _vm._v(" "),
-              _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" }),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br")
-            ])
-          : _c("div", [
+    _c("div", { staticClass: "menu", attrs: { id: "myMenu" } }, [
+      _vm.show == true
+        ? _c("div", [
+            _c("i", {
+              staticClass: "fa fa-angle-down fa-3x type--center",
+              on: { click: _vm.closeMenu }
+            })
+          ])
+        : _c("div", [
+            _c("i", {
+              staticClass: "fa fa-angle-up fa-3x type--center extra_padding",
+              on: { click: _vm.openMenu }
+            })
+          ]),
+      _vm._v(" "),
+      _vm.facultyMember.image === null
+        ? _c("div", { staticClass: "type--center" }, [
+            _c("br"),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-spinner height_fix fa-spin fa-3x fa-blue"
+            }),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("br")
+          ])
+        : _c("div", [
+            _c("div", { staticClass: "height_fix" }, [
               _c("img", {
-                staticClass: "img--circle faculty_image",
+                staticClass: " height_fix img--circle faculty_image",
                 attrs: { src: _vm.facultyMember.image, name: "photo" }
               }),
               _vm._v(" "),
               _c(
-                "a",
+                "div",
                 {
-                  staticClass: "faculty_links",
+                  staticClass: "faculty_links height_fix",
                   attrs: { href: _vm.facultyMember.profile, title: "User Name" }
                 },
                 [_vm._v(_vm._s(_vm.facultyFullName))]
               )
-            ]),
-        _vm._v(" "),
-        _c("router-link", { staticClass: "menu_links", attrs: { to: "/" } }, [
-          _vm._v("Courses")
-        ]),
-        _vm._v(" "),
-        _c("theme-selector", { staticClass: "menu_links" }),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          { staticClass: "menu_links", attrs: { to: "/about" } },
-          [_vm._v("About")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "menu_links",
-            attrs: { href: "/logout", title: "Logout" }
-          },
-          [_vm._v("Logout")]
-        )
-      ],
-      1
-    )
+            ])
+          ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "height_fix" },
+        [
+          _c("router-link", { staticClass: "menu_links", attrs: { to: "/" } }, [
+            _vm._v("Courses")
+          ]),
+          _vm._v(" "),
+          _c("theme-selector"),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "menu_links", attrs: { to: "/about" } },
+            [_vm._v("About")]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "menu_links",
+              attrs: { href: "/logout", title: "Logout" }
+            },
+            [_vm._v("Logout")]
+          )
+        ],
+        1
+      )
+    ])
   ])
 }
 var staticRenderFns = []

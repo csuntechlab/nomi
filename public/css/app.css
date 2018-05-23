@@ -15,12 +15,12 @@
 .menu_links {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 95%;
   font-family: sans-serif;
   margin: 0;
   text-decoration: none;
   text-align: center;
-  padding: 8px 8px 8px 8px;
+  padding: .25% .25% .25% .25%;
   display: block;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -29,7 +29,7 @@
 .faculty_links {
   color: white;
   text-decoration: none;
-  font-size: 125%;
+  font-size: 95%;
   font-family: sans-serif;
   font-weight: bold;
   margin: 0;
@@ -45,15 +45,17 @@
 }
 
 .extra_padding {
-  padding-bottom: 8%;
+  padding-bottom: 5%;
 }
 
 .menu .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+}
+
+.height_fix {
+  height: 30vh;
+  display: inline-block;
 }
 
 .theme-main body {
