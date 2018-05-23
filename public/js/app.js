@@ -21702,9 +21702,7 @@ var render = function() {
         ? _c("div", { staticClass: "type--center" }, [
             _c("br"),
             _vm._v(" "),
-            _c("i", {
-              staticClass: "fa fa-spinner height_fix fa-spin fa-3x fa-blue"
-            }),
+            _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" }),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
