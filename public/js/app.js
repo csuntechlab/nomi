@@ -16045,6 +16045,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
+        name: 'home',
         path: '/',
         component: __WEBPACK_IMPORTED_MODULE_2__views_home___default.a
     }, {
@@ -22525,6 +22526,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22547,7 +22551,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.courses[0]
+  return this.courses[0] && this.$router.currentRoute.name != "home"
     ? _c("i", {
         staticClass: "fa fa-angle-left fa-3x back_button",
         attrs: { title: "Go Back" },

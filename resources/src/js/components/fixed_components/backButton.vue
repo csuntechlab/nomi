@@ -1,5 +1,8 @@
 <template>
-    <i v-if="this.courses[0]" class="fa fa-angle-left fa-3x back_button" title="Go Back" @click="goBack"></i>
+    <i v-if="this.courses[0] && this.$router.currentRoute.name != 'home'"
+       class="fa fa-angle-left fa-3x back_button"
+       title="Go Back"
+       @click="goBack"></i>
 </template>
 
 <script>
