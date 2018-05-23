@@ -14,7 +14,7 @@
                 <ul class="list list--arrows list--hover">
                     <li @click="updateTheme('theme-main')" class="list__item colorTheme_list_item " name="navy"> Navy Theme</li>
                     <li @click="updateTheme('theme-bluesTheme')" class="list__item colorTheme_list_item " name="bluesTheme"> Blue Theme</li>
-                    <li @click="updateTheme('theme-cloudyWithAChanceSunflowers')" class="list__item colorTheme_list_item " name="cloudyWithAChanceSunflowers"> Sunflower Theme</li>
+                    <li @click="updateTheme('theme-cloudyWithAChanceSunflowers')" class="list__item colorTheme_list_item " name="cloudyWithAChanceSunflowers"> Cloudy</li>
                     <li @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="list__item colorTheme_list_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</li>
                 </ul>
             </div>
