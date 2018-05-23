@@ -21621,7 +21621,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(" Sunflower Theme")]
+                    [_vm._v(" Cloudy")]
                   ),
                   _vm._v(" "),
                   _c(
