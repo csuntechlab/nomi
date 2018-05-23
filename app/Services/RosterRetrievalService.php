@@ -40,7 +40,7 @@ class RosterRetrievalService implements RosterRetrievalContract
         return $this->processMembers(\json_decode($roster)->members);
     }
 
-    private function processMembers($members)
+    public function processMembers($members)
     {
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $unsanitizedStudents = [];
