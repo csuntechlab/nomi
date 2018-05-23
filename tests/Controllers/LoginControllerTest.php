@@ -75,6 +75,6 @@ class LoginControllerTest extends TestCase
             ->andReturn(false);
 
         $response = $controller->validateUser($request);
-        $this->assertEquals('http://localhost', $response->getTargetUrl());
+        $this->assertEquals(200, $response->status());
     }
 }
