@@ -1,5 +1,6 @@
 export default {
     getData (context) {
+        context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
     },
     

@@ -20628,7 +20628,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    themeName: null,
 
     facultyMember: {
         email: null,
@@ -20665,6 +20665,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: function errors(state) {
         return state.errors;
     },
+    themeName: function themeName(state) {
+        return state.themeName;
+    },
 
     facultyMember: function facultyMember(state) {
         return state.facultyMember;
@@ -20681,6 +20684,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     getData: function getData(context) {
+        context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
     },
     setList: function setList(context) {
@@ -20725,6 +20729,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    GET_SETTINGS: function GET_SETTINGS(state) {
+        axios.get('get_settings').then(function (response) {
+            state.themeName = response.data.theme.theme;
+            document.getElementById("mainBody").className = state.themeName;
+        }).catch(function (e) {
+            state.errors = e.response.data.message;
+        });
+    },
     GET_DATA: function GET_DATA(state) {
         function capitalize(name) {
             return name.charAt(0).toUpperCase() + name.substr(1);
@@ -20739,14 +20751,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
             state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
-            axios.get('get_settings').then(function (response) {
-                state.themeName = response.data.theme.theme;
-                document.getElementById("mainBody").className = state.themeName;
-            }).catch(function (e) {
-                state.errors = e.response.data.message;
-            });
-
-            axios.get("faculty_profile/" + response.data["courses"][0].instructors[0].instructor).then(function (response) {
+            axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
                 state.facultyMember.image = response.data.image;
                 state.facultyMember.id = response.data.id;
             }).catch(function (e) {
