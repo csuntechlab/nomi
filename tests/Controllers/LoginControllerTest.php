@@ -75,6 +75,7 @@ class LoginControllerTest extends TestCase
             ->andReturn(false);
 
         $response = $controller->validateUser($request);
+        dd($response);
         $this->assertEquals(200, $response->status());
     }
 }
