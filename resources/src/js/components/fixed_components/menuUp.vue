@@ -43,7 +43,7 @@ export default {
 
   methods: {
       openMenu: function () {
-          document.getElementById("myMenu").style.height = "66%";
+          document.getElementById("myMenu").style.height = "76%";
           this.show = true;
       },
 

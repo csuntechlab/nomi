@@ -21478,7 +21478,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         openMenu: function openMenu() {
-            document.getElementById("myMenu").style.height = "66%";
+            document.getElementById("myMenu").style.height = "76%";
             this.show = true;
         },
 
