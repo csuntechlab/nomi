@@ -548,8 +548,8 @@ textarea[type=text]:focus {
 }
 
 .makeWhite {
-  -webkit-filter: grayScale(100%);
-          filter: grayScale(100%);
+  -webkit-filter: grayScale(0%);
+          filter: grayScale(0%);
 }
 
 .theme-main .underlineStyling {
