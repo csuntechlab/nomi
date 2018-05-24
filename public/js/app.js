@@ -24349,7 +24349,7 @@ var render = function() {
     },
     [
       _c(
-        "div",
+        "h6",
         { staticClass: "panel__header type--center" },
         [
           _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
