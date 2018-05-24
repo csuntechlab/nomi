@@ -21296,7 +21296,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "primary-nav__brand makeWhite" }, [
+    return _c("div", [
+      _c("img", {
+        staticClass: "logo",
+        attrs: { src: "/images/csun_logo.svg", alt: "CSUN Logo" }
+      }),
+      _vm._v(" "),
       _c("span", { staticClass: "sr-only" }, [
         _vm._v("California State University, Northridge (CSUN)")
       ])

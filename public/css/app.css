@@ -342,6 +342,30 @@ textarea[type=text]:focus {
   background-color: white;
 }
 
+.theme-main .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-bluesTheme .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-cloudyWithAChanceSunflowers .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
 .theme-main .makeBlue {
   background-color: #0F1821;
 }
