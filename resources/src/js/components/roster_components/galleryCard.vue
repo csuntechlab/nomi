@@ -61,7 +61,7 @@
 
         computed: {
             display_name: function () {
-                return this.student.first_name + " " + this.student.last_name;
+                return this.student.first_name + " " + this.student.last_name[0] + ".";
             },
 
             email_uri : function () {

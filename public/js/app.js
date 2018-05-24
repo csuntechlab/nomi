@@ -23229,7 +23229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name;
+            return this.student.first_name + " " + this.student.last_name[0] + ".";
         },
 
         email_uri: function email_uri() {
