@@ -8,6 +8,7 @@ export default {
     sortDescending: true,
     errors: null,
     themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    hideBack: true,
 
     facultyMember: {
         email: null,

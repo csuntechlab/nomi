@@ -147,5 +147,13 @@ export default {
 
     CLEAR_ERRORS: function (state) {
         state.errors = null;
+    },
+
+    HIDE_BACK_BUTTON: function (state) {
+        state.hideBack = true;
+    },
+
+    SHOW_BACK_BUTTON: function (state) {
+        state.hideBack = false;
     }
 }

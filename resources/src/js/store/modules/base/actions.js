@@ -46,5 +46,13 @@ export default {
 
     clearErrors (context) {
         context.commit('CLEAR_ERRORS');
-    }
+    },
+
+    hideBackButton (context) {
+        context.commit('HIDE_BACK_BUTTON');
+    },
+
+    showBackButton (context) {
+        context.commit('SHOW_BACK_BUTTON');
+    },
 }

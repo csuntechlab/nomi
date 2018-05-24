@@ -32,6 +32,7 @@ class LoginController extends Controller
         if (auth()->user()) {
             return redirect('home');
         }
+
         return view('login');
     }
 
@@ -46,6 +47,7 @@ class LoginController extends Controller
     public function validateUser(Request $request)
     {
         $credentials = $request->all('username', 'password');
+
         if ($this->authVerifierContract->isVerified($credentials)) {
             return redirect()->route('home');
         }
