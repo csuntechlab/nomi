@@ -13,12 +13,10 @@ class CreateImagePriorityTable extends Migration
     public function up()
     {
         Schema::create('image_priority', function (Blueprint $table) {
+            $table->string('user_id', 128);
             $table->string('student_id', 128);
             $table->string('image_priority', 128);
             $table->timestamps();
-
-            $table->unique('student_id');
-            $table->primary('student_id');
         });
     }
 
