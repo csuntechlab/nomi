@@ -21572,13 +21572,14 @@ var render = function() {
       _c(
         "div",
         {
+          staticClass: "menu_links",
           on: {
             click: function($event) {
               _vm.showModal = true
             }
           }
         },
-        [_vm._v("\n        Change Theme\n    ")]
+        [_vm._v("\n        Theme\n    ")]
       ),
       _vm._v(" "),
       _vm.showModal
