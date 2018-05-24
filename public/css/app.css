@@ -8,9 +8,7 @@
   transition: 0.5s;
 }
 
-a.faculty-name:link,
-a.faculty-name:active,
-a.faculty-name:visited {
+a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
   color: white;
   text-decoration: none;
   font-size: 2rem;
@@ -21,9 +19,7 @@ a.faculty-name:visited {
   font-weight: bold;
 }
 
-a.faculty-links:link,
-a.faculty-links:active,
-a.faculty-links:visited {
+a.faculty-links:link, a.faculty-links:active, a.faculty-links:visited {
   color: white;
   text-decoration: none;
   font-size: 1.5rem;
@@ -84,9 +80,7 @@ a.faculty-links:hover {
   transition: 0.5s;
 }
 
-a.faculty-name:link,
-a.faculty-name:active,
-a.faculty-name:visited {
+a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
   color: white;
   text-decoration: none;
   font-size: 125%;
@@ -98,9 +92,7 @@ a.faculty-name:visited {
   font-weight: bold;
 }
 
-a.faculty-links:link,
-a.faculty-links:active,
-a.faculty-links:visited {
+a.faculty-links:link, a.faculty-links:active, a.faculty-links:visited {
   color: white;
   text-decoration: none;
   font-size: 125%;
@@ -686,4 +678,3 @@ textarea[type=text]:focus {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
