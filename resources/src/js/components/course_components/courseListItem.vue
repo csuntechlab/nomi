@@ -1,8 +1,8 @@
 <template>
     <router-link :to="'/class/'+course.id" class="panel col-lg-12 col-md-12 col-xs-12">
-        <div class="panel__header type--center">
+        <h6 class="panel__header type--center">
                 <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
-            </div>
+            </h6>
         <div class="panel__content">
             
                 <div class="row">

@@ -6,6 +6,7 @@ export default {
     menuShow: state => state.menuShow,
     errors: state => state.errors,
     hideBack: state => state.hideBack,
+    themeName: state => state.themeName,
 
     facultyMember: state => state.facultyMember,
     facultyFullName: state => state.facultyMember.firstName + " " + state.facultyMember.lastName,
