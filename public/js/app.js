@@ -20628,7 +20628,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: null,
+    themeName: 'theme-OnceAMatadorAlwaysAMatador',
 
     facultyMember: {
         email: null,
