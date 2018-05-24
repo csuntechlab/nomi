@@ -7,7 +7,7 @@ export default {
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: null,
+    themeName: 'theme-OnceAMatadorAlwaysAMatador',
 
     facultyMember: {
         email: null,
