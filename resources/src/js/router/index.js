@@ -10,6 +10,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [
         {
+            name: 'home',
             path: '/',
             component: Home
         },
@@ -18,11 +19,13 @@ const router = new VueRouter({
             component: Class
         },
         {
+            name: 'profile',
             path: '/profile/:courseID/:emailURI',
             component: Profile,
             props: true,
         },
         {
+            name: 'about',
             path: '/about',
             component: About
         }

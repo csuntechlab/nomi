@@ -23,7 +23,7 @@
                     <router-link class="menu_links" to="/">Courses</router-link>
                     <theme-selector></theme-selector>
                     <router-link class="menu_links" to="/about">About</router-link>
-                    <a class="menu_links" href= "/logout" title="Logout">Logout</a>
+                    <a class="menu_links" href= "/logout" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
                 </div>
         </div>
     </div>

@@ -16045,16 +16045,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
+        name: 'home',
         path: '/',
         component: __WEBPACK_IMPORTED_MODULE_2__views_home___default.a
     }, {
         path: '/class/:id',
         component: __WEBPACK_IMPORTED_MODULE_3__views_class___default.a
     }, {
+        name: 'profile',
         path: '/profile/:courseID/:emailURI',
         component: __WEBPACK_IMPORTED_MODULE_4__views_profile___default.a,
         props: true
     }, {
+        name: 'about',
         path: '/about',
         component: __WEBPACK_IMPORTED_MODULE_5__views_about___default.a
     }],
@@ -19015,14 +19018,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home",
+
     created: function created() {
         this.$store.dispatch('clearErrors');
         this.$store.dispatch('getData');
+        this.$store.dispatch('hideBackButton');
+    },
+    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+        this.$store.dispatch('showBackButton');
+        next();
     }
 });
 
@@ -19034,9 +19041,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
-  ])
+  return _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20629,6 +20634,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortDescending: true,
     errors: null,
     themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    hideBack: true,
 
     facultyMember: {
         email: null,
@@ -20664,6 +20670,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     errors: function errors(state) {
         return state.errors;
+    },
+    hideBack: function hideBack(state) {
+        return state.hideBack;
     },
     themeName: function themeName(state) {
         return state.themeName;
@@ -20720,6 +20729,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     clearErrors: function clearErrors(context) {
         context.commit('CLEAR_ERRORS');
+    },
+    hideBackButton: function hideBackButton(context) {
+        context.commit('HIDE_BACK_BUTTON');
+    },
+    showBackButton: function showBackButton(context) {
+        context.commit('SHOW_BACK_BUTTON');
     }
 });
 
@@ -20873,6 +20888,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     CLEAR_ERRORS: function CLEAR_ERRORS(state) {
         state.errors = null;
+    },
+
+    HIDE_BACK_BUTTON: function HIDE_BACK_BUTTON(state) {
+        state.hideBack = true;
+    },
+
+    SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
+        state.hideBack = false;
     }
 });
 
@@ -21757,7 +21780,12 @@ var render = function() {
             "a",
             {
               staticClass: "menu_links",
-              attrs: { href: "/logout", title: "Logout" }
+              attrs: { href: "/logout", title: "Logout" },
+              on: {
+                click: function($event) {
+                  _vm.$store.dispatch("hideBackButton")
+                }
+              }
             },
             [_vm._v("Logout")]
           )
@@ -22368,6 +22396,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22379,7 +22410,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['hideBack']))
 });
 
 /***/ }),
@@ -22390,7 +22421,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.courses[0]
+  return !_vm.hideBack
     ? _c("i", {
         staticClass: "fa fa-angle-left fa-3x back_button",
         attrs: { title: "Go Back" },
