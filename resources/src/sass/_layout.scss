@@ -85,6 +85,13 @@ textarea[type=text] {
         color: themed('white');
     } 
 }
+//font awesome icon and menu
+.menu {
+    @include themify($themes){
+        background-color: themed('bars');
+        color: white;
+    } 
+}
 
 .col-xs-6 {
     padding-left:0.5rem !important;
@@ -102,37 +109,3 @@ textarea[type=text] {
         color: themed('white');
     }
 }
-// .menu-bar{
-//     @include themify($themes) {
-//         background-color: themed('bars');
-//         height: 8vh;
-//         position: fixed;
-//         bottom: 0;
-//         left: 0;
-//         right: 0;
-//         z-index: 100;
-        
-//         .menu-bar-toggle{
-//             height: 0;
-//             width: 100%;
-//             position: fixed;
-//             z-index: 100;
-//             bottom: 0;
-//             transition: 0.5s;
-
-//         }
-//         .menu-bar-open{
-//             height: 100%;
-//             padding: 3%;
-//             position: relative;
-    
-//         }
-//         .menu-bar-button{
-//             position: relative;
-//         }
-//     }
-// }
-
-// .profile{
-//     transform: scale(.6,.6);
-// }
