@@ -23,6 +23,7 @@ class AuthVerifierService implements AuthVerifierContract
         if (auth()->attempt($cred) && auth()->user()->rank) {
             return true;
         }
+
         return false;
     }
 }
