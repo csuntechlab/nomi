@@ -109,3 +109,12 @@ textarea[type=text] {
         color: themed('white');
     }
 }
+
+.logo{
+    @include themify($themes){
+        width: 75px;
+        height: 45px;
+        background-image: white;
+
+    }
+}
