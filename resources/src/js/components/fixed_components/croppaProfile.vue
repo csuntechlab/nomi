@@ -5,7 +5,7 @@
         </div>
         <croppa
                 v-model="myCroppa"
-                :prevent-white-space="false"
+                :prevent-white-space="true"
                 :show-remove-button="false"
                 :initial-image="studentImage"
                 :quality="2"

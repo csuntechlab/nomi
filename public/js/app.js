@@ -19665,7 +19665,7 @@ var render = function() {
       _vm._v(" "),
       _c("croppa", {
         attrs: {
-          "prevent-white-space": false,
+          "prevent-white-space": true,
           "show-remove-button": false,
           "initial-image": _vm.studentImage,
           quality: 2
