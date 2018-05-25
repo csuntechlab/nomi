@@ -21682,17 +21682,14 @@ var render = function() {
                     "li",
                     {
                       staticClass: "colorTheme_list_item ",
-                      attrs: {
-                        id: "Cloudy",
-                        name: "cloudyWithAChanceSunflowers"
-                      },
+                      attrs: { id: "Cloudy", name: "Cloudy" },
                       on: {
                         click: function($event) {
-                          _vm.updateTheme("theme-cloudyWithAChanceSunflowers")
+                          _vm.updateTheme("theme-Cloudy")
                         }
                       }
                     },
-                    [_vm._v(" Sunflower Theme")]
+                    [_vm._v(" Cloudy Theme")]
                   )
                 ])
               ])
