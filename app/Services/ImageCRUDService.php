@@ -25,18 +25,7 @@ class ImageCRUDService implements ImageCRUDContract
         }
         $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
         \umask($oldmask);
-        $msg = $id;
-        for ($i = 0; $i < 10; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $id)) {
-                Cache::forget('students:' . $i . ':' . $id);
-                $msg .= "forgot students\n";
-            }
-            if (Cache::has('courses:' . $id)) {
-                Cache::forget('courses:' . $id);
-                $msg .= "forgot courses\n\n";
-            }
-        }
-        return $msg;
+        $this->clearCache($id);
     }
     /** Retrieve image priority
      * @param $student_ids
@@ -54,7 +43,7 @@ class ImageCRUDService implements ImageCRUDContract
             ->whereIn('user_id', $array)
             ->get();
         foreach ($users as $user) {
-            if (null !== $user->imagePriority) {
+            if ($user->imagePriority && $user->imagePriority->user_id == auth()->user()->user_id) {
                 \array_push($out, $user->imagePriority->image_priority);
             } else {
                 \array_push($out, 'likeness');
@@ -66,16 +55,14 @@ class ImageCRUDService implements ImageCRUDContract
     public function updatePriority()
     {
         $facultyID = request()->faculty_id;
-        $priority = ImagePriority::where('student_id', request()->student_id)->first();
-        if ($priority !== null) {
-            $priority->image_priority = request()->image_priority;
-            $priority->save();
-        } else {
-            ImagePriority::create([
-                'image_priority' => request()->image_priority,
-                'student_id' => request()->student_id,
-            ]);
-        }
+        $priority = ImagePriority::updateOrCreate(
+            ['user_id' => $facultyID, 'student_id' => request()->student_id],
+            ['image_priority' => request()->image_priority]
+        );
+        $this->clearCache($facultyID);
+    }
+    private function clearCache($facultyID)
+    {
         $msg = $facultyID;
         for ($i = 0; $i < 10; ++$i) {
             if (Cache::has('students:' . $i . ':' . $facultyID)) {
