@@ -1,130 +1,61 @@
-#menu-open-close {
-  height: 0;
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  bottom: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 2rem;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
-}
-
-a.faculty-links:link, a.faculty-links:active, a.faculty-links:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  margin-bottom: 0;
-  cursor: pointer;
-  padding: 0.5%;
-  text-align: center;
-}
-
-a.faculty-links:hover {
-  color: #4F9DA3;
-}
-
-.menu_container {
-  height: 100%;
-  padding: 3%;
-  position: relative;
-}
-
-.menu_button {
-  position: relative;
-}
-
-.menu_selections {
-  position: relative;
-}
-
-.menu_bar {
-  height: 8vh;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-}
-
-.nav_title {
-  color: white;
-}
-
-.faculty_image {
-  height: 25vh;
-  width: 25vh;
-}
-
-.menu__compensation {
-  height: 30px;
-}
-
-.sidebar {
-  height: 0%;
-  width: 100vw;
-  position: fixed;
-  z-index: 100;
-  bottom: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-a.faculty-name:link, a.faculty-name:active, a.faculty-name:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center;
-  font-weight: bold;
-}
-
-a.faculty-links:link, a.faculty-links:active, a.faculty-links:visited {
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center;
-}
-
-a.faculty-links:hover {
-  color: #4F9DA3;
-}
-
-.sidebar_container {
-  height: 100%;
-  padding: 5%;
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  bottom: 0;
-  right: 49%;
-}
-
 .menu {
-  position: relative;
+  z-index: 1;
+  background-color: #111;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  height: 8%;
+  width: 100%;
 }
 
-.faculty_image {
-  size: 50%;
+.menu_links {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5vh;
+  font-family: sans-serif;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  padding: .75% .75% .75% .75%;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.faculty_links {
+  color: white;
+  text-decoration: none;
+  font-size: 3vh;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 1%;
+  text-align: center;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #f1f1f1;
+}
+
+.extra_padding {
+  padding-bottom: 5%;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 0;
+}
+
+.height_fix {
+  height: 30vh;
+  display: inline-block;
 }
 
 .theme-main body {
@@ -370,6 +301,26 @@ textarea[type=text]:focus {
   border-bottom: 5px solid #D00D2D;
 }
 
+.theme-main .menu {
+  background-color: #0F1821;
+  color: white;
+}
+
+.theme-bluesTheme .menu {
+  background-color: #0D3753;
+  color: white;
+}
+
+.theme-cloudyWithAChanceSunflowers .menu {
+  background-color: #747474;
+  color: white;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .menu {
+  background-color: #D00D2D;
+  color: white;
+}
+
 .col-xs-6 {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
@@ -389,6 +340,30 @@ textarea[type=text]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .btn {
   background-color: white;
+}
+
+.theme-main .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-bluesTheme .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-cloudyWithAChanceSunflowers .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .logo {
+  width: 75px;
+  height: 45px;
+  background-image: white;
 }
 
 .theme-main .makeBlue {
@@ -527,17 +502,6 @@ textarea[type=text]:focus {
   margin-top: 7%;
 }
 
-.matchText {
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center;
-}
-
 .card {
   height: 60vw;
   padding: 5px !important;
@@ -550,6 +514,12 @@ textarea[type=text]:focus {
 .makeWhite {
   -webkit-filter: grayScale(0%);
           filter: grayScale(0%);
+  -webkit-filter: grayScale(100%);
+          filter: grayScale(100%);
+}
+
+.modal_exit {
+  color: black;
 }
 
 .theme-main .underlineStyling {

@@ -54,6 +54,7 @@ class AuthVerifierServiceTest extends TestCase
     public function isVerified_returns_false_with_no_user_rank()
     {
         $user = new \stdClass();
+        $user->rank = null;
 
         Auth::shouldReceive('attempt')
             ->once()

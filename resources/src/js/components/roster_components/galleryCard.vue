@@ -8,8 +8,8 @@
                         <div class="card-title font-style">
                             <div class="panel-heading align-center">
                                 <div class="type--center">
-                                    <router-link class=" textOverflow" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                                        {{display_name}}
+                                    <router-link class="textOverflow" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                                        <h4>{{display_name}}</h4>
                                     </router-link>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
 
         computed: {
             display_name: function () {
-                return this.student.first_name + " " + this.student.last_name;
+                return this.student.first_name + " " + this.student.last_name[0] + ".";
             },
 
             email_uri : function () {
