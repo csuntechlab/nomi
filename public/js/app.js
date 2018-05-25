@@ -23191,7 +23191,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: " textOverflow",
+                          staticClass: "textOverflow",
                           attrs: {
                             to:
                               "/profile/" +
@@ -23200,13 +23200,7 @@ var render = function() {
                               _vm.email_uri
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(_vm.display_name) +
-                              "\n                                "
-                          )
-                        ]
+                        [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
                       )
                     ],
                     1
