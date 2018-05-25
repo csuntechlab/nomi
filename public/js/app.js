@@ -22017,7 +22017,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "img--circle col-md-12 col-xs-12",
+      staticClass: "clearPadding img--circle col-md-12 col-xs-12",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])
@@ -22294,7 +22294,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22339,8 +22338,6 @@ var render = function() {
         on: { input: _vm.handleSelect }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Mode Select")]),
-        _vm._v(" "),
         _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
         _vm._v(" "),
         _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
@@ -23092,14 +23089,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -23160,91 +23149,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.showMe
-    ? _c("div", [
-        _c("div", [
-          _c("div", { staticClass: "col-xs-6" }, [
-            _c("div", { staticClass: "panel grid-image card" }, [
-              _c(
-                "div",
-                { staticClass: "panel__content" },
-                [
-                  _c("profile-picture", { attrs: { image: _vm.image } }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-title font-style" }, [
-                    _c("div", { staticClass: "panel-heading align-center" }, [
-                      _c(
-                        "div",
-                        { staticClass: "type--center" },
-                        [
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "textOverflow",
-                              attrs: {
-                                to:
-                                  "/profile/" +
-                                  this.$route.params.id +
-                                  "/" +
-                                  _vm.email_uri
-                              }
-                            },
-                            [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
-                          )
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "type--center editButton" }, [
-                      _c(
-                        "button",
-                        {
-                          on: {
-                            click: function($event) {
-                              _vm.showModal = true
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-edit fa-2x" })]
-                      )
-                    ])
-                  ])
-                ],
-                1
-              )
-            ])
-          ])
-        ]),
+  return _c("div", [
+    _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
+      _c("div", { staticClass: "editButton" }, [
+        _c("i", {
+          staticClass: "fa fa-edit fa-2x",
+          on: {
+            click: function($event) {
+              _vm.showModal = true
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel" }, [
+        _c(
+          "div",
+          { staticClass: "panel__content" },
+          [_c("profile-picture", { attrs: { image: _vm.image } })],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
+          { staticClass: "panel__footer cardText clearPadding" },
           [
-            _vm.showModal
-              ? _c("modal", { on: { close: _vm.setImgUrl } }, [
-                  _c("div", { attrs: { slot: "header" }, slot: "header" }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { attrs: { slot: "body" }, slot: "body" },
-                    [
-                      _c("croppa-profile", {
-                        attrs: {
-                          studentName: _vm.display_name,
-                          emailURI: _vm.email_uri,
-                          studentImage: _vm.image
-                        }
-                      })
-                    ],
-                    1
-                  )
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+                }
+              },
+              [
+                _c("div", { staticClass: "hello type--center" }, [
+                  _vm._v(_vm._s(_vm.display_name))
                 ])
-              : _vm._e()
+              ]
+            )
           ],
           1
         )
       ])
-    : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      [
+        _vm.showModal
+          ? _c(
+              "modal",
+              {
+                on: {
+                  close: function($event) {
+                    _vm.showModal = false
+                  }
+                }
+              },
+              [
+                _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { attrs: { slot: "body" }, slot: "body" },
+                  [
+                    _c("croppa-profile", {
+                      attrs: {
+                        emailURI: _vm.email_uri,
+                        studentImage: _vm.image
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]
+            )
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23906,7 +23890,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23960,8 +23943,6 @@ var render = function() {
             on: { input: _vm.handleSelect }
           },
           [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Sorting")]),
-            _vm._v(" "),
             _c("option", { attrs: { value: "1" } }, [
               _vm._v("First Name Descending")
             ]),
