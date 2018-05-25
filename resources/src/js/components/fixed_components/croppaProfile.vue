@@ -1,11 +1,11 @@
 <template>
     <div>
         <div class="pull-right textOverflow">
-            <h3>{{studentProfile.displayName}}</h3>
+            <h3>{{studentProfile.displayName || studentName}}</h3>
         </div>
         <croppa
                 v-model="myCroppa"
-                :prevent-white-space="false"
+                :prevent-white-space="true"
                 :show-remove-button="false"
                 :initial-image="studentImage"
                 :quality="2"
@@ -26,7 +26,7 @@
     export default {
         name: "croppa-profile",
 
-        props:['studentImage', 'emailURI'],
+        props:['studentImage', 'emailURI', 'studentName'],
 
         data: function() {
             return{
@@ -53,8 +53,6 @@
                     return;
                 }
 
-                this.imgUrl = url;
-
                 this.myCroppa.generateBlob(
                     blob => { this.objectUrl = URL.createObjectURL(blob); },
                     'image/jpeg',
@@ -70,20 +68,19 @@
                 } else {
                     data.append('uri', this.studentProfile.emailURI);
                 }
-                
+
                 axios.post('api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 }).then(() => {
-                    this.$store.dispatch('getData')
+                    this.$store.dispatch('getData');
                 }).catch(e => {
-                    console.log(e)
+                    url = null;
+                    console.log(e);
                 });
-                this.$parent.$emit('close');
-                this.reset;
-                location.reload(true);
 
+                this.$parent.$emit('close', url);
             },
 
             styleCanvas: function() {
@@ -93,6 +90,7 @@
                 elm.style.height="100%";
                 elm.style.borderRadius="50%";
             },
+
             chooseImage: function() {
                 this.myCroppa.chooseFile();
                 this.switch = false;
