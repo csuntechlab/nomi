@@ -23,7 +23,7 @@
                     <router-link class="menu_links" to="/">Courses</router-link>
                     <theme-selector></theme-selector>
                     <router-link class="menu_links" to="/about">About</router-link>
-                    <a class="menu_links" href= "/logout" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
+                    <a class="menu_links" :href= "this.url + '/logout'" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
                 </div>
         </div>
     </div>
@@ -37,6 +37,7 @@ export default {
 
    data: function () {
             return {
+                url: '',
                 show: false
             }
     },
@@ -44,7 +45,10 @@ export default {
   computed: {
     ...mapGetters(["courses", "facultyMember", "facultyFullName", "menuShow"])
   },
-
+  created: function () {
+    console.log(document.querySelector('meta[name=app-url]').content);
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
   methods: {
       openMenu: function () {
           document.getElementById("myMenu").style.height = "66%";
