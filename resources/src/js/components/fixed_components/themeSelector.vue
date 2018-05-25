@@ -12,11 +12,10 @@
                 <br>
                 <br>
                 <ul class="list list--arrows list--hover">
-                    <li @click="updateTheme('theme-main')" class="list__item colorTheme_list_item " name="navy"> Navy Theme</li>
-                    <li @click="updateTheme('theme-bluesTheme')" class="list__item colorTheme_list_item " name="bluesTheme"> Blue Theme</li>
-                    <li @click="updateTheme('theme-cloudyWithAChanceSunflowers')" class="list__item colorTheme_list_item " name="cloudyWithAChanceSunflowers"> Sunflower Theme</li>
-                    <li @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="list__item colorTheme_list_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</li>
-                </ul>
+                    <li id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="colorTheme_list_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</li>
+                    <li id="Navy" @click="updateTheme('theme-main')" class="colorTheme_list_item " name="navy"> Navy Theme</li>
+                    <li id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_list_item " name="bluesTheme"> Blue Theme</li>
+                    <li id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_list_item " name="Cloudy"> Cloudy Theme</li>                </ul>
             </div>
         </modal>
     </div>

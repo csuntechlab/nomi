@@ -18,7 +18,7 @@
                         >
                             <slide class="slidewrap">
                                 <div class="imagewrap">
-                                    <profile-picture :image="studentProfile.images['likeness']"></profile-picture>
+                                    <profile-picture :image="image"></profile-picture>
 
                                     <div class="type--center">
                                         <image-handler image_type="likeness"></image-handler>
@@ -102,8 +102,8 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-            <modal v-if="showModal" @close="showModal = false">
+            </div>
+            <modal v-if="showModal" @close="setImgUrl">
                 <div slot="header"></div>
                 <div slot="body">
                     <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
@@ -126,7 +126,8 @@
             return {
                 unsavedChanges: false,
                 noteSaved: false,
-                showModal: false
+                showModal: false,
+                imgUrl: null
             }
         },
 
@@ -168,7 +169,15 @@
 
             ...mapState({
                 sp_notes: state => state.profile.studentProfile.notes
-            })
+            }),
+
+            image: function() {
+                if (this.imgUrl == null) {
+                    return this.studentProfile.images['likeness'];
+                } else {
+                    return this.imgUrl;
+                }
+            }
         },
 
         methods: {
@@ -191,6 +200,11 @@
             croppaToggle(){
                 this.showcroppa = !this.showcroppa;
             },
+
+            setImgUrl (url) {
+                this.showModal = false;
+                this.imgUrl = url;
+            }
         }
     }
 </script>

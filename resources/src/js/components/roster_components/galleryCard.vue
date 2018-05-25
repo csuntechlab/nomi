@@ -41,7 +41,8 @@
                 errors: [],
                 myCroppa: null,
                 imgUrl: null,
-                showModal: false
+                showModal: false,
+                showMe: true
             }
         },
         components: {
@@ -70,53 +71,9 @@
         },
 
         methods: {
-            confirmImage: function(email){
-                let url = this.myCroppa.generateDataUrl();
-
-                if (!url) {
-                    alert('no image');
-                    return;
-                }
-
+            setImgUrl (url) {
+                this.showModal = false;
                 this.imgUrl = url;
-
-                this.myCroppa.generateBlob(
-                    blob => { this.objectUrl = URL.createObjectURL(blob); },
-                    'image/jpeg',
-                    .8
-                );
-
-                let data = new FormData();
-                data.append('media', url);
-                data.append('email', email);
-                console.log(url);
-                axios.post('api/upload', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                    .then(response => {
-                        console.log(response);
-                    })
-                    .catch(e => {
-                        console.log(e)
-                    });
-            },
-
-            styleCanvas: function() {
-                let elm = this.myCroppa.getCanvas();
-
-                elm.style.width="100%";
-                elm.style.height="100%";
-                elm.style.borderRadius="50%";
-            },
-
-            toggleCropper: function() {
-                this.myCroppa.disabled = false;
-            },
-
-            chooseImage: function() {
-                this.myCroppa.chooseFile();
             }
         }
     }
