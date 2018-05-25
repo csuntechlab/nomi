@@ -512,6 +512,8 @@ textarea[type=text]:focus {
 }
 
 .makeWhite {
+  -webkit-filter: grayScale(0%);
+          filter: grayScale(0%);
   -webkit-filter: grayScale(100%);
           filter: grayScale(100%);
 }
@@ -646,4 +648,3 @@ textarea[type=text]:focus {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-
