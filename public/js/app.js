@@ -21319,7 +21319,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "primary-nav__brand makeWhite" }, [
+    return _c("div", [
+      _c("img", {
+        staticClass: "logo",
+        attrs: { src: "/images/csun_logo.svg", alt: "CSUN Logo" }
+      }),
+      _vm._v(" "),
       _c("span", { staticClass: "sr-only" }, [
         _vm._v("California State University, Northridge (CSUN)")
       ])
@@ -22095,7 +22100,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -22148,6 +22153,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "loading-button",
@@ -22178,7 +22186,10 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Log In")]
+      [
+        _c("i", { staticClass: "fa fa-sign-in-alt" }),
+        _vm._v("\n        Log In\n    ")
+      ]
     ),
     _vm._v(" "),
     _vm.ok
@@ -23095,7 +23106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     computed: {
         display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name;
+            return this.student.first_name + " " + this.student.last_name[0] + ".";
         },
 
         email_uri: function email_uri() {
@@ -23188,7 +23199,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: " textOverflow",
+                          staticClass: "textOverflow",
                           attrs: {
                             to:
                               "/profile/" +
@@ -23197,13 +23208,7 @@ var render = function() {
                               _vm.email_uri
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(_vm.display_name) +
-                              "\n                                "
-                          )
-                        ]
+                        [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
                       )
                     ],
                     1

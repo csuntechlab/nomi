@@ -95,6 +95,7 @@
 }
 
 .makeWhite{
+   filter: grayScale(0%);
    filter: grayScale(100%);
 }
 .modal_exit{
