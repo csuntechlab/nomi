@@ -23527,13 +23527,16 @@ var render = function() {
   return _c(
     "router-link",
     {
-      staticClass: "panel col-xs-12 col-md-12 col-lg-12",
+      staticClass: "clearPadding panel col-xs-12 col-md-12 col-lg-12",
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
       _c(
         "div",
-        { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" },
+        {
+          staticClass:
+            "clearPadding panel__content col-xs-12 col-md-12 col-lg-12"
+        },
         [
           _c(
             "div",
