@@ -19351,7 +19351,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             unsavedChanges: false,
             noteSaved: false,
-            showModal: false
+            showModal: false,
+            imgUrl: null
         };
     },
 
@@ -19386,7 +19387,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         sp_notes: function sp_notes(state) {
             return state.profile.studentProfile.notes;
         }
-    })),
+    }), {
+
+        image: function image() {
+            if (this.imgUrl == null) {
+                return this.studentProfile.images['likeness'];
+            } else {
+                return this.imgUrl;
+            }
+        }
+    }),
 
     methods: {
         updateNotes: function updateNotes(e) {
@@ -19407,6 +19417,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         croppaToggle: function croppaToggle() {
             this.showcroppa = !this.showcroppa;
+        },
+        setImgUrl: function setImgUrl(url) {
+            this.showModal = false;
+            this.imgUrl = url;
         }
     }
 });
@@ -19565,7 +19579,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
 
-    props: ['studentImage', 'emailURI'],
+    props: ['studentImage', 'emailURI', 'studentName'],
 
     data: function data() {
         return {
@@ -19589,8 +19603,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return;
             }
 
-            this.imgUrl = url;
-
             this.myCroppa.generateBlob(function (blob) {
                 _this.objectUrl = URL.createObjectURL(blob);
             }, 'image/jpeg', .8);
@@ -19612,11 +19624,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }).then(function () {
                 _this.$store.dispatch('getData');
             }).catch(function (e) {
+                url = null;
                 console.log(e);
             });
-            this.$parent.$emit('close');
-            this.reset;
-            location.reload(true);
+
+            this.$parent.$emit('close', url);
         },
 
         styleCanvas: function styleCanvas() {
@@ -19626,6 +19638,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             elm.style.height = "100%";
             elm.style.borderRadius = "50%";
         },
+
         chooseImage: function chooseImage() {
             this.myCroppa.chooseFile();
             this.switch = false;
@@ -19645,7 +19658,9 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "pull-right textOverflow" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.studentProfile.displayName))])
+        _c("h3", [
+          _vm._v(_vm._s(_vm.studentProfile.displayName || _vm.studentName))
+        ])
       ]),
       _vm._v(" "),
       _c("croppa", {
@@ -19724,27 +19739,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "modal",
+    name: "modal",
 
-  data: function data() {
-    return {
-      showModal: false
-    };
-  }
+    data: function data() {
+        return {
+            showModal: false
+        };
+    }
 });
 
 /***/ }),
@@ -19841,9 +19845,7 @@ var render = function() {
                             { staticClass: "imagewrap" },
                             [
                               _c("profile-picture", {
-                                attrs: {
-                                  image: _vm.studentProfile.images["likeness"]
-                                }
+                                attrs: { image: _vm.image }
                               }),
                               _vm._v(" "),
                               _c(
@@ -19945,32 +19947,22 @@ var render = function() {
             ),
             _vm._v(" "),
             _vm.showModal
-              ? _c(
-                  "modal",
-                  {
-                    on: {
-                      close: function($event) {
-                        _vm.showModal = false
-                      }
-                    }
-                  },
-                  [
-                    _c("div", { attrs: { slot: "header" }, slot: "header" }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { attrs: { slot: "body" }, slot: "body" },
-                      [
-                        _c("croppa-profile", {
-                          attrs: {
-                            studentImage: _vm.studentProfile.images["likeness"]
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ]
-                )
+              ? _c("modal", { on: { close: _vm.setImgUrl } }, [
+                  _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { attrs: { slot: "body" }, slot: "body" },
+                    [
+                      _c("croppa-profile", {
+                        attrs: {
+                          studentImage: _vm.studentProfile.images["likeness"]
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
               : _vm._e()
           ],
           1
@@ -23123,7 +23115,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             errors: [],
             myCroppa: null,
             imgUrl: null,
-            showModal: false
+            showModal: false,
+            showMe: true
         };
     },
     components: {
@@ -23152,51 +23145,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        confirmImage: function confirmImage(email) {
-            var _this = this;
-
-            var url = this.myCroppa.generateDataUrl();
-
-            if (!url) {
-                alert('no image');
-                return;
-            }
-
+        setImgUrl: function setImgUrl(url) {
+            this.showModal = false;
             this.imgUrl = url;
-
-            this.myCroppa.generateBlob(function (blob) {
-                _this.objectUrl = URL.createObjectURL(blob);
-            }, 'image/jpeg', .8);
-
-            var data = new FormData();
-            data.append('media', url);
-            data.append('email', email);
-            console.log(url);
-            axios.post('api/upload', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (e) {
-                console.log(e);
-            });
-        },
-
-        styleCanvas: function styleCanvas() {
-            var elm = this.myCroppa.getCanvas();
-
-            elm.style.width = "100%";
-            elm.style.height = "100%";
-            elm.style.borderRadius = "50%";
-        },
-
-        toggleCropper: function toggleCropper() {
-            this.myCroppa.disabled = false;
-        },
-
-        chooseImage: function chooseImage() {
-            this.myCroppa.chooseFile();
         }
     }
 });
@@ -23209,98 +23160,91 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", [
-      _c("div", { staticClass: "col-xs-6" }, [
-        _c("div", { staticClass: "panel grid-image card" }, [
-          _c(
-            "div",
-            { staticClass: "panel__content" },
-            [
-              _c("profile-picture", { attrs: { image: _vm.image } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-title font-style" }, [
-                _c("div", { staticClass: "panel-heading align-center" }, [
-                  _c(
-                    "div",
-                    { staticClass: "type--center" },
-                    [
+  return _vm.showMe
+    ? _c("div", [
+        _c("div", [
+          _c("div", { staticClass: "col-xs-6" }, [
+            _c("div", { staticClass: "panel grid-image card" }, [
+              _c(
+                "div",
+                { staticClass: "panel__content" },
+                [
+                  _c("profile-picture", { attrs: { image: _vm.image } }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-title font-style" }, [
+                    _c("div", { staticClass: "panel-heading align-center" }, [
                       _c(
-                        "router-link",
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "textOverflow",
+                              attrs: {
+                                to:
+                                  "/profile/" +
+                                  this.$route.params.id +
+                                  "/" +
+                                  _vm.email_uri
+                              }
+                            },
+                            [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
+                          )
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "type--center editButton" }, [
+                      _c(
+                        "button",
                         {
-                          staticClass: "textOverflow",
-                          attrs: {
-                            to:
-                              "/profile/" +
-                              this.$route.params.id +
-                              "/" +
-                              _vm.email_uri
+                          on: {
+                            click: function($event) {
+                              _vm.showModal = true
+                            }
                           }
                         },
-                        [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
+                        [_c("i", { staticClass: "fa fa-edit fa-2x" })]
                       )
+                    ])
+                  ])
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _vm.showModal
+              ? _c("modal", { on: { close: _vm.setImgUrl } }, [
+                  _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { attrs: { slot: "body" }, slot: "body" },
+                    [
+                      _c("croppa-profile", {
+                        attrs: {
+                          studentName: _vm.display_name,
+                          emailURI: _vm.email_uri,
+                          studentImage: _vm.image
+                        }
+                      })
                     ],
                     1
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "type--center editButton" }, [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.showModal = true
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
-                  )
                 ])
-              ])
-            ],
-            1
-          )
-        ])
+              : _vm._e()
+          ],
+          1
+        )
       ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      [
-        _vm.showModal
-          ? _c(
-              "modal",
-              {
-                on: {
-                  close: function($event) {
-                    _vm.showModal = false
-                  }
-                }
-              },
-              [
-                _c("div", { attrs: { slot: "header" }, slot: "header" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { attrs: { slot: "body" }, slot: "body" },
-                  [
-                    _c("croppa-profile", {
-                      attrs: {
-                        emailURI: _vm.email_uri,
-                        studentImage: _vm.image
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]
-            )
-          : _vm._e()
-      ],
-      1
-    )
-  ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
