@@ -2,6 +2,11 @@
     <div>
         <div>
             <div class="col-xs-6">
+                <div class="type--center editButton">
+                    <button @click="showModal = true">
+                        <i class="fa fa-edit fa-1x"></i>
+                    </button>
+                </div>
                 <div class="panel grid-image card">
                     <div class="panel__content">
                         <profile-picture :image="image"></profile-picture>
@@ -12,11 +17,6 @@
                                         <h4>{{display_name}}</h4>
                                     </router-link>
                                 </div>
-                            </div>
-                            <div class="type--center editButton">
-                                <button @click="showModal = true">
-                                <i class="fa fa-edit fa-1x"></i>
-                                </button>
                             </div>
                         </div>
                     </div>

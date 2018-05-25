@@ -85,6 +85,7 @@ textarea[type=text] {
         color: themed('white');
     } 
 }
+
 //font awesome icon and menu
 .menu {
     @include themify($themes){

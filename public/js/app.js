@@ -23183,6 +23183,20 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _c("div", { staticClass: "col-xs-6" }, [
+        _c("div", { staticClass: "type--center editButton" }, [
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  _vm.showModal = true
+                }
+              }
+            },
+            [_c("i", { staticClass: "fa fa-edit fa-1x" })]
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "panel grid-image card" }, [
           _c(
             "div",
@@ -23212,20 +23226,6 @@ var render = function() {
                       )
                     ],
                     1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "type--center editButton" }, [
-                  _c(
-                    "button",
-                    {
-                      on: {
-                        click: function($event) {
-                          _vm.showModal = true
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-edit fa-1x" })]
                   )
                 ])
               ])
