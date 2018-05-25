@@ -52,7 +52,15 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
         $class = $this->getCourses($term)[$course];
 
-        return $client->get(env('ROSTER_URL') . '/terms' . '/' . $class->term . '/classes' . '/' . $class->class_number, ['verify'=>false]);
+        return env('APP_ENV') == 'production' ?
+            $client->get(
+                env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
+            )
+            : $client->get(
+                env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                ['verify' => false]
+            );
     }
 
     /**
@@ -68,7 +76,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
             . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0],
-            ['verify'=>false]
+            ['verify' => false]
         )->getBody()->getContents();
     }
 
@@ -79,7 +87,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         return $client->get(
             'https://api.metalab.csun.edu/directory/api/members?email='
             . \str_replace('nr_', '', $email),
-            ['verify'=>false]
+            ['verify' => false]
         )->getBody()->getContents();
     }
 }
