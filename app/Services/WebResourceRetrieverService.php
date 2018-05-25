@@ -6,6 +6,8 @@ namespace App\Services;
 
 use App\Contracts\WebResourceRetrieverContract;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7;
 
 class WebResourceRetrieverService implements WebResourceRetrieverContract
 {
@@ -52,15 +54,22 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
         $class = $this->getCourses($term)[$course];
 
-        return env('APP_ENV') == 'production' ?
-            $client->get(
-                env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
-                ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
-            )
-            : $client->get(
-                env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
-                ['verify' => false]
-            );
+        try {
+            return env('APP_ENV') == 'production' ?
+                $client->get(
+                    env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                    ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
+                )
+                : $client->get(
+                    env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                    ['verify' => false]
+                );
+        } catch (RequestException $e) {
+            echo Psr7\str($e->getRequest());
+            if ($e->hasResponse()) {
+                echo Psr7\str($e->getResponse());
+            }
+        }
     }
 
     /**
