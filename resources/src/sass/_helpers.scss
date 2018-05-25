@@ -49,6 +49,7 @@
 .colorTheme_list_item {
   padding-top: 5%;
   padding-bottom: 5%;
+  color: white;
 }
 .student_list_name {
   font-family: Arial, Helvetica, sans-serif;
@@ -82,16 +83,6 @@
 .margin_between_containers{
   margin-top: 7%;
 }
-.matchText{
-  color: white;
-  text-decoration: none;
-  font-size: 125%;
-  font-family: sans-serif;
-  margin: 0;
-  cursor: pointer;
-  padding: 1%;
-  text-align: center
-}
 
 .card {
   height: 60vw;
@@ -103,5 +94,9 @@
 }
 
 .makeWhite{
+   filter: grayScale(0%);
    filter: grayScale(100%);
+}
+.modal_exit{
+  color: black;
 }

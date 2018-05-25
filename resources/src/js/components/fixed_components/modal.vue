@@ -6,7 +6,7 @@
           
 
           <div class="modal-header">
-            <div class="fa fa-times-circle fa-3x pull-right" @click="$emit('close')">
+            <div class="fa fa-times-circle fa-3x pull-right modal_exit" @click="$emit('close')">
             
           </div>
             

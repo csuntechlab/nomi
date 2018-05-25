@@ -20,13 +20,8 @@ class AuthVerifierService implements AuthVerifierContract
      */
     public function isVerified(array $cred): bool
     {
-        if (auth()->attempt($cred)) {
-            $user = auth()->user();
-            if (\property_exists($user, 'rank') && $user->rank != null) {
-                return true;
-            }
-
-            return false;
+        if (auth()->attempt($cred) && auth()->user()->rank) {
+            return true;
         }
 
         return false;

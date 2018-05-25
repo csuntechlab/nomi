@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-        <h1>Log In</h1>
+        <h1>Faculty Log In</h1>
         Username
         {{ Form::text('username') }}
         <br>
