@@ -21319,7 +21319,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "primary-nav__brand makeWhite" }, [
+    return _c("div", [
+      _c("img", {
+        staticClass: "logo",
+        attrs: { src: "/images/csun_logo.svg", alt: "CSUN Logo" }
+      }),
+      _vm._v(" "),
       _c("span", { staticClass: "sr-only" }, [
         _vm._v("California State University, Northridge (CSUN)")
       ])
@@ -21553,7 +21558,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -21632,8 +21636,25 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "navy" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: {
+                        id: "Matador",
+                        name: "OnceAMatadorAlwaysAMatador"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
+                        }
+                      }
+                    },
+                    [_vm._v(" Matador Theme")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "colorTheme_list_item ",
+                      attrs: { id: "Navy", name: "navy" },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-main")
@@ -21646,8 +21667,8 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "bluesTheme" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: { id: "Blues", name: "bluesTheme" },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-bluesTheme")
@@ -21660,8 +21681,11 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "cloudyWithAChanceSunflowers" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: {
+                        id: "Cloudy",
+                        name: "cloudyWithAChanceSunflowers"
+                      },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-cloudyWithAChanceSunflowers")
@@ -21669,20 +21693,6 @@ var render = function() {
                       }
                     },
                     [_vm._v(" Sunflower Theme")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "OnceAMatadorAlwaysAMatador" },
-                      on: {
-                        click: function($event) {
-                          _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
-                        }
-                      }
-                    },
-                    [_vm._v(" Matador Theme")]
                   )
                 ])
               ])
@@ -22095,7 +22105,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -22148,6 +22158,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "loading-button",
@@ -22178,7 +22191,10 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Log In")]
+      [
+        _c("i", { staticClass: "fa fa-sign-in-alt" }),
+        _vm._v("\n        Log In\n    ")
+      ]
     ),
     _vm._v(" "),
     _vm.ok
@@ -23511,13 +23527,16 @@ var render = function() {
   return _c(
     "router-link",
     {
-      staticClass: "panel col-xs-12 col-md-12 col-lg-12",
+      staticClass: "clearPadding panel col-xs-12 col-md-12 col-lg-12",
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
       _c(
         "div",
-        { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" },
+        {
+          staticClass:
+            "clearPadding panel__content col-xs-12 col-md-12 col-lg-12"
+        },
         [
           _c(
             "div",

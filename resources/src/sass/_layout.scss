@@ -109,3 +109,28 @@ textarea[type=text] {
         color: themed('white');
     }
 }
+
+.logo{
+    @include themify($themes){
+        width: 75px;
+        height: 45px;
+        background-image: white;
+
+    }
+}
+//theme colors in list
+#Matador{
+    background-color: #d00d2d
+}
+
+#Navy{
+    background-color: #0F1821
+}
+
+#Blues{
+    background-color: #0D3753
+}
+
+#Cloudy{
+    background-color: #747474
+}
