@@ -21251,7 +21251,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(169)
 /* template */
 var __vue_template__ = __webpack_require__(94)
 /* template functional */
@@ -21305,7 +21305,16 @@ var render = function() {
     [
       _c("back-button"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", [
+        _c("img", {
+          staticClass: "logo",
+          attrs: { src: this.url + "/images/csun_logo.svg", alt: "CSUN Logo" }
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [
+          _vm._v("California State University, Northridge (CSUN)")
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "primary-nav__sub-brand subbrand_center" }, [
         _vm._v("NOMI    ")
@@ -21314,23 +21323,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        staticClass: "logo",
-        attrs: { src: "/images/csun_logo.svg", alt: "CSUN Logo" }
-      }),
-      _vm._v(" "),
-      _c("span", { staticClass: "sr-only" }, [
-        _vm._v("California State University, Northridge (CSUN)")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -21507,12 +21500,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
+            url: '',
             show: false
         };
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["courses", "facultyMember", "facultyFullName", "menuShow"])),
-
+    created: function created() {
+        console.log(document.querySelector('meta[name=app-url]').content);
+        this.url = document.querySelector('meta[name=app-url]').content;
+    },
     methods: {
         openMenu: function openMenu() {
             document.getElementById("myMenu").style.height = "66%";
@@ -21785,7 +21782,7 @@ var render = function() {
             "a",
             {
               staticClass: "menu_links",
-              attrs: { href: "/logout", title: "Logout" },
+              attrs: { href: this.url + "/logout", title: "Logout" },
               on: {
                 click: function($event) {
                   _vm.$store.dispatch("hideBackButton")
@@ -23533,10 +23530,7 @@ var render = function() {
     [
       _c(
         "div",
-        {
-          staticClass:
-            "clearPadding panel__content col-xs-12 col-md-12 col-lg-12"
-        },
+        { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" },
         [
           _c(
             "div",
@@ -24519,6 +24513,37 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            url: ''
+        };
+    },
+    created: function created() {
+        this.url = document.querySelector('meta[name=app-url]').content;
+    }
+});
 
 /***/ })
 /******/ ]);
