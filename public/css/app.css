@@ -366,6 +366,22 @@ textarea[type=text]:focus {
   background-image: white;
 }
 
+#Matador {
+  background-color: #d00d2d;
+}
+
+#Navy {
+  background-color: #0F1821;
+}
+
+#Blues {
+  background-color: #0D3753;
+}
+
+#Cloudy {
+  background-color: #747474;
+}
+
 .theme-main .makeBlue {
   background-color: #0F1821;
 }
@@ -465,6 +481,7 @@ textarea[type=text]:focus {
 .colorTheme_list_item {
   padding-top: 5%;
   padding-bottom: 5%;
+  color: white;
 }
 
 .student_list_name {

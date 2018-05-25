@@ -21558,7 +21558,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -21637,8 +21636,25 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "navy" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: {
+                        id: "Matador",
+                        name: "OnceAMatadorAlwaysAMatador"
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
+                        }
+                      }
+                    },
+                    [_vm._v(" Matador Theme")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    {
+                      staticClass: "colorTheme_list_item ",
+                      attrs: { id: "Navy", name: "navy" },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-main")
@@ -21651,8 +21667,8 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "bluesTheme" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: { id: "Blues", name: "bluesTheme" },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-bluesTheme")
@@ -21665,8 +21681,11 @@ var render = function() {
                   _c(
                     "li",
                     {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "cloudyWithAChanceSunflowers" },
+                      staticClass: "colorTheme_list_item ",
+                      attrs: {
+                        id: "Cloudy",
+                        name: "cloudyWithAChanceSunflowers"
+                      },
                       on: {
                         click: function($event) {
                           _vm.updateTheme("theme-cloudyWithAChanceSunflowers")
@@ -21674,20 +21693,6 @@ var render = function() {
                       }
                     },
                     [_vm._v(" Sunflower Theme")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    {
-                      staticClass: "list__item colorTheme_list_item ",
-                      attrs: { name: "OnceAMatadorAlwaysAMatador" },
-                      on: {
-                        click: function($event) {
-                          _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
-                        }
-                      }
-                    },
-                    [_vm._v(" Matador Theme")]
                   )
                 ])
               ])
