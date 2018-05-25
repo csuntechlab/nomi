@@ -1,4 +1,14 @@
 export default {
+    GET_SETTINGS (state) {
+        axios.get('get_settings')
+            .then(response =>{
+                state.themeName = response.data.theme.theme;
+                document.getElementById("mainBody").className = state.themeName;
+            }).catch(e => {
+                state.errors = e.response.data.message;
+            });
+    },
+
     GET_DATA (state) {
         function capitalize(name) {
             return name.charAt(0).toUpperCase() + name.substr(1);
@@ -14,15 +24,7 @@ export default {
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
 
-                axios.get('get_settings')
-                    .then(response =>{
-                        state.themeName = response.data.theme.theme;
-                        document.getElementById("mainBody").className = state.themeName;
-                    }).catch(e => {
-                        state.errors = e.response.data.message;
-                    });
-
-                axios.get(`faculty_profile/${response.data["courses"][0].instructors[0].instructor}`)
+                axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
                         state.facultyMember.id = response.data.id;
@@ -145,5 +147,13 @@ export default {
 
     CLEAR_ERRORS: function (state) {
         state.errors = null;
+    },
+
+    HIDE_BACK_BUTTON: function (state) {
+        state.hideBack = true;
+    },
+
+    SHOW_BACK_BUTTON: function (state) {
+        state.hideBack = false;
     }
 }

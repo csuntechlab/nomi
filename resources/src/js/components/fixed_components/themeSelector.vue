@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="matchText" @click="showModal=true">
-            Change Theme
+        <div class="menu_links" @click="showModal=true">
+            Theme
         </div>
         
         <modal v-if="showModal" @close="showModal = false">
