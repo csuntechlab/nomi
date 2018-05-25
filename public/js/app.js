@@ -22265,7 +22265,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22310,8 +22309,6 @@ var render = function() {
         on: { input: _vm.handleSelect }
       },
       [
-        _c("option", { attrs: { value: "" } }, [_vm._v("Mode Select")]),
-        _vm._v(" "),
         _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
         _vm._v(" "),
         _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
@@ -23223,7 +23220,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("i", { staticClass: "fa fa-edit fa-2x" })]
+                    [_c("i", { staticClass: "fa fa-edit fa-1x" })]
                   )
                 ])
               ])
@@ -23931,7 +23928,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23985,8 +23981,6 @@ var render = function() {
             on: { input: _vm.handleSelect }
           },
           [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Sorting")]),
-            _vm._v(" "),
             _c("option", { attrs: { value: "1" } }, [
               _vm._v("First Name Descending")
             ]),

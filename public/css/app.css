@@ -484,7 +484,9 @@ textarea[type=text]:focus {
 }
 
 .editButton {
-  margin-top: 5%;
+  float: right;
+  position: relative;
+  bottom: 0;
 }
 
 .makeWhite {

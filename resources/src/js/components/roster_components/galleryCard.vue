@@ -15,7 +15,7 @@
                             </div>
                             <div class="type--center editButton">
                                 <button @click="showModal = true">
-                                <i class="fa fa-edit fa-2x"></i>
+                                <i class="fa fa-edit fa-1x"></i>
                                 </button>
                             </div>
                         </div>
