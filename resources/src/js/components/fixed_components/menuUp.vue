@@ -46,7 +46,6 @@ export default {
     ...mapGetters(["courses", "facultyMember", "facultyFullName", "menuShow"])
   },
   created: function () {
-    console.log(document.querySelector('meta[name=app-url]').content);
     this.url = document.querySelector('meta[name=app-url]').content;
   },
   methods: {
