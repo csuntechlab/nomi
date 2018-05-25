@@ -1,6 +1,6 @@
 <template>
     <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" class="clearPadding panel col-xs-12 col-md-12 col-lg-12">
-        <div class="clearPadding panel__content col-xs-12 col-md-12 col-lg-12">
+        <div class="panel__content col-xs-12 col-md-12 col-lg-12">
             <div class="pull-left col-xs-5 col-md-3 col-lg-3 clearPadding">
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
