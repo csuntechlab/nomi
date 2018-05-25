@@ -61,6 +61,10 @@ textarea[type=text] {
 
 }
 
+.panel_content {
+    height: 100vh;
+}
+
 .tab__link {
     @include themify($themes){
         border-bottom: 5px solid themed('looksGray');

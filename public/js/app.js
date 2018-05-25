@@ -21999,7 +21999,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "img--circle col-md-12 col-xs-12",
+      staticClass: "clearPadding img--circle col-md-12 col-xs-12",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])
@@ -23071,14 +23071,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -23181,58 +23173,46 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _c("div", { staticClass: "col-xs-6" }, [
-        _c("div", { staticClass: "type--center editButton" }, [
-          _c(
-            "button",
-            {
-              on: {
-                click: function($event) {
-                  _vm.showModal = true
-                }
-              }
-            },
-            [_c("i", { staticClass: "fa fa-edit fa-1x" })]
-          )
-        ]),
+    _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
+      _c("div", { staticClass: "editButton" }, [
+        _c("i", {
+          staticClass: "fa fa-edit fa-2x",
+          on: {
+            click: function($event) {
+              _vm.showModal = true
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel" }, [
+        _c(
+          "div",
+          { staticClass: "panel__content" },
+          [_c("profile-picture", { attrs: { image: _vm.image } })],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "panel grid-image card" }, [
-          _c(
-            "div",
-            { staticClass: "panel__content" },
-            [
-              _c("profile-picture", { attrs: { image: _vm.image } }),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-title font-style" }, [
-                _c("div", { staticClass: "panel-heading align-center" }, [
-                  _c(
-                    "div",
-                    { staticClass: "type--center" },
-                    [
-                      _c(
-                        "router-link",
-                        {
-                          staticClass: "textOverflow",
-                          attrs: {
-                            to:
-                              "/profile/" +
-                              this.$route.params.id +
-                              "/" +
-                              _vm.email_uri
-                          }
-                        },
-                        [_c("h4", [_vm._v(_vm._s(_vm.display_name))])]
-                      )
-                    ],
-                    1
-                  )
+        _c(
+          "div",
+          { staticClass: "panel__footer cardText clearPadding" },
+          [
+            _c(
+              "router-link",
+              {
+                attrs: {
+                  to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+                }
+              },
+              [
+                _c("div", { staticClass: "hello type--center" }, [
+                  _vm._v(_vm._s(_vm.display_name))
                 ])
-              ])
-            ],
-            1
-          )
-        ])
+              ]
+            )
+          ],
+          1
+        )
       ])
     ]),
     _vm._v(" "),
