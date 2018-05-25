@@ -241,6 +241,10 @@ textarea[type=text]:focus {
   border-bottom: 0;
 }
 
+.panel_content {
+  height: 100vh;
+}
+
 .theme-main .tab__link {
   border-bottom: 5px solid #E5E5E5;
   color: #0F1821;
@@ -489,6 +493,11 @@ textarea[type=text]:focus {
   font-size: 2rem;
 }
 
+.cardText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4vh;
+}
+
 .center {
   margin-left: 7%;
   margin-right: 7%;
@@ -525,7 +534,10 @@ textarea[type=text]:focus {
 }
 
 .editButton {
-  margin-top: 5%;
+  float: right;
+  padding-top: 2%;
+  padding-bottom: 5%;
+  color: gray;
 }
 
 .makeWhite {
@@ -536,7 +548,11 @@ textarea[type=text]:focus {
 }
 
 .modal_exit {
-  color: black;
+  color: gray;
+}
+
+.hello {
+  font-size: 3vh;
 }
 
 .theme-main .underlineStyling {

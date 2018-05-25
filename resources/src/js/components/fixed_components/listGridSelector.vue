@@ -2,7 +2,6 @@
     <div>
         <label for="list-grid"></label>
         <select name="list-grid" id="list-grid" @input="handleSelect">
-            <option value="">Mode Select</option>
             <option value="0">List View</option>
             <option value="1">Gallery</option>
             <option value="2">Flash Cards</option>
