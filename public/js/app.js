@@ -21587,12 +21587,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
+    created: function created() {
+        this.url = document.querySelector('meta[name=app-url]').content;
+    },
+
     methods: {
         updateTheme: function updateTheme(theme) {
             var data = new FormData();
             data.append('theme', theme);
 
-            axios.post('/update_theme', data, {
+            axios.post(this.url + '/update_theme', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
