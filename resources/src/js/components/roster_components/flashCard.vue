@@ -1,7 +1,7 @@
 <template>
-    <div class="col-xs-6">
-        <div class="panel card">
-            <div class="grid-item panel__content" @click="updateRecognized">
+    <div class="col-xs-6 col-md-4 col-lg-3 card">
+        <div class="panel flashCard"  @click="updateRecognized">
+            <div class="grid-item panel__content">
                 <div v-if="known">
                     <div class="type--center textOverflow back-of-card">
                         {{display_name}}
@@ -18,51 +18,58 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    name: "flash-card",
+  name: "flash-card",
 
-    data: function () {
-        return {
-            known: false,
-            messages: true,
-            errors: [],
-        }
+  data: function() {
+    return {
+      known: false,
+      messages: true,
+      errors: []
+    };
+  },
+
+  props: ["student"],
+
+  computed: {
+    display_name: function() {
+      return this.student.first_name + " " + this.student.last_name;
     },
-
-    props: [ 'student' ],
-
-    computed: {
-        display_name: function() { return this.student.first_name + " " + this.student.last_name; },
-        image: function() { return this.student.images[this.student.image_priority]; }
-    },
-
-    methods: {
-		updateRecognized: function() {
-            this.known = !this.known;
-            this.$emit('markRecognized', {student_id: this.student.student_id, known: this.known});
-        }
+    image: function() {
+      return this.student.images[this.student.image_priority];
     }
-}
+  },
+
+  methods: {
+    updateRecognized: function() {
+      this.known = !this.known;
+      this.$emit("markRecognized", {
+        student_id: this.student.student_id,
+        known: this.known
+      });
+    }
+  }
+};
 </script>
 
 <style scoped>
-    .grid-item {
-        padding:0 !important;
-        height: 50vw;
-    }
-    .back-of-card {
-        font-size: 7vw;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        padding: 7vw 0;
-    }
-    .panel-heading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 0 0 25%;
-    }
+.grid-item {
+  padding: 0 !important;
+}
+.back-of-card {
+  font-size: 5vmin;
+  position: absolute;;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.panel-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 25%;
+}
 </style>

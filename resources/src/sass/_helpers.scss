@@ -95,7 +95,7 @@
 }
 
 .card {
-  height: 60vw;
+  height: 50vmin;
   padding: 5px !important;
 
 }
@@ -117,4 +117,9 @@
 
 .hello{
   font-size: 3vh;
+}
+
+.flashCard{
+  height: 100%;
+  padding: 5px !important;
 }

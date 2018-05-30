@@ -22884,7 +22884,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.grid-item[data-v-28eaaaa4] {\n    padding:0 !important;\n    height: 50vw;\n}\n.back-of-card[data-v-28eaaaa4] {\n    font-size: 7vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 7vw 0;\n}\n.panel-heading[data-v-28eaaaa4] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
+exports.push([module.i, "\n.grid-item[data-v-28eaaaa4] {\r\n  padding: 0 !important;\n}\n.back-of-card[data-v-28eaaaa4] {\r\n  font-size: 5vmin;\r\n  position: absolute;;\r\n  float: left;\r\n  top: 50%;\r\n  left: 50%;\r\n  -webkit-transform: translate(-50%, -50%);\r\n          transform: translate(-50%, -50%);\n}\n.panel-heading[data-v-28eaaaa4] {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-box-flex: 0;\r\n      -ms-flex: 0 0 25%;\r\n          flex: 0 0 25%;\n}\r\n", ""]);
 
 // exports
 
@@ -22920,33 +22920,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "flash-card",
+  name: "flash-card",
 
-    data: function data() {
-        return {
-            known: false,
-            messages: true,
-            errors: []
-        };
+  data: function data() {
+    return {
+      known: false,
+      messages: true,
+      errors: []
+    };
+  },
+
+  props: ["student"],
+
+  computed: {
+    display_name: function display_name() {
+      return this.student.first_name + " " + this.student.last_name;
     },
-
-    props: ['student'],
-
-    computed: {
-        display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name;
-        },
-        image: function image() {
-            return this.student.images[this.student.image_priority];
-        }
-    },
-
-    methods: {
-        updateRecognized: function updateRecognized() {
-            this.known = !this.known;
-            this.$emit('markRecognized', { student_id: this.student.student_id, known: this.known });
-        }
+    image: function image() {
+      return this.student.images[this.student.image_priority];
     }
+  },
+
+  methods: {
+    updateRecognized: function updateRecognized() {
+      this.known = !this.known;
+      this.$emit("markRecognized", {
+        student_id: this.student.student_id,
+        known: this.known
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -22957,15 +22960,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-xs-6" }, [
-    _c("div", { staticClass: "panel card" }, [
-      _c(
-        "div",
-        {
-          staticClass: "grid-item panel__content",
-          on: { click: _vm.updateRecognized }
-        },
-        [
+  return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3 card" }, [
+    _c(
+      "div",
+      { staticClass: "panel flashCard", on: { click: _vm.updateRecognized } },
+      [
+        _c("div", { staticClass: "grid-item panel__content" }, [
           _vm.known
             ? _c("div", [
                 _c(
@@ -22992,9 +22992,9 @@ var render = function() {
                   1
                 )
               ])
-        ]
-      )
-    ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
