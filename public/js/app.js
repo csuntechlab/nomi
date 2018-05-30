@@ -23189,12 +23189,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "panel__footer cardText clearPadding" },
+                { staticClass: "name_container cardText clearPadding" },
                 [
-                  _c("div", { staticClass: "name_container" }, [
-                    _c("div", { staticClass: "hello type--center" }, [
-                      _vm._v(_vm._s(_vm.display_name))
-                    ])
+                  _c("div", { staticClass: "hello type--center" }, [
+                    _vm._v(_vm._s(_vm.display_name))
                   ])
                 ]
               )
