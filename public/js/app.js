@@ -24091,16 +24091,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "courses-container",
 
+    data: function data() {
+        return {
+            term: ''
+        };
+    },
+
+    created: function created() {
+        var curTerm = document.querySelector('meta[name=current-term]').content;
+        if (curTerm.length == 4) {
+            switch (curTerm.charAt(3)) {
+                case "3":
+                    this.term = "Spring";
+                    break;
+                case "5":
+                    this.term = "Summer";
+                    break;
+                case "7":
+                    this.term = "Fall";
+                    break;
+            }
+            this.term += ' ' + curTerm.charAt(0) + '0' + curTerm.substring(1, 3);
+        }
+    },
+
     components: {
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']), {
-
-        getTerm: function getTerm() {
-            return this.courses[0]['term'].replace('-', ' ');
-        }
-    })
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
 });
 
 /***/ }),
@@ -24449,7 +24468,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h2", [_vm._v(_vm._s(this.getTerm) + " Courses")]),
+    _c("h2", [_vm._v(_vm._s(this.term) + " Courses")]),
     _vm._v(" "),
     _vm.facultyMember.image === null
       ? _c("div", { staticClass: "type--center" }, [
