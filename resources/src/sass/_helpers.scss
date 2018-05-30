@@ -95,7 +95,7 @@
 }
 
 .card {
-  height: 60vw;
+  height: 50vmin;
   padding: 5px !important;
 
 }
@@ -121,4 +121,9 @@
 
 .name_container{
   height: 31vmin;
+}
+
+
+.flashCard{
+  height: 100%;
 }
