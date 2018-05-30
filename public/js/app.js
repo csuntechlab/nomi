@@ -23093,6 +23093,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -23186,8 +23188,10 @@ var render = function() {
                 }
               },
               [
-                _c("div", { staticClass: "hello type--center" }, [
-                  _vm._v(_vm._s(_vm.display_name))
+                _c("div", { staticClass: "name_container" }, [
+                  _c("div", { staticClass: "hello type--center" }, [
+                    _vm._v(_vm._s(_vm.display_name))
+                  ])
                 ])
               ]
             )

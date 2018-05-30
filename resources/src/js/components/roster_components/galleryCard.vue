@@ -10,7 +10,9 @@
             </div>
             <div class="panel__footer cardText clearPadding">
                 <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                    <div class="hello type--center">{{display_name}}</div>
+                    <div class="name_container">
+                        <div class="hello type--center">{{display_name}}</div>
+                    </div>
                 </router-link>
             </div>
         </div>

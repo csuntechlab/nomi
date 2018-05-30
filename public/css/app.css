@@ -555,6 +555,10 @@ textarea[type=text]:focus {
   font-size: 3vh;
 }
 
+.name_container {
+  height: 40vw;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
