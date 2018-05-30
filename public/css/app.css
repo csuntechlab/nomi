@@ -556,7 +556,7 @@ textarea[type=text]:focus {
 }
 
 .name_container {
-  height: 5em;
+  height: 30vmin;
 }
 
 .theme-main .underlineStyling {
