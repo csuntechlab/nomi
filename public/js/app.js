@@ -23102,49 +23102,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "gallery-card",
+  name: "gallery-card",
 
-    data: function data() {
-        return {
-            messages: true,
-            errors: [],
-            myCroppa: null,
-            imgUrl: null,
-            showModal: false,
-            showMe: true
-        };
-    },
-    components: {
-        modal: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default.a,
-        croppaProfile: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default.a
-    },
+  data: function data() {
+    return {
+      messages: true,
+      errors: [],
+      myCroppa: null,
+      imgUrl: null,
+      showModal: false,
+      showMe: true
+    };
+  },
+  components: {
+    modal: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default.a,
+    croppaProfile: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_croppaProfile_vue___default.a
+  },
 
-    props: ['student'],
+  props: ["student"],
 
-    computed: {
-        display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name[0] + ".";
-        },
-
-        email_uri: function email_uri() {
-            return this.student.email.split('@')[0].replace("nr_", "");;
-        },
-
-        image: function image() {
-            if (this.imgUrl == null) {
-                return this.student.images[this.student.image_priority];
-            } else {
-                return this.imgUrl;
-            }
-        }
+  computed: {
+    display_name: function display_name() {
+      return this.student.first_name + " " + this.student.last_name[0] + ".";
     },
 
-    methods: {
-        setImgUrl: function setImgUrl(url) {
-            this.showModal = false;
-            this.imgUrl = url;
-        }
+    email_uri: function email_uri() {
+      return this.student.email.split("@")[0].replace("nr_", "");
+    },
+
+    image: function image() {
+      if (this.imgUrl == null) {
+        return this.student.images[this.student.image_priority];
+      } else {
+        return this.imgUrl;
+      }
     }
+  },
+
+  methods: {
+    setImgUrl: function setImgUrl(url) {
+      this.showModal = false;
+      this.imgUrl = url;
+    }
+  }
 });
 
 /***/ }),
@@ -23156,50 +23156,54 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
-      _c("div", { staticClass: "editButton" }, [
-        _c("i", {
-          staticClass: "fa fa-edit fa-2x",
-          on: {
-            click: function($event) {
-              _vm.showModal = true
+    _c(
+      "div",
+      { staticClass: "col-xs-6 col-md-4 col-lg-3" },
+      [
+        _c("div", { staticClass: "editButton" }, [
+          _c("i", {
+            staticClass: "fa fa-edit fa-2x",
+            on: {
+              click: function($event) {
+                _vm.showModal = true
+              }
             }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel" }, [
-        _c(
-          "div",
-          { staticClass: "panel__content" },
-          [_c("profile-picture", { attrs: { image: _vm.image } })],
-          1
-        ),
+          })
+        ]),
         _vm._v(" "),
         _c(
-          "div",
-          { staticClass: "panel__footer cardText clearPadding" },
+          "router-link",
+          {
+            attrs: {
+              to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+            }
+          },
           [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
-                }
-              },
-              [
-                _c("div", { staticClass: "name_container" }, [
-                  _c("div", { staticClass: "hello type--center" }, [
-                    _vm._v(_vm._s(_vm.display_name))
+            _c("div", { staticClass: "panel" }, [
+              _c(
+                "div",
+                { staticClass: "panel__content" },
+                [_c("profile-picture", { attrs: { image: _vm.image } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "panel__footer cardText clearPadding" },
+                [
+                  _c("div", { staticClass: "name_container" }, [
+                    _c("div", { staticClass: "hello type--center" }, [
+                      _vm._v(_vm._s(_vm.display_name))
+                    ])
                   ])
-                ])
-              ]
-            )
-          ],
-          1
+                ]
+              )
+            ])
+          ]
         )
-      ])
-    ]),
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "div",

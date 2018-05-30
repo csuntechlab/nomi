@@ -4,18 +4,18 @@
         <div class="editButton">
             <i class="fa fa-edit fa-2x" @click="showModal = true"></i>
         </div>
+        <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
         <div class="panel">
             <div class="panel__content">
                 <profile-picture :image="image"></profile-picture>
             </div>
             <div class="panel__footer cardText clearPadding">
-                <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                     <div class="name_container">
                         <div class="hello type--center">{{display_name}}</div>
                     </div>
-                </router-link>
             </div>
         </div>
+        </router-link>
     </div>
     <div>
         <modal v-if="showModal" @close="showModal = false">
@@ -29,54 +29,54 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import { mapState } from 'vuex'
-    import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
-    import modal from "../../components/fixed_components/modal.vue";
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
+import modal from "../../components/fixed_components/modal.vue";
 
-    export default {
-        name: "gallery-card",
+export default {
+  name: "gallery-card",
 
-        data: function () {
-            return {
-                messages: true,
-                errors: [],
-                myCroppa: null,
-                imgUrl: null,
-                showModal: false,
-                showMe: true
-            }
-        },
-        components: {
-            modal,
-            croppaProfile
-        },
+  data: function() {
+    return {
+      messages: true,
+      errors: [],
+      myCroppa: null,
+      imgUrl: null,
+      showModal: false,
+      showMe: true
+    };
+  },
+  components: {
+    modal,
+    croppaProfile
+  },
 
-        props: ['student'],
+  props: ["student"],
 
-        computed: {
-            display_name: function () {
-                return this.student.first_name + " " + this.student.last_name[0] + ".";
-            },
+  computed: {
+    display_name: function() {
+      return this.student.first_name + " " + this.student.last_name[0] + ".";
+    },
 
-            email_uri : function () {
-                return this.student.email.split('@')[0].replace("nr_", "");;
-            },
+    email_uri: function() {
+      return this.student.email.split("@")[0].replace("nr_", "");
+    },
 
-            image: function() {
-                if (this.imgUrl == null) {
-                    return this.student.images[this.student.image_priority];
-                } else {
-                    return this.imgUrl;
-                }
-            }
-        },
-
-        methods: {
-            setImgUrl (url) {
-                this.showModal = false;
-                this.imgUrl = url;
-            }
-        }
+    image: function() {
+      if (this.imgUrl == null) {
+        return this.student.images[this.student.image_priority];
+      } else {
+        return this.imgUrl;
+      }
     }
+  },
+
+  methods: {
+    setImgUrl(url) {
+      this.showModal = false;
+      this.imgUrl = url;
+    }
+  }
+};
 </script>
