@@ -59,7 +59,7 @@ export default {
   padding: 0 !important;
 }
 .back-of-card {
-  font-size: 5vmin;
+  font-size: 6.5vmin;
   position: absolute;;
   float: left;
   top: 50%;
