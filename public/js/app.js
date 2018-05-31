@@ -20669,6 +20669,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     themeName: function themeName(state) {
         return state.themeName;
     },
+    sortLastName: function sortLastName(state) {
+        return state.sortLastName;
+    },
+    sortDescending: function sortDescending(state) {
+        return state.sortDescending;
+    },
 
     facultyMember: function facultyMember(state) {
         return state.facultyMember;
@@ -22298,12 +22304,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "list-grid-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list', 'flash'])),
 
     methods: {
         handleSelect: function handleSelect(e) {
@@ -22335,20 +22358,62 @@ var render = function() {
   return _c("div", [
     _c("label", { attrs: { for: "list-grid" } }),
     _vm._v(" "),
-    _c(
-      "select",
-      {
-        attrs: { name: "list-grid", id: "list-grid" },
-        on: { input: _vm.handleSelect }
-      },
-      [
-        _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
-        _vm._v(" "),
-        _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
-      ]
-    )
+    this.list
+      ? _c("div", [
+          _c(
+            "select",
+            {
+              attrs: { name: "list-grid", id: "list-grid" },
+              on: { input: _vm.handleSelect }
+            },
+            [
+              _c("option", { attrs: { value: "0", selected: "" } }, [
+                _vm._v("List View")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
+            ]
+          )
+        ])
+      : this.flash
+        ? _c("div", [
+            _c(
+              "select",
+              {
+                attrs: { name: "list-grid", id: "list-grid" },
+                on: { input: _vm.handleSelect }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "2", selected: "" } }, [
+                  _vm._v("Flash Cards")
+                ])
+              ]
+            )
+          ])
+        : _c("div", [
+            _c(
+              "select",
+              {
+                attrs: { name: "list-grid", id: "list-grid" },
+                on: { input: _vm.handleSelect }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1", selected: "" } }, [
+                  _vm._v("Gallery")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
+              ]
+            )
+          ])
   ])
 }
 var staticRenderFns = []
@@ -22884,11 +22949,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-<<<<<<< HEAD
-exports.push([module.i, "\n.grid-item[data-v-28eaaaa4] {\r\n  padding: 0 !important;\n}\n.back-of-card[data-v-28eaaaa4] {\r\n  font-size: 5.2vmin;\r\n  position: absolute;;\r\n  float: left;\r\n  top: 50%;\r\n  left: 50%;\r\n  -webkit-transform: translate(-50%, -50%);\r\n          transform: translate(-50%, -50%);\n}\n.panel-heading[data-v-28eaaaa4] {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-box-flex: 0;\r\n      -ms-flex: 0 0 25%;\r\n          flex: 0 0 25%;\n}\r\n", ""]);
-=======
-exports.push([module.i, "\n.grid-item[data-v-34872196] {\n    padding:0 !important;\n    height: 50vw;\n}\n.back-of-card[data-v-34872196] {\n    font-size: 7vw;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    padding: 7vw 0;\n}\n.panel-heading[data-v-34872196] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-flex: 0;\n        -ms-flex: 0 0 25%;\n            flex: 0 0 25%;\n}\n", ""]);
->>>>>>> 33256e2c9c3ea8b4c50270e55429a360f3cc8e30
+exports.push([module.i, "\n.grid-item[data-v-34872196] {\n  padding: 0 !important;\n}\n.back-of-card[data-v-34872196] {\n  font-size: 5.2vmin;\n  position: absolute;;\n  float: left;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n.panel-heading[data-v-34872196] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-flex: 0;\n      -ms-flex: 0 0 25%;\n          flex: 0 0 25%;\n}\n", ""]);
 
 // exports
 
@@ -23902,12 +23963,42 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "sort-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list', 'sortDescending', 'sortLastName'])),
 
     methods: {
         handleSelect: function handleSelect(e) {
@@ -23948,30 +24039,117 @@ var render = function() {
     : _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        _c(
-          "select",
-          {
-            attrs: { name: "name-sorting", id: "name-sorting" },
-            on: { input: _vm.handleSelect }
-          },
-          [
-            _c("option", { attrs: { value: "1" } }, [
-              _vm._v("First Name Descending")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [
-              _vm._v("Last Name Descending")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [
-              _vm._v("First Name Ascending")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "4" } }, [
-              _vm._v("Last Name Ascending")
+        this.sortLastName
+          ? _c("div", [
+              this.sortDescending
+                ? _c("div", [
+                    _c(
+                      "select",
+                      {
+                        attrs: { name: "name-sorting", id: "name-sorting" },
+                        on: { input: _vm.handleSelect }
+                      },
+                      [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2", selected: "" } }, [
+                          _vm._v("Last Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("First Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Ascending")
+                        ])
+                      ]
+                    )
+                  ])
+                : _c("div", [
+                    _c(
+                      "select",
+                      {
+                        attrs: { name: "name-sorting", id: "name-sorting" },
+                        on: { input: _vm.handleSelect }
+                      },
+                      [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Last Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("First Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4", selected: "" } }, [
+                          _vm._v("Last Name Ascending")
+                        ])
+                      ]
+                    )
+                  ])
             ])
-          ]
-        )
+          : _c("div", [
+              this.sortDescending
+                ? _c("div", [
+                    _c(
+                      "select",
+                      {
+                        attrs: { name: "name-sorting", id: "name-sorting" },
+                        on: { input: _vm.handleSelect }
+                      },
+                      [
+                        _c("option", { attrs: { value: "1", selected: "" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Last Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("First Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Ascending")
+                        ])
+                      ]
+                    )
+                  ])
+                : _c("div", [
+                    _c(
+                      "select",
+                      {
+                        attrs: { name: "name-sorting", id: "name-sorting" },
+                        on: { input: _vm.handleSelect }
+                      },
+                      [
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("Last Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3", selected: "" } }, [
+                          _vm._v("First Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Ascending")
+                        ])
+                      ]
+                    )
+                  ])
+            ])
       ])
 }
 var staticRenderFns = []
@@ -24095,16 +24273,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "courses-container",
 
+    data: function data() {
+        return {
+            term: ''
+        };
+    },
+
+    created: function created() {
+        var curTerm = document.querySelector('meta[name=current-term]').content;
+        if (curTerm.length == 4) {
+            switch (curTerm.charAt(3)) {
+                case "3":
+                    this.term = "Spring";
+                    break;
+                case "5":
+                    this.term = "Summer";
+                    break;
+                case "7":
+                    this.term = "Fall";
+                    break;
+            }
+            this.term += ' ' + curTerm.charAt(0) + '0' + curTerm.substring(1, 3);
+        }
+    },
+
     components: {
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']), {
-
-        getTerm: function getTerm() {
-            return this.courses[0]['term'].replace('-', ' ');
-        }
-    })
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
 });
 
 /***/ }),
@@ -24453,7 +24650,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h2", [_vm._v(_vm._s(this.getTerm) + " Courses")]),
+    _c("h2", [_vm._v(_vm._s(this.term) + " Courses")]),
     _vm._v(" "),
     _vm.facultyMember.image === null
       ? _c("div", { staticClass: "type--center" }, [
