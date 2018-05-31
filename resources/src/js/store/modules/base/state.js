@@ -1,7 +1,7 @@
 export default {
     courses: [],
     flashroster: [],
-    studentImages: [],
+    studentImages: {},
     menuShow: false,
     list: true,
     flash: false,
