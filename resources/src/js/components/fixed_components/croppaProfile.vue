@@ -84,7 +84,6 @@
                 });
 
                 this.$parent.$emit('close', url);
-                location.reload();
             },
 
             styleCanvas: function() {
