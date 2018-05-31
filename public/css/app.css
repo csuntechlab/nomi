@@ -555,13 +555,12 @@ textarea[type=text]:focus {
   font-size: 3vh;
 }
 
-<<<<<<< HEAD
-.flashCard {
-  height: 100%;
-=======
 .name_container {
   height: 31vmin;
->>>>>>> 33256e2c9c3ea8b4c50270e55429a360f3cc8e30
+}
+
+.flashCard {
+  height: 100%;
 }
 
 .theme-main .underlineStyling {

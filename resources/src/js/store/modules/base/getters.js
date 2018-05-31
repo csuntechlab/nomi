@@ -7,6 +7,9 @@ export default {
     errors: state => state.errors,
     hideBack: state => state.hideBack,
     themeName: state => state.themeName,
+    sortLastName: state => state.sortLastName,
+    sortDescending: state => state.sortDescending,
+
 
     facultyMember: state => state.facultyMember,
     facultyFullName: state => state.facultyMember.firstName + " " + state.facultyMember.lastName,
