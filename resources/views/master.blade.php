@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="icon" href="{{asset('images/logo.jpg')}}">
-        <link rel="apple-touch-icon" href="{{asset('images/logo.jpg')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <link rel="apple-touch-icon" href={{asset('/images/apple-touch-icon.png')}}>
 
