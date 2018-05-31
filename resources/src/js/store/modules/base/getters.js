@@ -1,6 +1,7 @@
 export default {
     courses: state => state.courses,
     flashroster: state => state.flashroster,
+    studentImages: state => state.studentImages,
     list: state => state.list,
     flash: state => state.flash,
     menuShow: state => state.menuShow,
