@@ -19629,7 +19629,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
 
             this.$parent.$emit('close', url);
-            location.reload();
         },
 
         styleCanvas: function styleCanvas() {
