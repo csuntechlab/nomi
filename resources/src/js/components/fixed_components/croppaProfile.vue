@@ -52,6 +52,9 @@
                     alert('no image');
                     return;
                 }
+                let id = this.studentProfile.id;
+                let payload = {studentId: id, imgUrl: url};
+                this.$store.dispatch('updateImage', payload);
 
                 this.myCroppa.generateBlob(
                     blob => { this.objectUrl = URL.createObjectURL(blob); },
@@ -81,6 +84,7 @@
                 });
 
                 this.$parent.$emit('close', url);
+                location.reload();
             },
 
             styleCanvas: function() {

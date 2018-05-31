@@ -19,6 +19,7 @@
 
 <script>
 import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
   name: "flash-card",
@@ -34,11 +35,17 @@ export default {
   props: ["student"],
 
   computed: {
+
+    ...mapGetters([
+      'studentImages'  
+    ]),
+
     display_name: function() {
       return this.student.first_name + " " + this.student.last_name;
     },
+
     image: function() {
-      return this.student.images[this.student.image_priority];
+      return this.studentImages[this.student.student_id];
     }
   },
 

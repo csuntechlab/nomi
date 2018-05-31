@@ -40,7 +40,6 @@ export default {
       messages: true,
       errors: [],
       myCroppa: null,
-      imgUrl: null,
       showModal: false,
       showMe: true
     };
@@ -53,6 +52,11 @@ export default {
   props: ["student"],
 
   computed: {
+
+    ...mapGetters([
+      'studentImages'  
+    ]),
+
     display_name: function() {
       return this.student.first_name + " " + this.student.last_name[0] + ".";
     },
@@ -62,11 +66,7 @@ export default {
     },
 
     image: function() {
-      if (this.imgUrl == null) {
-        return this.student.images[this.student.image_priority];
-      } else {
-        return this.imgUrl;
-      }
+      return this.studentImages[this.student.student_id];
     }
   },
 

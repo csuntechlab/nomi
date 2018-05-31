@@ -164,7 +164,8 @@
         computed: {
             ...mapGetters([
                 'studentProfile',
-                'facultyMember'
+                'facultyMember',
+                'studentImages'
             ]),
 
             ...mapState({
@@ -172,11 +173,8 @@
             }),
 
             image: function() {
-                if (this.imgUrl == null) {
-                    return this.studentProfile.images['likeness'];
-                } else {
-                    return this.imgUrl;
-                }
+                let id = this.studentProfile.id.replace("members:","");
+                return this.studentImages[id];
             }
         },
 
