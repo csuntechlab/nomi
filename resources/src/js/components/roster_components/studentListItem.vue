@@ -14,22 +14,33 @@
 </template>
 
 <script>
-    export default{
-        name: "student-list-item",
+import { mapGetters } from "vuex";
+import { mapState } from "vuex";
+import croppaProfile from "../../components/fixed_components/croppaProfile.vue";
+import modal from "../../components/fixed_components/modal.vue";
 
-        props:['student'],
+export default {
+    name: "student-list-item",
 
-        computed: {
-            display_name: function() {
-                return this.student.first_name + " " + this.student.last_name;
-            },
+    props:["student"],
 
-            email_uri : function () {
-                return this.student.email.split('@')[0].replace("nr_", "");
+    computed: {
+            
+        ...mapGetters([
+            'studentImages'  
+         ]),
 
-            },
+        display_name: function() {
+            return this.student.first_name + " " + this.student.last_name;
+        },
+            
+        email_uri : function () {
+            return this.student.email.split('@')[0].replace("nr_", "");
+        },
 
-            image: function() { return this.student.images[this.student.image_priority]}
+        image: function() {
+            return this.studentImages[this.student.student_id];
         }
     }
+}
 </script>

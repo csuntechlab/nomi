@@ -23,7 +23,6 @@ Route::get('/data', 'SPAController@getData')->middleware('auth');
 /** Route for logout. */
 Route::get('/logout', function () {
     auth()->logout();
-    cache()->clear();
     return redirect('/');
 });
 

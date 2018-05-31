@@ -34,6 +34,10 @@
             }
         },
 
+        created: function () {
+            this.url = document.querySelector('meta[name=app-url]').content;
+        },
+
          methods: {
             updateTheme: function(theme) {
                 let data = new FormData();
@@ -41,7 +45,7 @@
 
 
                 
-                axios.post('/update_theme', data, {
+                axios.post(this.url + '/update_theme', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

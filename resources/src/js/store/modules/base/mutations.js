@@ -23,7 +23,22 @@ export default {
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for(let course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)){
+                        let realCourse = state.courses[course];
+                        for(let student in realCourse.roster) {
+                            if(realCourse.roster.hasOwnProperty(student)){
+                                let realStudent = realCourse.roster[student];
+                                let studentId = realStudent.student_id;
+                                let url = realStudent.images.likeness;
 
+                                state.studentImages[studentId] = url;
+                            }
+                        }
+                    }
+                    
+                }
+                console.log(state.studentImages);
                 axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
@@ -155,5 +170,12 @@ export default {
 
     SHOW_BACK_BUTTON: function (state) {
         state.hideBack = false;
-    }
+    },
+
+    UPDATE_IMAGE: function (state, payload) {
+        let id = payload.studentId;
+        let url = payload.imgUrl;
+        state.studentImages[id] = url;
+    },
+
 }

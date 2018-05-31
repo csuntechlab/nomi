@@ -55,4 +55,8 @@ export default {
     showBackButton (context) {
         context.commit('SHOW_BACK_BUTTON');
     },
+
+    updateImage (context, payload) {
+        context.commit('UPDATE_IMAGE', payload);
+    },
 }
