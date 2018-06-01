@@ -33,7 +33,8 @@
                 messages: true,
                 errors: [],
                 myCroppa: null,
-                disabled: true
+                disabled: true,
+                url: ""
             }
         },
 
@@ -43,6 +44,10 @@
                 'facultyMember'
             ])
         },
+
+        created: function () {
+         this.url = document.querySelector('meta[name=app-url]').content;
+         },
 
         methods: {
             confirmImage: function (emailURI) {
@@ -72,7 +77,7 @@
                     data.append('uri', this.studentProfile.emailURI);
                 }
 
-                axios.post('api/upload', data, {
+                axios.post(this.url + '/api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -84,7 +89,6 @@
                 });
 
                 this.$parent.$emit('close', url);
-                location.reload();
             },
 
             styleCanvas: function() {
