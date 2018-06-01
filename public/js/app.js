@@ -19583,11 +19583,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             messages: true,
             errors: [],
             myCroppa: null,
-            disabled: true
+            disabled: true,
+            url: ""
         };
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
+
+    created: function created() {
+        this.url = document.querySelector('meta[name=app-url]').content;
+    },
 
     methods: {
         confirmImage: function confirmImage(emailURI) {
@@ -19617,7 +19622,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 data.append('uri', this.studentProfile.emailURI);
             }
 
-            axios.post('api/upload', data, {
+            axios.post(this.url + 'api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
