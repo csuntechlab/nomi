@@ -19622,7 +19622,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 data.append('uri', this.studentProfile.emailURI);
             }
 
-            axios.post(this.url + 'api/upload', data, {
+            axios.post(this.url + '/api/upload', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

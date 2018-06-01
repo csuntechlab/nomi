@@ -77,7 +77,7 @@
                     data.append('uri', this.studentProfile.emailURI);
                 }
 
-                axios.post(this.url + 'api/upload', data, {
+                axios.post(this.url + '/api/upload', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
