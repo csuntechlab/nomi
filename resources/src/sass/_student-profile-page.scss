@@ -1,0 +1,30 @@
+.underlineStyling{
+    @include themify($themes) {
+        border-bottom:  5px solid themed('looksGray');
+    }
+  }
+.underlineStyling--red{
+  @include themify($themes) {
+    border-bottom:  5px solid themed('buttonpress');
+  }
+}
+
+.underline{
+    float: left;
+    width: 30px;
+    display: block;
+  }
+.underlineContainer{
+    width: 90px;
+    display: inline-block;
+    float: none;
+    list-style-type: square;
+    box-sizing: content-box;
+    padding: 0px;
+  }
+.addedUnderline{
+    width: 100%;
+    text-align: center;
+    height: 0px;
+}
+

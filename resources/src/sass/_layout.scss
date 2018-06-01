@@ -1,0 +1,141 @@
+body {
+    @include themify($themes) {
+        background-color: themed('looksGray');
+  }
+}
+
+html *
+{
+    @include themify($themes) {
+        font-size: themed('mainFontSize');
+        font-family: themed('mainFontFamily');
+        color: themed('looksGray');
+    }
+
+}
+
+textarea[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
+  }
+  
+  textarea[type=text]:focus{
+    border: 3px solid lightblue;
+  }
+
+.primary-nav {
+    @include themify($themes) {
+        background-color: themed('bars'); 
+        display: flex;
+        justify-content: center;
+
+        .primary-nav__sub-brand{
+            color: themed('looksGray')
+        }
+    }
+}
+
+.panel {
+    @include themify($themes){
+        border-radius: 7px;
+        background-color: themed('offWhite');
+        box-shadow: -1px 5px 9px 5px rgba(0,0,0,0.2);
+        padding: 20px;
+
+        .panel__img{
+            height: auto;
+            background-color: themed('offWhite');
+        }
+        .panel__header{
+            font-weight: bold;
+            border-bottom: 0;
+        }
+
+    }
+
+}
+
+.panel_content {
+    height: 100vh;
+}
+
+.tab__link {
+    @include themify($themes){
+        border-bottom: 5px solid themed('looksGray');
+        color: themed('bars'); 
+        background-color: themed('looksGray');
+      }
+  } 
+
+.tab__link--active{
+    @include themify($themes){
+        display: block;
+        padding: 10px 20px;
+        font-weight: normal;
+        text-decoration: none;
+        color: themed('bars');      
+        border-bottom: 5px solid themed('bars');
+    }
+  }
+
+.fa {
+    @include themify($themes){
+        color: themed('white');
+    } 
+}
+
+//font awesome icon and menu
+.menu {
+    @include themify($themes){
+        background-color: themed('bars');
+        color: white;
+    } 
+}
+
+.col-xs-6 {
+    padding-left:0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.btn{
+    @include themify ($themes){
+        background-color: themed('buttonColor');
+    }
+}
+
+.sr-only{
+    @include themify ($themes){
+        color: themed('white');
+    }
+}
+
+.logo{
+    @include themify($themes){
+        width: 75px;
+        height: 45px;
+        background-image: white;
+
+    }
+}
+//theme colors in list
+#Matador{
+    background-color: #d00d2d
+}
+
+#Navy{
+    background-color: #0F1821
+}
+
+#Blues{
+    background-color: #0D3753
+}
+
+#Cloudy{
+    background-color: #747474
+}

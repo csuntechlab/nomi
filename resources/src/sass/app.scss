@@ -1,0 +1,12 @@
+@import "menu";
+//new edits
+@import "themes";
+@import "layout";
+@import "helpers";
+
+//fixed safari font-awesome issue
+//@import "node_modules/font-awesome/scss/font-awesome";
+
+//added nonreusable styling
+@import "student-profile-page";
+@import "modal";

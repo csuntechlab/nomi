@@ -1,0 +1,18 @@
+language: php
+php:
+- 7.1
+before_script:
+- composer self-update
+- composer install --no-interaction
+- cp .env.travis .env
+- phpenv config-rm xdebug.ini
+script:
+- vendor/bin/phpunit
+branches:
+  only:
+  - dev
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: sFPFTH+mOkYwp9OT3ARxuzsgeYC7lAy+cpCSvTnFbuDp1jghLNaC0nVxzeWpB1S/YdEdvic4lIJQ+eDRcYSIEBXpU5Huw9A3lGJ4kIdy/Eh2YQGR3QJmSJSfTQAlI9OxyB9rrZYu7zvbB25piKtEVYIjYB8Nxm4EQy6WSpCESdt5EmQq50CjzwE6yI+4ZakdGsBrL8DZ5WEWbspI7yHqR+7LwySrJD6Ep2MGL9rBOFGbmTpcBsXDz00QjnVd6epV+J05wjJEwv5rMEefJINQO7k/tm5fL767+NAEHTqzo9xnqIDm9Y7PWOmVLuH/Nf0rsR6aJQmreY2qz2xRarBm14KEXeV0Hbd22fxG2EcOzrl5NqVBCm1tXk8YlyW4poEphooIBvSawQW1Oq5duLV9dw4oofqvk+V0B2uUZ//m06F/z0MZyQYZj0Z4XJOcw6Vqa/xV36O/wsABto98XCaBHboofiRgwpJcOh7FZdHTYQSB45w8nJ0rrm3fvkSwWBuNPL4XXBiH0vLNrWsCu0ESAbaUMD0CFQp4Zv0O8VOLgSE5/Vcyka3PJ819ytSdxz7SzPRPT1HLhk4U4FiloolmruZF8T4net9IiZ8xyppHjUa3LJB9qTrOCNYLroIjJgZ0tnBCQKaAFM7H/fdREJ2A+hYWO49Nhh+UVp4eKld1Qnw=

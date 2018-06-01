@@ -1,0 +1,72 @@
+$themes: (
+  main: (
+    //All navbars coloring
+    bars: #0F1821,
+    //I can't remember
+    white: white,
+    //background coloring
+    looksGray: #E5E5E5,
+    //panel coloring
+    offWhite: #F4F4F4,
+    //coloring on click
+    buttonpress: #4F9DA3,
+    //button coloring
+    buttonColor: white,
+    //fontsize
+    mainFontSize: 1.1rem,
+    //font type
+	  mainFontFamily: helvetica,
+  ),
+  bluesTheme: (
+    bars: #0D3753,
+    white: white,
+    looksGray: #d9e7ee,
+    offWhite: white,
+    buttonpress: #0083A1,
+    buttonColor: white,
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+  Cloudy: (
+    bars: #747474,
+    white: white,
+    looksGray: #D8D8D8,
+    offWhite: #FFFFFF,
+    buttonColor: #FFC836,
+    buttonpress: #FFC836,
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+  OnceAMatadorAlwaysAMatador: (
+    bars: #D00D2D,
+    white: white,
+    looksGray: #FFFFFF,
+    offWhite: #F0F0F0,
+    buttonColor: white,
+    buttonpress: #FFC836,
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  )
+  
+);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}

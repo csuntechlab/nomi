@@ -1,7 +1,8 @@
 <?php
 
-return [
+declare(strict_types=1);
 
+return [
     /*
     |--------------------------------------------------------------------------
     | View Storage Paths
@@ -14,7 +15,7 @@ return [
     */
 
     'paths' => [
-        realpath(base_path('resources/views')),
+        resource_path('views'),
     ],
 
     /*
@@ -28,6 +29,5 @@ return [
     |
     */
 
-    'compiled' => realpath(storage_path('framework/views')),
-
+    'compiled' => \realpath(storage_path('framework/views')),
 ];
