@@ -1,11 +1,10 @@
-import axios from 'axios';
 import Croppa from 'vue-croppa';
 import router from './router';
 import store from './store'
 import VueCarousel from 'vue-carousel';
 
+require('./bootstrap');
 window.Vue = require('vue');
-window.axios = require('axios');
 
 Vue.use(VueCarousel);
 Vue.use(Croppa);

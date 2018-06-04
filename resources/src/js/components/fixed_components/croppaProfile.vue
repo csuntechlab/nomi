@@ -83,12 +83,12 @@
                     }
                 }).then(response => {
                     this.$store.dispatch('getData');
+                    this.$parent.$emit('close', url);
                 }).catch(e => {
                     url = null;
                     console.log(e);
+                    this.$parent.$emit('close', url);
                 });
-
-                this.$parent.$emit('close', url);
             },
 
             styleCanvas: function() {
