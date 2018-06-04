@@ -1,6 +1,6 @@
 export default {
     GET_SETTINGS (state) {
-        axios.get('get_settings')
+        window.axios.get('get_settings')
             .then(response =>{
                 state.themeName = response.data.theme.theme;
                 document.getElementById("mainBody").className = state.themeName;
@@ -14,7 +14,7 @@ export default {
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
-        axios.get(`data`)
+        window.axios.get(`data`)
             .then(response => {
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
@@ -39,7 +39,7 @@ export default {
                     
                 }
                 console.log(state.studentImages);
-                axios.get(`faculty_profile/${state.facultyMember.email}`)
+                window.axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
                         state.facultyMember.id = response.data.id;

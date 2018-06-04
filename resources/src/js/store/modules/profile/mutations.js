@@ -8,7 +8,7 @@ export default {
 
         state.studentProfile.emailURI = payload.uri;
 
-        axios.get('student/'+email)
+        window.axios.get('student/'+email)
             .then(response => {
                 state.studentProfile.bio = response['data']['people'].biography;
 
@@ -19,7 +19,7 @@ export default {
                 state.profileErrors = e.response.data.message;
             });
 
-        axios.get('student_profile/'+email)
+        window.axios.get('student_profile/'+email)
             .then(response => {
                 state.studentProfile.displayName = response['data'].display_name;
                 state.studentProfile.images = response['data'].images;
@@ -41,7 +41,7 @@ export default {
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
 
-        axios.post('update_note', data)
+        window.axios.post('update_note', data)
             .catch(e => {
                 state.profileErrors = e.response.data.message;
             });
@@ -53,7 +53,7 @@ export default {
         data.append('image_priority', payload.image_priority);
         data.append('faculty_id', payload.faculty_id);
 
-        axios.post('api/priority', data)
+        window.axios.post('api/priority', data)
             .then(response => {
                 state.studentProfile.imagePriority = payload.image_priority;
             })
