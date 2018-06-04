@@ -81,7 +81,7 @@
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
-                }).then(() => {
+                }).then(response => {
                     this.$store.dispatch('getData');
                 }).catch(e => {
                     url = null;
