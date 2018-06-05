@@ -18806,7 +18806,14 @@ var render = function() {
       _c("div", { staticClass: "type--center" }, [
         _c(
           "div",
-          { attrs: { type: "button" }, on: { click: _vm.confirmImage } },
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.confirmImage($event)
+              }
+            }
+          },
           [_c("i", { staticClass: "fa fa-check fa-3x" })]
         )
       ])
