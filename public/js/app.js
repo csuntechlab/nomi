@@ -18804,9 +18804,18 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "type--center" }, [
-        _c("div", { on: { click: _vm.confirmImage } }, [
-          _c("i", { staticClass: "fa fa-check fa-3x" })
-        ])
+        _c(
+          "div",
+          {
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.confirmImage($event)
+              }
+            }
+          },
+          [_c("i", { staticClass: "fa fa-check fa-3x" })]
+        )
       ])
     ],
     1
