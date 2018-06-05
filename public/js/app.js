@@ -18807,10 +18807,8 @@ var render = function() {
         _c(
           "div",
           {
-            attrs: { type: "button" },
-            on: {
+            nativeOn: {
               click: function($event) {
-                $event.preventDefault()
                 _vm.confirmImage($event)
               }
             }

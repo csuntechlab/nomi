@@ -16,7 +16,7 @@
             <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
         </div>
         <div class="type--center">
-            <div @click.prevent="confirmImage" type="button"><i class="fa fa-check fa-3x"></i></div>
+            <div @click.native="confirmImage"><i class="fa fa-check fa-3x"></i></div>
         </div>
     </div>
 </template>
