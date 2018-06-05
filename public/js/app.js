@@ -18725,7 +18725,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     uri = this.studentProfile.emailURI;
                 }
 
-                window.axios.post(this.url + '/api/upload', {
+                window.axios.post('/api/upload', {
                     id: this.facultyMember.id,
                     photo: url,
                     uri: uri
