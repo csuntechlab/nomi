@@ -18807,6 +18807,7 @@ var render = function() {
         _c(
           "div",
           {
+            attrs: { type: "button" },
             on: {
               click: function($event) {
                 $event.preventDefault()
