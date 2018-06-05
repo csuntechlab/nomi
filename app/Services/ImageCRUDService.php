@@ -21,6 +21,7 @@ class ImageCRUDService implements ImageCRUDContract
     {
         $id = request()->id;
         $directory = env('IMAGE_UPLOAD_LOCATION').request()->uri;
+        $savedImage = $directory.'/likeness.jpg';
 
         $manager = new ImageManager(['driver' => 'imagick']);
 
@@ -29,12 +30,16 @@ class ImageCRUDService implements ImageCRUDContract
             File::makeDirectory($directory);
         }
 
-        if (!is_null($image->save(env('IMAGE_UPLOAD_LOCATION') . request()->uri . '/likeness.jpg'))) {
+        if (!is_null($image->save($savedImage))) {
             $this->clearCache($id);
-            return ['status' => true];
+            return [
+                'status' => true
+            ];
         }
 
-        return ['status' => false];
+        return [
+            'status' => false
+        ];
 
     }
 
