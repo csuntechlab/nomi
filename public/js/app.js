@@ -18711,42 +18711,37 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         confirmImage: function confirmImage(emailURI) {
             var _this = this;
 
-            var url = this.myCroppa.generateDataUrl();
-
-            if (!url) {
+            if (!this.myCroppa.hasImage()) {
                 alert('no image');
-                return;
-            }
-            var id = this.studentProfile.id;
-            var payload = { studentId: id, imgUrl: url };
-            this.$store.dispatch('updateImage', payload);
-
-            this.myCroppa.generateBlob(function (blob) {
-                _this.objectUrl = URL.createObjectURL(blob);
-            }, 'image/jpeg', .8);
-
-            var data = new FormData();
-            data.append('id', this.facultyMember.id);
-            data.append('media', url);
-
-            if (this.studentProfile.emailURI == null) {
-                data.append('uri', this.emailURI);
             } else {
-                data.append('uri', this.studentProfile.emailURI);
-            }
+                var url = this.myCroppa.generateDataUrl('jpg', .8);
+                var payload = { studentId: this.studentProfile.id, imgUrl: url };
+                this.$store.dispatch('updateImage', payload);
 
-            axios.post(this.url + '/api/upload', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
+                var uri = null;
+                if (this.studentProfile.emailURI == null) {
+                    uri = this.emailURI;
+                } else {
+                    uri = this.studentProfile.emailURI;
                 }
-            }).then(function (response) {
-                _this.$store.dispatch('getData');
-                _this.$parent.$emit('close', url);
-            }).catch(function (e) {
-                url = null;
-                console.log(e);
-                _this.$parent.$emit('close', url);
-            });
+
+                window.axios.post(this.url + '/api/upload', {
+                    id: this.facultyMember.id,
+                    photo: url,
+                    uri: uri
+                }).then(function (response) {
+                    if (response.status) {
+                        _this.$store.dispatch('getData');
+                        _this.$parent.$emit('close', url);
+                    } else {
+                        console.error('OH NO');
+                    }
+                }).catch(function (e) {
+                    url = null;
+                    console.log(e);
+                    _this.$parent.$emit('close', url);
+                });
+            }
         },
 
         styleCanvas: function styleCanvas() {

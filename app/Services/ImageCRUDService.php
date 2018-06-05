@@ -20,22 +20,22 @@ class ImageCRUDService implements ImageCRUDContract
     public function upload()
     {
         $id = request()->id;
+        $directory = env('IMAGE_UPLOAD_LOCATION').request()->uri;
+
         $manager = new ImageManager(['driver' => 'imagick']);
 
-        $image = $manager->make(request()->media);
-        $uri = \str_replace('nr_', '', request()->uri);
-
-        $oldmask = \umask(0);
-
-        if (!File::exists(env('IMAGE_UPLOAD_LOCATION') . $uri)) {
-            File::makeDirectory(env('IMAGE_UPLOAD_LOCATION') . $uri, 0777);
+        $image = $manager->make(request()->photo);
+        if (!File::exists($directory)) {
+            File::makeDirectory($directory);
         }
 
-        $image->save(env('IMAGE_UPLOAD_LOCATION') . $uri . '/likeness.jpg');
+        if (!is_null($image->save(env('IMAGE_UPLOAD_LOCATION') . request()->uri . '/likeness.jpg'))) {
+            $this->clearCache($id);
+            return ['status' => true];
+        }
 
-        \umask($oldmask);
+        return ['status' => false];
 
-        $this->clearCache($id);
     }
 
     /** Retrieve image priority
