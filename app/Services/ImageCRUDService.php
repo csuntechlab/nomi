@@ -62,10 +62,12 @@ class ImageCRUDService implements ImageCRUDContract
             ->get();
 
         foreach ($users as $user) {
-            if ($user->imagePriority && $user->imagePriority->user_id == auth()->user()->user_id) {
-                \array_push($out, $user->imagePriority->image_priority);
-            } else {
-                \array_push($out, 'likeness');
+            if (count($user->imagePriority)) {
+                if ($user->imagePriority && $user->imagePriority->user_id == auth()->user()->user_id) {
+                    \array_push($out, $user->imagePriority->image_priority);
+                } else {
+                    \array_push($out, 'likeness');
+                }   
             }
         }
 
