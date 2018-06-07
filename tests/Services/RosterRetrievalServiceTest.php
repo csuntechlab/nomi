@@ -65,7 +65,16 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->images = $images;
         $bigJim->image_priority = 'official';
 
-        $roster = [$paulBlart, $shrek, $bigJim];
+        $frank = new \stdClass();
+        $frank->position = 'Student';
+        $frank->members_id = 4;
+        $frank->first_name = 'Frank';
+        $frank->last_name = 'Tank';
+        $frank->email = 'mountainman@parks.gov';
+        $frank->images = $images;
+        $frank->image_priority = null;
+
+        $roster = [$paulBlart, $shrek, $bigJim, $frank];
 
         $cleanRoster = [
             [
@@ -85,6 +94,16 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'images' => $images,
                 'image_priority' => 'official',
+                'recognized' => false,
+            ],
+
+            [
+                'student_id' => 4,
+                'first_name' => 'Frank',
+                'last_name' => 'Tank',
+                'email' => 'mountainman@parks.gov',
+                'images' => $images,
+                'image_priority' => 'likeness',
                 'recognized' => false,
             ],
         ];
