@@ -61,7 +61,11 @@ class RosterRetrievalService implements RosterRetrievalContract
         for ($i = 0; $i < \count($priorities); ++$i) {
             $unsanitizedStudents[$i]->image_priority = $priorities[$i];
         }
-
+        foreach($unsanitizedStudents as $unsanitizedStudent) {
+            if(is_null($unsanitizedStudent->image_priority)) {
+                $unsanitizedStudent->image_priority = 'likeness';
+            }
+        }
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
         foreach ($unsanitizedStudents as $unsanitizedStudent) {

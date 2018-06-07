@@ -58,7 +58,8 @@ class ImageCRUDService implements ImageCRUDContract
                 \array_push($out, $user->imagePriority->image_priority);
             } else {
                 \array_push($out, 'likeness');
-            }
+            }   
+            
         }
         return $out;
     }
