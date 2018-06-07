@@ -64,7 +64,7 @@ class SPAControllerTest extends TestCase
 
         $this->webResourceRetriever
             ->shouldReceive('getCourses')
-            ->once`();
+            ->once();
 
         Auth::shouldReceive('user')
             ->andReturn($user = Mockery::spy(User::class));
