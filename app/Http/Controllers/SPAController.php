@@ -51,8 +51,10 @@ class SPAController extends Controller
 
             $courses[$i]->roster = $students[$i];
         }
+        $user = auth()->user();
+        $email = $user->email;
 
-        return ['courses' => $courses, 'students' => $students, 'email' => auth()->user()->email];
+        return ['courses' => $courses, 'students' => $students, 'email' => $email];
     }
 
     /**
