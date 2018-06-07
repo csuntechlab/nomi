@@ -16,7 +16,7 @@
             <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
         </div>
         <div class="type--center">
-            <div @click="confirmImage"><i class="fa fa-check fa-3x"></i></div>
+            <div @click.prevent="confirmImage" type="button"><i class="fa fa-check fa-3x"></i></div>
         </div>
     </div>
 </template>
@@ -51,44 +51,37 @@
 
         methods: {
             confirmImage: function (emailURI) {
-                let url = this.myCroppa.generateDataUrl();
-
-                if (!url) {
+                if (!this.myCroppa.hasImage()) {
                     alert('no image');
-                    return;
-                }
-                let id = this.studentProfile.id;
-                let payload = {studentId: id, imgUrl: url};
-                this.$store.dispatch('updateImage', payload);
-
-                this.myCroppa.generateBlob(
-                    blob => { this.objectUrl = URL.createObjectURL(blob); },
-                    'image/jpeg',
-                    .8
-                );
-
-                let data = new FormData();
-                data.append('id', this.facultyMember.id);
-                data.append('media', url);
-
-                if (this.studentProfile.emailURI == null){
-                    data.append('uri', this.emailURI);
                 } else {
-                    data.append('uri', this.studentProfile.emailURI);
-                }
+                    let url = this.myCroppa.generateDataUrl('jpg', .8);
+                    let payload = {studentId: this.studentProfile.id, imgUrl: url};
+                    this.$store.dispatch('updateImage', payload);
 
-                axios.post(this.url + '/api/upload', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
+                    let uri = null;
+                    if (this.studentProfile.emailURI == null){
+                        uri = this.emailURI;
+                    } else {
+                        uri = this.studentProfile.emailURI;
                     }
-                }).then(() => {
-                    this.$store.dispatch('getData');
-                }).catch(e => {
-                    url = null;
-                    console.log(e);
-                });
 
-                this.$parent.$emit('close', url);
+                    window.axios.post('/api/upload', {
+                        id: this.facultyMember.id,
+                        photo: url,
+                        uri: uri
+                    }).then(response => {
+                        if (response.status) {
+                            this.$store.dispatch('getData');
+                            this.$parent.$emit('close', url);
+                        } else {
+                            console.error('OH NO');
+                        }
+                    }).catch(e => {
+                        url = null;
+                        console.log(e);
+                        this.$parent.$emit('close', url);
+                    });
+                }
             },
 
             styleCanvas: function() {

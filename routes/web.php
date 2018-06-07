@@ -45,6 +45,14 @@ Route::post('/update_note', 'StudentProfileController@updateNotes');
 Route::get('/get_settings', 'UserSettingsController@getSettings');
 Route::post('/update_theme', 'UserSettingsController@updateTheme');
 
+/**
+ * Image CRUD Routes.
+ */
+Route::group(['prefix' => 'api'], function () {
+    Route::post('/upload', 'ImageController@uploadImage');
+    Route::post('/priority', 'ImageController@updatePriority');
+});
+
 /** META+LAB Feedback Routes */
 // Route::group(['middleware' => ['auth']], function () {
 //     Route::get('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@create')->name('support.create');
