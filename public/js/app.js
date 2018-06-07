@@ -19888,7 +19888,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         window.axios.get("data").then(function (response) {
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
-            state.facultyMember.email = response.data["courses"][0].instructors[0].instructor;
+            state.facultyMember.email = response.data["email"];
             state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
             state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
             state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);

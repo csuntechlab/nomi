@@ -52,7 +52,7 @@ class SPAController extends Controller
             $courses[$i]->roster = $students[$i];
         }
 
-        return ['courses' => $courses, 'students' => $students];
+        return ['courses' => $courses, 'students' => $students, 'email' => auth()->user()->email];
     }
 
     /**
