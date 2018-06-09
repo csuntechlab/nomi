@@ -62,7 +62,7 @@ class RosterRetrievalService implements RosterRetrievalContract
             $unsanitizedStudents[$i]->image_priority = $priorities[$i];
         }
         foreach($unsanitizedStudents as $unsanitizedStudent) {
-            if(is_null($unsanitizedStudent->image_priority)) {
+            if(empty($unsanitizedStudent->image_priority)) {
                 $unsanitizedStudent->image_priority = 'likeness';
             }
         }

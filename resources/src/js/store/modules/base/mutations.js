@@ -2,7 +2,7 @@ export default {
     GET_SETTINGS (state) {
         window.axios.get('get_settings')
             .then(response =>{
-                state.themeName = response.data.theme.theme;
+                state.themeName = response.data.theme;
                 document.getElementById("mainBody").className = state.themeName;
             }).catch(e => {
                 state.errors = e.response.data.message;
@@ -38,7 +38,6 @@ export default {
                     }
                     
                 }
-                console.log(state.studentImages);
                 window.axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
