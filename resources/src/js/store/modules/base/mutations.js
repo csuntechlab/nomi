@@ -2,7 +2,7 @@ export default {
     GET_SETTINGS (state) {
         window.axios.get('get_settings')
             .then(response =>{
-                state.themeName = response.data.theme.theme;
+                state.themeName = response.data.theme;
                 document.getElementById("mainBody").className = state.themeName;
             }).catch(e => {
                 state.errors = e.response.data.message;
@@ -18,7 +18,7 @@ export default {
             .then(response => {
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["courses"][0].instructors[0].instructor;
+                state.facultyMember.email = response.data["email"];
                 state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
@@ -38,7 +38,6 @@ export default {
                     }
                     
                 }
-                console.log(state.studentImages);
                 window.axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
