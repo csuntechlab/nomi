@@ -14,19 +14,31 @@
     export default {
         name: "course-banner",
 
-         methods: {
+        methods: {
             activeTab: function (id) {
                 if(id.toString() === this.$route.params.id)
                     return "tab__link--active";
                 else
                     return "tab__link";
+            },
+
+            setScrollBar(){
+                let screenSize = ;
+                let xPos = screenSize/this.courses.length;
+                window.scrollTo( xPos*courses[selected], 0);
             }
+        },
+
+        beforeMount(){
+            setScrollBar();
         },
 
         computed: {
             ...mapGetters([
                 'courses'
             ]),
+
+
         },
 
 
