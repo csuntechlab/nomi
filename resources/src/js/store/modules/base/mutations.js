@@ -3,7 +3,7 @@ export default {
         window.axios.get('get_settings')
             .then(response =>{
                 state.themeName = response.data.theme;
-                document.getElementById("mainBody").className = state.themeName;
+                document.getElementById("mainBody").className = state.themeName.theme;
             }).catch(e => {
                 state.errors = e.response.data.message;
             });
