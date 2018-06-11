@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Controllers;
+namespace Tests\Services;
 
 use App\Services\AuthVerifierService;
 use Illuminate\Support\Facades\Auth;
