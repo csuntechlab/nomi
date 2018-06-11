@@ -19875,7 +19875,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     GET_SETTINGS: function GET_SETTINGS(state) {
         window.axios.get('get_settings').then(function (response) {
             state.themeName = response.data.theme;
-            document.getElementById("mainBody").className = state.themeName;
+            document.getElementById("mainBody").className = state.themeName.theme;
         }).catch(function (e) {
             state.errors = e.response.data.message;
         });
