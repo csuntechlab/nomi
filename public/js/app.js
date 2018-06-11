@@ -23845,13 +23845,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         setScrollBar: function setScrollBar() {
             var barSize = document.body.clientWidth;
             var itemSize = barSize / this.courses.length;
-            var xPos = itemSize * courses.indexOf(course);
+            var url = window.location.hash.split('/');
+            var xPos = itemSize * url[2];
+            console.log('barSize ' + barSize);
+            console.log('itemSize ' + itemSize);
+            console.log('xPos ' + xPos);
             window.scrollTo(xPos, 0);
         }
     },
 
     beforeMount: function beforeMount() {
-        setScrollBar();
+        console.log(window.location.hash.split('/')[2]);
+        this.setScrollBar();
     },
 
 

@@ -22,16 +22,21 @@
                     return "tab__link";
             },
 
-            setScrollBar(){
+            setScrollBar: function() {
                 let barSize = document.body.clientWidth;
                 let itemSize = barSize/this.courses.length;
-                let xPos = itemSize*courses.indexOf(course);
+                let url = window.location.hash.split('/');
+                let xPos = itemSize*url[2];
+                console.log('barSize ' + barSize);
+                console.log('itemSize ' + itemSize);
+                console.log('xPos ' + xPos);
                 window.scrollTo( xPos, 0);
-            }
+            },
         },
 
-        beforeMount(){
-            setScrollBar();
+        beforeMount() {
+            console.log(window.location.hash.split('/')[2]);
+            this.setScrollBar();
         },
 
         computed: {
