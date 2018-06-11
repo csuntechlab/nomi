@@ -19875,7 +19875,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     GET_SETTINGS: function GET_SETTINGS(state) {
         window.axios.get('get_settings').then(function (response) {
             state.themeName = response.data.theme;
-            document.getElementById("mainBody").className = state.themeName;
+            document.getElementById("mainBody").className = state.themeName.theme;
         }).catch(function (e) {
             state.errors = e.response.data.message;
         });
@@ -23840,8 +23840,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         activeTab: function activeTab(id) {
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
+        },
+
+        setScrollBar: function setScrollBar() {
+            var barSize = document.body.clientWidth;
+            var itemSize = barSize / this.courses.length;
+            var xPos = itemSize * courses.indexOf(course);
+            window.scrollTo(xPos, 0);
         }
     },
+
+    beforeMount: function beforeMount() {
+        setScrollBar();
+    },
+
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 
@@ -23875,8 +23887,9 @@ var render = function() {
                 attrs: { to: "/class/" + course.id }
               },
               [
-                _vm._v("\n                " + _vm._s(course.title) + " "),
-                _c("p", [_vm._v("Pizza")])
+                _vm._v(
+                  "\n                " + _vm._s(course.title) + "\n            "
+                )
               ]
             )
           ],

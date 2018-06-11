@@ -23,9 +23,10 @@
             },
 
             setScrollBar(){
-                let screenSize = ;
-                let xPos = screenSize/this.courses.length;
-                window.scrollTo( xPos*courses[selected], 0);
+                let barSize = document.body.clientWidth;
+                let itemSize = barSize/this.courses.length;
+                let xPos = itemSize*courses.indexOf(course);
+                window.scrollTo( xPos, 0);
             }
         },
 
