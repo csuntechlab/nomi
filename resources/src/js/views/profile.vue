@@ -95,7 +95,7 @@
                             <div v-if="unsavedChanges">There are unsaved changes.</div>
                             <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
                             <br>
-                            <div class="type--center">
+                            <div class="type--center btn_padding">
                                 <button class="btn btn-default" @click="showEmail = true">Show Email</button>
                                 <br>
                             </div>
@@ -115,7 +115,7 @@
             <modal v-if="showEmail" @close="closeEmail">
                 <div slot="header"></div>
                 <div slot="body">
-                    <h5 class="textOverflow emailPadding">{{this.studentProfile.emailURI}}@my.csun.edu</h5>
+                    <h5 class="textOverflow email_padding">{{this.studentProfile.emailURI}}@my.csun.edu</h5>
                 </div>
             </modal>
         </div>

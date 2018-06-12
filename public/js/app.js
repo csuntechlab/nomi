@@ -19063,7 +19063,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
+                      _c("div", { staticClass: "type--center btn_padding" }, [
                         _c(
                           "button",
                           {
@@ -19117,7 +19117,7 @@ var render = function() {
                   _c("div", { attrs: { slot: "header" }, slot: "header" }),
                   _vm._v(" "),
                   _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-                    _c("h5", { staticClass: "textOverflow emailPadding" }, [
+                    _c("h5", { staticClass: "textOverflow email_padding" }, [
                       _vm._v(
                         _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
                       )
