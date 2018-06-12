@@ -18451,6 +18451,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -18465,7 +18474,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             unsavedChanges: false,
             noteSaved: false,
             showModal: false,
-            imgUrl: null
+            imgUrl: null,
+            showEmail: false
         };
     },
 
@@ -18531,6 +18541,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         setImgUrl: function setImgUrl(url) {
             this.showModal = false;
             this.imgUrl = url;
+        },
+        closeEmail: function closeEmail() {
+            this.showEmail = false;
         }
     }
 });
@@ -19050,10 +19063,21 @@ var render = function() {
                       _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
-                      _c("h4", { staticClass: "textOverflow" }, [
-                        _vm._v(
-                          _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
-                        )
+                      _c("div", { staticClass: "type--center" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            on: {
+                              click: function($event) {
+                                _vm.showEmail = true
+                              }
+                            }
+                          },
+                          [_vm._v("Show Email")]
+                        ),
+                        _vm._v(" "),
+                        _c("br")
                       ]),
                       _vm._v(" "),
                       _c("br"),
@@ -19085,6 +19109,20 @@ var render = function() {
                     ],
                     1
                   )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.showEmail
+              ? _c("modal", { on: { close: _vm.closeEmail } }, [
+                  _c("div", { attrs: { slot: "header" }, slot: "header" }),
+                  _vm._v(" "),
+                  _c("div", { attrs: { slot: "body" }, slot: "body" }, [
+                    _c("h5", { staticClass: "textOverflow emailPadding" }, [
+                      _vm._v(
+                        _vm._s(this.studentProfile.emailURI) + "@my.csun.edu"
+                      )
+                    ])
+                  ])
                 ])
               : _vm._e()
           ],

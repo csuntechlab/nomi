@@ -95,7 +95,10 @@
                             <div v-if="unsavedChanges">There are unsaved changes.</div>
                             <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
                             <br>
-                            <h4 class="textOverflow">{{this.studentProfile.emailURI}}@my.csun.edu</h4>
+                            <div class="type--center">
+                                <button class="btn btn-default" @click="showEmail = true">Show Email</button>
+                                <br>
+                            </div>
                             <br>
                             <h4>Bio: {{this.studentProfile.bio}}</h4>
                             <br>
@@ -107,6 +110,12 @@
                 <div slot="header"></div>
                 <div slot="body">
                     <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+                </div>
+            </modal>
+            <modal v-if="showEmail" @close="closeEmail">
+                <div slot="header"></div>
+                <div slot="body">
+                    <h5 class="textOverflow emailPadding">{{this.studentProfile.emailURI}}@my.csun.edu</h5>
                 </div>
             </modal>
         </div>
@@ -127,7 +136,8 @@
                 unsavedChanges: false,
                 noteSaved: false,
                 showModal: false,
-                imgUrl: null
+                imgUrl: null,
+                showEmail: false,
             }
         },
 
@@ -202,6 +212,10 @@
             setImgUrl (url) {
                 this.showModal = false;
                 this.imgUrl = url;
+            },
+
+            closeEmail(){
+                this.showEmail = false;
             }
         }
     }

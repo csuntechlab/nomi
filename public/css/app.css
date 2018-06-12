@@ -563,6 +563,10 @@ textarea[type=text]:focus {
   height: 100%;
 }
 
+.emailPadding {
+  padding: 1em .5em 1em .5em;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
