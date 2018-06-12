@@ -24277,7 +24277,8 @@ var render = function() {
             _vm._v(" "),
             !this.list && this.flash
               ? _c("shuffle-button", {
-                  staticClass: "col-xs-3 col-sm-3 col-md-3 botPaddingSort"
+                  staticClass:
+                    "col-xs-3 col-sm-3 col-md-3 bot_padding_sort shuffle_button"
                 })
               : _vm._e()
           ],
@@ -24291,7 +24292,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("sort-selector", {
-              staticClass: "col-xs-12 col-sm-6 col-md-6 botPaddingSort"
+              staticClass: "col-xs-12 col-sm-6 col-md-6 bot_padding_sort"
             })
           ],
           1

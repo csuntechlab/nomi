@@ -563,11 +563,11 @@ textarea[type=text]:focus {
   height: 100%;
 }
 
-.botPaddingSort {
+.bot_padding_sort {
   padding-bottom: 10px;
 }
 
-.shuffleButton {
+.shuffle_button {
   padding-bottom: 10px;
   float: left;
 }
