@@ -563,6 +563,19 @@ textarea[type=text]:focus {
   height: 100%;
 }
 
+.topPadding {
+  padding-top: 10px;
+}
+
+.botPaddingSort {
+  padding-bottom: 10px;
+}
+
+.shuffleButton {
+  padding-bottom: 10px;
+  float: left;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
