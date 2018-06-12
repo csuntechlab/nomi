@@ -5,8 +5,8 @@
             <shuffle-button v-if="!this.list && this.flash" class="col-xs-3 col-sm-3 col-md-3 botPaddingSort"></shuffle-button>
         </div>
         <div v-else>    
-            <list-grid-selector class="col-xs-12 col-sm-5 col-md-5"></list-grid-selector>
-            <sort-selector class="col-xs-12 col-sm-7 col-md-7 botPaddingSort"></sort-selector>
+            <list-grid-selector class="col-xs-12 col-sm-6 col-md-6"></list-grid-selector>
+            <sort-selector class="col-xs-12 col-sm-6 col-md-6 botPaddingSort"></sort-selector>
         </div>
     </nav>
 </template>

@@ -24287,11 +24287,11 @@ var render = function() {
           "div",
           [
             _c("list-grid-selector", {
-              staticClass: "col-xs-12 col-sm-5 col-md-5"
+              staticClass: "col-xs-12 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
             _c("sort-selector", {
-              staticClass: "col-xs-12 col-sm-7 col-md-7 botPaddingSort"
+              staticClass: "col-xs-12 col-sm-6 col-md-6 botPaddingSort"
             })
           ],
           1

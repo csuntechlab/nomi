@@ -563,10 +563,6 @@ textarea[type=text]:focus {
   height: 100%;
 }
 
-.topPadding {
-  padding-top: 10px;
-}
-
 .botPaddingSort {
   padding-bottom: 10px;
 }
