@@ -30,7 +30,7 @@
                 console.log('barSize ' + barSize);
                 console.log('itemSize ' + itemSize);
                 console.log('xPos ' + xPos);
-                window.scrollTo( xPos, 0);
+                window.scrollTo( 215*url[2], 0);
             },
         },
 

@@ -23850,7 +23850,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             console.log('barSize ' + barSize);
             console.log('itemSize ' + itemSize);
             console.log('xPos ' + xPos);
-            window.scrollTo(xPos, 0);
+            // window.scrollTo( 215*url[2], 0);
+            this.window.scrollTo(0, 900);
         }
     },
 
