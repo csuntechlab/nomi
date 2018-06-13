@@ -18220,10 +18220,6 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
 //
 //
 //
@@ -18240,28 +18236,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: "class",
     created: function created() {
         this.$store.dispatch('clearErrors');
-    },
-
-
-    methods: {
-        // setScrollBar: function() {
-        //     let barSize = document.body.clientWidth;
-        //     let itemSize = barSize/this.courses.length;
-        //     let url = window.location.hash.split('/');
-        //     let xPos = itemSize*url[2];
-        //     var container = this.$el.querySelector('#courseScroll');
-        //     container.scrollTop = xPos;
-        //     console.log('barSize ' + barSize);
-        //     console.log('itemSize ' + itemSize);
-        //     console.log('xPos ' + xPos);
-        // },
-        // scrollToEnd: function() {    	
-        //     var container = this.$el.querySelector("#courseBanner");
-        //     container.scrollTop = container.scrollHeight;
-        // },
-    },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+    }
 });
 
 /***/ }),
@@ -18275,7 +18250,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { attrs: { id: "courseScroll" } }, [_c("course-banner")], 1),
+      _c("course-banner"),
       _vm._v(" "),
       _c("settings-banner"),
       _vm._v(" "),
@@ -21621,6 +21596,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -21895,16 +21874,44 @@ var render = function() {
         "div",
         { staticClass: "height_fix" },
         [
-          _c("router-link", { staticClass: "menu_links", attrs: { to: "/" } }, [
-            _vm._v("Courses")
-          ]),
+          _c(
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/" } },
+                [_vm._v("Courses")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("theme-selector"),
           _vm._v(" "),
           _c(
-            "router-link",
-            { staticClass: "menu_links", attrs: { to: "/about" } },
-            [_vm._v("About")]
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/about" } },
+                [_vm._v("About")]
+              )
+            ],
+            1
           ),
           _vm._v(" "),
           _c(
@@ -22599,7 +22606,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         goBack: function goBack() {
-            this.$router.go(-1);
+            if (window.location.hash.split('/')[1] == 'class') {
+                this.$router.push({ name: 'home' });
+            } else this.$router.go(-1);
         }
     },
 
@@ -23868,28 +23877,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         activeTab: function activeTab(id) {
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
         },
-
         setScrollBar: function setScrollBar() {
             var scrollBar = document.getElementById('scrollBar');
-            //let itemSize = barSize/this.courses.length;
             var url = window.location.hash.split('/')[2];
             var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
             var xPos = itemSize * url;
             scrollBar.scrollLeft = xPos;
         }
     },
-
-    //     setScrollBar: function() {
-    //         let barSize = document.body.clientWidth;
-    //         let itemSize = barSize/this.courses.length;
-    //         let url = window.location.hash.split('/');
-    //         let xPos = itemSize*url[2];
-    //         console.log('barSize ' + barSize);
-    //         console.log('itemSize ' + itemSize);
-    //         console.log('xPos ' + xPos);
-    //         window.scrollTo( 215*url[2], 0);
-    //     },
-    // },
 
     mounted: function mounted() {
         this.setScrollBar();

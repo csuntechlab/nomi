@@ -21,7 +21,6 @@
                 else
                     return "tab__link";
             },
-
             setScrollBar(){
                 let scrollBar = document.getElementById('scrollBar');
                 let url = window.location.hash.split('/')[2];
