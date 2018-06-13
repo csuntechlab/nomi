@@ -20,15 +20,18 @@
                 </div>
             </div>
                 <div class="height_fix">
-                    <router-link class="menu_links" to="/">Courses</router-link>
+                    <span @click="closeMenu()">
+                        <router-link class="menu_links" to="/">Courses</router-link>
+                    </span>
                     <theme-selector></theme-selector>
-                    <router-link class="menu_links" to="/about">About</router-link>
+                    <span @click="closeMenu()">
+                        <router-link class="menu_links" to="/about">About</router-link>
+                    </span>
                     <a class="menu_links" :href= "this.url + '/logout'" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
                 </div>
         </div>
     </div>
 </template>
-
 <script>
 import { mapGetters } from "vuex";
 import themeSelector from "../../components/fixed_components/themeSelector.vue";

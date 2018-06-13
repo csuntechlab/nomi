@@ -21594,6 +21594,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -21868,16 +21871,44 @@ var render = function() {
         "div",
         { staticClass: "height_fix" },
         [
-          _c("router-link", { staticClass: "menu_links", attrs: { to: "/" } }, [
-            _vm._v("Courses")
-          ]),
+          _c(
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/" } },
+                [_vm._v("Courses")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("theme-selector"),
           _vm._v(" "),
           _c(
-            "router-link",
-            { staticClass: "menu_links", attrs: { to: "/about" } },
-            [_vm._v("About")]
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/about" } },
+                [_vm._v("About")]
+              )
+            ],
+            1
           ),
           _vm._v(" "),
           _c(
@@ -22572,7 +22603,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         goBack: function goBack() {
-            this.$router.go(-1);
+            if (window.location.hash.split('/')[1] == 'class') {
+                this.$router.push({ name: 'home' });
+            } else this.$router.go(-1);
         }
     },
 
@@ -23840,8 +23873,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         activeTab: function activeTab(id) {
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
+        },
+        setScrollBar: function setScrollBar() {
+            var scrollBar = document.getElementById('scrollBar');
+            var url = window.location.hash.split('/')[2];
+            var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
+            var xPos = itemSize * url;
+            scrollBar.scrollLeft = xPos - itemSize / 2;
         }
     },
+
+    mounted: function mounted() {
+        this.setScrollBar();
+    },
+
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 
@@ -23858,7 +23903,7 @@ var render = function() {
   return _c("div", { staticClass: "tab-container" }, [
     _c(
       "ul",
-      { staticClass: "tabs cf" },
+      { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
       _vm._l(this.courses, function(course) {
         return _c(
           "li",
