@@ -1,7 +1,7 @@
 <template>
         <div class="tab-container">
-            <ul class="tabs cf">
-                <li v-for="course in this.courses" :key="course.title" :course="course" class="tab_list">
+            <ul id="scrollBar" class="tabs cf">
+                <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
                     <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                         {{course.title}}
                     </router-link>
@@ -23,33 +23,17 @@
             },
 
             setScrollBar(){
-                let barSize = document.body.clientWidth;
-                let itemSize = barSize/this.courses.length;
-                let url = window.location.hash.split('/');
-                let xPos = itemSize*url[2];
-                var container = this.$el;
-                container.scrollLeft = xPos;
-                console.log('barSize ' + barSize);
-                console.log('itemSize ' + itemSize);
-                console.log('xPos ' + xPos);
+                let scrollBar = document.getElementById('scrollBar');
+                //let itemSize = barSize/this.courses.length;
+                let url = window.location.hash.split('/')[2];
+                let itemSize = document.getElementsByTagName('li')[url].offsetWidth;
+                let xPos = itemSize*url;
+                scrollBar.scrollLeft = xPos;
             },
         },
-
-        //     setScrollBar: function() {
-        //         let barSize = document.body.clientWidth;
-        //         let itemSize = barSize/this.courses.length;
-        //         let url = window.location.hash.split('/');
-        //         let xPos = itemSize*url[2];
-        //         console.log('barSize ' + barSize);
-        //         console.log('itemSize ' + itemSize);
-        //         console.log('xPos ' + xPos);
-        //         window.scrollTo( 215*url[2], 0);
-        //     },
-        // },
-
+        
         mounted() {
-            //this.setScrollBar();
-            window.scrollTo(500,0);
+            this.setScrollBar();
         },
 
         computed: {

@@ -23870,15 +23870,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         setScrollBar: function setScrollBar() {
-            var barSize = document.body.clientWidth;
-            var itemSize = barSize / this.courses.length;
-            var url = window.location.hash.split('/');
-            var xPos = itemSize * url[2];
-            var container = this.$el;
-            container.scrollLeft = xPos;
-            console.log('barSize ' + barSize);
-            console.log('itemSize ' + itemSize);
-            console.log('xPos ' + xPos);
+            var scrollBar = document.getElementById('scrollBar');
+            //let itemSize = barSize/this.courses.length;
+            var url = window.location.hash.split('/')[2];
+            var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
+            var xPos = itemSize * url;
+            scrollBar.scrollLeft = xPos;
         }
     },
 
@@ -23895,8 +23892,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     // },
 
     mounted: function mounted() {
-        //this.setScrollBar();
-        window.scrollTo(500, 0);
+        this.setScrollBar();
     },
 
 
@@ -23915,13 +23911,13 @@ var render = function() {
   return _c("div", { staticClass: "tab-container" }, [
     _c(
       "ul",
-      { staticClass: "tabs cf" },
+      { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
       _vm._l(this.courses, function(course) {
         return _c(
           "li",
           {
             key: course.title,
-            staticClass: "tab_list",
+            staticClass: "tab__list",
             attrs: { course: course }
           },
           [
