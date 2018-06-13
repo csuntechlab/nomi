@@ -18219,7 +18219,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 //
 //
 //
@@ -18230,7 +18229,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "class",
@@ -21599,7 +21597,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -23882,7 +23879,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var url = window.location.hash.split('/')[2];
             var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
             var xPos = itemSize * url;
-            scrollBar.scrollLeft = xPos;
+            scrollBar.scrollLeft = xPos - itemSize / 2;
         }
     },
 

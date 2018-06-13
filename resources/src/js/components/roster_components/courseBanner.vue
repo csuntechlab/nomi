@@ -26,7 +26,7 @@
                 let url = window.location.hash.split('/')[2];
                 let itemSize = document.getElementsByTagName('li')[url].offsetWidth;
                 let xPos = itemSize*url;
-                scrollBar.scrollLeft = xPos;
+                scrollBar.scrollLeft = xPos-itemSize/2;
             },
         },
         
