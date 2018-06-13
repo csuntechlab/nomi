@@ -1,7 +1,7 @@
 <template>
         <div class="tab-container">
             <ul class="tabs cf">
-                <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
+                <li v-for="course in this.courses" :key="course.title" :course="course" class="tab_list">
                     <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                         {{course.title}}
                     </router-link>
@@ -22,21 +22,34 @@
                     return "tab__link";
             },
 
-            setScrollBar: function() {
+            setScrollBar(){
                 let barSize = document.body.clientWidth;
                 let itemSize = barSize/this.courses.length;
                 let url = window.location.hash.split('/');
                 let xPos = itemSize*url[2];
+                var container = this.$el;
+                container.scrollLeft = xPos;
                 console.log('barSize ' + barSize);
                 console.log('itemSize ' + itemSize);
                 console.log('xPos ' + xPos);
-                window.scrollTo( 215*url[2], 0);
             },
         },
 
-        beforeMount() {
-            console.log(window.location.hash.split('/')[2]);
-            this.setScrollBar();
+        //     setScrollBar: function() {
+        //         let barSize = document.body.clientWidth;
+        //         let itemSize = barSize/this.courses.length;
+        //         let url = window.location.hash.split('/');
+        //         let xPos = itemSize*url[2];
+        //         console.log('barSize ' + barSize);
+        //         console.log('itemSize ' + itemSize);
+        //         console.log('xPos ' + xPos);
+        //         window.scrollTo( 215*url[2], 0);
+        //     },
+        // },
+
+        mounted() {
+            //this.setScrollBar();
+            window.scrollTo(500,0);
         },
 
         computed: {
