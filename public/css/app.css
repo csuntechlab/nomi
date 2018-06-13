@@ -563,6 +563,14 @@ textarea[type=text]:focus {
   height: 100%;
 }
 
+.email_padding {
+  padding: 1em .5em 1em .5em;
+}
+
+.btn_padding {
+  padding: .4em 0 .4em 0;
+}
+
 .bot_padding_sort {
   padding-bottom: 10px;
 }
