@@ -1,6 +1,6 @@
 <template>
         <div class="tab-container">
-            <ul class="tabs cf">
+            <ul id="scrollBar" class="tabs cf">
                 <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
                     <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                         {{course.title}}
@@ -14,19 +14,32 @@
     export default {
         name: "course-banner",
 
-         methods: {
+        methods: {
             activeTab: function (id) {
                 if(id.toString() === this.$route.params.id)
                     return "tab__link--active";
                 else
                     return "tab__link";
-            }
+            },
+            setScrollBar(){
+                let scrollBar = document.getElementById('scrollBar');
+                let url = window.location.hash.split('/')[2];
+                let itemSize = document.getElementsByTagName('li')[url].offsetWidth;
+                let xPos = itemSize*url;
+                scrollBar.scrollLeft = xPos-itemSize/2;
+            },
+        },
+        
+        mounted() {
+            this.setScrollBar();
         },
 
         computed: {
             ...mapGetters([
                 'courses'
             ]),
+
+
         },
 
 

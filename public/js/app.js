@@ -21636,6 +21636,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -21910,16 +21913,44 @@ var render = function() {
         "div",
         { staticClass: "height_fix" },
         [
-          _c("router-link", { staticClass: "menu_links", attrs: { to: "/" } }, [
-            _vm._v("Courses")
-          ]),
+          _c(
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/" } },
+                [_vm._v("Courses")]
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("theme-selector"),
           _vm._v(" "),
           _c(
-            "router-link",
-            { staticClass: "menu_links", attrs: { to: "/about" } },
-            [_vm._v("About")]
+            "span",
+            {
+              on: {
+                click: function($event) {
+                  _vm.closeMenu()
+                }
+              }
+            },
+            [
+              _c(
+                "router-link",
+                { staticClass: "menu_links", attrs: { to: "/about" } },
+                [_vm._v("About")]
+              )
+            ],
+            1
           ),
           _vm._v(" "),
           _c(
@@ -22614,7 +22645,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         goBack: function goBack() {
-            this.$router.go(-1);
+            if (window.location.hash.split('/')[1] == 'class') {
+                this.$router.push({ name: 'home' });
+            } else this.$router.go(-1);
         }
     },
 
@@ -23882,8 +23915,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         activeTab: function activeTab(id) {
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
+        },
+        setScrollBar: function setScrollBar() {
+            var scrollBar = document.getElementById('scrollBar');
+            var url = window.location.hash.split('/')[2];
+            var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
+            var xPos = itemSize * url;
+            scrollBar.scrollLeft = xPos - itemSize / 2;
         }
     },
+
+    mounted: function mounted() {
+        this.setScrollBar();
+    },
+
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
 
@@ -23900,7 +23945,7 @@ var render = function() {
   return _c("div", { staticClass: "tab-container" }, [
     _c(
       "ul",
-      { staticClass: "tabs cf" },
+      { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
       _vm._l(this.courses, function(course) {
         return _c(
           "li",
@@ -24001,6 +24046,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
 //
 //
 //
@@ -24305,21 +24353,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticStyle: { height: "55px" } },
-    [
-      _c("list-grid-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-xs-6 col-sm-6 col-md-6" },
-        [!this.list && this.flash ? _c("shuffle-button") : _c("sort-selector")],
-        1
-      )
-    ],
-    1
-  )
+  return _c("nav", { staticStyle: { height: "55px" } }, [
+    !this.list && this.flash
+      ? _c(
+          "div",
+          [
+            _c("list-grid-selector", {
+              staticClass: "col-xs-9 col-sm-9 col-md-9"
+            }),
+            _vm._v(" "),
+            !this.list && this.flash
+              ? _c("shuffle-button", {
+                  staticClass:
+                    "col-xs-3 col-sm-3 col-md-3 bot_padding_sort shuffle_button"
+                })
+              : _vm._e()
+          ],
+          1
+        )
+      : _c(
+          "div",
+          [
+            _c("list-grid-selector", {
+              staticClass: "col-xs-12 col-sm-6 col-md-6"
+            }),
+            _vm._v(" "),
+            _c("sort-selector", {
+              staticClass: "col-xs-12 col-sm-6 col-md-6 bot_padding_sort"
+            })
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

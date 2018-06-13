@@ -571,6 +571,15 @@ textarea[type=text]:focus {
   padding: .4em 0 .4em 0;
 }
 
+.bot_padding_sort {
+  padding-bottom: 10px;
+}
+
+.shuffle_button {
+  padding-bottom: 10px;
+  float: left;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
