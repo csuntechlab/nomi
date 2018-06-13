@@ -24,7 +24,6 @@
 
             setScrollBar(){
                 let scrollBar = document.getElementById('scrollBar');
-                //let itemSize = barSize/this.courses.length;
                 let url = window.location.hash.split('/')[2];
                 let itemSize = document.getElementsByTagName('li')[url].offsetWidth;
                 let xPos = itemSize*url;
