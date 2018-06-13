@@ -93,7 +93,9 @@
                             <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
                             <div v-if="noteSaved">Notes Saved!</div>
                             <div v-if="unsavedChanges">There are unsaved changes.</div>
-                            <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                            <div class="clearPadding">
+                                <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                            </div>
                             <br>
                             <div class="type--center btn_padding">
                                 <button class="btn btn-default" @click="showEmail = true">Show Email</button>

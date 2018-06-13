@@ -18460,6 +18460,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -19047,19 +19049,21 @@ var render = function() {
                         ? _c("div", [_vm._v("There are unsaved changes.")])
                         : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-default",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.commitNotes($event)
+                      _c("div", { staticClass: "clearPadding" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                _vm.commitNotes($event)
+                              }
                             }
-                          }
-                        },
-                        [_vm._v("Save Notes")]
-                      ),
+                          },
+                          [_vm._v("Save Notes")]
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("br"),
                       _vm._v(" "),
