@@ -9,11 +9,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
     export default {
         name: "class",
         created () {
             this.$store.dispatch('clearErrors');
-        },
+        }
     }
 </script>
