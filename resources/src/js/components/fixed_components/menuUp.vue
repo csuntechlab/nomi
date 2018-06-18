@@ -1,6 +1,7 @@
 <template>
     <div class="type--center">
-        <div id="myMenu" class="menu">
+        <div v-if="show == true" id="outsideLayer" class="transparent_non-menu_layer"></div>
+        <div id="myMenu" class="menu" v-click-outside="closeMenu">
             <div v-if="show == true">
                 <i class="fa fa-angle-down fa-3x type--center" @click="closeMenu"></i>
             </div>
@@ -34,7 +35,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import themeSelector from "../../components/fixed_components/themeSelector.vue";
+import themeSelector from "../fixed_components/themeSelector.vue";
+import { clickOutside } from "../../directives/index.js";
 export default {
   name: "menu-up",
 
