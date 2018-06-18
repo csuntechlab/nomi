@@ -58,7 +58,7 @@ export default {
       },
 
       closeMenu: function () {
-          document.getElementById("myMenu").style.height = "8%";
+          document.getElementById("myMenu").style.height = "7%";
           this.show = false;
       }
   }
