@@ -32,6 +32,7 @@ class StudentProfileService implements StudentProfileContract
     public function getStudentProfile($email)
     {
         $imageManager = new ImageManager(['driver' => 'imagick']);
+        $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];
         if ($profile['profile_image'] == null) {
             $profile['profile_image'] = url('images/student_profile_default.jpg');
@@ -75,5 +76,16 @@ class StudentProfileService implements StudentProfileContract
         );
 
         return 'Updated';
+    }
+
+    private function ensureStudentEmailWorks($email)
+    {
+        $regex = "/(\D)*\.(\D)*\.\d\d\d/";
+        $checkerEmail = \substr($email, 0, \strpos($email, '@'));
+        if (\preg_match($regex, $checkerEmail)) {
+            return $email;
+        }
+
+        return $checkerEmail . '@csun.edu';
     }
 }
