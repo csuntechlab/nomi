@@ -3,7 +3,7 @@
             <ul id="scrollBar" class="tabs cf">
                 <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
                     <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
-                        {{course.title}}
+                        {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
                     </router-link>
                 </li>
             </ul>
