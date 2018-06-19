@@ -5,9 +5,6 @@
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
          </div>
-         <div v-else-if="courses === null">
-             {{console.log("haha yes")}};
-         </div>
          <div v-else>        
             <course-list></course-list>
         </div>
