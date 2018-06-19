@@ -13,4 +13,4 @@ yarn-error.log
 .env
 .php_cs.cache
 *.DS_STORE
-public/images/*/
+/public/images/*/
