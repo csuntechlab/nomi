@@ -18234,6 +18234,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: "class",
     created: function created() {
         this.$store.dispatch('clearErrors');
+        this.$store.dispatch('getData');
     }
 });
 
@@ -18492,6 +18493,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             uri: this.$route.params.emailURI,
             faculty_id: this.facultyMember.id
         });
+
+        this.$store.dispatch('getData');
     },
     beforeRouteLeave: function beforeRouteLeave(to, from, next) {
         if (this.unsavedChanges) {
@@ -19212,7 +19215,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         AboutBanner: __WEBPACK_IMPORTED_MODULE_0__components_about_components_aboutBanner___default.a
     },
-    name: "About"
+    name: "About",
+
+    created: function created() {
+        this.$store.dispatch('getData');
+    }
 });
 
 /***/ }),

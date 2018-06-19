@@ -13,6 +13,7 @@
         name: "class",
         created () {
             this.$store.dispatch('clearErrors');
+            this.$store.dispatch('getData');
         }
     }
 </script>

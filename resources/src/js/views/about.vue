@@ -11,6 +11,10 @@
         components: {
             AboutBanner
         },
-        name: "About"
+        name: "About",
+
+        created() {
+            this.$store.dispatch('getData');
+        }
     }
 </script>
