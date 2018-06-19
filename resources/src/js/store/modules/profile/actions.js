@@ -17,5 +17,9 @@ export default {
 
     nullifyStudentProfile (context) {
         context.commit('NULLIFY_STUDENT_PROFILE');
+    },
+
+    clearProfileErrors (context) {
+        context.commit('CLEAR_PROFILE_ERRORS');
     }
 }
