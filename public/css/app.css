@@ -8,7 +8,18 @@
   padding: 0;
   position: fixed;
   bottom: 0;
-  height: 8%;
+  height: 7%;
+  width: 100%;
+}
+
+.transparent_non-menu_layer {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
   width: 100%;
 }
 
@@ -561,6 +572,23 @@ textarea[type=text]:focus {
 
 .flashCard {
   height: 100%;
+}
+
+.email_padding {
+  padding: 1em .5em 1em .5em;
+}
+
+.btn_padding {
+  padding: .4em 0 .4em 0;
+}
+
+.bot_padding_sort {
+  padding-bottom: 10px;
+}
+
+.shuffle_button {
+  padding-bottom: 10px;
+  float: left;
 }
 
 .theme-main .underlineStyling {

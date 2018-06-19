@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Controllers;
+namespace Tests\Services;
 
 use App\Contracts\ImageCRUDContract;
 use App\Contracts\WebResourceRetrieverContract;
