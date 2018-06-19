@@ -8,7 +8,7 @@ export default {
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
     hideBack: true,
 
     facultyMember: {

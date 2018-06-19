@@ -19791,7 +19791,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
     hideBack: true,
 
     facultyMember: {
@@ -19916,7 +19916,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = ({
     GET_SETTINGS: function GET_SETTINGS(state) {
         window.axios.get('get_settings').then(function (response) {
-            state.themeName = response.data.theme;
+            state.themeName = response.data;
             document.getElementById("mainBody").className = state.themeName.theme;
         }).catch(function (e) {
             state.errors = e.response.data.message;
