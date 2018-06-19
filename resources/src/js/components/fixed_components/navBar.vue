@@ -2,9 +2,9 @@
     <nav class="primary-nav">
         <back-button></back-button>
         <div>
-            <img class="logo" :src="this.url + '/images/csun_logo.svg'" alt="CSUN Logo">
+            <img class="logo csun_logo" :src="this.url + '/images/csun_logo.svg'" alt="CSUN Logo">
             <span class="sr-only">California State University, Northridge (CSUN)</span></div>
-        <div class="primary-nav__sub-brand subbrand_center">NOMI    </div>
+        <img class="nomi_logo" :src="this.url + '/images/nomi.svg'">
     </nav>
 </template>
 

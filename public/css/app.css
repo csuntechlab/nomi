@@ -109,7 +109,7 @@
   color: #FFFFFF;
 }
 
-textarea[type=text] {
+textarea[type="text"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -120,7 +120,7 @@ textarea[type=text] {
           box-sizing: border-box;
 }
 
-textarea[type=text]:focus {
+textarea[type="text"]:focus {
   border: 3px solid lightblue;
 }
 
@@ -381,16 +381,66 @@ textarea[type=text]:focus {
   background-image: white;
 }
 
+.theme-main .nomi_logo {
+  display: block;
+  float: left;
+  width: 75px;
+  height: 37px;
+  border-left: 1px solid #ccc;
+  padding-left: 8px;
+  margin: 4px 0 4px 8px;
+  overflow: hidden;
+}
+
+.theme-bluesTheme .nomi_logo {
+  display: block;
+  float: left;
+  width: 75px;
+  height: 37px;
+  border-left: 1px solid #ccc;
+  padding-left: 8px;
+  margin: 4px 0 4px 8px;
+  overflow: hidden;
+}
+
+.theme-Cloudy .nomi_logo {
+  display: block;
+  float: left;
+  width: 75px;
+  height: 37px;
+  border-left: 1px solid #ccc;
+  padding-left: 8px;
+  margin: 4px 0 4px 8px;
+  overflow: hidden;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .nomi_logo {
+  display: block;
+  float: left;
+  width: 75px;
+  height: 37px;
+  border-left: 1px solid #ccc;
+  padding-left: 8px;
+  margin: 4px 0 4px 8px;
+  overflow: hidden;
+}
+
+.csun_logo {
+  display: block;
+  float: left;
+  overflow: hidden;
+}
+
 #Matador {
   background-color: #d00d2d;
 }
 
 #Navy {
-  background-color: #0F1821;
+  background-color: #0f1821;
 }
 
 #Blues {
-  background-color: #0D3753;
+  background-color: #0d3753;
 }
 
 #Cloudy {

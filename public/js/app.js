@@ -21451,7 +21451,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", [
         _c("img", {
-          staticClass: "logo",
+          staticClass: "logo csun_logo",
           attrs: { src: this.url + "/images/csun_logo.svg", alt: "CSUN Logo" }
         }),
         _vm._v(" "),
@@ -21460,9 +21460,10 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "primary-nav__sub-brand subbrand_center" }, [
-        _vm._v("NOMI    ")
-      ])
+      _c("img", {
+        staticClass: "nomi_logo",
+        attrs: { src: this.url + "/images/nomi.svg" }
+      })
     ],
     1
   )
