@@ -22170,7 +22170,7 @@ var render = function() {
         { staticClass: "alert alert--warning", attrs: { id: "error_bar" } },
         [
           _c("strong", [_vm._v("Oops!")]),
-          _vm._v(" Something went wrong...\n     "),
+          _vm._v(" Something went wrong\n     "),
           _c(
             "a",
             {

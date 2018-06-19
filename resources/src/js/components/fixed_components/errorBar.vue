@@ -1,6 +1,6 @@
 <template>
     <div v-if="this.errors || this.profileErrors" id="error_bar" class="alert alert--warning">
-        <strong>Oops!</strong> Something went wrong...
+        <strong>Oops!</strong> Something went wrong
          <a href="#" class="alert__close" @click="closeError()" >&times;</a>
     </div>
 </template>
