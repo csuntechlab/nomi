@@ -17,6 +17,9 @@
         },
         created: function () {
             this.url = document.querySelector('meta[name=app-url]').content;
-        }
+        },
+        beforeCreate(){
+            this.$store.dispatch('getData');
+        },
     }
 </script>

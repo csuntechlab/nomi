@@ -12,9 +12,5 @@
             AboutBanner
         },
         name: "About",
-
-        created() {
-            this.$store.dispatch('getData');
-        }
     }
 </script>

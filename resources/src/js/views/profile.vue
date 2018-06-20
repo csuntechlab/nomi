@@ -157,8 +157,6 @@
                     faculty_id: this.facultyMember.id
                 }
             );
-            
-            this.$store.dispatch('getData');
         },
 
         beforeRouteLeave (to, from, next) {
