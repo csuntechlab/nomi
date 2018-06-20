@@ -45,6 +45,8 @@ class StudentProfileService implements StudentProfileContract
             ->where('student_id', $profile['individuals_id'])
             ->first();
 
+        dd($note);
+
         $imagePriority = $this
             ->imageCRUD
             ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
