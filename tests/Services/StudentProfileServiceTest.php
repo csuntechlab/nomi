@@ -36,7 +36,7 @@ class StudentProfileServiceTest extends TestCase
     /** @test */
     public function getStudentProfile_returns_a_student_profile()
     {
-        $user = new User(['user_id' => 'professor']);
+        $user = new User(['user_id' => 'members:professor']);
         $this->be($user);
 
         $studentService = new StudentProfileService(
@@ -46,8 +46,8 @@ class StudentProfileServiceTest extends TestCase
         );
 
         $note = factory(Note::class)->make([
-            'student_id' => 'student',
-            'user_id' => 'professor',
+            'student_id' => 'members:student',
+            'user_id' => 'members:professor',
             'notepad' => Crypt::encrypt('This is a note'),
         ]);
 
