@@ -18137,7 +18137,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         this.$store.dispatch('clearErrors');
-        this.$store.dispatch('getData');
         this.$store.dispatch('hideBackButton');
     },
     beforeRouteLeave: function beforeRouteLeave(to, from, next) {
@@ -21432,6 +21431,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.url = document.querySelector('meta[name=app-url]').content;
+    },
+    beforeCreate: function beforeCreate() {
+        this.$store.dispatch('getData');
     }
 });
 
