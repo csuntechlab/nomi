@@ -641,6 +641,10 @@ textarea[type="text"]:focus {
   float: left;
 }
 
+.text_bold {
+  font-weight: bold;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }

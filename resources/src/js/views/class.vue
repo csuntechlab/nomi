@@ -13,6 +13,6 @@
         name: "class",
         created () {
             this.$store.dispatch('clearErrors');
-        }
+        },
     }
 </script>

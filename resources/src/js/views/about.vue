@@ -11,6 +11,6 @@
         components: {
             AboutBanner
         },
-        name: "About"
+        name: "About",
     }
 </script>
