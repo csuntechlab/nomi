@@ -23,6 +23,11 @@ class StudentProfileController extends Controller
 
     public function updateNotes(Request $request)
     {
-        return $this->studentProfileService->updateStudentNotes($request);
+        $data = [
+            'student_id' => $request->student_id,
+            'notepad' => $request->notepad,
+        ];
+
+        return $this->studentProfileService->updateStudentNotes($data);
     }
 }

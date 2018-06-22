@@ -11,14 +11,12 @@ use App\Models\Note;
 use App\Models\User;
 use App\Services\StudentProfileService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Crypt;
 use Mockery;
 use Tests\TestCase;
 
 class StudentProfileServiceTest extends TestCase
 {
-    use RefreshDatabase;
     use DatabaseMigrations;
 
     public $webResourceRetriever;
@@ -49,7 +47,7 @@ class StudentProfileServiceTest extends TestCase
             'student_id' => 'members:student',
             'user_id' => 'members:professor',
             'notepad' => Crypt::encrypt('This is a note'),
-        ]);
+        ])->save();
 
         $email = 'this.is.555@WorkingEmail.com';
 
@@ -65,7 +63,7 @@ class StudentProfileServiceTest extends TestCase
 
         $this->imageCRUD
             ->shouldReceive('getPriority')
-            ->withArgs(['student'])
+            ->withArgs([['student']])
             ->andReturn(['likeness']);
 
         $studentProfile = (object) [
@@ -81,13 +79,74 @@ class StudentProfileServiceTest extends TestCase
 
         $this->rosterRetriever
             ->shouldReceive('sanitizeStudent')
-            ->withArgs([$studentProfile])
+            ->once()
             ->andReturn(['images' => 'evenMoreImages']);
 
         $studentProfile->images = 'evenMoreImages';
 
         $output = $studentService->getStudentProfile($email);
 
-        $this->assertEquals($output, \json_encode($studentProfile));
+        $this->assertEquals(\json_encode($studentProfile), $output);
+    }
+
+    /** @test */
+    public function updateStudentNotes_creates_a_new_note()
+    {
+        $user = new User(['user_id' => 'members:professor']);
+        $this->be($user);
+
+        $studentService = new StudentProfileService(
+            $this->webResourceRetriever,
+            $this->rosterRetriever,
+            $this->imageCRUD
+        );
+
+        $data = [
+            'id' => 1,
+            'student_id' => 'student',
+            'notepad' => 'wow a note',
+        ];
+
+        $this->assertDatabaseMissing('notes', ['haha']);
+
+        $studentService->updateStudentNotes($data);
+
+        $data['user_id'] = 'members:professor';
+        $data['notepad'] = Crypt::encrypt($data['notepad']);
+
+        $this->assertDatabaseHas('notes', [
+            'id' => $data['id'],
+            'student_id' => $data['student_id'],
+            ]);
+    }
+
+    /** @test */
+    public function updateStudentNotes_updates_an_existing_note()
+    {
+        $user = new User(['user_id' => 'members:professor']);
+        $this->be($user);
+
+        $studentService = new StudentProfileService(
+            $this->webResourceRetriever,
+            $this->rosterRetriever,
+            $this->imageCRUD
+        );
+
+        $note = factory(Note::class)->make([
+            'student_id' => 'members:student',
+            'user_id' => 'members:professor',
+            'notepad' => Crypt::encrypt('This is a note'),
+        ])->save();
+
+        $data = [
+            'student_id' => 'members:student',
+            'notepad' => 'wow a note',
+        ];
+
+        $this->assertDatabaseHas('notes', ['student_id' => $data['student_id']]);
+
+        $studentService->updateStudentNotes($data);
+
+        $this->assertDatabaseHas('notes', ['student_id' => $data['student_id']]);
     }
 }
