@@ -6,7 +6,7 @@
         <div class="panel__content">
             
                 <div class="row">
-                    {{course.subject}} {{course.catalog_number}}: #{{course.id}}
+                    {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
                 </div>
                 <div class="row">
                     {{course.meetings[0].location}} {{course.meetings[0].days}}
