@@ -9,7 +9,6 @@ use App\Contracts\RosterRetrievalContract;
 use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Models\Note;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Intervention\Image\ImageManager;
 
@@ -67,15 +66,11 @@ class StudentProfileService implements StudentProfileContract
         return \json_encode($studentProfile);
     }
 
-    public function updateStudentNotes(Request $request)
+    public function updateStudentNotes($data)
     {
-        $note = Note::where('user_id', auth()->user()->user_id)
-            ->where('student_id', $request->student_id)
-            ->first();
-
-        $note = Note::updateOrCreate(
-            ['user_id' => auth()->user()->user_id, 'student_id' => $request->student_id],
-            ['notepad' => Crypt::encrypt($request->notepad)]
+        Note::updateOrCreate(
+            ['user_id' => auth()->user()->user_id, 'student_id' => $data['student_id']],
+            ['notepad' => Crypt::encrypt($data['notepad'])]
         );
 
         return 'Updated';
