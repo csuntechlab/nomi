@@ -5,7 +5,7 @@
          </h5>
          <div class="panel__content">
             <div class="row">
-                If you want, review your past and future classes by selecting a different term.
+                Feel free to review your past and future classes by selecting a different term.
             </div>
             <br>
             <div class="row">

@@ -24978,7 +24978,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "panel__content" }, [
         _c("div", { staticClass: "row" }, [
           _vm._v(
-            "\n            If you want, review your past and future classes by selecting a different term.\n        "
+            "\n            Feel free to review your past and future classes by selecting a different term.\n        "
           )
         ]),
         _vm._v(" "),
