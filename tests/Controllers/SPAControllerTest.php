@@ -7,12 +7,12 @@ namespace Tests\Controllers;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Http\Controllers\SPAController;
+use App\Models\User;
+use Auth;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Cache;
 use Mockery;
 use Tests\TestCase;
-use Auth;
-use App\Models\User;
 
 class SPAControllerTest extends TestCase
 {
@@ -44,10 +44,10 @@ class SPAControllerTest extends TestCase
 
         Auth::shouldReceive('user')
             ->andReturn($user = Mockery::spy(User::class));
-        
+
         $user->shouldReceive('email')
             ->andReturn('ThisIsAnEmail');
-        
+
         $controller->getData();
     }
 
@@ -64,13 +64,14 @@ class SPAControllerTest extends TestCase
 
         $this->webResourceRetriever
             ->shouldReceive('getCourses')
-            ->once();
+            ->once()
+            ->andReturn([]);
 
         Auth::shouldReceive('user')
             ->andReturn($user = Mockery::spy(User::class));
-        
+
         $user->shouldReceive('email')
-            ->andReturn('ThisIsAnEmail');    
+            ->andReturn('ThisIsAnEmail');
 
         $controller->getData();
 

@@ -29,7 +29,7 @@ class FacultyProfileServiceTest extends TestCase
             ->withArgs(['MrTeacherMan@gmail.com'])
             ->andReturn(\json_encode(['people' => [
                 'profile_image' => 'thisIsAnImage',
-                'individuals_id' => 'memthisIsAnId',
+                'individuals_id' => 'thisIsAnId',
             ],
         ]));
 
