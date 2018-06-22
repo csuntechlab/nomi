@@ -23963,6 +23963,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24018,15 +24020,17 @@ var render = function() {
                 attrs: { to: "/class/" + course.id }
               },
               [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(course.subject) +
-                    " " +
-                    _vm._s(course.catalog_number) +
-                    ": #" +
-                    _vm._s(course.section_number) +
-                    "\n            "
-                )
+                _c("div", { staticClass: "text_bold" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(course.subject) +
+                      " " +
+                      _vm._s(course.catalog_number) +
+                      ": #" +
+                      _vm._s(course.section_number) +
+                      "\n                "
+                  )
+                ])
               ]
             )
           ],
