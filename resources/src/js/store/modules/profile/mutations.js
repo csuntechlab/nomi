@@ -74,5 +74,9 @@ export default {
         };
 
         state.profileErrors = null;
+    },
+
+    CLEAR_PROFILE_ERRORS: function (state) {
+        state.profileErrors = null;
     }
 }

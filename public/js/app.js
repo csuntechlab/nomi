@@ -179,10 +179,10 @@ module.exports = function normalizeComponent (
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return mapState; });
 /* unused harmony export mapMutations */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapGetters; });
-/* unused harmony export mapActions */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapActions; });
 /* unused harmony export createNamespacedHelpers */
 /**
  * vuex v3.0.1
@@ -18507,7 +18507,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember', 'studentImages']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapState */])({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember', 'studentImages']), Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["d" /* mapState */])({
         sp_notes: function sp_notes(state) {
             return state.profile.studentProfile.notes;
         }
@@ -18619,7 +18619,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['image_type'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     methods: {
         updateImageHandler: function updateImageHandler() {
@@ -18715,7 +18715,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentProfile', 'facultyMember'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember'])),
 
     created: function created() {
         this.url = document.querySelector('meta[name=app-url]').content;
@@ -20225,6 +20225,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     nullifyStudentProfile: function nullifyStudentProfile(context) {
         context.commit('NULLIFY_STUDENT_PROFILE');
+    },
+    clearProfileErrors: function clearProfileErrors(context) {
+        context.commit('CLEAR_PROFILE_ERRORS');
     }
 });
 
@@ -20300,6 +20303,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             notes: null
         };
 
+        state.profileErrors = null;
+    },
+
+    CLEAR_PROFILE_ERRORS: function CLEAR_PROFILE_ERRORS(state) {
         state.profileErrors = null;
     }
 });
@@ -21658,7 +21665,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(["courses", "facultyMember", "facultyFullName", "menuShow"])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "facultyFullName", "menuShow"])),
     created: function created() {
         this.url = document.querySelector('meta[name=app-url]').content;
     },
@@ -22123,12 +22130,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "error-bar",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['errors', 'profileErrors']))
+    data: function data() {
+        return {
+            showError: false
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['errors', 'profileErrors'])),
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['clearErrors', 'clearProfileErrors']), {
+        logErrors: function logErrors() {
+            console.log("Errors: " + this.errors);
+            console.log("Profile Errors: " + this.profileErrors);
+        },
+        closeError: function closeError() {
+            this.logErrors();
+            this.clearErrors();
+            this.clearProfileErrors();
+            this.logErrors();
+        }
+    })
 });
 
 /***/ }),
@@ -22140,15 +22168,27 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return this.errors || this.profileErrors
-    ? _c("h2", [
-        _vm._v(
-          "\n    There was an error: " +
-            _vm._s(this.errors) +
-            " " +
-            _vm._s(this.profileErrors) +
-            "\n"
-        )
-      ])
+    ? _c(
+        "div",
+        { staticClass: "alert alert--warning", attrs: { id: "error_bar" } },
+        [
+          _c("strong", [_vm._v("Oops!")]),
+          _vm._v(" Something went wrong\n     "),
+          _c(
+            "a",
+            {
+              staticClass: "alert__close",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  _vm.closeError()
+                }
+              }
+            },
+            [_vm._v("×")]
+          )
+        ]
+      )
     : _vm._e()
 }
 var staticRenderFns = []
@@ -22534,7 +22574,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "list-grid-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['list', 'flash'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash'])),
 
     methods: {
         handleSelect: function handleSelect(e) {
@@ -22710,7 +22750,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['hideBack']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['hideBack']))
 });
 
 /***/ }),
@@ -22760,7 +22800,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "shuffle-button",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
 });
 
 /***/ }),
@@ -22820,7 +22860,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "card-toggle-button",
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
 });
 
 /***/ }),
@@ -22950,7 +22990,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['list'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['list'])),
 
     created: function created() {
         this.$store.dispatch('nullifyStudentProfile');
@@ -23060,7 +23100,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
 
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
@@ -23211,7 +23251,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   props: ["student"],
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['studentImages']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['studentImages']), {
 
     display_name: function display_name() {
       return this.student.first_name + " " + this.student.last_name;
@@ -23401,7 +23441,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   props: ["student"],
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentImages']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentImages']), {
 
     display_name: function display_name() {
       return this.student.first_name + " " + this.student.last_name[0] + ".";
@@ -23660,7 +23700,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['courses']))
 });
 
 /***/ }),
@@ -23749,7 +23789,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ["student"],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['studentImages']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentImages']), {
 
         display_name: function display_name() {
             return this.student.first_name + " " + this.student.last_name;
@@ -23991,7 +24031,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses']))
 
 });
 
@@ -24142,7 +24182,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         sortSelector: __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["b" /* mapGetters */])(['courseTitle', 'list', 'flash']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['courseTitle', 'list', 'flash']))
 });
 
 /***/ }),
@@ -24250,7 +24290,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "sort-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['flash', 'list', 'sortDescending', 'sortLastName'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortDescending', 'sortLastName'])),
 
     methods: {
         handleSelect: function handleSelect(e) {
@@ -24570,7 +24610,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
 });
 
 /***/ }),
@@ -24657,7 +24697,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])(['courses'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses'])),
 
     components: {
         courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a,
