@@ -10,7 +10,6 @@
 
         created () {
             this.$store.dispatch('clearErrors');
-            this.$store.dispatch('getData');
             this.$store.dispatch('hideBackButton');
         },
 

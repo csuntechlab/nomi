@@ -3,11 +3,6 @@
 declare(strict_types=1);
 
 return [
-    'sqlite_testing' => [
-        'driver' => 'sqlite',
-        'database' => ':memory:',
-        'prefix' => '',
-    ],
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -80,6 +75,12 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
+            'prefix' => '',
+        ],
+
+        'sqlite_testing' => [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
             'prefix' => '',
         ],
     ],

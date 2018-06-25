@@ -1,19 +1,47 @@
 <template>
-    <h2 v-if="this.errors || this.profileErrors">
-        There was an error: {{this.errors}} {{this.profileErrors}}
-    </h2>
+    <div v-if="this.errors || this.profileErrors" id="error_bar" class="alert alert--warning">
+        <strong>Oops!</strong> Something went wrong
+         <a href="#" class="alert__close" @click="closeError()" >&times;</a>
+    </div>
 </template>
 
 <script>
     import { mapGetters } from 'vuex'
+    import { mapActions } from 'vuex'
     export default {
         name: "error-bar",
+
+        data: function() {
+            return{
+                showError: false,
+            }
+        },
 
         computed: {
             ...mapGetters([
                 'errors',
-                'profileErrors'
+                'profileErrors',
             ]),
+
+        },
+
+        methods: {
+            ...mapActions([
+                'clearErrors',
+                'clearProfileErrors',
+            ]),
+
+            logErrors() {
+                console.log("Errors: " + this.errors);
+                console.log("Profile Errors: " + this.profileErrors);
+            },
+
+            closeError() {
+                this.logErrors();
+                this.clearErrors();
+                this.clearProfileErrors();   
+                this.logErrors();
+            }
         }
     }
 </script>

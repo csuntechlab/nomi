@@ -17,7 +17,7 @@ class User extends MetaUser
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'user_id',
     ];
 
     /**

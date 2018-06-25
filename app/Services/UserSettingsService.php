@@ -12,10 +12,12 @@ class UserSettingsService implements UserSettingsContract
 {
     public function getSettings()
     {
-        $theme = Theme::where('user_id', auth()->user()->user_id)->first();
+        $themeModel = Theme::where('user_id', auth()->user()->user_id)->first();
 
-        if (null === $theme) {
+        if (null === $themeModel) {
             $theme = 'theme-OnceAMatadorAlwaysAMatador';
+        } else {
+            $theme = $themeModel->theme;
         }
 
         return \json_encode(['theme' => $theme]);
