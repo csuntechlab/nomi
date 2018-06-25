@@ -41,6 +41,10 @@ class UserSettingsService implements UserSettingsContract
                     ->where('end_date', '>=', $today)
                     ->first();
 
-        return $term->term_id;
+        if ($term != null) {
+            return $term->term_id;
+        }
+
+        return 2173;
     }
 }
