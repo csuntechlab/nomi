@@ -71,18 +71,22 @@
 
 .theme-main body {
   background-color: #E5E5E5;
+  padding-top: 45px;
 }
 
 .theme-bluesTheme body {
   background-color: #d9e7ee;
+  padding-top: 45px;
 }
 
 .theme-Cloudy body {
   background-color: #D8D8D8;
+  padding-top: 45px;
 }
 
 .theme-OnceAMatadorAlwaysAMatador body {
   background-color: #FFFFFF;
+  padding-top: 45px;
 }
 
 .theme-main html * {
@@ -126,12 +130,9 @@ textarea[type="text"]:focus {
 
 .theme-main .primary-nav {
   background-color: #0F1821;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+  top: 0%;
+  position: fixed;
 }
 
 .theme-main .primary-nav .primary-nav__sub-brand {
@@ -140,12 +141,9 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+  top: 0%;
+  position: fixed;
 }
 
 .theme-bluesTheme .primary-nav .primary-nav__sub-brand {
@@ -154,12 +152,9 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .primary-nav {
   background-color: #747474;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+  top: 0%;
+  position: fixed;
 }
 
 .theme-Cloudy .primary-nav .primary-nav__sub-brand {
@@ -168,12 +163,9 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D00D2D;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+  top: 0%;
+  position: fixed;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav .primary-nav__sub-brand {
@@ -357,78 +349,67 @@ textarea[type="text"]:focus {
   background-color: white;
 }
 
-.theme-main .logo {
+.logo_parent {
+  text-align: center;
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+}
+
+.theme-main .csun_logo {
   width: 75px;
   height: 45px;
   background-image: white;
 }
 
-.theme-bluesTheme .logo {
+.theme-bluesTheme .csun_logo {
   width: 75px;
   height: 45px;
   background-image: white;
 }
 
-.theme-Cloudy .logo {
+.theme-Cloudy .csun_logo {
   width: 75px;
   height: 45px;
   background-image: white;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .logo {
+.theme-OnceAMatadorAlwaysAMatador .csun_logo {
   width: 75px;
   height: 45px;
   background-image: white;
 }
 
 .theme-main .nomi_logo {
-  display: block;
-  float: left;
   width: 75px;
   height: 37px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
-  margin: 4px 0 4px 8px;
-  overflow: hidden;
+  margin-left: 4px;
 }
 
 .theme-bluesTheme .nomi_logo {
-  display: block;
-  float: left;
   width: 75px;
   height: 37px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
-  margin: 4px 0 4px 8px;
-  overflow: hidden;
+  margin-left: 4px;
 }
 
 .theme-Cloudy .nomi_logo {
-  display: block;
-  float: left;
   width: 75px;
   height: 37px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
-  margin: 4px 0 4px 8px;
-  overflow: hidden;
+  margin-left: 4px;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .nomi_logo {
-  display: block;
-  float: left;
   width: 75px;
   height: 37px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
-  margin: 4px 0 4px 8px;
-  overflow: hidden;
-}
-
-.csun_logo {
-  display: block;
-  float: left;
-  overflow: hidden;
+  margin-left: 4px;
 }
 
 #Matador {
