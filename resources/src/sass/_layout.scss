@@ -1,6 +1,7 @@
 body {
   @include themify($themes) {
     background-color: themed("looksGray");
+    padding-top: 45px;
   }
 }
 
