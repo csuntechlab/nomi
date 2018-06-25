@@ -149,7 +149,8 @@
             modal
         },
 
-        created () {
+        created() {
+            this.$store.dispatch('hideBackButton');
             this.$store.dispatch(
                 'getStudentProfile',
                 {
@@ -158,6 +159,11 @@
                 }
             );
         },
+
+        updated(){
+            this.$store.dispatch('showBackButton');
+        },
+
 
         beforeRouteLeave (to, from, next) {
             if(this.unsavedChanges) {
