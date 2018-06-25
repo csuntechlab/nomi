@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Contracts\RosterRetrievalContract;
+use App\Contracts\UserSettingsContract;
 use App\Contracts\WebResourceRetrieverContract;
 use Illuminate\Support\Facades\Cache;
 
@@ -12,29 +13,37 @@ class SPAController extends Controller
 {
     public $rosterRetrievalContract;
     public $webResourceRetrieverContract;
+    public $userSettings;
     public $web;
     public $minutes;
 
     public function __construct(
         RosterRetrievalContract $rosterRetrievalContract,
-        WebResourceRetrieverContract $webResourceRetrieverContract
+        WebResourceRetrieverContract $webResourceRetrieverContract,
+        UserSettingsContract $userSettings
     ) {
         $this->rosterRetrievalContract = $rosterRetrievalContract;
         $this->webResourceRetrieverContract = $webResourceRetrieverContract;
+        $this->userSettings = $userSettings;
         $this->minutes = 27;
     }
 
     /**
      * Description: Gets the course/roster data for the SPA.
+     *
+     * @param null|mixed $term
      */
-    public function getData()
+    public function getData($term = null)
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
 
         if (Cache::has('courses:' . $id)) {
             $courses = Cache::get('courses:' . $id);
         } else {
-            $courses = $this->webResourceRetrieverContract->getCourses(env('CURRENT_TERM'));
+            if ($term == null) {
+                $term = $this->userSettings->getCurrentTerm();
+            }
+            $courses = $this->webResourceRetrieverContract->getCourses($term);
             Cache::put('courses:' . $id, $courses, $this->minutes);
         }
 

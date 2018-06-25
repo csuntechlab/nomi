@@ -25063,7 +25063,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    this.courses != null
+    this.courses != null && this.courses.length > 0
       ? _c(
           "div",
           _vm._l(this.courses, function(course) {
@@ -25073,9 +25073,7 @@ var render = function() {
             })
           })
         )
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", [_c("empty-course-item")], 1)
+      : _c("div", [_c("empty-course-item")], 1)
   ])
 }
 var staticRenderFns = []
