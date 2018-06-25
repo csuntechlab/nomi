@@ -25062,7 +25062,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    this.courses != null
+    this.courses != null && this.courses.length > 0
       ? _c(
           "div",
           _vm._l(this.courses, function(course) {

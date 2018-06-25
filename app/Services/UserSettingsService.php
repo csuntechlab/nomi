@@ -37,11 +37,9 @@ class UserSettingsService implements UserSettingsContract
     {
         $today = Carbon::now()->toDateTimeString();
 
-        $term = Term::where('begin_date', '<=' . $today)
+        $term = Term::where('begin_date', '<=', $today)
                     ->where('end_date', '>=', $today)
-                    ->get();
-
-        dd($term);
+                    ->first();
 
         return $term->term_id;
     }

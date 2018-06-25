@@ -9,15 +9,20 @@ use App\Contracts\WebResourceRetrieverContract;
 class WebResourceController extends Controller
 {
     private $webResourceRetriever;
+    private $userSettingsRetriever;
 
     /**
      * WebResourceController constructor.
      *
      * @param WebResourceRetrieverContract $webResourceRetriever
+     * @param UserSettingsContract         $userSettingsRetriever
      */
-    public function __construct(WebResourceRetrieverContract $webResourceRetriever)
-    {
+    public function __construct(
+        WebResourceRetrieverContract $webResourceRetriever,
+        UserSettingsContract $userSettingsRetriever
+        ) {
         $this->webResourceRetriever = $webResourceRetriever;
+        $this->userSettingsRetriever = $userSettingsRetriever;
     }
 
     /**
@@ -25,8 +30,12 @@ class WebResourceController extends Controller
      *
      * @return mixed
      */
-    public function courses($term)
+    public function courses($term = null)
     {
+        if ($term == null) {
+            $term == $this->userSettingsRetriever->getCurrentTerm();
+        }
+
         return $this->webResourceRetriever->getCourses($term);
     }
 
