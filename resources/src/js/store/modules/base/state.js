@@ -11,6 +11,7 @@ export default {
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
     hideBack: true,
     semester: null,
+    termYear: null,
 
     facultyMember: {
         email: null,

@@ -177,18 +177,64 @@ export default {
         state.studentImages[id] = url;
     },
 
-    SET_SPRING: function (state, payload) {
+    SET_SPRING: function (state) {
         state.semester = 3;
     },
-    SET_SUMMER: function (state, payload) {
+
+    SET_SUMMER: function (state) {
         state.semester = 5;
     },
-    SET_FALL: function (state, payload) {
+
+    SET_FALL: function (state) {
         state.semester = 7;
     },
-    SET_WINTER: function (state, payload) {
+
+    SET_WINTER: function (state) {
         state.semester = 9;
     },
+
+    SET_TERM_YEAR: function (state, payload){
+        state.termYear = payload;
+    },
+
+    UPDATE_TERM: function(state) {
+        let selectedTerm = state.termYear + state.semester;
+        selectedTerm = selectedTerm.slice(0,1) + selectedTerm.slice(2);
+
+        function capitalize(name) {
+            return name.charAt(0).toUpperCase() + name.substr(1);
+        }
+
+        window.axios.get(`data/${selectedTerm}`)
+            .then(response => {
+                state.courses = response.data["courses"];
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for(let course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)){
+                        let realCourse = state.courses[course];
+                        for(let student in realCourse.roster) {
+                            if(realCourse.roster.hasOwnProperty(student)){
+                                let realStudent = realCourse.roster[student];
+                                let studentId = realStudent.student_id;
+                                let url = realStudent.images.likeness;
+
+                                state.studentImages[studentId] = url;
+                            }
+                        }
+                    }
+                    
+                }
+                
+            })
+            .catch(e => {
+                state.errors = e.response.data.message;
+            });
+    }
 
 
 }

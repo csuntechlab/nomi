@@ -10,6 +10,7 @@ export default {
     themeName: state => state.themeName,
     sortLastName: state => state.sortLastName,
     sortDescending: state => state.sortDescending,
+    semester: state => state.semester,
 
 
     facultyMember: state => state.facultyMember,

@@ -12816,6 +12816,7 @@ Vue.component('course-banner', __webpack_require__(148));
 Vue.component('settings-banner', __webpack_require__(151));
 
 Vue.component('courses-container', __webpack_require__(157));
+Vue.component('term-selector', __webpack_require__(171));
 
 var app = new Vue({
     el: '#app',
@@ -13433,7 +13434,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(171);
+module.exports = __webpack_require__(174);
 
 
 /***/ }),
@@ -18131,6 +18132,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "home",
@@ -18153,7 +18155,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [_c("term-selector"), _vm._v(" "), _c("courses-container")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19792,6 +19799,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
     hideBack: true,
+    semester: null,
+    termYear: null,
 
     facultyMember: {
         email: null,
@@ -19842,6 +19851,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     sortDescending: function sortDescending(state) {
         return state.sortDescending;
+    },
+    semester: function semester(state) {
+        return state.semester;
     },
 
     facultyMember: function facultyMember(state) {
@@ -19904,6 +19916,24 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     updateImage: function updateImage(context, payload) {
         context.commit('UPDATE_IMAGE', payload);
+    },
+    setSpring: function setSpring(context) {
+        context.commit('SET_SPRING');
+    },
+    setSummer: function setSummer(context) {
+        context.commit('SET_SUMMER');
+    },
+    setFall: function setFall(context) {
+        context.commit('SET_FALL');
+    },
+    setWinter: function setWinter(context) {
+        context.commit('SET_WINTER');
+    },
+    setTermYear: function setTermYear(context, payload) {
+        context.commit('SET_TERM_YEAR', payload);
+    },
+    updateTerm: function updateTerm(context) {
+        context.commit('UPDATE_TERM');
     }
 });
 
@@ -20084,6 +20114,61 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         var id = payload.studentId;
         var url = payload.imgUrl;
         state.studentImages[id] = url;
+    },
+
+    SET_SPRING: function SET_SPRING(state) {
+        state.semester = 3;
+    },
+
+    SET_SUMMER: function SET_SUMMER(state) {
+        state.semester = 5;
+    },
+
+    SET_FALL: function SET_FALL(state) {
+        state.semester = 7;
+    },
+
+    SET_WINTER: function SET_WINTER(state) {
+        state.semester = 9;
+    },
+
+    SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
+        state.termYear = payload;
+    },
+
+    UPDATE_TERM: function UPDATE_TERM(state) {
+        var selectedTerm = state.termYear + state.semester;
+        selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
+
+        function capitalize(name) {
+            return name.charAt(0).toUpperCase() + name.substr(1);
+        }
+
+        window.axios.get("data/" + selectedTerm).then(function (response) {
+            state.courses = response.data["courses"];
+            state.flashroster = response.data["students"];
+            state.facultyMember.email = response.data["email"];
+            state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+            state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+            state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+            state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+            for (var course in state.courses) {
+                if (state.courses.hasOwnProperty(course)) {
+                    var realCourse = state.courses[course];
+                    for (var student in realCourse.roster) {
+                        if (realCourse.roster.hasOwnProperty(student)) {
+                            var realStudent = realCourse.roster[student];
+                            var studentId = realStudent.student_id;
+                            var url = realStudent.images.likeness;
+
+                            state.studentImages[studentId] = url;
+                        }
+                    }
+                }
+            }
+        }).catch(function (e) {
+            state.errors = e.response.data.message;
+        });
     }
 
 });
@@ -24302,6 +24387,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     this.$store.dispatch('sortFirstName');
                     this.$store.dispatch('sortDescending');
                     break;
+
                 case "2":
                     this.$store.dispatch('sortLastName');
                     this.$store.dispatch('sortDescending');
@@ -25118,6 +25204,276 @@ if (false) {
 
 /***/ }),
 /* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(172)
+/* template */
+var __vue_template__ = __webpack_require__(173)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\course_components\\termSelector.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2e423b46", Component.options)
+  } else {
+    hotAPI.reload("data-v-2e423b46", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 172 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "term-selector",
+
+    data: function data() {
+        return {
+            season: null,
+            year: null
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['semester'])),
+
+    methods: {
+        handleSubmit: function handleSubmit() {
+            switch (this.season) {
+                case "0":
+                    this.$store.dispatch('setSpring');
+                    break;
+                case "1":
+                    this.$store.dispatch('setSummer');
+                    break;
+                case "2":
+                    this.$store.dispatch('setFall');
+                    break;
+                case "3":
+                    this.$store.dispatch('setWinter');
+                    break;
+            }
+            this.$store.dispatch('setTermYear', this.year);
+            this.$store.dispatch('updateTerm');
+        },
+        handleSelect: function handleSelect(input) {
+            this.season = input.target.value;
+        }
+    }
+});
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("label", { attrs: { for: "semester-select" } }),
+    _vm._v(" "),
+    this.semester == 9
+      ? _c("div", [
+          _c(
+            "select",
+            {
+              attrs: { name: "semester-select", id: "sem-select" },
+              on: { input: _vm.handleSelect }
+            },
+            [
+              _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "3", selected: "" } }, [
+                _vm._v("Winter")
+              ])
+            ]
+          )
+        ])
+      : this.semester == 5
+        ? _c("div", [
+            _c(
+              "select",
+              {
+                attrs: { name: "semester-select", id: "sem-select" },
+                on: { input: _vm.handleSelect }
+              },
+              [
+                _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "1", selected: "" } }, [
+                  _vm._v("Summer")
+                ]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
+              ]
+            )
+          ])
+        : this.semester == 7
+          ? _c("div", [
+              _c(
+                "select",
+                {
+                  attrs: { name: "semester-select", id: "sem-select" },
+                  on: { input: _vm.handleSelect }
+                },
+                [
+                  _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2", selected: "" } }, [
+                    _vm._v("Fall")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
+                ]
+              )
+            ])
+          : _c("div", [
+              _c(
+                "select",
+                {
+                  attrs: { name: "semester-select", id: "sem-select" },
+                  on: { input: _vm.handleSelect }
+                },
+                [
+                  _c("option", { attrs: { value: "0", selected: "" } }, [
+                    _vm._v("Spring")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
+                ]
+              )
+            ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model.lazy",
+            value: _vm.year,
+            expression: "year",
+            modifiers: { lazy: true }
+          }
+        ],
+        attrs: { placeholder: "Enter Term Year" },
+        domProps: { value: _vm.year },
+        on: {
+          change: function($event) {
+            _vm.year = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      { staticClass: "btn btn-default", on: { click: _vm.handleSubmit } },
+      [_vm._v("Submit")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2e423b46", module.exports)
+  }
+}
+
+/***/ }),
+/* 174 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

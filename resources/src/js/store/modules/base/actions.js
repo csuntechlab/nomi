@@ -60,19 +60,27 @@ export default {
         context.commit('UPDATE_IMAGE', payload);
     },
 
-    setSpring (context, payload) {
-        context.commit('SET_SPRING', payload);
+    setSpring (context) {
+        context.commit('SET_SPRING');
     },
 
-    setSummer (context, payload) {
-        context.commit('SET_SUMMER', payload);
+    setSummer (context) {
+        context.commit('SET_SUMMER');
     },
 
-    setFall (context, payload) {
-        context.commit('SET_FALL', payload);
+    setFall (context) {
+        context.commit('SET_FALL');
     },
 
-    setWinter (context, payload) {
-        context.commit('SET_WINTER', payload);
-    }
+    setWinter (context) {
+        context.commit('SET_WINTER');
+    },
+
+    setTermYear (context, payload) {
+        context.commit('SET_TERM_YEAR', payload);
+    },
+
+    updateTerm (context) {
+        context.commit('UPDATE_TERM');
+    },
 }
