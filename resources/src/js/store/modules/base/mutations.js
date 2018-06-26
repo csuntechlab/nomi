@@ -177,4 +177,18 @@ export default {
         state.studentImages[id] = url;
     },
 
+    SET_SPRING: function (state, payload) {
+        state.semester = 3;
+    },
+    SET_SUMMER: function (state, payload) {
+        state.semester = 5;
+    },
+    SET_FALL: function (state, payload) {
+        state.semester = 7;
+    },
+    SET_WINTER: function (state, payload) {
+        state.semester = 9;
+    },
+
+
 }

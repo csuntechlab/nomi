@@ -59,4 +59,20 @@ export default {
     updateImage (context, payload) {
         context.commit('UPDATE_IMAGE', payload);
     },
+
+    setSpring (context, payload) {
+        context.commit('SET_SPRING', payload);
+    },
+
+    setSummer (context, payload) {
+        context.commit('SET_SUMMER', payload);
+    },
+
+    setFall (context, payload) {
+        context.commit('SET_FALL', payload);
+    },
+
+    setWinter (context, payload) {
+        context.commit('SET_WINTER', payload);
+    }
 }
