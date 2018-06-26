@@ -10,7 +10,7 @@ export default {
     errors: null,
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
     hideBack: true,
-    semester: 3,
+    semester: null,
     termYear: null,
     term: null,
 

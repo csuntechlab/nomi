@@ -39,8 +39,7 @@
             closeError() {
                 this.logErrors();
                 this.clearErrors();
-                this.clearProfileErrors();   
-                this.logErrors();
+                this.clearProfileErrors();
             }
         }
     }

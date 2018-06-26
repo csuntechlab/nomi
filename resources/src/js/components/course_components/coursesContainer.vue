@@ -1,11 +1,11 @@
 <template>
      <div>
-        <h2>{{this.displayCurrentTerm}} Courses</h2>
-         <div v-if="facultyMember.image === null" class="type--center">
+         <div v-if="facultyMember.image === null || this.loadingClasses" class="type--center">
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
          </div>
-         <div v-else>        
+         <div v-else>
+            <h2>{{this.displayCurrentTerm}} Courses</h2>     
             <course-list></course-list>
         </div>
     </div>
@@ -19,12 +19,19 @@
 
         data: function() {
             return {
-                displayedTerm: ''
+                displayedTerm: '',
+                loadingClasses: false,
             }
         },
 
         components: {
             courseList,
+        },
+
+        //On page load, sets 'Spring' as default season option
+        created() {
+            this.$store.dispatch('setSpring');
+            this.$store.dispatch('updateTerm');
         },
 
         computed: {
@@ -52,9 +59,14 @@
                     break;
                 case "9":
                     this.displayedTerm = "Winter";
-                    break;
             }
-            this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1,3)
+            if(termCode.charAt(0)=='2'){
+                this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1,3)
+            }
+            else
+            {
+                this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1,3)
+            }
             return this.displayedTerm;
             }
         },

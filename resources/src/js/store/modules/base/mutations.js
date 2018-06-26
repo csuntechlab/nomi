@@ -201,6 +201,7 @@ export default {
     UPDATE_TERM: function(state) {
         let selectedTerm = state.termYear + state.semester;
         selectedTerm = selectedTerm.slice(0,1) + selectedTerm.slice(2);
+        state.term = selectedTerm;
 
         function capitalize(name) {
             return name.charAt(0).toUpperCase() + name.substr(1);

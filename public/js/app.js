@@ -19799,7 +19799,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
     hideBack: true,
-    semester: 3,
+    semester: null,
     termYear: null,
     term: null,
 
@@ -20147,6 +20147,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     UPDATE_TERM: function UPDATE_TERM(state) {
         var selectedTerm = state.termYear + state.semester;
         selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
+        state.term = selectedTerm;
 
         function capitalize(name) {
             return name.charAt(0).toUpperCase() + name.substr(1);
@@ -22249,7 +22250,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.logErrors();
             this.clearErrors();
             this.clearProfileErrors();
-            this.logErrors();
         }
     })
 });
@@ -24680,13 +24680,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            displayedTerm: ''
+            displayedTerm: '',
+            loadingClasses: false
         };
     },
 
     components: {
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
+
+    //On page load, sets 'Spring' as default season option
+    created: function created() {
+        this.$store.dispatch('setSpring');
+        this.$store.dispatch('updateTerm');
+    },
+
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term']), {
         displayCurrentTerm: function displayCurrentTerm() {
@@ -24702,8 +24710,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     case "7":
                         this.displayedTerm = "Fall";
                         break;
+                    case "9":
+                        this.displayedTerm = "Winter";
                 }
-                this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                if (termCode.charAt(0) == '2') {
+                    this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                } else {
+                    this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+                }
                 return this.displayedTerm;
             }
         }
@@ -25191,15 +25205,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h2", [_vm._v(_vm._s(this.displayCurrentTerm) + " Courses")]),
-    _vm._v(" "),
-    _vm.facultyMember.image === null
+    _vm.facultyMember.image === null || this.loadingClasses
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
         ])
-      : _c("div", [_c("course-list")], 1)
+      : _c(
+          "div",
+          [
+            _c("h2", [_vm._v(_vm._s(this.displayCurrentTerm) + " Courses")]),
+            _vm._v(" "),
+            _c("course-list")
+          ],
+          1
+        )
   ])
 }
 var staticRenderFns = []
@@ -25286,6 +25306,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -25294,7 +25317,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             season: 3,
-            year: null
+            year: null,
+            formValidated: true
         };
     },
 
@@ -25302,25 +25326,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         handleSubmit: function handleSubmit() {
-            switch (this.season) {
-                case "0":
-                    this.$store.dispatch('setSpring');
-                    break;
-                case "1":
-                    this.$store.dispatch('setSummer');
-                    break;
-                case "2":
-                    this.$store.dispatch('setFall');
-                    break;
-                case "3":
-                    this.$store.dispatch('setWinter');
-                    break;
-            }
-            this.$store.dispatch('setTermYear', this.year);
-            this.$store.dispatch('updateTerm');
+            if (this.formValidated) {
+                switch (this.season) {
+                    case "0":
+                        this.$store.dispatch('setSpring');
+                        break;
+                    case "1":
+                        this.$store.dispatch('setSummer');
+                        break;
+                    case "2":
+                        this.$store.dispatch('setFall');
+                        break;
+                    case "3":
+                        this.$store.dispatch('setWinter');
+                        break;
+                }
+                this.$store.dispatch('setTermYear', this.year);
+                this.$store.dispatch('updateTerm');
+            } else {}
         },
         handleSelect: function handleSelect(input) {
             this.season = input.target.value;
+        },
+        validateYear: function validateYear() {
+            var inputYear = document.getElementById('inputYear').value;
+            var yearRegex = /^(20|19)\d\d/;
+            this.formValidated = yearRegex.test(inputYear);
+            this.handleSubmit();
         }
     }
 });
@@ -25333,8 +25365,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
+  return _c("div", { staticClass: "row form__group" }, [
     _c("label", { attrs: { for: "semester-select" } }),
+    _vm._v(" "),
+    !_vm.formValidated
+      ? _c(
+          "div",
+          {
+            staticClass: "alert alert--warning",
+            attrs: { id: "error_year_bar" }
+          },
+          [
+            _c("strong", [_vm._v("Oops!")]),
+            _vm._v(" Please enter a valid year\n    ")
+          ]
+        )
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "col-xs-5" }, [
       _c(
@@ -25357,7 +25403,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xs-5" }, [
+    _c("div", { staticClass: "col-xs-4" }, [
       _c("input", {
         directives: [
           {
@@ -25368,7 +25414,12 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
-        attrs: { placeholder: "Enter Term Year" },
+        attrs: {
+          id: "inputYear",
+          type: "text",
+          placeholder: "Year",
+          pattern: "[20|19]\\d\\d"
+        },
         domProps: { value: _vm.year },
         on: {
           change: function($event) {
@@ -25381,8 +25432,8 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "btn btn-default col-xs-2",
-        on: { click: _vm.handleSubmit }
+        staticClass: " btn btn-sm btn-default col-xs-3",
+        on: { click: _vm.validateYear }
       },
       [_vm._v("Submit")]
     )
