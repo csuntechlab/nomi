@@ -1,6 +1,6 @@
 <template>
      <div>
-        <h2>{{this.term}} Courses</h2>
+        <h2>{{this.displayCurrentTerm}} Courses</h2>
          <div v-if="facultyMember.image === null" class="type--center">
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
@@ -19,25 +19,7 @@
 
         data: function() {
             return {
-                term: ''
-            }
-        },
-
-        created: function () {
-            var curTerm = document.querySelector('meta[name=current-term]').content;
-            if(curTerm.length == 4){
-                switch(curTerm.charAt(3)) {
-                    case "3":
-                        this.term = "Spring";
-                        break;
-                    case "5":
-                        this.term = "Summer";
-                        break;
-                    case "7":
-                        this.term = "Fall";
-                        break;
-                }
-                this.term += ' ' + curTerm.charAt(0) + '0' + curTerm.substring(1,3)
+                displayedTerm: ''
             }
         },
 
@@ -51,8 +33,31 @@
                 'courses',
                 'facultyMember',
                 'facultyFullName',
+                'term'
 
-            ])
+            ]),
+
+            displayCurrentTerm () {
+            if(this.term != null) {
+            let termCode = this.term;
+            switch(termCode.charAt(3)) {
+                case "3":
+                    this.displayedTerm = "Spring";
+                    break;
+                case "5":
+                    this.displayedTerm = "Summer";
+                    break;
+                case "7":
+                    this.displayedTerm = "Fall";
+                    break;
+                case "9":
+                    this.displayedTerm = "Winter";
+                    break;
+            }
+            this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1,3)
+            return this.displayedTerm;
+            }
+        },
         },
     }
 </script>

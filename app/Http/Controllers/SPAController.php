@@ -64,7 +64,7 @@ class SPAController extends Controller
         $user = auth()->user();
         $email = $user->email;
 
-        return ['courses' => $courses, 'students' => $students, 'email' => $email];
+        return ['courses' => $courses, 'students' => $students, 'email' => $email, 'term' =>  "$term"];
     }
 
     /**

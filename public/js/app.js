@@ -19799,8 +19799,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
     hideBack: true,
-    semester: null,
+    semester: 3,
     termYear: null,
+    term: null,
 
     facultyMember: {
         email: null,
@@ -19854,6 +19855,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     semester: function semester(state) {
         return state.semester;
+    },
+    termYear: function termYear(state) {
+        return state.termYear;
+    },
+    term: function term(state) {
+        return state.term;
     },
 
     facultyMember: function facultyMember(state) {
@@ -19957,6 +19964,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         }
 
         window.axios.get("data").then(function (response) {
+            state.term = response.data["term"];
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
             state.facultyMember.email = response.data["email"];
@@ -20145,6 +20153,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         }
 
         window.axios.get("data/" + selectedTerm).then(function (response) {
+            state.term = response.data["term"];
             state.courses = response.data["courses"];
             state.flashroster = response.data["students"];
             state.facultyMember.email = response.data["email"];
@@ -24671,33 +24680,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            term: ''
+            displayedTerm: ''
         };
-    },
-
-    created: function created() {
-        var curTerm = document.querySelector('meta[name=current-term]').content;
-        if (curTerm.length == 4) {
-            switch (curTerm.charAt(3)) {
-                case "3":
-                    this.term = "Spring";
-                    break;
-                case "5":
-                    this.term = "Summer";
-                    break;
-                case "7":
-                    this.term = "Fall";
-                    break;
-            }
-            this.term += ' ' + curTerm.charAt(0) + '0' + curTerm.substring(1, 3);
-        }
     },
 
     components: {
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term']), {
+        displayCurrentTerm: function displayCurrentTerm() {
+            if (this.term != null) {
+                var termCode = this.term;
+                switch (termCode.charAt(3)) {
+                    case "3":
+                        this.displayedTerm = "Spring";
+                        break;
+                    case "5":
+                        this.displayedTerm = "Summer";
+                        break;
+                    case "7":
+                        this.displayedTerm = "Fall";
+                        break;
+                }
+                this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                return this.displayedTerm;
+            }
+        }
+    })
 });
 
 /***/ }),
@@ -25181,7 +25191,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h2", [_vm._v(_vm._s(this.term) + " Courses")]),
+    _c("h2", [_vm._v(_vm._s(this.displayCurrentTerm) + " Courses")]),
     _vm._v(" "),
     _vm.facultyMember.image === null
       ? _c("div", { staticClass: "type--center" }, [
@@ -25276,30 +25286,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -25307,7 +25293,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            season: null,
+            season: 3,
             year: null
         };
     },
@@ -25347,94 +25333,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "row" }, [
     _c("label", { attrs: { for: "semester-select" } }),
     _vm._v(" "),
-    this.semester == 9
-      ? _c("div", [
-          _c(
-            "select",
-            {
-              attrs: { name: "semester-select", id: "sem-select" },
-              on: { input: _vm.handleSelect }
-            },
-            [
-              _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "3", selected: "" } }, [
-                _vm._v("Winter")
-              ])
-            ]
-          )
-        ])
-      : this.semester == 5
-        ? _c("div", [
-            _c(
-              "select",
-              {
-                attrs: { name: "semester-select", id: "sem-select" },
-                on: { input: _vm.handleSelect }
-              },
-              [
-                _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "1", selected: "" } }, [
-                  _vm._v("Summer")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
-              ]
-            )
-          ])
-        : this.semester == 7
-          ? _c("div", [
-              _c(
-                "select",
-                {
-                  attrs: { name: "semester-select", id: "sem-select" },
-                  on: { input: _vm.handleSelect }
-                },
-                [
-                  _c("option", { attrs: { value: "0" } }, [_vm._v("Spring")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2", selected: "" } }, [
-                    _vm._v("Fall")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
-                ]
-              )
-            ])
-          : _c("div", [
-              _c(
-                "select",
-                {
-                  attrs: { name: "semester-select", id: "sem-select" },
-                  on: { input: _vm.handleSelect }
-                },
-                [
-                  _c("option", { attrs: { value: "0", selected: "" } }, [
-                    _vm._v("Spring")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
-                ]
-              )
-            ]),
+    _c("div", { staticClass: "col-xs-5" }, [
+      _c(
+        "select",
+        {
+          attrs: { name: "semester-select", id: "sem-select" },
+          on: { input: _vm.handleSelect }
+        },
+        [
+          _c("option", { attrs: { value: "0", selected: "" } }, [
+            _vm._v("Spring")
+          ]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "1" } }, [_vm._v("Summer")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2" } }, [_vm._v("Fall")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "3" } }, [_vm._v("Winter")])
+        ]
+      )
+    ]),
     _vm._v(" "),
-    _c("div", [
+    _c("div", { staticClass: "col-xs-5" }, [
       _c("input", {
         directives: [
           {
@@ -25457,7 +25380,10 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "btn btn-default", on: { click: _vm.handleSubmit } },
+      {
+        staticClass: "btn btn-default col-xs-2",
+        on: { click: _vm.handleSubmit }
+      },
       [_vm._v("Submit")]
     )
   ])

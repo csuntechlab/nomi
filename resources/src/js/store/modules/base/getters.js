@@ -11,6 +11,8 @@ export default {
     sortLastName: state => state.sortLastName,
     sortDescending: state => state.sortDescending,
     semester: state => state.semester,
+    termYear: state => state.termYear,
+    term: state => state.term,
 
 
     facultyMember: state => state.facultyMember,

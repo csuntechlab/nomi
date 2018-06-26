@@ -1,31 +1,7 @@
 <template>
-    <div>
+    <div class="row">
         <label for="semester-select"></label>
-            <div v-if="this.semester == 9">
-                <select name="semester-select" id="sem-select" @input="handleSelect">
-                    <option value="0">Spring</option>
-                    <option value="1">Summer</option>
-                    <option value="2">Fall</option>
-                    <option value="3" selected>Winter</option>
-                </select>
-            </div>
-            <div v-else-if="this.semester == 5">
-                <select name="semester-select" id="sem-select" @input="handleSelect">
-                    <option value="0">Spring</option>
-                    <option value="1" selected>Summer</option>
-                    <option value="2">Fall</option>
-                    <option value="3">Winter</option>
-                </select>
-            </div>
-            <div v-else-if="this.semester == 7">
-                <select name="semester-select" id="sem-select" @input="handleSelect">
-                    <option value="0">Spring</option>
-                    <option value="1">Summer</option>
-                    <option value="2" selected>Fall</option>
-                    <option value="3">Winter</option>
-                </select>
-            </div>
-            <div v-else>
+            <div class="col-xs-5">
                 <select name="semester-select" id="sem-select" @input="handleSelect">
                     <option value="0" selected>Spring</option>
                     <option value="1">Summer</option>
@@ -33,10 +9,10 @@
                     <option value="3">Winter</option>
                 </select>
             </div>
-            <div>
+            <div class="col-xs-5">
                 <input v-model.lazy="year" placeholder="Enter Term Year">
             </div>
-            <button class="btn btn-default" @click="handleSubmit">Submit</button>
+            <button class="btn btn-default col-xs-2" @click="handleSubmit">Submit</button>
     </div>
 </template>
 
@@ -47,7 +23,7 @@ export default {
 
     data: function() {
         return{
-            season: null,
+            season: 3,
             year: null,
         }
     },

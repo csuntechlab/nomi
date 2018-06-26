@@ -16,6 +16,7 @@ export default {
 
         window.axios.get(`data`)
             .then(response => {
+                state.term = response.data["term"];
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
@@ -207,6 +208,7 @@ export default {
 
         window.axios.get(`data/${selectedTerm}`)
             .then(response => {
+                state.term = response.data["term"];
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
