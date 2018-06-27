@@ -28,7 +28,7 @@
                         faculty_id: this.facultyMember.id,
                     }
                 ).then(() => {
-                    this.$store.dispatch('getData')
+                    this.$store.dispatch('getOnlyData')
                 });
 
             }

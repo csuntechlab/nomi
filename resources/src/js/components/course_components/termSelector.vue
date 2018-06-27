@@ -62,7 +62,7 @@ export default {
                     break
             }
             this.$store.dispatch('setTermYear', this.year);
-            this.$store.dispatch('updateTerm');
+            this.$store.dispatch('getOnlyData');
             }
         },
 
