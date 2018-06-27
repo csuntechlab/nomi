@@ -13,7 +13,7 @@ export default {
     semester: null,
     termYear: null,
     term: null,
-    loadingClasses: false,
+    loadingClasses: true,
 
     facultyMember: {
         email: null,

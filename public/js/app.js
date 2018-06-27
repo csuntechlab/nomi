@@ -18144,6 +18144,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeRouteLeave: function beforeRouteLeave(to, from, next) {
         this.$store.dispatch('showBackButton');
         next();
+    },
+    beforeCreate: function beforeCreate() {
+        this.$store.dispatch('getOnlyData');
     }
 });
 
@@ -18636,7 +18639,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 image_priority: this.image_type,
                 faculty_id: this.facultyMember.id
             }).then(function () {
-                _this.$store.dispatch('getData');
+                _this.$store.dispatch('getOnlyData');
             });
         }
     }
@@ -18752,7 +18755,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     uri: uri
                 }).then(function (response) {
                     if (response.status) {
-                        _this.$store.dispatch('getData');
+                        _this.$store.dispatch('getOnlyData');
                         _this.$parent.$emit('close', url);
                     } else {
                         console.error('OH NO');
@@ -19802,7 +19805,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     semester: null,
     termYear: null,
     term: null,
-    loadingClasses: false,
+    loadingClasses: true,
 
     facultyMember: {
         email: null,
@@ -19881,9 +19884,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    getData: function getData(context) {
+    getAllUserData: function getAllUserData(context) {
         context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
+    },
+    getOnlyData: function getOnlyData(context) {
+        context.commit('GET_DATA');
+    },
+    getOnlySettings: function getOnlySettings(context) {
+        context.commit('GET_SETTINGS');
     },
     setList: function setList(context) {
         context.commit('SET_LIST');
@@ -19943,9 +19952,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     setTermYear: function setTermYear(context, payload) {
         context.commit('SET_TERM_YEAR', payload);
     },
-    updateTerm: function updateTerm(context) {
-        context.commit('UPDATE_TERM');
-    },
     loadingClassesTrue: function loadingClassesTrue(context) {
         context.commit('SET_CLASS_IS_LOADING');
     },
@@ -19973,38 +19979,82 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
-        window.axios.get("data").then(function (response) {
-            state.term = response.data["term"];
-            state.courses = response.data["courses"];
-            state.flashroster = response.data["students"];
-            state.facultyMember.email = response.data["email"];
-            state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
-            state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-            state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-            state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-            for (var course in state.courses) {
-                if (state.courses.hasOwnProperty(course)) {
-                    var realCourse = state.courses[course];
-                    for (var student in realCourse.roster) {
-                        if (realCourse.roster.hasOwnProperty(student)) {
-                            var realStudent = realCourse.roster[student];
-                            var studentId = realStudent.student_id;
-                            var url = realStudent.images.likeness;
+        if (state.termYear != null) {
+            var _capitalize = function _capitalize(name) {
+                return name.charAt(0).toUpperCase() + name.substr(1);
+            };
 
-                            state.studentImages[studentId] = url;
+            var selectedTerm = state.termYear + state.semester;
+            selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
+            state.term = selectedTerm;
+
+            window.axios.get("data/" + state.term).then(function (response) {
+                state.term = response.data["term"];
+                state.courses = response.data["courses"];
+                state.loadingClasses = false;
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = _capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = _capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for (var course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)) {
+                        var realCourse = state.courses[course];
+                        for (var student in realCourse.roster) {
+                            if (realCourse.roster.hasOwnProperty(student)) {
+                                var realStudent = realCourse.roster[student];
+                                var studentId = realStudent.student_id;
+                                var url = realStudent.images.likeness;
+
+                                state.studentImages[studentId] = url;
+                            }
                         }
                     }
                 }
-            }
-            window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
-                state.facultyMember.image = response.data.image;
-                state.facultyMember.id = response.data.id;
+                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
+                    state.facultyMember.image = response.data.image;
+                    state.facultyMember.id = response.data.id;
+                }).catch(function (e) {
+                    state.errors = e.response.data.message;
+                });
             }).catch(function (e) {
                 state.errors = e.response.data.message;
             });
-        }).catch(function (e) {
-            state.errors = e.response.data.message;
-        });
+        } else {
+            window.axios.get("data").then(function (response) {
+                state.term = response.data["term"];
+                state.courses = response.data["courses"];
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for (var course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)) {
+                        var realCourse = state.courses[course];
+                        for (var student in realCourse.roster) {
+                            if (realCourse.roster.hasOwnProperty(student)) {
+                                var realStudent = realCourse.roster[student];
+                                var studentId = realStudent.student_id;
+                                var url = realStudent.images.likeness;
+
+                                state.studentImages[studentId] = url;
+                            }
+                        }
+                    }
+                }
+                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
+                    state.facultyMember.image = response.data.image;
+                    state.facultyMember.id = response.data.id;
+                }).catch(function (e) {
+                    state.errors = e.response.data.message;
+                });
+            }).catch(function (e) {
+                state.errors = e.response.data.message;
+            });
+        }
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
@@ -20152,44 +20202,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
         state.termYear = payload;
-    },
-
-    UPDATE_TERM: function UPDATE_TERM(state) {
-        var selectedTerm = state.termYear + state.semester;
-        selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
-        state.term = selectedTerm;
-
-        function capitalize(name) {
-            return name.charAt(0).toUpperCase() + name.substr(1);
-        }
-
-        window.axios.get("data/" + selectedTerm).then(function (response) {
-            state.term = response.data["term"];
-            state.courses = response.data["courses"];
-            state.loadingClasses = false;
-            state.flashroster = response.data["students"];
-            state.facultyMember.email = response.data["email"];
-            state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
-            state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-            state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-            state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-            for (var course in state.courses) {
-                if (state.courses.hasOwnProperty(course)) {
-                    var realCourse = state.courses[course];
-                    for (var student in realCourse.roster) {
-                        if (realCourse.roster.hasOwnProperty(student)) {
-                            var realStudent = realCourse.roster[student];
-                            var studentId = realStudent.student_id;
-                            var url = realStudent.images.likeness;
-
-                            state.studentImages[studentId] = url;
-                        }
-                    }
-                }
-            }
-        }).catch(function (e) {
-            state.errors = e.response.data.message;
-        });
     },
 
     SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
@@ -21551,9 +21563,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.url = document.querySelector('meta[name=app-url]').content;
-    },
-    beforeCreate: function beforeCreate() {
-        this.$store.dispatch('getData');
     }
 });
 
@@ -21667,6 +21676,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         menuUp: __WEBPACK_IMPORTED_MODULE_0__menuUp___default.a
+    },
+
+    beforeCreate: function beforeCreate() {
+        this.$store.dispatch('getOnlySettings');
     }
 });
 
@@ -25367,7 +25380,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                         break;
                 }
                 this.$store.dispatch('setTermYear', this.year);
-                this.$store.dispatch('updateTerm');
+                this.$store.dispatch('getOnlyData');
             }
         },
         handleSelect: function handleSelect(input) {

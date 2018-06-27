@@ -10,6 +10,10 @@
     export default {
         components: {
             menuUp
+        },
+
+        beforeCreate() {
+            this.$store.dispatch('getOnlySettings');
         }
     }
 </script>

@@ -1,9 +1,17 @@
 export default {
-    getData (context) {
+    getAllUserData (context) {
         context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
     },
+
+    getOnlyData (context) {
+        context.commit('GET_DATA');
+    },
     
+    getOnlySettings (context) {
+        context.commit('GET_SETTINGS');
+    },
+
     setList (context) {
         context.commit('SET_LIST');
     },
@@ -80,15 +88,11 @@ export default {
         context.commit('SET_TERM_YEAR', payload);
     },
 
-    updateTerm (context) {
-        context.commit('UPDATE_TERM');
-    },
-
     loadingClassesTrue(context){
         context.commit('SET_CLASS_IS_LOADING');
     },
 
     doneLoadingClasses(context){
         context.commit('SET_CLASS_DONE_LOADING');
-    }
+    },
 }
