@@ -88,10 +88,6 @@ export default {
         context.commit('SET_TERM_YEAR', payload);
     },
 
-    updateTerm (context) {
-        context.commit('UPDATE_TERM');
-    },
-
     loadingClassesTrue(context){
         context.commit('SET_CLASS_IS_LOADING');
     },

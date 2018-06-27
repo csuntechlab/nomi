@@ -248,49 +248,6 @@ export default {
         state.termYear = payload;
     },
 
-    UPDATE_TERM: function(state) {
-        if(state.termYear != null){
-        let selectedTerm = state.termYear + state.semester;
-        selectedTerm = selectedTerm.slice(0,1) + selectedTerm.slice(2);
-        state.term = selectedTerm;
-
-        function capitalize(name) {
-            return name.charAt(0).toUpperCase() + name.substr(1);
-        }
-
-        window.axios.get(`data/${state.term}`)
-            .then(response => {
-                state.term = response.data["term"];
-                state.courses = response.data["courses"];
-                state.loadingClasses = false;
-                state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
-                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                for(let course in state.courses) {
-                    if (state.courses.hasOwnProperty(course)){
-                        let realCourse = state.courses[course];
-                        for(let student in realCourse.roster) {
-                            if(realCourse.roster.hasOwnProperty(student)){
-                                let realStudent = realCourse.roster[student];
-                                let studentId = realStudent.student_id;
-                                let url = realStudent.images.likeness;
-
-                                state.studentImages[studentId] = url;
-                            }
-                        }
-                    }
-                    
-                }
-            })
-            .catch(e => {
-                state.errors = e.response.data.message;
-            });
-        }
-    },
-
     SET_CLASS_IS_LOADING(state){
         state.loadingClasses = true;
     },

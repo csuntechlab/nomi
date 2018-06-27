@@ -19952,9 +19952,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     setTermYear: function setTermYear(context, payload) {
         context.commit('SET_TERM_YEAR', payload);
     },
-    updateTerm: function updateTerm(context) {
-        context.commit('UPDATE_TERM');
-    },
     loadingClassesTrue: function loadingClassesTrue(context) {
         context.commit('SET_CLASS_IS_LOADING');
     },
@@ -20205,46 +20202,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
         state.termYear = payload;
-    },
-
-    UPDATE_TERM: function UPDATE_TERM(state) {
-        if (state.termYear != null) {
-            var capitalize = function capitalize(name) {
-                return name.charAt(0).toUpperCase() + name.substr(1);
-            };
-
-            var selectedTerm = state.termYear + state.semester;
-            selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
-            state.term = selectedTerm;
-
-            window.axios.get("data/" + state.term).then(function (response) {
-                state.term = response.data["term"];
-                state.courses = response.data["courses"];
-                state.loadingClasses = false;
-                state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
-                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                for (var course in state.courses) {
-                    if (state.courses.hasOwnProperty(course)) {
-                        var realCourse = state.courses[course];
-                        for (var student in realCourse.roster) {
-                            if (realCourse.roster.hasOwnProperty(student)) {
-                                var realStudent = realCourse.roster[student];
-                                var studentId = realStudent.student_id;
-                                var url = realStudent.images.likeness;
-
-                                state.studentImages[studentId] = url;
-                            }
-                        }
-                    }
-                }
-            }).catch(function (e) {
-                state.errors = e.response.data.message;
-            });
-        }
     },
 
     SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
