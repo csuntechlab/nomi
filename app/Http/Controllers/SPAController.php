@@ -37,7 +37,7 @@ class SPAController extends Controller
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
 
-        if (Cache::has('courses:' . $id)) {
+        if (Cache::has('courses:' . $id) && Cache::get('term:' . $id) == $term) {
             $courses = Cache::get('courses:' . $id);
         } else {
             if ($term == null) {
@@ -45,13 +45,14 @@ class SPAController extends Controller
             }
             $courses = $this->webResourceRetrieverContract->getCourses($term);
             Cache::put('courses:' . $id, $courses, $this->minutes);
+            Cache::put('term:' . $id, $term, $this->minutes);
         }
 
         $students = [];
         $len = \count($courses);
 
         for ($i = 0; $i < $len; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $id)) {
+            if (Cache::has('students:' . $i . ':' . $id) && Cache::get('term:' . $id) == $term) {
                 $students[$i] = Cache::get('students:' . $i . ':' . $id);
             } else {
                 $students[$i] = $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
@@ -63,7 +64,7 @@ class SPAController extends Controller
         $user = auth()->user();
         $email = $user->email;
 
-        return ['courses' => $courses, 'students' => $students, 'email' => $email];
+        return ['courses' => $courses, 'students' => $students, 'email' => $email, 'term' =>  "$term"];
     }
 
     /**

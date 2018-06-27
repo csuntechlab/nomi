@@ -65,6 +65,7 @@
                         this.$store.dispatch('sortFirstName');
                         this.$store.dispatch('sortDescending');
                         break;
+                        
                     case "2":
                         this.$store.dispatch('sortLastName');
                         this.$store.dispatch('sortDescending');

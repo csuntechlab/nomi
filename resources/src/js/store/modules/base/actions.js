@@ -59,4 +59,36 @@ export default {
     updateImage (context, payload) {
         context.commit('UPDATE_IMAGE', payload);
     },
+
+    setSpring (context) {
+        context.commit('SET_SPRING');
+    },
+
+    setSummer (context) {
+        context.commit('SET_SUMMER');
+    },
+
+    setFall (context) {
+        context.commit('SET_FALL');
+    },
+
+    setWinter (context) {
+        context.commit('SET_WINTER');
+    },
+
+    setTermYear (context, payload) {
+        context.commit('SET_TERM_YEAR', payload);
+    },
+
+    updateTerm (context) {
+        context.commit('UPDATE_TERM');
+    },
+
+    loadingClassesTrue(context){
+        context.commit('SET_CLASS_IS_LOADING');
+    },
+
+    doneLoadingClasses(context){
+        context.commit('SET_CLASS_DONE_LOADING');
+    }
 }

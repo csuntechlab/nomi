@@ -10,6 +10,10 @@ export default {
     errors: null,
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
     hideBack: true,
+    semester: null,
+    termYear: null,
+    term: null,
+    loadingClasses: false,
 
     facultyMember: {
         email: null,
