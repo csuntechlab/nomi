@@ -86,7 +86,28 @@
                 </ul>
             </div>
         </div> -->
-            <profile-info :studentBio="this.studentProfile.bio"></profile-info>
+        <div class="container type--center margin_between_containers">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                            <div v-if="noteSaved">Notes Saved!</div>
+                            <div v-if="unsavedChanges">There are unsaved changes.</div>
+                            <div class="clearPadding">
+                                <button class="btn btn-default" @click.prevent="commitNotes">Save Notes</button>
+                            </div>
+                            <br>
+                            <div class="type--center btn_padding">
+                                <button class="btn btn-default" @click="showEmail = true">Show Email</button>
+                                <br>
+                            </div>
+                            <br>
+                            <h4>Bio: {{this.studentProfile.bio}}</h4>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <modal v-if="showModal" @close="setImgUrl">
                 <div slot="header"></div>
                 <div slot="body">
@@ -106,14 +127,16 @@
 <script>
     import { mapGetters } from 'vuex'
     import { mapState } from 'vuex'
-    import imageHandler from "../components/profile_components/imageHandler.vue";
-    import croppaProfile from "../components/profile_components/croppaProfile.vue";
+    import ImageHandler from "../components/fixed_components/imageHandler.vue";
+    import croppaProfile from "../components/fixed_components/croppaProfile.vue";
     import modal from "../components/fixed_components/modal.vue";
     export default {
         name: 'profile',
 
         data: function () {
             return {
+                unsavedChanges: false,
+                noteSaved: false,
                 showModal: false,
                 imgUrl: null,
                 showEmail: false,
@@ -136,12 +159,30 @@
             );
         },
 
+        beforeRouteLeave (to, from, next) {
+            if(this.unsavedChanges) {
+                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+                if (answer) {
+                    next();
+                } else {
+                    next(false);
+                }
+            } else {
+                next();
+            }
+        },
+
         computed: {
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
                 'studentImages'
             ]),
+
+            ...mapState({
+                sp_notes: state => state.profile.studentProfile.notes
+            }),
 
             image: function() {
                 let id = this.studentProfile.id.replace("members:","");
@@ -150,6 +191,22 @@
         },
 
         methods: {
+            updateNotes (e) {
+                this.$store.dispatch('updateNotes', e.target.value)
+                    .then(() => {
+                        this.noteSaved = false;
+                        this.unsavedChanges = true;
+                    });
+            },
+
+            commitNotes () {
+                this.$store.dispatch('commitNotes')
+                    .then(() => {
+                        this.noteSaved = true;
+                        this.unsavedChanges = false;
+                    });
+            },
+
             croppaToggle(){
                 this.showcroppa = !this.showcroppa;
             },
