@@ -29,6 +29,7 @@ Vue.component('term-selector', require('./components/course_components/termSelec
 
 Vue.component('image-handler', require('./components/profile_components/imageHandler.vue'));
 Vue.component('croppa-profile', require('./components/profile_components/croppaProfile.vue'));
+Vue.component('croppa-modal', require('./components/profile_components/croppaProfile.vue'));
 Vue.component('profile-picture', require('./components/profile_components/profilePicture.vue'));
 Vue.component('profile-info', require('./components/profile_components/profileInfo.vue'));
 

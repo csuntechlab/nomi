@@ -87,7 +87,7 @@
             </div>
         </div> -->
             <profile-info :studentBio="this.studentProfile.bio" :studentNotes="this.studentProfile.notes"></profile-info>
-            <croppa-modal :showModal = showCroppa></croppa-modal>
+            <croppa-modal v-on:closeModal="setImgUrl()" :showModal = showCroppaModal :imgUrl = imgUrl></croppa-modal>
             <modal v-if="showEmail" @close="closeEmail">
                 <div slot="header"></div>
                 <div slot="body">
@@ -103,6 +103,7 @@
     import { mapState } from 'vuex'
     import imageHandler from "../components/profile_components/imageHandler.vue";
     import croppaProfile from "../components/profile_components/croppaProfile.vue";
+    import croppaModal from "../components/profile_components/croppaModal.vue";
     import profileInfo from "../components/profile_components/profileInfo.vue";
     import modal from "../components/fixed_components/modal.vue";
     export default {
@@ -110,7 +111,7 @@
 
         data: function () {
             return {
-                showCroppa: false,
+                showCroppaModal: false,
                 imgUrl: null,
                 showEmail: false,
             }
@@ -151,14 +152,14 @@
                 this.showcroppa = !this.showcroppa;
             },
 
-            setImgUrl (url) {
-                this.showCroppaModal = false;
-                this.imgUrl = url;
-            },
-
             closeEmail(){
                 this.showEmail = false;
-            }
+            },
+
+            setImgUrl (url) {
+                this.showModal = false;
+                this.imgUrl = url;
+            },
         }
     }
 </script>
