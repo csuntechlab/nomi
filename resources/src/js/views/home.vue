@@ -18,5 +18,8 @@
             this.$store.dispatch('showBackButton');
             next();
         },
+        beforeCreate(){
+            this.$store.dispatch('getOnlyData');
+        },
     }
 </script>

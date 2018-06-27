@@ -1,9 +1,17 @@
 export default {
-    getData (context) {
+    getAllUserData (context) {
         context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
     },
+
+    getOnlyData (context) {
+        context.commit('GET_DATA');
+    },
     
+    getOnlySettings (context) {
+        context.commit('GET_SETTINGS');
+    },
+
     setList (context) {
         context.commit('SET_LIST');
     },
@@ -90,5 +98,5 @@ export default {
 
     doneLoadingClasses(context){
         context.commit('SET_CLASS_DONE_LOADING');
-    }
+    },
 }

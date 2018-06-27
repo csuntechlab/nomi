@@ -71,7 +71,7 @@
                         uri: uri
                     }).then(response => {
                         if (response.status) {
-                            this.$store.dispatch('getData');
+                            this.$store.dispatch('getOnlyData');
                             this.$parent.$emit('close', url);
                         } else {
                             console.error('OH NO');
