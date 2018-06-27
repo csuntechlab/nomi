@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <textarea type="text" id="ex0" name="ex0" :value="sp_notes" @input="updateNotes"></textarea>
+                    <textarea type="text" id="ex0" name="ex0" :value="this.studentNotes" @input="updateNotes"></textarea>
                     <div v-if="noteSaved">Notes Saved!</div>
                     <div v-if="unsavedChanges">There are unsaved changes.</div>
                     <div class="clearPadding">
@@ -27,7 +27,8 @@
         name: "profile-info",
 
         props: [
-            'studentBio'
+            'studentBio',
+            'studentNotes'
         ],
 
         data: function () {
@@ -50,9 +51,6 @@
             }
         },
         computed: {
-            ...mapState({
-                sp_notes: state => state.profile.studentProfile.notes
-            }),
         },
 
         methods: {

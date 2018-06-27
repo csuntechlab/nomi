@@ -86,7 +86,7 @@
                 </ul>
             </div>
         </div> -->
-            <profile-info :studentBio="this.studentProfile.bio"></profile-info>
+            <profile-info :studentBio="this.studentProfile.bio" :studentNotes="this.studentProfile.notes"></profile-info>
             <modal v-if="showModal" @close="setImgUrl">
                 <div slot="header"></div>
                 <div slot="body">
@@ -108,6 +108,7 @@
     import { mapState } from 'vuex'
     import imageHandler from "../components/profile_components/imageHandler.vue";
     import croppaProfile from "../components/profile_components/croppaProfile.vue";
+    import profileInfo from "../components/profile_components/profileInfo.vue";
     import modal from "../components/fixed_components/modal.vue";
     export default {
         name: 'profile',
@@ -121,7 +122,7 @@
         },
 
         components: {
-            ImageHandler,
+            imageHandler,
             croppaProfile,
             modal
         },
@@ -140,7 +141,8 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
-                'studentImages'
+                'studentImages',
+
             ]),
 
             image: function() {
