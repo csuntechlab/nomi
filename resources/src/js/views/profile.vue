@@ -87,12 +87,7 @@
             </div>
         </div> -->
             <profile-info :studentBio="this.studentProfile.bio" :studentNotes="this.studentProfile.notes"></profile-info>
-            <modal v-if="showModal" @close="setImgUrl">
-                <div slot="header"></div>
-                <div slot="body">
-                    <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
-                </div>
-            </modal>
+            <croppa-modal :showModal = showCroppa></croppa-modal>
             <modal v-if="showEmail" @close="closeEmail">
                 <div slot="header"></div>
                 <div slot="body">
@@ -115,7 +110,7 @@
 
         data: function () {
             return {
-                showModal: false,
+                showCroppa: false,
                 imgUrl: null,
                 showEmail: false,
             }
@@ -157,7 +152,7 @@
             },
 
             setImgUrl (url) {
-                this.showModal = false;
+                this.showCroppaModal = false;
                 this.imgUrl = url;
             },
 
