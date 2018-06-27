@@ -19802,6 +19802,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     semester: null,
     termYear: null,
     term: null,
+    loadingClasses: false,
 
     facultyMember: {
         email: null,
@@ -19861,6 +19862,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     term: function term(state) {
         return state.term;
+    },
+    loadingClasses: function loadingClasses(state) {
+        return state.loadingClasses;
     },
 
     facultyMember: function facultyMember(state) {
@@ -19941,6 +19945,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     updateTerm: function updateTerm(context) {
         context.commit('UPDATE_TERM');
+    },
+    loadingClassesTrue: function loadingClassesTrue(context) {
+        context.commit('SET_CLASS_IS_LOADING');
+    },
+    doneLoadingClasses: function doneLoadingClasses(context) {
+        context.commit('SET_CLASS_DONE_LOADING');
     }
 });
 
@@ -20156,6 +20166,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         window.axios.get("data/" + selectedTerm).then(function (response) {
             state.term = response.data["term"];
             state.courses = response.data["courses"];
+            state.loadingClasses = false;
             state.flashroster = response.data["students"];
             state.facultyMember.email = response.data["email"];
             state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
@@ -20179,8 +20190,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         }).catch(function (e) {
             state.errors = e.response.data.message;
         });
-    }
+    },
 
+    SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
+        state.loadingClasses = true;
+    },
+    SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
+        state.loadingClasses = false;
+    }
 });
 
 /***/ }),
@@ -24680,8 +24697,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            displayedTerm: '',
-            loadingClasses: false
+            displayedTerm: ''
         };
     },
 
@@ -24692,11 +24708,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     //On page load, sets 'Spring' as default season option
     created: function created() {
         this.$store.dispatch('setSpring');
-        this.$store.dispatch('updateTerm');
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'loadingClasses']), {
+        shouldLoadClasses: function shouldLoadClasses() {
+            if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
+        },
         displayCurrentTerm: function displayCurrentTerm() {
             if (this.term != null) {
                 var termCode = this.term;
@@ -25205,7 +25223,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.facultyMember.image === null || this.loadingClasses
+    this.shouldLoadClasses
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -25324,9 +25342,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['semester'])),
 
+    created: function created() {
+        this.$store.dispatch('doneLoadingClasses');
+    },
+
+
     methods: {
         handleSubmit: function handleSubmit() {
             if (this.formValidated) {
+                this.$store.dispatch('loadingClassesTrue');
+
                 switch (this.season) {
                     case "0":
                         this.$store.dispatch('setSpring');
@@ -25343,7 +25368,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 }
                 this.$store.dispatch('setTermYear', this.year);
                 this.$store.dispatch('updateTerm');
-            } else {}
+            }
         },
         handleSelect: function handleSelect(input) {
             this.season = input.target.value;

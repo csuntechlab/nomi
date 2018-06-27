@@ -38,9 +38,15 @@ export default {
         ])
     },
 
+    created() {
+        this.$store.dispatch('doneLoadingClasses');
+    },
+
     methods: {
         handleSubmit () {
             if(this.formValidated){
+            this.$store.dispatch('loadingClassesTrue');
+
             switch(this.season) {
                 case "0":
                     this.$store.dispatch('setSpring');
@@ -57,9 +63,6 @@ export default {
             }
             this.$store.dispatch('setTermYear', this.year);
             this.$store.dispatch('updateTerm');
-            }
-            else{
-
             }
         },
 

@@ -13,6 +13,7 @@ export default {
     semester: state => state.semester,
     termYear: state => state.termYear,
     term: state => state.term,
+    loadingClasses: state => state.loadingClasses,
 
 
     facultyMember: state => state.facultyMember,

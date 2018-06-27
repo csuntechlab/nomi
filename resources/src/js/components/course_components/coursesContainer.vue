@@ -1,6 +1,6 @@
 <template>
      <div>
-         <div v-if="facultyMember.image === null || this.loadingClasses" class="type--center">
+         <div v-if="this.shouldLoadClasses" class="type--center">
             <br>
             <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
          </div>
@@ -20,7 +20,6 @@
         data: function() {
             return {
                 displayedTerm: '',
-                loadingClasses: false,
             }
         },
 
@@ -31,7 +30,6 @@
         //On page load, sets 'Spring' as default season option
         created() {
             this.$store.dispatch('setSpring');
-            this.$store.dispatch('updateTerm');
         },
 
         computed: {
@@ -40,9 +38,17 @@
                 'courses',
                 'facultyMember',
                 'facultyFullName',
-                'term'
+                'term',
+                'loadingClasses'
 
             ]),
+
+            shouldLoadClasses() {
+                if(this.facultyMember.image === null || this.loadingClasses)
+                    return true;
+                else
+                    return false;
+            },
 
             displayCurrentTerm () {
             if(this.term != null) {

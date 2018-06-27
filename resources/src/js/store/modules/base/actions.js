@@ -83,4 +83,12 @@ export default {
     updateTerm (context) {
         context.commit('UPDATE_TERM');
     },
+
+    loadingClassesTrue(context){
+        context.commit('SET_CLASS_IS_LOADING');
+    },
+
+    doneLoadingClasses(context){
+        context.commit('SET_CLASS_DONE_LOADING');
+    }
 }
