@@ -171,6 +171,14 @@ export default {
         state.hideBack = false;
     },
 
+    DISABLE_BACK_BUTTON: function (state) {
+        state.disableBack = true;
+    },
+
+    ENABLE_BACK_BUTTON: function (state) {
+        state.disableBack = false;
+    },
+
     UPDATE_IMAGE: function (state, payload) {
         let id = payload.studentId;
         let url = payload.imgUrl;

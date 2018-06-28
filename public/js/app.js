@@ -18487,14 +18487,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     created: function created() {
-        this.$store.dispatch('hideBackButton');
+        this.$store.dispatch('disableBackButton');
         this.$store.dispatch('getStudentProfile', {
             uri: this.$route.params.emailURI,
             faculty_id: this.facultyMember.id
         });
     },
     updated: function updated() {
-        this.$store.dispatch('showBackButton');
+        this.$store.dispatch('enableBackButton');
     },
     beforeRouteLeave: function beforeRouteLeave(to, from, next) {
         if (this.unsavedChanges) {
@@ -19796,6 +19796,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
     hideBack: true,
+    disableBack: false,
 
     facultyMember: {
         email: null,
@@ -19814,20 +19815,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+
+    // General
     courses: function courses(state) {
         return state.courses;
     },
-    flashroster: function flashroster(state) {
-        return state.flashroster;
-    },
     studentImages: function studentImages(state) {
         return state.studentImages;
-    },
-    list: function list(state) {
-        return state.list;
-    },
-    flash: function flash(state) {
-        return state.flash;
     },
     menuShow: function menuShow(state) {
         return state.menuShow;
@@ -19835,11 +19829,29 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: function errors(state) {
         return state.errors;
     },
+
+    // Back Button
     hideBack: function hideBack(state) {
         return state.hideBack;
     },
+    disableBack: function disableBack(state) {
+        return state.disableBack;
+    },
+
+    // Themes
     themeName: function themeName(state) {
         return state.themeName;
+    },
+
+    // Views & Sorting
+    flashroster: function flashroster(state) {
+        return state.flashroster;
+    },
+    list: function list(state) {
+        return state.list;
+    },
+    flash: function flash(state) {
+        return state.flash;
     },
     sortLastName: function sortLastName(state) {
         return state.sortLastName;
@@ -19848,6 +19860,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         return state.sortDescending;
     },
 
+    // User
     facultyMember: function facultyMember(state) {
         return state.facultyMember;
     },
@@ -19908,6 +19921,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     updateImage: function updateImage(context, payload) {
         context.commit('UPDATE_IMAGE', payload);
+    },
+    disableBackButton: function disableBackButton(context) {
+        context.commit('DISABLE_BACK_BUTTON');
+    },
+    enableBackButton: function enableBackButton(context) {
+        context.commit('ENABLE_BACK_BUTTON');
     }
 });
 
@@ -20082,6 +20101,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
         state.hideBack = false;
+    },
+
+    DISABLE_BACK_BUTTON: function DISABLE_BACK_BUTTON(state) {
+        state.disableBack = true;
+    },
+
+    ENABLE_BACK_BUTTON: function ENABLE_BACK_BUTTON(state) {
+        state.disableBack = false;
     },
 
     UPDATE_IMAGE: function UPDATE_IMAGE(state, payload) {
@@ -22741,6 +22768,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22754,7 +22785,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['hideBack']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['hideBack', 'disableBack']))
 });
 
 /***/ }),
@@ -22766,11 +22797,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return !_vm.hideBack
-    ? _c("i", {
-        staticClass: "fa fa-angle-left fa-3x back_button",
-        attrs: { title: "Go Back" },
-        on: { click: _vm.goBack }
-      })
+    ? _c("div", [
+        !_vm.disableBack
+          ? _c("div", [
+              _c("i", {
+                staticClass: "fa fa-angle-left fa-3x back_button",
+                attrs: { title: "Go Back" },
+                on: { click: _vm.goBack }
+              })
+            ])
+          : _c("div", [
+              _c("i", {
+                staticClass: "fa fa-angle-left fa-3x back_button_disabled"
+              })
+            ])
+      ])
     : _vm._e()
 }
 var staticRenderFns = []

@@ -150,7 +150,7 @@
         },
 
         created() {
-            this.$store.dispatch('hideBackButton');
+            this.$store.dispatch('disableBackButton');
             this.$store.dispatch(
                 'getStudentProfile',
                 {
@@ -161,7 +161,7 @@
         },
 
         updated(){
-            this.$store.dispatch('showBackButton');
+            this.$store.dispatch('enableBackButton');
         },
 
 

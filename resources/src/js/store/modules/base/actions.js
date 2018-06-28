@@ -59,4 +59,12 @@ export default {
     updateImage (context, payload) {
         context.commit('UPDATE_IMAGE', payload);
     },
+
+    disableBackButton (context) {
+        context.commit('DISABLE_BACK_BUTTON');
+    },
+
+    enableBackButton (context) {
+        context.commit('ENABLE_BACK_BUTTON');
+    }
 }
