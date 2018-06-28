@@ -7,8 +7,6 @@
         </div>
         <div v-else>
             <profile-carousel :student="this.studentProfile"></profile-carousel>
-        </div>
-        <div>
             <profile-info :student="this.studentProfile"></profile-info>
         </div>
     </div>

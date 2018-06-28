@@ -18598,8 +18598,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -19640,15 +19638,13 @@ var render = function() {
         ])
       : _c(
           "div",
-          [_c("profile-carousel", { attrs: { student: this.studentProfile } })],
+          [
+            _c("profile-carousel", { attrs: { student: this.studentProfile } }),
+            _vm._v(" "),
+            _c("profile-info", { attrs: { student: this.studentProfile } })
+          ],
           1
-        ),
-    _vm._v(" "),
-    _c(
-      "div",
-      [_c("profile-info", { attrs: { student: this.studentProfile } })],
-      1
-    )
+        )
   ])
 }
 var staticRenderFns = []
