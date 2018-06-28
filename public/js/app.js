@@ -24424,20 +24424,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     break;
                 case "1":
                     this.$store.dispatch('sortFirstName');
-                    this.$store.dispatch('sortDescending');
+                    this.$store.dispatch('sortAscending');
                     break;
 
                 case "2":
-                    this.$store.dispatch('sortLastName');
+                    this.$store.dispatch('sortFirstName');
                     this.$store.dispatch('sortDescending');
                     break;
                 case "3":
-                    this.$store.dispatch('sortFirstName');
+                    this.$store.dispatch('sortLastName');
                     this.$store.dispatch('sortAscending');
                     break;
                 case "4":
                     this.$store.dispatch('sortLastName');
-                    this.$store.dispatch('sortAscending');
+                    this.$store.dispatch('sortDescending');
                     break;
             }
         }
@@ -24469,19 +24469,19 @@ var render = function() {
                       },
                       [
                         _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2", selected: "" } }, [
-                          _vm._v("Last Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
                           _vm._v("First Name Ascending")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
                           _vm._v("Last Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4", selected: "" } }, [
+                          _vm._v("Last Name Descending")
                         ])
                       ]
                     )
@@ -24495,19 +24495,19 @@ var render = function() {
                       },
                       [
                         _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("Last Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
                           _vm._v("First Name Ascending")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "4", selected: "" } }, [
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3", selected: "" } }, [
                           _vm._v("Last Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Descending")
                         ])
                       ]
                     )
@@ -24523,20 +24523,20 @@ var render = function() {
                         on: { input: _vm.handleSelect }
                       },
                       [
-                        _c("option", { attrs: { value: "1", selected: "" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("Last Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
+                        _c("option", { attrs: { value: "1" } }, [
                           _vm._v("First Name Ascending")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
+                        _c("option", { attrs: { value: "2", selected: "" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
                           _vm._v("Last Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Descending")
                         ])
                       ]
                     )
@@ -24549,20 +24549,20 @@ var render = function() {
                         on: { input: _vm.handleSelect }
                       },
                       [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("Last Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3", selected: "" } }, [
+                        _c("option", { attrs: { value: "1", selected: "" } }, [
                           _vm._v("First Name Ascending")
                         ]),
                         _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("First Name Descending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
                           _vm._v("Last Name Ascending")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "4" } }, [
+                          _vm._v("Last Name Descending")
                         ])
                       ]
                     )
