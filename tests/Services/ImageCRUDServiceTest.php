@@ -4,19 +4,32 @@ declare(strict_types=1);
 
 namespace Tests\Services;
 
+use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
+use App\Models\User;
 use App\Services\ImageCRUDService;
-use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Mockery;
 use Tests\TestCase;
 
 class ImageCRUDServiceTest extends TestCase
 {
     use DatabaseMigrations;
 
+    protected $userModelRepository = null;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->userModelRepository = Mockery::spy(UserModelRepositoryInterface::class);
+    }
+
     /** @test */
     public function getPriority_returns_everyones_priority()
     {
-        $imageCRUDService = new ImageCRUDService();
+        $user = new User(['user_id' => 1]);
+        $this->be($user);
+
+        $imageCRUDService = new ImageCRUDService($this->userModelRepository);
 
         $student_ids = [
             '1',
@@ -24,19 +37,26 @@ class ImageCRUDServiceTest extends TestCase
             '3',
         ];
 
-        factory(User::class)->make([
-            'user_id' => 'members:1',
-            'ImagePriority' => 'likeness',
-        ])->save();
-
-        factory(User::class)->make([
-            'user_id' => 'members:2',
-            'ImagePriority' => 'official',
-        ])->save();
-
-        factory(User::class)->make([
-            'user_id' => 'members:3',
-        ])->save();
+        $this->userModelRepository
+            ->shouldReceive('getUsersWithImagePriority')
+            ->once()
+            ->andReturn([
+                [
+                    'image_priority' => [
+                        'image_priority' => 'likeness',
+                        'user_id' => 1,
+                    ],
+                ],
+                [
+                    'image_priority' => [
+                        'image_priority' => 'official',
+                        'user_id' => 1,
+                    ],
+                ],
+                [
+                    'image_priority' => null,
+                ],
+            ]);
 
         $priorities = [
             'likeness',
