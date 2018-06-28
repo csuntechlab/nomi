@@ -29,11 +29,9 @@
     import emailModal from "../profile_components/emailModal.vue";
     export default {
         name: "profile-info",
-
         props: [
             'student'
         ],
-
         data: function () {
             return {
                 unsavedChanges: false,
