@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="pull-right textOverflow">
-            <h3>{{studentProfile.displayName || studentName}}</h3>
+            <h3>{{studentProfile.displayName}}</h3>
         </div>
         <croppa
                 v-model="myCroppa"
@@ -26,7 +26,7 @@
     export default {
         name: "croppa-profile",
 
-        props:['studentImage', 'emailURI', 'studentName'],
+        props:['studentImage'],
 
         data: function() {
             return{
@@ -50,7 +50,7 @@
          },
 
         methods: {
-            confirmImage: function (emailURI) {
+            confirmImage: function () {
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {

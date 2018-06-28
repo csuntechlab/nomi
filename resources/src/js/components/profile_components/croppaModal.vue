@@ -1,35 +1,33 @@
 <template>
     <div>
-        <modal v-if="showModal" @close="closeModal">
+        <modal v-if="showModal" @close="closeCroppaModal">
             <div slot="header"></div>
             <div slot="body">
-                <croppa-profile :studentImage="studentProfile.images['likeness']"></croppa-profile>
+                <croppa-profile :studentImage="student.images['likeness']"></croppa-profile>
             </div>
         </modal>
     </div>
 </template>
 <script>
-    import modal from "../components/fixed_components/modal.vue";
+    import modal from "../../components/fixed_components/modal.vue";
+    import croppaProfile from "../profile_components/croppaProfile.vue"
     export default {
         name: "croppa-modal",
 
         props: [
             'showModal',
-            'imgURL'
+            'student'
         ],
 
-        data: function () {
-            return {
-
-            }
-        },
-
-        computed: {
+        components: {
+            croppaProfile,
+            modal
         },
 
         methods: {
-            closeModal() {
+            closeCroppaModal() {
                 this.$emit('setImgUrl');
+                this.$emit('close');
             }
         }
     }

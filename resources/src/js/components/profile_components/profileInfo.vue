@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <textarea type="text" id="ex0" name="ex0" :value="this.studentNotes" @input="updateNotes"></textarea>
+                    <textarea type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes"></textarea>
                     <div v-if="noteSaved">Notes Saved!</div>
                     <div v-if="unsavedChanges">There are unsaved changes.</div>
                     <div class="clearPadding">
@@ -26,6 +26,7 @@
 </div>
 </template>
 <script>
+    import emailModal from "../profile_components/emailModal.vue";
     export default {
         name: "profile-info",
 
@@ -40,6 +41,9 @@
                 showEmail: false,
             }
         },
+        components: {
+            emailModal
+        },
         beforeRouteLeave(to, from, next) {
             if (this.unsavedChanges) {
                 const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
@@ -53,9 +57,6 @@
                 next();
             }
         },
-        computed: {
-        },
-
         methods: {
             updateNotes(e) {
                 this.$store.dispatch('updateNotes', e.target.value)

@@ -3,9 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="type--center">{{studentProfile.displayName}}</h1>
+                    <h1 class="type--center">{{this.student.displayName}}</h1>
                 </div>
-                <!--profile-carousel-->
                 <div class="type--center">
                     <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">
                         <slide class="slidewrap">
@@ -15,7 +14,7 @@
                                     <image-handler image_type="likeness"></image-handler>
                                 </div>
                                 <div class="type--center">
-                                    <button class="btn btn-default" @click="showModal = true">Edit Photo</button>
+                                    <button class="btn btn-default" @click="showCroppaModal = true">Edit Photo</button>
                                     <br>
                                 </div>
                             </div>
@@ -39,7 +38,7 @@
                             </slide>
                             -->
                     </carousel>
-                    <croppa-modal v-on:closeModal="setImgUrl()" :showModal=s howCroppaModal :imgUrl=i mgUrl></croppa-modal>
+                    <croppa-modal :showModal="showCroppaModal" :student="student" @close="setImgUrl()"></croppa-modal>
                 </div>
             </div>
         </div>
@@ -80,19 +79,18 @@
     </div>
 </template>
 <script>
-import croppaModal from "../components/profile_components/croppaModal.vue";
+import croppaModal from "../profile_components/croppaModal.vue";
+import imageHandler from "../profile_components/imageHandler.vue";
+import profilePicture from "../profile_components/profilePicture.vue";
+import { mapGetters } from 'vuex';
 export default {
-        name: "profile-info",
+        name: "profile-carousel",
 
-        props: [
-            'student'
-        ],
+        props: ['student'],
 
         data: function () {
             return {
-                unsavedChanges: false,
-                noteSaved: false,
-                showEmail: false,
+                showCroppaModal: false,
             }
         },
         beforeRouteLeave(to, from, next) {
@@ -108,23 +106,23 @@ export default {
                 next();
             }
         },
+        components: {
+            croppaModal,
+        },
         computed: {
+            ...mapGetters([
+                'studentImages'
+            ]),
+            image: function() {
+                let id = this.student.id.replace("members:","");
+                return this.studentImages[id];
+            }
         },
 
         methods: {
-            updateNotes(e) {
-                this.$store.dispatch('updateNotes', e.target.value)
-                    .then(() => {
-                        this.noteSaved = false;
-                        this.unsavedChanges = true;
-                    });
-            },
-            commitNotes() {
-                this.$store.dispatch('commitNotes')
-                    .then(() => {
-                        this.noteSaved = true;
-                        this.unsavedChanges = false;
-                    });
+            setImgUrl (url) {
+                this.showCroppaModal = false;
+                this.imgUrl = url;
             },
         }
     }
