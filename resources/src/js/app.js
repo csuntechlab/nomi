@@ -32,6 +32,8 @@ Vue.component('croppa-profile', require('./components/profile_components/croppaP
 Vue.component('croppa-modal', require('./components/profile_components/croppaProfile.vue'));
 Vue.component('profile-picture', require('./components/profile_components/profilePicture.vue'));
 Vue.component('profile-info', require('./components/profile_components/profileInfo.vue'));
+Vue.component('profile-carousel', require('./components/profile_components/profileCarousel.vue'));
+Vue.component('email-modal', require('./components/profile_components/emailModal.vue'));
 
 const app = new Vue({
     el: '#app',

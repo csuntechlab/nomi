@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="container type--center margin_between_containers">
         <div class="container">
             <div class="row">
@@ -15,26 +16,28 @@
                         <br>
                     </div>
                     <br>
-                    <h4>Bio: {{this.studentBio}}</h4>
+                    <h4>Bio: {{this.student.bio}}</h4>
                     <br>
                 </div>
             </div>
         </div>
     </div>
+    <email-modal :showEmail="this.showEmail" :email="this.student.emailURI" @closeEmail="showEmail = false"></email-modal>
+</div>
 </template>
 <script>
     export default {
         name: "profile-info",
 
         props: [
-            'studentBio',
-            'studentNotes'
+            'student'
         ],
 
         data: function () {
             return {
                 unsavedChanges: false,
                 noteSaved: false,
+                showEmail: false,
             }
         },
         beforeRouteLeave(to, from, next) {

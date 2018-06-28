@@ -9,6 +9,7 @@
     </div>
 </template>
 <script>
+    import modal from "../components/fixed_components/modal.vue";
     export default {
         name: "croppa-modal",
 
