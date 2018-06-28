@@ -33,6 +33,7 @@
                         this.$store.dispatch('sortFirstName');
                         this.$store.dispatch('sortAscending');
                         break;
+                        
                     case "2":
                         this.$store.dispatch('sortLastName');
                         this.$store.dispatch('sortAscending');

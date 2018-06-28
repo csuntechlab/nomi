@@ -27,6 +27,7 @@ Vue.component('course-banner', require('./components/roster_components/courseBan
 Vue.component('settings-banner', require('./components/roster_components/settingsBanner.vue'));
 
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
+Vue.component('term-selector', require('./components/course_components/termSelector.vue'));
 
 const app = new Vue({
     el: '#app',

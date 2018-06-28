@@ -11,4 +11,6 @@ interface UserSettingsContract
     public function getSettings();
 
     public function updateTheme(Request $request);
+
+    public function getCurrentTerm();
 }
