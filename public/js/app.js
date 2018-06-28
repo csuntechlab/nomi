@@ -18986,7 +18986,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
 
-    props: ['studentImage'],
+    props: ['studentImage', 'emailURI', 'studentName'],
 
     data: function data() {
         return {
@@ -19005,7 +19005,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     methods: {
-        confirmImage: function confirmImage() {
+        confirmImage: function confirmImage(emailURI) {
             var _this = this;
 
             if (!this.myCroppa.hasImage()) {
@@ -19068,7 +19068,9 @@ var render = function() {
     "div",
     [
       _c("div", { staticClass: "pull-right textOverflow" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.studentProfile.displayName))])
+        _c("h3", [
+          _vm._v(_vm._s(_vm.studentProfile.displayName || _vm.studentName))
+        ])
       ]),
       _vm._v(" "),
       _c("croppa", {
@@ -19412,9 +19414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "profile-info",
-
     props: ['student'],
-
     data: function data() {
         return {
             unsavedChanges: false,
@@ -20895,7 +20895,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.profileErrors = e.response.data.message;
         });
     },
-
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
         state.studentProfile.notes = notes;
     },
