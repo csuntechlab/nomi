@@ -19960,6 +19960,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
+        state.flash = false;
     },
     SET_GALLERY: function SET_GALLERY(state) {
         state.list = false;
@@ -24253,8 +24254,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24296,9 +24295,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.flash && !this.list
-    ? _c("div")
-    : _c("div", [
+  return !this.flash
+    ? _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
         _c(
@@ -24320,6 +24318,7 @@ var render = function() {
           ]
         )
       ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24345,7 +24344,7 @@ var render = function() {
           "div",
           [
             _c("list-grid-selector", {
-              staticClass: "col-xs-9 col-sm-9 col-md-9"
+              staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
             !this.list && this.flash
@@ -24361,11 +24360,11 @@ var render = function() {
           "div",
           [
             _c("list-grid-selector", {
-              staticClass: "col-xs-12 col-sm-6 col-md-6"
+              staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
             _c("sort-selector", {
-              staticClass: "col-xs-12 col-sm-6 col-md-6 bot_padding_sort"
+              staticClass: "col-xs-6 col-sm-6 col-md-6 bot_padding_sort"
             })
           ],
           1

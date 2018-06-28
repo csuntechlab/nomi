@@ -54,6 +54,7 @@ export default {
 
     SET_LIST (state) {
         state.list = true;
+        state.flash = false;
     },
 
     SET_GALLERY (state) {

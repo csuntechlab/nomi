@@ -1,7 +1,5 @@
 <template>
-    <div v-if="this.flash && !this.list">
-    </div>
-    <div v-else>
+    <div v-if="!this.flash">
         <label for="name-sorting"></label>
         <select name="name-sorting" id="name-sorting" @input="handleSelect">
             <option value="1">First Name A-Z</option>
