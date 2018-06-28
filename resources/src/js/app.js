@@ -27,12 +27,13 @@ Vue.component('settings-banner', require('./components/roster_components/setting
 Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
 Vue.component('term-selector', require('./components/course_components/termSelector.vue'));
 
+Vue.component('profile-picture', require('./components/profile_components/profilePicture.vue'));
+Vue.component('profile-carousel', require('./components/profile_components/profileCarousel.vue'));
+Vue.component('croppa-modal', require('./components/profile_components/croppaProfile.vue'));
 Vue.component('image-handler', require('./components/profile_components/imageHandler.vue'));
 Vue.component('croppa-profile', require('./components/profile_components/croppaProfile.vue'));
-Vue.component('croppa-modal', require('./components/profile_components/croppaProfile.vue'));
-Vue.component('profile-picture', require('./components/profile_components/profilePicture.vue'));
 Vue.component('profile-info', require('./components/profile_components/profileInfo.vue'));
-Vue.component('profile-carousel', require('./components/profile_components/profileCarousel.vue'));
+Vue.component('profile-notes', require('./components/profile_components/profileNotes.vue'));
 Vue.component('email-modal', require('./components/profile_components/emailModal.vue'));
 
 const app = new Vue({
