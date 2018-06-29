@@ -19,6 +19,10 @@ export default {
     flash: state => state.flash,
     sortLastName: state => state.sortLastName,
     sortDescending: state => state.sortDescending,
+    semester: state => state.semester,
+    termYear: state => state.termYear,
+    term: state => state.term,
+    loadingClasses: state => state.loadingClasses,
 
     // User
     facultyMember: state => state.facultyMember,

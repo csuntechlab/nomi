@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <term-selector></term-selector>
         <courses-container></courses-container>
     </div>
 </template>
@@ -16,6 +17,9 @@
         beforeRouteLeave (to, from, next) {
             this.$store.dispatch('showBackButton');
             next();
+        },
+        beforeCreate(){
+            this.$store.dispatch('getOnlyData');
         },
     }
 </script>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Controllers;
 
 use App\Contracts\RosterRetrievalContract;
+use App\Contracts\UserSettingsContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Http\Controllers\SPAController;
 use App\Models\User;
@@ -20,6 +21,7 @@ class SPAControllerTest extends TestCase
 
     public $rosterRetriever;
     public $webResourceRetriever;
+    public $userSettings;
 
     /**
      * Description: Sets up the test and ignores Middleware.
@@ -30,12 +32,13 @@ class SPAControllerTest extends TestCase
         $this->disableMiddlewareForAllTests();
         $this->rosterRetriever = Mockery::spy(RosterRetrievalContract::class);
         $this->webResourceRetriever = Mockery::spy(WebResourceRetrieverContract::class);
+        $this->userSettings = Mockery::spy(UserSettingsContract::class);
     }
 
     /** @test */
     public function getData_hits_webservice_if_cache_empty()
     {
-        $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever);
+        $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever, $this->userSettings);
 
         $this->webResourceRetriever
             ->shouldReceive('getCourses')
@@ -54,7 +57,7 @@ class SPAControllerTest extends TestCase
     /** @test */
     public function getData_does_not_hit_webservice_if_cache_not_empty()
     {
-        $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever);
+        $controller = new SPAController($this->rosterRetriever, $this->webResourceRetriever, $this->userSettings);
         Cache::forever('courses:default', []);
         Cache::forever('students:0:default', []);
 
