@@ -20523,7 +20523,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         context.commit('SORT_ROSTER');
     },
     sortDescending: function sortDescending(context) {
-        context.commit('SORT_DESC');
+        context.commit('SORT_DSC');
         context.commit('SORT_ROSTER');
     },
     sortAscending: function sortAscending(context) {
@@ -20663,6 +20663,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
+        state.flash = false;
     },
     SET_GALLERY: function SET_GALLERY(state) {
         state.list = false;
@@ -20729,7 +20730,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         for (var i = 0; i < len; ++i) {
             var sortedRoster = function sortedRoster(self) {
                 if (state.sortLastName === true) {
-                    if (state.sortDescending === true) {
+                    if (state.sortAscending === true) {
                         return self.sort(function (a, b) {
                             return a.last_name.localeCompare(b.last_name);
                         });
@@ -20739,7 +20740,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                         }).reverse();
                     }
                 } else {
-                    if (state.sortDescending === true) {
+                    if (state.sortAscending === true) {
                         return self.sort(function (a, b) {
                             return a.first_name.localeCompare(b.first_name);
                         });
@@ -20763,12 +20764,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         state.sortLastName = true;
     },
 
-    SORT_DESC: function SORT_DESC(state) {
-        state.sortDescending = true;
+    SORT_ASC: function SORT_ASC(state) {
+        state.sortAscending = true;
     },
 
-    SORT_ASC: function SORT_ASC(state) {
-        state.sortDescending = false;
+    SORT_DSC: function SORT_DSC(state) {
+        state.sortAscending = false;
     },
 
     CLEAR_ERRORS: function CLEAR_ERRORS(state) {
@@ -24893,38 +24894,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24943,12 +24912,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     break;
 
                 case "2":
-                    this.$store.dispatch('sortFirstName');
-                    this.$store.dispatch('sortDescending');
-                    break;
-                case "3":
                     this.$store.dispatch('sortLastName');
                     this.$store.dispatch('sortAscending');
+                    break;
+                case "3":
+                    this.$store.dispatch('sortFirstName');
+                    this.$store.dispatch('sortDescending');
                     break;
                 case "4":
                     this.$store.dispatch('sortLastName');
@@ -24967,123 +24936,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.flash && !this.list
-    ? _c("div")
-    : _c("div", [
+  return !this.flash
+    ? _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        this.sortLastName
-          ? _c("div", [
-              this.sortDescending
-                ? _c("div", [
-                    _c(
-                      "select",
-                      {
-                        attrs: { name: "name-sorting", id: "name-sorting" },
-                        on: { input: _vm.handleSelect }
-                      },
-                      [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
-                          _vm._v("Last Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4", selected: "" } }, [
-                          _vm._v("Last Name Descending")
-                        ])
-                      ]
-                    )
-                  ])
-                : _c("div", [
-                    _c(
-                      "select",
-                      {
-                        attrs: { name: "name-sorting", id: "name-sorting" },
-                        on: { input: _vm.handleSelect }
-                      },
-                      [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3", selected: "" } }, [
-                          _vm._v("Last Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
-                          _vm._v("Last Name Descending")
-                        ])
-                      ]
-                    )
-                  ])
-            ])
-          : _c("div", [
-              this.sortDescending
-                ? _c("div", [
-                    _c(
-                      "select",
-                      {
-                        attrs: { name: "name-sorting", id: "name-sorting" },
-                        on: { input: _vm.handleSelect }
-                      },
-                      [
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("First Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2", selected: "" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
-                          _vm._v("Last Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
-                          _vm._v("Last Name Descending")
-                        ])
-                      ]
-                    )
-                  ])
-                : _c("div", [
-                    _c(
-                      "select",
-                      {
-                        attrs: { name: "name-sorting", id: "name-sorting" },
-                        on: { input: _vm.handleSelect }
-                      },
-                      [
-                        _c("option", { attrs: { value: "1", selected: "" } }, [
-                          _vm._v("First Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("First Name Descending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
-                          _vm._v("Last Name Ascending")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "4" } }, [
-                          _vm._v("Last Name Descending")
-                        ])
-                      ]
-                    )
-                  ])
-            ])
+        _c(
+          "select",
+          {
+            attrs: { name: "name-sorting", id: "name-sorting" },
+            on: { input: _vm.handleSelect }
+          },
+          [
+            _c("option", { attrs: { value: "1" } }, [_vm._v("First Name A-Z")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2", selected: "" } }, [
+              _vm._v("Last Name A-Z")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("First Name Z-A")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [_vm._v("Last Name Z-A")])
+          ]
+        )
       ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -25109,7 +24985,7 @@ var render = function() {
           "div",
           [
             _c("list-grid-selector", {
-              staticClass: "col-xs-9 col-sm-9 col-md-9"
+              staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
             !this.list && this.flash
@@ -25125,11 +25001,11 @@ var render = function() {
           "div",
           [
             _c("list-grid-selector", {
-              staticClass: "col-xs-12 col-sm-6 col-md-6"
+              staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
             _c("sort-selector", {
-              staticClass: "col-xs-12 col-sm-6 col-md-6 bot_padding_sort"
+              staticClass: "col-xs-6 col-sm-6 col-md-6 bot_padding_sort"
             })
           ],
           1
