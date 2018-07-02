@@ -8,8 +8,12 @@ export default {
     sortLastName: true,
     sortDescending: true,
     errors: null,
-    themeName: 'theme-OnceAMatadorAlwaysAMatador',
+    themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
     hideBack: true,
+    semester: null,
+    termYear: null,
+    term: null,
+    loadingClasses: true,
 
     facultyMember: {
         email: null,

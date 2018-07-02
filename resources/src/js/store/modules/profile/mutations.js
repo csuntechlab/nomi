@@ -31,7 +31,6 @@ export default {
                 state.profileErrors = e.response.data.message;
             });
     },
-
     UPDATE_NOTES: function (state, notes) {
         state.studentProfile.notes = notes;
     },
@@ -73,6 +72,10 @@ export default {
             notes: null
         };
 
+        state.profileErrors = null;
+    },
+
+    CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
     }
 }

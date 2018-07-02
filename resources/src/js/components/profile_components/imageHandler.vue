@@ -1,0 +1,37 @@
+<template>
+    <div v-if="studentProfile.imagePriority === image_type"></div>
+    <div v-else>
+        <button class="btn btn-default textOverflow" @click="updateImageHandler">Set Default Image</button>
+    </div>
+</template>
+
+<script>
+    import { mapGetters } from 'vuex'
+    export default {
+        name: "image-handler",
+
+        props: ['image_type'],
+
+        computed: {
+            ...mapGetters([
+                'studentProfile',
+                'facultyMember'
+            ])
+        },
+
+        methods: {
+            updateImageHandler() {
+                this.$store.dispatch(
+                    'updateImagePriority',
+                    {
+                        image_priority: this.image_type,
+                        faculty_id: this.facultyMember.id,
+                    }
+                ).then(() => {
+                    this.$store.dispatch('getOnlyData')
+                });
+
+            }
+        }
+    }
+</script>

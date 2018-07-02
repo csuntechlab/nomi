@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Controllers;
+namespace Tests\Services;
 
 use App\Contracts\ImageCRUDContract;
 use App\Contracts\WebResourceRetrieverContract;
@@ -27,7 +27,7 @@ class RosterRetrievalServiceTest extends TestCase
     {
         $this->imageCRUD
             ->shouldReceive('getPriority')
-            ->withArgs([1, 3])
+            ->once()
             ->andReturn(['likeness', 'official']);
 
         $rosterService = new RosterRetrievalService($this->retriever, $this->imageCRUD);

@@ -1,23 +1,34 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Services;
+
 use App\Contracts\ImageCRUDContract;
+use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
-use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
+
 /**
  * Intervention implementation of image CRUD.
  */
 class ImageCRUDService implements ImageCRUDContract
 {
+    protected $userModelRepository = null;
+
+    public function __construct(UserModelRepositoryInterface $userModelRepository)
+    {
+        $this->userModelRepository = $userModelRepository;
+    }
+
     /** Image uploading functionality. */
     public function upload()
     {
         $id = request()->id;
-        $directory = env('IMAGE_UPLOAD_LOCATION').request()->uri;
-        $savedImage = $directory.'/likeness.jpg';
+        $directory = env('IMAGE_UPLOAD_LOCATION') . request()->uri;
+        $savedImage = $directory . '/likeness.jpg';
 
         $manager = new ImageManager(['driver' => 'imagick']);
 
@@ -26,18 +37,19 @@ class ImageCRUDService implements ImageCRUDContract
             File::makeDirectory($directory);
         }
 
-        if (!is_null($image->save($savedImage))) {
+        if (null !== $image->save($savedImage)) {
             $this->clearCache($id);
+
             return [
-                'status' => true
+                'status' => true,
             ];
         }
 
         return [
-            'status' => false
+            'status' => false,
         ];
-
     }
+
     /** Retrieve image priority
      * @param $student_ids
      *
@@ -50,19 +62,20 @@ class ImageCRUDService implements ImageCRUDContract
         foreach ($student_ids as $student_id) {
             \array_push($array, 'members:' . $student_id);
         }
-        $users = User::with('ImagePriority')
-            ->whereIn('user_id', $array)
-            ->get();
+
+        $users = $this->userModelRepository->getUsersWithImagePriority($array);
+
         foreach ($users as $user) {
-            if ($user->imagePriority && $user->imagePriority->user_id == auth()->user()->user_id) {
-                \array_push($out, $user->imagePriority->image_priority);
+            if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
+                \array_push($out, $user['image_priority']['image_priority']);
             } else {
                 \array_push($out, 'likeness');
-            }   
-            
+            }
         }
+
         return $out;
     }
+
     /** Update image_priority table */
     public function updatePriority()
     {
@@ -73,6 +86,7 @@ class ImageCRUDService implements ImageCRUDContract
         );
         $this->clearCache($facultyID);
     }
+
     private function clearCache($facultyID)
     {
         $msg = $facultyID;
@@ -86,6 +100,7 @@ class ImageCRUDService implements ImageCRUDContract
                 $msg .= "forgot courses\n\n";
             }
         }
+
         return $msg;
     }
 }

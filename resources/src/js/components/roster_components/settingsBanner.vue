@@ -1,9 +1,12 @@
 <template>
     <nav class="" style="height: 55px">
-        <list-grid-selector class="col-xs-6 col-sm-6 col-md-6"></list-grid-selector>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <shuffle-button v-if="!this.list && this.flash"></shuffle-button>
-            <sort-selector v-else></sort-selector>
+        <div v-if="!this.list && this.flash">
+            <list-grid-selector class="col-xs-6 col-sm-6 col-md-6"></list-grid-selector>
+            <shuffle-button v-if="!this.list && this.flash" class="col-xs-3 col-sm-3 col-md-3 bot_padding_sort shuffle_button"></shuffle-button>
+        </div>
+        <div v-else>    
+            <list-grid-selector class="col-xs-6 col-sm-6 col-md-6"></list-grid-selector>
+            <sort-selector class="col-xs-6 col-sm-6 col-md-6 bot_padding_sort"></sort-selector>
         </div>
     </nav>
 </template>

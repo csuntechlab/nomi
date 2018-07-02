@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <term-selector></term-selector>
         <courses-container></courses-container>
     </div>
 </template>
@@ -10,13 +11,15 @@
 
         created () {
             this.$store.dispatch('clearErrors');
-            this.$store.dispatch('getData');
             this.$store.dispatch('hideBackButton');
         },
 
         beforeRouteLeave (to, from, next) {
             this.$store.dispatch('showBackButton');
             next();
+        },
+        beforeCreate(){
+            this.$store.dispatch('getOnlyData');
         },
     }
 </script>

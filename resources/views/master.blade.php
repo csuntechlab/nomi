@@ -11,20 +11,18 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="icon" href="{{asset('images/logo.jpg')}}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <link rel="apple-touch-icon" href={{asset('/images/apple-touch-icon.png')}}>
-
+        <link rel="apple-touch-icon" href={{asset('images/apple-touch-icon.png')}}>
+        <meta name="apple-mobile-web-app-title" content="NOMI">
     </head>
 
     <body>
-        @if ( $errors->count() > 0 )
-            ...An error occured...
-            @foreach( $errors->all() as $message )
-                ...{{ $message }}...
-            @endforeach
-        @endif
-
         <div id='app'>
             <nav-bar></nav-bar>
+            @if ( $errors->count() > 0 )
+                <div id="error_bar" class="alert alert--warning" >
+                    <strong>Oops!</strong> Login Failed
+                </div>
+            @endif
             @yield('content')
         </div>
     </body>

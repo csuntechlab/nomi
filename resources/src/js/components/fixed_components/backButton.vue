@@ -12,7 +12,11 @@
 
         methods: {
             goBack: function () {
-                this.$router.go(-1);
+                if(window.location.hash.split('/')[1]=='class'){
+                    this.$router.push({name:'home'});
+                }
+                else
+                    this.$router.go(-1);
             }
         },
 
