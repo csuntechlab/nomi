@@ -78,9 +78,9 @@ class StudentProfileService implements StudentProfileContract
 
     private function ensureStudentEmailWorks($email)
     {
-        $regex = "/(\D)*\.(\D)*\.\d\d\d/";
+        $regex = "/(\D)*\.(\D)*\.(\d)*@.*/";
         $checkerEmail = \substr($email, 0, \strpos($email, '@'));
-        if (\preg_match($regex, $checkerEmail)) {
+        if (\preg_match($regex, $email)) {
             return $email;
         }
 
