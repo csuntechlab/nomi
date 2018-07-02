@@ -14,9 +14,11 @@ class WebResourceController extends Controller
      * WebResourceController constructor.
      *
      * @param WebResourceRetrieverContract $webResourceRetriever
+     * @param UserSettingsContract         $userSettingsRetriever
      */
-    public function __construct(WebResourceRetrieverContract $webResourceRetriever)
-    {
+    public function __construct(
+        WebResourceRetrieverContract $webResourceRetriever
+        ) {
         $this->webResourceRetriever = $webResourceRetriever;
     }
 

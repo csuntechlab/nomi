@@ -1,9 +1,17 @@
 export default {
-    getData (context) {
+    getAllUserData (context) {
         context.commit('GET_SETTINGS');
         context.commit('GET_DATA');
     },
+
+    getOnlyData (context) {
+        context.commit('GET_DATA');
+    },
     
+    getOnlySettings (context) {
+        context.commit('GET_SETTINGS');
+    },
+
     setList (context) {
         context.commit('SET_LIST');
     },
@@ -35,7 +43,7 @@ export default {
     },
 
     sortDescending (context) {
-        context.commit('SORT_DESC');
+        context.commit('SORT_DSC');
         context.commit('SORT_ROSTER');
     },
 
@@ -58,5 +66,33 @@ export default {
 
     updateImage (context, payload) {
         context.commit('UPDATE_IMAGE', payload);
+    },
+
+    setSpring (context) {
+        context.commit('SET_SPRING');
+    },
+
+    setSummer (context) {
+        context.commit('SET_SUMMER');
+    },
+
+    setFall (context) {
+        context.commit('SET_FALL');
+    },
+
+    setWinter (context) {
+        context.commit('SET_WINTER');
+    },
+
+    setTermYear (context, payload) {
+        context.commit('SET_TERM_YEAR', payload);
+    },
+
+    loadingClassesTrue(context){
+        context.commit('SET_CLASS_IS_LOADING');
+    },
+
+    doneLoadingClasses(context){
+        context.commit('SET_CLASS_DONE_LOADING');
     },
 }

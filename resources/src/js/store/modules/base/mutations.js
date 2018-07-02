@@ -14,8 +14,58 @@ export default {
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
+        if(state.termYear != null){
+            let selectedTerm = state.termYear + state.semester;
+            selectedTerm = selectedTerm.slice(0,1) + selectedTerm.slice(2);
+            state.term = selectedTerm;
+    
+            function capitalize(name) {
+                return name.charAt(0).toUpperCase() + name.substr(1);
+            }
+    
+            window.axios.get(`data/${state.term}`)
+                .then(response => {
+                    state.term = response.data["term"];
+                    state.courses = response.data["courses"];
+                    state.loadingClasses = false;
+                    state.flashroster = response.data["students"];
+                    state.facultyMember.email = response.data["email"];
+                    state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                    state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                    state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                    state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                    for(let course in state.courses) {
+                        if (state.courses.hasOwnProperty(course)){
+                            let realCourse = state.courses[course];
+                            for(let student in realCourse.roster) {
+                                if(realCourse.roster.hasOwnProperty(student)){
+                                    let realStudent = realCourse.roster[student];
+                                    let studentId = realStudent.student_id;
+                                    let url = realStudent.images.likeness;
+    
+                                    state.studentImages[studentId] = url;
+                                }
+                            }
+                        }
+                        
+                    }
+                    window.axios.get(`faculty_profile/${state.facultyMember.email}`)
+                    .then(response => {
+                        state.facultyMember.image = response.data.image;
+                        state.facultyMember.id = response.data.id;
+                    })
+                    .catch(e => {
+                        state.errors = e.response.data.message;
+                    });
+                })
+                .catch(e => {
+                    state.errors = e.response.data.message;
+                });
+            }
+        else{
         window.axios.get(`data`)
             .then(response => {
+                state.term = response.data["term"];
                 state.courses = response.data["courses"];
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
@@ -50,10 +100,12 @@ export default {
             .catch(e => {
                 state.errors = e.response.data.message;
             });
+        }
     },
 
     SET_LIST (state) {
         state.list = true;
+        state.flash = false;
     },
 
     SET_GALLERY (state) {
@@ -117,7 +169,7 @@ export default {
         for(let i = 0; i < len; ++i) {
             function sortedRoster (self) {
                 if (state.sortLastName === true) {
-                    if(state.sortDescending === true) {
+                    if(state.sortAscending === true) {
                         return self.sort((a, b) => {
                             return a.last_name.localeCompare(b.last_name);
                         });
@@ -127,7 +179,7 @@ export default {
                         }).reverse();
                     }
                 } else {
-                    if(state.sortDescending === true) {
+                    if(state.sortAscending === true) {
                         return self.sort((a, b) => {
                             return a.first_name.localeCompare(b.first_name);
                         });
@@ -151,12 +203,12 @@ export default {
         state.sortLastName = true;
     },
 
-    SORT_DESC: function (state) {
-        state.sortDescending = true;
+    SORT_ASC: function (state) {
+        state.sortAscending = true;
     },
 
-    SORT_ASC: function (state) {
-        state.sortDescending = false;
+    SORT_DSC: function (state) {
+        state.sortAscending = false;
     },
 
     CLEAR_ERRORS: function (state) {
@@ -176,5 +228,34 @@ export default {
         let url = payload.imgUrl;
         state.studentImages[id] = url;
     },
+
+    SET_SPRING: function (state) {
+        state.semester = 3;
+    },
+
+    SET_SUMMER: function (state) {
+        state.semester = 5;
+    },
+
+    SET_FALL: function (state) {
+        state.semester = 7;
+    },
+
+    SET_WINTER: function (state) {
+        state.semester = 9;
+    },
+
+    SET_TERM_YEAR: function (state, payload){
+        state.termYear = payload;
+    },
+
+    SET_CLASS_IS_LOADING(state){
+        state.loadingClasses = true;
+    },
+
+    SET_CLASS_DONE_LOADING(state){
+        state.loadingClasses = false;
+    }
+
 
 }

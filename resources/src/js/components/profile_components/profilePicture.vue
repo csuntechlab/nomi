@@ -6,6 +6,7 @@
 
 <script>
     export default {
+        name: 'profile-picture',
         props: [
             'image',
             'name'

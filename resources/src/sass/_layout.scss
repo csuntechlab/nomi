@@ -1,6 +1,7 @@
 body {
   @include themify($themes) {
     background-color: themed("looksGray");
+    padding-top: 45px;
   }
 }
 
@@ -29,8 +30,9 @@ textarea[type="text"]:focus {
 .primary-nav {
   @include themify($themes) {
     background-color: themed("bars");
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    top: 0%;
+    position: fixed;
 
     .primary-nav__sub-brand {
       color: themed("looksGray");
@@ -110,7 +112,12 @@ textarea[type="text"]:focus {
   }
 }
 
-.logo {
+.logo_parent{
+  text-align: center;
+  flex: 100%;
+}
+
+.csun_logo {
   @include themify($themes) {
     width: 75px;
     height: 45px;
@@ -120,22 +127,14 @@ textarea[type="text"]:focus {
 
 .nomi_logo {
   @include themify($themes) {
-    display: block;
-    float: left;
     width: 75px;
     height: 37px;
     border-left: 1px solid #ccc;
     padding-left:8px;
-    margin:4px 0 4px 8px;
-    overflow: hidden;
+    margin-left: 4px;
   }
 }
 
-.csun_logo {
-  display: block;
-  float: left;
-  overflow: hidden;
-}
 //theme colors in list
 #Matador {
   background-color: #d00d2d;
