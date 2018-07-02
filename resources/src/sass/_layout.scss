@@ -44,7 +44,7 @@ textarea[type="text"]:focus {
   @include themify($themes) {
     border-radius: 3px;
     background-color: themed("offWhite");
-    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
     padding: 20px;
     border: none;
 
