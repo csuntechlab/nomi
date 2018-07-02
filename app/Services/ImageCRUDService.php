@@ -34,7 +34,7 @@ class ImageCRUDService implements ImageCRUDContract
 
         $image = $manager->make(request()->photo);
         if (!File::exists($directory)) {
-            File::makeDirectory($directory);
+            File::makeDirectory($directory, true);
         }
 
         if (null !== $image->save($savedImage)) {
