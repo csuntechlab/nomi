@@ -55,7 +55,7 @@ class SPAController extends Controller
             if (Cache::has('students:' . $i . ':' . $id) && Cache::get('term:' . $id) == $term) {
                 $students[$i] = Cache::get('students:' . $i . ':' . $id);
             } else {
-                $students[$i] = $this->rosterRetrievalContract->getStudentsFromRoster(env('CURRENT_TERM'), $i);
+                $students[$i] = $this->rosterRetrievalContract->getStudentsFromRoster($term, $i);
                 Cache::put('students:' . $i . ':' . $id, $students[$i], $this->minutes);
             }
 
