@@ -42,10 +42,11 @@ textarea[type="text"]:focus {
 
 .panel {
   @include themify($themes) {
-    border-radius: 7px;
+    border-radius: 3px;
     background-color: themed("offWhite");
-    box-shadow: -1px 5px 9px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
     padding: 20px;
+    border: none;
 
     .panel__img {
       height: auto;
