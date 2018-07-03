@@ -630,6 +630,24 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.croppa_loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.croppa_loading_icon {
+  position: relative;
+  top: 43%;
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }

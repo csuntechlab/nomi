@@ -148,3 +148,21 @@
 .text_bold{
   font-weight: bold;
 }
+
+.croppa_loading{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background-color: rgba($color: #000000, $alpha: 0.3)
+}
+
+.croppa_loading_icon{
+  position: relative;
+  top: 43%;
+  color: rgba($color: #fff, $alpha: .5);
+}
