@@ -43,7 +43,7 @@ export default {
     },
 
     sortDescending (context) {
-        context.commit('SORT_DESC');
+        context.commit('SORT_DSC');
         context.commit('SORT_ROSTER');
     },
 

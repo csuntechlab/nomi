@@ -105,6 +105,7 @@ export default {
 
     SET_LIST (state) {
         state.list = true;
+        state.flash = false;
     },
 
     SET_GALLERY (state) {
@@ -168,7 +169,7 @@ export default {
         for(let i = 0; i < len; ++i) {
             function sortedRoster (self) {
                 if (state.sortLastName === true) {
-                    if(state.sortDescending === true) {
+                    if(state.sortAscending === true) {
                         return self.sort((a, b) => {
                             return a.last_name.localeCompare(b.last_name);
                         });
@@ -178,7 +179,7 @@ export default {
                         }).reverse();
                     }
                 } else {
-                    if(state.sortDescending === true) {
+                    if(state.sortAscending === true) {
                         return self.sort((a, b) => {
                             return a.first_name.localeCompare(b.first_name);
                         });
@@ -202,12 +203,12 @@ export default {
         state.sortLastName = true;
     },
 
-    SORT_DESC: function (state) {
-        state.sortDescending = true;
+    SORT_ASC: function (state) {
+        state.sortAscending = true;
     },
 
-    SORT_ASC: function (state) {
-        state.sortDescending = false;
+    SORT_DSC: function (state) {
+        state.sortAscending = false;
     },
 
     CLEAR_ERRORS: function (state) {

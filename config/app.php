@@ -174,6 +174,7 @@ return [
         App\Providers\StudentProfileServiceProvider::class,
         App\Providers\FacultyProfileServiceProvider::class,
         App\Providers\UserSettingServiceProvider::class,
+        App\Providers\ModelRepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
