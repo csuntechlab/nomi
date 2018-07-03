@@ -626,6 +626,18 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.display_inline {
+  display: inline;
+}
+
+.display_inline_block {
+  display: inline-block;
+}
+
+.text_italic {
+  font-style: italic;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
@@ -678,6 +690,16 @@ textarea[type="text"]:focus {
   width: 100%;
   text-align: center;
   height: 0px;
+}
+
+.profile_email {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.profile_email_text {
+  text-decoration: underline;
+  margin-left: 6px;
 }
 
 .modal-mask {
