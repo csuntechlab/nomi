@@ -19567,7 +19567,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-notes',
@@ -19578,8 +19577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             unsavedChanges: false,
             noteSaved: false,
-            showEmail: false,
-            textStatus: true
+            showEmail: false
         };
     },
 
@@ -19590,7 +19588,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch('updateNotes', e.target.value).then(function () {
                 _this.noteSaved = false;
                 _this.unsavedChanges = true;
-                _this.textStatus = false;
             });
         },
         commitNotes: function commitNotes() {
@@ -19599,7 +19596,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$store.dispatch('commitNotes').then(function () {
                 _this2.noteSaved = true;
                 _this2.unsavedChanges = false;
-                _this2.textStatus = false;
             });
         }
     }
@@ -19631,20 +19627,18 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _vm.textStatus ? _c("br") : _vm._e(),
-      _vm._v(" "),
+    _c("div", { staticClass: "type--right" }, [
       _vm.noteSaved
-        ? _c("span", { staticClass: "type--right" }, [_vm._v("Notes Saved!")])
+        ? _c("span", { staticClass: "notes_status" }, [_vm._v("Notes Saved!")])
         : _vm._e(),
       _vm._v(" "),
       _vm.unsavedChanges
-        ? _c("span", { staticClass: "type--right" }, [
+        ? _c("span", { staticClass: "notes_status" }, [
             _vm._v("Unsaved changes.")
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "clearPadding type--right" }, [
+      _c("span", { staticClass: "clearPadding" }, [
         _c(
           "button",
           {

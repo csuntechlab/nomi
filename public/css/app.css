@@ -702,6 +702,11 @@ textarea[type="text"]:focus {
   margin-left: 6px;
 }
 
+.notes_status {
+  padding-right: 5px;
+  opacity: 0.5;
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
