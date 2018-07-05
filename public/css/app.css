@@ -722,7 +722,7 @@ textarea[type="text"]:focus {
 }
 
 .croppa_loading_icon {
-  position: relative;
+  position: absolute;
   top: 43%;
   left: 45%;
   color: rgba(255, 255, 255, 0.5);
