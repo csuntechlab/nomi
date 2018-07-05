@@ -9,8 +9,8 @@
             <div class="panel__content">
                 <profile-picture :image="image"></profile-picture>
             </div>
-            <div class="name_container cardText clearPadding">
-                <div class="hello type--center">{{display_name}}</div>
+            <div class="cardText clearPadding">
+                <div class="gallery_name type--center">{{display_name}}</div>
             </div>
         </div>
         </router-link>

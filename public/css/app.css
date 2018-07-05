@@ -177,7 +177,6 @@ textarea[type="text"]:focus {
   background-color: #F4F4F4;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  padding: 20px;
   border: none;
 }
 
@@ -196,7 +195,6 @@ textarea[type="text"]:focus {
   background-color: white;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  padding: 20px;
   border: none;
 }
 
@@ -215,7 +213,6 @@ textarea[type="text"]:focus {
   background-color: #FFFFFF;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  padding: 20px;
   border: none;
 }
 
@@ -234,7 +231,6 @@ textarea[type="text"]:focus {
   background-color: #F0F0F0;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  padding: 20px;
   border: none;
 }
 
@@ -248,8 +244,87 @@ textarea[type="text"]:focus {
   border-bottom: 0;
 }
 
-.panel_content {
-  height: 100vh;
+.gallery_name {
+  font-size: 1.3rem;
+  padding: 0 3% 5%;
+}
+
+.theme-main .flash_panel {
+  border-radius: 3px;
+  background-color: #F4F4F4;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  border: none;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.theme-bluesTheme .flash_panel {
+  border-radius: 3px;
+  background-color: white;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  border: none;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.theme-Cloudy .flash_panel {
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  border: none;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .flash_panel {
+  border-radius: 3px;
+  background-color: #F0F0F0;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  border: none;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-top: 6%;
+}
+
+.flash_positioner {
+  margin-top: 100%;
+}
+
+.flash_element {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.profile_padding {
+  padding: 5%;
+}
+
+@media only screen and (min-width: 600px) {
+  .back_of_card {
+    font-size: 1.8em;
+    padding: 20% 6%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .back_of_card_mobile {
+    font-size: 1.3em;
+    padding: 20% 3%;
+  }
 }
 
 .theme-main .tab__link {
@@ -534,9 +609,18 @@ textarea[type="text"]:focus {
   color: white;
 }
 
-.student_list_name {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
+@media only screen and (min-width: 600px) {
+  .student_list_name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .student_list_name_mobile {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+  }
 }
 
 .cardText {
@@ -574,8 +658,7 @@ textarea[type="text"]:focus {
   margin-top: 7%;
 }
 
-.card {
-  height: 50vmin;
+.flash_card {
   padding: 5px !important;
 }
 
@@ -597,24 +680,20 @@ textarea[type="text"]:focus {
   color: gray;
 }
 
-.hello {
-  font-size: 3vh;
-}
-
 .name_container {
   height: 31vmin;
 }
 
-.flashCard {
-  height: 100%;
+.card_face {
+  float: inherit;
 }
 
 .email_padding {
-  padding: 1em .5em 1em .5em;
+  padding: 1em 0.5em 1em 0.5em;
 }
 
 .btn_padding {
-  padding: .4em 0 .4em 0;
+  padding: 0.4em 0 0.4em 0;
 }
 
 .bot_padding_sort {
