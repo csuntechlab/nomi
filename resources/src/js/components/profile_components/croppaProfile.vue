@@ -56,12 +56,10 @@
 
         methods: {
             loadingStart(){
-                console.log('loading croppa');
                 this.loadingCroppa = true;
             },
 
             loadingEnd(){
-                console.log('finished loading croppa');
                 this.loadingCroppa = false;
             },
 
