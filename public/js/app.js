@@ -19562,6 +19562,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-notes',
@@ -19572,17 +19573,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             unsavedChanges: false,
             noteSaved: false,
-            showEmail: false
+            showEmail: false,
+            characterCount: 600
         };
     },
     methods: {
         updateNotes: function updateNotes(e) {
             var _this = this;
 
-            this.$store.dispatch('updateNotes', e.target.value).then(function () {
-                _this.noteSaved = false;
-                _this.unsavedChanges = true;
-            });
+            var current = this.characterCount - this.student.notes.length;
+            if (current >= 0) {
+                this.$store.dispatch('updateNotes', e.target.value).then(function () {
+                    _this.noteSaved = false;
+                    _this.unsavedChanges = true;
+                });
+            } else {}
         },
         commitNotes: function commitNotes() {
             var _this2 = this;
@@ -19591,6 +19596,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.noteSaved = true;
                 _this2.unsavedChanges = false;
             });
+        }
+    },
+    computed: {
+        charactersLeft: function charactersLeft() {
+            var current = this.characterCount - this.student.notes.length;
+            if (current >= 0) {
+                return current;
+            } else {
+                return 0;
+            }
         }
     }
 });
@@ -19609,7 +19624,7 @@ var render = function() {
       domProps: { value: this.student.notes },
       on: { input: _vm.updateNotes }
     }),
-    _vm._v(" "),
+    _vm._v("\n    " + _vm._s(_vm.charactersLeft) + " characters left\n    "),
     _vm.noteSaved ? _c("div", [_vm._v("Notes Saved!")]) : _vm._e(),
     _vm._v(" "),
     _vm.unsavedChanges

@@ -1,6 +1,7 @@
 <template>
     <div>
         <textarea type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes"></textarea>
+        {{charactersLeft}} characters left
         <div v-if="noteSaved">Notes Saved!</div>
         <div v-if="unsavedChanges">There are unsaved changes.</div>
         <div class="clearPadding">
@@ -19,15 +20,22 @@
                 unsavedChanges: false,
                 noteSaved: false,
                 showEmail: false,
+                characterCount: 600,
             }
         },
         methods: {
+
             updateNotes(e) {
-                this.$store.dispatch('updateNotes', e.target.value)
-                    .then(() => {
-                        this.noteSaved = false;
-                        this.unsavedChanges = true;
-                    });
+                let current = this.characterCount - this.student.notes.length
+                if (current >= 0) {
+                    this.$store.dispatch('updateNotes', e.target.value)
+                        .then(() => {
+                            this.noteSaved = false;
+                            this.unsavedChanges = true;
+                        });
+                } else {
+                    
+                }
             },
             commitNotes() {
                 this.$store.dispatch('commitNotes')
@@ -36,6 +44,17 @@
                         this.unsavedChanges = false;
                     });
             },
+        },
+        computed: {
+            charactersLeft() {
+                let current = this.characterCount - this.student.notes.length
+                if(current >= 0){
+                    return current
+                } else {
+                    return 0
+                }
+
+            }
         }
     }
 </script>
