@@ -14,7 +14,9 @@
                 @loading-end="loadingEnd">
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
-            <i class="fas fa-spinner fa-spin fa-5x croppa_loading_icon"></i>
+            <div class="croppa_loading_icon">
+                <i class="fas fa-spinner fa-spin fa-5x"></i>
+            </div>
         </div>
         <div class="type--center">
             <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>

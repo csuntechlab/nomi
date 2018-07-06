@@ -165,7 +165,8 @@
 
 .croppa_loading_icon {
   position: absolute;
-  top: 43%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
   color: rgba($color: #fff, $alpha: 0.5);
+  transform: translate(-50%,-50%);
 }

@@ -723,9 +723,11 @@ textarea[type="text"]:focus {
 
 .croppa_loading_icon {
   position: absolute;
-  top: 43%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
   color: rgba(255, 255, 255, 0.5);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .theme-main .underlineStyling {
