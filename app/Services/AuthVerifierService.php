@@ -5,10 +5,17 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\AuthVerifierContract;
-use Illuminate\Support\Facades\DB;
+use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
 
 class AuthVerifierService implements AuthVerifierContract
 {
+    protected $repository = null;
+
+    public function __construct(ClassInstructorsTableRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Description: Takes in user credentials, checks them against
      *              the CSUN/LDAP servers, and returns true or false
@@ -22,9 +29,8 @@ class AuthVerifierService implements AuthVerifierContract
     public function isVerified(array $cred): bool
     {
         if (auth()->attempt($cred)) {
-            $query = DB::table('class_instructors')
-                ->where('user_id', auth()->user()->user_id)
-                ->first();
+            $query = $this->repository
+                ->verifyUserWasAtOnePointAClassInstructor(auth()->user()->user_id);
             if (null !== $query) {
                 return true;
             }
