@@ -46,7 +46,7 @@
         },
 
         created: function () {
-         this.url = document.querySelector('meta[name=app-url]').content;
+            this.url = document.querySelector('meta[name=app-url]').content;
          },
 
         methods: {
@@ -82,6 +82,10 @@
                         this.$parent.$emit('close', url);
                     });
                 }
+            },
+
+            authorizeImageUpload: function() {
+                
             },
 
             styleCanvas: function() {

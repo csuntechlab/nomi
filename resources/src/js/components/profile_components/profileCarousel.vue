@@ -14,7 +14,7 @@
                                     <image-handler image_type="likeness"></image-handler>
                                 </div>
                                 <div class="type--center">
-                                    <button class="btn btn-default" @click="showCroppaModal = true">Edit Photo</button>
+                                    <button class="btn btn-default" @click="checkPermission">Edit Photo</button>
                                     <br>
                                 </div>
                             </div>
@@ -111,7 +111,8 @@ export default {
         },
         computed: {
             ...mapGetters([
-                'studentImages'
+                'studentImages',
+                'permission',
             ]),
             image: function() {
                 let id = this.student.id.replace("members:","");
@@ -124,6 +125,11 @@ export default {
                 this.showCroppaModal = false;
                 this.imgUrl = url;
             },
+            checkPermission() {
+            this.showCroppaModal = true;
+            if (this.permission == false)
+                this.$store.dispatch('nullifyPermissionResponse');
+            }
         }
     }
 </script>
