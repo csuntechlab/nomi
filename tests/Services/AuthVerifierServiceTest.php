@@ -50,10 +50,40 @@ class AuthVerifierServiceTest extends TestCase
     /** @test */
     public function isVerified_returns_false_with_bad_creds()
     {
+        $user = new User([
+            'user_id' => 'members:1',
+            'rank' => 'beast',
+        ]);
+
+        $this->be($user);
+
+        Auth::shouldReceive('attempt')
+            ->andReturn(true);
+
+        Auth::shouldReceive('user')
+            ->andReturn($user);
+
+        $service = new AuthVerifierService($this->retriever);
+
+        $this->retriever
+            ->shouldReceive('verifyUserWasAtOnePointAClassInstructor')
+            ->andReturn(null);
+
+        $this->assertFalse($service->isVerified([]));
     }
 
     /** @test */
     public function isVerified_returns_false_with_no_user_rank()
     {
+        $user = new User([
+            'user_id' => 'members:1',
+        ]);
+
+        Auth::shouldReceive('attempt')
+            ->andReturn(false);
+
+        $service = new AuthVerifierService($this->retriever);
+
+        $this->assertFalse($service->isVerified([]));
     }
 }
