@@ -85,6 +85,7 @@ class RosterRetrievalService implements RosterRetrievalContract
             $imageManager = new ImageManager(['driver' => 'imagick']);
         }
 
+        dd($student);
         $email = \str_replace('nr_', '', $student->email);
         $email = \substr($email, 0, \strpos($email, '@'));
         $imageLocation = url('images/likeness.jpg');
