@@ -9,5 +9,6 @@ export default {
         notes: null
     },
 
-    profileErrors: null
+    profileErrors: null,
+    profileLoadError: false
 }

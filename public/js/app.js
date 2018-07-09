@@ -20962,7 +20962,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         notes: null
     },
 
-    profileErrors: null
+    profileErrors: null,
+    profileLoadError: false
 });
 
 /***/ }),
@@ -20976,6 +20977,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     profileErrors: function profileErrors(state) {
         return state.profileErrors;
+    },
+    profileLoadError: function profileLoadError(state) {
+        return state.profileLoadError;
     }
 });
 
@@ -21025,6 +21029,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
             if (state.studentProfile.bio === null) state.studentProfile.bio = "Pending biography from student.";
         }).catch(function (e) {
+            state.profileLoadError = true;
             state.profileErrors = e.response.data.message;
         });
 
@@ -21035,6 +21040,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.studentProfile.notes = response['data'].notes;
             state.studentProfile.id = response['data'].student_id;
         }).catch(function (e) {
+            state.profileLoadError = true;
             state.profileErrors = e.response.data.message;
         });
     },
@@ -21081,6 +21087,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     CLEAR_PROFILE_ERRORS: function CLEAR_PROFILE_ERRORS(state) {
         state.profileErrors = null;
+        state.profileLoadError = false;
     }
 });
 
@@ -22918,7 +22925,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['errors', 'profileErrors'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['errors', 'profileErrors', 'profileLoadError'])),
 
     updated: function updated() {
         this.enableBackButton();
@@ -22931,7 +22938,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             console.log("Profile Error found: " + this.profileErrors);
         },
         closeError: function closeError() {
-            if (this.profileErrors != null) {
+            if (this.profileLoadError == true) {
                 this.$router.go(-1);
             }
             this.logErrors();

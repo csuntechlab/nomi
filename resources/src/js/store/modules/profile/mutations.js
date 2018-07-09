@@ -16,6 +16,7 @@ export default {
                     state.studentProfile.bio = "Pending biography from student.";
             })
             .catch(e => {
+                state.profileLoadError = true;
                 state.profileErrors = e.response.data.message;
             });
 
@@ -28,6 +29,7 @@ export default {
                 state.studentProfile.id = response['data'].student_id;
             })
             .catch(e => {
+                state.profileLoadError = true;
                 state.profileErrors = e.response.data.message;
             });
     },
@@ -77,5 +79,6 @@ export default {
 
     CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
+        state.profileLoadError = false;
     }
 }

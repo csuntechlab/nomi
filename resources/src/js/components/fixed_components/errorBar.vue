@@ -21,6 +21,7 @@
             ...mapGetters([
                 'errors',
                 'profileErrors',
+                'profileLoadError'
             ]),
 
         },
@@ -42,7 +43,7 @@
             },
 
             closeError() {
-                if(this.profileErrors != null){
+                if(this.profileLoadError == true){
                     this.$router.go(-1);
                 }
                 this.logErrors();
