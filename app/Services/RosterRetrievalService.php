@@ -76,7 +76,9 @@ class RosterRetrievalService implements RosterRetrievalContract
             return \strcmp($a['last_name'], $b['last_name']);
         });
 
-        return $sanitizedStudents;
+        $sortedStudents = $this->sortStudents($sanitizedStudents);
+
+        return $sortedStudents;
     }
 
     public function sanitizeStudent($student, $imageManager = null)
@@ -121,5 +123,9 @@ class RosterRetrievalService implements RosterRetrievalContract
             'image_priority' => $student->image_priority,
             'recognized' => false,
         ];
+    }
+
+    private function sortStudents()
+    {
     }
 }
