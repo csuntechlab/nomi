@@ -1,21 +1,17 @@
 <template>
     <div>
-        <div class="container type--center margin_between_containers">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <profile-notes :student="student"></profile-notes>
-                        <br>
-                        <div class="type--left profile_email" @click="showEmail = true">
-                            <i class="fas fa-envelope"></i>
-                            <a class="profile_email_text">Show Email</a>
-                        </div>
-                        <div class="type--left">
-                            <strong>Bio:</strong>
-                            <p v-if="this.student.bio == null" class="text_italic display_inline"> Pending biography from student.</p>
-                            <p v-else class="display_inline"> {{this.student.bio}}</p>
-                            <br>
-                        </div>
+        <div class="profile_info_container type--center margin_between_containers">
+            <div class="row">
+                <div class="col-sm-12">
+                    <profile-notes class="profile_notes_padding" :student="student"></profile-notes>
+                    <div class="type--left profile_email">
+                        <i class="fas fa-envelope" @click="showEmail = true"></i>
+                        <a class="profile_email_text" @click="showEmail = true">Show Email</a>
+                    </div>
+                    <div class="type--left">
+                        <strong>Bio:</strong>
+                        <span v-if="this.student.bio == null" class="text_italic display_inline"> Pending biography from student.</span>
+                        <span v-else> {{this.student.bio}}</span>
                     </div>
                 </div>
             </div>

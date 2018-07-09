@@ -19454,10 +19454,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -19565,8 +19561,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-notes',
@@ -19638,21 +19632,19 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _c("span", { staticClass: "clearPadding" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm btn-default",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.commitNotes($event)
-              }
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-sm btn-default",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.commitNotes($event)
             }
-          },
-          [_vm._v("Save Notes")]
-        )
-      ])
+          }
+        },
+        [_vm._v("Save Notes")]
+      )
     ])
   ])
 }
@@ -19679,54 +19671,59 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "container type--center margin_between_containers" },
+        {
+          staticClass:
+            "profile_info_container type--center margin_between_containers"
+        },
         [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-sm-12" },
-                [
-                  _c("profile-notes", { attrs: { student: _vm.student } }),
-                  _vm._v(" "),
-                  _c("br"),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-sm-12" },
+              [
+                _c("profile-notes", {
+                  staticClass: "profile_notes_padding",
+                  attrs: { student: _vm.student }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--left profile_email" }, [
+                  _c("i", {
+                    staticClass: "fas fa-envelope",
+                    on: {
+                      click: function($event) {
+                        _vm.showEmail = true
+                      }
+                    }
+                  }),
                   _vm._v(" "),
                   _c(
-                    "div",
+                    "a",
                     {
-                      staticClass: "type--left profile_email",
+                      staticClass: "profile_email_text",
                       on: {
                         click: function($event) {
                           _vm.showEmail = true
                         }
                       }
                     },
-                    [
-                      _c("i", { staticClass: "fas fa-envelope" }),
-                      _vm._v(" "),
-                      _c("a", { staticClass: "profile_email_text" }, [
-                        _vm._v("Show Email")
-                      ])
-                    ]
-                  ),
+                    [_vm._v("Show Email")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--left" }, [
+                  _c("strong", [_vm._v("Bio:")]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "type--left" }, [
-                    _c("strong", [_vm._v("Bio:")]),
-                    _vm._v(" "),
-                    this.student.bio == null
-                      ? _c("p", { staticClass: "text_italic display_inline" }, [
-                          _vm._v(" Pending biography from student.")
-                        ])
-                      : _c("p", { staticClass: "display_inline" }, [
-                          _vm._v(" " + _vm._s(this.student.bio))
-                        ]),
-                    _vm._v(" "),
-                    _c("br")
-                  ])
-                ],
-                1
-              )
-            ])
+                  this.student.bio == null
+                    ? _c(
+                        "span",
+                        { staticClass: "text_italic display_inline" },
+                        [_vm._v(" Pending biography from student.")]
+                      )
+                    : _c("span", [_vm._v(" " + _vm._s(this.student.bio))])
+                ])
+              ],
+              1
+            )
           ])
         ]
       ),

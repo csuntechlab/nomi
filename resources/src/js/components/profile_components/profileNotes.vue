@@ -4,9 +4,7 @@
         <div class="type--right">
             <span v-if="noteSaved" class="notes_status">Notes Saved!</span>
             <span v-if="unsavedChanges" class="notes_status">Unsaved changes.</span>
-            <span class="clearPadding">
-                <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
-            </span>
+            <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
         </div>
     </div>
 </template>
