@@ -25,18 +25,26 @@
 
         },
 
+        updated() {
+            this.enableBackButton();
+        },
+
         methods: {
             ...mapActions([
                 'clearErrors',
                 'clearProfileErrors',
+                'enableBackButton'
             ]),
 
             logErrors() {
-                console.log("Errors: " + this.errors);
-                console.log("Profile Errors: " + this.profileErrors);
+                console.log("Error found: " + this.errors);
+                console.log("Profile Error found: " + this.profileErrors);
             },
 
             closeError() {
+                if(this.profileErrors != null){
+                    this.$router.go(-1);
+                }
                 this.logErrors();
                 this.clearErrors();
                 this.clearProfileErrors();
