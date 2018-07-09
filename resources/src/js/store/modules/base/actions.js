@@ -95,4 +95,12 @@ export default {
     doneLoadingClasses(context){
         context.commit('SET_CLASS_DONE_LOADING');
     },
+
+    handlePermissionResponse(context, payload){
+        context.commit('HANDLE_PERMISSION_RESPONSE', payload);
+    },
+
+    nullifyPermissionResponse(context){
+        context.commit('NULLIFY_PERMISSION_RESPONSE');
+    }
 }

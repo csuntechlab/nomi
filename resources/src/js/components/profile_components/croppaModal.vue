@@ -1,6 +1,6 @@
 <template>
     <div>
-        <modal v-if="showModal" @close="closeCroppaModal">
+        <modal v-if="displayModal" @close="closeCroppaModal">
             <div slot="header"></div>
             <div slot="body">
                 <croppa-profile :studentImage="student.images['likeness']"></croppa-profile>
@@ -10,9 +10,21 @@
 </template>
 <script>
     import modal from "../../components/fixed_components/modal.vue";
-    import croppaProfile from "../profile_components/croppaProfile.vue"
+    import croppaProfile from "../profile_components/croppaProfile.vue";
+    import { mapGetters } from 'vuex';
     export default {
         name: "croppa-modal",
+
+        computed: {
+            ...mapGetters([
+                'permission'
+            ]),
+
+            displayModal(){
+                return(this.showModal && this.permission);
+            }
+
+        },
 
         props: [
             'showModal',
