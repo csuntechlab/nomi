@@ -78,16 +78,6 @@ class RosterRetrievalServiceTest extends TestCase
 
         $cleanRoster = [
             [
-                'student_id' => 1,
-                'first_name' => 'Paul',
-                'last_name' => 'Blart',
-                'email' => 'cop@mall.com',
-                'images' => $images,
-                'image_priority' => 'likeness',
-                'recognized' => false,
-            ],
-
-            [
                 'student_id' => 3,
                 'first_name' => 'Big',
                 'last_name' => 'Jim',
@@ -102,6 +92,16 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => 'Frank',
                 'last_name' => 'Tank',
                 'email' => 'mountainman@parks.gov',
+                'images' => $images,
+                'image_priority' => 'likeness',
+                'recognized' => false,
+            ],
+
+            [
+                'student_id' => 1,
+                'first_name' => 'Paul',
+                'last_name' => 'Blart',
+                'email' => 'cop@mall.com',
                 'images' => $images,
                 'image_priority' => 'likeness',
                 'recognized' => false,

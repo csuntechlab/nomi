@@ -125,7 +125,12 @@ class RosterRetrievalService implements RosterRetrievalContract
         ];
     }
 
-    private function sortStudents()
+    private function sortStudents($students)
     {
+        \usort($students, function ($a, $b) {
+            return $a['first_name'] <=> $b['first_name'];
+        });
+
+        return $students;
     }
 }

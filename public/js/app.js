@@ -24947,11 +24947,11 @@ var render = function() {
             on: { input: _vm.handleSelect }
           },
           [
-            _c("option", { attrs: { value: "1" } }, [_vm._v("First Name A-Z")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2", selected: "" } }, [
-              _vm._v("Last Name A-Z")
+            _c("option", { attrs: { value: "1", selected: "" } }, [
+              _vm._v("First Name A-Z")
             ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Last Name A-Z")]),
             _vm._v(" "),
             _c("option", { attrs: { value: "3" } }, [_vm._v("First Name Z-A")]),
             _vm._v(" "),
