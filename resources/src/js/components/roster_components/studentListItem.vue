@@ -1,13 +1,15 @@
 <template>
-    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" class="clearPadding panel col-xs-12 col-md-12 col-lg-12">
-        <div class="panel__content col-xs-12 col-md-12 col-lg-12">
-            <div class="pull-left col-xs-5 col-md-3 col-lg-3 clearPadding">
+    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+        <div class="panel">
+            <div class="row panel__content">
+            <div class="col-xs-5 col-md-3">
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
-            <div class="col-xs-7 col-md-9 col-lg-9">
+            <div class="col-xs-7 col-md-9">
                 <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                     {{display_name}}
                 </router-link>
+            </div>
             </div>
         </div>
     </router-link>

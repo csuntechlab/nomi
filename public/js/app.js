@@ -24615,6 +24615,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -24653,19 +24655,14 @@ var render = function() {
   return _c(
     "router-link",
     {
-      staticClass: "clearPadding panel col-xs-12 col-md-12 col-lg-12",
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
-      _c(
-        "div",
-        { staticClass: "panel__content col-xs-12 col-md-12 col-lg-12" },
-        [
+      _c("div", { staticClass: "panel" }, [
+        _c("div", { staticClass: "row panel__content" }, [
           _c(
             "div",
-            {
-              staticClass: "pull-left col-xs-5 col-md-3 col-lg-3 clearPadding"
-            },
+            { staticClass: "col-xs-5 col-md-3" },
             [
               _c("profile-picture", {
                 staticClass: "pull-left ",
@@ -24677,7 +24674,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-xs-7 col-md-9 col-lg-9" },
+            { staticClass: "col-xs-7 col-md-9" },
             [
               _c(
                 "router-link",
@@ -24700,8 +24697,8 @@ var render = function() {
             ],
             1
           )
-        ]
-      )
+        ])
+      ])
     ]
   )
 }
