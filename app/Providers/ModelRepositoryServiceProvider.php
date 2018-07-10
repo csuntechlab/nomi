@@ -18,5 +18,9 @@ class ModelRepositoryServiceProvider extends ServiceProvider
             'App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface',
             'App\ModelRepositories\ClassInstructorsTableRepository'
         );
+        $this->app->bind(
+            'App\ModelRepositoryInterfaces\TermModelRepositoryInterface',
+            'App\ModelRepositories\TermModelRepository'
+        );
     }
 }

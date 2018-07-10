@@ -630,6 +630,60 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.modal_btn {
+  display: inline-block;
+  padding: 6px 20px;
+  margin: 0 3%;
+  font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.8;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 2px solid transparent;
+  border-radius: 25px;
+}
+
+.confirm_btn {
+  color: green;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.confirm_btn:hover {
+  color: green;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.decline_btn:hover {
+  color: red;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.decline_btn {
+  color: red;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.permission_footer {
+  margin: 15% 0 5%;
+  text-align: center;
+}
+
 .theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
