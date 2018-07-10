@@ -169,6 +169,28 @@
   color: rgba($color: #fff, $alpha: 0.5);
   transform: translate(-50%,-50%);
 }
+.display_inline{
+  display: inline;
+}
+
+.display_inline_block{
+  display: inline-block;
+}
+
+.text_italic{
+  font-style: italic;
+}
+
+.profile_info_container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 01.875rem;
+}
+
+.profile_notes_padding{
+  padding-bottom: 3rem;
+}
 
 .modal_btn{
   display: inline-block;
@@ -222,4 +244,3 @@
   margin: 15% 0 5%;
   text-align: center;
 }
-
