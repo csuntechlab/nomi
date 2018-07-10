@@ -45,7 +45,6 @@ textarea[type="text"]:focus {
     border-radius: 3px;
     background-color: themed("offWhite");
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
-    padding: 20px;
     border: none;
 
     .panel__img {
@@ -59,8 +58,53 @@ textarea[type="text"]:focus {
   }
 }
 
-.panel_content {
-  height: 100vh;
+.gallery_name {
+  font-size: 1.3rem;
+  padding: 0 3% 5%
+}
+
+.flash_panel {
+  @include themify($themes) {
+    border-radius: 3px;
+    background-color: themed("offWhite");
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
+    border: none;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-top: 6%;
+  }
+
+}
+
+.flash_positioner{
+  margin-top: 100%;
+}
+
+.flash_element{
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.profile_padding{
+  padding: 5%;
+}
+
+@media only screen and (min-width: 600px){
+  .back_of_card {
+    font-size: 1.8em;
+    padding: 20% 6%
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .back_of_card_mobile {
+    font-size: 1.3em;
+    padding: 20% 3%
+  }
 }
 
 .tab__link {
