@@ -1,5 +1,4 @@
 <template>
-<div>
     <div class="col-xs-6 col-md-4 col-lg-3">
         <div class="editButton">
             <i class="fa fa-edit fa-2x" @click="checkPermission"></i>
@@ -14,8 +13,6 @@
             </div>
         </div>
         </router-link>
-    </div>
-    <div>
         <modal v-if="displayModal" @close="showCroppaModal = false">
             <div slot="header"></div>
             <div slot="body">
@@ -23,7 +20,7 @@
             </div>
         </modal>
     </div>
-</div>
+        
 </template>
 
 <script>

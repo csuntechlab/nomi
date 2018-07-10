@@ -24250,9 +24250,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -24317,82 +24314,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "col-xs-6 col-md-4 col-lg-3" },
-      [
-        _c("div", { staticClass: "editButton" }, [
-          _c("i", {
-            staticClass: "fa fa-edit fa-2x",
-            on: { click: _vm.checkPermission }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            attrs: {
-              to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
-            }
-          },
-          [
-            _c("div", { staticClass: "panel" }, [
-              _c(
-                "div",
-                { staticClass: "panel__content" },
-                [_c("profile-picture", { attrs: { image: _vm.image } })],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "cardText clearPadding" }, [
-                _c("div", { staticClass: "gallery_name type--center" }, [
-                  _vm._v(_vm._s(_vm.display_name))
-                ])
+  return _c(
+    "div",
+    { staticClass: "col-xs-6 col-md-4 col-lg-3" },
+    [
+      _c("div", { staticClass: "editButton" }, [
+        _c("i", {
+          staticClass: "fa fa-edit fa-2x",
+          on: { click: _vm.checkPermission }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          attrs: {
+            to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+          }
+        },
+        [
+          _c("div", { staticClass: "panel" }, [
+            _c(
+              "div",
+              { staticClass: "panel__content" },
+              [_c("profile-picture", { attrs: { image: _vm.image } })],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "cardText clearPadding" }, [
+              _c("div", { staticClass: "gallery_name type--center" }, [
+                _vm._v(_vm._s(_vm.display_name))
               ])
             ])
-          ]
-        )
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      [
-        _vm.displayModal
-          ? _c(
-              "modal",
-              {
-                on: {
-                  close: function($event) {
-                    _vm.showCroppaModal = false
-                  }
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm.displayModal
+        ? _c(
+            "modal",
+            {
+              on: {
+                close: function($event) {
+                  _vm.showCroppaModal = false
                 }
-              },
-              [
-                _c("div", { attrs: { slot: "header" }, slot: "header" }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { attrs: { slot: "body" }, slot: "body" },
-                  [
-                    _c("croppa-profile", {
-                      attrs: {
-                        emailURI: _vm.email_uri,
-                        studentImage: _vm.image
-                      }
-                    })
-                  ],
-                  1
-                )
-              ]
-            )
-          : _vm._e()
-      ],
-      1
-    )
-  ])
+              }
+            },
+            [
+              _c("div", { attrs: { slot: "header" }, slot: "header" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { attrs: { slot: "body" }, slot: "body" },
+                [
+                  _c("croppa-profile", {
+                    attrs: { emailURI: _vm.email_uri, studentImage: _vm.image }
+                  })
+                ],
+                1
+              )
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24416,6 +24402,7 @@ var render = function() {
     this.flash
       ? _c(
           "div",
+          { staticClass: "row" },
           _vm._l(this.flashroster[this.courseid], function(student) {
             return _c("flash-card", {
               key: student.student_id,
@@ -24426,6 +24413,7 @@ var render = function() {
         )
       : _c(
           "div",
+          { staticClass: "row" },
           _vm._l(this.courses[this.courseid].roster, function(student) {
             return _c("gallery-card", {
               key: student.student_id,
