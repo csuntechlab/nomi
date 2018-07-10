@@ -19467,7 +19467,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -19590,6 +19589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             characterCount: 600
         };
     },
+
     methods: {
         updateNotes: function updateNotes(e) {
             var _this = this;
@@ -19635,8 +19635,33 @@ var render = function() {
     _c("textarea", {
       attrs: { type: "text", id: "ex0", name: "ex0" },
       domProps: { value: this.student.notes },
-      on: { input: _vm.updateNotes }
+      on: {
+        input: _vm.updateNotes,
+        keyup: function($event) {
+          if (
+            !("button" in $event) &&
+            _vm._k($event.keyCode, "enter", 13, $event.key)
+          ) {
+            return null
+          }
+          _vm.updateNotes($event)
+        }
+      }
     }),
+<<<<<<< HEAD
+    _vm._v(" "),
+    _c("div", { staticClass: "type--right" }, [
+      _vm.noteSaved
+        ? _c("span", { staticClass: "notes_status" }, [_vm._v("Notes Saved!")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.unsavedChanges
+        ? _c("span", { staticClass: "notes_status" }, [
+            _vm._v("Unsaved changes.")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+=======
     _vm._v("\n    " + _vm._s(_vm.charactersLeft) + " characters left\n    "),
     _vm.noteSaved ? _c("div", [_vm._v("Notes Saved!")]) : _vm._e(),
     _vm._v(" "),
@@ -19645,10 +19670,11 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "clearPadding" }, [
+>>>>>>> bb665b178760a39c6536250f23cfe9fde5a5dd36
       _c(
         "button",
         {
-          staticClass: "btn btn-default",
+          staticClass: "btn btn-sm btn-default",
           on: {
             click: function($event) {
               $event.preventDefault()
@@ -19684,44 +19710,59 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "container type--center margin_between_containers" },
+        {
+          staticClass:
+            "profile_info_container type--center margin_between_containers"
+        },
         [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-sm-12" },
-                [
-                  _c("profile-notes", { attrs: { student: _vm.student } }),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-sm-12" },
+              [
+                _c("profile-notes", {
+                  staticClass: "profile_notes_padding",
+                  attrs: { student: _vm.student }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--left profile_email" }, [
+                  _c("i", {
+                    staticClass: "fas fa-envelope",
+                    on: {
+                      click: function($event) {
+                        _vm.showEmail = true
+                      }
+                    }
+                  }),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "type--center btn_padding" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-default",
-                        on: {
-                          click: function($event) {
-                            _vm.showEmail = true
-                          }
+                  _c(
+                    "a",
+                    {
+                      staticClass: "profile_email_text",
+                      on: {
+                        click: function($event) {
+                          _vm.showEmail = true
                         }
-                      },
-                      [_vm._v("Show Email")]
-                    ),
-                    _vm._v(" "),
-                    _c("br")
-                  ]),
+                      }
+                    },
+                    [_vm._v("Show Email")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "type--left" }, [
+                  _c("strong", [_vm._v("Bio:")]),
                   _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Bio: " + _vm._s(this.student.bio))]),
-                  _vm._v(" "),
-                  _c("br")
-                ],
-                1
-              )
-            ])
+                  this.student.bio == null
+                    ? _c(
+                        "span",
+                        { staticClass: "text_italic display_inline" },
+                        [_vm._v(" Pending biography from student.")]
+                      )
+                    : _c("span", [_vm._v(" " + _vm._s(this.student.bio))])
+                ])
+              ],
+              1
+            )
           ])
         ]
       ),
@@ -21022,8 +21063,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
         window.axios.get('student/' + email).then(function (response) {
             state.studentProfile.bio = response['data']['people'].biography;
-
-            if (state.studentProfile.bio === null) state.studentProfile.bio = "Pending biography from student.";
         }).catch(function (e) {
             state.profileErrors = e.response.data.message;
         });
@@ -26055,14 +26094,18 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
-        attrs: {
-          id: "inputYear",
-          type: "text",
-          placeholder: "Year",
-          pattern: "[20|19]\\d\\d"
-        },
+        attrs: { id: "inputYear", type: "text", placeholder: "Year" },
         domProps: { value: _vm.year },
         on: {
+          keyup: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key)
+            ) {
+              return null
+            }
+            _vm.validateYear($event)
+          },
           change: function($event) {
             _vm.year = $event.target.value
           }
@@ -26073,7 +26116,8 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: " btn btn-sm btn-default col-xs-3",
+        staticClass: "btn btn-sm btn-default col-xs-3",
+        attrs: { id: "submitTerm" },
         on: { click: _vm.validateYear }
       },
       [_vm._v("Submit")]

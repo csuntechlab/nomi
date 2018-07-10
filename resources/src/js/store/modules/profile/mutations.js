@@ -11,9 +11,6 @@ export default {
         window.axios.get('student/'+email)
             .then(response => {
                 state.studentProfile.bio = response['data']['people'].biography;
-
-                if(state.studentProfile.bio === null)
-                    state.studentProfile.bio = "Pending biography from student.";
             })
             .catch(e => {
                 state.profileErrors = e.response.data.message;
