@@ -19363,7 +19363,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "profile_padding img--circle col-md-12 col-xs-12",
+      staticClass: "profile_padding img--circle img--fluid",
       attrs: { id: this.name + "-img", src: this.image, name: "photo" }
     })
   ])
