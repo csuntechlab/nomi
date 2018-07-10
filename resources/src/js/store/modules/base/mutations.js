@@ -255,7 +255,13 @@ export default {
 
     SET_CLASS_DONE_LOADING(state){
         state.loadingClasses = false;
+    },
+
+    HANDLE_PERMISSION_RESPONSE(state, payload){
+        state.imagePermission = payload;
+    },
+
+    NULLIFY_PERMISSION_RESPONSE(state){
+        state.imagePermission = null;
     }
-
-
 }

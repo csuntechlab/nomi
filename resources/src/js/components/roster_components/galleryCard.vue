@@ -2,7 +2,7 @@
 <div>
     <div class="col-xs-6 col-md-4 col-lg-3">
         <div class="editButton">
-            <i class="fa fa-edit fa-2x" @click="showModal = true"></i>
+            <i class="fa fa-edit fa-2x" @click="checkPermission"></i>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
         <div class="panel">
@@ -16,7 +16,7 @@
         </router-link>
     </div>
     <div>
-        <modal v-if="showModal" @close="showModal = false">
+        <modal v-if="displayModal" @close="showCroppaModal = false">
             <div slot="header"></div>
             <div slot="body">
                 <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
@@ -40,7 +40,7 @@ export default {
       messages: true,
       errors: [],
       myCroppa: null,
-      showModal: false,
+      showCroppaModal: false,
       showMe: true
     };
   },
@@ -54,8 +54,13 @@ export default {
   computed: {
 
     ...mapGetters([
-      'studentImages'  
+      'studentImages',
+      'permission'  
     ]),
+
+    displayModal(){
+      return(this.showCroppaModal && this.permission);
+    },
 
     display_name: function() {
       return this.student.first_name + " " + this.student.last_name[0] + ".";
@@ -72,8 +77,13 @@ export default {
 
   methods: {
     setImgUrl(url) {
-      this.showModal = false;
+      this.showCroppaModal = false;
       this.imgUrl = url;
+    },
+    checkPermission() {
+      this.showCroppaModal = true;
+      if (this.permission == false)
+        this.$store.dispatch('nullifyPermissionResponse');
     }
   }
 };

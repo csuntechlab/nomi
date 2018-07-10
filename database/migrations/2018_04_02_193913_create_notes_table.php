@@ -18,7 +18,7 @@ class CreateNotesTable extends Migration
 
             $table->string('user_id', 128);
             $table->string('student_id', 128);
-            $table->string('notepad', 256);
+            $table->string('notepad', 2048);
         });
     }
 
