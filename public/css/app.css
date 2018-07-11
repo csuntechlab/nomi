@@ -37,6 +37,10 @@
   transition: 0.3s;
 }
 
+.menu_links:hover {
+  opacity: 0.5;
+}
+
 .faculty_links {
   color: white;
   text-decoration: none;
@@ -49,10 +53,6 @@
   display: block;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-}
-
-.menu a:hover {
-  color: #f1f1f1;
 }
 
 .extra_padding {
@@ -603,10 +603,20 @@ textarea[type="text"]:focus {
   padding: 0;
 }
 
-.colorTheme_list_item {
-  padding-top: 5%;
-  padding-bottom: 5%;
+.colorThemes {
+  margin-top: 25%;
+}
+
+.colorTheme_item {
+  padding: 5% 0;
   color: white;
+  width: 100%;
+  border: 2px solid transparent;
+}
+
+.colorTheme_item:hover {
+  -webkit-filter: brightness(150%);
+          filter: brightness(150%);
 }
 
 @media only screen and (min-width: 600px) {

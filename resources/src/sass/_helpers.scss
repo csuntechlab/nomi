@@ -50,10 +50,19 @@
   padding: 0;
 }
 
-.colorTheme_list_item {
-  padding-top: 5%;
-  padding-bottom: 5%;
+.colorThemes{
+  margin-top: 25%;
+}
+
+.colorTheme_item {
+  padding: 5% 0;
   color: white;
+  width: 100%;
+  border: 2px solid transparent
+}
+
+.colorTheme_item:hover{
+  filter: brightness(150%);
 }
 
 @media only screen and (min-width: 600px) {
