@@ -4,9 +4,9 @@
         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
         <h2 class="loginTitle">LOGIN</h2>
         Username
-        {{ Form::text('username', null, ['class' => 'loginForm']) }}
+        {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }}
         Password
-        {{ Form::password('password', ['class' => 'loginForm']) }}
+        {{ Form::password('password', ['class' => 'loginForm', 'placeholder' => 'Password']) }}
         <loading-button></loading-button>
         {{ Form::close() }}
     </div>
