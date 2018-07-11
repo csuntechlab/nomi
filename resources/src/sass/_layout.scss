@@ -44,7 +44,7 @@ textarea[type="text"]:focus {
   @include themify($themes) {
     border-radius: 3px;
     background-color: themed("offWhite");
-    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
     border: none;
 
     .panel__img {
@@ -60,50 +60,49 @@ textarea[type="text"]:focus {
 
 .gallery_name {
   font-size: 1.3rem;
-  padding: 0 3% 5%
+  padding: 0 3% 5%;
 }
 
 .flash_panel {
   @include themify($themes) {
     border-radius: 3px;
     background-color: themed("offWhite");
-    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
+    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
     border: none;
     display: inline-block;
     position: relative;
     width: 100%;
     margin-top: 6%;
   }
-
 }
 
-.flash_positioner{
+.flash_positioner {
   margin-top: 100%;
 }
 
-.flash_element{
+.flash_element {
   position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
-.profile_padding{
+.profile_padding {
   padding: 5%;
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px) {
   .back_of_card {
     font-size: 1.8em;
-    padding: 20% 6%
+    padding: 20% 6%;
   }
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .back_of_card_mobile {
     font-size: 1.3em;
-    padding: 20% 3%
+    padding: 20% 3%;
   }
 }
 
@@ -151,13 +150,50 @@ textarea[type="text"]:focus {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .loginContainer {
+    margin: 0 15%;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .loginContainer {
+    margin: 0 25%;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.loginTitle{
+  font-weight: 400;
+  padding-bottom: 5px; 
+}
+
+.loginButton {
+  float: right;
+}
+
+.loginForm {
+  border-radius: 20px !important;
+  margin-bottom: 15px;
+  margin-top: 8px; 
+}
+
 .sr-only {
   @include themify($themes) {
     color: themed("white");
   }
 }
 
-.logo_parent{
+.logo_parent {
   text-align: center;
   flex: 100%;
 }
@@ -175,7 +211,7 @@ textarea[type="text"]:focus {
     width: 75px;
     height: 37px;
     border-left: 1px solid #ccc;
-    padding-left:8px;
+    padding-left: 8px;
     margin-left: 4px;
   }
 }
