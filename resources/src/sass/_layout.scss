@@ -1,6 +1,7 @@
 body {
   @include themify($themes) {
-    background-color: themed("looksGray");
+    background-color: themed("backgroundColor");
+    color: themed("textColor");
     padding-top: 45px;
   }
 }
@@ -9,7 +10,7 @@ html * {
   @include themify($themes) {
     font-size: themed("mainFontSize");
     font-family: themed("mainFontFamily");
-    color: themed("looksGray");
+    color: themed("backgroundColor");
   }
 }
 
@@ -29,13 +30,13 @@ textarea[type="text"]:focus {
 
 .primary-nav {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
     width: 100%;
     top: 0%;
     position: fixed;
 
     .primary-nav__sub-brand {
-      color: themed("looksGray");
+      color: themed("backgroundColor");
     }
   }
 }
@@ -43,13 +44,13 @@ textarea[type="text"]:focus {
 .panel {
   @include themify($themes) {
     border-radius: 3px;
-    background-color: themed("offWhite");
+    background-color: themed("panelColor");
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
     border: none;
 
     .panel__img {
       height: auto;
-      background-color: themed("offWhite");
+      background-color: themed("panelColor");
     }
     .panel__header {
       font-weight: bold;
@@ -66,7 +67,7 @@ textarea[type="text"]:focus {
 .flash_panel {
   @include themify($themes) {
     border-radius: 3px;
-    background-color: themed("offWhite");
+    background-color: themed("panelColor");
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, .07);
     border: none;
     display: inline-block;
@@ -109,9 +110,9 @@ textarea[type="text"]:focus {
 
 .tab__link {
   @include themify($themes) {
-    border-bottom: 5px solid themed("looksGray");
-    color: themed("bars");
-    background-color: themed("looksGray");
+    color: themed("textColor");
+    background-color: themed("backgroundColor");
+    border-bottom: 5px solid themed("backgroundColor");
   }
 }
 
@@ -121,21 +122,16 @@ textarea[type="text"]:focus {
     padding: 10px 20px;
     font-weight: normal;
     text-decoration: none;
-    color: themed("bars");
-    border-bottom: 5px solid themed("bars");
+    color: themed("accentColor");
+    border-bottom: 5px solid themed("accentColor");
   }
 }
 
-.fa {
-  @include themify($themes) {
-    color: themed("white");
-  }
-}
 
 //font awesome icon and menu
 .menu {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
     color: white;
   }
 }
@@ -148,14 +144,11 @@ textarea[type="text"]:focus {
 .btn {
   @include themify($themes) {
     background-color: themed("buttonColor");
+    color: themed("buttonText");
+    border: 2px solid transparent;
   }
 }
 
-.sr-only {
-  @include themify($themes) {
-    color: themed("white");
-  }
-}
 
 .logo_parent{
   text-align: center;
@@ -180,6 +173,13 @@ textarea[type="text"]:focus {
   }
 }
 
+.error_bar{
+  @include themify($themes) {
+    background-color: themed("accentColor");
+    color: themed("buttonText");
+  }
+}
+
 //theme colors in list
 #Matador {
   background-color: #d00d2d;
@@ -195,4 +195,8 @@ textarea[type="text"]:focus {
 
 #Cloudy {
   background-color: #747474;
+}
+
+#Dark {
+  background-color: #475263
 }

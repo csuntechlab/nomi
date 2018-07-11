@@ -15,7 +15,8 @@
                     <li id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="colorTheme_list_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</li>
                     <li id="Navy" @click="updateTheme('theme-main')" class="colorTheme_list_item " name="navy"> Navy Theme</li>
                     <li id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_list_item " name="bluesTheme"> Blue Theme</li>
-                    <li id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_list_item " name="Cloudy"> Cloudy Theme</li>                </ul>
+                    <li id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_list_item " name="Cloudy"> Cloudy Theme</li>
+                </ul>
             </div>
         </modal>
     </div>

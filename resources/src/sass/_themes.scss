@@ -1,49 +1,65 @@
 $themes: (
   main: (
-    //All navbars coloring
-    bars: #0F1821,
-    //I can't remember
-    white: white,
-    //background coloring
-    looksGray: #E5E5E5,
-    //panel coloring
-    offWhite: #F4F4F4,
-    //coloring on click
-    buttonpress: #4F9DA3,
-    //button coloring
-    buttonColor: white,
-    //fontsize
+    navigationBars: #0F1821,
+    backgroundColor: #E5E5E5,
+    textColor: #000,
+    panelColor: #F4F4F4,
+    accentColor: #4F9DA3,
+    buttonColor: #4F9DA3,
+    buttonText: #fff,
+
     mainFontSize: 1.1rem,
-    //font type
 	  mainFontFamily: helvetica,
   ),
+
   bluesTheme: (
-    bars: #0D3753,
-    white: white,
-    looksGray: #d9e7ee,
-    offWhite: white,
-    buttonpress: #0083A1,
-    buttonColor: white,
+    navigationBars: #0D3753,
+    backgroundColor: #d9e7ee,
+    textColor: #000,
+    panelColor: white,
+    accentColor: #4CA1DB,
+    buttonColor: #4CA1DB,
+    buttonText: #fff,
+
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
+
   Cloudy: (
-    bars: #747474,
-    white: white,
-    looksGray: #D8D8D8,
-    offWhite: #FFFFFF,
+    navigationBars: #747474,
+    backgroundColor: #D8D8D8,
+    textColor: #000,
+    panelColor: #FFFFFF,
     buttonColor: #FFC836,
-    buttonpress: #FFC836,
+    buttonText: #000,
+    accentColor: #747474,
+
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
+
   OnceAMatadorAlwaysAMatador: (
-    bars: #D00D2D,
-    white: white,
-    looksGray: #FFFFFF,
-    offWhite: #F0F0F0,
-    buttonColor: white,
-    buttonpress: #FFC836,
+    navigationBars: #D00D2D,
+    backgroundColor: #FFFFFF,
+    textColor: #000,
+    panelColor: #F0F0F0,
+    buttonColor: #FFC836,
+    buttonText: #000,
+    accentColor: #FFC836,
+
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+
+  Dark: (
+    navigationBars: #272727,
+    backgroundColor: #303030,
+    textColor: rgb(164, 199, 199),
+    panelColor: #202020,
+    buttonColor: #2F557B,
+    buttonText: rgb(164, 199, 199),
+    accentColor: #2F557B,
+
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   )

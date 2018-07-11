@@ -29,7 +29,7 @@
 .modal-header h3 {
   margin-top: 0;
   @include themify($themes){
-    color: themed('buttonpress');
+    color: themed('accentColor');
 }
 }
 
