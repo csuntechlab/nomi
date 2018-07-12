@@ -15,6 +15,7 @@ export default {
     termYear: null,
     term: null,
     loadingClasses: true,
+    imagePermission: null,
 
     facultyMember: {
         email: null,

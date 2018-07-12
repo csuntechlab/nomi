@@ -1,24 +1,23 @@
 <template>
-<div>
-    <div class="container type--center margin_between_containers">
-        <div class="container">
+    <div>
+        <div class="profile_info_container type--center margin_between_containers">
             <div class="row">
                 <div class="col-sm-12">
-                    <profile-notes :student="student"></profile-notes>
-                    <br>
-                    <div class="type--center btn_padding">
-                        <button class="btn btn-default" @click="showEmail = true">Show Email</button>
-                        <br>
+                    <profile-notes class="profile_notes_padding" :student="student"></profile-notes>
+                    <div class="type--left profile_email">
+                        <i class="fas fa-envelope" @click="showEmail = true"></i>
+                        <a class="profile_email_text" @click="showEmail = true">Show Email</a>
                     </div>
-                    <br>
-                    <h4>Bio: {{this.student.bio}}</h4>
-                    <br>
+                    <div class="type--left">
+                        <strong>Bio:</strong>
+                        <span v-if="this.student.bio == null" class="text_italic display_inline"> Pending biography from student.</span>
+                        <span v-else> {{this.student.bio}}</span>
+                    </div>
                 </div>
             </div>
         </div>
+        <email-modal :showEmail="this.showEmail" :email="this.student.emailURI" @closeEmail="showEmail = false"></email-modal>
     </div>
-    <email-modal :showEmail="this.showEmail" :email="this.student.emailURI" @closeEmail="showEmail = false"></email-modal>
-</div>
 </template>
 <script>
     import emailModal from "../profile_components/emailModal.vue";

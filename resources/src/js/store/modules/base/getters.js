@@ -23,6 +23,7 @@ export default {
     termYear: state => state.termYear,
     term: state => state.term,
     loadingClasses: state => state.loadingClasses,
+    permission: state => state.imagePermission,
 
     // User
     facultyMember: state => state.facultyMember,

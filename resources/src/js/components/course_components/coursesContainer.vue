@@ -2,7 +2,7 @@
      <div>
          <div v-if="this.shouldLoadClasses" class="type--center">
             <br>
-            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>      
+            <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>      
          </div>
          <div v-else>
             <h2>{{this.displayCurrentTerm}} Courses</h2>     

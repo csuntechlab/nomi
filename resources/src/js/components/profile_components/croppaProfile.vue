@@ -9,9 +9,15 @@
                 :show-remove-button="false"
                 :initial-image="studentImage"
                 :quality="2"
-                @init="styleCanvas()">
+                @init="styleCanvas()"
+                @loading-start="loadingStart"
+                @loading-end="loadingEnd">
         </croppa>
-
+        <div v-if="loadingCroppa" class="croppa_loading">
+            <div class="croppa_loading_icon">
+                <i class="fas fa-spinner fa-spin fa-5x"></i>
+            </div>
+        </div>
         <div class="type--center">
             <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
         </div>
@@ -34,7 +40,8 @@
                 errors: [],
                 myCroppa: null,
                 disabled: true,
-                url: ""
+                url: "",
+                loadingCroppa: false,
             }
         },
 
@@ -46,10 +53,18 @@
         },
 
         created: function () {
-         this.url = document.querySelector('meta[name=app-url]').content;
+            this.url = document.querySelector('meta[name=app-url]').content;
          },
 
         methods: {
+            loadingStart(){
+                this.loadingCroppa = true;
+            },
+
+            loadingEnd(){
+                this.loadingCroppa = false;
+            },
+
             confirmImage: function (emailURI) {
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
@@ -82,6 +97,10 @@
                         this.$parent.$emit('close', url);
                     });
                 }
+            },
+
+            authorizeImageUpload: function() {
+                
             },
 
             styleCanvas: function() {
