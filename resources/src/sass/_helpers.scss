@@ -1,27 +1,27 @@
 .makeBlue {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
   }
 }
 
-.buttonPressBlue {
+.accentColorBlue {
   @include themify($themes) {
-    background-color: themed("buttonpress");
+    background-color: themed("accentColor");
   }
 }
 
-.fa-blue {
+.icon_theme {
   @include themify($themes) {
-    color: themed("buttonpress");
+    color: themed("accentColor");
   }
 }
 
 .nav-bars {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
     font-size: themed("mainFontSize");
     font-family: themed("mainFontFamily");
-    color: themed("looksGray");
+    color: themed("backgroundColor");
   }
 }
 
@@ -146,13 +146,18 @@
   padding: 0.4em 0 0.4em 0;
 }
 
-.bot_padding_sort {
-  padding-bottom: 10px;
+.sort_filters {
+  margin: 0 auto 10px
 }
 
 .shuffle_button {
-  padding-bottom: 10px;
-  float: left;
+  position: fixed;
+  z-index: 1;
+  right: 20px;
+  bottom: 9%;
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .text_bold {

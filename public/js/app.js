@@ -19425,7 +19425,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-default",
+                            staticClass: "btn btn-default btn-sm",
                             on: { click: _vm.checkPermission }
                           },
                           [_vm._v("Edit Photo")]
@@ -19822,7 +19822,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
         ])
       : _c(
           "div",
@@ -22776,7 +22776,9 @@ var render = function() {
           ? _c("div", { staticClass: "type--center" }, [
               _c("br"),
               _vm._v(" "),
-              _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" }),
+              _c("i", {
+                staticClass: "fa fa-spinner fa-spin fa-3x icon_theme"
+              }),
               _vm._v(" "),
               _c("br"),
               _vm._v(" "),
@@ -22998,7 +23000,7 @@ var render = function() {
   return this.errors || this.profileErrors
     ? _c(
         "div",
-        { staticClass: "alert alert--warning", attrs: { id: "error_bar" } },
+        { staticClass: "alert error_bar", attrs: { id: "error_bar" } },
         [
           _c("strong", [_vm._v("Oops!")]),
           _vm._v(" Something went wrong\n     "),
@@ -23373,7 +23375,7 @@ var render = function() {
     _vm._v(" "),
     _vm.ok
       ? _c("div", { staticClass: "type--center" }, [
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
         ])
       : _vm._e()
   ])
@@ -25015,6 +25017,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -25190,29 +25194,32 @@ var render = function() {
       ? _c(
           "div",
           [
-            _c("list-grid-selector", {
-              staticClass: "col-xs-6 col-sm-6 col-md-6"
-            }),
+            _c(
+              "div",
+              { staticClass: "row sort_filters" },
+              [
+                _c("list-grid-selector", {
+                  staticClass: "col-xs-6 col-sm-6 col-md-6"
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
             !this.list && this.flash
-              ? _c("shuffle-button", {
-                  staticClass:
-                    "col-xs-3 col-sm-3 col-md-3 bot_padding_sort shuffle_button"
-                })
+              ? _c("shuffle-button", { staticClass: "btn shuffle_button" })
               : _vm._e()
           ],
           1
         )
       : _c(
           "div",
+          { staticClass: "row sort_filters" },
           [
             _c("list-grid-selector", {
               staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
-            _c("sort-selector", {
-              staticClass: "col-xs-6 col-sm-6 col-md-6 bot_padding_sort"
-            })
+            _c("sort-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" })
           ],
           1
         )
@@ -25837,7 +25844,7 @@ var render = function() {
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x fa-blue" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
         ])
       : _c(
           "div",
