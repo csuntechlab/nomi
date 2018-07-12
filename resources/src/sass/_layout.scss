@@ -122,8 +122,8 @@ textarea[type="text"]:focus {
     padding: 10px 20px;
     font-weight: normal;
     text-decoration: none;
-    color: themed("accentColor");
-    border-bottom: 5px solid themed("accentColor");
+    color: themed("buttonColor");
+    border-bottom: 5px solid themed("buttonColor");
   }
 }
 

@@ -178,7 +178,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
-  background-color: #D00D2D;
+  background-color: #D22030;
   width: 100%;
   top: 0%;
   position: fixed;
@@ -437,8 +437,8 @@ textarea[type="text"]:focus {
   padding: 10px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #747474;
-  border-bottom: 5px solid #747474;
+  color: #FFC836;
+  border-bottom: 5px solid #FFC836;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .tab__link--active {
@@ -446,8 +446,8 @@ textarea[type="text"]:focus {
   padding: 10px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #FFC836;
-  border-bottom: 5px solid #FFC836;
+  color: #E74A37;
+  border-bottom: 5px solid #E74A37;
 }
 
 .theme-Dark .tab__link--active {
@@ -475,7 +475,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .menu {
-  background-color: #D00D2D;
+  background-color: #D22030;
   color: white;
 }
 
@@ -508,8 +508,8 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .btn {
-  background-color: #FFC836;
-  color: #000;
+  background-color: #E74A37;
+  color: #fff;
   border: 2px solid transparent;
 }
 
@@ -612,8 +612,8 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .error_bar {
-  background-color: #FFC836;
-  color: #000;
+  background-color: #E74A37;
+  color: #fff;
 }
 
 .theme-Dark .error_bar {
@@ -654,7 +654,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .makeBlue {
-  background-color: #D00D2D;
+  background-color: #D22030;
 }
 
 .theme-Dark .makeBlue {
@@ -674,7 +674,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .accentColorBlue {
-  background-color: #FFC836;
+  background-color: #E74A37;
 }
 
 .theme-Dark .accentColorBlue {
@@ -694,7 +694,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .icon_theme {
-  color: #FFC836;
+  color: #E74A37;
 }
 
 .theme-Dark .icon_theme {
@@ -723,7 +723,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .nav-bars {
-  background-color: #D00D2D;
+  background-color: #D22030;
   font-size: 1.1rem;
   font-family: sans-serif;
   color: #FFFFFF;
@@ -992,7 +992,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .underlineStyling--red {
-  border-bottom: 5px solid #FFC836;
+  border-bottom: 5px solid #E74A37;
 }
 
 .theme-Dark .underlineStyling--red {
@@ -1083,7 +1083,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .modal-header h3 {
-  color: #FFC836;
+  color: #E74A37;
 }
 
 .theme-Dark .modal-header h3 {
