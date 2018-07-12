@@ -22540,13 +22540,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -22595,9 +22588,10 @@ var render = function() {
     "div",
     [
       _c(
-        "div",
+        "a",
         {
           staticClass: "menu_links",
+          attrs: { href: "#" },
           on: {
             click: function($event) {
               _vm.showModal = true
@@ -22620,16 +22614,18 @@ var render = function() {
             [
               _c("div", { attrs: { slot: "header" }, slot: "header" }),
               _vm._v(" "),
-              _c("div", { attrs: { slot: "body" }, slot: "body" }, [
-                _c("br"),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("ul", { staticClass: "list list--arrows list--hover" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "colorThemes",
+                  attrs: { slot: "body" },
+                  slot: "body"
+                },
+                [
                   _c(
-                    "li",
+                    "button",
                     {
-                      staticClass: "colorTheme_list_item ",
+                      staticClass: "colorTheme_item ",
                       attrs: {
                         id: "Matador",
                         name: "OnceAMatadorAlwaysAMatador"
@@ -22644,9 +22640,9 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "li",
+                    "button",
                     {
-                      staticClass: "colorTheme_list_item ",
+                      staticClass: "colorTheme_item ",
                       attrs: { id: "Navy", name: "navy" },
                       on: {
                         click: function($event) {
@@ -22658,9 +22654,9 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "li",
+                    "button",
                     {
-                      staticClass: "colorTheme_list_item ",
+                      staticClass: "colorTheme_item ",
                       attrs: { id: "Blues", name: "bluesTheme" },
                       on: {
                         click: function($event) {
@@ -22672,9 +22668,9 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "li",
+                    "button",
                     {
-                      staticClass: "colorTheme_list_item ",
+                      staticClass: "colorTheme_item ",
                       attrs: { id: "Cloudy", name: "Cloudy" },
                       on: {
                         click: function($event) {
@@ -22684,8 +22680,8 @@ var render = function() {
                     },
                     [_vm._v(" Cloudy Theme")]
                   )
-                ])
-              ])
+                ]
+              )
             ]
           )
         : _vm._e()
