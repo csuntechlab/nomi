@@ -25018,6 +25018,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -25193,29 +25195,32 @@ var render = function() {
       ? _c(
           "div",
           [
-            _c("list-grid-selector", {
-              staticClass: "col-xs-6 col-sm-6 col-md-6"
-            }),
+            _c(
+              "div",
+              { staticClass: "row sort_filters" },
+              [
+                _c("list-grid-selector", {
+                  staticClass: "col-xs-6 col-sm-6 col-md-6"
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
             !this.list && this.flash
-              ? _c("shuffle-button", {
-                  staticClass:
-                    "col-xs-3 col-sm-3 col-md-3 bot_padding_sort shuffle_button"
-                })
+              ? _c("shuffle-button", { staticClass: "btn shuffle_button" })
               : _vm._e()
           ],
           1
         )
       : _c(
           "div",
+          { staticClass: "row sort_filters" },
           [
             _c("list-grid-selector", {
               staticClass: "col-xs-6 col-sm-6 col-md-6"
             }),
             _vm._v(" "),
-            _c("sort-selector", {
-              staticClass: "col-xs-6 col-sm-6 col-md-6 bot_padding_sort"
-            })
+            _c("sort-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" })
           ],
           1
         )
