@@ -1,27 +1,27 @@
 .makeBlue {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
   }
 }
 
-.buttonPressBlue {
+.accentColorBlue {
   @include themify($themes) {
-    background-color: themed("buttonpress");
+    background-color: themed("accentColor");
   }
 }
 
-.fa-blue {
+.icon_theme {
   @include themify($themes) {
-    color: themed("buttonpress");
+    color: themed("accentColor");
   }
 }
 
 .nav-bars {
   @include themify($themes) {
-    background-color: themed("bars");
+    background-color: themed("navigationBars");
     font-size: themed("mainFontSize");
     font-family: themed("mainFontFamily");
-    color: themed("looksGray");
+    color: themed("backgroundColor");
   }
 }
 

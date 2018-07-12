@@ -1,11 +1,11 @@
 .underlineStyling{
     @include themify($themes) {
-        border-bottom:  5px solid themed('looksGray');
+        border-bottom:  5px solid themed('backgroundColor');
     }
   }
 .underlineStyling--red{
   @include themify($themes) {
-    border-bottom:  5px solid themed('buttonpress');
+    border-bottom:  5px solid themed('accentColor');
   }
 }
 
