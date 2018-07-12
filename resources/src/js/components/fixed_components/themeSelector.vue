@@ -1,21 +1,15 @@
 <template>
     <div>
-        <div class="menu_links" @click="showModal=true">
+        <a href="#" class="menu_links" @click="showModal=true">
             Theme
-        </div>
-        
+        </a>
         <modal v-if="showModal" @close="showModal = false">
-            <div slot="header">
-
-            </div>
-            <div slot="body">
-                <br>
-                <br>
-                <ul class="list list--arrows list--hover">
-                    <li id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="colorTheme_list_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</li>
-                    <li id="Navy" @click="updateTheme('theme-navyTheme')" class="colorTheme_list_item " name="navy"> Navy Theme</li>
-                    <li id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_list_item " name="bluesTheme"> Blue Theme</li>
-                    <li id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_list_item " name="Cloudy"> Cloudy Theme</li>                </ul>
+            <div slot="header"></div>
+            <div slot="body" class="colorThemes">
+                <button id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="colorTheme_item " name="OnceAMatadorAlwaysAMatador"> Matador Theme</button>
+                <button id="Navy" @click="updateTheme('theme-main')" class="colorTheme_item " name="navy"> Navy Theme</button>
+                <button id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_item " name="bluesTheme"> Blue Theme</button>
+                <button id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_item " name="Cloudy"> Cloudy Theme</button>
             </div>
         </modal>
     </div>
@@ -42,9 +36,7 @@
             updateTheme: function(theme) {
                 let data = new FormData();
                 data.append('theme', theme);
-
-
-                
+                                
                 axios.post(this.url + '/update_theme', data, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
