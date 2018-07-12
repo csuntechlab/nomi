@@ -806,6 +806,14 @@ textarea[type="text"]:focus {
   transition: 25ms;
 }
 
+.back_button_disabled {
+  color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  left: 15px;
+  -webkit-transition: 25ms;
+  transition: 25ms;
+}
+
 .back_button:active {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
