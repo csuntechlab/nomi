@@ -2,10 +2,8 @@
 @section('content')
     <div class="loginContainer">
         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-        <h2 class="loginTitle">LOGIN</h2>
-        Username
+        <h3 class="loginTitle">LOGIN</h3>
         {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }}
-        Password
         {{ Form::password('password', ['class' => 'loginForm', 'placeholder' => 'Password']) }}
         <loading-button></loading-button>
         {{ Form::close() }}

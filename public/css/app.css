@@ -600,25 +600,20 @@ textarea[type="text"]:focus {
 @media only screen and (max-width: 600px) {
   .loginContainer {
     margin: 0 15%;
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 50%;
-    -webkit-transform: translateY(-60%);
-            transform: translateY(-60%);
   }
 }
 
 @media only screen and (min-width: 600px) {
   .loginContainer {
     margin: 0 25%;
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 50%;
-    -webkit-transform: translateY(-60%);
-            transform: translateY(-60%);
   }
+}
+
+.loginContainer {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 25%;
 }
 
 .loginTitle {
@@ -632,8 +627,27 @@ textarea[type="text"]:focus {
 
 .loginForm {
   border-radius: 100px !important;
-  margin-bottom: 15px;
-  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+::-webkit-input-placeholder {
+  color: black;
+  opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+  color: black;
+  opacity: 0.7;
+}
+
+::-ms-input-placeholder {
+  color: black;
+  opacity: 0.7;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.7;
 }
 
 .logo_parent {
