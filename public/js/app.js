@@ -23340,7 +23340,7 @@ exports = module.exports = __webpack_require__(23)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -23395,7 +23395,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "loading-button",
@@ -23419,6 +23418,7 @@ var render = function() {
     _c(
       "button",
       {
+        staticClass: "loginButton btn btn-primary",
         attrs: { type: "submit" },
         on: {
           click: function($event) {
@@ -23426,10 +23426,7 @@ var render = function() {
           }
         }
       },
-      [
-        _c("i", { staticClass: "fa fa-sign-in-alt" }),
-        _vm._v("\n        Log In\n    ")
-      ]
+      [_vm._v("\n        Submit\n    ")]
     ),
     _vm._v(" "),
     _vm.ok
