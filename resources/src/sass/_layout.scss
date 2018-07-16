@@ -2,7 +2,7 @@ body {
   @include themify($themes) {
     background-color: themed("backgroundColor");
     color: themed("textColor");
-    padding-top: 45px;
+    padding-top: 36px;
   }
 }
 

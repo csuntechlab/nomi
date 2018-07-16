@@ -72,37 +72,37 @@
 .theme-login body {
   background-color: #FFFFFF;
   color: #000;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-navyTheme body {
   background-color: #E5E5E5;
   color: #000;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-bluesTheme body {
   background-color: #d9e7ee;
   color: #000;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-Cloudy body {
   background-color: #D8D8D8;
   color: #000;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-OnceAMatadorAlwaysAMatador body {
   background-color: #FFFFFF;
   color: #000;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-Dark body {
   background-color: #303030;
   color: #a4c7c7;
-  padding-top: 45px;
+  padding-top: 36px;
 }
 
 .theme-login html * {
@@ -973,7 +973,7 @@ textarea[type="text"]:focus {
   left: 15px;
   -webkit-transition: 25ms;
   transition: 25ms;
-  margin-top: -3.56px;
+  margin-top: -3.55px;
 }
 
 .back_button_disabled {
