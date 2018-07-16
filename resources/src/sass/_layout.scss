@@ -59,6 +59,26 @@ textarea[type="text"]:focus {
   }
 }
 
+.current_term{
+  font-weight:bold;
+  font-size: 1.6rem;
+}
+
+.course_banner{
+  @include themify($themes){
+    background-color: themed("courseBanner");
+    color: themed("textColor");
+    margin-top: 0.833rem;
+    margin-bottom: 0.833rem;
+    padding: 10px 0;
+  }
+}
+
+.course_title{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 .gallery_name {
   font-size: 1.3rem;
   padding: 0 3% 5%;

@@ -5,7 +5,25 @@
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>      
          </div>
          <div v-else>
-            <h2>{{this.displayCurrentTerm}} Courses</h2>     
+             <div class="row">
+                    <h1 class="current_term col-xs-12 type--center">
+                        {{this.displayCurrentTerm}} Courses
+                    </h1>
+                </div>
+            <div class="fullscreen_width course_banner">
+                
+                <div class="row">
+                    <div class="col-xs-4 type--center">
+                        <button class="btn btn-sm">Previous</button>
+                    </div>
+                    <div class="col-xs-4 type--center">
+                        <button class="btn btn-sm">Current</button>
+                    </div>
+                    <div class="col-xs-4 type--center">
+                        <button class="btn btn-sm">Next</button>
+                    </div>
+                </div>
+            </div>   
             <course-list></course-list>
         </div>
     </div>
