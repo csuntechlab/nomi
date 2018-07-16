@@ -159,6 +159,7 @@ textarea[type="text"]:focus {
 .theme-login .primary-nav {
   background-color: #D00D2D;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -170,6 +171,7 @@ textarea[type="text"]:focus {
 .theme-navyTheme .primary-nav {
   background-color: #0F1821;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -181,6 +183,7 @@ textarea[type="text"]:focus {
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -192,6 +195,7 @@ textarea[type="text"]:focus {
 .theme-Cloudy .primary-nav {
   background-color: #747474;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -203,6 +207,7 @@ textarea[type="text"]:focus {
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -214,6 +219,7 @@ textarea[type="text"]:focus {
 .theme-Dark .primary-nav {
   background-color: #272727;
   width: 100%;
+  height: 37px;
   top: 0%;
   position: fixed;
 }
@@ -655,90 +661,97 @@ textarea[type="text"]:focus {
   -webkit-box-flex: 100%;
       -ms-flex: 100%;
           flex: 100%;
+  margin-top: -5px;
 }
 
 .theme-login .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-navyTheme .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-bluesTheme .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-Cloudy .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-Dark .csun_logo {
-  width: 75px;
+  width: 65px;
   height: 45px;
   background-image: white;
 }
 
 .theme-login .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-navyTheme .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-bluesTheme .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-Cloudy .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-Dark .nomi_logo {
-  width: 75px;
-  height: 37px;
+  width: 65px;
+  height: 30px;
   border-left: 1px solid #ccc;
   padding-left: 8px;
   margin-left: 4px;
+  margin-top: 2px;
 }
 
 .theme-navyTheme .error_bar {
@@ -960,6 +973,7 @@ textarea[type="text"]:focus {
   left: 15px;
   -webkit-transition: 25ms;
   transition: 25ms;
+  margin-top: -3.56px;
 }
 
 .back_button_disabled {
