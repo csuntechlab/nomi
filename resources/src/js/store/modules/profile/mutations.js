@@ -11,11 +11,9 @@ export default {
         window.axios.get('student/'+email)
             .then(response => {
                 state.studentProfile.bio = response['data']['people'].biography;
-
-                if(state.studentProfile.bio === null)
-                    state.studentProfile.bio = "Pending biography from student.";
             })
             .catch(e => {
+                state.profileLoadError = true;
                 state.profileErrors = e.response.data.message;
             });
 
@@ -28,6 +26,7 @@ export default {
                 state.studentProfile.id = response['data'].student_id;
             })
             .catch(e => {
+                state.profileLoadError = true;
                 state.profileErrors = e.response.data.message;
             });
     },
@@ -77,5 +76,6 @@ export default {
 
     CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
+        state.profileLoadError = false;
     }
 }

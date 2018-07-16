@@ -5,7 +5,7 @@
             <strong>Oops!</strong> Please enter a valid year
         </div>
             <div class="col-xs-5">
-                <select name="semester-select" id="sem-select" @input="handleSelect">
+                <select  name="semester-select" id="sem-select" @input="handleSelect">
                     <option value="0" selected>Spring</option>
                     <option value="1">Summer</option>
                     <option value="2">Fall</option>
@@ -13,9 +13,9 @@
                 </select>
             </div>
             <div class="col-xs-4">
-                <input id="inputYear" type="text" v-model.lazy="year" placeholder="Year" pattern="[20|19]\d\d">
+                <input id="inputYear" type="text" v-model.lazy="year" placeholder="Year" @keyup.enter="validateYear">
             </div>
-            <button class=" btn btn-sm btn-default col-xs-3" @click="validateYear">Submit</button>
+            <button id="submitTerm" class="btn btn-sm btn-default col-xs-3" @click="validateYear">Submit</button>
     </div>
 </template>
 

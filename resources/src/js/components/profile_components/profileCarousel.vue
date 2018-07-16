@@ -14,7 +14,7 @@
                                     <image-handler image_type="likeness"></image-handler>
                                 </div>
                                 <div class="type--center">
-                                    <button class="btn btn-default" @click="checkPermission">Edit Photo</button>
+                                    <button class="btn btn-default btn-sm" @click="checkPermission">Edit Photo</button>
                                     <br>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
             <li class="underline">
                 <div v-if="studentProfile.imagePriority === 'likeness'">
                     <div class="">
-                        <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
                     </div>
                 </div>
                 <div v-else>
@@ -57,7 +57,7 @@
             <li class="underline">
                 <div v-if="studentProfile.imagePriority === 'avatar'">
                     <div class="">
-                        <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
                     </div>
                 </div>
                 <div v-else>
@@ -67,7 +67,7 @@
             <li class="underline">
                 <div v-if="studentProfile.imagePriority === 'official'">
                     <div class="">
-                        <i class="fa fa-chevron-up fa-blue fa-2x"></i>
+                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
                     </div>
                 </div>
                 <div v-else>
