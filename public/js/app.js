@@ -24028,7 +24028,8 @@ var render = function() {
             ])
           : _c("div", [
               _c("i", {
-                staticClass: "fa fa-angle-left fa-3x back_button_disabled"
+                staticClass:
+                  "fa fa-angle-left fa-3x back_button back_button_disabled"
               })
             ])
       ])
