@@ -330,6 +330,10 @@ textarea[type="text"]:focus {
   border-bottom: 0;
 }
 
+.about_padding {
+  padding: 5%;
+}
+
 .gallery_name {
   font-size: 1.3rem;
   padding: 0 3% 5%;
@@ -913,7 +917,7 @@ textarea[type="text"]:focus {
 }
 
 .colorThemes {
-  margin-top: 25%;
+  margin: 5%;
 }
 
 .colorTheme_item {
@@ -921,11 +925,6 @@ textarea[type="text"]:focus {
   color: white;
   width: 100%;
   border: 2px solid transparent;
-}
-
-.colorTheme_item:hover {
-  -webkit-filter: brightness(150%);
-          filter: brightness(150%);
 }
 
 @media only screen and (min-width: 600px) {
