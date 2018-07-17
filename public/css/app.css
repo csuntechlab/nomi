@@ -603,6 +603,7 @@ textarea[type="text"]:focus {
   border: 2px solid transparent;
 }
 
+/*Login Styling*/
 @media only screen and (max-width: 600px) {
   .loginContainer {
     margin: 0 15%;
@@ -620,6 +621,13 @@ textarea[type="text"]:focus {
   right: 0;
   left: 0;
   top: 25%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.loginContainer_hide {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .loginTitle {
@@ -634,6 +642,7 @@ textarea[type="text"]:focus {
 .loginForm {
   border-radius: 100px !important;
   margin-bottom: 20px;
+  opacity: 1;
 }
 
 ::-webkit-input-placeholder {
@@ -656,6 +665,23 @@ textarea[type="text"]:focus {
   opacity: 0.7;
 }
 
+.login_load {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  top: 100%;
+  display: inline-block;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  visibility: hidden;
+}
+
+.login_load_active {
+  top: 35%;
+  visibility: visible;
+}
+
+/*Navbar Styling*/
 .logo_parent {
   text-align: center;
   -webkit-box-flex: 100%;
