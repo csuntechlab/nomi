@@ -25391,9 +25391,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -25402,7 +25399,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            displayedTerm: ''
+            displayedTerm: ""
         };
     },
 
@@ -25412,11 +25409,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     //On page load, sets 'Spring' as default season option
     created: function created() {
-        this.$store.dispatch('setSpring');
+        this.$store.dispatch("setSpring");
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'loadingClasses']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "loadingClasses"]), {
         shouldLoadClasses: function shouldLoadClasses() {
             if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
         },
@@ -25436,10 +25433,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     case "9":
                         this.displayedTerm = "Winter";
                 }
-                if (termCode.charAt(0) == '2') {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                if (termCode.charAt(0) == "2") {
+                    this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
                 } else {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+                    this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
                 }
                 return this.displayedTerm;
             }
@@ -25958,9 +25955,9 @@ var render = function() {
             _c("div", { staticClass: "row" }, [
               _c("h1", { staticClass: "current_term col-xs-12 type--center" }, [
                 _vm._v(
-                  "\n                    " +
+                  "\n                " +
                     _vm._s(this.displayCurrentTerm) +
-                    " Courses\n                "
+                    " Courses\n            "
                 )
               ])
             ]),
@@ -25978,19 +25975,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fullscreen_width course_banner" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-4 type--center" }, [
-          _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Previous")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-4 type--center" }, [
-          _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Current")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-4 type--center" }, [
-          _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Next")])
-        ])
+    return _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+      _c("div", { staticClass: "col-xs-4 type--center" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Previous")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-4 type--center" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Current")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-4 type--center" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Next")])
       ])
     ])
   }
