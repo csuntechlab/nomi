@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <theme-setting></theme-setting>
         <about-banner></about-banner>
     </div>

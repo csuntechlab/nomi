@@ -1,4 +1,9 @@
 <template>
+<div>
+    <div class="type--center tab__link">
+        Set Theme
+    </div>
+<div class="panel">
     <div class="colorThemes">
         <button id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="colorTheme_item " name="OnceAMatadorAlwaysAMatador">
         Matador</button>
@@ -6,6 +11,8 @@
         <button id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_item " name="bluesTheme"> Blue</button>
         <button id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_item " name="Cloudy"> Cloudy</button>
     </div>
+</div>
+</div>
 </template>
 
 <script>

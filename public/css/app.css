@@ -917,7 +917,7 @@ textarea[type="text"]:focus {
 }
 
 .colorThemes {
-  margin: 5%;
+  padding: 5%;
 }
 
 .colorTheme_item {

@@ -20585,6 +20585,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -20628,62 +20635,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "colorThemes" }, [
-    _c(
-      "button",
-      {
-        staticClass: "colorTheme_item ",
-        attrs: { id: "Matador", name: "OnceAMatadorAlwaysAMatador" },
-        on: {
-          click: function($event) {
-            _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
-          }
-        }
-      },
-      [_vm._v("\n    Matador")]
-    ),
+  return _c("div", [
+    _c("div", { staticClass: "type--center tab__link" }, [
+      _vm._v("\r\n        Set Theme\r\n    ")
+    ]),
     _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "colorTheme_item ",
-        attrs: { id: "Navy", name: "navy" },
-        on: {
-          click: function($event) {
-            _vm.updateTheme("theme-main")
-          }
-        }
-      },
-      [_vm._v(" Navy")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "colorTheme_item ",
-        attrs: { id: "Blues", name: "bluesTheme" },
-        on: {
-          click: function($event) {
-            _vm.updateTheme("theme-bluesTheme")
-          }
-        }
-      },
-      [_vm._v(" Blue")]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "colorTheme_item ",
-        attrs: { id: "Cloudy", name: "Cloudy" },
-        on: {
-          click: function($event) {
-            _vm.updateTheme("theme-Cloudy")
-          }
-        }
-      },
-      [_vm._v(" Cloudy")]
-    )
+    _c("div", { staticClass: "panel" }, [
+      _c("div", { staticClass: "colorThemes" }, [
+        _c(
+          "button",
+          {
+            staticClass: "colorTheme_item ",
+            attrs: { id: "Matador", name: "OnceAMatadorAlwaysAMatador" },
+            on: {
+              click: function($event) {
+                _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
+              }
+            }
+          },
+          [_vm._v("\r\n        Matador")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "colorTheme_item ",
+            attrs: { id: "Navy", name: "navy" },
+            on: {
+              click: function($event) {
+                _vm.updateTheme("theme-main")
+              }
+            }
+          },
+          [_vm._v(" Navy")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "colorTheme_item ",
+            attrs: { id: "Blues", name: "bluesTheme" },
+            on: {
+              click: function($event) {
+                _vm.updateTheme("theme-bluesTheme")
+              }
+            }
+          },
+          [_vm._v(" Blue")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "colorTheme_item ",
+            attrs: { id: "Cloudy", name: "Cloudy" },
+            on: {
+              click: function($event) {
+                _vm.updateTheme("theme-Cloudy")
+              }
+            }
+          },
+          [_vm._v(" Cloudy")]
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -20704,7 +20719,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("theme-setting"), _vm._v(" "), _c("about-banner")], 1)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [_c("theme-setting"), _vm._v(" "), _c("about-banner")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
