@@ -2,7 +2,7 @@ body {
   @include themify($themes) {
     background-color: themed("backgroundColor");
     color: themed("textColor");
-    padding-top: 45px;
+    padding-top: 36px;
   }
 }
 
@@ -32,6 +32,7 @@ textarea[type="text"]:focus {
   @include themify($themes) {
     background-color: themed("navigationBars");
     width: 100%;
+    height: 37px;
     top: 0%;
     position: fixed;
 
@@ -194,11 +195,12 @@ textarea[type="text"]:focus {
 .logo_parent {
   text-align: center;
   flex: 100%;
+  margin-top:-5px;
 }
 
 .csun_logo {
   @include themify($themes) {
-    width: 75px;
+    width: 65px;
     height: 45px;
     background-image: white;
   }
@@ -206,11 +208,12 @@ textarea[type="text"]:focus {
 
 .nomi_logo {
   @include themify($themes) {
-    width: 75px;
-    height: 37px;
+    width: 65px;
+    height: 30px;
     border-left: 1px solid #ccc;
     padding-left: 8px;
     margin-left: 4px;
+    margin-top:2px;
   }
 }
 
