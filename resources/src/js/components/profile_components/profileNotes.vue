@@ -1,60 +1,59 @@
 <template>
     <div>
-        <textarea type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes"></textarea>
+        <textarea class="notes_text" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes"></textarea>
         <div class="type--right">
-            <span v-if="noteSaved" class="notes_status">Notes Saved!</span>
-            <span v-if="unsavedChanges" class="notes_status">Unsaved changes.</span>
-            <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
+            <span v-if="characterCount<601">
+                <span v-if="noteSaved" class="notes_status">Notes Saved!</span>
+                <span v-if="unsavedChanges" class="notes_status">Unsaved changes.</span>
+                <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
+            </span>
+            <span v-if="characterCount>600" id="charCount" class="notes_counter">{{characterCount}}/600</span>
         </div>
     </div>
 </template>
 <script>
-    export default {
-        name: 'profile-notes',
+export default {
+	name: "profile-notes",
 
-        props: ['student'],
+	props: ["student"],
 
-        data: function () {
-            return {
-                unsavedChanges: false,
-                noteSaved: false,
-                showEmail: false,
-                characterCount: 600,
-            }
-        },
+	data: function() {
+		return {
+			unsavedChanges: false,
+			noteSaved: false,
+			showEmail: false
+		};
+	},
 
-        methods: {
+	mounted() {
+		this.resizeNotes();
+	},
 
-            updateNotes(e) {
-                let current = this.characterCount - this.student.notes.length
-                if (current >= 0) {
-                    this.$store.dispatch('updateNotes', e.target.value)
-                        .then(() => {
-                            this.noteSaved = false;
-                            this.unsavedChanges = true;
-                        });
-                } else {
-                    
-                }
-            },
-            commitNotes() {
-                this.$store.dispatch('commitNotes')
-                    .then(() => {
-                        this.noteSaved = true;
-                        this.unsavedChanges = false;
-                    });
-            },
-        },
-        computed: {
-            charactersLeft() {
-                let current = this.characterCount - this.student.notes.length
-                if(current >= 0){
-                    return current
-                } else {
-                    return 0
-                }
-
-            }
-        }
-    }
+	methods: {
+		updateNotes(e) {
+			this.resizeNotes();
+			this.$store.dispatch("updateNotes", e.target.value).then(() => {
+				this.noteSaved = false;
+				this.unsavedChanges = true;
+			});
+		},
+		commitNotes() {
+			if (this.characterCount < 601) {
+				this.$store.dispatch("commitNotes").then(() => {
+					this.noteSaved = true;
+					this.unsavedChanges = false;
+				});
+			}
+		},
+		resizeNotes() {
+			let size = document.querySelector("#ex0").scrollHeight;
+			document.getElementById("ex0").style.height = size + "px";
+		}
+	},
+	computed: {
+		characterCount() {
+			return this.student.notes.length;
+		}
+	}
+};
 </script>
