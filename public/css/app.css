@@ -388,6 +388,10 @@ textarea[type="text"]:focus {
   font-size: 1rem;
 }
 
+.course_padding {
+  margin-bottom: 0.7rem;
+}
+
 .gallery_name {
   font-size: 1.3rem;
   padding: 0 3% 5%;
@@ -627,7 +631,7 @@ textarea[type="text"]:focus {
 
 .theme-main .btn {
   background-color: #4F9DA3;
-  color: #000;
+  color: #fff;
   border: 2px solid transparent;
 }
 
@@ -801,7 +805,7 @@ textarea[type="text"]:focus {
 
 .theme-main .error_bar {
   background-color: #4F9DA3;
-  color: #000;
+  color: #fff;
 }
 
 .theme-bluesTheme .error_bar {

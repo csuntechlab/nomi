@@ -25709,7 +25709,7 @@ var render = function() {
       _c(
         "router-link",
         {
-          staticClass: "panel fullscreen_width col-xs-12",
+          staticClass: "panel course_padding fullscreen_width col-xs-12",
           attrs: { to: "/class/" + _vm.course.id }
         },
         [
@@ -25976,7 +25976,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row course_banner fullscreen_width" }, [
-      _c("div", { staticClass: "col-xs-4 type--center" }, [
+      _c("div", { staticClass: "col-xs-4 type--right" }, [
         _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Previous")])
       ]),
       _vm._v(" "),
@@ -25984,7 +25984,7 @@ var staticRenderFns = [
         _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Current")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-4 type--center" }, [
+      _c("div", { staticClass: "col-xs-4 type--left" }, [
         _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Next")])
       ])
     ])

@@ -11,13 +11,13 @@
                 </h1>
             </div>
             <div class="row course_banner fullscreen_width">
-                <div class="col-xs-4 type--center">
+                <div class="col-xs-4 type--right">
                     <button class="btn btn-sm">Previous</button>
                 </div>
                 <div class="col-xs-4 type--center">
                     <button class="btn btn-sm">Current</button>
                 </div>
-                <div class="col-xs-4 type--center">
+                <div class="col-xs-4 type--left">
                     <button class="btn btn-sm">Next</button>
                 </div>
             </div>
