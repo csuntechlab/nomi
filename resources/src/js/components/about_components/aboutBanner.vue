@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </div>
-        <div class="panel center">
+        <div class="panel about_padding">
             <div v-if="showAbout">
                 <about-page></about-page>
             </div>

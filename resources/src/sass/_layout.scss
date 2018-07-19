@@ -60,6 +60,10 @@ textarea[type="text"]:focus {
   }
 }
 
+.about_padding{
+  padding: 5%;
+}
+
 .gallery_name {
   font-size: 1.3rem;
   padding: 0 3% 5%;
@@ -148,6 +152,7 @@ textarea[type="text"]:focus {
   }
 }
 
+/*Login Styling*/
 @media only screen and (max-width: 600px) {
   .loginContainer {
     margin: 0 15%;
@@ -165,6 +170,12 @@ textarea[type="text"]:focus {
   right: 0;
   left: 0;
   top: 25%;
+  transition: 0.3s;
+}
+
+.loginContainer_hide {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .loginTitle {
@@ -179,6 +190,7 @@ textarea[type="text"]:focus {
 .loginForm {
   border-radius: 100px !important;
   margin-bottom: 20px;
+  opacity: 1;
 }
 
 ::placeholder {
@@ -186,6 +198,22 @@ textarea[type="text"]:focus {
   opacity: 0.7;
 }
 
+.login_load {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  top: 100%;
+  display: inline-block;
+  transition: 0.4s;
+  visibility: hidden;
+}
+
+.login_load_active {
+  top: 35%;
+  visibility: visible;
+}
+
+/*Navbar Styling*/
 .sr-only {
   @include themify($themes) {
     color: themed("white");
