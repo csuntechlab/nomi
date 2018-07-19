@@ -18733,8 +18733,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__);
+var _name$data$beforeRout;
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -18753,47 +18757,63 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'profile',
+/* harmony default export */ __webpack_exports__["default"] = (_name$data$beforeRout = {
+	name: "profile",
 
-    data: function data() {
-        return {
-            imgUrl: null
-        };
-    },
+	data: function data() {
+		return {
+			imgUrl: null,
+			unsavedChanges: false
+		};
+	},
 
-    components: {
-        profileCarousel: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default.a,
-        profileInfo: __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default.a
-    },
-
-    created: function created() {
-        this.$store.dispatch('disableBackButton');
-        this.$store.dispatch('getStudentProfile', {
-            uri: this.$route.params.emailURI,
-            faculty_id: this.facultyMember.id
-        });
-    },
-    updated: function updated() {
-        this.$store.dispatch('enableBackButton');
-    },
-    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-        if (this.unsavedChanges) {
-            var answer = window.confirm('Do you really want to leave? You have unsaved changes.');
-
-            if (answer) {
-                next();
-            } else {
-                next(false);
-            }
-        } else {
-            next();
-        }
-    },
+	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
+			if (answer) {
+				next();
+			} else {
+				next(false);
+			}
+		}
+	},
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember', 'studentImages']))
-});
+	components: {
+		profileCarousel: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default.a,
+		profileInfo: __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default.a
+	},
+
+	created: function created() {
+		this.$store.dispatch("disableBackButton");
+		this.$store.dispatch("getStudentProfile", {
+			uri: this.$route.params.emailURI,
+			faculty_id: this.facultyMember.id
+		});
+	},
+	updated: function updated() {
+		this.$store.dispatch("enableBackButton");
+	}
+}, _defineProperty(_name$data$beforeRout, "beforeRouteLeave", function beforeRouteLeave(to, from, next) {
+	if (this.unsavedChanges) {
+		var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
+
+		if (answer) {
+			next();
+		} else {
+			next(false);
+		}
+	} else {
+		next();
+	}
+}), _defineProperty(_name$data$beforeRout, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", "studentImages"]))), _defineProperty(_name$data$beforeRout, "methods", {
+	setUnsavedChanges: function setUnsavedChanges() {
+		this.unsavedChanges = true;
+	},
+	setChanges: function setChanges() {
+		this.unsavedChanges = false;
+	}
+}), _name$data$beforeRout);
 
 /***/ }),
 /* 43 */
@@ -19630,17 +19650,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {
         emailModal: __WEBPACK_IMPORTED_MODULE_0__profile_components_emailModal_vue___default.a
     },
-    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-        if (this.unsavedChanges) {
-            var answer = window.confirm('Do you really want to leave? You have unsaved changes.');
-
-            if (answer) {
-                next();
-            } else {
-                next(false);
-            }
-        } else {
-            next();
+    methods: {
+        sendUnsavedChanges: function sendUnsavedChanges() {
+            this.$emit('unsavedChanges');
+        },
+        sendChanges: function sendChanges() {
+            this.$emit('committedChanges');
         }
     }
 });
@@ -19713,6 +19728,8 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue__);
 //
 //
 //
@@ -19724,8 +19741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-notes",
@@ -19738,6 +19754,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			noteSaved: false,
 			showEmail: false
 		};
+	},
+
+	components: {
+		modal: __WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue___default.a
 	},
 
 	mounted: function mounted() {
@@ -19753,15 +19773,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$store.dispatch("updateNotes", e.target.value).then(function () {
 				_this.noteSaved = false;
 				_this.unsavedChanges = true;
+				_this.$emit('unsavedChanges');
 			});
 		},
 		commitNotes: function commitNotes() {
 			var _this2 = this;
 
-			if (this.characterCount < 601) {
+			if (this.characterCount < 601 && this.unsavedChanges == true) {
 				this.$store.dispatch("commitNotes").then(function () {
 					_this2.noteSaved = true;
 					_this2.unsavedChanges = false;
+					_this2.$emit('committedChanges');
 				});
 			}
 		},
@@ -19772,7 +19794,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	computed: {
 		characterCount: function characterCount() {
-			return this.student.notes.length;
+			if (this.student.notes != null) {
+				return this.student.notes.length;
+			}
 		}
 	}
 });
@@ -19807,18 +19831,6 @@ var render = function() {
     _c("div", { staticClass: "type--right" }, [
       _vm.characterCount < 601
         ? _c("span", [
-            _vm.noteSaved
-              ? _c("span", { staticClass: "notes_status" }, [
-                  _vm._v("Notes Saved!")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.unsavedChanges
-              ? _c("span", { staticClass: "notes_status" }, [
-                  _vm._v("Unsaved changes.")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
             _c(
               "button",
               {
@@ -19878,12 +19890,7 @@ var render = function() {
               "div",
               { staticClass: "col-sm-12" },
               [
-                _c("profile-notes", {
-                  staticClass: "profile_notes_padding",
-                  attrs: { student: _vm.student }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "type--left profile_email" }, [
+                _c("div", { staticClass: "profile_email" }, [
                   _c("i", {
                     staticClass: "fas fa-envelope",
                     on: {
@@ -19907,7 +19914,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "type--left" }, [
+                _c("div", [
                   _c("strong", [_vm._v("Bio:")]),
                   _vm._v(" "),
                   this.student.bio == null
@@ -19917,7 +19924,16 @@ var render = function() {
                         [_vm._v(" Pending biography from student.")]
                       )
                     : _c("span", [_vm._v(" " + _vm._s(this.student.bio))])
-                ])
+                ]),
+                _vm._v(" "),
+                _c("profile-notes", {
+                  staticClass: "profile_notes_padding",
+                  attrs: { student: _vm.student },
+                  on: {
+                    unsavedChanges: _vm.sendUnsavedChanges,
+                    committedChanges: _vm.sendChanges
+                  }
+                })
               ],
               1
             )
@@ -19969,7 +19985,13 @@ var render = function() {
           [
             _c("profile-carousel", { attrs: { student: this.studentProfile } }),
             _vm._v(" "),
-            _c("profile-info", { attrs: { student: this.studentProfile } })
+            _c("profile-info", {
+              attrs: { student: this.studentProfile },
+              on: {
+                unsavedChanges: _vm.setUnsavedChanges,
+                committedChanges: _vm.setChanges
+              }
+            })
           ],
           1
         )

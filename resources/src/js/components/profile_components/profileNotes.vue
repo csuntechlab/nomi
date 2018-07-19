@@ -3,8 +3,6 @@
         <textarea class="notes_text" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes"></textarea>
         <div class="type--right">
             <span v-if="characterCount<601">
-                <span v-if="noteSaved" class="notes_status">Notes Saved!</span>
-                <span v-if="unsavedChanges" class="notes_status">Unsaved changes.</span>
                 <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
             </span>
             <span v-if="characterCount>600" id="charCount" class="notes_counter">{{characterCount}}/600</span>
@@ -12,6 +10,7 @@
     </div>
 </template>
 <script>
+import modal from "../fixed_components/modal.vue"
 export default {
 	name: "profile-notes",
 
@@ -25,6 +24,10 @@ export default {
 		};
 	},
 
+	components: {
+		modal
+	},
+
 	mounted() {
 		this.resizeNotes();
 	},
@@ -35,13 +38,15 @@ export default {
 			this.$store.dispatch("updateNotes", e.target.value).then(() => {
 				this.noteSaved = false;
 				this.unsavedChanges = true;
+				this.$emit('unsavedChanges');
 			});
 		},
 		commitNotes() {
-			if (this.characterCount < 601) {
+			if (this.characterCount < 601 && this.unsavedChanges == true) {
 				this.$store.dispatch("commitNotes").then(() => {
 					this.noteSaved = true;
 					this.unsavedChanges = false;
+					this.$emit('committedChanges');
 				});
 			}
 		},
@@ -52,8 +57,10 @@ export default {
 	},
 	computed: {
 		characterCount() {
-			return this.student.notes.length;
-		}
+			if(this.student.notes != null){
+				return this.student.notes.length;
+			}
+		},
 	}
 };
 </script>
