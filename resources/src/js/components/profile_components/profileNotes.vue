@@ -1,11 +1,11 @@
 <template>
     <div>
-        <textarea class="notes_text" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes"></textarea>
-        <div class="type--right">
-            <span v-if="characterCount<601">
+        <textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes"></textarea>
+        <div>
+            <span class="pull-right">
                 <button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save Notes</button>
             </span>
-            <span v-if="characterCount>600" id="charCount" class="notes_counter">{{characterCount}}/600</span>
+			<span id="charCount" class="notes_status pull-left">{{characterCount}}/600</span>
         </div>
     </div>
 </template>
@@ -42,7 +42,7 @@ export default {
 			});
 		},
 		commitNotes() {
-			if (this.characterCount < 601 && this.unsavedChanges == true) {
+			if (this.unsavedChanges == true) {
 				this.$store.dispatch("commitNotes").then(() => {
 					this.noteSaved = true;
 					this.unsavedChanges = false;

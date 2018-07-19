@@ -19779,7 +19779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		commitNotes: function commitNotes() {
 			var _this2 = this;
 
-			if (this.characterCount < 601 && this.unsavedChanges == true) {
+			if (this.unsavedChanges == true) {
 				this.$store.dispatch("commitNotes").then(function () {
 					_this2.noteSaved = true;
 					_this2.unsavedChanges = false;
@@ -19812,7 +19812,7 @@ var render = function() {
   return _c("div", [
     _c("textarea", {
       staticClass: "notes_text",
-      attrs: { type: "text", id: "ex0", name: "ex0" },
+      attrs: { maxlength: "600", type: "text", id: "ex0", name: "ex0" },
       domProps: { value: this.student.notes },
       on: {
         input: _vm.updateNotes,
@@ -19828,32 +19828,28 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "type--right" }, [
-      _vm.characterCount < 601
-        ? _c("span", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-default",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.commitNotes($event)
-                  }
-                }
-              },
-              [_vm._v("Save Notes")]
-            )
-          ])
-        : _vm._e(),
+    _c("div", [
+      _c("span", { staticClass: "pull-right" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-default",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.commitNotes($event)
+              }
+            }
+          },
+          [_vm._v("Save Notes")]
+        )
+      ]),
       _vm._v(" "),
-      _vm.characterCount > 600
-        ? _c(
-            "span",
-            { staticClass: "notes_counter", attrs: { id: "charCount" } },
-            [_vm._v(_vm._s(_vm.characterCount) + "/600")]
-          )
-        : _vm._e()
+      _c(
+        "span",
+        { staticClass: "notes_status pull-left", attrs: { id: "charCount" } },
+        [_vm._v(_vm._s(_vm.characterCount) + "/600")]
+      )
     ])
   ])
 }
