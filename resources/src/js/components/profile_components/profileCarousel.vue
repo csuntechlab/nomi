@@ -80,8 +80,7 @@
 </template>
 <script>
 import croppaModal from "../profile_components/croppaModal.vue";
-import imageHandler from "../profile_components/imageHandler.vue";
-import profilePicture from "../profile_components/profilePicture.vue";
+import imageHandler
 import { mapGetters } from 'vuex';
 export default {
         name: "profile-carousel",
@@ -108,6 +107,7 @@ export default {
         },
         components: {
             croppaModal,
+            imageHandler
         },
         computed: {
             ...mapGetters([
