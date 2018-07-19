@@ -50,8 +50,8 @@
   padding: 0;
 }
 
-.colorThemes {
-  margin-top: 25%;
+.colorThemes{
+  padding: 5%;
 }
 
 .colorTheme_item {
@@ -59,10 +59,6 @@
   color: white;
   width: 100%;
   border: 2px solid transparent;
-}
-
-.colorTheme_item:hover {
-  filter: brightness(150%);
 }
 
 @media only screen and (min-width: 600px) {
