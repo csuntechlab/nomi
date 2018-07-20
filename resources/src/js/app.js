@@ -13,22 +13,6 @@ Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('error-bar', require('./components/fixed_components/errorBar.vue'));
 Vue.component('permission-modal', require('./components/fixed_components/permissionModal.vue'));
-Vue.component('loading-button', require('./components/fixed_components/loadingButton.vue'));
-Vue.component('list-grid-selector', require('./components/fixed_components/listGridSelector.vue'));
-Vue.component('modal', require('./components/fixed_components/modal.vue'));
-Vue.component('theme-selector', require('./components/fixed_components/themeSelector.vue'));
-Vue.component('theme-setting', require('./components/fixed_components/themeSetting.vue'));
-Vue.component('back-button', require('./components/fixed_components/backButton.vue'));
-
-Vue.component('roster-container', require('./components/roster_components/rosterContainer.vue'));
-Vue.component('course-banner', require('./components/roster_components/courseBanner.vue'));
-Vue.component('settings-banner', require('./components/roster_components/settingsBanner.vue'));
-
-Vue.component('courses-container', require('./components/course_components/coursesContainer.vue'));
-Vue.component('term-selector', require('./components/course_components/termSelector.vue'));
-
-Vue.component('profile-picture', require('./components/profile_components/profilePicture.vue'));
-Vue.component('image-handler', require('./components/profile_components/imageHandler.vue'));
 
 const app = new Vue({
     el: '#app',

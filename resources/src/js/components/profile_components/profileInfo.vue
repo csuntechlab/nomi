@@ -21,7 +21,8 @@
 </template>
 <script>
     import emailModal from "./emailModal.vue";
-    import profileNotes from "./profileNotes.vue"
+    import profileNotes from "./profileNotes.vue";
+    import profilePicture from "./profilePicture.vue";
     export default {
         name: "profile-info",
         props: [
@@ -34,7 +35,8 @@
         },
         components: {
             emailModal,
-            profileNotes
+            profileNotes,
+            profilePicture
         },
         beforeRouteLeave(to, from, next) {
             if (this.unsavedChanges) {

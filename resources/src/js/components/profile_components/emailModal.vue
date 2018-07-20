@@ -7,7 +7,7 @@
     </modal>
 </template>
 <script>
-import modal from "../../components/fixed_components/modal.vue";
+import modal from "../fixed_components/modal.vue";
 export default {
         name: "email-modal",
 
