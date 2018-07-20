@@ -19,7 +19,7 @@
 <script>
 import axios from "axios";
 import { mapGetters } from "vuex";
-
+import profilePicture from "../profile_components/profilePicture.vue";
 export default {
   name: "flash-card",
 
@@ -29,6 +29,10 @@ export default {
       messages: true,
       errors: []
     };
+  },
+
+  components: {
+    profilePicture,
   },
 
   props: ["student"],

@@ -20,8 +20,9 @@
     </div>
 </template>
 <script>
-    import emailModal from "../profile_components/emailModal.vue";
-    import profileNotes from "../profile_components/profileNotes.vue";
+    import emailModal from "./emailModal.vue";
+    import profileNotes from "./profileNotes.vue";
+    import profilePicture from "./profilePicture.vue";
     export default {
         name: "profile-info",
         props: [
@@ -33,7 +34,9 @@
             }
         },
         components: {
-            emailModal
+            emailModal,
+            profileNotes,
+            profilePicture
         },
         methods: {
             sendUnsavedChanges(){
