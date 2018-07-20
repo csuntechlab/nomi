@@ -6,14 +6,3 @@
     <div id="menu-bar-padding" style="height:60px"></div>
     <menu-bar></menu-bar>
 @stop
-<script>
-    import 
-    export default{
-        components: {
-            errorBar,
-            permissionModal,
-            menuBar
-        },
-
-    }
-</script>
