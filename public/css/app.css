@@ -1261,6 +1261,10 @@ textarea[type="text"]:focus {
   margin-right: -50vw;
 }
 
+.mb_0 {
+  margin-bottom: 0;
+}
+
 .theme-login .underlineStyling {
   border-bottom: 5px solid #FFFFFF;
 }
