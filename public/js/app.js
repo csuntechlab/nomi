@@ -18777,7 +18777,7 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "panel__header type--center" }, [
-            _c("h2", { staticClass: "course_title" }, [
+            _c("h2", { staticClass: "course_title pull-left" }, [
               _vm._v(_vm._s(_vm.course.title))
             ])
           ]),

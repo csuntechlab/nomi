@@ -2,7 +2,7 @@
     <div class="row">
         <router-link :to="'/class/'+course.id" class="panel course_padding fullscreen_width col-xs-12">
             <div class="panel__header type--center">
-                <h2 class="course_title">{{course.title}}</h2>
+                <h2 class="course_title pull-left">{{course.title}}</h2>
             </div>
             <div class="panel__content">
                 <div class="row">
