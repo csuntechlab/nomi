@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :id="this.name+'-img'" :src="this.image" class="profile_padding img--circle img--fluid" name="photo">
+        <img :id="this.name+'-img'" :src="this.image" class="profile_padding profile_image img--circle img--fluid" name="photo">
     </div>
 </template>
 
