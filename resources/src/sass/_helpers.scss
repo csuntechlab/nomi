@@ -231,19 +231,31 @@
   user-select: none;
   background-image: none;
   border: 2px solid transparent;
-  border-radius: 25px;
+  border-radius: 100%;
+  height: 2em;
+  width: 2em;
+  margin: 0 .9em;
 }
 
 .confirm_btn {
   color: green;
   background-color: #fff;
   border-color: #ccc;
+  padding:0;
 }
 
 .confirm_btn:hover {
   color: green;
   background-color: #e6e6e6;
   border-color: #adadad;
+  padding: 0;
+}
+
+.decline_btn {
+  color: red;
+  background-color: #fff;
+  border-color: #ccc;
+  padding: 0;
 }
 
 .decline_btn:hover {
@@ -252,11 +264,6 @@
   border-color: #adadad;
 }
 
-.decline_btn {
-  color: red;
-  background-color: #fff;
-  border-color: #ccc;
-}
 
 .permission_footer {
   margin: 15% 0 5%;

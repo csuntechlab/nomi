@@ -71,7 +71,7 @@
 
 .theme-login body {
   background-color: #FFFFFF;
-  color: #000;
+  color: #464646;
   padding-top: 36px;
 }
 
@@ -350,7 +350,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .course_banner {
-  color: #000;
+  color: #464646;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
   padding: 10px 0;
@@ -516,7 +516,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .tab__link {
-  color: #000;
+  color: #464646;
   background-color: #FFFFFF;
   border-bottom: 5px solid #FFFFFF;
 }
@@ -1214,31 +1214,37 @@ textarea[type="text"]:focus {
   user-select: none;
   background-image: none;
   border: 2px solid transparent;
-  border-radius: 25px;
+  border-radius: 100%;
+  height: 2em;
+  width: 2em;
+  margin: 0 .9em;
 }
 
 .confirm_btn {
   color: green;
   background-color: #fff;
   border-color: #ccc;
+  padding: 0;
 }
 
 .confirm_btn:hover {
   color: green;
   background-color: #e6e6e6;
   border-color: #adadad;
-}
-
-.decline_btn:hover {
-  color: red;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  padding: 0;
 }
 
 .decline_btn {
   color: red;
   background-color: #fff;
   border-color: #ccc;
+  padding: 0;
+}
+
+.decline_btn:hover {
+  color: red;
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }
 
 .permission_footer {
@@ -1358,16 +1364,15 @@ textarea[type="text"]:focus {
 }
 
 .modal-container {
-  width: 332px;
+  max-width: 20em;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 1.5em 2em;
   background-color: #fff;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header h3 {
