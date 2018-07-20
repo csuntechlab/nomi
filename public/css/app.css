@@ -1189,7 +1189,7 @@ textarea[type="text"]:focus {
 }
 
 .profile_notes_padding {
-  padding-bottom: 3rem;
+  padding-top: 2rem;
 }
 
 .modal_btn {
@@ -1215,9 +1215,9 @@ textarea[type="text"]:focus {
   background-image: none;
   border: 2px solid transparent;
   border-radius: 100%;
-  height: 2em;
-  width: 2em;
-  margin: 0 .9em;
+  height: 2.2em;
+  width: 2.2em;
+  margin: 0 .6em;
 }
 
 .confirm_btn {
@@ -1342,7 +1342,13 @@ textarea[type="text"]:focus {
 
 .notes_status {
   padding-right: 5px;
-  opacity: 0.5;
+  opacity: .5;
+}
+
+.notes_text {
+  resize: none;
+  min-height: 100px;
+  overflow: hidden;
 }
 
 .modal-mask {
