@@ -3,7 +3,7 @@
         <div v-if="studentProfile.images == null" class="type--center">
             <br>
             <br>
-            <i class="fa fa-spinner fa-spin fa-3x fa-blue"></i>
+            <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
         </div>
         <div v-else>
             <profile-carousel :student="this.studentProfile"></profile-carousel>
@@ -30,7 +30,8 @@
             profileInfo
         },
 
-        created () {
+        created() {
+            this.$store.dispatch('disableBackButton');
             this.$store.dispatch(
                 'getStudentProfile',
                 {
@@ -38,6 +39,25 @@
                     faculty_id: this.facultyMember.id
                 }
             );
+        },
+
+        updated(){
+            this.$store.dispatch('enableBackButton');
+        },
+
+
+        beforeRouteLeave (to, from, next) {
+            if(this.unsavedChanges) {
+                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+
+                if (answer) {
+                    next();
+                } else {
+                    next(false);
+                }
+            } else {
+                next();
+            }
         },
 
         computed: {

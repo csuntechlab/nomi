@@ -68,6 +68,13 @@ export default {
         context.commit('UPDATE_IMAGE', payload);
     },
 
+    disableBackButton (context) {
+        context.commit('DISABLE_BACK_BUTTON');
+    },
+
+    enableBackButton (context) {
+        context.commit('ENABLE_BACK_BUTTON');
+    },
     setSpring (context) {
         context.commit('SET_SPRING');
     },

@@ -1,8 +1,12 @@
 <template>
-    <i v-if="!hideBack"
-       class="fa fa-angle-left fa-3x back_button"
-       title="Go Back"
-       @click="goBack"></i>
+    <div v-if="!hideBack">
+        <div v-if="!disableBack">
+            <i class="fa fa-angle-left fa-3x back_button" title="Go Back" @click="goBack"></i>
+        </div>
+        <div v-else>
+            <i class="fa fa-angle-left fa-3x back_button_disabled"></i>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -12,8 +16,8 @@
 
         methods: {
             goBack: function () {
-                if(window.location.hash.split('/')[1]=='class'){
-                    this.$router.push({name:'home'});
+                if (window.location.hash.split('/')[1] == 'class') {
+                    this.$router.push({ name: 'home' });
                 }
                 else
                     this.$router.go(-1);
@@ -22,7 +26,8 @@
 
         computed: {
             ...mapGetters([
-                'hideBack'
+                'hideBack',
+                'disableBack'
             ]),
         }
     }

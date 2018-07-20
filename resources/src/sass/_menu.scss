@@ -37,6 +37,10 @@
     transition: 0.3s;
 }
 
+.menu_links:hover{
+  opacity: 0.5;
+}
+
 .faculty_links{
   color: white;
   text-decoration: none;
@@ -48,11 +52,6 @@
   text-align:center;
   display: block;
   transition: 0.3s;
-}
-
-
-.menu a:hover {
-  color: #f1f1f1;
 }
 
 .extra_padding{

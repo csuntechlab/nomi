@@ -1,14 +1,10 @@
 @extends('master')
 @section('content')
-    <div class="container">
+    <div class="loginContainer">
         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-        <h1>Faculty Log In</h1>
-        Username
-        {{ Form::text('username') }}
-        <br>
-        Password
-        {{ Form::password('password') }}
-        <br>
+        <h3 class="loginTitle">LOGIN</h3>
+        {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }}
+        {{ Form::password('password', ['class' => 'loginForm', 'placeholder' => 'Password']) }}
         <loading-button></loading-button>
         {{ Form::close() }}
     </div>
