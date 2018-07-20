@@ -48,6 +48,7 @@ textarea[type="text"]:focus {
     background-color: themed("panelColor");
     box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
     border: none;
+    margin-bottom: 1rem;
 
     .panel__img {
       height: auto;
@@ -58,6 +59,32 @@ textarea[type="text"]:focus {
       border-bottom: 0;
     }
   }
+}
+
+.current_term{
+  font-weight:bold;
+  font-size: 1.6rem;
+  margin-bottom: 0;
+  margin-top: 0.833rem;
+}
+
+.course_banner{
+  @include themify($themes){
+    background-color: themed("courseBanner");
+    color: themed("textColor");
+    margin-top: 0.833rem;
+    margin-bottom: 0.833rem;
+    padding: 10px 0;
+  }
+}
+
+.course_title{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.course_padding{
+  margin-bottom: 0.7rem;
 }
 
 .about_padding{

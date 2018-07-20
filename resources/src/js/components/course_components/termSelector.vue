@@ -1,5 +1,5 @@
 <template>
-    <div class="row form__group">
+    <div class="row">
         <label for="semester-select"></label>
         <div v-if="!formValidated" id="error_year_bar" class="alert alert--warning">
             <strong>Oops!</strong> Please enter a valid year

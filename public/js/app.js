@@ -17936,7 +17936,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row form__group" }, [
+  return _c("div", { staticClass: "row" }, [
     _c("label", { attrs: { for: "semester-select" } }),
     _vm._v(" "),
     !_vm.formValidated
@@ -18096,6 +18096,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -18104,7 +18119,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     data: function data() {
         return {
-            displayedTerm: ''
+            displayedTerm: ""
         };
     },
 
@@ -18114,11 +18129,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     //On page load, sets 'Spring' as default season option
     created: function created() {
-        this.$store.dispatch('setSpring');
+        this.$store.dispatch("setSpring");
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'loadingClasses']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "loadingClasses"]), {
         shouldLoadClasses: function shouldLoadClasses() {
             if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
         },
@@ -18138,10 +18153,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     case "9":
                         this.displayedTerm = "Winter";
                 }
-                if (termCode.charAt(0) == '2') {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                if (termCode.charAt(0) == "2") {
+                    this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
                 } else {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+                    this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
                 }
                 return this.displayedTerm;
             }
@@ -18328,7 +18343,7 @@ exports = module.exports = __webpack_require__(36)(false);
 
 
 // module
-exports.push([module.i, "\n.list__item[data-v-3629f604]{\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n    box-shadow: 0 5px 9px 3px rgba(0,0,0,0.2);\n}\n", ""]);
+exports.push([module.i, "\n.list__item[data-v-3629f604] {\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\n    box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\n}\n", ""]);
 
 // exports
 
@@ -18704,6 +18719,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-list-item",
@@ -18724,10 +18745,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         convertTime: function convertTime(OriginalTime) {
             var time = OriginalTime;
             var hour = parseInt(time.substring(0, 2));
-            var min = time.substring(2, 4) + "am";
+            var min = time.substring(2, 4) + " a.m.";
             if (hour > 12) {
                 hour = hour - 12;
-                min = min.substring(0, 2) + "pm";
+                min = min.substring(0, 2) + " p.m.";
             }
             time = hour + ":" + min;
             return time;
@@ -18745,59 +18766,71 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "router-link",
-    {
-      staticClass: "panel col-lg-12 col-md-12 col-xs-12",
-      attrs: { to: "/class/" + _vm.course.id }
-    },
+    "div",
+    { staticClass: "row" },
     [
       _c(
-        "h6",
-        { staticClass: "panel__header type--center" },
+        "router-link",
+        {
+          staticClass: "panel course_padding fullscreen_width col-xs-12",
+          attrs: { to: "/class/" + _vm.course.id }
+        },
         [
-          _c("router-link", { attrs: { to: "/class/" + _vm.course.id } }, [
-            _vm._v(_vm._s(_vm.course.title))
+          _c("div", { staticClass: "panel__header type--center" }, [
+            _c("h2", { staticClass: "course_title" }, [
+              _vm._v(_vm._s(_vm.course.title))
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel__content" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-xs-7" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.course.subject) +
+                    " " +
+                    _vm._s(_vm.course.catalog_number) +
+                    ": #" +
+                    _vm._s(_vm.course.section_number) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-5" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.course.meetings[0].location) +
+                    " " +
+                    _vm._s(_vm.course.meetings[0].days) +
+                    "\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-xs-7" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.classStartTime) +
+                    " - " +
+                    _vm._s(_vm.classEndTime) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-5" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.course.enrollment_count) +
+                    " Students\n                "
+                )
+              ])
+            ])
           ])
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "panel__content" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.course.subject) +
-              " " +
-              _vm._s(_vm.course.catalog_number) +
-              ": #" +
-              _vm._s(_vm.course.section_number) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.course.meetings[0].location) +
-              " " +
-              _vm._s(_vm.course.meetings[0].days) +
-              "\n                " +
-              _vm._s(_vm.classStartTime) +
-              " - " +
-              _vm._s(_vm.classEndTime) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.course.enrollment_count) +
-              " Students\n            "
-          )
-        ])
-      ])
-    ]
+        ]
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -18982,7 +19015,17 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("h2", [_vm._v(_vm._s(this.displayCurrentTerm) + " Courses")]),
+            _c("div", { staticClass: "row" }, [
+              _c("h1", { staticClass: "current_term col-xs-12 type--center" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(this.displayCurrentTerm) +
+                    " Courses\n            "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0),
             _vm._v(" "),
             _c("course-list")
           ],
@@ -18990,7 +19033,26 @@ var render = function() {
         )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+      _c("div", { staticClass: "col-xs-4 type--right" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Previous")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-4 type--center" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Current")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-4 type--left" }, [
+        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Next")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

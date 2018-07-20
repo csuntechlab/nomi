@@ -58,7 +58,7 @@
   padding: 5% 0;
   color: white;
   width: 100%;
-  border: 2px solid transparent
+  border: 2px solid transparent;
 }
 
 @media only screen and (min-width: 600px) {
@@ -96,7 +96,7 @@
 }
 
 .back_button_disabled {
-  color: rgba($color: #FFF, $alpha: 0.2);
+  color: rgba($color: #fff, $alpha: 0.2);
   position: absolute;
   left: 15px;
   transition: 25ms;
@@ -151,7 +151,7 @@
 }
 
 .sort_filters {
-  margin: 0 auto 10px
+  margin: 0 auto 10px;
 }
 
 .shuffle_button {
@@ -161,7 +161,7 @@
   bottom: 9%;
   padding: 12px;
   border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .text_bold {
@@ -185,17 +185,17 @@
   top: 50%;
   left: 50%;
   color: rgba($color: #fff, $alpha: 0.5);
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 }
-.display_inline{
+.display_inline {
   display: inline;
 }
 
-.display_inline_block{
+.display_inline_block {
   display: inline-block;
 }
 
-.text_italic{
+.text_italic {
   font-style: italic;
 }
 
@@ -206,11 +206,11 @@
   padding-right: 01.875rem;
 }
 
-.profile_notes_padding{
+.profile_notes_padding {
   padding-bottom: 3rem;
 }
 
-.modal_btn{
+.modal_btn {
   display: inline-block;
   padding: 6px 20px;
   margin: 0 3%;
@@ -234,7 +234,7 @@
   border-radius: 25px;
 }
 
-.confirm_btn{
+.confirm_btn {
   color: green;
   background-color: #fff;
   border-color: #ccc;
@@ -252,13 +252,22 @@
   border-color: #adadad;
 }
 
-.decline_btn{
+.decline_btn {
   color: red;
   background-color: #fff;
   border-color: #ccc;
 }
 
-.permission_footer{
+.permission_footer {
   margin: 15% 0 5%;
   text-align: center;
+}
+
+.fullscreen_width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }

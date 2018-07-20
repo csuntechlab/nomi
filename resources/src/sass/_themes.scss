@@ -8,14 +8,15 @@ $themes: (
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
-  navyTheme: (
+  main: (
     navigationBars: #0F1821,
     backgroundColor: #E5E5E5,
     textColor: #000,
     panelColor: #F4F4F4,
     accentColor: #4F9DA3,
     buttonColor: #4F9DA3,
-    buttonText: #000,
+    buttonText: #fff,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
 	  mainFontFamily: helvetica,
@@ -29,6 +30,7 @@ $themes: (
     accentColor: #4CA1DB,
     buttonColor: #4CA1DB,
     buttonText: #fff,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -42,6 +44,7 @@ $themes: (
     buttonColor: #FFC836,
     buttonText: #000,
     accentColor: #747474,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -55,6 +58,7 @@ $themes: (
     buttonColor: #E74A37,
     buttonText: #fff,
     accentColor: #E74A37,
+    courseBanner: rgba(0,0,0,0.05),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
