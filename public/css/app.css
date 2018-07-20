@@ -75,7 +75,7 @@
   padding-top: 36px;
 }
 
-.theme-navyTheme body {
+.theme-main body {
   background-color: #E5E5E5;
   color: #000;
   padding-top: 36px;
@@ -111,7 +111,7 @@
   color: #FFFFFF;
 }
 
-.theme-navyTheme html * {
+.theme-main html * {
   font-size: 1.1rem;
   font-family: helvetica;
   color: #E5E5E5;
@@ -168,7 +168,7 @@ textarea[type="text"]:focus {
   color: #FFFFFF;
 }
 
-.theme-navyTheme .primary-nav {
+.theme-main .primary-nav {
   background-color: #0F1821;
   width: 100%;
   height: 37px;
@@ -176,7 +176,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-navyTheme .primary-nav .primary-nav__sub-brand {
+.theme-main .primary-nav .primary-nav__sub-brand {
   color: #E5E5E5;
 }
 
@@ -246,7 +246,7 @@ textarea[type="text"]:focus {
   border-bottom: 0;
 }
 
-.theme-navyTheme .panel {
+.theme-main .panel {
   border-radius: 3px;
   background-color: #F4F4F4;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -254,12 +254,12 @@ textarea[type="text"]:focus {
   border: none;
 }
 
-.theme-navyTheme .panel .panel__img {
+.theme-main .panel .panel__img {
   height: auto;
   background-color: #F4F4F4;
 }
 
-.theme-navyTheme .panel .panel__header {
+.theme-main .panel .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -336,6 +336,68 @@ textarea[type="text"]:focus {
   border-bottom: 0;
 }
 
+.current_term {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: 0;
+  margin-top: 0.833rem;
+}
+
+.theme-login .course_banner {
+  color: #000;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.theme-main .course_banner {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.theme-bluesTheme .course_banner {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.theme-Cloudy .course_banner {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course_banner {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.theme-Dark .course_banner {
+  color: #a4c7c7;
+  margin-top: 0.833rem;
+  margin-bottom: 0.833rem;
+  padding: 10px 0;
+}
+
+.course_title {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.course_padding {
+  margin-bottom: 0.7rem;
+}
+
 .about_padding {
   padding: 5%;
 }
@@ -357,7 +419,7 @@ textarea[type="text"]:focus {
   margin-top: 6%;
 }
 
-.theme-navyTheme .flash_panel {
+.theme-main .flash_panel {
   border-radius: 3px;
   background-color: #F4F4F4;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -453,7 +515,7 @@ textarea[type="text"]:focus {
   border-bottom: 5px solid #FFFFFF;
 }
 
-.theme-navyTheme .tab__link {
+.theme-main .tab__link {
   color: #000;
   background-color: #E5E5E5;
   border-bottom: 5px solid #E5E5E5;
@@ -492,7 +554,7 @@ textarea[type="text"]:focus {
   border-bottom: 5px solid #d00d2d;
 }
 
-.theme-navyTheme .tab__link--active {
+.theme-main .tab__link--active {
   display: block;
   padding: 10px 20px;
   font-weight: normal;
@@ -542,7 +604,7 @@ textarea[type="text"]:focus {
   color: white;
 }
 
-.theme-navyTheme .menu {
+.theme-main .menu {
   background-color: #0F1821;
   color: white;
 }
@@ -577,9 +639,9 @@ textarea[type="text"]:focus {
   border: 2px solid transparent;
 }
 
-.theme-navyTheme .btn {
+.theme-main .btn {
   background-color: #4F9DA3;
-  color: #000;
+  color: #fff;
   border: 2px solid transparent;
 }
 
@@ -700,7 +762,7 @@ textarea[type="text"]:focus {
   background-image: white;
 }
 
-.theme-navyTheme .csun_logo {
+.theme-main .csun_logo {
   width: 65px;
   height: 45px;
   background-image: white;
@@ -739,7 +801,7 @@ textarea[type="text"]:focus {
   margin-top: 2px;
 }
 
-.theme-navyTheme .nomi_logo {
+.theme-main .nomi_logo {
   width: 65px;
   height: 30px;
   border-left: 1px solid #ccc;
@@ -784,9 +846,9 @@ textarea[type="text"]:focus {
   margin-top: 2px;
 }
 
-.theme-navyTheme .error_bar {
+.theme-main .error_bar {
   background-color: #4F9DA3;
-  color: #000;
+  color: #fff;
 }
 
 .theme-bluesTheme .error_bar {
@@ -833,7 +895,7 @@ textarea[type="text"]:focus {
   background-color: #D00D2D;
 }
 
-.theme-navyTheme .makeBlue {
+.theme-main .makeBlue {
   background-color: #0F1821;
 }
 
@@ -853,7 +915,7 @@ textarea[type="text"]:focus {
   background-color: #272727;
 }
 
-.theme-navyTheme .accentColorBlue {
+.theme-main .accentColorBlue {
   background-color: #4F9DA3;
 }
 
@@ -873,7 +935,7 @@ textarea[type="text"]:focus {
   background-color: #2F557B;
 }
 
-.theme-navyTheme .icon_theme {
+.theme-main .icon_theme {
   color: #4F9DA3;
 }
 
@@ -900,7 +962,7 @@ textarea[type="text"]:focus {
   color: #FFFFFF;
 }
 
-.theme-navyTheme .nav-bars {
+.theme-main .nav-bars {
   background-color: #0F1821;
   font-size: 1.1rem;
   font-family: helvetica;
@@ -1178,11 +1240,20 @@ textarea[type="text"]:focus {
   text-align: center;
 }
 
+.fullscreen_width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
 .theme-login .underlineStyling {
   border-bottom: 5px solid #FFFFFF;
 }
 
-.theme-navyTheme .underlineStyling {
+.theme-main .underlineStyling {
   border-bottom: 5px solid #E5E5E5;
 }
 
@@ -1206,7 +1277,7 @@ textarea[type="text"]:focus {
   border-bottom: 5px solid;
 }
 
-.theme-navyTheme .underlineStyling--red {
+.theme-main .underlineStyling--red {
   border-bottom: 5px solid #4F9DA3;
 }
 
@@ -1297,7 +1368,7 @@ textarea[type="text"]:focus {
   margin-top: 0;
 }
 
-.theme-navyTheme .modal-header h3 {
+.theme-main .modal-header h3 {
   color: #4F9DA3;
 }
 
