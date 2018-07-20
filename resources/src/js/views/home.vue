@@ -6,20 +6,27 @@
 </template>
 
 <script>
-    export default {
-        name: "home",
+import termSelector from "../components/course_components/termSelector.vue";
+import coursesContainer from "../components/course_components/coursesContainer.vue";
+export default {
+    name: "home",
+    
+    components: {
+        termSelector,
+        coursesContainer
+    },
 
-        created () {
-            this.$store.dispatch('clearErrors');
-            this.$store.dispatch('hideBackButton');
-        },
+	created() {
+		this.$store.dispatch("clearErrors");
+		this.$store.dispatch("hideBackButton");
+	},
 
-        beforeRouteLeave (to, from, next) {
-            this.$store.dispatch('showBackButton');
-            next();
-        },
-        beforeCreate(){
-            this.$store.dispatch('getOnlyData');
-        },
-    }
+	beforeRouteLeave(to, from, next) {
+		this.$store.dispatch("showBackButton");
+		next();
+	},
+	beforeCreate() {
+		this.$store.dispatch("getOnlyData");
+	}
+};
 </script>

@@ -17,7 +17,7 @@
 
 <script>
     import { mapGetters } from 'vuex'
-    import modal from "../../components/fixed_components/modal.vue"
+    import modal from "../fixed_components/modal.vue";
     
     export default {
         name: "theme-selector",
