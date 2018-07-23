@@ -1,53 +1,54 @@
-.underlineStyling{
-    @include themify($themes) {
-        border-bottom:  5px solid themed('backgroundColor');
-    }
-  }
-.underlineStyling--red{
-  @include themify($themes) {
-    border-bottom:  5px solid themed('accentColor');
-  }
+.underlineStyling {
+	@include themify($themes) {
+		border-bottom: 5px solid themed("backgroundColor");
+	}
+}
+.underlineStyling--red {
+	@include themify($themes) {
+		border-bottom: 5px solid themed("accentColor");
+	}
 }
 
-.underline{
-    float: left;
-    width: 30px;
-    display: block;
-  }
-.underlineContainer{
-    width: 90px;
-    display: inline-block;
-    float: none;
-    list-style-type: square;
-    box-sizing: content-box;
-    padding: 0px;
-  }
-.addedUnderline{
-    width: 100%;
-    text-align: center;
-    height: 0px;
+.underline {
+	float: left;
+	width: 30px;
+	display: block;
+}
+.underlineContainer {
+	width: 90px;
+	display: inline-block;
+	float: none;
+	list-style-type: square;
+	box-sizing: content-box;
+	padding: 0px;
+}
+.addedUnderline {
+	width: 100%;
+	text-align: center;
+	height: 0px;
 }
 
 .profile_image {
-  margin: 0 auto;
+	margin: 0 auto;
 }
 
-.profile_email{
-  margin-bottom: 10px;
+.profile_email {
+	margin-bottom: 10px;
 }
 
-.profile_email_text{
-  text-decoration: underline;
-  margin-left: 6px;
+.profile_email_text {
+	text-decoration: underline;
+	margin-left: 6px;
 }
 
-.notes_status{
-  padding-right: 5px;
-  opacity: .5;
+.notes_status {
+	padding-right: 5px;
+	opacity: 0.5;
 }
 
 .notes_text{
-  resize: none;
+	resize: none;
 	min-height: 100px;
   overflow: hidden;
+  margin-bottom: 0 !important;
 }

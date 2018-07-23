@@ -1350,13 +1350,14 @@ textarea[type="text"]:focus {
 
 .notes_status {
   padding-right: 5px;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .notes_text {
   resize: none;
   min-height: 100px;
   overflow: hidden;
+  margin-bottom: 0 !important;
 }
 
 .modal-mask {
