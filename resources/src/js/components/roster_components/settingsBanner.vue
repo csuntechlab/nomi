@@ -14,10 +14,11 @@
 </template>
 
 <script>
-    import shuffleButton from './shuffleButton.vue'
-    import cardToggleButton from './cardToggleButton.vue'
-    import sortSelector from './sortSelector.vue'
-    import { mapGetters } from "vuex"
+    import shuffleButton from './shuffleButton.vue';
+    import cardToggleButton from './cardToggleButton.vue';
+    import sortSelector from './sortSelector.vue';
+    import listGridSelector from "../fixed_components/listGridSelector.vue";
+    import { mapGetters } from "vuex";
     export default {
         name: "settings-banner",
 
@@ -25,6 +26,7 @@
             shuffleButton,
             cardToggleButton,
             sortSelector,
+            listGridSelector
         },
 
         computed: {

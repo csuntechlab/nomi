@@ -2,20 +2,21 @@ $themes: (
   login: (
     navigationBars: #D00D2D,
     backgroundColor: #FFFFFF,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #F0F0F0,
     buttonColor: #d00d2d,
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
-  navyTheme: (
+  main: ( /*aka navy theme - Needs to be renamed*/
     navigationBars: #0F1821,
     backgroundColor: #E5E5E5,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #F4F4F4,
     accentColor: #4F9DA3,
     buttonColor: #4F9DA3,
-    buttonText: #000,
+    buttonText: #fff,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
 	  mainFontFamily: helvetica,
@@ -24,11 +25,12 @@ $themes: (
   bluesTheme: (
     navigationBars: #0D3753,
     backgroundColor: #d9e7ee,
-    textColor: #000,
+    textColor: #575757,
     panelColor: white,
     accentColor: #4CA1DB,
     buttonColor: #4CA1DB,
     buttonText: #fff,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -37,11 +39,12 @@ $themes: (
   Cloudy: (
     navigationBars: #747474,
     backgroundColor: #D8D8D8,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #FFFFFF,
     buttonColor: #FFC836,
-    buttonText: #000,
+    buttonText: #4e4e4e,
     accentColor: #747474,
+    courseBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -50,11 +53,12 @@ $themes: (
   OnceAMatadorAlwaysAMatador: (
     navigationBars: #D22030,
     backgroundColor: #FFFFFF,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #F0F0F0,
     buttonColor: #E74A37,
     buttonText: #fff,
     accentColor: #E74A37,
+    courseBanner: rgba(0,0,0,0.05),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,

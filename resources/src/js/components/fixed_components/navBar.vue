@@ -10,14 +10,18 @@
 </template>
 
 <script>
-    export default {
-        data: function () {
-          return {
-              url: ''
-          }
-        },
-        created: function () {
-            this.url = document.querySelector('meta[name=app-url]').content;
-        },
-    }
+import backButton from "./backButton.vue"
+export default {
+	data: function() {
+		return {
+			url: ""
+		};
+    },
+    components: {
+        backButton
+    },
+	created: function() {
+		this.url = document.querySelector("meta[name=app-url]").content;
+	}
+};
 </script>

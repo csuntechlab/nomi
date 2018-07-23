@@ -18,13 +18,18 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-import croppaProfile from "../../components/profile_components/croppaProfile.vue";
-import modal from "../../components/fixed_components/modal.vue";
+import modal from "../fixed_components/modal.vue";
+import profilePicture from "../profile_components/profilePicture.vue";
 
 export default {
     name: "student-list-item",
 
     props:["student"],
+
+    components: {
+        modal,
+        profilePicture
+    },
 
     computed: {
             

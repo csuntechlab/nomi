@@ -9,8 +9,8 @@
     </div>
 </template>
 <script>
-    import modal from "../../components/fixed_components/modal.vue";
-    import croppaProfile from "../profile_components/croppaProfile.vue";
+    import modal from "../fixed_components/modal.vue";
+    import croppaProfile from "./croppaProfile.vue";
     import { mapGetters } from 'vuex';
     export default {
         name: "croppa-modal",
