@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes"
-		 @keyup.enter="updateNotes"></textarea>
+		 @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
 		<div class="row">
 			<div class="col-xs-2">
 				<span id="charCount" class="notes_status pull-left">{{characterCount}}/600</span>
@@ -58,6 +58,9 @@
 			resizeNotes() {
 				let size = document.querySelector("#ex0").scrollHeight;
 				document.getElementById("ex0").style.height = size + "px";
+			},
+			scrollToNotes() {
+				document.getElementById("ex0").scrollIntoView();
 			}
 		},
 		computed: {

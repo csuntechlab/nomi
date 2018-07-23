@@ -23309,6 +23309,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		resizeNotes: function resizeNotes() {
 			var size = document.querySelector("#ex0").scrollHeight;
 			document.getElementById("ex0").style.height = size + "px";
+		},
+		scrollToNotes: function scrollToNotes() {
+			document.getElementById("ex0").scrollIntoView();
 		}
 	},
 	computed: {
@@ -23343,7 +23346,8 @@ var render = function() {
             return null
           }
           _vm.updateNotes($event)
-        }
+        },
+        click: _vm.scrollToNotes
       }
     }),
     _vm._v(" "),
