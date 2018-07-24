@@ -1,6 +1,6 @@
 <template>
     <ul id="scrollBar" class="tabs cf">
-        <li v-for="course in this.courses" :key="course.title" :course="course" class="tab__list">
+        <li v-for="course in this.courses" :id="course.id" :key="course.title" :course="course" class="tab__list">
             <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                 <div class="text_bold">
                     {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
@@ -21,12 +21,13 @@
                 else
                     return "tab__link";
             },
-            setScrollBar() {
-                let scrollBar = document.getElementById('scrollBar');
-                let url = window.location.hash.split('/')[2];
-                let itemSize = document.getElementsByTagName('li')[url].offsetWidth;
-                let xPos = itemSize * url;
-                scrollBar.scrollLeft = xPos - itemSize / 2;
+            setScrollBar(){
+                let courseID = window.location.hash.split('/')[2];
+                let courseTab = document.getElementById(courseID);
+                courseTab.scrollIntoView({
+                    block:"end",
+                    behavior: "smooth"
+                });
             },
         },
 

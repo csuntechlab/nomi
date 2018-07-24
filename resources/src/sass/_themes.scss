@@ -18,7 +18,7 @@ $themes: (
     accentColor: #4F9DA3,
     buttonColor: #4F9DA3,
     buttonText: #fff,
-    courseBanner: rgba(255,255,255,0.5),
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
 	  mainFontFamily: helvetica,
@@ -33,7 +33,7 @@ $themes: (
     accentColor: #4CA1DB,
     buttonColor: #4CA1DB,
     buttonText: #fff,
-    courseBanner: rgba(255,255,255,0.5),
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -48,7 +48,7 @@ $themes: (
     buttonColor: #FFC836,
     buttonText: #4e4e4e,
     accentColor: #747474,
-    courseBanner: rgba(255,255,255,0.5),
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -63,7 +63,7 @@ $themes: (
     buttonColor: #E74A37,
     buttonText: #fff,
     accentColor: #E74A37,
-    courseBanner: rgba(0,0,0,0.05),
+    toolBanner: rgba(0,0,0,0.05),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -78,7 +78,7 @@ $themes: (
     buttonColor: rgb(66, 119, 172),
     buttonText: #dadada,
     accentColor: rgb(66, 119, 172),
-    courseBanner: rgba(255,255,255,.05),
+    toolBanner: rgba(255,255,255,.05),
     inputColor: #424242,
     inputBorder: none,
 
@@ -87,24 +87,24 @@ $themes: (
   )
   
 );
-
 @mixin themify($themes: $themes) {
-  @each $theme, $map in $themes {
-
-    .theme-#{$theme} & {
-      $theme-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
-      }
-
-      @content;
-      $theme-map: null !global;
-    }
-
-  }
+	@each $theme, $map in $themes {
+		.theme-#{$theme} & {
+			$theme-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), "#{$key}");
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value
+					)
+				) !global;
+			}
+			@content;
+			$theme-map: null !global;
+		}
+	}
 }
-
 @function themed($key) {
-  @return map-get($theme-map, $key);
+	@return map-get($theme-map, $key);
 }

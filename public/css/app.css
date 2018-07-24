@@ -357,7 +357,6 @@ textarea[type="text"]:focus {
 }
 
 .theme-main .course_banner {
-  background-color: rgba(255, 255, 255, 0.5);
   color: #464646;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -365,7 +364,6 @@ textarea[type="text"]:focus {
 }
 
 .theme-bluesTheme .course_banner {
-  background-color: rgba(255, 255, 255, 0.5);
   color: #575757;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -373,7 +371,6 @@ textarea[type="text"]:focus {
 }
 
 .theme-Cloudy .course_banner {
-  background-color: rgba(255, 255, 255, 0.5);
   color: #464646;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -381,7 +378,6 @@ textarea[type="text"]:focus {
 }
 
 .theme-OnceAMatadorAlwaysAMatador .course_banner {
-  background-color: rgba(0, 0, 0, 0.05);
   color: #464646;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -389,7 +385,6 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .course_banner {
-  background-color: rgba(255, 255, 255, 0.05);
   color: #bababa;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -516,6 +511,7 @@ textarea[type="text"]:focus {
   }
 }
 
+/*Course Select Banner*/
 .theme-login .tab__link {
   color: #464646;
   background-color: #FFFFFF;
@@ -554,7 +550,7 @@ textarea[type="text"]:focus {
 
 .theme-login .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #d00d2d;
@@ -563,7 +559,7 @@ textarea[type="text"]:focus {
 
 .theme-main .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #4F9DA3;
@@ -572,7 +568,7 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #4CA1DB;
@@ -581,7 +577,7 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #FFC836;
@@ -590,7 +586,7 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #E74A37;
@@ -599,7 +595,7 @@ textarea[type="text"]:focus {
 
 .theme-Dark .tab__link--active {
   display: block;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
   color: #4277ac;
@@ -886,6 +882,36 @@ textarea[type="text"]:focus {
 .theme-Dark .error_bar {
   background-color: #4277ac;
   color: #dadada;
+}
+
+.theme-login .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
+}
+
+.theme-main .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
+}
+
+.theme-bluesTheme .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
+}
+
+.theme-Cloudy .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
+}
+
+.theme-Dark .settings_banner {
+  margin-bottom: 1rem;
+  padding: 0.2rem 0;
 }
 
 #Matador {

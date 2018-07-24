@@ -19839,7 +19839,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticStyle: { height: "55px" } }, [
+  return _c("nav", { staticClass: "settings_banner" }, [
     !this.list && this.flash
       ? _c(
           "div",
@@ -19962,11 +19962,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
         },
         setScrollBar: function setScrollBar() {
-            var scrollBar = document.getElementById('scrollBar');
-            var url = window.location.hash.split('/')[2];
-            var itemSize = document.getElementsByTagName('li')[url].offsetWidth;
-            var xPos = itemSize * url;
-            scrollBar.scrollLeft = xPos - itemSize / 2;
+            var courseID = window.location.hash.split('/')[2];
+            var courseTab = document.getElementById(courseID);
+            courseTab.scrollIntoView({
+                block: "end",
+                behavior: "smooth"
+            });
         }
     },
 
@@ -19996,7 +19997,7 @@ var render = function() {
         {
           key: course.title,
           staticClass: "tab__list",
-          attrs: { course: course }
+          attrs: { id: course.id, course: course }
         },
         [
           _c(
