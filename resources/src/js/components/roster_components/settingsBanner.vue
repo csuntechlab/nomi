@@ -1,5 +1,5 @@
 <template>
-    <nav style="height: 55px">
+    <nav class="settings_banner">
         <div v-if="!this.list && this.flash">
             <div class="row sort_filters">
             <list-grid-selector class="col-xs-6 col-sm-6 col-md-6"></list-grid-selector>
