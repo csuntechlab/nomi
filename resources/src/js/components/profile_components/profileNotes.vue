@@ -3,13 +3,15 @@
 		<textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes"
 		 @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
 		<div class="row">
-			<div class="col-xs-2">
-				<span id="charCount" class="notes_status pull-left">{{characterCount}}/600</span>
-			</div>
-			<div class="col-xs-10 type--right">
-				<span v-show="this.unsavedChanges" class="notes_status">Unsaved Changes</span>
-				<span v-show="this.noteSaved" class="notes_status">Changes Saved!</span>
-				<button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
+			<div class="col-xs-12">
+				<span class="type--left">
+					<span id="charCount" class="notes_status">{{characterCount}}/600</span>
+				</span>
+				<span class="type--right">
+					<span v-show="this.unsavedChanges" class="notes_status">Unsaved Changes</span>
+					<span v-show="this.noteSaved" class="notes_status">Changes Saved!</span>
+					<button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
+				</span>
 			</div>
 		</div>
 	</div>
