@@ -23261,8 +23261,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23355,62 +23353,60 @@ var render = function() {
     }),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-xs-12" }, [
-        _c("span", { staticClass: "type--left" }, [
-          _c(
-            "span",
-            { staticClass: "notes_status", attrs: { id: "charCount" } },
-            [_vm._v(_vm._s(_vm.characterCount) + "/600")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "type--right" }, [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: this.unsavedChanges,
-                  expression: "this.unsavedChanges"
-                }
-              ],
-              staticClass: "notes_status"
-            },
-            [_vm._v("Unsaved Changes")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: this.noteSaved,
-                  expression: "this.noteSaved"
-                }
-              ],
-              staticClass: "notes_status"
-            },
-            [_vm._v("Changes Saved!")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-sm btn-default",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.commitNotes($event)
-                }
+      _c("div", { staticClass: "col-xs-2" }, [
+        _c(
+          "span",
+          { staticClass: "notes_status", attrs: { id: "charCount" } },
+          [_vm._v(_vm._s(_vm.characterCount) + "/600")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-10 type--right" }, [
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.unsavedChanges,
+                expression: "this.unsavedChanges"
               }
-            },
-            [_vm._v("Save")]
-          )
-        ])
+            ],
+            staticClass: "notes_status"
+          },
+          [_vm._v("Unsaved Changes")]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.noteSaved,
+                expression: "this.noteSaved"
+              }
+            ],
+            staticClass: "notes_status"
+          },
+          [_vm._v("Changes Saved!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-default",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.commitNotes($event)
+              }
+            }
+          },
+          [_vm._v("Save")]
+        )
       ])
     ])
   ])

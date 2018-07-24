@@ -43,14 +43,14 @@
 
 .notes_status {
 	padding-right: 5px;
-	opacity: 0.8;
+	opacity: .8;
+	font-size: .9rem;
 	vertical-align: top;
-	font-size: 0.8rem;
 }
 
-.notes_text{
+.notes_text {
 	resize: none;
 	min-height: 100px;
-  overflow: hidden;
-  margin-bottom: 0 !important;
+	overflow: hidden;
+	margin-bottom: 0 !important;
 }
