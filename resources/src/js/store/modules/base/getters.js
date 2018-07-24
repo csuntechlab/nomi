@@ -24,7 +24,6 @@ export default {
     term: state => state.term,
     loadingClasses: state => state.loadingClasses,
     permission: state => state.imagePermission,
-    displayTerm: state => state.displayTerm,
 
     // User
     facultyMember: state => state.facultyMember,
