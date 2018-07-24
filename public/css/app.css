@@ -1391,6 +1391,7 @@ textarea[type="text"]:focus {
 }
 
 .notes_text {
+  border-radius: 12px;
   resize: none;
   min-height: 100px;
   overflow: hidden;
