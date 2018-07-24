@@ -290,3 +290,9 @@
 .mb_0 {
 	margin-bottom: 0;
 }
+
+textarea[type="text"]:focus{
+	@include themify($themes) {
+		border: 3px solid themed("focusColor");
+	}
+}

@@ -70,7 +70,7 @@ textarea[type="text"]:focus {
 
 .course_banner {
 	@include themify($themes) {
-		background-color: themed("toolBanners");
+		background-color: themed("toolBanner");
 		color: themed("textColor");
 		margin-top: 0.833rem;
 		margin-bottom: 0.833rem;
@@ -143,7 +143,6 @@ textarea[type="text"]:focus {
 .tab__link {
   @include themify($themes) {
     color: themed("textColor");
-    background-color: themed("backgroundColor");
     border-bottom: none;
   }
 }
@@ -154,8 +153,8 @@ textarea[type="text"]:focus {
 		padding: 5px 20px;
 		font-weight: normal;
 		text-decoration: none;
-		color: themed("buttonColor");
-		border-bottom: 5px solid themed("buttonColor");
+		color: themed("accentColor");
+		border-bottom: 5px solid themed("accentColor");
 	}
 }
 
@@ -287,16 +286,9 @@ input, select, textarea{
 	}
 }
 
-.error_bar {
-	@include themify($themes) {
-		background-color: themed("accentColor");
-		color: themed("buttonText");
-	}
-}
-
 .settings_banner {
 	@include themify($themes) {
-		background: themed("toolBanners");
+		background: themed("toolBanner");
 		margin-bottom: 1rem;
 		padding: 0.2rem 0;
 	}

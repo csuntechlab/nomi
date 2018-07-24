@@ -11,13 +11,17 @@ $themes: (
   ),
   main: ( /*aka navy theme - Needs to be renamed*/
     navigationBars: #0F1821,
+    accentColor: #4F9DA3,
     backgroundColor: #E5E5E5,
     textColor: #464646,
-    panelColor: #F4F4F4,
+    
     hoverColor: #ccc,
-    accentColor: #4F9DA3,
+    focusColor: #4F9DA3,
+    
     buttonColor: #4F9DA3,
     buttonText: #fff,
+    
+    panelColor: #F4F4F4,
     toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
@@ -26,13 +30,17 @@ $themes: (
 
   bluesTheme: (
     navigationBars: #0D3753,
+    accentColor: #4CA1DB,
     backgroundColor: #d9e7ee,
     textColor: #575757,
-    panelColor: white,
+    
     hoverColor: #ccc,
-    accentColor: #4CA1DB,
+    focusColor: #4CA1DB,
+    
     buttonColor: #4CA1DB,
     buttonText: #fff,
+
+    panelColor: white,
     toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
@@ -56,13 +64,17 @@ $themes: (
 
   OnceAMatadorAlwaysAMatador: (
     navigationBars: #D22030,
+    accentColor: #E74A37,
     backgroundColor: #FFFFFF,
     textColor: #464646,
-    panelColor: #F0F0F0,
+
     hoverColor: rgb(221, 221, 221),
+    focusColor: #92A1CD,
+
     buttonColor: #E74A37,
     buttonText: #fff,
-    accentColor: #E74A37,
+
+    panelColor: #F0F0F0,
     toolBanner: rgba(0,0,0,0.05),
 
     mainFontSize: 1.1rem,
@@ -71,14 +83,19 @@ $themes: (
 
   Dark: (
     navigationBars: #1D1D1D,
+    accentColor: #97B5D8,
     backgroundColor: #272727,
     textColor: #bababa,
-    panelColor: #303030,
+
     hoverColor: #272727,
+    focusColor: rgb(66, 119, 172),
+
     buttonColor: rgb(66, 119, 172),
     buttonText: #dadada,
-    accentColor: rgb(66, 119, 172),
+
+    panelColor: #303030,
     toolBanner: rgba(255,255,255,.05),
+
     inputColor: #424242,
     inputBorder: none,
 
