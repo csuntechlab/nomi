@@ -143,7 +143,7 @@ textarea[type="text"]:focus {
   @include themify($themes) {
     color: themed("textColor");
     background-color: themed("backgroundColor");
-    border-bottom: 5px solid themed("backgroundColor");
+    border-bottom: none;
   }
 }
 
@@ -155,6 +155,20 @@ textarea[type="text"]:focus {
     text-decoration: none;
     color: themed("buttonColor");
     border-bottom: 5px solid themed("buttonColor");
+  }
+}
+
+.toolBar__field{
+  @include themify($themes){
+    background: themed("inputColor");
+    border: themed("inputBorder");
+  }
+}
+
+input, select, textarea{
+  @include themify($themes){
+    background: themed("inputColor");
+    border: themed("inputBorder");
   }
 }
 
@@ -297,5 +311,5 @@ textarea[type="text"]:focus {
 }
 
 #Dark {
-  background-color: #475263;
+  background-color: #272727;
 }
