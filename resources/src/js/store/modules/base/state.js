@@ -14,6 +14,7 @@ export default {
     semester: null,
     termYear: null,
     term: null,
+    displayTerm: null,
     loadingClasses: true,
     imagePermission: null,
 

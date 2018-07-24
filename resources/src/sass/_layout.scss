@@ -254,6 +254,12 @@ textarea[type="text"]:focus {
 	margin-top: -5px;
 }
 
+.nav__header {
+	text-align: center;
+	font-size: 1.5rem;
+	color: white;
+}
+
 .csun_logo {
 	@include themify($themes) {
 		width: 65px;
