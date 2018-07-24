@@ -18117,6 +18117,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "courses-container",
 
+    data: function data() {
+        return {
+            displayedTerm: ""
+        };
+    },
+
     components: {
         courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
     },
@@ -18127,9 +18133,33 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "displayTerm", "loadingClasses"]), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "loadingClasses"]), {
         shouldLoadClasses: function shouldLoadClasses() {
             if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
+        },
+        displayCurrentTerm: function displayCurrentTerm() {
+            if (this.term != null) {
+                var termCode = this.term;
+                switch (termCode.charAt(3)) {
+                    case "3":
+                        this.displayedTerm = "Spring";
+                        break;
+                    case "5":
+                        this.displayedTerm = "Summer";
+                        break;
+                    case "7":
+                        this.displayedTerm = "Fall";
+                        break;
+                    case "9":
+                        this.displayedTerm = "Winter";
+                }
+                if (termCode.charAt(0) == "2") {
+                    this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
+                } else {
+                    this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
+                }
+                return this.displayedTerm;
+            }
         }
     })
 });
@@ -18991,7 +19021,7 @@ var render = function() {
               _c("h1", { staticClass: "current_term col-xs-12 type--center" }, [
                 _vm._v(
                   "\n                " +
-                    _vm._s(this.displayTerm) +
+                    _vm._s(this.displayCurrentTerm) +
                     " Courses\n            "
                 )
               ])
@@ -24578,277 +24608,265 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-	GET_SETTINGS: function GET_SETTINGS(state) {
-		window.axios.get("get_settings").then(function (response) {
-			state.themeName = response.data;
-			document.getElementById("mainBody").className = state.themeName.theme;
-		}).catch(function (e) {
-			state.errors = e.response.data.message;
-		});
-	},
-	GET_DATA: function GET_DATA(state) {
-		if (state.termYear != null) {
-			var selectedTerm = state.termYear + state.semester;
-			selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
-			state.term = selectedTerm;
+    GET_SETTINGS: function GET_SETTINGS(state) {
+        window.axios.get('get_settings').then(function (response) {
+            state.themeName = response.data;
+            document.getElementById("mainBody").className = state.themeName.theme;
+        }).catch(function (e) {
+            state.errors = e.response.data.message;
+        });
+    },
+    GET_DATA: function GET_DATA(state) {
+        function capitalize(name) {
+            return name.charAt(0).toUpperCase() + name.substr(1);
+        }
 
-			window.axios.get("data/" + state.term).then(function (response) {
-				state.term = response.data["term"];
-				state.courses = response.data["courses"];
-				state.loadingClasses = false;
-				state.flashroster = response.data["students"];
-				state.facultyMember.email = response.data["email"];
-				state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split("@")[0];
-				state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-				state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split(".")[0]);
-				state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split(".")[1]);
-				for (var course in state.courses) {
-					if (state.courses.hasOwnProperty(course)) {
-						var realCourse = state.courses[course];
-						for (var student in realCourse.roster) {
-							if (realCourse.roster.hasOwnProperty(student)) {
-								var realStudent = realCourse.roster[student];
-								var studentId = realStudent.student_id;
-								var url = realStudent.images.likeness;
+        if (state.termYear != null) {
+            var _capitalize = function _capitalize(name) {
+                return name.charAt(0).toUpperCase() + name.substr(1);
+            };
 
-								state.studentImages[studentId] = url;
-							}
-						}
-					}
-				}
-				window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
-					state.facultyMember.image = response.data.image;
-					state.facultyMember.id = response.data.id;
-				}).catch(function (e) {
-					state.errors = e.response.data.message;
-				});
-			}).catch(function (e) {
-				state.errors = e.response.data.message;
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				state.term = response.data["term"];
-				state.courses = response.data["courses"];
-				state.flashroster = response.data["students"];
-				state.facultyMember.email = response.data["email"];
-				state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split("@")[0];
-				state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-				state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split(".")[0]);
-				state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split(".")[1]);
-				for (var course in state.courses) {
-					if (state.courses.hasOwnProperty(course)) {
-						var realCourse = state.courses[course];
-						for (var student in realCourse.roster) {
-							if (realCourse.roster.hasOwnProperty(student)) {
-								var realStudent = realCourse.roster[student];
-								var studentId = realStudent.student_id;
-								var url = realStudent.images.likeness;
+            var selectedTerm = state.termYear + state.semester;
+            selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
+            state.term = selectedTerm;
 
-								state.studentImages[studentId] = url;
-							}
-						}
-					}
-				}
-				window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
-					state.facultyMember.image = response.data.image;
-					state.facultyMember.id = response.data.id;
-				}).catch(function (e) {
-					state.errors = e.response.data.message;
-				});
-			}).catch(function (e) {
-				state.errors = e.response.data.message;
-			});
-		}
-		var termCode = state.term;
-		var displayedTerm = "";
-		switch (termCode.charAt(3)) {
-			case "3":
-				displayedTerm = "Spring";
-				break;
-			case "5":
-				displayedTerm = "Summer";
-				break;
-			case "7":
-				displayedTerm = "Fall";
-				break;
-			case "9":
-				displayedTerm = "Winter";
-		}
-		if (termCode.charAt(0) == "2") {
-			displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
-		} else {
-			displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
-		}
-		state.displayTerm = displayedTerm;
-	},
-	SET_LIST: function SET_LIST(state) {
-		state.list = true;
-		state.flash = false;
-	},
-	SET_GALLERY: function SET_GALLERY(state) {
-		state.list = false;
-		state.flash = false;
-	},
-	SET_FLASH: function SET_FLASH(state) {
-		state.list = false;
-		state.flash = true;
-	},
-	TOGGLE_MENU: function TOGGLE_MENU(state) {
-		state.menuShow = !state.menuShow;
-	},
-	SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
-		function shuffle(students) {
-			var currentIndex = students.length,
-			    temporaryValue = void 0,
-			    randomIndex = void 0;
+            window.axios.get("data/" + state.term).then(function (response) {
+                state.term = response.data["term"];
+                state.courses = response.data["courses"];
+                state.loadingClasses = false;
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = _capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = _capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for (var course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)) {
+                        var realCourse = state.courses[course];
+                        for (var student in realCourse.roster) {
+                            if (realCourse.roster.hasOwnProperty(student)) {
+                                var realStudent = realCourse.roster[student];
+                                var studentId = realStudent.student_id;
+                                var url = realStudent.images.likeness;
 
-			// While there remain elements to shuffle...
-			while (0 !== currentIndex) {
-				// Pick a remaining element...
-				randomIndex = Math.floor(Math.random() * currentIndex);
-				currentIndex -= 1;
+                                state.studentImages[studentId] = url;
+                            }
+                        }
+                    }
+                }
+                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
+                    state.facultyMember.image = response.data.image;
+                    state.facultyMember.id = response.data.id;
+                }).catch(function (e) {
+                    state.errors = e.response.data.message;
+                });
+            }).catch(function (e) {
+                state.errors = e.response.data.message;
+            });
+        } else {
+            window.axios.get("data").then(function (response) {
+                state.term = response.data["term"];
+                state.courses = response.data["courses"];
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                for (var course in state.courses) {
+                    if (state.courses.hasOwnProperty(course)) {
+                        var realCourse = state.courses[course];
+                        for (var student in realCourse.roster) {
+                            if (realCourse.roster.hasOwnProperty(student)) {
+                                var realStudent = realCourse.roster[student];
+                                var studentId = realStudent.student_id;
+                                var url = realStudent.images.likeness;
 
-				// And swap it with the current element.
-				temporaryValue = students[currentIndex];
-				students[currentIndex] = students[randomIndex];
-				students[randomIndex] = temporaryValue;
-			}
-		}
+                                state.studentImages[studentId] = url;
+                            }
+                        }
+                    }
+                }
+                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
+                    state.facultyMember.image = response.data.image;
+                    state.facultyMember.id = response.data.id;
+                }).catch(function (e) {
+                    state.errors = e.response.data.message;
+                });
+            }).catch(function (e) {
+                state.errors = e.response.data.message;
+            });
+        }
+    },
+    SET_LIST: function SET_LIST(state) {
+        state.list = true;
+        state.flash = false;
+    },
+    SET_GALLERY: function SET_GALLERY(state) {
+        state.list = false;
+        state.flash = false;
+    },
+    SET_FLASH: function SET_FLASH(state) {
+        state.list = false;
+        state.flash = true;
+    },
+    TOGGLE_MENU: function TOGGLE_MENU(state) {
+        state.menuShow = !state.menuShow;
+    },
+    SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
+        function shuffle(students) {
+            var currentIndex = students.length,
+                temporaryValue = void 0,
+                randomIndex = void 0;
 
-		var len = state.flashroster.length;
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
 
-		var _loop = function _loop(i) {
-			var unKnownStudents = [];
-			var knownStudents = [];
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
 
-			state.flashroster[i].forEach(function (student) {
-				if (student.recognized === true) {
-					knownStudents.push(student);
-				} else {
-					unKnownStudents.push(student);
-				}
-			});
+                // And swap it with the current element.
+                temporaryValue = students[currentIndex];
+                students[currentIndex] = students[randomIndex];
+                students[randomIndex] = temporaryValue;
+            }
+        }
 
-			shuffle(unKnownStudents);
-			shuffle(knownStudents);
+        var len = state.flashroster.length;
 
-			state.flashroster[i] = unKnownStudents.concat(knownStudents);
-		};
+        var _loop = function _loop(i) {
+            var unKnownStudents = [];
+            var knownStudents = [];
 
-		for (var i = 0; i < len; ++i) {
-			_loop(i);
-		}
+            state.flashroster[i].forEach(function (student) {
+                if (student.recognized === true) {
+                    knownStudents.push(student);
+                } else {
+                    unKnownStudents.push(student);
+                }
+            });
 
-		state.flash = false;
-		state.flash = true;
-	},
+            shuffle(unKnownStudents);
+            shuffle(knownStudents);
+
+            state.flashroster[i] = unKnownStudents.concat(knownStudents);
+        };
+
+        for (var i = 0; i < len; ++i) {
+            _loop(i);
+        }
+
+        state.flash = false;
+        state.flash = true;
+    },
 
 
-	SORT_ROSTER: function SORT_ROSTER(state) {
-		var len = state.courses.length;
-		for (var i = 0; i < len; ++i) {
-			var sortedRoster = function sortedRoster(self) {
-				if (state.sortLastName === true) {
-					if (state.sortAscending === true) {
-						return self.sort(function (a, b) {
-							return a.last_name.localeCompare(b.last_name);
-						});
-					} else {
-						return self.sort(function (a, b) {
-							return a.last_name.localeCompare(b.last_name);
-						}).reverse();
-					}
-				} else {
-					if (state.sortAscending === true) {
-						return self.sort(function (a, b) {
-							return a.first_name.localeCompare(b.first_name);
-						});
-					} else {
-						return self.sort(function (a, b) {
-							return a.first_name.localeCompare(b.first_name);
-						}).reverse();
-					}
-				}
-			};
+    SORT_ROSTER: function SORT_ROSTER(state) {
+        var len = state.courses.length;
+        for (var i = 0; i < len; ++i) {
+            var sortedRoster = function sortedRoster(self) {
+                if (state.sortLastName === true) {
+                    if (state.sortAscending === true) {
+                        return self.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        });
+                    } else {
+                        return self.sort(function (a, b) {
+                            return a.last_name.localeCompare(b.last_name);
+                        }).reverse();
+                    }
+                } else {
+                    if (state.sortAscending === true) {
+                        return self.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        });
+                    } else {
+                        return self.sort(function (a, b) {
+                            return a.first_name.localeCompare(b.first_name);
+                        }).reverse();
+                    }
+                }
+            };
 
-			state.courses[i].roster = sortedRoster(state.courses[i].roster);
-		}
-	},
+            state.courses[i].roster = sortedRoster(state.courses[i].roster);
+        }
+    },
 
-	SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
-		state.sortLastName = false;
-	},
+    SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
+        state.sortLastName = false;
+    },
 
-	SORT_LAST_NAME: function SORT_LAST_NAME(state) {
-		state.sortLastName = true;
-	},
+    SORT_LAST_NAME: function SORT_LAST_NAME(state) {
+        state.sortLastName = true;
+    },
 
-	SORT_ASC: function SORT_ASC(state) {
-		state.sortAscending = true;
-	},
+    SORT_ASC: function SORT_ASC(state) {
+        state.sortAscending = true;
+    },
 
-	SORT_DSC: function SORT_DSC(state) {
-		state.sortAscending = false;
-	},
+    SORT_DSC: function SORT_DSC(state) {
+        state.sortAscending = false;
+    },
 
-	CLEAR_ERRORS: function CLEAR_ERRORS(state) {
-		state.errors = null;
-	},
+    CLEAR_ERRORS: function CLEAR_ERRORS(state) {
+        state.errors = null;
+    },
 
-	HIDE_BACK_BUTTON: function HIDE_BACK_BUTTON(state) {
-		state.hideBack = true;
-	},
+    HIDE_BACK_BUTTON: function HIDE_BACK_BUTTON(state) {
+        state.hideBack = true;
+    },
 
-	SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
-		state.hideBack = false;
-	},
+    SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
+        state.hideBack = false;
+    },
 
-	DISABLE_BACK_BUTTON: function DISABLE_BACK_BUTTON(state) {
-		state.disableBack = true;
-	},
+    DISABLE_BACK_BUTTON: function DISABLE_BACK_BUTTON(state) {
+        state.disableBack = true;
+    },
 
-	ENABLE_BACK_BUTTON: function ENABLE_BACK_BUTTON(state) {
-		state.disableBack = false;
-	},
+    ENABLE_BACK_BUTTON: function ENABLE_BACK_BUTTON(state) {
+        state.disableBack = false;
+    },
 
-	UPDATE_IMAGE: function UPDATE_IMAGE(state, payload) {
-		var id = payload.studentId;
-		var url = payload.imgUrl;
-		state.studentImages[id] = url;
-	},
+    UPDATE_IMAGE: function UPDATE_IMAGE(state, payload) {
+        var id = payload.studentId;
+        var url = payload.imgUrl;
+        state.studentImages[id] = url;
+    },
 
-	SET_SPRING: function SET_SPRING(state) {
-		state.semester = 3;
-	},
+    SET_SPRING: function SET_SPRING(state) {
+        state.semester = 3;
+    },
 
-	SET_SUMMER: function SET_SUMMER(state) {
-		state.semester = 5;
-	},
+    SET_SUMMER: function SET_SUMMER(state) {
+        state.semester = 5;
+    },
 
-	SET_FALL: function SET_FALL(state) {
-		state.semester = 7;
-	},
+    SET_FALL: function SET_FALL(state) {
+        state.semester = 7;
+    },
 
-	SET_WINTER: function SET_WINTER(state) {
-		state.semester = 9;
-	},
+    SET_WINTER: function SET_WINTER(state) {
+        state.semester = 9;
+    },
 
-	SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
-		state.termYear = payload;
-	},
+    SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
+        state.termYear = payload;
+    },
 
-	SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
-		state.loadingClasses = true;
-	},
-	SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
-		state.loadingClasses = false;
-	},
-	HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
-		state.imagePermission = payload;
-	},
-	NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
-		state.imagePermission = null;
-	}
+    SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
+        state.loadingClasses = true;
+    },
+    SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
+        state.loadingClasses = false;
+    },
+    HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
+        state.imagePermission = payload;
+    },
+    NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
+        state.imagePermission = null;
+    }
 });
 
 /***/ }),
@@ -25331,7 +25349,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     created: function created() {
         this.url = document.querySelector("meta[name=app-url]").content;
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['displayTerm']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
+        displayCurrentTerm: function displayCurrentTerm() {
+            if (this.term != null) {
+                var termCode = this.term;
+                switch (termCode.charAt(3)) {
+                    case "3":
+                        this.displayedTerm = "Spring";
+                        break;
+                    case "5":
+                        this.displayedTerm = "Summer";
+                        break;
+                    case "7":
+                        this.displayedTerm = "Fall";
+                        break;
+                    case "9":
+                        this.displayedTerm = "Winter";
+                }
+                if (termCode.charAt(0) == "2") {
+                    this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
+                } else {
+                    this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
+                }
+                return this.displayedTerm;
+            }
+        }
+    })
 });
 
 /***/ }),
@@ -25469,7 +25512,7 @@ var render = function() {
       _c("back-button"),
       _vm._v(" "),
       _c("div", { staticClass: "nav__header" }, [
-        _vm._v("\n        " + _vm._s(this.displayTerm) + "\n    ")
+        _vm._v("\n        " + _vm._s(this.displayCurrentTerm) + "\n    ")
       ])
     ],
     1
