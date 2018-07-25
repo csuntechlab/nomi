@@ -64,9 +64,8 @@
   top: 0;
 }
 
-.height_fix {
-  height: 30vh;
-  display: inline-block;
+.bottom-nav__profile-pic {
+  height: 2.2rem;
 }
 
 .theme-login body {
@@ -912,6 +911,44 @@ textarea[type="text"]:focus {
   background: rgba(255, 255, 255, 0.3);
   margin-bottom: 1rem;
   padding: 0.2rem 0;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.theme-login .bottom-nav {
+  background: #d00d2d;
+}
+
+.theme-main .bottom-nav {
+  background: #0f1821;
+}
+
+.theme-bluesTheme .bottom-nav {
+  background: #0d3753;
+}
+
+.theme-Cloudy .bottom-nav {
+  background: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .bottom-nav {
+  background: #d22030;
+}
+
+.theme-Dark .bottom-nav {
+  background: #272727;
+}
+
+.bottom-nav__button {
+  color: rgba(255, 255, 255, 0.3);
+  padding-top: .5rem;
 }
 
 #Matador {

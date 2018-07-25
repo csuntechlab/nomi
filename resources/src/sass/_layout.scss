@@ -288,6 +288,22 @@ textarea[type="text"]:focus {
 	}
 }
 
+.bottom-nav{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	@include themify($themes){
+		background: themed("navigationBars");
+	}
+}
+
+.bottom-nav__button{
+	color: rgba(255,255,255,0.3);
+	padding-top: .5rem;
+}
 //theme colors in list
 #Matador {
 	background-color: #d00d2d;
