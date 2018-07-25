@@ -48,7 +48,7 @@ textarea[type="text"]:focus {
 		background-color: themed("panelColor");
 		box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 		border: none;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 
 		.panel__img {
 			height: auto;
@@ -58,6 +58,10 @@ textarea[type="text"]:focus {
 			font-weight: bold;
 			border-bottom: 0;
 		}
+	}
+
+	&__container {
+		margin: 0 auto;
 	}
 }
 

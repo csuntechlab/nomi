@@ -234,7 +234,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-login .panel .panel__img {
@@ -253,7 +253,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-main .panel .panel__img {
@@ -272,7 +272,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-bluesTheme .panel .panel__img {
@@ -291,7 +291,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-Cloudy .panel .panel__img {
@@ -310,7 +310,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .panel .panel__img {
@@ -329,7 +329,7 @@ textarea[type="text"]:focus {
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
           box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .theme-Dark .panel .panel__img {
@@ -340,6 +340,10 @@ textarea[type="text"]:focus {
 .theme-Dark .panel .panel__header {
   font-weight: bold;
   border-bottom: 0;
+}
+
+.panel__container {
+  margin: 0 auto;
 }
 
 .current_term {
