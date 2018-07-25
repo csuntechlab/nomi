@@ -9,7 +9,7 @@
         Matador</button>
         <button id="Navy" @click="updateTheme('theme-main')" class="colorTheme_item " name="navy"> Navy</button>
         <button id="Blues" @click="updateTheme('theme-bluesTheme')" class="colorTheme_item " name="bluesTheme"> Blue</button>
-        <button id="Cloudy" @click="updateTheme('theme-Cloudy')" class="colorTheme_item " name="Cloudy"> Cloudy</button>
+        <button id="Dark" @click="updateTheme('theme-Dark')" class="colorTheme_item " name="Dark"> Dark</button>
     </div>
 </div>
 </div>

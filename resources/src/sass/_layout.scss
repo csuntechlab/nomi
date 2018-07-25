@@ -70,7 +70,7 @@ textarea[type="text"]:focus {
 
 .course_banner {
 	@include themify($themes) {
-		background-color: themed("toolBanners");
+		background-color: themed("toolBanner");
 		color: themed("textColor");
 		margin-top: 0.833rem;
 		margin-bottom: 0.833rem;
@@ -141,11 +141,10 @@ textarea[type="text"]:focus {
 
 /*Course Select Banner*/
 .tab__link {
-	@include themify($themes) {
-		color: themed("textColor");
-		background-color: themed("backgroundColor");
-		border-bottom: none;
-	}
+  @include themify($themes) {
+    color: themed("textColor");
+    border-bottom: none;
+  }
 }
 
 .tab__link--active {
@@ -154,9 +153,23 @@ textarea[type="text"]:focus {
 		padding: 5px 20px;
 		font-weight: normal;
 		text-decoration: none;
-		color: themed("buttonColor");
-		border-bottom: 5px solid themed("buttonColor");
+		color: themed("accentColor");
+		border-bottom: 5px solid themed("accentColor");
 	}
+}
+
+.toolBar__field{
+  @include themify($themes){
+    background: themed("inputColor");
+    border: themed("inputBorder");
+  }
+}
+
+input, select, textarea{
+  @include themify($themes){
+    background: themed("inputColor");
+    border: themed("inputBorder");
+  }
 }
 
 //font awesome icon and menu
@@ -273,16 +286,9 @@ textarea[type="text"]:focus {
 	}
 }
 
-.error_bar {
-	@include themify($themes) {
-		background-color: themed("accentColor");
-		color: themed("buttonText");
-	}
-}
-
 .settings_banner {
 	@include themify($themes) {
-		background: themed("toolBanners");
+		background: themed("toolBanner");
 		margin-bottom: 1rem;
 		padding: 0.2rem 0;
 	}
@@ -306,5 +312,5 @@ textarea[type="text"]:focus {
 }
 
 #Dark {
-	background-color: #475263;
+  background-color: #272727;
 }
