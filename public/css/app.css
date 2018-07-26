@@ -1430,15 +1430,15 @@ textarea[type="text"]:focus {
   height: 0px;
 }
 
-.profile__image {
+.profile_image {
   margin: 0 auto;
 }
 
-.profile__email {
+.profile_email {
   margin-bottom: 10px;
 }
 
-.profile__email__text {
+.profile_email_text {
   text-decoration: underline;
   margin-left: 6px;
 }

@@ -29,15 +29,15 @@
 }
 
 .profile {
-  &__image {
+  &_image {
     margin: 0 auto;
   }
   
-  &__email{
+  &_email{
     margin-bottom: 10px;
   }
   
-  &__email__text{
+  &_email_text{
     text-decoration: underline;
     margin-left: 6px;
   }
