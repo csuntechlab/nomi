@@ -14,6 +14,10 @@ export default {
 	components: {
         aboutBanner,
         themeSetting
-	},
+    },
+    
+    mounted(){
+        this.$store.dispatch('storeLocation');
+    },
 };
 </script>

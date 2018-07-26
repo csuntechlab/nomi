@@ -17776,19 +17776,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "home",
+    name: "home",
 
-  components: {
-    termSelector: __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default.a,
-    coursesContainer: __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default.a
-  },
+    components: {
+        termSelector: __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default.a,
+        coursesContainer: __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default.a
+    },
 
-  created: function created() {
-    this.$store.dispatch("clearErrors");
-  },
-  beforeCreate: function beforeCreate() {
-    this.$store.dispatch("getOnlyData");
-  }
+    created: function created() {
+        this.$store.dispatch("clearErrors");
+    },
+    beforeCreate: function beforeCreate() {
+        this.$store.dispatch("getOnlyData");
+    },
+    mounted: function mounted() {
+        this.$store.dispatch('storeLocation');
+    }
 });
 
 /***/ }),
@@ -18749,7 +18752,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		storeSelectedCourse: function storeSelectedCourse() {
 			this.$store.dispatch('storeCourse', this.course.id);
-			console.log(this.course.id);
 		}
 	}
 });
@@ -19172,6 +19174,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.$store.dispatch("clearErrors");
+    },
+    mounted: function mounted() {
+        this.$store.dispatch('storeLocation');
     }
 });
 
@@ -19967,7 +19972,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
         },
         storeCourse: function storeCourse(courseId) {
-            console.log(courseId);
             this.$store.dispatch('storeCourse', courseId);
         }
     },
@@ -22423,6 +22427,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
+	},
+	mounted: function mounted() {
+		this.$store.dispatch('storeLocation');
 	}
 }, _defineProperty(_name$data$beforeRout, "beforeRouteLeave", function beforeRouteLeave(to, from, next) {
 	if (this.unsavedChanges) {
@@ -24128,11 +24135,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "Settings",
-	components: {
-		aboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
-		themeSetting: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default.a
-	}
+    name: "Settings",
+    components: {
+        aboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
+        themeSetting: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default.a
+    },
+
+    mounted: function mounted() {
+        this.$store.dispatch('storeLocation');
+    }
 });
 
 /***/ }),
@@ -24419,6 +24430,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     imagePermission: null,
     menuShow: false,
+    currentLocation: "",
 
     // Views & Sorting
     list: true,
@@ -24474,6 +24486,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     permission: function permission(state) {
         return state.imagePermission;
+    },
+    currentLocation: function currentLocation(state) {
+        return state.currentLocation;
     },
 
     // Back Button
@@ -24636,6 +24651,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	},
 	storeCourse: function storeCourse(context, payload) {
 		context.commit("STORE_COURSE", payload);
+	},
+	storeLocation: function storeLocation(context) {
+		context.commit("STORE_LOCATION");
 	}
 });
 
@@ -24737,7 +24755,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     STORE_COURSE: function STORE_COURSE(state, payload) {
         state.currentCourse = payload;
-        console.log("me" + payload);
+    },
+    STORE_LOCATION: function STORE_LOCATION(state) {
+        state.currentLocation = window.location.hash.split('/')[1];
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
@@ -26245,27 +26265,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "bottom-nav",
+	name: "bottom-nav",
 
-    data: function data() {
-        return {
-            url: "",
-            show: false
-        };
-    },
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentLocation"])),
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse"])),
-    created: function created() {
-        this.url = document.querySelector("meta[name=app-url]").content;
-    },
-    methods: {
-        printCourse: function printCourse() {
-            console.log(currentCourse);
-        }
-    }
+	mounted: function mounted() {
+		this.setActive();
+	},
+
+
+	methods: {
+		setActive: function setActive(selected) {
+			var active = void 0;
+			if (selected == null) {
+				active = this.currentLocation;
+			} else {
+				active = selected;
+			}
+
+			this.resetNav();
+			if (active == "") {
+				document.getElementById("courses").style.color = "rgba(255,255,255,1)";
+			} else if (active == "settings") {
+				document.getElementById("settings").style.color = "rgba(255,255,255,1)";
+			} else if (active == "profile") {
+				document.getElementById("profile").style.color = "rgba(255,255,255,1)";
+			} else {
+				document.getElementById("students").style.color = "rgba(255,255,255,1)";
+			}
+		},
+		resetNav: function resetNav() {
+			var buttons = document.querySelectorAll(".bottom-nav__button");
+			var i = void 0;
+			for (i = 0; i < buttons.length; i += 1) {
+				buttons[i].style.color = "rgba(255,255,255,.3)";
+			}
+		}
+	}
 });
 
 /***/ }),
@@ -26284,7 +26325,12 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
-          attrs: { to: "/" }
+          attrs: { id: "courses", to: "/" },
+          nativeOn: {
+            click: function($event) {
+              _vm.setActive("")
+            }
+          }
         },
         [
           _c("i", { staticClass: "fas fa-2x fa-chalkboard-teacher" }),
@@ -26297,12 +26343,7 @@ var render = function() {
         ? _c(
             "div",
             {
-              staticClass: "col-xs-3 type--center bottom-nav__button",
-              on: {
-                click: function($event) {
-                  this.console.log(this.currentCourse)
-                }
-              }
+              staticClass: "col-xs-3 type--center bottom-nav__button--disabled"
             },
             [
               _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
@@ -26316,7 +26357,15 @@ var render = function() {
             "router-link",
             {
               staticClass: "col-xs-3 type--center bottom-nav__button",
-              attrs: { to: { path: "/class/" + _vm.currentCourse } }
+              attrs: {
+                id: "students",
+                to: { path: "/class/" + _vm.currentCourse }
+              },
+              nativeOn: {
+                click: function($event) {
+                  _vm.setActive("class")
+                }
+              }
             },
             [
               _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
@@ -26331,7 +26380,12 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
-          attrs: { to: "/settings" }
+          attrs: { id: "settings", to: "/settings" },
+          nativeOn: {
+            click: function($event) {
+              _vm.setActive("settings")
+            }
+          }
         },
         [
           _c("i", { staticClass: "fas fa-2x fa-cog" }),
@@ -26344,7 +26398,12 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
-          attrs: { to: "/" }
+          attrs: { id: "profile", to: "/settings" },
+          nativeOn: {
+            click: function($event) {
+              _vm.setActive("profile")
+            }
+          }
         },
         [
           _vm.facultyMember.image == null

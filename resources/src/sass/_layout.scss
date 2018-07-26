@@ -301,7 +301,12 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button {
-	color: rgba(255, 255, 255, 0.3);
+	color: rgba(255, 255, 255, .3);
+	padding: 0.5rem 0;
+}
+
+.bottom-nav__button--disabled {
+	color: rgba(0, 0, 0, .25);
 	padding: 0.5rem 0;
 }
 

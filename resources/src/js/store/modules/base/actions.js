@@ -120,4 +120,7 @@ export default {
         context.commit("STORE_COURSE", payload);
     },
 
+    storeLocation(context){
+        context.commit("STORE_LOCATION");    }
+
 };

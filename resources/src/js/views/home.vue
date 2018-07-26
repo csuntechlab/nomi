@@ -21,6 +21,9 @@ export default {
 	},
 	beforeCreate() {
 		this.$store.dispatch("getOnlyData");
-	}
+    },
+    mounted(){
+        this.$store.dispatch('storeLocation');
+    }
 };
 </script>

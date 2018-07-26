@@ -107,6 +107,10 @@ export default {
         state.currentCourse = payload;
     },
 
+    STORE_LOCATION (state){
+        state.currentLocation = window.location.hash.split('/')[1];
+    },
+
     SET_LIST (state) {
         state.list = true;
         state.flash = false;

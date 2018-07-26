@@ -56,6 +56,10 @@ export default {
 	updated() {
 		this.$store.dispatch("enableBackButton");
 	},
+	
+	mounted(){
+        this.$store.dispatch('storeLocation');
+    },
 
 	beforeRouteLeave(to, from, next) {
 		if (this.unsavedChanges) {
@@ -86,6 +90,6 @@ export default {
         setChanges(){
             this.unsavedChanges = false;
         }
-    }
+    },
 };
 </script>

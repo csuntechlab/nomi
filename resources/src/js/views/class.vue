@@ -21,6 +21,9 @@ export default {
     },
 	created() {
         this.$store.dispatch("clearErrors");
-	}
+    },
+    mounted(){
+        this.$store.dispatch('storeLocation');
+    }
 };
 </script>

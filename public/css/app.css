@@ -951,6 +951,11 @@ textarea[type="text"]:focus {
   padding: 0.5rem 0;
 }
 
+.bottom-nav__button--disabled {
+  color: rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 0;
+}
+
 .theme-main .course-card--selected {
   color: #4f9da3;
 }

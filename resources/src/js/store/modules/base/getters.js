@@ -6,6 +6,7 @@ export default {
     menuShow: state => state.menuShow,
     errors: state => state.errors,
     permission: state => state.imagePermission,
+    currentLocation: state => state.currentLocation,
 
     // Back Button
     hideBack: state => state.hideBack,
