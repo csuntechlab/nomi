@@ -2,21 +2,21 @@
     <div>
         <label for="list-grid"></label>
             <div v-if="this.list">
-                <select name="list-grid" id="list-grid" @input="handleSelect">
+                <select class="toolBar__field" name="list-grid" id="list-grid" @input="handleSelect">
                     <option value="0" selected>List View</option>
                     <option value="1">Gallery</option>
                     <option value="2">Flash Cards</option>
                 </select>
             </div>
             <div v-else-if="this.flash">
-                <select name="list-grid" id="list-grid" @input="handleSelect">
+                <select class="toolBar__field" name="list-grid" id="list-grid" @input="handleSelect">
                     <option value="0">List View</option>
                     <option value="1">Gallery</option>
                     <option value="2" selected>Flash Cards</option>
                 </select>
             </div>
             <div v-else>
-                <select name="list-grid" id="list-grid" @input="handleSelect">
+                <select class="toolBar__field" name="list-grid" id="list-grid" @input="handleSelect">
                     <option value="0">List View</option>
                     <option value="1" selected>Gallery</option>
                     <option value="2">Flash Cards</option>

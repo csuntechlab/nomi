@@ -1,6 +1,6 @@
 <template>
     <div>
-            <div class="tab-container">
+            <div>
                 <ul v-if="showAbout" class="tabs cf type--center">
                     <li class="tab__list">
                         <a class="tab__link--active" @click="selectAbout">About</a>

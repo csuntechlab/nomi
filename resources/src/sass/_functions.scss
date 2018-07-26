@@ -1,0 +1,7 @@
+/*Sass function that converts pixel values to rem
+Example: rem(36) for the rem equivalent of 36px
+Compiles to 2.4rem*/
+$base-font-size: 15; //Should be the same as root font-size
+@function rem ($target, $context: $base-font-size) {
+  @return ($target / $context) * 1rem;
+} 

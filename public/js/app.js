@@ -17955,6 +17955,7 @@ var render = function() {
       _c(
         "select",
         {
+          staticClass: "toolBar__field",
           attrs: { name: "semester-select", id: "sem-select" },
           on: { input: _vm.handleSelect }
         },
@@ -17983,6 +17984,7 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
+        staticClass: "toolBar__field",
         attrs: { id: "inputYear", type: "text", placeholder: "Year" },
         domProps: { value: _vm.year },
         on: {
@@ -19769,6 +19771,7 @@ var render = function() {
           _c(
             "select",
             {
+              staticClass: "toolBar__field",
               attrs: { name: "list-grid", id: "list-grid" },
               on: { input: _vm.handleSelect }
             },
@@ -19788,6 +19791,7 @@ var render = function() {
             _c(
               "select",
               {
+                staticClass: "toolBar__field",
                 attrs: { name: "list-grid", id: "list-grid" },
                 on: { input: _vm.handleSelect }
               },
@@ -19806,6 +19810,7 @@ var render = function() {
             _c(
               "select",
               {
+                staticClass: "toolBar__field",
                 attrs: { name: "list-grid", id: "list-grid" },
                 on: { input: _vm.handleSelect }
               },
@@ -19953,8 +19958,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19993,50 +19996,48 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tab-container" }, [
-    _c(
-      "ul",
-      { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
-      _vm._l(this.courses, function(course) {
-        return _c(
-          "li",
-          {
-            key: course.title,
-            staticClass: "tab__list",
-            attrs: { id: course.id, course: course },
-            on: {
-              click: function($event) {
-                _vm.storeCourse(course.id)
-              }
+  return _c(
+    "ul",
+    { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
+    _vm._l(this.courses, function(course) {
+      return _c(
+        "li",
+        {
+          key: course.title,
+          staticClass: "tab__list",
+          attrs: { id: course.id, course: course },
+          on: {
+            click: function($event) {
+              _vm.storeCourse(course.id)
             }
-          },
-          [
-            _c(
-              "router-link",
-              {
-                class: _vm.activeTab(course.id),
-                attrs: { to: "/class/" + course.id }
-              },
-              [
-                _c("div", { staticClass: "text_bold" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(course.subject) +
-                      " " +
-                      _vm._s(course.catalog_number) +
-                      ": #" +
-                      _vm._s(course.section_number) +
-                      "\n                "
-                  )
-                ])
-              ]
-            )
-          ],
-          1
-        )
-      })
-    )
-  ])
+          }
+        },
+        [
+          _c(
+            "router-link",
+            {
+              class: _vm.activeTab(course.id),
+              attrs: { to: "/class/" + course.id }
+            },
+            [
+              _c("div", { staticClass: "text_bold" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(course.subject) +
+                    " " +
+                    _vm._s(course.catalog_number) +
+                    ": #" +
+                    _vm._s(course.section_number) +
+                    "\n            "
+                )
+              ])
+            ]
+          )
+        ],
+        1
+      )
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23275,6 +23276,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23307,7 +23313,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$store.dispatch("updateNotes", e.target.value).then(function () {
 				_this.noteSaved = false;
 				_this.unsavedChanges = true;
-				_this.$emit('unsavedChanges');
+				_this.$emit("unsavedChanges");
 			});
 		},
 		commitNotes: function commitNotes() {
@@ -23317,13 +23323,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.$store.dispatch("commitNotes").then(function () {
 					_this2.noteSaved = true;
 					_this2.unsavedChanges = false;
-					_this2.$emit('committedChanges');
+					_this2.$emit("committedChanges");
 				});
 			}
 		},
 		resizeNotes: function resizeNotes() {
 			var size = document.querySelector("#ex0").scrollHeight;
 			document.getElementById("ex0").style.height = size + "px";
+		},
+		scrollToNotes: function scrollToNotes() {
+			document.getElementById("ex0").scrollIntoView();
 		}
 	},
 	computed: {
@@ -23358,12 +23367,53 @@ var render = function() {
             return null
           }
           _vm.updateNotes($event)
-        }
+        },
+        click: _vm.scrollToNotes
       }
     }),
     _vm._v(" "),
-    _c("div", [
-      _c("span", { staticClass: "pull-right" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-2" }, [
+        _c(
+          "span",
+          { staticClass: "notes__status", attrs: { id: "charCount" } },
+          [_vm._v(_vm._s(_vm.characterCount) + "/600")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-10 type--right" }, [
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.unsavedChanges,
+                expression: "this.unsavedChanges"
+              }
+            ],
+            staticClass: "notes__status notes__status--italic"
+          },
+          [_vm._v("Unsaved Changes")]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.noteSaved,
+                expression: "this.noteSaved"
+              }
+            ],
+            staticClass: "notes__status notes__status--italic"
+          },
+          [_vm._v("Changes Saved!")]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -23375,15 +23425,9 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Save Notes")]
+          [_vm._v("Save")]
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        { staticClass: "notes_status pull-left", attrs: { id: "charCount" } },
-        [_vm._v(_vm._s(_vm.characterCount) + "/600")]
-      )
+      ])
     ])
   ])
 }
@@ -23981,7 +24025,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "tab-container" }, [
+    _c("div", [
       _vm.showAbout
         ? _c("ul", { staticClass: "tabs cf type--center" }, [
             _c("li", { staticClass: "tab__list" }, [
@@ -24313,14 +24357,14 @@ var render = function() {
           "button",
           {
             staticClass: "colorTheme_item ",
-            attrs: { id: "Cloudy", name: "Cloudy" },
+            attrs: { id: "Dark", name: "Dark" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-Cloudy")
+                _vm.updateTheme("theme-Dark")
               }
             }
           },
-          [_vm._v(" Cloudy")]
+          [_vm._v(" Dark")]
         )
       ])
     ])
