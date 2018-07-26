@@ -17957,6 +17957,7 @@ var render = function() {
       _c(
         "select",
         {
+          staticClass: "toolBar__field",
           attrs: { name: "semester-select", id: "sem-select" },
           on: { input: _vm.handleSelect }
         },
@@ -17985,6 +17986,7 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
+        staticClass: "toolBar__field",
         attrs: { id: "inputYear", type: "text", placeholder: "Year" },
         domProps: { value: _vm.year },
         on: {
@@ -19763,6 +19765,7 @@ var render = function() {
           _c(
             "select",
             {
+              staticClass: "toolBar__field",
               attrs: { name: "list-grid", id: "list-grid" },
               on: { input: _vm.handleSelect }
             },
@@ -19782,6 +19785,7 @@ var render = function() {
             _c(
               "select",
               {
+                staticClass: "toolBar__field",
                 attrs: { name: "list-grid", id: "list-grid" },
                 on: { input: _vm.handleSelect }
               },
@@ -19800,6 +19804,7 @@ var render = function() {
             _c(
               "select",
               {
+                staticClass: "toolBar__field",
                 attrs: { name: "list-grid", id: "list-grid" },
                 on: { input: _vm.handleSelect }
               },
@@ -19947,8 +19952,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19985,45 +19988,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "tab-container" }, [
-    _c(
-      "ul",
-      { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
-      _vm._l(this.courses, function(course) {
-        return _c(
-          "li",
-          {
-            key: course.title,
-            staticClass: "tab__list",
-            attrs: { id: course.id, course: course }
-          },
-          [
-            _c(
-              "router-link",
-              {
-                class: _vm.activeTab(course.id),
-                attrs: { to: "/class/" + course.id }
-              },
-              [
-                _c("div", { staticClass: "text_bold" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(course.subject) +
-                      " " +
-                      _vm._s(course.catalog_number) +
-                      ": #" +
-                      _vm._s(course.section_number) +
-                      "\n                "
-                  )
-                ])
-              ]
-            )
-          ],
-          1
-        )
-      })
-    )
-  ])
+  return _c(
+    "ul",
+    { staticClass: "tabs cf", attrs: { id: "scrollBar" } },
+    _vm._l(this.courses, function(course) {
+      return _c(
+        "li",
+        {
+          key: course.title,
+          staticClass: "tab__list",
+          attrs: { id: course.id, course: course }
+        },
+        [
+          _c(
+            "router-link",
+            {
+              class: _vm.activeTab(course.id),
+              attrs: { to: "/class/" + course.id }
+            },
+            [
+              _c("div", { staticClass: "text_bold" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(course.subject) +
+                    " " +
+                    _vm._s(course.catalog_number) +
+                    ": #" +
+                    _vm._s(course.section_number) +
+                    "\n            "
+                )
+              ])
+            ]
+          )
+        ],
+        1
+      )
+    })
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23962,7 +23963,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "tab-container" }, [
+    _c("div", [
       _vm.showAbout
         ? _c("ul", { staticClass: "tabs cf type--center" }, [
             _c("li", { staticClass: "tab__list" }, [
@@ -24290,14 +24291,14 @@ var render = function() {
           "button",
           {
             staticClass: "colorTheme_item ",
-            attrs: { id: "Cloudy", name: "Cloudy" },
+            attrs: { id: "Dark", name: "Dark" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-Cloudy")
+                _vm.updateTheme("theme-Dark")
               }
             }
           },
-          [_vm._v(" Cloudy")]
+          [_vm._v(" Dark")]
         )
       ])
     ])
