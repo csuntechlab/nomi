@@ -1,73 +1,108 @@
 $themes: (
-	login: (
-		navigationBars: #d00d2d,
-		backgroundColor: #ffffff,
-		textColor: #464646,
-		panelColor: #f0f0f0,
-		buttonColor: #d00d2d,
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif
-	),
-	main: (
-		/*aka navy theme - Needs to be renamed*/ navigationBars: #0f1821,
-		backgroundColor: #e5e5e5,
-		textColor: #464646,
-		panelColor: #f4f4f4,
-		accentColor: #4f9da3,
-		buttonColor: #4f9da3,
-		buttonText: #fff,
-		toolBanners: rgba(255, 255, 255, .5),
-		mainFontSize: 1.1rem,
-		mainFontFamily: helvetica
-	),
-	bluesTheme: (
-		navigationBars: #0d3753,
-		backgroundColor: #d9e7ee,
-		textColor: #575757,
-		panelColor: white,
-		accentColor: #4ca1db,
-		buttonColor: #4ca1db,
-		buttonText: #fff,
-		toolBanners: rgba(255, 255, 255, .5),
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif
-	),
-	Cloudy: (
-		navigationBars: #747474,
-		backgroundColor: #d8d8d8,
-		textColor: #464646,
-		panelColor: #ffffff,
-		buttonColor: #ffc836,
-		buttonText: #4e4e4e,
-		accentColor: #747474,
-		toolBanners: rgba(255, 255, 255, .5),
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif
-	),
-	OnceAMatadorAlwaysAMatador: (
-		navigationBars: #d22030,
-		backgroundColor: #ffffff,
-		textColor: #464646,
-		panelColor: #f0f0f0,
-		buttonColor: #e74a37,
-		buttonText: #fff,
-		accentColor: #e74a37,
-		toolBanners: rgba(0, 0, 0, .05),
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif
-	),
-	Dark: (
-		navigationBars: #272727,
-		backgroundColor: #303030,
-		textColor: rgb(164, 199, 199),
-		panelColor: #202020,
-		buttonColor: #2f557b,
-		buttonText: rgb(164, 199, 199),
-		accentColor: #2f557b,
-		toolBanners: rgba(255, 255, 255, .3),
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif
-	)
+  login: (
+    navigationBars: #D00D2D,
+    backgroundColor: #FFFFFF,
+    textColor: #464646,
+    panelColor: #F0F0F0,
+    hoverColor: #ccc,
+    buttonColor: #d00d2d,
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+  main: ( /*aka navy theme - Needs to be renamed*/
+    navigationBars: #0F1821,
+    accentColor: #4F9DA3,
+    backgroundColor: #E5E5E5,
+    textColor: #464646,
+    
+    hoverColor: #ccc,
+    focusColor: #4F9DA3,
+    
+    buttonColor: #4F9DA3,
+    buttonText: #fff,
+    
+    panelColor: #F4F4F4,
+    toolBanner: rgba(255,255,255,0.5),
+
+    mainFontSize: 1.1rem,
+	  mainFontFamily: helvetica,
+  ),
+
+  bluesTheme: (
+    navigationBars: #0D3753,
+    accentColor: #4CA1DB,
+    backgroundColor: #d9e7ee,
+    textColor: #575757,
+    
+    hoverColor: #ccc,
+    focusColor: #4CA1DB,
+    
+    buttonColor: #4CA1DB,
+    buttonText: #fff,
+
+    panelColor: white,
+    toolBanner: rgba(255,255,255,0.5),
+
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+
+  Cloudy: (
+    navigationBars: #747474,
+    backgroundColor: #D8D8D8,
+    textColor: #464646,
+    panelColor: #FFFFFF,
+    hoverColor: #ccc,
+    buttonColor: #FFC836,
+    buttonText: #4e4e4e,
+    accentColor: #747474,
+    toolBanner: rgba(255,255,255,0.5),
+
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+
+  OnceAMatadorAlwaysAMatador: (
+    navigationBars: #D22030,
+    accentColor: #E74A37,
+    backgroundColor: #FFFFFF,
+    textColor: #464646,
+
+    hoverColor: rgb(221, 221, 221),
+    focusColor: #92A1CD,
+
+    buttonColor: #E74A37,
+    buttonText: #fff,
+
+    panelColor: #F0F0F0,
+    toolBanner: rgba(0,0,0,0.05),
+
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  ),
+
+  Dark: (
+    navigationBars: #1D1D1D,
+    accentColor: #97B5D8,
+    backgroundColor: #272727,
+    textColor: #bababa,
+
+    hoverColor: #272727,
+    focusColor: rgb(66, 119, 172),
+
+    buttonColor: rgb(66, 119, 172),
+    buttonText: #dadada,
+
+    panelColor: #303030,
+    toolBanner: rgba(255,255,255,.05),
+
+    inputColor: #424242,
+    inputBorder: none,
+
+    mainFontSize: 1.1rem,
+    mainFontFamily: sans-serif,
+  )
+  
 );
 @mixin themify($themes: $themes) {
 	@each $theme, $map in $themes {
