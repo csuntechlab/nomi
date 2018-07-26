@@ -678,7 +678,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .btn {
-  background-color: #4277ac;
+  background-color: #426c96;
   color: #dadada;
   border: 2px solid transparent;
 }
@@ -1114,12 +1114,35 @@ textarea[type="text"]:focus {
   padding: 5px !important;
 }
 
-.editButton {
+.panel__edit-button {
   position: absolute;
-  bottom: 22%;
-  right: 3%;
-  padding: 3%;
-  color: gray;
+  bottom: 25%;
+  right: 15%;
+  border-radius: 100%;
+  padding: 5%;
+  font-size: 150%;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-main .panel__edit-button {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .panel__edit-button {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__edit-button {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-Dark .panel__edit-button {
+  background-color: #426c96;
+  color: #dfe5ec;
 }
 
 .makeWhite {
