@@ -26254,7 +26254,7 @@ var render = function() {
         [
           _c("i", { staticClass: "fas fa-2x fa-chalkboard-teacher" }),
           _vm._v(" "),
-          _c("div", [_vm._v("Courses")])
+          _c("div", { staticClass: "bottom-nav__text" }, [_vm._v("Courses")])
         ]
       ),
       _vm._v(" "),
@@ -26267,7 +26267,7 @@ var render = function() {
         [
           _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
           _vm._v(" "),
-          _c("div", [_vm._v("Students")])
+          _c("div", { staticClass: "bottom-nav__text" }, [_vm._v("Students")])
         ]
       ),
       _vm._v(" "),
@@ -26280,7 +26280,7 @@ var render = function() {
         [
           _c("i", { staticClass: "fas fa-2x fa-cog" }),
           _vm._v(" "),
-          _c("div", [_vm._v("Settings")])
+          _c("div", { staticClass: "bottom-nav__text" }, [_vm._v("Settings")])
         ]
       ),
       _vm._v(" "),
@@ -26303,7 +26303,7 @@ var render = function() {
                 ])
               ]),
           _vm._v(" "),
-          _c("div", [_vm._v("Profile")])
+          _c("div", { staticClass: "bottom-nav__text" }, [_vm._v("Profile")])
         ]
       )
     ],

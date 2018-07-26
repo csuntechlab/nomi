@@ -18,15 +18,15 @@
     <div class="row bottom-nav">
         <router-link class="col-xs-3 type--center bottom-nav__button" to="/">
             <i class="fas fa-2x fa-chalkboard-teacher"></i>
-            <div>Courses</div>
+            <div class="bottom-nav__text">Courses</div>
         </router-link>
         <router-link class="col-xs-3 type--center bottom-nav__button" to="/class">
             <i class="fas fa-2x fa-user-graduate"></i>
-            <div>Students</div>
+            <div class="bottom-nav__text">Students</div>
         </router-link>
         <router-link class="col-xs-3 type--center bottom-nav__button" to="/settings">
             <i class="fas fa-2x fa-cog"></i>
-            <div>Settings</div>
+            <div class="bottom-nav__text">Settings</div>
         </router-link>
         <router-link class="col-xs-3 type--center bottom-nav__button" to="/">
             <i v-if="facultyMember.image == null" class="fas fa-2x fa-user-circle"></i>
@@ -35,7 +35,7 @@
                     <img :src="facultyMember.image" class="bottom-nav__profile-pic img--circle faculty_image" name="photo">
                 </div>
             </div>
-            <div>Profile</div>
+            <div class="bottom-nav__text">Profile</div>
         </router-link>
     </div>
     </div>

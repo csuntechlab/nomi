@@ -301,9 +301,10 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button{
-	color: rgba(255,255,255,0.3);
-	padding-top: .5rem;
+	color: rgba(255,255,255,.3);
+	padding: .5rem 0;
 }
+
 //theme colors in list
 #Matador {
 	background-color: #d00d2d;

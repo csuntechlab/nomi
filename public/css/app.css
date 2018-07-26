@@ -948,7 +948,11 @@ textarea[type="text"]:focus {
 
 .bottom-nav__button {
   color: rgba(255, 255, 255, 0.3);
-  padding-top: .5rem;
+  padding: .5rem 0;
+}
+
+.bottom-nav__text {
+  line-height: 0;
 }
 
 #Matador {
