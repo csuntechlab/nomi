@@ -17776,24 +17776,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "home",
+  name: "home",
 
-	components: {
-		termSelector: __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default.a,
-		coursesContainer: __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default.a
-	},
+  components: {
+    termSelector: __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default.a,
+    coursesContainer: __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default.a
+  },
 
-	created: function created() {
-		this.$store.dispatch("clearErrors");
-		this.$store.dispatch("hideBackButton");
-	},
-	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-		this.$store.dispatch("showBackButton");
-		next();
-	},
-	beforeCreate: function beforeCreate() {
-		this.$store.dispatch("getOnlyData");
-	}
+  created: function created() {
+    this.$store.dispatch("clearErrors");
+  },
+  beforeCreate: function beforeCreate() {
+    this.$store.dispatch("getOnlyData");
+  }
 });
 
 /***/ }),
@@ -18343,7 +18338,7 @@ exports = module.exports = __webpack_require__(36)(false);
 
 
 // module
-exports.push([module.i, "\n.list__item[data-v-3629f604] {\n    padding: 20px;\n    -webkit-box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\n    box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\n}\n", ""]);
+exports.push([module.i, "\n.list__item[data-v-3629f604] {\r\n\tpadding: 20px;\r\n\t-webkit-box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\r\n\tbox-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);\n}\r\n", ""]);
 
 // exports
 
@@ -18727,34 +18722,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "course-list-item",
+	name: "course-list-item",
 
-    props: ['course'],
+	props: ["course"],
 
-    computed: {
-        classStartTime: function classStartTime() {
-            return this.convertTime(this.course.meetings[0].start_time);
-        },
+	computed: {
+		classStartTime: function classStartTime() {
+			return this.convertTime(this.course.meetings[0].start_time);
+		},
+		classEndTime: function classEndTime() {
+			return this.convertTime(this.course.meetings[0].end_time);
+		}
+	},
 
-        classEndTime: function classEndTime() {
-            return this.convertTime(this.course.meetings[0].end_time);
-        }
-    },
-
-    methods: {
-        convertTime: function convertTime(OriginalTime) {
-            var time = OriginalTime;
-            var hour = parseInt(time.substring(0, 2));
-            var min = time.substring(2, 4) + " a.m.";
-            if (hour > 12) {
-                hour = hour - 12;
-                min = min.substring(0, 2) + " p.m.";
-            }
-            time = hour + ":" + min;
-            return time;
-        }
-    }
-
+	methods: {
+		convertTime: function convertTime(OriginalTime) {
+			var time = OriginalTime;
+			var hour = parseInt(time.substring(0, 2));
+			var min = time.substring(2, 4) + " a.m.";
+			if (hour > 12) {
+				hour = hour - 12;
+				min = min.substring(0, 2) + " p.m.";
+			}
+			time = hour + ":" + min;
+			return time;
+		},
+		storeSelectedCourse: function storeSelectedCourse() {
+			this.$store.dispatch('storeCourse', this.course.id);
+			console.log(this.course.id);
+		}
+	}
 });
 
 /***/ }),
@@ -18766,15 +18763,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "row" },
+    "router-link",
+    {
+      staticClass: "row",
+      attrs: { to: "/class/" + this.course.id },
+      nativeOn: {
+        click: function($event) {
+          _vm.storeSelectedCourse()
+        }
+      }
+    },
     [
       _c(
-        "router-link",
-        {
-          staticClass: "panel course_padding fullscreen_width col-xs-12",
-          attrs: { to: "/class/" + _vm.course.id }
-        },
+        "div",
+        { staticClass: "panel course_padding fullscreen_width col-xs-12" },
         [
           _c("div", { staticClass: "panel__header type--center" }, [
             _c("h2", { staticClass: "course_title pull-left" }, [
@@ -18829,8 +18831,7 @@ var render = function() {
           ])
         ]
       )
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -19962,9 +19963,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var courseID = window.location.hash.split('/')[2];
             var courseTab = document.getElementById(courseID);
             courseTab.scrollIntoView({
-                block: "end",
-                behavior: "smooth"
+                block: "end"
             });
+        },
+        storeCourse: function storeCourse(courseId) {
+            console.log(courseId);
+            this.$store.dispatch('storeCourse', courseId);
         }
     },
 
@@ -19973,7 +19977,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'currentCourse']))
 
 });
 
@@ -19995,7 +19999,12 @@ var render = function() {
           {
             key: course.title,
             staticClass: "tab__list",
-            attrs: { id: course.id, course: course }
+            attrs: { id: course.id, course: course },
+            on: {
+              click: function($event) {
+                _vm.storeCourse(course.id)
+              }
+            }
           },
           [
             _c(
@@ -22406,6 +22415,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 	created: function created() {
 		this.$store.dispatch("disableBackButton");
+		this.$store.dispatch("showBackButton");
 		this.$store.dispatch("getStudentProfile", {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
@@ -22419,11 +22429,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 		var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
 
 		if (answer) {
+			this.$store.dispatch("hideBackButton");
 			next();
 		} else {
 			next(false);
 		}
 	} else {
+		this.$store.dispatch("hideBackButton");
 		next();
 	}
 }), _defineProperty(_name$data$beforeRout, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", "studentImages"]))), _defineProperty(_name$data$beforeRout, "methods", {
@@ -24400,24 +24412,35 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    // General
     courses: [],
     flashroster: [],
     studentImages: {},
+    errors: null,
+    imagePermission: null,
     menuShow: false,
+
+    // Views & Sorting
     list: true,
     flash: false,
     sortLastName: true,
     sortDescending: true,
-    errors: null,
+
+    // Themes
     themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
+
+    // Back Button
     hideBack: true,
     disableBack: false,
+
+    // Courses
     semester: null,
     termYear: null,
     term: null,
     loadingClasses: true,
-    imagePermission: null,
+    currentCourse: null,
 
+    // User Info
     facultyMember: {
         email: null,
         emailURI: null,
@@ -24449,6 +24472,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: function errors(state) {
         return state.errors;
     },
+    permission: function permission(state) {
+        return state.imagePermission;
+    },
 
     // Back Button
     hideBack: function hideBack(state) {
@@ -24479,6 +24505,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     sortDescending: function sortDescending(state) {
         return state.sortDescending;
     },
+
+    // Courses
     semester: function semester(state) {
         return state.semester;
     },
@@ -24491,8 +24519,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     loadingClasses: function loadingClasses(state) {
         return state.loadingClasses;
     },
-    permission: function permission(state) {
-        return state.imagePermission;
+    currentCourse: function currentCourse(state) {
+        return state.currentCourse;
     },
 
     // User
@@ -24510,92 +24538,105 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    getAllUserData: function getAllUserData(context) {
-        context.commit('GET_SETTINGS');
-        context.commit('GET_DATA');
-    },
-    getOnlyData: function getOnlyData(context) {
-        context.commit('GET_DATA');
-    },
-    getOnlySettings: function getOnlySettings(context) {
-        context.commit('GET_SETTINGS');
-    },
-    setList: function setList(context) {
-        context.commit('SET_LIST');
-    },
-    setGallery: function setGallery(context) {
-        context.commit('SET_GALLERY');
-    },
-    setFlash: function setFlash(context) {
-        context.commit('SET_FLASH');
-    },
-    toggleMenu: function toggleMenu(context) {
-        context.commit('TOGGLE_MENU');
-    },
-    shuffleFlash: function shuffleFlash(context) {
-        context.commit('SHUFFLE_FLASH');
-    },
-    sortFirstName: function sortFirstName(context) {
-        context.commit('SORT_FIRST_NAME');
-        context.commit('SORT_ROSTER');
-    },
-    sortLastName: function sortLastName(context) {
-        context.commit('SORT_LAST_NAME');
-        context.commit('SORT_ROSTER');
-    },
-    sortDescending: function sortDescending(context) {
-        context.commit('SORT_DSC');
-        context.commit('SORT_ROSTER');
-    },
-    sortAscending: function sortAscending(context) {
-        context.commit('SORT_ASC');
-        context.commit('SORT_ROSTER');
-    },
-    clearErrors: function clearErrors(context) {
-        context.commit('CLEAR_ERRORS');
-    },
-    hideBackButton: function hideBackButton(context) {
-        context.commit('HIDE_BACK_BUTTON');
-    },
-    showBackButton: function showBackButton(context) {
-        context.commit('SHOW_BACK_BUTTON');
-    },
-    updateImage: function updateImage(context, payload) {
-        context.commit('UPDATE_IMAGE', payload);
-    },
-    disableBackButton: function disableBackButton(context) {
-        context.commit('DISABLE_BACK_BUTTON');
-    },
-    enableBackButton: function enableBackButton(context) {
-        context.commit('ENABLE_BACK_BUTTON');
-    },
-    setSpring: function setSpring(context) {
-        context.commit('SET_SPRING');
-    },
-    setSummer: function setSummer(context) {
-        context.commit('SET_SUMMER');
-    },
-    setFall: function setFall(context) {
-        context.commit('SET_FALL');
-    },
-    setWinter: function setWinter(context) {
-        context.commit('SET_WINTER');
-    },
-    setTermYear: function setTermYear(context, payload) {
-        context.commit('SET_TERM_YEAR', payload);
-    },
-    loadingClassesTrue: function loadingClassesTrue(context) {
-        context.commit('SET_CLASS_IS_LOADING');
-    },
-    doneLoadingClasses: function doneLoadingClasses(context) {
-        context.commit('SET_CLASS_DONE_LOADING');
-    },
-    handlePermissionResponse: function handlePermissionResponse(context, payload) {
-        context.commit('HANDLE_PERMISSION_RESPONSE', payload);
-    },
-    nullifyPermissionResponse: function nullifyPermissionResponse(context) {
-        context.commit('NULLIFY_PERMISSION_RESPONSE');
-    }
+	// General
+	getAllUserData: function getAllUserData(context) {
+		context.commit("GET_SETTINGS");
+		context.commit("GET_DATA");
+	},
+	getOnlyData: function getOnlyData(context) {
+		context.commit("GET_DATA");
+	},
+	getOnlySettings: function getOnlySettings(context) {
+		context.commit("GET_SETTINGS");
+	},
+	clearErrors: function clearErrors(context) {
+		context.commit("CLEAR_ERRORS");
+	},
+	toggleMenu: function toggleMenu(context) {
+		context.commit("TOGGLE_MENU");
+	},
+	handlePermissionResponse: function handlePermissionResponse(context, payload) {
+		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	},
+	nullifyPermissionResponse: function nullifyPermissionResponse(context) {
+		context.commit("NULLIFY_PERMISSION_RESPONSE");
+	},
+	updateImage: function updateImage(context, payload) {
+		context.commit("UPDATE_IMAGE", payload);
+	},
+
+
+	// Views & Sorting
+	setList: function setList(context) {
+		context.commit("SET_LIST");
+	},
+	setGallery: function setGallery(context) {
+		context.commit("SET_GALLERY");
+	},
+	setFlash: function setFlash(context) {
+		context.commit("SET_FLASH");
+	},
+	shuffleFlash: function shuffleFlash(context) {
+		context.commit("SHUFFLE_FLASH");
+	},
+	sortFirstName: function sortFirstName(context) {
+		context.commit("SORT_FIRST_NAME");
+		context.commit("SORT_ROSTER");
+	},
+	sortLastName: function sortLastName(context) {
+		context.commit("SORT_LAST_NAME");
+		context.commit("SORT_ROSTER");
+	},
+	sortDescending: function sortDescending(context) {
+		context.commit("SORT_DSC");
+		context.commit("SORT_ROSTER");
+	},
+	sortAscending: function sortAscending(context) {
+		context.commit("SORT_ASC");
+		context.commit("SORT_ROSTER");
+	},
+
+
+	// Back Button
+	hideBackButton: function hideBackButton(context) {
+		context.commit("HIDE_BACK_BUTTON");
+	},
+	showBackButton: function showBackButton(context) {
+		context.commit("SHOW_BACK_BUTTON");
+	},
+	disableBackButton: function disableBackButton(context) {
+		context.commit("DISABLE_BACK_BUTTON");
+	},
+	enableBackButton: function enableBackButton(context) {
+		context.commit("ENABLE_BACK_BUTTON");
+	},
+
+
+	// Courses
+	setSpring: function setSpring(context) {
+		context.commit("SET_SPRING");
+	},
+	setSummer: function setSummer(context) {
+		context.commit("SET_SUMMER");
+	},
+	setFall: function setFall(context) {
+		context.commit("SET_FALL");
+	},
+	setWinter: function setWinter(context) {
+		context.commit("SET_WINTER");
+	},
+	setTermYear: function setTermYear(context, payload) {
+		context.commit("SET_TERM_YEAR", payload);
+	},
+	loadingClassesTrue: function loadingClassesTrue(context) {
+		context.commit("SET_CLASS_IS_LOADING");
+	},
+	doneLoadingClasses: function doneLoadingClasses(context) {
+		context.commit("SET_CLASS_DONE_LOADING");
+	},
+	storeCourse: function storeCourse(context, payload) {
+		context.commit("STORE_COURSE", payload);
+	}
 });
 
 /***/ }),
@@ -24693,6 +24734,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 state.errors = e.response.data.message;
             });
         }
+    },
+    STORE_COURSE: function STORE_COURSE(state, payload) {
+        state.currentCourse = payload;
+        console.log("me" + payload);
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
@@ -25419,9 +25464,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         goBack: function goBack() {
-            if (window.location.hash.split('/')[1] == 'class') {
-                this.$router.push({ name: 'home' });
-            } else this.$router.go(-1);
+            this.$router.go(-1);
         }
     },
 
@@ -26202,18 +26245,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -26226,11 +26257,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember"])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse"])),
     created: function created() {
         this.url = document.querySelector("meta[name=app-url]").content;
     },
-    methods: {}
+    methods: {
+        printCourse: function printCourse() {
+            console.log(currentCourse);
+        }
+    }
 });
 
 /***/ }),
@@ -26258,18 +26293,39 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          staticClass: "col-xs-3 type--center bottom-nav__button",
-          attrs: { to: "/class" }
-        },
-        [
-          _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "bottom-nav__text" }, [_vm._v("Students")])
-        ]
-      ),
+      this.currentCourse == null
+        ? _c(
+            "div",
+            {
+              staticClass: "col-xs-3 type--center bottom-nav__button",
+              on: {
+                click: function($event) {
+                  this.console.log(this.currentCourse)
+                }
+              }
+            },
+            [
+              _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "bottom-nav__text" }, [
+                _vm._v("Students")
+              ])
+            ]
+          )
+        : _c(
+            "router-link",
+            {
+              staticClass: "col-xs-3 type--center bottom-nav__button",
+              attrs: { to: { path: "/class/" + _vm.currentCourse } }
+            },
+            [
+              _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "bottom-nav__text" }, [
+                _vm._v("Students")
+              ])
+            ]
+          ),
       _vm._v(" "),
       _c(
         "router-link",

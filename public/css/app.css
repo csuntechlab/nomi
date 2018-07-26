@@ -948,11 +948,27 @@ textarea[type="text"]:focus {
 
 .bottom-nav__button {
   color: rgba(255, 255, 255, 0.3);
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
-.bottom-nav__text {
-  line-height: 0;
+.theme-main .course-card--selected {
+  color: #4f9da3;
+}
+
+.theme-bluesTheme .course-card--selected {
+  color: #4ca1db;
+}
+
+.theme-Cloudy .course-card--selected {
+  color: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course-card--selected {
+  color: #e74a37;
+}
+
+.theme-Dark .course-card--selected {
+  color: #2f557b;
 }
 
 #Matador {

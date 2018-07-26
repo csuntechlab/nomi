@@ -20,7 +20,7 @@ export default {
         rosterContainer
     },
 	created() {
-		this.$store.dispatch("clearErrors");
+        this.$store.dispatch("clearErrors");
 	}
 };
 </script>

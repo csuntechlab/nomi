@@ -46,6 +46,7 @@ export default {
 
 	created() {
 		this.$store.dispatch("disableBackButton");
+		this.$store.dispatch("showBackButton");
 		this.$store.dispatch("getStudentProfile", {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
@@ -63,11 +64,13 @@ export default {
 			);
 
 			if (answer) {
+				this.$store.dispatch("hideBackButton");
 				next();
 			} else {
 				next(false);
 			}
 		} else {
+			this.$store.dispatch("hideBackButton");
 			next();
 		}
 	},
