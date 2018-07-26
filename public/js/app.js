@@ -21893,7 +21893,7 @@ var render = function() {
     this.flash
       ? _c(
           "div",
-          { staticClass: "row container panel__container" },
+          { staticClass: "row container panel__listing" },
           _vm._l(this.flashroster[this.courseid], function(student) {
             return _c("flash-card", {
               key: student.student_id,
@@ -21904,7 +21904,7 @@ var render = function() {
         )
       : _c(
           "div",
-          { staticClass: "row container panel__container" },
+          { staticClass: "row container panel__listing" },
           _vm._l(this.courses[this.courseid].roster, function(student) {
             return _c("gallery-card", {
               key: student.student_id,
@@ -22142,8 +22142,8 @@ var render = function() {
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
-      _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "row panel" }, [
+      _c("div", { staticClass: "panel panel__container" }, [
+        _c("div", { staticClass: "row panel panel__item" }, [
           _c(
             "div",
             { staticClass: "col-xs-3 col-md-2" },
