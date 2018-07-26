@@ -23257,6 +23257,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23289,7 +23294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$store.dispatch("updateNotes", e.target.value).then(function () {
 				_this.noteSaved = false;
 				_this.unsavedChanges = true;
-				_this.$emit('unsavedChanges');
+				_this.$emit("unsavedChanges");
 			});
 		},
 		commitNotes: function commitNotes() {
@@ -23299,13 +23304,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.$store.dispatch("commitNotes").then(function () {
 					_this2.noteSaved = true;
 					_this2.unsavedChanges = false;
-					_this2.$emit('committedChanges');
+					_this2.$emit("committedChanges");
 				});
 			}
 		},
 		resizeNotes: function resizeNotes() {
 			var size = document.querySelector("#ex0").scrollHeight;
 			document.getElementById("ex0").style.height = size + "px";
+		},
+		scrollToNotes: function scrollToNotes() {
+			document.getElementById("ex0").scrollIntoView();
 		}
 	},
 	computed: {
@@ -23340,12 +23348,53 @@ var render = function() {
             return null
           }
           _vm.updateNotes($event)
-        }
+        },
+        click: _vm.scrollToNotes
       }
     }),
     _vm._v(" "),
-    _c("div", [
-      _c("span", { staticClass: "pull-right" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-2" }, [
+        _c(
+          "span",
+          { staticClass: "notes__status", attrs: { id: "charCount" } },
+          [_vm._v(_vm._s(_vm.characterCount) + "/600")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-10 type--right" }, [
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.unsavedChanges,
+                expression: "this.unsavedChanges"
+              }
+            ],
+            staticClass: "notes__status notes__status--italic"
+          },
+          [_vm._v("Unsaved Changes")]
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: this.noteSaved,
+                expression: "this.noteSaved"
+              }
+            ],
+            staticClass: "notes__status notes__status--italic"
+          },
+          [_vm._v("Changes Saved!")]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -23357,15 +23406,9 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Save Notes")]
+          [_vm._v("Save")]
         )
-      ]),
-      _vm._v(" "),
-      _c(
-        "span",
-        { staticClass: "notes_status pull-left", attrs: { id: "charCount" } },
-        [_vm._v(_vm._s(_vm.characterCount) + "/600")]
-      )
+      ])
     ])
   ])
 }

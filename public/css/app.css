@@ -1483,15 +1483,22 @@ textarea[type="text"]:focus {
   margin-left: 6px;
 }
 
-.notes_status {
+.notes__status {
   padding-right: 5px;
-  opacity: .5;
+  opacity: .8;
+  font-size: .9rem;
+  vertical-align: top;
+}
+
+.notes__status--italic {
+  font-style: italic;
 }
 
 .notes_text {
   resize: none;
   min-height: 100px;
   overflow: hidden;
+  margin-bottom: 0 !important;
 }
 
 .modal-mask {
