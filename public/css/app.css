@@ -1135,8 +1135,8 @@ textarea[type="text"]:focus {
 
 .editButton {
   position: absolute;
-  right: 3%;
   bottom: 22%;
+  right: 3%;
   padding: 3%;
   color: gray;
 }
