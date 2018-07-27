@@ -107,8 +107,8 @@ export default {
         state.currentCourse = payload;
     },
 
-    STORE_LOCATION (state){
-        state.currentLocation = window.location.hash.split('/')[1];
+    STORE_LOCATION (state, payload){
+        state.currentLocation = payload;
     },
 
     SET_LIST (state) {

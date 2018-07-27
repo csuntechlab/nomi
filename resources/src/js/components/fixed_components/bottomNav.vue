@@ -31,7 +31,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
 	name: "bottom-nav",
 
@@ -49,26 +49,23 @@ export default {
 	},
 
 	methods: {
-		setActive(selected) {
-			let active;
-			if (selected == null) {
-				active = this.currentLocation;
-			} else {
-				active = selected;
+		setActive(activeLocation) {
+			if (activeLocation != null) {
+				this.$store.dispatch("storeLocation", activeLocation);
 			}
-
 			this.resetNav();
-			if (active == "") {
-				document.getElementById("courses").style.color = "rgba(255,255,255,1)";
-            }
-            else if (active == "settings") {
-				document.getElementById("settings").style.color = "rgba(255,255,255,1)";
-            }
-            else if (active == "profile") {
-				document.getElementById("profile").style.color = "rgba(255,255,255,1)";
-            }
-            else {
-				document.getElementById("students").style.color = "rgba(255,255,255,1)";
+			if (this.currentLocation == "") {
+				document.getElementById("courses").style.color =
+					"rgba(255,255,255,1)";
+			} else if (this.currentLocation == "settings") {
+				document.getElementById("settings").style.color =
+					"rgba(255,255,255,1)";
+			} else if (this.currentLocation == "profile") {
+				document.getElementById("profile").style.color =
+					"rgba(255,255,255,1)";
+			} else {
+				document.getElementById("students").style.color =
+					"rgba(255,255,255,1)";
 			}
 		},
 

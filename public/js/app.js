@@ -17788,9 +17788,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     beforeCreate: function beforeCreate() {
         this.$store.dispatch("getOnlyData");
-    },
-    mounted: function mounted() {
-        this.$store.dispatch('storeLocation');
     }
 });
 
@@ -18753,6 +18750,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return time;
 		},
 		storeSelectedCourse: function storeSelectedCourse() {
+			document.getElementById('courses').style.color = "rgba(255,255,255,.3)";
+			document.getElementById('students').style.color = "rgba(255,255,255,1)";
+			this.$store.dispatch("storeLocation", 'class');
 			this.$store.dispatch('storeCourse', this.course.id);
 		}
 	}
@@ -19176,9 +19176,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.$store.dispatch("clearErrors");
-    },
-    mounted: function mounted() {
-        this.$store.dispatch('storeLocation');
     }
 });
 
@@ -22428,9 +22425,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
-	},
-	mounted: function mounted() {
-		this.$store.dispatch('storeLocation');
 	}
 }, _defineProperty(_name$data$beforeRout, "beforeRouteLeave", function beforeRouteLeave(to, from, next) {
 	if (this.unsavedChanges) {
@@ -24179,15 +24173,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "Settings",
-    components: {
-        aboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
-        themeSetting: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default.a
-    },
-
-    mounted: function mounted() {
-        this.$store.dispatch('storeLocation');
-    }
+  name: "Settings",
+  components: {
+    aboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
+    themeSetting: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default.a
+  }
 });
 
 /***/ }),
@@ -24696,8 +24686,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	storeCourse: function storeCourse(context, payload) {
 		context.commit("STORE_COURSE", payload);
 	},
-	storeLocation: function storeLocation(context) {
-		context.commit("STORE_LOCATION");
+	storeLocation: function storeLocation(context, payload) {
+		context.commit("STORE_LOCATION", payload);
 	}
 });
 
@@ -24800,8 +24790,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     STORE_COURSE: function STORE_COURSE(state, payload) {
         state.currentCourse = payload;
     },
-    STORE_LOCATION: function STORE_LOCATION(state) {
-        state.currentLocation = window.location.hash.split('/')[1];
+    STORE_LOCATION: function STORE_LOCATION(state, payload) {
+        state.currentLocation = payload;
     },
     SET_LIST: function SET_LIST(state) {
         state.list = true;
@@ -26324,20 +26314,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 	methods: {
-		setActive: function setActive(selected) {
-			var active = void 0;
-			if (selected == null) {
-				active = this.currentLocation;
-			} else {
-				active = selected;
+		setActive: function setActive(activeLocation) {
+			if (activeLocation != null) {
+				this.$store.dispatch("storeLocation", activeLocation);
 			}
-
 			this.resetNav();
-			if (active == "") {
+			if (this.currentLocation == "") {
 				document.getElementById("courses").style.color = "rgba(255,255,255,1)";
-			} else if (active == "settings") {
+			} else if (this.currentLocation == "settings") {
 				document.getElementById("settings").style.color = "rgba(255,255,255,1)";
-			} else if (active == "profile") {
+			} else if (this.currentLocation == "profile") {
 				document.getElementById("profile").style.color = "rgba(255,255,255,1)";
 			} else {
 				document.getElementById("students").style.color = "rgba(255,255,255,1)";

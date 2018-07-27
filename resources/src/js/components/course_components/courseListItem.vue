@@ -56,6 +56,9 @@ export default {
 		},
 
 		storeSelectedCourse() {
+            document.getElementById('courses').style.color = "rgba(255,255,255,.3)";
+            document.getElementById('students').style.color = "rgba(255,255,255,1)";
+            this.$store.dispatch("storeLocation", 'class')
             this.$store.dispatch('storeCourse', this.course.id);
 		}
 	}

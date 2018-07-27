@@ -15,9 +15,5 @@ export default {
         aboutBanner,
         themeSetting
     },
-    
-    mounted(){
-        this.$store.dispatch('storeLocation');
-    },
 };
 </script>
