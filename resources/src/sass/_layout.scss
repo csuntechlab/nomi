@@ -267,6 +267,14 @@ input, select, textarea{
 	margin-top: -5px;
 }
 
+.nav__header {
+	position: absolute;
+	top: 2px;
+	left: 50px;
+	font-size: 1.5rem;
+	color: white;
+}
+
 .csun_logo {
 	@include themify($themes) {
 		width: 65px;
