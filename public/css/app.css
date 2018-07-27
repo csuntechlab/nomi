@@ -67,9 +67,8 @@ Compiles to 2.4rem*/
   top: 0;
 }
 
-.height_fix {
-  height: 30vh;
-  display: inline-block;
+.bottom-nav__profile-pic {
+  height: 2.2rem;
 }
 
 .theme-login body {
@@ -901,6 +900,69 @@ textarea[type="text"]:focus {
   background: rgba(255, 255, 255, 0.05);
   margin-bottom: 1rem;
   padding: 0.2rem 0;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.theme-login .bottom-nav {
+  background: #D00D2D;
+}
+
+.theme-main .bottom-nav {
+  background: #0F1821;
+}
+
+.theme-bluesTheme .bottom-nav {
+  background: #0D3753;
+}
+
+.theme-Cloudy .bottom-nav {
+  background: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .bottom-nav {
+  background: #D22030;
+}
+
+.theme-Dark .bottom-nav {
+  background: #1D1D1D;
+}
+
+.bottom-nav__button {
+  color: rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 0;
+}
+
+.bottom-nav__button--disabled {
+  color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0;
+}
+
+.theme-main .course-card--selected {
+  color: #4F9DA3;
+}
+
+.theme-bluesTheme .course-card--selected {
+  color: #4CA1DB;
+}
+
+.theme-Cloudy .course-card--selected {
+  color: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course-card--selected {
+  color: #E74A37;
+}
+
+.theme-Dark .course-card--selected {
+  color: #97B5D8;
 }
 
 #Matador {

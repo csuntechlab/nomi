@@ -302,6 +302,34 @@ input, select, textarea{
 	}
 }
 
+.bottom-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	@include themify($themes) {
+		background: themed("navigationBars");
+	}
+}
+
+.bottom-nav__button {
+	color: rgba(255, 255, 255, .3);
+	padding: 0.5rem 0;
+}
+
+.bottom-nav__button--disabled {
+	color: rgba(0, 0, 0, .4);
+	padding: 0.5rem 0;
+}
+
+.course-card--selected {
+	@include themify($themes) {
+		color: themed("accentColor");
+	}
+}
+
 //theme colors in list
 #Matador {
 	background-color: #d00d2d;
