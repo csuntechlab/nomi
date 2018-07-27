@@ -121,9 +121,11 @@
 }
 
 .editButton {
-	float: right;
-	padding-top: 2%;
-	color: gray;
+  position: absolute;
+  bottom: 22%;
+  right: 3%;
+  padding: 3%;
+  color: gray;
 }
 
 .makeWhite {
