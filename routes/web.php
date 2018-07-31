@@ -29,7 +29,7 @@ Route::get('/logout', function () {
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses');
 Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
-Route::get('/media', 'WebResourceController@media');
+Route::get('/media/{email}', 'WebResourceController@media');
 Route::get('/student/{email}', 'WebResourceController@student');
 
 /** Roster API Routes. */
