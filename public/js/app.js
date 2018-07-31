@@ -21820,9 +21820,9 @@ var render = function() {
     "div",
     { staticClass: "col-xs-6 col-md-4 col-lg-3" },
     [
-      _c("div", { staticClass: "editButton" }, [
+      _c("div", [
         _c("i", {
-          staticClass: "fa fa-edit fa-2x",
+          staticClass: "fas fa-pencil-alt panel__edit-button",
           on: { click: _vm.checkPermission }
         })
       ]),
