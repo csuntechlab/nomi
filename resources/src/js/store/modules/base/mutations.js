@@ -103,6 +103,14 @@ export default {
         }
     },
 
+    STORE_COURSE (state, payload){
+        state.currentCourse = payload;
+    },
+
+    STORE_LOCATION (state, payload){
+        state.currentLocation = payload;
+    },
+
     SET_LIST (state) {
         state.list = true;
         state.flash = false;
