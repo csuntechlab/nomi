@@ -18,7 +18,6 @@
     localStorage.removeItem('nameface');
 
     function loading() {
-        console.log("success!");
         document.getElementById("loginLoader").className += " login_load_active";
         document.getElementById("loginInput").className += " loginContainer_hide";
     }

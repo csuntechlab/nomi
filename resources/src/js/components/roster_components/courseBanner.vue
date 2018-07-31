@@ -1,6 +1,6 @@
 <template>
     <ul id="scrollBar" class="tabs cf">
-        <li v-for="course in this.courses" :id="course.id" :key="course.title" :course="course" class="tab__list">
+        <li v-for="course in this.courses" :id="course.id" :key="course.title" :course="course" class="tab__list" @click="storeCourse(course.id)">
             <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
                 <div class="text_bold">
                     {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
@@ -26,9 +26,11 @@
                 let courseTab = document.getElementById(courseID);
                 courseTab.scrollIntoView({
                     block:"end",
-                    behavior: "smooth"
                 });
             },
+            storeCourse(courseId){
+                this.$store.dispatch('storeCourse', courseId);
+            }
         },
 
         mounted() {
@@ -37,7 +39,8 @@
 
         computed: {
             ...mapGetters([
-                'courses'
+                'courses',
+                'currentCourse'
             ]),
 
 

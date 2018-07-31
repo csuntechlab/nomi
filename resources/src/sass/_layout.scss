@@ -267,6 +267,14 @@ input, select, textarea{
 	margin-top: -5px;
 }
 
+.nav__header {
+	position: absolute;
+	top: 2px;
+	left: 50px;
+	font-size: 1.5rem;
+	color: white;
+}
+
 .csun_logo {
 	@include themify($themes) {
 		width: 65px;
@@ -291,6 +299,34 @@ input, select, textarea{
 		background: themed("toolBanner");
 		margin-bottom: 1rem;
 		padding: 0.2rem 0;
+	}
+}
+
+.bottom-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	@include themify($themes) {
+		background: themed("navigationBars");
+	}
+}
+
+.bottom-nav__button {
+	color: rgba(255, 255, 255, .3);
+	padding: 0.5rem 0;
+}
+
+.bottom-nav__button--disabled {
+	color: rgba(0, 0, 0, .4);
+	padding: 0.5rem 0;
+}
+
+.course-card--selected {
+	@include themify($themes) {
+		color: themed("accentColor");
 	}
 }
 
