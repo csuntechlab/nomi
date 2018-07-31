@@ -5,11 +5,6 @@
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
         </div>
         <div v-else>
-            <div class="row">
-                <h1 class="current_term col-xs-12 type--center">
-                    {{this.displayCurrentTerm}} Courses
-                </h1>
-            </div>
             <div class="row course_banner fullscreen_width">
                 <div class="col-xs-4 type--right">
                     <button class="btn btn-sm">Previous</button>
