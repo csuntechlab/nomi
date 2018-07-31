@@ -121,6 +121,22 @@ export default {
     },
 
     storeLocation(context, payload){
-        context.commit("STORE_LOCATION", payload);    }
+		context.commit("STORE_LOCATION", payload);
+	},
+
+	setPreviousTerm(context, payload){
+		context.commit("SET_PREVIOUS_TERM");
+		context.commit("GET_DATA");
+	},
+
+	setCurrentTerm(context, payload){
+		context.commit("SET_CURRENT_TERM");
+		context.commit("GET_DATA");
+	},
+
+	setNextTerm(context, payload){
+		context.commit("SET_NEXT_TERM");
+		context.commit("GET_DATA");
+	},
 
 };
