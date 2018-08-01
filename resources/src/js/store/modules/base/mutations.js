@@ -15,8 +15,6 @@ export default {
         }
 
         if(state.termYear != null){
-            console.log(state.termYear)
-            console.log(state.semester)
             let chosenTerm = state.termYear + state.semester;
             chosenTerm = chosenTerm.slice(0,1) + chosenTerm.slice(2);
             state.term = chosenTerm;
@@ -285,6 +283,9 @@ export default {
     },
 
     SET_PREVIOUS_TERM(state) {
+        state.loadingClasses = true;
+        state.termYear = state.term.slice(0,3)
+        state.semester = state.term.slice(3)
         if(state.selectedTerm == 'current') {
             state.semester = state.semester - 2
             if (state.semester < 3) {
@@ -301,19 +302,24 @@ export default {
                 state.termYear = state.termYear - 1
             }
         }
+        state.term = "" + state.termYear + state.semester
+        state.termYear = "" + state.termYear
+        state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
+        state.semester = "" + state.semester
         state.selectedTerm = 'previous'
     },
 
     SET_CURRENT_TERM(state) {
+        state.loadingClasses = true;
         state.semester = null;
         state.termYear = null;
         state.selectedTerm = 'current'
     },
 
     SET_NEXT_TERM(state) {
-        state.termYear = state.term.slice(0,3)
-        state.semester = state.term.slice(3)
-        console.log(state.semester);
+        state.loadingClasses = true;
+        state.termYear = parseInt(state.term.slice(0,3))
+        state.semester = parseInt(state.term.slice(3))
         if(state.selectedTerm == 'current') {
             state.semester = state.semester + 2
             if (state.semester > 9) {
@@ -330,6 +336,10 @@ export default {
                 state.termYear = state.termYear + 1
             }
         }
+        state.term = "" + state.termYear + state.semester
+        state.termYear = "" + state.termYear
+        state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
+        state.semester = "" + state.semester
         state.selectedTerm = 'next'
     }
 
