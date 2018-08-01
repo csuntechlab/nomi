@@ -2,7 +2,7 @@
     <div>
         <course-banner></course-banner>
         <settings-banner></settings-banner>
-        <div class="container">
+        <div class="container-full">
             <roster-container :courseid="this.$route.params.id"></roster-container>
         </div>
     </div>

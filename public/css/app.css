@@ -166,7 +166,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-login .primary-nav .primary-nav__sub-brand {
+.theme-login .primary-nav__sub-brand {
   color: #FFFFFF;
 }
 
@@ -178,7 +178,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-main .primary-nav .primary-nav__sub-brand {
+.theme-main .primary-nav__sub-brand {
   color: #E5E5E5;
 }
 
@@ -190,7 +190,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-bluesTheme .primary-nav .primary-nav__sub-brand {
+.theme-bluesTheme .primary-nav__sub-brand {
   color: #d9e7ee;
 }
 
@@ -202,7 +202,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-Cloudy .primary-nav .primary-nav__sub-brand {
+.theme-Cloudy .primary-nav__sub-brand {
   color: #D8D8D8;
 }
 
@@ -214,7 +214,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .primary-nav .primary-nav__sub-brand {
+.theme-OnceAMatadorAlwaysAMatador .primary-nav__sub-brand {
   color: #FFFFFF;
 }
 
@@ -226,7 +226,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-Dark .primary-nav .primary-nav__sub-brand {
+.theme-Dark .primary-nav__sub-brand {
   color: #272727;
 }
 
@@ -239,12 +239,21 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-login .panel .panel__img {
+.theme-login .panel__img {
   height: auto;
   background-color: #F0F0F0;
 }
 
-.theme-login .panel .panel__header {
+.theme-login .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-login .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-login .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -258,12 +267,21 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-main .panel .panel__img {
+.theme-main .panel__img {
   height: auto;
   background-color: #F4F4F4;
 }
 
-.theme-main .panel .panel__header {
+.theme-main .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-main .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-main .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -277,12 +295,21 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-bluesTheme .panel .panel__img {
+.theme-bluesTheme .panel__img {
   height: auto;
   background-color: white;
 }
 
-.theme-bluesTheme .panel .panel__header {
+.theme-bluesTheme .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-bluesTheme .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-bluesTheme .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -296,12 +323,21 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-Cloudy .panel .panel__img {
+.theme-Cloudy .panel__img {
   height: auto;
   background-color: #FFFFFF;
 }
 
-.theme-Cloudy .panel .panel__header {
+.theme-Cloudy .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-Cloudy .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-Cloudy .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -315,12 +351,21 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .panel .panel__img {
+.theme-OnceAMatadorAlwaysAMatador .panel__img {
   height: auto;
   background-color: #F0F0F0;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .panel .panel__header {
+.theme-OnceAMatadorAlwaysAMatador .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__header {
   font-weight: bold;
   border-bottom: 0;
 }
@@ -334,14 +379,27 @@ textarea[type="text"]:focus {
   margin-bottom: 1rem;
 }
 
-.theme-Dark .panel .panel__img {
+.theme-Dark .panel__img {
   height: auto;
   background-color: #303030;
 }
 
-.theme-Dark .panel .panel__header {
+.theme-Dark .panel__container {
+  margin-bottom: 0.4rem;
+}
+
+.theme-Dark .panel__item {
+  width: 100%;
+  margin: 0;
+}
+
+.theme-Dark .panel__header {
   font-weight: bold;
   border-bottom: 0;
+}
+
+.panel__listing {
+  margin: 0 auto;
 }
 
 .current_term {
@@ -977,10 +1035,6 @@ textarea[type="text"]:focus {
   background-color: #0d3753;
 }
 
-#Cloudy {
-  background-color: #747474;
-}
-
 #Dark {
   background-color: #272727;
 }
@@ -1122,17 +1176,23 @@ textarea[type="text"]:focus {
   border: 2px solid transparent;
 }
 
+@media only screen and (max-width: 367px) {
+  .student_list_name_mobile {
+    font-size: 4vw;
+  }
+}
+
+@media only screen and (min-width: 368px) {
+  .student_list_name_mobile {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .student_list_name {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .student_list_name_mobile {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
   }
 }
 

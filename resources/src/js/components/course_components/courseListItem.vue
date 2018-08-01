@@ -7,7 +7,7 @@
             <div class="panel__content">
                 <div class="row">
                     <div class="col-xs-7">
-                        {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
+                        {{course.subject}} {{course.catalog_number}}: ({{course.class_number}})
                     </div>
                     <div class="col-xs-5">
                         {{course.meetings[0].location}} {{course.meetings[0].days}}
