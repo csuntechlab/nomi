@@ -28,17 +28,19 @@
 	height: 0px;
 }
 
-.profile_image {
-	margin: 0 auto;
-}
-
-.profile_email {
-	margin-bottom: 10px;
-}
-
-.profile_email_text {
-	text-decoration: underline;
-	margin-left: 6px;
+.profile {
+  &_image {
+    margin: 0 auto;
+  }
+  
+  &_email {
+    margin-bottom: 10px;
+  }
+  
+  &_email_text {
+    text-decoration: underline;
+    margin-left: 6px;
+  }
 }
 
 .notes__status {

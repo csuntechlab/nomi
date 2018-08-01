@@ -18102,11 +18102,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -18815,9 +18810,9 @@ var render = function() {
                     _vm._s(_vm.course.subject) +
                     " " +
                     _vm._s(_vm.course.catalog_number) +
-                    ": #" +
-                    _vm._s(_vm.course.section_number) +
-                    "\n                "
+                    ": (" +
+                    _vm._s(_vm.course.class_number) +
+                    ")\n                "
                 )
               ]),
               _vm._v(" "),
@@ -19041,16 +19036,6 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", { staticClass: "current_term col-xs-12 type--center" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(this.displayCurrentTerm) +
-                    " Courses\n            "
-                )
-              ])
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "row course_banner fullscreen_width" }, [
               _c("div", { staticClass: "col-xs-4 type--right" }, [
                 _c(
@@ -20042,9 +20027,9 @@ var render = function() {
                     _vm._s(course.subject) +
                     " " +
                     _vm._s(course.catalog_number) +
-                    ": #" +
-                    _vm._s(course.section_number) +
-                    "\n            "
+                    ": (" +
+                    _vm._s(course.class_number) +
+                    ")\n            "
                 )
               ])
             ]
@@ -21923,7 +21908,7 @@ var render = function() {
     this.flash
       ? _c(
           "div",
-          { staticClass: "row" },
+          { staticClass: "row container panel__listing" },
           _vm._l(this.flashroster[this.courseid], function(student) {
             return _c("flash-card", {
               key: student.student_id,
@@ -21934,7 +21919,7 @@ var render = function() {
         )
       : _c(
           "div",
-          { staticClass: "row" },
+          { staticClass: "row container panel__listing" },
           _vm._l(this.courses[this.courseid].roster, function(student) {
             return _c("gallery-card", {
               key: student.student_id,
@@ -22172,11 +22157,11 @@ var render = function() {
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
-      _c("div", { staticClass: "panel" }, [
-        _c("div", { staticClass: "row panel__content" }, [
+      _c("div", { staticClass: "panel panel__container" }, [
+        _c("div", { staticClass: "row panel panel__item" }, [
           _c(
             "div",
-            { staticClass: "col-xs-5 col-md-3" },
+            { staticClass: "col-xs-3 col-md-2" },
             [
               _c("profile-picture", {
                 staticClass: "pull-left ",
@@ -22188,7 +22173,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "col-xs-7 col-md-9" },
+            { staticClass: "col-xs-9 col-md-10" },
             [
               _c(
                 "router-link",
@@ -22305,7 +22290,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "container" },
+        { staticClass: "container-full" },
         [
           _c("roster-container", { attrs: { courseid: this.$route.params.id } })
         ],
@@ -24793,6 +24778,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             window.axios.get("data").then(function (response) {
                 state.term = response.data["term"];
                 state.courses = response.data["courses"];
+                state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
                 state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];

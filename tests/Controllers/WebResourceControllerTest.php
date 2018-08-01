@@ -62,7 +62,7 @@ class WebResourceControllerTest extends TestCase
             ->shouldReceive('getMedia')
             ->once();
 
-        $controller->media();
+        $controller->media('thisisanemail');
     }
 
     /**

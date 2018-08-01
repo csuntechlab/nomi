@@ -69,6 +69,7 @@ export default {
             .then(response => {
                 state.term = response.data["term"];
                 state.courses = response.data["courses"];
+                state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
                 state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
