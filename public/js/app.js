@@ -26184,7 +26184,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			var buttons = document.querySelectorAll(".bottom-nav__button");
 			var i = void 0;
 			for (i = 0; i < buttons.length; i += 1) {
-				buttons[i].style.color = "rgba(255,255,255,.3)";
+				buttons[i].style.color = "rgba(255,255,255,.8)";
 			}
 		}
 	}
