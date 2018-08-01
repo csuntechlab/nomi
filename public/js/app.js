@@ -18102,11 +18102,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -19018,25 +19013,7 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
         ])
-      : _c(
-          "div",
-          [
-            _c("div", { staticClass: "row" }, [
-              _c("h1", { staticClass: "current_term col-xs-12 type--center" }, [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(this.displayCurrentTerm) +
-                    " Courses\n            "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c("course-list")
-          ],
-          1
-        )
+      : _c("div", [_vm._m(0), _vm._v(" "), _c("course-list")], 1)
   ])
 }
 var staticRenderFns = [
