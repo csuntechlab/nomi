@@ -5,7 +5,7 @@
                 <div class="col-sm-12">
                     <div class="profile_email">
                         <i class="fas fa-envelope" @click="showEmail = true"></i>
-                        <a class="profile_email_text" @click="showEmail = true">Show Email</a>
+                        {{this.student.emailURI}}@my.csun.edu
                     </div>
                     <div>
                         <strong>Bio:</strong>
@@ -16,11 +16,9 @@
                 </div>
             </div>
         </div>
-        <email-modal :showEmail="this.showEmail" :email="this.student.emailURI" @closeEmail="showEmail = false"></email-modal>
     </div>
 </template>
 <script>
-    import emailModal from "./emailModal.vue";
     import profileNotes from "./profileNotes.vue";
     import profilePicture from "./profilePicture.vue";
     export default {
@@ -34,7 +32,6 @@
             }
         },
         components: {
-            emailModal,
             profileNotes,
             profilePicture
         },
