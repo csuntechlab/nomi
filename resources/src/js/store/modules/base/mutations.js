@@ -15,6 +15,8 @@ export default {
         }
 
         if(state.termYear != null){
+            console.log(state.termYear)
+            console.log(state.semester)
             let chosenTerm = state.termYear + state.semester;
             chosenTerm = chosenTerm.slice(0,1) + chosenTerm.slice(2);
             state.term = chosenTerm;
@@ -308,6 +310,9 @@ export default {
     },
 
     SET_NEXT_TERM(state) {
+        state.termYear = state.term.slice(0,3)
+        state.semester = state.term.slice(3)
+        console.log(state.semester);
         if(state.selectedTerm == 'current') {
             state.semester = state.semester + 2
             if (state.semester > 9) {
