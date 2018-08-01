@@ -167,7 +167,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-login .primary-nav .primary-nav__sub-brand {
+.theme-login .primary-nav__sub-brand {
   color: #FFFFFF;
 }
 
@@ -179,7 +179,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-main .primary-nav .primary-nav__sub-brand {
+.theme-main .primary-nav__sub-brand {
   color: #E5E5E5;
 }
 
@@ -203,7 +203,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-Cloudy .primary-nav .primary-nav__sub-brand {
+.theme-Cloudy .primary-nav__sub-brand {
   color: #D8D8D8;
 }
 
@@ -215,7 +215,7 @@ textarea[type="text"]:focus {
   position: fixed;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .primary-nav .primary-nav__sub-brand {
+.theme-OnceAMatadorAlwaysAMatador .primary-nav__sub-brand {
   color: #FFFFFF;
 }
 
@@ -226,8 +226,8 @@ textarea[type="text"]:focus {
   top: 0%;
   position: fixed;
 }
- 
-.theme-Dark .primary-nav .primary-nav__sub-brand {
+
+.theme-Dark .primary-nav__sub-brand {
   color: #272727;
 }
 
@@ -965,10 +965,6 @@ textarea[type="text"]:focus {
   background-color: #0d3753;
 }
 
-#Cloudy {
-  background-color: #747474;
-}
-
 #Dark {
   background-color: #272727;
 }
@@ -1110,17 +1106,23 @@ textarea[type="text"]:focus {
   border: 2px solid transparent;
 }
 
+@media only screen and (max-width: 367px) {
+  .student_list_name_mobile {
+    font-size: 4vw;
+  }
+}
+
+@media only screen and (min-width: 368px) {
+  .student_list_name_mobile {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .student_list_name {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2rem;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .student_list_name_mobile {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
   }
 }
 

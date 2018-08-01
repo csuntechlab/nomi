@@ -2,8 +2,8 @@ body {
 	@include themify($themes) {
 		background-color: themed("backgroundColor");
 		color: themed("textColor");
-    padding-top: rem(36);
-  }
+    	padding-top: rem(36);
+	}
 }
 
 html * {
@@ -78,7 +78,7 @@ textarea[type="text"]:focus {
 
 .current_term {
 	font-weight: bold;
-  font-size: 1.6rem;
+	font-size: 1.6rem;
 	margin-bottom: 0;
 	margin-top: 0.833rem;
 }
@@ -156,10 +156,10 @@ textarea[type="text"]:focus {
 
 /*Course Select Banner*/
 .tab__link {
-  @include themify($themes) {
-    color: themed("textColor");
-    border-bottom: none;
-  }
+	@include themify($themes) {
+		color: themed("textColor");
+		border-bottom: none;
+	}
 }
 
 .tab__link--active {
@@ -174,17 +174,17 @@ textarea[type="text"]:focus {
 }
 
 .toolBar__field{
-  @include themify($themes){
-    background: themed("inputColor");
-    border: themed("inputBorder");
-  }
+	@include themify($themes){
+		background: themed("inputColor");
+		border: themed("inputBorder");
+	}
 }
 
 input, select, textarea{
-  @include themify($themes){
-    background: themed("inputColor");
-    border: themed("inputBorder");
-  }
+	@include themify($themes){
+		background: themed("inputColor");
+		border: themed("inputBorder");
+	}
 }
 
 //font awesome icon and menu
@@ -322,10 +322,6 @@ input, select, textarea{
 	background-color: #0d3753;
 }
 
-#Cloudy {
-	background-color: #747474;
-}
-
 #Dark {
-  background-color: #272727;
+	background-color: #272727;
 }
