@@ -16,11 +16,7 @@
 
         methods: {
             goBack: function () {
-                if (window.location.hash.split('/')[1] == 'class') {
-                    this.$router.push({ name: 'home' });
-                }
-                else
-                    this.$router.go(-1);
+                this.$router.go(-1);
             }
         },
 

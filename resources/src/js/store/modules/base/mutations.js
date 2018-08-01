@@ -67,6 +67,7 @@ export default {
             .then(response => {
                 state.term = response.data["term"];
                 state.courses = response.data["courses"];
+                state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
                 state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
@@ -101,6 +102,14 @@ export default {
                 state.errors = e.response.data.message;
             });
         }
+    },
+
+    STORE_COURSE (state, payload){
+        state.currentCourse = payload;
+    },
+
+    STORE_LOCATION (state, payload){
+        state.currentLocation = payload;
     },
 
     SET_LIST (state) {

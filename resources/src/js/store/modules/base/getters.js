@@ -5,6 +5,8 @@ export default {
     studentImages: state => state.studentImages,
     menuShow: state => state.menuShow,
     errors: state => state.errors,
+    permission: state => state.imagePermission,
+    currentLocation: state => state.currentLocation,
 
     // Back Button
     hideBack: state => state.hideBack,
@@ -19,11 +21,13 @@ export default {
     flash: state => state.flash,
     sortLastName: state => state.sortLastName,
     sortDescending: state => state.sortDescending,
+    
+    // Courses
     semester: state => state.semester,
     termYear: state => state.termYear,
     term: state => state.term,
     loadingClasses: state => state.loadingClasses,
-    permission: state => state.imagePermission,
+    currentCourse: state => state.currentCourse,
 
     // User
     facultyMember: state => state.facultyMember,

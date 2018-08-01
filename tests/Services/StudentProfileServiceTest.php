@@ -61,6 +61,11 @@ class StudentProfileServiceTest extends TestCase
             ],
         ]));
 
+        $this->webResourceRetriever
+            ->shouldReceive('getMedia')
+            ->withArgs([$email])
+            ->andReturn(\json_encode(['media' => [0 => ['audio' => 'haha']]]));
+
         $this->imageCRUD
             ->shouldReceive('getPriority')
             ->withArgs([['student']])
@@ -75,6 +80,7 @@ class StudentProfileServiceTest extends TestCase
             'members_id' => 'members:student',
             'notes' => 'This is a note',
             'image_priority' => 'likeness',
+            'studentAudio' => 'haha',
         ];
 
         $this->rosterRetriever
