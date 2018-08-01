@@ -17771,7 +17771,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -19102,12 +19101,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [_c("term-selector"), _vm._v(" "), _c("courses-container")],
-    1
-  )
+  return _c("div", { staticClass: "container" }, [_c("courses-container")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21845,9 +21839,9 @@ var render = function() {
     "div",
     { staticClass: "col-xs-6 col-md-4 col-lg-3" },
     [
-      _c("div", { staticClass: "editButton" }, [
+      _c("div", [
         _c("i", {
-          staticClass: "fa fa-edit fa-2x",
+          staticClass: "fas fa-pencil-alt panel__edit-button",
           on: { click: _vm.checkPermission }
         })
       ]),
