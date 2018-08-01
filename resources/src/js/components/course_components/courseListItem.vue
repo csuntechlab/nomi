@@ -6,19 +6,21 @@
             </div>
             <div class="panel__content">
                 <div class="row">
-                    <div class="col-xs-7">
-                        {{course.subject}} {{course.catalog_number}}: ({{course.class_number}})
+                    <div class="col-xs-12 col-sm-6">
+                        <div>
+                            {{course.subject}} {{course.catalog_number}}: ({{course.class_number}})
+                        </div>
+                        <div>
+                            {{course.enrollment_count}} Students
+                        </div>
                     </div>
-                    <div class="col-xs-5">
-                        {{course.meetings[0].location}} {{course.meetings[0].days}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-7">
-                        {{classStartTime}} - {{classEndTime}}
-                    </div>
-                    <div class="col-xs-5">
-                        {{course.enrollment_count}} Students
+                    <div class="col-xs-12 col-sm-6 course__item">
+                        <div>
+                            {{course.meetings[0].location}} {{course.meetings[0].days}}
+                        </div>
+                        <div>
+                            {{classStartTime}} - {{classEndTime}}
+                        </div>
                     </div>
                 </div>
             </div>
