@@ -18736,6 +18736,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "course-list-item",
@@ -18804,46 +18806,53 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "panel__content" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-xs-7" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.subject) +
-                    " " +
-                    _vm._s(_vm.course.catalog_number) +
+              _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
+                _c("div", [
+                  _c("b", [
+                    _vm._v(
+                      _vm._s(_vm.course.subject) +
+                        " " +
+                        _vm._s(_vm.course.catalog_number)
+                    )
+                  ]),
+                  _vm._v(
                     ": (" +
-                    _vm._s(_vm.course.class_number) +
-                    ")\n                "
-                )
+                      _vm._s(_vm.course.class_number) +
+                      ")\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.course.enrollment_count) +
+                      " Students\n                    "
+                  )
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-5" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.meetings[0].location) +
-                    " " +
-                    _vm._s(_vm.course.meetings[0].days) +
-                    "\n                "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-xs-7" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.classStartTime) +
-                    " - " +
-                    _vm._s(_vm.classEndTime) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-5" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.enrollment_count) +
-                    " Students\n                "
-                )
+              _c("div", { staticClass: "col-xs-12 col-sm-6 course__item" }, [
+                _c("div", [
+                  _c("b", [_vm._v("Location")]),
+                  _vm._v(
+                    ": " +
+                      _vm._s(_vm.course.meetings[0].location) +
+                      " " +
+                      _vm._s(_vm.course.meetings[0].days) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("b", [_vm._v("Time")]),
+                  _vm._v(
+                    ": " +
+                      _vm._s(_vm.classStartTime) +
+                      " - " +
+                      _vm._s(_vm.classEndTime) +
+                      "\n                    "
+                  )
+                ])
               ])
             ])
           ])
