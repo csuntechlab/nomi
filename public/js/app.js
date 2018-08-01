@@ -18790,9 +18790,9 @@ var render = function() {
                     _vm._s(_vm.course.subject) +
                     " " +
                     _vm._s(_vm.course.catalog_number) +
-                    ": #" +
-                    _vm._s(_vm.course.section_number) +
-                    "\n                "
+                    ": (" +
+                    _vm._s(_vm.course.class_number) +
+                    ")\n                "
                 )
               ]),
               _vm._v(" "),
@@ -19994,9 +19994,9 @@ var render = function() {
                     _vm._s(course.subject) +
                     " " +
                     _vm._s(course.catalog_number) +
-                    ": #" +
-                    _vm._s(course.section_number) +
-                    "\n            "
+                    ": (" +
+                    _vm._s(course.class_number) +
+                    ")\n            "
                 )
               ])
             ]
