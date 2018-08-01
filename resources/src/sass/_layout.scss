@@ -65,8 +65,8 @@ textarea[type="text"]:focus {
 		}
 
 		&__header {
+			padding-bottom: 1.5rem;
 			font-weight: bold;
-			border-bottom: 0;
 		}
 
 	}
@@ -103,6 +103,14 @@ textarea[type="text"]:focus {
 }
 
 @media only screen and (max-width: 543px) {
+	.panel__header {
+		border-bottom: solid 1px rgba(90, 90, 90, 0.2);
+	}
+
+	.panel__content {
+		padding: 0.5rem 1rem;
+	}
+
 	.course__item {
 		padding-top: 0.5rem;
 	}	

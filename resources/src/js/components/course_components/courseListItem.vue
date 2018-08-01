@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div>
-                            {{course.subject}} {{course.catalog_number}}: ({{course.class_number}})
+                            <b>{{course.subject}} {{course.catalog_number}}</b>: ({{course.class_number}})
                         </div>
                         <div>
                             {{course.enrollment_count}} Students
@@ -16,10 +16,10 @@
                     </div>
                     <div class="col-xs-12 col-sm-6 course__item">
                         <div>
-                            {{course.meetings[0].location}} {{course.meetings[0].days}}
+                            <b>Location</b>: {{course.meetings[0].location}} {{course.meetings[0].days}}
                         </div>
                         <div>
-                            {{classStartTime}} - {{classEndTime}}
+                            <b>Time</b>: {{classStartTime}} - {{classEndTime}}
                         </div>
                     </div>
                 </div>
