@@ -22905,7 +22905,7 @@ var render = function() {
                         { staticClass: "type--center" },
                         [
                           _c("i", {
-                            staticClass: "fas fa-2x fa-cog profile_edit-button",
+                            staticClass: "fas fa-2x fa-cog profile-edit-button",
                             on: { click: _vm.checkPermission }
                           }),
                           _vm._v(" "),

@@ -1275,7 +1275,7 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
-.profile_edit-button {
+.profile-edit-button {
   position: absolute;
   bottom: 0%;
   right: 0%;
@@ -1286,28 +1286,28 @@ textarea[type="text"]:focus {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
 
-.theme-main .profile_edit-button {
+.theme-main .profile-edit-button {
   background-color: #4F9DA3;
   color: #ffffff;
 }
 
-.theme-bluesTheme .profile_edit-button {
+.theme-bluesTheme .profile-edit-button {
   background-color: #fff;
   color: #2e88c5;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .profile_edit-button {
+.theme-OnceAMatadorAlwaysAMatador .profile-edit-button {
   background-color: #fff;
   color: #808080;
 }
 
-.theme-Dark .profile_edit-button {
+.theme-Dark .profile-edit-button {
   background-color: #426c96;
   color: #dfe5ec;
 }
 
 @media only screen and (min-width: 370px) {
-  .profile_edit-button {
+  .profile-edit-button {
     bottom: 5%;
     right: 25%;
     padding: 3%;
