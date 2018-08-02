@@ -337,10 +337,17 @@ input, select, textarea{
 .bottom-nav__button--disabled {
 	color: rgba(0, 0, 0, .7);
 	padding: 0.5rem 0;
-	// @if themed("Dark") or themed("bluesTheme") {
-	// 	color: rgba(255, 255, 255, .3);
-	// }
 }
+
+// @function set-inverse-color() {
+// 	@if themed("Dark") or themed("bluesTheme") {
+// 		.bottom-nav__button--disabled {
+// 			color: rgba(255, 255, 255, .3);
+// 		}
+// 	}
+// }
+
+@mixin set-inverse 
 
 .course-card--selected {
 	@include themify($themes) {
