@@ -11,9 +11,9 @@
                             <div class="imagewrap">
                                 <profile-picture :image="image"></profile-picture>
                                 <div class="type--center">
+                                    <i class="fas fa-2x fa-cog profile_edit-button" @click="checkPermission"></i>
                                     <image-handler image_type="likeness"></image-handler>
                                 </div>
-                                <i class="fas fa-2x fa-cog profile_edit-button" @click="checkPermission"></i>
                             </div>
                         </slide>
                         <!--

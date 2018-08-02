@@ -1278,7 +1278,7 @@ textarea[type="text"]:focus {
 .profile_edit-button {
   position: absolute;
   bottom: 0%;
-  right: 5%;
+  right: 0%;
   border-radius: 100%;
   padding: 5%;
   font-size: 150%;
@@ -1304,6 +1304,18 @@ textarea[type="text"]:focus {
 .theme-Dark .profile_edit-button {
   background-color: #426c96;
   color: #dfe5ec;
+}
+
+@media only screen and (min-width: 370px) {
+  .profile_edit-button {
+    bottom: 5%;
+    right: 25%;
+    padding: 3%;
+  }
+}
+
+.profile_edit-padding {
+  padding: 5%;
 }
 
 .makeWhite {

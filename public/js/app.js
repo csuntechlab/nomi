@@ -22904,17 +22904,17 @@ var render = function() {
                         "div",
                         { staticClass: "type--center" },
                         [
+                          _c("i", {
+                            staticClass: "fas fa-2x fa-cog profile_edit-button",
+                            on: { click: _vm.checkPermission }
+                          }),
+                          _vm._v(" "),
                           _c("image-handler", {
                             attrs: { image_type: "likeness" }
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("i", {
-                        staticClass: "fas fa-2x fa-cog profile_edit-button",
-                        on: { click: _vm.checkPermission }
-                      })
+                      )
                     ],
                     1
                   )
