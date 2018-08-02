@@ -18105,6 +18105,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "courses-container",
 
@@ -18124,7 +18126,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "loadingClasses"]), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "selectedTerm", "loadingClasses"]), {
         shouldLoadClasses: function shouldLoadClasses() {
             if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
         },
@@ -18150,6 +18152,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
                 }
                 return this.displayedTerm;
+            }
+        }
+    }),
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(["setPreviousTerm", "setCurrentTerm", "setNextTerm"]), {
+        setPrevTerm: function setPrevTerm() {
+            if (this.selectedTerm != 'previous') {
+                this.setPreviousTerm();
+            }
+        },
+        setCurrTerm: function setCurrTerm() {
+            if (this.selectedTerm != 'current') {
+                this.setCurrentTerm();
+            }
+        },
+        setNeTerm: function setNeTerm() {
+            if (this.selectedTerm != 'next') {
+                this.setNextTerm();
             }
         }
     })
@@ -18716,6 +18736,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "course-list-item",
@@ -18784,46 +18806,53 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "panel__content" }, [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-xs-7" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.subject) +
-                    " " +
-                    _vm._s(_vm.course.catalog_number) +
+              _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
+                _c("div", [
+                  _c("b", [
+                    _vm._v(
+                      _vm._s(_vm.course.subject) +
+                        " " +
+                        _vm._s(_vm.course.catalog_number)
+                    )
+                  ]),
+                  _vm._v(
                     ": (" +
-                    _vm._s(_vm.course.class_number) +
-                    ")\n                "
-                )
+                      _vm._s(_vm.course.class_number) +
+                      ")\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.course.enrollment_count) +
+                      " Students\n                    "
+                  )
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-5" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.meetings[0].location) +
-                    " " +
-                    _vm._s(_vm.course.meetings[0].days) +
-                    "\n                "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-xs-7" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.classStartTime) +
-                    " - " +
-                    _vm._s(_vm.classEndTime) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-5" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.course.enrollment_count) +
-                    " Students\n                "
-                )
+              _c("div", { staticClass: "col-xs-12 col-sm-6 course__item" }, [
+                _c("div", [
+                  _c("b", [_vm._v("Location")]),
+                  _vm._v(
+                    ": " +
+                      _vm._s(_vm.course.meetings[0].location) +
+                      " " +
+                      _vm._s(_vm.course.meetings[0].days) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("b", [_vm._v("Time")]),
+                  _vm._v(
+                    ": " +
+                      _vm._s(_vm.classStartTime) +
+                      " - " +
+                      _vm._s(_vm.classEndTime) +
+                      "\n                    "
+                  )
+                ])
               ])
             ])
           ])
@@ -19013,29 +19042,42 @@ var render = function() {
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
         ])
-      : _c("div", [_vm._m(0), _vm._v(" "), _c("course-list")], 1)
+      : _c(
+          "div",
+          [
+            _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-sm", on: { click: _vm.setPrevTerm } },
+                  [_vm._v("Previous")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 type--center" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-sm", on: { click: _vm.setCurrTerm } },
+                  [_vm._v("Current")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 type--left" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-sm", on: { click: _vm.setNeTerm } },
+                  [_vm._v("Next")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("course-list")
+          ],
+          1
+        )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row course_banner fullscreen_width" }, [
-      _c("div", { staticClass: "col-xs-4 type--right" }, [
-        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Previous")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-4 type--center" }, [
-        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Current")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-4 type--left" }, [
-        _c("button", { staticClass: "btn btn-sm" }, [_vm._v("Next")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -24317,6 +24359,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     semester: null,
     termYear: null,
     term: null,
+    selectedTerm: 'current',
     loadingClasses: true,
     currentCourse: null,
 
@@ -24398,6 +24441,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     term: function term(state) {
         return state.term;
+    },
+    selectedTerm: function selectedTerm(state) {
+        return state.selectedTerm;
     },
     loadingClasses: function loadingClasses(state) {
         return state.loadingClasses;
@@ -24522,6 +24568,18 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	},
 	storeLocation: function storeLocation(context, payload) {
 		context.commit("STORE_LOCATION", payload);
+	},
+	setPreviousTerm: function setPreviousTerm(context, payload) {
+		context.commit("SET_PREVIOUS_TERM");
+		context.commit("GET_DATA");
+	},
+	setCurrentTerm: function setCurrentTerm(context, payload) {
+		context.commit("SET_CURRENT_TERM");
+		context.commit("GET_DATA");
+	},
+	setNextTerm: function setNextTerm(context, payload) {
+		context.commit("SET_NEXT_TERM");
+		context.commit("GET_DATA");
 	}
 });
 
@@ -24549,9 +24607,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 return name.charAt(0).toUpperCase() + name.substr(1);
             };
 
-            var selectedTerm = state.termYear + state.semester;
-            selectedTerm = selectedTerm.slice(0, 1) + selectedTerm.slice(2);
-            state.term = selectedTerm;
+            var chosenTerm = state.termYear + state.semester;
+            chosenTerm = chosenTerm.slice(0, 1) + chosenTerm.slice(2);
+            state.term = chosenTerm;
 
             window.axios.get("data/" + state.term).then(function (response) {
                 state.term = response.data["term"];
@@ -24796,6 +24854,64 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
         state.imagePermission = null;
+    },
+    SET_PREVIOUS_TERM: function SET_PREVIOUS_TERM(state) {
+        state.loadingClasses = true;
+        state.termYear = state.term.slice(0, 3);
+        state.semester = state.term.slice(3);
+        if (state.selectedTerm == 'current') {
+            state.semester = state.semester - 2;
+            if (state.semester < 3) {
+                state.semester = 9;
+                state.termYear = state.termYear - 1;
+            }
+        } else if (state.selectedTerm == 'next') {
+            state.semester = state.semester - 4;
+            if (state.semester == 1) {
+                state.semester = 9;
+                state.termYear = state.termYear - 1;
+            } else if (state.semester == -1) {
+                state.semester = 7;
+                state.termYear = state.termYear - 1;
+            }
+        }
+        state.term = "" + state.termYear + state.semester;
+        state.termYear = "" + state.termYear;
+        state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
+        state.semester = "" + state.semester;
+        state.selectedTerm = 'previous';
+    },
+    SET_CURRENT_TERM: function SET_CURRENT_TERM(state) {
+        state.loadingClasses = true;
+        state.semester = null;
+        state.termYear = null;
+        state.selectedTerm = 'current';
+    },
+    SET_NEXT_TERM: function SET_NEXT_TERM(state) {
+        state.loadingClasses = true;
+        state.termYear = parseInt(state.term.slice(0, 3));
+        state.semester = parseInt(state.term.slice(3));
+        if (state.selectedTerm == 'current') {
+            state.semester = state.semester + 2;
+            if (state.semester > 9) {
+                state.semester = 3;
+                state.termYear = state.termYear + 1;
+            }
+        } else if (state.selectedTerm == 'previous') {
+            state.semester = state.semester + 4;
+            if (state.semester == 11) {
+                state.semester = 3;
+                state.termYear = state.termYear + 1;
+            } else if (state.semester == 13) {
+                state.semester = 5;
+                state.termYear = state.termYear + 1;
+            }
+        }
+        state.term = "" + state.termYear + state.semester;
+        state.termYear = "" + state.termYear;
+        state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
+        state.semester = "" + state.semester;
+        state.selectedTerm = 'next';
     }
 });
 

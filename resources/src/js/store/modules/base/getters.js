@@ -26,6 +26,7 @@ export default {
     semester: state => state.semester,
     termYear: state => state.termYear,
     term: state => state.term,
+    selectedTerm: state => state.selectedTerm,
     loadingClasses: state => state.loadingClasses,
     currentCourse: state => state.currentCourse,
 

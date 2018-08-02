@@ -15,9 +15,9 @@ export default {
         }
 
         if(state.termYear != null){
-            let selectedTerm = state.termYear + state.semester;
-            selectedTerm = selectedTerm.slice(0,1) + selectedTerm.slice(2);
-            state.term = selectedTerm;
+            let chosenTerm = state.termYear + state.semester;
+            chosenTerm = chosenTerm.slice(0,1) + chosenTerm.slice(2);
+            state.term = chosenTerm;
     
             function capitalize(name) {
                 return name.charAt(0).toUpperCase() + name.substr(1);
@@ -280,5 +280,68 @@ export default {
 
     NULLIFY_PERMISSION_RESPONSE(state){
         state.imagePermission = null;
+    },
+
+    SET_PREVIOUS_TERM(state) {
+        state.loadingClasses = true;
+        state.termYear = state.term.slice(0,3)
+        state.semester = state.term.slice(3)
+        if(state.selectedTerm == 'current') {
+            state.semester = state.semester - 2
+            if (state.semester < 3) {
+                state.semester = 9
+                state.termYear = state.termYear - 1
+            }
+        } else if(state.selectedTerm == 'next') {
+            state.semester = state.semester - 4
+            if (state.semester == 1) {
+                state.semester = 9
+                state.termYear = state.termYear - 1
+            } else if(state.semester == -1) {
+                state.semester = 7
+                state.termYear = state.termYear - 1
+            }
+        }
+        state.term = "" + state.termYear + state.semester
+        state.termYear = "" + state.termYear
+        state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
+        state.semester = "" + state.semester
+        state.selectedTerm = 'previous'
+    },
+
+    SET_CURRENT_TERM(state) {
+        state.loadingClasses = true;
+        state.semester = null;
+        state.termYear = null;
+        state.selectedTerm = 'current'
+    },
+
+    SET_NEXT_TERM(state) {
+        state.loadingClasses = true;
+        state.termYear = parseInt(state.term.slice(0,3))
+        state.semester = parseInt(state.term.slice(3))
+        if(state.selectedTerm == 'current') {
+            state.semester = state.semester + 2
+            if (state.semester > 9) {
+                state.semester = 3
+                state.termYear = state.termYear + 1
+            }
+        } else if(state.selectedTerm == 'previous') {
+            state.semester = state.semester + 4
+            if (state.semester == 11) {
+                state.semester = 3
+                state.termYear = state.termYear + 1
+            } else if(state.semester == 13) {
+                state.semester = 5
+                state.termYear = state.termYear + 1
+            }
+        }
+        state.term = "" + state.termYear + state.semester
+        state.termYear = "" + state.termYear
+        state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
+        state.semester = "" + state.semester
+        state.selectedTerm = 'next'
     }
+
+
 }
