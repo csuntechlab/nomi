@@ -13,10 +13,7 @@
                                 <div class="type--center">
                                     <image-handler image_type="likeness"></image-handler>
                                 </div>
-                                <div class="type--center">
-                                    <button class="btn btn-default btn-sm" @click="checkPermission">Edit Photo</button>
-                                    <br>
-                                </div>
+                                <i class="fas fa-2x fa-cog profile_edit-button" @click="checkPermission"></i>
                             </div>
                         </slide>
                         <!--
