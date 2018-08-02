@@ -1051,13 +1051,28 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.4);
   padding: 0.5rem 0;
 }
 
 .bottom-nav__button--disabled {
-  color: rgba(0, 0, 0, 0.4);
   padding: 0.5rem 0;
+}
+
+.theme-main .bottom-nav__button--disabled {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-bluesTheme .bottom-nav__button--disabled {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-OnceAMatadorAlwaysAMatador .bottom-nav__button--disabled {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.theme-Dark .bottom-nav__button--disabled {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .theme-main .course-card--selected {

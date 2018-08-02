@@ -73,7 +73,7 @@ export default {
 			let buttons = document.querySelectorAll(".bottom-nav__button");
 			let i;
 			for (i = 0; i < buttons.length; i += 1) {
-				buttons[i].style.color = "rgba(255,255,255,.3)";
+				buttons[i].style.color = "rgba(255,255,255,0.6)";
 			}
 		}
 	}
