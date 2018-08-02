@@ -69,6 +69,14 @@ textarea[type="text"]:focus {
 			font-weight: bold;
 		}
 
+		&__emptyCourseHeader {
+			padding-bottom: 0.5rem;
+		}
+
+		&__emptyCourseContent {
+			line-height: 1;
+		}
+
 	}
 
 	&__listing {
@@ -110,10 +118,6 @@ textarea[type="text"]:focus {
 	.panel__content {
 		padding: 0.5rem 1rem;
 	}
-
-	.course__item {
-		padding-top: 0.5rem;
-	}	
 }
 .about_padding {
 	padding: 5%;

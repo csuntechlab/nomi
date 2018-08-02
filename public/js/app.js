@@ -18738,6 +18738,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "course-list-item",
@@ -18831,13 +18834,11 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-12 col-sm-6 course__item" }, [
+              _c("div", { staticClass: "col-xs-12 col-sm-6" }, [
                 _c("div", [
-                  _c("b", [_vm._v("Location")]),
+                  _c("b", [_vm._v("Days")]),
                   _vm._v(
                     ": " +
-                      _vm._s(_vm.course.meetings[0].location) +
-                      " " +
                       _vm._s(_vm.course.meetings[0].days) +
                       "\n                    "
                   )
@@ -18850,6 +18851,15 @@ var render = function() {
                       _vm._s(_vm.classStartTime) +
                       " - " +
                       _vm._s(_vm.classEndTime) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("b", [_vm._v("Location")]),
+                  _vm._v(
+                    ": " +
+                      _vm._s(_vm.course.meetings[0].location) +
                       "\n                    "
                   )
                 ])
@@ -18964,23 +18974,33 @@ var staticRenderFns = [
         "div",
         { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
         [
-          _c("h5", { staticClass: "panel__header mb_0" }, [
-            _vm._v(
-              "\n             You are not teaching any classes this semester.\n         "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "panel__content" }, [
-            _c("div", { staticClass: "row" }, [
+          _c(
+            "h5",
+            { staticClass: "panel__header panel__emptyCourseHeader mb_0" },
+            [
               _vm._v(
-                "Feel free to review your past and future classes by selecting a different term."
+                "\n            You are not teaching any classes this semester.\n        "
               )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [_vm._v("Enjoy your semester!")])
-          ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "panel__content panel__emptyCourseContent" },
+            [
+              _c("div", { staticClass: "row" }, [
+                _vm._v(
+                  "Feel free to review your past and future classes by selecting a different term."
+                )
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _vm._v("Enjoy your semester!")
+              ])
+            ]
+          )
         ]
       )
     ])
