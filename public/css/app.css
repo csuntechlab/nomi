@@ -258,6 +258,14 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.theme-login .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-login .panel__emptyCourseContent {
+  line-height: 1;
+}
+
 .theme-main .panel {
   border-radius: 3px;
   background-color: #F4F4F4;
@@ -284,6 +292,14 @@ textarea[type="text"]:focus {
 .theme-main .panel__header {
   padding-bottom: 1.5rem;
   font-weight: bold;
+}
+
+.theme-main .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-main .panel__emptyCourseContent {
+  line-height: 1;
 }
 
 .theme-bluesTheme .panel {
@@ -314,6 +330,14 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.theme-bluesTheme .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-bluesTheme .panel__emptyCourseContent {
+  line-height: 1;
+}
+
 .theme-Cloudy .panel {
   border-radius: 3px;
   background-color: #FFFFFF;
@@ -340,6 +364,14 @@ textarea[type="text"]:focus {
 .theme-Cloudy .panel__header {
   padding-bottom: 1.5rem;
   font-weight: bold;
+}
+
+.theme-Cloudy .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-Cloudy .panel__emptyCourseContent {
+  line-height: 1;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .panel {
@@ -370,6 +402,14 @@ textarea[type="text"]:focus {
   font-weight: bold;
 }
 
+.theme-OnceAMatadorAlwaysAMatador .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__emptyCourseContent {
+  line-height: 1;
+}
+
 .theme-Dark .panel {
   border-radius: 3px;
   background-color: #303030;
@@ -396,6 +436,14 @@ textarea[type="text"]:focus {
 .theme-Dark .panel__header {
   padding-bottom: 1.5rem;
   font-weight: bold;
+}
+
+.theme-Dark .panel__emptyCourseHeader {
+  padding-bottom: 0.5rem;
+}
+
+.theme-Dark .panel__emptyCourseContent {
+  line-height: 1;
 }
 
 .panel__listing {
@@ -471,9 +519,6 @@ textarea[type="text"]:focus {
   }
   .panel__content {
     padding: 0.5rem 1rem;
-  }
-  .course__item {
-    padding-top: 0.5rem;
   }
 }
 

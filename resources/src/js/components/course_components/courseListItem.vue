@@ -14,12 +14,15 @@
                             {{course.enrollment_count}} Students
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 course__item">
+                    <div class="col-xs-12 col-sm-6">
                         <div>
-                            <b>Location</b>: {{course.meetings[0].location}} {{course.meetings[0].days}}
+                            <b>Days</b>: {{course.meetings[0].days}}
                         </div>
                         <div>
                             <b>Time</b>: {{classStartTime}} - {{classEndTime}}
+                        </div>
+                        <div>
+                            <b>Location</b>: {{course.meetings[0].location}}
                         </div>
                     </div>
                 </div>
