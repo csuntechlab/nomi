@@ -37,7 +37,7 @@ class SPAController extends Controller
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
 
-        if (env('CURRENT_TERM')) {
+        if (env('CURRENT_TERM') && $term == null) {
             $term = env('CURRENT_TERM');
         }
 
