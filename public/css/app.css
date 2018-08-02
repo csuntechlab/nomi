@@ -1287,6 +1287,65 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
+.profile-edit-button {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  border-radius: 100%;
+  padding: 5%;
+  font-size: 150%;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-main .profile-edit-button {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .profile-edit-button {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile-edit-button {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-Dark .profile-edit-button {
+  background-color: #426c96;
+  color: #dfe5ec;
+}
+
+@media only screen and (min-width: 350px) {
+  .profile-edit-button {
+    bottom: 0%;
+    right: 8%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .profile-edit-button {
+    bottom: 2%;
+    right: 15%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .profile-edit-button {
+    bottom: 5%;
+    right: 25%;
+    padding: 3%;
+  }
+}
+
+.profile_edit-padding {
+  padding: 5%;
+}
+
 .makeWhite {
   -webkit-filter: grayScale(0%);
           filter: grayScale(0%);

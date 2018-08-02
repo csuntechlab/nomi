@@ -22601,9 +22601,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -22949,25 +22946,17 @@ var render = function() {
                         "div",
                         { staticClass: "type--center" },
                         [
+                          _c("i", {
+                            staticClass: "fas fa-2x fa-cog profile-edit-button",
+                            on: { click: _vm.checkPermission }
+                          }),
+                          _vm._v(" "),
                           _c("image-handler", {
                             attrs: { image_type: "likeness" }
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-default btn-sm",
-                            on: { click: _vm.checkPermission }
-                          },
-                          [_vm._v("Edit Photo")]
-                        ),
-                        _vm._v(" "),
-                        _c("br")
-                      ])
+                      )
                     ],
                     1
                   )

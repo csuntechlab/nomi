@@ -141,6 +141,40 @@
 	}
 }
 
+.profile-edit-button {
+	position: absolute;
+    bottom: 0%;
+	right: 0%;
+    border-radius: 100%;
+    padding: 5%;
+    font-size: 150%;
+    -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+	@include themify($themes) {
+		background-color: themed("galleryBtnBg");
+		color: themed("galleryBtnText");
+	}
+	@media only screen and (min-width: 350px){
+		bottom: 0%;
+		right: 8%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 600px){
+		bottom: 2%;
+		right: 15%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 1000px){
+		bottom: 5%;
+		right: 25%;
+		padding: 3%;
+	}
+}
+
+.profile_edit-padding {
+	padding:5%
+}
+
 .makeWhite {
 	filter: grayScale(0%);
 	filter: grayScale(100%);
