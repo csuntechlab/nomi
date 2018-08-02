@@ -330,13 +330,16 @@ input, select, textarea{
 }
 
 .bottom-nav__button {
-	color: rgba(255, 255, 255, .3);
+	color: rgba(255, 255, 255, .4);
 	padding: 0.5rem 0;
 }
 
 .bottom-nav__button--disabled {
 	color: rgba(0, 0, 0, .7);
 	padding: 0.5rem 0;
+	// @if themed("Dark") or themed("bluesTheme") {
+	// 	color: rgba(255, 255, 255, .3);
+	// }
 }
 
 .course-card--selected {
