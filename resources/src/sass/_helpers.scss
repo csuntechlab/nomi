@@ -154,7 +154,17 @@
 		background-color: themed("galleryBtnBg");
 		color: themed("galleryBtnText");
 	}
-	@media only screen and (min-width: 370px){
+	@media only screen and (min-width: 350px){
+		bottom: 0%;
+		right: 8%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 600px){
+		bottom: 2%;
+		right: 15%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 1000px){
 		bottom: 5%;
 		right: 25%;
 		padding: 3%;

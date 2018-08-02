@@ -1306,7 +1306,23 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
-@media only screen and (min-width: 370px) {
+@media only screen and (min-width: 350px) {
+  .profile-edit-button {
+    bottom: 0%;
+    right: 8%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .profile-edit-button {
+    bottom: 2%;
+    right: 15%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
   .profile-edit-button {
     bottom: 5%;
     right: 25%;
