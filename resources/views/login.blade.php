@@ -29,7 +29,7 @@
         <div id="filter"></div>
             <div id="panel__login">
                 <div id="panel__content">
-                    <img id="loginLogo" src="./../public/images/nomi-logo-desktop.png" alt="NOMI Logo; Names of Matador Individuals">
+                    <img id="loginLogo" src="./../public/images/nomi-logo-desktop.svg" alt="NOMI Logo; Names of Matador Individuals">
 
                     <div id="loginInput">
                     {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
