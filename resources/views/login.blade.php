@@ -16,10 +16,12 @@
 <div id="login" class="login">
     <div id="panel">
         <div id="panel__right">
-            <img id="backgroundImage" src="./../public/images/desktop-background.png" alt="Background Image; Man holding a red book">
+            <div>
+                <img id="backgroundImage" src="./../public/images/desktop-background.png" alt="Background Image; Man holding a red book">
+            </div>
 
             <div id="loginBranding">
-                <img id="csunLogo" src="./../public/images/csun_logo.svg" alt="CSUN Logo; California State University of Northridge">
+                <img id="csunLogo" src="./../public/images/csunLogo-horizontal.svg" alt="CSUN Logo; California State University of Northridge">
             </div>
         </div>
 
