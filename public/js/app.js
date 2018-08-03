@@ -18769,8 +18769,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return time;
 		},
 		storeSelectedCourse: function storeSelectedCourse() {
-			document.getElementById('courses').style.color = "rgba(255,255,255,.3)";
-			document.getElementById('students').style.color = "rgba(255,255,255,1)";
 			this.$store.dispatch("storeLocation", 'class');
 			this.$store.dispatch('storeCourse', this.course.id);
 		}
@@ -24349,7 +24347,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     errors: null,
     imagePermission: null,
     menuShow: false,
-    currentLocation: "",
+    currentLocation: 'home',
 
     // Views & Sorting
     list: true,
@@ -26276,33 +26274,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "bottom-nav",
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentLocation"])),
-
-	mounted: function mounted() {
-		this.setActive();
+	data: function data() {
+		return {
+			selected: ['bottom-nav__button--active']
+		};
 	},
 
+
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentLocation"])),
 
 	methods: {
 		setActive: function setActive(activeLocation) {
 			if (activeLocation != null) {
 				this.$store.dispatch("storeLocation", activeLocation);
-			}
-			this.resetNav();
-			if (this.currentLocation == "") {
-				document.getElementById("courses").style.color = "rgba(255,255,255,1)";
-			} else if (this.currentLocation == "settings") {
-				document.getElementById("settings").style.color = "rgba(255,255,255,1)";
-			} else if (this.currentLocation == "profile") {
-				document.getElementById("profile").style.color = "rgba(255,255,255,1)";
-			} else {
-				document.getElementById("students").style.color = "rgba(255,255,255,1)";
 			}
 		},
 		resetNav: function resetNav() {
@@ -26331,10 +26320,13 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
+          class: ((_obj = {}),
+          (_obj[_vm.selected] = this.currentLocation == "home"),
+          _obj),
           attrs: { id: "courses", to: "/" },
           nativeOn: {
             click: function($event) {
-              _vm.setActive("")
+              _vm.setActive("home")
             }
           }
         },
@@ -26349,7 +26341,11 @@ var render = function() {
         ? _c(
             "div",
             {
-              staticClass: "col-xs-3 type--center bottom-nav__button--disabled"
+              staticClass: "col-xs-3 type--center bottom-nav__button--disabled",
+              class: ((_obj$1 = {}),
+              (_obj$1[_vm.selected] = this.currentLocation == "class"),
+              _obj$1),
+              attrs: { id: "students" }
             },
             [
               _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
@@ -26363,6 +26359,9 @@ var render = function() {
             "router-link",
             {
               staticClass: "col-xs-3 type--center bottom-nav__button",
+              class: ((_obj$2 = {}),
+              (_obj$2[_vm.selected] = this.currentLocation == "class"),
+              _obj$2),
               attrs: {
                 id: "students",
                 to: { path: "/class/" + _vm.currentCourse }
@@ -26386,6 +26385,9 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
+          class: ((_obj$3 = {}),
+          (_obj$3[_vm.selected] = this.currentLocation == "settings"),
+          _obj$3),
           attrs: { id: "settings", to: "/settings" },
           nativeOn: {
             click: function($event) {
@@ -26404,6 +26406,9 @@ var render = function() {
         "router-link",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
+          class: ((_obj$4 = {}),
+          (_obj$4[_vm.selected] = this.currentLocation == "profile"),
+          _obj$4),
           attrs: { id: "profile", to: "/settings" },
           nativeOn: {
             click: function($event) {
@@ -26430,6 +26435,11 @@ var render = function() {
     ],
     1
   )
+  var _obj
+  var _obj$1
+  var _obj$2
+  var _obj$3
+  var _obj$4
 }
 var staticRenderFns = []
 render._withStripped = true

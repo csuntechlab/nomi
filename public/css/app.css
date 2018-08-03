@@ -723,7 +723,9 @@ textarea[type="text"]:focus {
   border: none;
 }
 
-.theme-Dark input, .theme-Dark select, .theme-Dark textarea {
+.theme-Dark input, .theme-Dark
+select, .theme-Dark
+textarea {
   background: #424242;
   border: none;
 }
@@ -1053,7 +1055,12 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.5rem 0;
+}
+
+.bottom-nav__button--active {
+  color: white;
   padding: 0.5rem 0;
 }
 
