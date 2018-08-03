@@ -662,7 +662,7 @@ textarea[type="text"]:focus {
 }
 
 .tab__link--kerning {
-  letter-spacing: .13rem;
+  letter-spacing: .1rem;
 }
 
 .theme-login .tab__link--active {
