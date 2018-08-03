@@ -7,9 +7,9 @@ body {
 }
 
 html * {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	@include themify($themes) {
 		font-size: themed("mainFontSize");
-		font-family: themed("mainFontFamily");
 		color: themed("backgroundColor");
 	}
 }
