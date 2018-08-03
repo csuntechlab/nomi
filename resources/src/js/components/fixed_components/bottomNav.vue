@@ -5,7 +5,7 @@
             <div class="bottom-nav__text">Courses</div>
         </router-link>
 
-        <div v-if="this.currentCourse == null" class="col-xs-3 type--center bottom-nav__button--disabled">
+        <div v-if="this.currentCourse == null" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
             <i class="fas fa-2x fa-user-graduate"></i>
             <div class="bottom-nav__text">Students</div>
         </div>
