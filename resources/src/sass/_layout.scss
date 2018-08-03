@@ -31,10 +31,11 @@ textarea[type="text"]:focus {
 .primary-nav {
 	@include themify($themes) {
 		background-color: themed("navigationBars");
-		width: 100%;
+		position: absolute;
 		height: rem(37);
-		top: 0%;
-		position: fixed;
+		width: 100%;
+		z-index: 99;
+		top: 0;
 
 		&__sub-brand {
 			color: themed("backgroundColor");
@@ -223,67 +224,6 @@ input, select, textarea{
 		color: themed("buttonText");
 		border: 2px solid transparent;
 	}
-}
-
-/*Login Styling*/
-@media only screen and (max-width: 600px) {
-	.loginContainer {
-		margin: 0 15%;
-	}
-}
-
-@media only screen and (min-width: 600px) {
-	.loginContainer {
-		margin: 0 25%;
-	}
-}
-
-.loginContainer {
-	position: fixed;
-	right: 0;
-	left: 0;
-	top: 25%;
-	transition: 0.3s;
-}
-
-.loginContainer_hide {
-	opacity: 0;
-	visibility: hidden;
-}
-
-.loginTitle {
-	font-weight: 400;
-	padding-bottom: 5px;
-}
-
-.loginButton {
-	float: right;
-}
-
-.loginForm {
-	border-radius: 100px !important;
-	margin-bottom: 20px;
-	opacity: 1;
-}
-
-::placeholder {
-	color: black;
-	opacity: 0.7;
-}
-
-.login_load {
-	position: fixed;
-	text-align: center;
-	width: 100%;
-	top: 100%;
-	display: inline-block;
-	transition: 0.4s;
-	visibility: hidden;
-}
-
-.login_load_active {
-	top: 35%;
-	visibility: visible;
 }
 
 /*Navbar Styling*/

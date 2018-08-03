@@ -160,10 +160,11 @@ textarea[type="text"]:focus {
 
 .theme-login .primary-nav {
   background-color: #D00D2D;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-login .primary-nav__sub-brand {
@@ -172,10 +173,11 @@ textarea[type="text"]:focus {
 
 .theme-main .primary-nav {
   background-color: #0F1821;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-main .primary-nav__sub-brand {
@@ -184,10 +186,11 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-bluesTheme .primary-nav__sub-brand {
@@ -196,10 +199,11 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .primary-nav {
   background-color: #747474;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-Cloudy .primary-nav__sub-brand {
@@ -208,10 +212,11 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav__sub-brand {
@@ -220,10 +225,11 @@ textarea[type="text"]:focus {
 
 .theme-Dark .primary-nav {
   background-color: #1D1D1D;
-  width: 100%;
+  position: absolute;
   height: 2.46666667rem;
-  top: 0%;
-  position: fixed;
+  width: 100%;
+  z-index: 99;
+  top: 0;
 }
 
 .theme-Dark .primary-nav__sub-brand {
@@ -795,84 +801,6 @@ textarea[type="text"]:focus {
   background-color: #426c96;
   color: #dadada;
   border: 2px solid transparent;
-}
-
-/*Login Styling*/
-@media only screen and (max-width: 600px) {
-  .loginContainer {
-    margin: 0 15%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .loginContainer {
-    margin: 0 25%;
-  }
-}
-
-.loginContainer {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 25%;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.loginContainer_hide {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loginTitle {
-  font-weight: 400;
-  padding-bottom: 5px;
-}
-
-.loginButton {
-  float: right;
-}
-
-.loginForm {
-  border-radius: 100px !important;
-  margin-bottom: 20px;
-  opacity: 1;
-}
-
-::-webkit-input-placeholder {
-  color: black;
-  opacity: 0.7;
-}
-
-:-ms-input-placeholder {
-  color: black;
-  opacity: 0.7;
-}
-
-::-ms-input-placeholder {
-  color: black;
-  opacity: 0.7;
-}
-
-::placeholder {
-  color: black;
-  opacity: 0.7;
-}
-
-.login_load {
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  top: 100%;
-  display: inline-block;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  visibility: hidden;
-}
-
-.login_load_active {
-  top: 35%;
-  visibility: visible;
 }
 
 /*Navbar Styling*/
@@ -1787,6 +1715,216 @@ textarea[type="text"]:focus {
   margin-bottom: 0 !important;
 }
 
+.login {
+  display: none;
+}
+
+.loginTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding-bottom: 5px;
+}
+
+.loginButton {
+  float: right;
+}
+
+.loginForm {
+  border-radius: 100px !important;
+  margin-bottom: 20px;
+  opacity: 1;
+}
+
+@media only screen and (max-width: 945px) {
+  #login-mobile {
+    display: block;
+  }
+  .loginContainer {
+    position: fixed;
+    margin: 15%;
+    right: 0;
+    left: 0;
+    top: 25%;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .loginContainer--hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .loginLoader {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    top: 100%;
+    display: inline-block;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    visibility: hidden;
+  }
+  .loginLoader--active {
+    top: 35%;
+    visibility: visible;
+  }
+}
+
+#login {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  overflow: auto;
+  z-index: 99;
+  top: 0;
+  left: 0;
+}
+
+#loginLogo {
+  position: relative;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  max-width: 366px;
+  width: 100%;
+}
+
+.loginLoader {
+  position: relative;
+  padding-left: 2.5%;
+  top: -2.75rem;
+  display: none;
+}
+
+.loginLoader--active {
+  display: block;
+}
+
+#loginInput {
+  padding-top: 1rem;
+}
+
+#loginBranding {
+  position: absolute;
+  padding: 1rem 3rem;
+  right: 15%;
+  height: 100%;
+  width: 16.94%;
+}
+
+#csunLogo {
+  position: absolute;
+  bottom: 3%;
+}
+
+#filter {
+  background-image: url("./../../public/images/blur.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(235, 235, 235, 0.8);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-filter: grayscale(50%) opacity(60%) contrast(70%);
+          filter: grayscale(50%) opacity(60%) contrast(70%);
+}
+
+#backgroundImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+#panel {
+  background-color: #616c70;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+#panel__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 85.42%;
+  max-width: 1509px;
+}
+
+#panel__left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 43.44%;
+}
+
+#panel__content {
+  height: 100%;
+  width: 66.12%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 0 auto;
+}
+
+#panel__login {
+  position: absolute;
+  right: 0;
+  z-index: 105;
+  height: 100%;
+  width: 67.13%;
+}
+
+@media only screen and (min-width: 946px) {
+  #login {
+    display: block;
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: rgba(0, 0, 180, 0.8);
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.gold {
+  background-color: gold;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.purple {
+  background-color: purple;
+}
+
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -1885,3 +2023,7 @@ textarea[type="text"]:focus {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+/*  Fixed Safari font-awesome issue
+    * @import "node_modules/font-awesome/scss/font-awesome";
+    */
