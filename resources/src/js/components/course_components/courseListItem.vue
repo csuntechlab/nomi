@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
                         <div>
-                            <b>{{course.subject}} {{course.catalog_number}}</b>: ({{course.class_number}})
+                            <b>{{course.subject}} {{course.catalog_number}}</b> ({{course.class_number}})
                         </div>
                         <div>
                             {{course.enrollment_count}} Students

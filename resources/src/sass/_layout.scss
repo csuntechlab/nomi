@@ -7,9 +7,9 @@ body {
 }
 
 html * {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	@include themify($themes) {
 		font-size: themed("mainFontSize");
-		font-family: themed("mainFontFamily");
 		color: themed("backgroundColor");
 	}
 }
@@ -178,6 +178,10 @@ textarea[type="text"]:focus {
 	}
 }
 
+.tab__link--kerning {
+	letter-spacing: .1rem;
+}
+
 .tab__link--active {
 	@include themify($themes) {
 		display: block;
@@ -306,6 +310,7 @@ textarea {
 	left: 50px;
 	font-size: 1.5rem;
 	color: white;
+	letter-spacing: .1rem;
 }
 
 .csun_logo {
