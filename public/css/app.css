@@ -891,6 +891,7 @@ textarea[type="text"]:focus {
   left: 50px;
   font-size: 1.5rem;
   color: white;
+  letter-spacing: .1rem;
 }
 
 .theme-login .csun_logo {
