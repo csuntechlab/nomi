@@ -18819,7 +18819,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(
-                    ": (" +
+                    " (" +
                       _vm._s(_vm.course.class_number) +
                       ")\n                    "
                   )
@@ -23906,7 +23906,7 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _vm.showAbout
-        ? _c("ul", { staticClass: "tabs cf type--center" }, [
+        ? _c("ul", { staticClass: "tabs cf type--center tab__link--kerning" }, [
             _c("li", { staticClass: "tab__list" }, [
               _c(
                 "a",
@@ -23929,7 +23929,7 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.showAbout === false
-        ? _c("ul", { staticClass: "tabs cf type--center" }, [
+        ? _c("ul", { staticClass: "tabs cf type--center tab__link--kerning" }, [
             _c("li", { staticClass: "tab__list" }, [
               _c(
                 "a",
@@ -24180,8 +24180,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "type--center tab__link" }, [
-      _vm._v("\n        Set Theme\n    ")
+    _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
+      _vm._v("\n        Select Theme\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [

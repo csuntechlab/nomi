@@ -179,6 +179,10 @@ textarea[type="text"]:focus {
 	}
 }
 
+.tab__link--kerning {
+	letter-spacing: .13rem;
+}
+
 .tab__link--active {
 	@include themify($themes) {
 		display: block;
