@@ -2,7 +2,7 @@ body {
 	@include themify($themes) {
 		background-color: themed("backgroundColor");
 		color: themed("textColor");
-    	padding-top: rem(36);
+		padding-top: rem(36);
 	}
 }
 
@@ -76,7 +76,6 @@ textarea[type="text"]:focus {
 		&__emptyCourseContent {
 			line-height: 1;
 		}
-
 	}
 
 	&__listing {
@@ -190,15 +189,17 @@ textarea[type="text"]:focus {
 	}
 }
 
-.toolBar__field{
-	@include themify($themes){
+.toolBar__field {
+	@include themify($themes) {
 		background: themed("inputColor");
 		border: themed("inputBorder");
 	}
 }
 
-input, select, textarea{
-	@include themify($themes){
+input,
+select,
+textarea {
+	@include themify($themes) {
 		background: themed("inputColor");
 		border: themed("inputBorder");
 	}
@@ -347,15 +348,20 @@ input, select, textarea{
 }
 
 .bottom-nav__button {
-	color: rgba(255, 255, 255, .4);
+	color: rgba(255, 255, 255, 0.6);
 	padding: 0.5rem 0;
-}
 
-.bottom-nav__button--disabled {
-	@include themify($themes) {
-		color: themed("disabledBtnColor");
+	&--active{
+		color: rgba(255, 255, 255, 1);
+		padding: 0.5rem 0;
 	}
-	padding: 0.5rem 0;
+
+	&--disabled {
+		@include themify($themes) {
+			color: themed("disabledBtnColor");
+		}
+		padding: 0.5rem 0;
+	}
 }
 
 .course-card--selected {

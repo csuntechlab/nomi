@@ -6,7 +6,7 @@ export default {
     errors: null,
     imagePermission: null,
     menuShow: false,
-    currentLocation: "",
+    currentLocation: 'home',
     
     // Views & Sorting
     list: true,
