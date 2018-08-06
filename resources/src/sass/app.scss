@@ -1,13 +1,16 @@
 @import "functions";
 @import "menu";
-//new edits
+
+// Re-usable styling
 @import "themes";
 @import "layout";
 @import "helpers";
 
-//fixed safari font-awesome issue
-//@import "node_modules/font-awesome/scss/font-awesome";
-
-//added nonreusable styling
+// Non-reusable styling
 @import "student-profile-page";
+@import "login";
 @import "modal";
+
+/*  Fixed Safari font-awesome issue
+    * @import "node_modules/font-awesome/scss/font-awesome";
+    */

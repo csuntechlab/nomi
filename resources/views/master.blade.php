@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="theme-login" id="mainBody" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -16,11 +16,6 @@
     <body>
         <div id='app'>
             <nav-bar></nav-bar>
-            @if ( $errors->count() > 0 )
-                <div id="error_bar" class="alert alert--warning" >
-                    <strong>Oops!</strong> Login Failed
-                </div>
-            @endif
             @yield('content')
         </div>
     </body>
