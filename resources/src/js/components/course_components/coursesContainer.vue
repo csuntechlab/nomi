@@ -5,20 +5,15 @@
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
         </div>
         <div v-else>
-            <div class="row">
-                <h1 class="current_term col-xs-12 type--center">
-                    {{this.displayCurrentTerm}} Courses
-                </h1>
-            </div>
             <div class="row course_banner fullscreen_width">
                 <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm">Previous</button>
+                    <button @click="setPrevTerm" class="btn btn-sm">Previous</button>
                 </div>
                 <div class="col-xs-4 type--center">
-                    <button class="btn btn-sm">Current</button>
+                    <button @click="setCurrTerm" class="btn btn-sm">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button class="btn btn-sm">Next</button>
+                    <button @click="setNeTerm" class="btn btn-sm">Next</button>
                 </div>
             </div>
             <course-list></course-list>
@@ -29,6 +24,8 @@
 <script>
     import courseList from "./courseList";
     import { mapGetters } from "vuex";
+    import { mapActions } from "vuex";
+
     export default {
         name: "courses-container",
 
@@ -54,6 +51,7 @@
                 "facultyMember",
                 "facultyFullName",
                 "term",
+                "selectedTerm",
                 "loadingClasses"
             ]),
 
@@ -86,6 +84,32 @@
                             " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
                     }
                     return this.displayedTerm;
+                }
+            }
+        },
+
+        methods: {
+            ...mapActions([
+                "setPreviousTerm",
+                "setCurrentTerm",
+                "setNextTerm"
+            ]),
+
+            setPrevTerm() {
+                if(this.selectedTerm != 'previous') {
+                    this.setPreviousTerm()
+                }
+            },
+
+            setCurrTerm() {
+                if(this.selectedTerm != 'current') {
+                    this.setCurrentTerm()
+                }
+            },
+
+            setNeTerm() {
+                if(this.selectedTerm != 'next') {
+                    this.setNextTerm()
                 }
             }
         }

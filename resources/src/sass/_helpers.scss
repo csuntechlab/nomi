@@ -20,7 +20,6 @@
 	@include themify($themes) {
 		background-color: themed("navigationBars");
 		font-size: themed("mainFontSize");
-		font-family: themed("mainFontFamily");
 		color: themed("backgroundColor");
 	}
 }
@@ -59,24 +58,29 @@
 	color: white;
 	width: 100%;
 	border: 2px solid transparent;
+    font-weight: bold;
+    letter-spacing: .1rem;
 }
 
-@media only screen and (min-width: 600px) {
-	.student_list_name {
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 2rem;
+@media only screen and (max-width: 367px) {
+	.student_list_name_mobile {
+		font-size: 4vw;
 	}
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 368px) {
 	.student_list_name_mobile {
-		font-family: Arial, Helvetica, sans-serif;
 		font-size: 1.3rem;
 	}
 }
 
+@media only screen and (min-width: 600px) {
+	.student_list_name {
+		font-size: 2rem;
+	}
+}
+
 .cardText {
-	font-family: Arial, Helvetica, sans-serif;
 	font-size: 4vh;
 }
 
@@ -120,12 +124,53 @@
 	padding: 5px !important;
 }
 
-.editButton {
-  position: absolute;
-  bottom: 22%;
-  right: 3%;
-  padding: 3%;
-  color: gray;
+.panel__edit-button {
+	position: absolute;
+    bottom: 25%;
+    right: 15%;
+    border-radius: 100%;
+    padding: 5%;
+    font-size: 150%;
+    -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+	@include themify($themes) {
+		background-color: themed("galleryBtnBg");
+		color: themed("galleryBtnText");
+	}
+}
+
+.profile-edit-button {
+	position: absolute;
+    bottom: 0%;
+	right: 0%;
+    border-radius: 100%;
+    padding: 5%;
+    font-size: 150%;
+    -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+	@include themify($themes) {
+		background-color: themed("galleryBtnBg");
+		color: themed("galleryBtnText");
+	}
+	@media only screen and (min-width: 350px){
+		bottom: 0%;
+		right: 8%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 600px){
+		bottom: 2%;
+		right: 15%;
+		padding: 3%;
+	}
+	@media only screen and (min-width: 1000px){
+		bottom: 5%;
+		right: 25%;
+		padding: 3%;
+	}
+}
+
+.profile_edit-padding {
+	padding:5%
 }
 
 .makeWhite {
@@ -216,7 +261,6 @@
 	display: inline-block;
 	padding: 6px 20px;
 	margin: 0 3%;
-	font-family: "museo-sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 15px;
 	font-weight: 500;
 	line-height: 1.8;

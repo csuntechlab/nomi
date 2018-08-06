@@ -1,16 +1,16 @@
 <template>
     <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-        <div class="panel">
-            <div class="row panel__content">
-            <div class="col-xs-5 col-md-3">
+        <div class="panel panel__container">
+        <div class="row panel panel__item">
+            <div class="col-xs-3 col-md-2">
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
-            <div class="col-xs-7 col-md-9">
+            <div class="col-xs-9 col-md-10">
                 <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                     {{display_name}}
                 </router-link>
             </div>
-            </div>
+        </div>
         </div>
     </router-link>
 </template>

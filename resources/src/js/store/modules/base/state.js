@@ -6,7 +6,7 @@ export default {
     errors: null,
     imagePermission: null,
     menuShow: false,
-    currentLocation: "",
+    currentLocation: 'home',
     
     // Views & Sorting
     list: true,
@@ -25,6 +25,7 @@ export default {
     semester: null,
     termYear: null,
     term: null,
+    selectedTerm: 'current',
     loadingClasses: true,
     currentCourse: null,
     

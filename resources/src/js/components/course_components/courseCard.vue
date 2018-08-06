@@ -2,7 +2,7 @@
     <div>
         <div class="panel">
                     <div>
-                        <div class="panel__header">
+                        <div class="panelHeader__info">
                             <router-link :to="'/class/'+course.id">{{course.title}}</router-link>
                         </div>
                     </div>

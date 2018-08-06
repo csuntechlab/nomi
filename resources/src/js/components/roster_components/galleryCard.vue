@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
-        <div class="editButton">
-            <i class="fa fa-edit fa-2x" @click="checkPermission"></i>
+        <div>
+            <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"></i>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
         <div class="panel">

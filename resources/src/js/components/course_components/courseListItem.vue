@@ -6,19 +6,24 @@
             </div>
             <div class="panel__content">
                 <div class="row">
-                    <div class="col-xs-7">
-                        {{course.subject}} {{course.catalog_number}}: #{{course.section_number}}
+                    <div class="col-xs-12 col-sm-6">
+                        <div>
+                            <b>{{course.subject}} {{course.catalog_number}}</b> ({{course.class_number}})
+                        </div>
+                        <div>
+                            {{course.enrollment_count}} Students
+                        </div>
                     </div>
-                    <div class="col-xs-5">
-                        {{course.meetings[0].location}} {{course.meetings[0].days}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-7">
-                        {{classStartTime}} - {{classEndTime}}
-                    </div>
-                    <div class="col-xs-5">
-                        {{course.enrollment_count}} Students
+                    <div class="col-xs-12 col-sm-6">
+                        <div>
+                            <b>Days</b>: {{course.meetings[0].days}}
+                        </div>
+                        <div>
+                            <b>Time</b>: {{classStartTime}} - {{classEndTime}}
+                        </div>
+                        <div>
+                            <b>Location</b>: {{course.meetings[0].location}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,8 +61,6 @@ export default {
 		},
 
 		storeSelectedCourse() {
-            document.getElementById('courses').style.color = "rgba(255,255,255,.3)";
-            document.getElementById('students').style.color = "rgba(255,255,255,1)";
             this.$store.dispatch("storeLocation", 'class')
             this.$store.dispatch('storeCourse', this.course.id);
 		}

@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <term-selector></term-selector>
         <courses-container></courses-container>
     </div>
 </template>

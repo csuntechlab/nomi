@@ -9,7 +9,7 @@ $themes: (
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
-  main: ( /*aka navy theme - Needs to be renamed*/
+  main: ( /*aka NAVY theme - Needs to be renamed*/
     navigationBars: #0F1821,
     accentColor: #4F9DA3,
     backgroundColor: #E5E5E5,
@@ -20,6 +20,10 @@ $themes: (
     
     buttonColor: #4F9DA3,
     buttonText: #fff,
+    /*Gallery - Styles gallery edit button colors*/
+    galleryBtnBg:#4F9DA3,
+    galleryBtnText: #ffffff,
+    disabledBtnColor: rgba(255, 255, 255, 0.2),
     
     panelColor: #F4F4F4,
     toolBanner: rgba(255,255,255,0.5),
@@ -40,6 +44,10 @@ $themes: (
     buttonColor: #4CA1DB,
     buttonText: #fff,
 
+    galleryBtnBg:#fff,
+    galleryBtnText: #2e88c5,
+    disabledBtnColor:rgba(0, 0, 0, 0.6),
+
     panelColor: white,
     toolBanner: rgba(255,255,255,0.5),
 
@@ -47,7 +55,7 @@ $themes: (
     mainFontFamily: sans-serif,
   ),
 
-  Cloudy: (
+  Cloudy: ( /*No longer being updated. Needs to be removed*/
     navigationBars: #747474,
     backgroundColor: #D8D8D8,
     textColor: #464646,
@@ -71,6 +79,10 @@ $themes: (
     hoverColor: rgb(221, 221, 221),
     focusColor: #92A1CD,
 
+    galleryBtnBg:#fff,
+    galleryBtnText: #808080,
+    disabledBtnColor:rgba(0, 0, 0, 0.6),
+
     buttonColor: #E74A37,
     buttonText: #fff,
 
@@ -90,8 +102,12 @@ $themes: (
     hoverColor: #272727,
     focusColor: rgb(66, 119, 172),
 
-    buttonColor: rgb(66, 119, 172),
+    buttonColor: #426c96,
     buttonText: #dadada,
+
+    galleryBtnBg:#426c96,
+    galleryBtnText: #dfe5ec,
+    disabledBtnColor: rgba(255, 255, 255, 0.2),
 
     panelColor: #303030,
     toolBanner: rgba(255,255,255,.05),
@@ -101,6 +117,8 @@ $themes: (
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
+
+
   )
   
 );

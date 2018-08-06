@@ -1,7 +1,7 @@
 <template>
 <div>
-    <div class="type--center tab__link">
-        Set Theme
+    <div class="type--center tab__link tab__link--kerning">
+        Select Theme
     </div>
 <div class="panel">
     <div class="colorThemes">

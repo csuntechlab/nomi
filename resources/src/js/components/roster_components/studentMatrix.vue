@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="this.flash" class="row">
+        <div v-if="this.flash" class="row container panel__listing">
             <flash-card
                 v-for="student in this.flashroster[this.courseid]"
                 :key="student.student_id"
@@ -8,7 +8,7 @@
                 @markRecognized="markStudentAsRecognized"
             ></flash-card>
         </div>
-        <div v-else class="row">
+        <div v-else class="row container panel__listing">
             <gallery-card
                 v-for="student in this.courses[this.courseid].roster"
                 :key="student.student_id"
