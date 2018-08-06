@@ -37,16 +37,19 @@
   margin: 20px 0;
 }
 
+.modal-body-container {
+  padding: 1.5em 2em;
+}
+
 .modal-default-button {
   float: right;
 }
 
 .modal-button-container {
   display: inline-block;
-  margin-top:5%;
-  padding: 10% 0;
+  padding: 5% 0;
   bottom: 0%;
-  width: 100%;
+  width: 50%;
   height: 30%;
   @include themify($themes){
     background-color: themed('accentColor');
@@ -54,7 +57,6 @@
 }
 
 .modal-button {
-  display: inline-block;
   @include themify($themes){
     color: themed('panelColor');
   }

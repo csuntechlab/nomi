@@ -16,13 +16,15 @@
             </div>
         </div>
 
-        <div class="modal-button-container type--center">
-            <div class="modal-button">
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div @click="chooseImage"><i class="fa fa-camera fa-2x"></i></div>
+        <div>
+            <div class="modal-button-container pull-left">
+                <div class="modal-button">
+                    <div @click="chooseImage" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div @click.prevent="confirmImage"><i class="fa fa-check fa-2x"></i></div>
+            </div>
+            <div class="modal-button-container pull-right">
+                <div class="modal-button">
+                    <div @click.prevent="confirmImage" class="type--center"><i class="fa fa-check fa-2x"></i></div>
                 </div>
             </div>
         </div>

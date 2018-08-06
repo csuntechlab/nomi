@@ -1480,7 +1480,7 @@ textarea {
 }
 
 .croppa-container {
-  padding: 0em 2em;
+  padding: 0 2em 2em;
 }
 
 .theme-login .croppa-container {
@@ -1900,16 +1900,19 @@ textarea {
   margin: 20px 0;
 }
 
+.modal-body-container {
+  padding: 1.5em 2em;
+}
+
 .modal-default-button {
   float: right;
 }
 
 .modal-button-container {
   display: inline-block;
-  margin-top: 5%;
-  padding: 10% 0;
+  padding: 5% 0;
   bottom: 0%;
-  width: 100%;
+  width: 50%;
   height: 30%;
 }
 
@@ -1931,10 +1934,6 @@ textarea {
 
 .theme-Dark .modal-button-container {
   background-color: #97B5D8;
-}
-
-.modal-button {
-  display: inline-block;
 }
 
 .theme-login .modal-button {

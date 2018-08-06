@@ -3,7 +3,7 @@
         <div class="modal-mask" v-if="this.permission == null" id="permission_modal">
             <div class="modal-wrapper">
                 <div class="modal-container">
-                    <div class="permission-modal">
+                    <div class="modal-body-container">
                         <div class="modal-header">
                             <slot class="type--center" name="header">
                                 <h4>Permission Needed</h4>

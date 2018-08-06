@@ -21575,6 +21575,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -21700,18 +21702,23 @@ var render = function() {
         ? _c("div", { staticClass: "croppa_loading" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "modal-button-container type--center" }, [
-        _c("div", { staticClass: "modal-button" }, [
-          _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }, [
-            _c("div", { on: { click: _vm.chooseImage } }, [
-              _c("i", { staticClass: "fa fa-camera fa-2x" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-xs-6 col-sm-6 col-md-6" }, [
+      _c("div", [
+        _c("div", { staticClass: "modal-button-container pull-left" }, [
+          _c("div", { staticClass: "modal-button" }, [
+            _c(
+              "div",
+              { staticClass: "type--center", on: { click: _vm.chooseImage } },
+              [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-button-container pull-right" }, [
+          _c("div", { staticClass: "modal-button" }, [
             _c(
               "div",
               {
+                staticClass: "type--center",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -26733,7 +26740,7 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-wrapper" }, [
               _c("div", { staticClass: "modal-container" }, [
-                _c("div", { staticClass: "permission-modal" }, [
+                _c("div", { staticClass: "modal-body-container" }, [
                   _c(
                     "div",
                     { staticClass: "modal-header" },
