@@ -1831,6 +1831,11 @@ textarea[type="text"]:focus {
   background-size: cover;
 }
 
+.test {
+  max-width: 100%;
+  position: relative;
+}
+
 #panel {
   background-color: #616c70;
   position: relative;
