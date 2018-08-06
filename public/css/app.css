@@ -1841,6 +1841,9 @@ textarea[type="text"]:focus {
 }
 
 #panel__right {
+  background-image: url(./../../public/images/desktop-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,6 +1,9 @@
 @extends('master') @section('content')
 
 <div id="login-mobile" class="login">
+    <div id="loginBranding">
+        <img id="csunLogo" src="./../public/images/csunlogo-horizontal.svg" alt="CSUN Logo; California State University of Northridge">
+    </div>
     <div id="loginInput" class="loginContainer">
         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
         <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
@@ -16,10 +19,6 @@
 <div id="login" class="login">
     <div id="panel">
         <div id="panel__right">
-            <div>
-                <img id="backgroundImage" src="./../public/images/desktop-background.png" alt="Background Image; Man holding a red book">
-            </div>
-
             <div id="loginBranding">
                 <img id="csunLogo" src="./../public/images/csunlogo-horizontal.svg" alt="CSUN Logo; California State University of Northridge">
             </div>

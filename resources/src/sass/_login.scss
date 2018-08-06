@@ -127,6 +127,9 @@
 	width: 100%;
 
 	&__right {
+		background-image: url(./../../public/images/desktop-background.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
 		display: flex;
 		position: fixed;
 		justify-content: center;
