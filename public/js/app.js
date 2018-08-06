@@ -23379,7 +23379,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("strong", [_vm._v("Bio:")]),
+                _c("strong", [
+                  _vm._v("About " + _vm._s(this.student.displayName) + ":")
+                ]),
                 _vm._v(" "),
                 this.student.bio == null
                   ? _c("span", { staticClass: "text_italic display_inline" }, [
