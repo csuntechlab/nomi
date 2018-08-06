@@ -16,7 +16,7 @@
 <div id="login" class="login">
     <div id="panel">
         <div id="panel__right">
-            <div class="test">
+            <div>
                 <img id="backgroundImage" src="./../public/images/desktop-background.png" alt="Background Image; Man holding a red book">
             </div>
 

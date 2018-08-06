@@ -1782,7 +1782,6 @@ textarea[type="text"]:focus {
   position: relative;
   padding: 0.5rem 1rem;
   margin: 0 auto;
-  max-width: 366px;
   width: 100%;
 }
 
@@ -1829,11 +1828,6 @@ textarea[type="text"]:focus {
 #backgroundImage {
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.test {
-  max-width: 100%;
-  position: relative;
 }
 
 #panel {
