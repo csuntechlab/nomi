@@ -1345,6 +1345,10 @@ textarea {
 
 .modal_exit {
   color: gray;
+  margin-bottom: 0;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .name_container {
@@ -1401,6 +1405,34 @@ textarea {
   color: rgba(255, 255, 255, 0.5);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.croppa-container {
+  padding: 0 2em 2em;
+}
+
+.theme-login .croppa-container {
+  color: #F0F0F0;
+}
+
+.theme-main .croppa-container {
+  color: #F4F4F4;
+}
+
+.theme-bluesTheme .croppa-container {
+  color: white;
+}
+
+.theme-Cloudy .croppa-container {
+  color: #FFFFFF;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .croppa-container {
+  color: #F0F0F0;
+}
+
+.theme-Dark .croppa-container {
+  color: #303030;
 }
 
 .display_inline {
@@ -1919,7 +1951,6 @@ textarea {
 .modal-container {
   max-width: 20em;
   margin: 0px auto;
-  padding: 1.5em 2em;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
@@ -1979,8 +2010,64 @@ textarea {
   margin: 20px 0;
 }
 
+.modal-body-container {
+  padding: 1.5em 2em;
+}
+
 .modal-default-button {
   float: right;
+}
+
+.modal-button-container {
+  display: inline-block;
+  padding: 5% 0;
+  bottom: 0%;
+  width: 50%;
+  height: 30%;
+}
+
+.theme-main .modal-button-container {
+  background-color: #4F9DA3;
+}
+
+.theme-bluesTheme .modal-button-container {
+  background-color: #4CA1DB;
+}
+
+.theme-Cloudy .modal-button-container {
+  background-color: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .modal-button-container {
+  background-color: #E74A37;
+}
+
+.theme-Dark .modal-button-container {
+  background-color: #97B5D8;
+}
+
+.theme-login .modal-button {
+  color: #F0F0F0;
+}
+
+.theme-main .modal-button {
+  color: #F4F4F4;
+}
+
+.theme-bluesTheme .modal-button {
+  color: white;
+}
+
+.theme-Cloudy .modal-button {
+  color: #FFFFFF;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .modal-button {
+  color: #F0F0F0;
+}
+
+.theme-Dark .modal-button {
+  color: #303030;
 }
 
 .modal-enter {

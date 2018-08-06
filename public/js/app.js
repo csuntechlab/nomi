@@ -21572,6 +21572,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -21670,12 +21675,6 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "pull-right textOverflow" }, [
-        _c("h3", [
-          _vm._v(_vm._s(_vm.studentProfile.displayName || _vm.studentName))
-        ])
-      ]),
-      _vm._v(" "),
       _c("croppa", {
         attrs: {
           "prevent-white-space": true,
@@ -21703,26 +21702,34 @@ var render = function() {
         ? _c("div", { staticClass: "croppa_loading" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "type--center" }, [
-        _c("div", { on: { click: _vm.chooseImage } }, [
-          _c("i", { staticClass: "fa fa-camera fa-3x" })
+      _c("div", [
+        _c("div", { staticClass: "modal-button-container pull-left" }, [
+          _c("div", { staticClass: "modal-button" }, [
+            _c(
+              "div",
+              { staticClass: "type--center", on: { click: _vm.chooseImage } },
+              [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "modal-button-container pull-right" }, [
+          _c("div", { staticClass: "modal-button" }, [
+            _c(
+              "div",
+              {
+                staticClass: "type--center",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.confirmImage($event)
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fa fa-check fa-2x" })]
+            )
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "type--center" }, [
-        _c(
-          "div",
-          {
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.confirmImage($event)
-              }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-check fa-3x" })]
-        )
       ])
     ],
     1
@@ -21806,7 +21813,7 @@ var render = function() {
             { staticClass: "modal-header" },
             [
               _c("div", {
-                staticClass: "fa fa-times-circle fa-3x pull-right modal_exit",
+                staticClass: "fa fa-times-circle fa-2x pull-right modal_exit",
                 on: {
                   click: function($event) {
                     _vm.$emit("close")
@@ -26692,6 +26699,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -26731,39 +26740,45 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-wrapper" }, [
               _c("div", { staticClass: "modal-container" }, [
-                _c(
-                  "div",
-                  { staticClass: "modal-header" },
-                  [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
-                  2
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c("h5", [
-                    _vm._v(
-                      "Photo and Camera access required for full functionality"
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "permission_footer" }, [
-                  _c("button", {
-                    staticClass: "modal_btn confirm_btn fa fa-2x fa-check",
-                    on: {
-                      click: function($event) {
-                        _vm.accept()
-                      }
-                    }
-                  }),
+                _c("div", { staticClass: "modal-body-container" }, [
+                  _c(
+                    "div",
+                    { staticClass: "modal-header" },
+                    [
+                      _vm._t("header", [
+                        _c("h4", [_vm._v("Permission Needed")])
+                      ])
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  _c("button", {
-                    staticClass: "modal_btn decline_btn fa fa-2x fa-times",
-                    on: {
-                      click: function($event) {
-                        _vm.deny()
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("h5", [
+                      _vm._v(
+                        "Photo and Camera access required for full functionality"
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "permission_footer" }, [
+                    _c("button", {
+                      staticClass: "modal_btn confirm_btn fa fa-2x fa-check",
+                      on: {
+                        click: function($event) {
+                          _vm.accept()
+                        }
                       }
-                    }
-                  })
+                    }),
+                    _vm._v(" "),
+                    _c("button", {
+                      staticClass: "modal_btn decline_btn fa fa-2x fa-times",
+                      on: {
+                        click: function($event) {
+                          _vm.deny()
+                        }
+                      }
+                    })
+                  ])
                 ])
               ])
             ])

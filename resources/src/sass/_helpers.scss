@@ -179,6 +179,10 @@
 }
 .modal_exit {
 	color: gray;
+	margin-bottom: 0;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .name_container {
@@ -234,6 +238,14 @@
 	color: rgba($color: #fff, $alpha: 0.5);
 	transform: translate(-50%, -50%);
 }
+
+.croppa-container {
+	padding: 0 2em 2em;  
+	@include themify($themes){
+		color: themed('panelColor');
+	}
+}
+
 .display_inline {
 	display: inline;
 }
