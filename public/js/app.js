@@ -23380,7 +23380,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 _c("strong", [
-                  _vm._v("About " + _vm._s(this.student.displayName) + ":")
+                  _vm._v("About " + _vm._s(this.student.firstName) + ":")
                 ]),
                 _vm._v(" "),
                 this.student.bio == null
@@ -25021,7 +25021,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         bio: null,
         images: null,
         imagePriority: null,
-        notes: null
+        notes: null,
+        firstName: null
     },
 
     profileErrors: null,
@@ -25099,6 +25100,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.studentProfile.imagePriority = response['data'].image_priority;
             state.studentProfile.notes = response['data'].notes;
             state.studentProfile.id = response['data'].student_id;
+            state.studentProfile.firstName = response['data'].first_name;
         }).catch(function (e) {
             state.profileLoadError = true;
             state.profileErrors = e.response.data.message;
@@ -25139,7 +25141,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             bio: null,
             images: null,
             imagePriority: null,
-            notes: null
+            notes: null,
+            firstName: null
         };
 
         state.profileErrors = null;
