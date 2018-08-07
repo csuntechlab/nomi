@@ -24,6 +24,7 @@ export default {
                 state.studentProfile.imagePriority = response['data'].image_priority;
                 state.studentProfile.notes = response['data'].notes;
                 state.studentProfile.id = response['data'].student_id;
+                state.studentProfile.studentAudio = response['data'].studentAudio;
             })
             .catch(e => {
                 state.profileLoadError = true;

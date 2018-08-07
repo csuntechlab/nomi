@@ -4,6 +4,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="type--center">{{this.student.displayName}}</h1>
+                    <i class="fas fa-2x fa-volume-up profile-edit-button"></i>
+                    <!-- @click="listenAudio" -->
                 </div>
                 <div class="type--center">
                     <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">

@@ -22626,6 +22626,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -22949,7 +22951,9 @@ var render = function() {
         _c("div", { staticClass: "col-sm-12" }, [
           _c("h1", { staticClass: "type--center" }, [
             _vm._v(_vm._s(this.student.displayName))
-          ])
+          ]),
+          _vm._v(" "),
+          _c("i", { staticClass: "fas fa-2x fa-volume-up profile-edit-button" })
         ]),
         _vm._v(" "),
         _c(
@@ -25026,7 +25030,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         bio: null,
         images: null,
         imagePriority: null,
-        notes: null
+        notes: null,
+        studentAudio: null
     },
 
     profileErrors: null,
@@ -25104,6 +25109,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.studentProfile.imagePriority = response['data'].image_priority;
             state.studentProfile.notes = response['data'].notes;
             state.studentProfile.id = response['data'].student_id;
+            state.studentProfile.studentAudio = response['data'].studentAudio;
         }).catch(function (e) {
             state.profileLoadError = true;
             state.profileErrors = e.response.data.message;
