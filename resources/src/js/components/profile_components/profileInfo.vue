@@ -8,7 +8,7 @@
                         {{this.student.emailURI}}@my.csun.edu
                     </div>
                     <div>
-                        <strong>Bio:</strong>
+                        <strong>About {{this.student.firstName}}:</strong>
                         <span v-if="this.student.bio == null" class="text_italic display_inline"> Pending biography from student.</span>
                         <span v-else> {{this.student.bio}}</span>
                     </div>

@@ -8,6 +8,7 @@ export default {
         imagePriority: null,
         notes: null,
         studentAudio: null,
+        firstName: null, 
     },
 
     profileErrors: null,
