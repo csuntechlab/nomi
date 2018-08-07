@@ -20,9 +20,14 @@
         <h3>Supported Browsers</h3>
         <p>
             <ul>
-                <li>Chrome</li>
-                <li>Safari</li>
-                <li>Firefox</li>
+                <li><b>Chrome</b> - Chrome 21 to Current</li>
+                <i>Last Supported Date: (Jun 25, 2012)</i>
+                <li><b>Safari</b> - Safari 6.1 to Current</li>
+                <i>Last Supported Date: (Oct 21, 2013)</i>
+                <li><b>Safari iOS</b> - Safari iOS 7.1 to Current</li>
+                <i>Last Supported Date: (Mar 9, 2014)</i>
+                <li><b>Firefox</b> - Firefox 35 to Current</li>
+                <i>Last Supported Date: (Jan 12, 2015)</i>
             </ul>
         </p>
     </div>

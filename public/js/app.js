@@ -23188,6 +23188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23260,24 +23261,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("textarea", {
-      staticClass: "notes_text",
-      attrs: { maxlength: "600", type: "text", id: "ex0", name: "ex0" },
-      domProps: { value: this.student.notes },
-      on: {
-        input: _vm.updateNotes,
-        keyup: function($event) {
-          if (
-            !("button" in $event) &&
-            _vm._k($event.keyCode, "enter", 13, $event.key)
-          ) {
-            return null
-          }
-          _vm.updateNotes($event)
-        },
-        click: _vm.scrollToNotes
-      }
-    }),
+    _c("form", { attrs: { autocomplete: "off" } }, [
+      _c("textarea", {
+        staticClass: "notes_text",
+        attrs: { maxlength: "600", type: "text", id: "ex0", name: "ex0" },
+        domProps: { value: this.student.notes },
+        on: {
+          input: _vm.updateNotes,
+          keyup: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key)
+            ) {
+              return null
+            }
+            _vm.updateNotes($event)
+          },
+          click: _vm.scrollToNotes
+        }
+      })
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xs-2" }, [
@@ -23688,6 +23691,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "about-page"
@@ -23758,11 +23766,33 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _c("ul", [
-          _c("li", [_vm._v("Chrome")]),
+          _c("li", [
+            _c("b", [_vm._v("Chrome")]),
+            _vm._v(" - Chrome 21 to Current")
+          ]),
           _vm._v(" "),
-          _c("li", [_vm._v("Safari")]),
+          _c("i", [_vm._v("Last Supported Date: (Jun 25, 2012)")]),
           _vm._v(" "),
-          _c("li", [_vm._v("Firefox")])
+          _c("li", [
+            _c("b", [_vm._v("Safari")]),
+            _vm._v(" - Safari 6.1 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Oct 21, 2013)")]),
+          _vm._v(" "),
+          _c("li", [
+            _c("b", [_vm._v("Safari iOS")]),
+            _vm._v(" - Safari iOS 7.1 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Mar 9, 2014)")]),
+          _vm._v(" "),
+          _c("li", [
+            _c("b", [_vm._v("Firefox")]),
+            _vm._v(" - Firefox 35 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Jan 12, 2015)")])
         ])
       ])
     ])
