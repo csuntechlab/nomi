@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes"
-		 @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
+		<form autocomplete="off">
+			<textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
+		</form>
 		<div class="row">
 			<div class="col-xs-2">
 				<span id="charCount" class="notes__status">{{characterCount}}/600</span>
