@@ -1,12 +1,19 @@
 <template>
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
-        <select name="name-sorting" id="name-sorting" @input="handleSelect">
-            <option value="1" selected>First Name A-Z</option>
-            <option value="2">Last Name A-Z</option>
-            <option value="3">First Name Z-A</option>
-            <option value="4">Last Name Z-A</option>
-        </select>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <div class="col-xs-5 col-sm-5" @click="$store.dispatch('sortFirstName')">First Name</div>
+                <div class="col-xs-5 col-sm-5" @click="$store.dispatch('sortLastName')">Last Name</div>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <i class="fas fa-sort-alpha-up" @click="$store.dispatch('sortAscending')"></i>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <i class="fas fa-sort-alpha-down" @click="$store.dispatch('sortDescending')"></i>
+            </div>
+        </div>
+        
     </div>
 </template>
 

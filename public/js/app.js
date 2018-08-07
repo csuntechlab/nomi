@@ -19596,6 +19596,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -19642,24 +19649,57 @@ var render = function() {
     ? _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        _c(
-          "select",
-          {
-            attrs: { name: "name-sorting", id: "name-sorting" },
-            on: { input: _vm.handleSelect }
-          },
-          [
-            _c("option", { attrs: { value: "1", selected: "" } }, [
-              _vm._v("First Name A-Z")
-            ]),
+        _c("div", { staticClass: "col-xs-12 col-sm-12 col-md-12" }, [
+          _c("div", { staticClass: "col-xs-8 col-sm-8 col-md-8" }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-5 col-sm-5",
+                on: {
+                  click: function($event) {
+                    _vm.$store.dispatch("sortFirstName")
+                  }
+                }
+              },
+              [_vm._v("First Name")]
+            ),
             _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Last Name A-Z")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("First Name Z-A")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "4" } }, [_vm._v("Last Name Z-A")])
-          ]
-        )
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-5 col-sm-5",
+                on: {
+                  click: function($event) {
+                    _vm.$store.dispatch("sortLastName")
+                  }
+                }
+              },
+              [_vm._v("Last Name")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
+            _c("i", {
+              staticClass: "fas fa-sort-alpha-up",
+              on: {
+                click: function($event) {
+                  _vm.$store.dispatch("sortAscending")
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
+            _c("i", {
+              staticClass: "fas fa-sort-alpha-down",
+              on: {
+                click: function($event) {
+                  _vm.$store.dispatch("sortDescending")
+                }
+              }
+            })
+          ])
+        ])
       ])
     : _vm._e()
 }
@@ -19757,30 +19797,47 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "list-grid-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash'])),
-
-    methods: {
-        handleSelect: function handleSelect(e) {
-            switch (e.target.value) {
-                case "":
-                    break;
-                case "0":
-                    this.$store.dispatch('setList');
-                    break;
-                case "1":
-                    this.$store.dispatch('setGallery');
-                    break;
-                case "2":
-                    this.$store.dispatch('setFlash');
-                    break;
-            }
-        }
-    }
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash']))
 });
 
 /***/ }),
@@ -19794,65 +19851,175 @@ var render = function() {
   return _c("div", [
     _c("label", { attrs: { for: "list-grid" } }),
     _vm._v(" "),
-    this.list
-      ? _c("div", [
-          _c(
-            "select",
-            {
-              staticClass: "toolBar__field",
-              attrs: { name: "list-grid", id: "list-grid" },
-              on: { input: _vm.handleSelect }
-            },
-            [
-              _c("option", { attrs: { value: "0", selected: "" } }, [
-                _vm._v("List View")
+    _c("div", { staticClass: "row fullscreen_width" }, [
+      this.list
+        ? _c("div", [
+            _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setList")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _vm._v(" List\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setGallery")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-users" }),
+                  _vm._v(" Gallery\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setFlash")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-clone" }),
+                  _vm._v(" Flashcards\n                ")
+                ]
+              )
+            ])
+          ])
+        : this.flash
+          ? _c("div", [
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" List\n                ")
+                  ]
+                )
               ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Gallery\n                ")
+                  ]
+                )
+              ]),
               _vm._v(" "),
-              _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
-            ]
-          )
-        ])
-      : this.flash
-        ? _c("div", [
-            _c(
-              "select",
-              {
-                staticClass: "toolBar__field",
-                attrs: { name: "list-grid", id: "list-grid" },
-                on: { input: _vm.handleSelect }
-              },
-              [
-                _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "1" } }, [_vm._v("Gallery")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2", selected: "" } }, [
-                  _vm._v("Flash Cards")
-                ])
-              ]
-            )
-          ])
-        : _c("div", [
-            _c(
-              "select",
-              {
-                staticClass: "toolBar__field",
-                attrs: { name: "list-grid", id: "list-grid" },
-                on: { input: _vm.handleSelect }
-              },
-              [
-                _c("option", { attrs: { value: "0" } }, [_vm._v("List View")]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "1", selected: "" } }, [
-                  _vm._v("Gallery")
-                ]),
-                _vm._v(" "),
-                _c("option", { attrs: { value: "2" } }, [_vm._v("Flash Cards")])
-              ]
-            )
-          ])
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setFlash")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-clone" }),
+                    _vm._v(" Flashcards\n                ")
+                  ]
+                )
+              ])
+            ])
+          : _c("div", [
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Gallery\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 type--right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setFlash")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-clone" }),
+                    _vm._v(" Flashcards\n                ")
+                  ]
+                )
+              ])
+            ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -19873,7 +20040,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", { staticClass: "settings_banner" }, [
+  return _c("nav", [
     !this.list && this.flash
       ? _c(
           "div",
@@ -19881,11 +20048,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "row sort_filters" },
-              [
-                _c("list-grid-selector", {
-                  staticClass: "col-xs-6 col-sm-6 col-md-6"
-                })
-              ],
+              [_c("list-grid-selector")],
               1
             ),
             _vm._v(" "),
@@ -19898,13 +20061,7 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "row sort_filters" },
-          [
-            _c("list-grid-selector", {
-              staticClass: "col-xs-6 col-sm-6 col-md-6"
-            }),
-            _vm._v(" "),
-            _c("sort-selector", { staticClass: "col-xs-6 col-sm-6 col-md-6" })
-          ],
+          [_c("list-grid-selector"), _vm._v(" "), _c("sort-selector")],
           1
         )
   ])
