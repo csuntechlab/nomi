@@ -915,37 +915,37 @@ textarea {
 }
 
 .theme-login .settings_banner {
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
 .theme-main .settings_banner {
   background: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
 .theme-bluesTheme .settings_banner {
   background: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
 .theme-Cloudy .settings_banner {
   background: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .settings_banner {
   background: rgba(0, 0, 0, 0.05);
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
 .theme-Dark .settings_banner {
   background: rgba(255, 255, 255, 0.05);
-  margin-bottom: 1rem;
+  margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
 
@@ -1030,6 +1030,40 @@ textarea {
 
 .theme-Dark .course-card--selected {
   color: #97B5D8;
+}
+
+.roster-list__item {
+  padding: .4rem 1rem;
+}
+
+.theme-login .roster-list__item {
+  background-color: #F0F0F0;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.theme-main .roster-list__item {
+  background-color: #F4F4F4;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.theme-bluesTheme .roster-list__item {
+  background-color: white;
+  border-bottom: 1px solid #d9e7ee;
+}
+
+.theme-Cloudy .roster-list__item {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #D8D8D8;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-list__item {
+  background-color: #F0F0F0;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.theme-Dark .roster-list__item {
+  background-color: #303030;
+  border-bottom: 1px solid #272727;
 }
 
 #Matador {
