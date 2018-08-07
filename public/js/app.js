@@ -23691,6 +23691,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "about-page"
@@ -23761,11 +23766,33 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _c("ul", [
-          _c("li", [_vm._v("Chrome")]),
+          _c("li", [
+            _c("b", [_vm._v("Chrome")]),
+            _vm._v(" - Chrome 21 to Current")
+          ]),
           _vm._v(" "),
-          _c("li", [_vm._v("Safari")]),
+          _c("i", [_vm._v("Last Supported Date: (Jun 25, 2012)")]),
           _vm._v(" "),
-          _c("li", [_vm._v("Firefox")])
+          _c("li", [
+            _c("b", [_vm._v("Safari")]),
+            _vm._v(" - Safari 6.1 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Oct 21, 2013)")]),
+          _vm._v(" "),
+          _c("li", [
+            _c("b", [_vm._v("Safari iOS")]),
+            _vm._v(" - Safari iOS 7.1 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Mar 9, 2014)")]),
+          _vm._v(" "),
+          _c("li", [
+            _c("b", [_vm._v("Firefox")]),
+            _vm._v(" - Firefox 35 to Current")
+          ]),
+          _vm._v(" "),
+          _c("i", [_vm._v("Last Supported Date: (Jan 12, 2015)")])
         ])
       ])
     ])
