@@ -6,7 +6,8 @@ export default {
         bio: null,
         images: null,
         imagePriority: null,
-        notes: null
+        notes: null,
+        firstName: null, 
     },
 
     profileErrors: null,
