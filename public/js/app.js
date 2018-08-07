@@ -22628,6 +22628,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -22670,6 +22671,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }),
 
     methods: {
+        listenAudio: function listenAudio() {
+            console.log(this.student.studentAudio);
+        },
         setImgUrl: function setImgUrl(url) {
             this.showCroppaModal = false;
             this.imgUrl = url;
@@ -22953,7 +22957,14 @@ var render = function() {
             _vm._v(_vm._s(this.student.displayName))
           ]),
           _vm._v(" "),
-          _c("i", { staticClass: "fas fa-2x fa-volume-up profile-edit-button" })
+          _c(
+            "i",
+            {
+              staticClass: "fas fa-1x fa-volume-up profile-edit-button",
+              on: { click: _vm.listenAudio }
+            },
+            [_c("a", { attrs: { href: this.student.studenAudio } })]
+          )
         ]),
         _vm._v(" "),
         _c(
@@ -25155,7 +25166,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             images: null,
             imagePriority: null,
             notes: null,
-            firstName: null
+            firstName: null,
+            studentAudio: studentAudio
         };
 
         state.profileErrors = null;

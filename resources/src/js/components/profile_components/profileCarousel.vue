@@ -4,8 +4,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1 class="type--center">{{this.student.displayName}}</h1>
-                    <i class="fas fa-2x fa-volume-up profile-edit-button"></i>
-                    <!-- @click="listenAudio" -->
+                        <i class="fas fa-1x fa-volume-up profile-edit-button" @click="listenAudio">
+                            <a :href="this.student.studenAudio"></a>
+                        </i>
                 </div>
                 <div class="type--center">
                     <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">
@@ -122,6 +123,9 @@ export default {
         },
 
         methods: {
+            listenAudio(){
+                console.log(this.student.studentAudio);
+            },
             setImgUrl (url) {
                 this.showCroppaModal = false;
                 this.imgUrl = url;
