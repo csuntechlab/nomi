@@ -2,16 +2,17 @@
 
 <div id="login-mobile" class="login">
     <div id="panel__content">
-        <img id="loginLogo" src="./../public/images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
-
-        <div id="loginInput" class="loginContainer">
-            {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-            <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
-            {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=> 'loginForm', 'placeholder' => 'Password']) }}
-            <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
-                Submit
-            </button>
-            {{ Form::close() }}
+        <div id="loginContent">
+            <img id="loginLogo" src="./../public/images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
+            <div id="loginInput" class="loginContainer">
+                {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
+                <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
+                {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=> 'loginForm', 'placeholder' => 'Password']) }}
+                <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
+                    Submit
+                </button>
+                {{ Form::close() }}
+            </div>
         </div>
 
         <div id="loginLoader" class="loginLoader">
