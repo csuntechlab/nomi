@@ -1,7 +1,7 @@
 <template>
     <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-        <div class="panel panel__container">
-        <div class="row panel panel__item">
+        <div class="roster-list__item">
+        <div class="row">
             <div class="col-xs-3 col-md-2">
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
