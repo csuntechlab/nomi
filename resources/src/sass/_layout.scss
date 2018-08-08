@@ -31,7 +31,7 @@ textarea[type="text"]:focus {
 .primary-nav {
 	@include themify($themes) {
 		background-color: themed("navigationBars");
-		position: absolute;
+		position: fixed;
 		height: rem(37);
 		width: 100%;
 		z-index: 99;
