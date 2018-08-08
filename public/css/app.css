@@ -1910,7 +1910,7 @@ textarea {
     left: 0;
   }
   #loginLogo {
-    padding: 0 12%;
+    padding: 12% 0;
   }
   #loginInput {
     padding-bottom: 3rem;
