@@ -1758,7 +1758,7 @@ textarea {
   padding-bottom: 5px;
 }
 
-#loginButton {
+.loginButton {
   float: right;
 }
 
@@ -1909,11 +1909,12 @@ textarea {
     top: 0;
     left: 0;
   }
-  #loginTitle {
-    color: white;
+  #loginLogo {
+    width: 97.5%;
+    padding: 0 2.5% 15% 2.5%;
   }
   #loginInput {
-    padding-top: 2rem;
+    padding-bottom: 3rem;
   }
   .loginContainer {
     -webkit-transition: 0.3s;

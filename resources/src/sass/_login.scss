@@ -9,7 +9,7 @@
 	padding-bottom: 5px;
 }
 
-#loginButton {
+.loginButton {
 	float: right;
 }
 
@@ -139,7 +139,7 @@
 @media only screen and (max-width: 945px) {
     #login-mobile {
 		display: block;
-		background-color: rgb(255, 255, 255);
+		background-color: white;
 		position: absolute;
 		height: 100vh;
 		width: 100vw;
@@ -149,12 +149,13 @@
 		left: 0;
 	}
 
-	#loginTitle {
-		color: white;
+	#loginLogo {
+		width: 97.5%;
+		padding: 0 2.5% 15% 2.5%;
 	}
 
 	#loginInput {
-		padding-top: 2rem;
+		padding-bottom: 3rem;
 	}
 	
 	.loginContainer {

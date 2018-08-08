@@ -8,7 +8,7 @@
             {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
             <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
             {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=> 'loginForm', 'placeholder' => 'Password']) }}
-            <button id="loginButton" class="btn btn-primary" type="submit" onclick="loading()">
+            <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
                 Submit
             </button>
             {{ Form::close() }}
@@ -39,7 +39,7 @@
                         <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
                         {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=>
                         'loginForm', 'placeholder' => 'Password']) }}
-                        <button id="loginButton" class="btn btn-primary" type="submit" onclick="loading()">
+                        <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
                             Submit
                         </button>
                         {{ Form::close() }}
