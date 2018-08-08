@@ -1900,11 +1900,11 @@ textarea {
 @media only screen and (max-width: 945px) {
   #login-mobile {
     display: block;
-    background-color: #d00d2d;
+    background-color: white;
     position: absolute;
     height: 100vh;
     width: 100vw;
-    overflow: auto;
+    overflow: hidden;
     z-index: 99;
     top: 0;
     left: 0;
@@ -1914,9 +1914,6 @@ textarea {
   }
   #loginInput {
     padding-top: 2rem;
-  }
-  #loginButton {
-    background-color: #e74a37;
   }
   .loginContainer {
     -webkit-transition: 0.3s;
