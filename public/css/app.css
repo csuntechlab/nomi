@@ -729,6 +729,55 @@ textarea[type="text"]:focus {
   border: none;
 }
 
+.settings_field {
+  height: 2%;
+  width: 10%;
+}
+
+.theme-login .settings_field {
+  background-color: #F0F0F0;
+}
+
+.theme-main .settings_field {
+  background-color: #F4F4F4;
+}
+
+.theme-bluesTheme .settings_field {
+  background-color: white;
+}
+
+.theme-Cloudy .settings_field {
+  background-color: #FFFFFF;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .settings_field {
+  background-color: #F0F0F0;
+}
+
+.theme-Dark .settings_field {
+  background-color: #303030;
+}
+
+.theme-main .settings-button {
+  color: #4F9DA3;
+}
+
+.theme-bluesTheme .settings-button {
+  color: #4CA1DB;
+}
+
+.theme-Cloudy .settings-button {
+  color: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .settings-button {
+  color: #E74A37;
+}
+
+.theme-Dark .settings-button {
+  color: #97B5D8;
+}
+
 .theme-Dark input, .theme-Dark
 select, .theme-Dark
 textarea {

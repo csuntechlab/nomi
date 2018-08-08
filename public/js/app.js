@@ -19611,29 +19611,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortDescending', 'sortLastName'])),
 
     methods: {
-        handleSelect: function handleSelect(e) {
-            switch (e.target.value) {
-                case "":
-                    break;
-                case "1":
-                    this.$store.dispatch('sortFirstName');
-                    this.$store.dispatch('sortAscending');
-                    break;
+        // handleSelect(e) {
+        //     switch (e.target.value) {
+        //         case "":
+        //             break;
+        //         case "1":
+        //             this.$store.dispatch('sortFirstName');
+        //             this.$store.dispatch('sortAscending');
+        //             break;
 
-                case "2":
-                    this.$store.dispatch('sortLastName');
-                    this.$store.dispatch('sortAscending');
-                    break;
-                case "3":
-                    this.$store.dispatch('sortFirstName');
-                    this.$store.dispatch('sortDescending');
-                    break;
-                case "4":
-                    this.$store.dispatch('sortLastName');
-                    this.$store.dispatch('sortDescending');
-                    break;
-            }
-        }
+        //         case "2":
+        //             this.$store.dispatch('sortLastName');
+        //             this.$store.dispatch('sortAscending');
+        //             break;
+        //         case "3":
+        //             this.$store.dispatch('sortFirstName');
+        //             this.$store.dispatch('sortDescending');
+        //             break;
+        //         case "4":
+        //             this.$store.dispatch('sortLastName');
+        //             this.$store.dispatch('sortDescending');
+        //             break;
+        //     }
+        // }
     }
 });
 
@@ -19649,38 +19649,38 @@ var render = function() {
     ? _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12 col-sm-12 col-md-12" }, [
-          _c("div", { staticClass: "col-xs-8 col-sm-8 col-md-8" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", {}, [
             _c(
               "div",
               {
-                staticClass: "col-xs-5 col-sm-5",
+                staticClass: "col-xs-4 col-sm-4 settings_field",
                 on: {
                   click: function($event) {
                     _vm.$store.dispatch("sortFirstName")
                   }
                 }
               },
-              [_vm._v("First Name")]
+              [_vm._v("FN")]
             ),
             _vm._v(" "),
             _c(
               "div",
               {
-                staticClass: "col-xs-5 col-sm-5",
+                staticClass: "col-xs-4 col-sm-4 settings_field",
                 on: {
                   click: function($event) {
                     _vm.$store.dispatch("sortLastName")
                   }
                 }
               },
-              [_vm._v("Last Name")]
+              [_vm._v("LN")]
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
+          _c("div", {}, [
             _c("i", {
-              staticClass: "fas fa-sort-alpha-up",
+              staticClass: "fas fa-2x fa-sort-alpha-up settings-button",
               on: {
                 click: function($event) {
                   _vm.$store.dispatch("sortAscending")
@@ -19689,9 +19689,9 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-xs-2 col-sm-2 col-md-2" }, [
+          _c("div", {}, [
             _c("i", {
-              staticClass: "fas fa-sort-alpha-down",
+              staticClass: "fas fa-2x fa-sort-alpha-down settings-button",
               on: {
                 click: function($event) {
                   _vm.$store.dispatch("sortDescending")
@@ -19854,11 +19854,11 @@ var render = function() {
     _c("div", { staticClass: "row fullscreen_width" }, [
       this.list
         ? _c("div", [
-            _c("div", { staticClass: "col-xs-4 type--right" }, [
+            _c("div", { staticClass: "col-xs-4" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm",
+                  staticClass: "btn btn-sm settings-button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setList")
@@ -19872,11 +19872,11 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 type--right" }, [
+            _c("div", { staticClass: "col-xs-4" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm",
+                  staticClass: "btn btn-sm settings-button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setGallery")
@@ -19890,11 +19890,11 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 type--right" }, [
+            _c("div", { staticClass: "col-xs-4" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm",
+                  staticClass: "btn btn-sm settings-button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setFlash")
@@ -19910,11 +19910,11 @@ var render = function() {
           ])
         : this.flash
           ? _c("div", [
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setList")
@@ -19928,11 +19928,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setGallery")
@@ -19946,11 +19946,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setFlash")
@@ -19965,11 +19965,11 @@ var render = function() {
               ])
             ])
           : _c("div", [
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setList")
@@ -19983,11 +19983,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setGallery")
@@ -20001,11 +20001,11 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c("div", { staticClass: "col-xs-4" }, [
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm",
+                    staticClass: "btn btn-sm settings-button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setFlash")

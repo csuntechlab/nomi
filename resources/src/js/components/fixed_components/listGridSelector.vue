@@ -4,54 +4,54 @@
         <div class="row fullscreen_width">
             <div v-if="this.list">
                 <!-- 0, selected  -->
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setList')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setList')">
                         <i class="fas fa-list-ul"></i> List
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setGallery')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setGallery')">
                         <i class="fas fa-users"></i> Gallery
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setFlash')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setFlash')">
                         <i class="fas fa-clone"></i> Flashcards
                     </button>
                 </div>
             </div>
             <div v-else-if="this.flash">
                 <!-- 2 selected -->
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setList')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setList')">
                         <i class="fas fa-list-ul"></i> List
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setGallery')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setGallery')">
                         <i class="fas fa-users"></i> Gallery
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setFlash')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setFlash')">
                         <i class="fas fa-clone"></i> Flashcards
                     </button>
                 </div>
             </div>
             <div v-else>
                 <!-- 1 selected  -->
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setList')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setList')">
                         <i class="fas fa-list-ul"></i> List
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setGallery')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setGallery')">
                         <i class="fas fa-users"></i> Gallery
                     </button>
                 </div>
-                <div class="col-xs-4 type--right">
-                    <button class="btn btn-sm" @click="$store.dispatch('setFlash')">
+                <div class="col-xs-4">
+                    <button class="btn btn-sm settings-button" @click="$store.dispatch('setFlash')">
                         <i class="fas fa-clone"></i> Flashcards
                     </button>
                 </div>

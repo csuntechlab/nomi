@@ -201,6 +201,21 @@ textarea[type="text"]:focus {
 	}
 }
 
+.settings_field {
+	height: 2%;
+	width: 10%;
+	@include themify($themes) {
+		background-color: themed("panelColor");
+	}
+
+}
+
+.settings-button {
+	@include themify($themes) {
+		color: themed("accentColor");
+	}
+}
+
 input,
 select,
 textarea {

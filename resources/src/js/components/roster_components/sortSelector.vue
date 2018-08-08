@@ -1,16 +1,16 @@
 <template>
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="col-xs-8 col-sm-8 col-md-8">
-                <div class="col-xs-5 col-sm-5" @click="$store.dispatch('sortFirstName')">First Name</div>
-                <div class="col-xs-5 col-sm-5" @click="$store.dispatch('sortLastName')">Last Name</div>
+        <div class="row">
+            <div class="">
+                <div class="col-xs-4 col-sm-4 settings_field" @click="$store.dispatch('sortFirstName')">FN</div>
+                <div class="col-xs-4 col-sm-4 settings_field" @click="$store.dispatch('sortLastName')">LN</div>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <i class="fas fa-sort-alpha-up" @click="$store.dispatch('sortAscending')"></i>
+            <div class="">
+                <i class="fas fa-2x fa-sort-alpha-up settings-button" @click="$store.dispatch('sortAscending')"></i>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <i class="fas fa-sort-alpha-down" @click="$store.dispatch('sortDescending')"></i>
+            <div class="">
+                <i class="fas fa-2x fa-sort-alpha-down settings-button" @click="$store.dispatch('sortDescending')"></i>
             </div>
         </div>
         
@@ -32,29 +32,29 @@
         },
 
         methods: {
-            handleSelect(e) {
-                switch (e.target.value) {
-                    case "":
-                        break;
-                    case "1":
-                        this.$store.dispatch('sortFirstName');
-                        this.$store.dispatch('sortAscending');
-                        break;
+            // handleSelect(e) {
+            //     switch (e.target.value) {
+            //         case "":
+            //             break;
+            //         case "1":
+            //             this.$store.dispatch('sortFirstName');
+            //             this.$store.dispatch('sortAscending');
+            //             break;
                         
-                    case "2":
-                        this.$store.dispatch('sortLastName');
-                        this.$store.dispatch('sortAscending');
-                        break;
-                    case "3":
-                        this.$store.dispatch('sortFirstName');
-                        this.$store.dispatch('sortDescending');
-                        break;
-                    case "4":
-                        this.$store.dispatch('sortLastName');
-                        this.$store.dispatch('sortDescending');
-                        break;
-                }
-            }
+            //         case "2":
+            //             this.$store.dispatch('sortLastName');
+            //             this.$store.dispatch('sortAscending');
+            //             break;
+            //         case "3":
+            //             this.$store.dispatch('sortFirstName');
+            //             this.$store.dispatch('sortDescending');
+            //             break;
+            //         case "4":
+            //             this.$store.dispatch('sortLastName');
+            //             this.$store.dispatch('sortDescending');
+            //             break;
+            //     }
+            // }
         }
     }
 </script>
