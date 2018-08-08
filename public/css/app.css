@@ -157,7 +157,7 @@ textarea[type="text"]:focus {
 
 .theme-login .primary-nav {
   background-color: #D00D2D;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -170,7 +170,7 @@ textarea[type="text"]:focus {
 
 .theme-main .primary-nav {
   background-color: #0F1821;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -183,7 +183,7 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -196,7 +196,7 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .primary-nav {
   background-color: #747474;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -209,7 +209,7 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -222,7 +222,7 @@ textarea[type="text"]:focus {
 
 .theme-Dark .primary-nav {
   background-color: #1D1D1D;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
