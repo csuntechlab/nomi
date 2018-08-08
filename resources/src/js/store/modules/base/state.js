@@ -11,7 +11,7 @@ export default {
     // Views & Sorting
     list: true,
     flash: false,
-    sortLastName: true,
+    sortLastName: false,
     sortAscending: true,
     
     // Themes

@@ -24546,7 +24546,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     // Views & Sorting
     list: true,
     flash: false,
-    sortLastName: true,
+    sortLastName: false,
     sortAscending: true,
 
     // Themes
