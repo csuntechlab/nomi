@@ -19605,33 +19605,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "sort-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortDescending', 'sortLastName'])),
+    data: function data() {
+        return {
+            sortFirstName: true,
+            sortAscending: true
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortAscending', 'sortFirstName'])),
 
     methods: {
-        // handleSelect(e) {
-        //     switch (e.target.value) {
-        //         case "":
-        //             break;
-        //         case "1":
-        //             this.$store.dispatch('sortFirstName');
-        //             this.$store.dispatch('sortAscending');
-        //             break;
-
-        //         case "2":
-        //             this.$store.dispatch('sortLastName');
-        //             this.$store.dispatch('sortAscending');
-        //             break;
-        //         case "3":
-        //             this.$store.dispatch('sortFirstName');
-        //             this.$store.dispatch('sortDescending');
-        //             break;
-        //         case "4":
-        //             this.$store.dispatch('sortLastName');
-        //             this.$store.dispatch('sortDescending');
-        //             break;
-        //     }
-        // }
+        sortAsc: function sortAsc() {
+            this.sortAscending = true;
+            this.$store.dispatch('sortAscending');
+        },
+        sortDes: function sortDes() {
+            this.sortAscending = false;
+            this.$store.dispatch('sortDescending');
+        }
     }
+
 });
 
 /***/ }),
@@ -19650,7 +19643,7 @@ var render = function() {
           _c(
             "span",
             {
-              staticClass: "settings_field",
+              staticClass: "roster-settings__field",
               on: {
                 click: function($event) {
                   _vm.$store.dispatch("sortFirstName")
@@ -19663,7 +19656,7 @@ var render = function() {
           _c(
             "span",
             {
-              staticClass: "settings_field",
+              staticClass: "roster-settings__field",
               on: {
                 click: function($event) {
                   _vm.$store.dispatch("sortLastName")
@@ -19673,27 +19666,19 @@ var render = function() {
             [_vm._v("Last Name")]
           ),
           _vm._v(" "),
-          _c("span", [
-            _c("i", {
-              staticClass: "fas fa-2x fa-sort-alpha-up",
-              on: {
-                click: function($event) {
-                  _vm.$store.dispatch("sortAscending")
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", [
-            _c("i", {
-              staticClass: "fas fa-2x fa-sort-alpha-down",
-              on: {
-                click: function($event) {
-                  _vm.$store.dispatch("sortDescending")
-                }
-              }
-            })
-          ])
+          _vm.sortAscending == true
+            ? _c("span", [
+                _c("i", {
+                  staticClass: "fas fa-sort-alpha-down",
+                  on: { click: _vm.sortDes }
+                })
+              ])
+            : _c("span", [
+                _c("i", {
+                  staticClass: "fas fa-sort-alpha-up",
+                  on: { click: _vm.sortAsc }
+                })
+              ])
         ])
       ])
     : _vm._e()
@@ -19853,7 +19838,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm settings-button",
+                  staticClass: "btn btn-sm roster-settings__button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setList")
@@ -19871,7 +19856,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm settings-button",
+                  staticClass: "btn btn-sm roster-settings__button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setGallery")
@@ -19889,7 +19874,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm settings-button",
+                  staticClass: "btn btn-sm roster-settings__button",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("setFlash")
@@ -19909,7 +19894,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setList")
@@ -19927,7 +19912,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setGallery")
@@ -19945,7 +19930,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setFlash")
@@ -19964,7 +19949,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setList")
@@ -19982,7 +19967,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setGallery")
@@ -20000,7 +19985,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-sm settings-button",
+                    staticClass: "btn btn-sm roster-settings__button",
                     on: {
                       click: function($event) {
                         _vm.$store.dispatch("setFlash")
@@ -22206,8 +22191,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             show: false,
             messages: true,
             errors: [],
-            sortLastName: true,
-            sortDescending: true
+            sortFirstName: true,
+            sortAscending: true
         };
     },
 

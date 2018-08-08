@@ -180,7 +180,7 @@ textarea[type="text"]:focus {
 }
 
 .tab__link--kerning {
-	letter-spacing: .1rem;
+	letter-spacing: 0.1rem;
 }
 
 .tab__link--active {
@@ -201,19 +201,33 @@ textarea[type="text"]:focus {
 	}
 }
 
-.roster-settings__field {
-	height: 2%;
-	width: 10%;
-	@include themify($themes) {
-		background-color: themed("panelColor");
+.roster-settings {
+	&__field {
+		height: 2%;
+		width: 10%;
+		@include themify($themes) {
+			background-color: themed("panelColor");
+		}
 	}
 
-}
+	&__button {
+		width: 100%;
+		@include themify($themes) {
+			color: themed("buttonColor");
+		}
+	}
 
-.roster-settings__button {
-	width: 100%;
-	@include themify($themes) {
-		color: themed("accentColor");
+	&__sort {
+		font-size: 1.4rem;
+	}
+
+	&__name {
+		padding: 0.4rem 1rem;
+		&--selected {
+			@include themify($themes) {
+				background-color: themed("accentColor");
+			}
+		}
 	}
 }
 
@@ -266,7 +280,7 @@ textarea {
 	left: 50px;
 	font-size: 1.5rem;
 	color: white;
-	letter-spacing: .1rem;
+	letter-spacing: 0.1rem;
 }
 
 .csun_logo {
@@ -312,7 +326,7 @@ textarea {
 	color: rgba(255, 255, 255, 0.6);
 	padding: 0.5rem 0;
 
-	&--active{
+	&--active {
 		color: rgba(255, 255, 255, 1);
 		padding: 0.5rem 0;
 	}

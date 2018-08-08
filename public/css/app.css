@@ -668,7 +668,7 @@ textarea[type="text"]:focus {
 }
 
 .tab__link--kerning {
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
 .theme-login .tab__link--active {
@@ -729,57 +729,89 @@ textarea[type="text"]:focus {
   border: none;
 }
 
-.settings_field {
+.roster-settings__field {
   height: 2%;
   width: 10%;
 }
 
-.theme-login .settings_field {
+.theme-login .roster-settings__field {
   background-color: #F0F0F0;
 }
 
-.theme-main .settings_field {
+.theme-main .roster-settings__field {
   background-color: #F4F4F4;
 }
 
-.theme-bluesTheme .settings_field {
+.theme-bluesTheme .roster-settings__field {
   background-color: white;
 }
 
-.theme-Cloudy .settings_field {
+.theme-Cloudy .roster-settings__field {
   background-color: #FFFFFF;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .settings_field {
+.theme-OnceAMatadorAlwaysAMatador .roster-settings__field {
   background-color: #F0F0F0;
 }
 
-.theme-Dark .settings_field {
+.theme-Dark .roster-settings__field {
   background-color: #303030;
 }
 
-.settings-button {
+.roster-settings__button {
   width: 100%;
 }
 
-.theme-main .settings-button {
+.theme-login .roster-settings__button {
+  color: #d00d2d;
+}
+
+.theme-main .roster-settings__button {
   color: #4F9DA3;
 }
 
-.theme-bluesTheme .settings-button {
+.theme-bluesTheme .roster-settings__button {
   color: #4CA1DB;
 }
 
-.theme-Cloudy .settings-button {
-  color: #747474;
+.theme-Cloudy .roster-settings__button {
+  color: #FFC836;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .settings-button {
+.theme-OnceAMatadorAlwaysAMatador .roster-settings__button {
   color: #E74A37;
 }
 
-.theme-Dark .settings-button {
-  color: #97B5D8;
+.theme-Dark .roster-settings__button {
+  color: #426c96;
+}
+
+.roster-settings__sort {
+  font-size: 1.4rem;
+}
+
+.roster-settings__name {
+  padding: 0.4rem 1rem;
+}
+
+.theme-main .roster-settings__name--selected {
+  background-color: #4F9DA3;
+}
+
+.theme-bluesTheme .roster-settings__name--selected {
+  background-color: #4CA1DB;
+}
+
+.theme-Cloudy .roster-settings__name--selected {
+  background-color: #747474;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-settings__name--selected {
+  background-color: #E74A37;
+}
+
+.theme-Dark .roster-settings__name--selected {
+  background-color: #97B5D8;
 }
 
 .theme-Dark input, .theme-Dark
@@ -874,7 +906,7 @@ textarea {
   left: 50px;
   font-size: 1.5rem;
   color: white;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
 .theme-login .csun_logo {
