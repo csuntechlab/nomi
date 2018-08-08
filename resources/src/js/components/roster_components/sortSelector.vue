@@ -1,12 +1,18 @@
 <template>
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
-        <select name="name-sorting" id="name-sorting" @input="handleSelect">
-            <option value="1" selected>First Name A-Z</option>
-            <option value="2">Last Name A-Z</option>
-            <option value="3">First Name Z-A</option>
-            <option value="4">Last Name Z-A</option>
-        </select>
+        <div class="row type--center roster-sorting">
+            <span v-if="!sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortFirstName')">First Name</span>
+            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortFirstName')">First Name</span>
+            <span v-if="sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortLastName')">Last Name</span>
+            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortLastName')">Last Name</span>
+            <span v-if="sortAscending == true">
+                <i class="fas roster-sorting__sort fa-sort-alpha-down" @click="sortDes"></i>
+            </span>
+            <span v-else>
+                <i class="fas roster-sorting__sort fa-sort-alpha-up" @click="sortAsc"></i>
+            </span>
+        </div>
     </div>
 </template>
 
@@ -19,35 +25,19 @@
             ...mapGetters([
                 'flash',
                 'list',
-                'sortDescending',
+                'sortAscending',
                 'sortLastName'
             ])
         },
 
         methods: {
-            handleSelect(e) {
-                switch (e.target.value) {
-                    case "":
-                        break;
-                    case "1":
-                        this.$store.dispatch('sortFirstName');
-                        this.$store.dispatch('sortAscending');
-                        break;
-                        
-                    case "2":
-                        this.$store.dispatch('sortLastName');
-                        this.$store.dispatch('sortAscending');
-                        break;
-                    case "3":
-                        this.$store.dispatch('sortFirstName');
-                        this.$store.dispatch('sortDescending');
-                        break;
-                    case "4":
-                        this.$store.dispatch('sortLastName');
-                        this.$store.dispatch('sortDescending');
-                        break;
-                }
+            sortAsc: function () {
+                this.$store.dispatch('sortAscending');
+            },
+            sortDes: function () {
+                this.$store.dispatch('sortDescending');
             }
         }
+
     }
 </script>

@@ -157,7 +157,7 @@ textarea[type="text"]:focus {
 
 .theme-login .primary-nav {
   background-color: #D00D2D;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -170,7 +170,7 @@ textarea[type="text"]:focus {
 
 .theme-main .primary-nav {
   background-color: #0F1821;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -183,7 +183,7 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -196,7 +196,7 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .primary-nav {
   background-color: #747474;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -209,7 +209,7 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -222,7 +222,7 @@ textarea[type="text"]:focus {
 
 .theme-Dark .primary-nav {
   background-color: #1D1D1D;
-  position: absolute;
+  position: fixed;
   height: 2.46666667rem;
   width: 100%;
   z-index: 99;
@@ -668,7 +668,7 @@ textarea[type="text"]:focus {
 }
 
 .tab__link--kerning {
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
 .theme-login .tab__link--active {
@@ -727,6 +727,151 @@ textarea[type="text"]:focus {
 .theme-Dark .toolBar__field {
   background: #424242;
   border: none;
+}
+
+.roster-sorting {
+  margin: 0.5rem 0;
+}
+
+.roster-sorting__button {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.theme-login .roster-sorting__button {
+  background-color: #F0F0F0 !important;
+  color: #464646 !important;
+}
+
+.theme-main .roster-sorting__button {
+  background-color: #F4F4F4 !important;
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .roster-sorting__button {
+  background-color: white !important;
+  color: #575757 !important;
+}
+
+.theme-Cloudy .roster-sorting__button {
+  background-color: #FFFFFF !important;
+  color: #464646 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__button {
+  background-color: #F0F0F0 !important;
+  color: #464646 !important;
+}
+
+.theme-Dark .roster-sorting__button {
+  background-color: #303030 !important;
+  color: #bababa !important;
+}
+
+.roster-sorting__button--selected {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.theme-login .roster-sorting__button--selected {
+  background-color: #d00d2d !important;
+  color: !important;
+}
+
+.theme-main .roster-sorting__button--selected {
+  background-color: #4F9DA3 !important;
+  color: #fff !important;
+}
+
+.theme-bluesTheme .roster-sorting__button--selected {
+  background-color: #4CA1DB !important;
+  color: #fff !important;
+}
+
+.theme-Cloudy .roster-sorting__button--selected {
+  background-color: #FFC836 !important;
+  color: #4e4e4e !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__button--selected {
+  background-color: #E74A37 !important;
+  color: #fff !important;
+}
+
+.theme-Dark .roster-sorting__button--selected {
+  background-color: #426c96 !important;
+  color: #dadada !important;
+}
+
+.roster-sorting__sort {
+  font-size: 1.4rem;
+}
+
+.roster-sorting__name {
+  padding: 0.4rem 1rem;
+}
+
+.theme-login .roster-sorting__name {
+  background-color: #F0F0F0;
+  color: #464646;
+}
+
+.theme-main .roster-sorting__name {
+  background-color: #F4F4F4;
+  color: #464646;
+}
+
+.theme-bluesTheme .roster-sorting__name {
+  background-color: white;
+  color: #575757;
+}
+
+.theme-Cloudy .roster-sorting__name {
+  background-color: #FFFFFF;
+  color: #464646;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__name {
+  background-color: #F0F0F0;
+  color: #464646;
+}
+
+.theme-Dark .roster-sorting__name {
+  background-color: #303030;
+  color: #bababa;
+}
+
+.roster-sorting__name--selected {
+  padding: 0.4rem 1rem;
+}
+
+.theme-login .roster-sorting__name--selected {
+  background-color: #d00d2d;
+}
+
+.theme-main .roster-sorting__name--selected {
+  background-color: #4F9DA3;
+  color: #fff;
+}
+
+.theme-bluesTheme .roster-sorting__name--selected {
+  background-color: #4CA1DB;
+  color: #fff;
+}
+
+.theme-Cloudy .roster-sorting__name--selected {
+  background-color: #FFC836;
+  color: #4e4e4e;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__name--selected {
+  background-color: #E74A37;
+  color: #fff;
+}
+
+.theme-Dark .roster-sorting__name--selected {
+  background-color: #426c96;
+  color: #dadada;
 }
 
 .theme-Dark input, .theme-Dark
@@ -821,7 +966,7 @@ textarea {
   left: 50px;
   font-size: 1.5rem;
   color: white;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
 .theme-login .csun_logo {
@@ -1080,6 +1225,10 @@ textarea {
 
 #Dark {
   background-color: #272727;
+}
+
+:focus {
+  outline: none !important;
 }
 
 .theme-login .makeBlue {
@@ -1805,6 +1954,27 @@ textarea {
 @media only screen and (max-width: 945px) {
   #login-mobile {
     display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 99;
+    top: 0;
+    left: 0;
+  }
+  #panel__content {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  #loginContent {
+    margin-top: -30rem;
+  }
+  #loginLogo {
+    padding: 7% 0;
+  }
+  #loginInput {
+    padding-bottom: 3rem;
   }
   .loginContainer {
     position: fixed;
