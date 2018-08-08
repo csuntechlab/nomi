@@ -201,7 +201,7 @@ textarea[type="text"]:focus {
 	}
 }
 
-.settings_field {
+.roster-settings__field {
 	height: 2%;
 	width: 10%;
 	@include themify($themes) {
@@ -210,7 +210,8 @@ textarea[type="text"]:focus {
 
 }
 
-.settings-button {
+.roster-settings__button {
+	width: 100%;
 	@include themify($themes) {
 		color: themed("accentColor");
 	}

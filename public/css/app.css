@@ -758,6 +758,10 @@ textarea[type="text"]:focus {
   background-color: #303030;
 }
 
+.settings-button {
+  width: 100%;
+}
+
 .theme-main .settings-button {
   color: #4F9DA3;
 }

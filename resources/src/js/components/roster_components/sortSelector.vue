@@ -1,19 +1,16 @@
 <template>
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
-        <div class="row">
-            <div class="">
-                <div class="col-xs-4 col-sm-4 settings_field" @click="$store.dispatch('sortFirstName')">FN</div>
-                <div class="col-xs-4 col-sm-4 settings_field" @click="$store.dispatch('sortLastName')">LN</div>
-            </div>
-            <div class="">
-                <i class="fas fa-2x fa-sort-alpha-up settings-button" @click="$store.dispatch('sortAscending')"></i>
-            </div>
-            <div class="">
-                <i class="fas fa-2x fa-sort-alpha-down settings-button" @click="$store.dispatch('sortDescending')"></i>
-            </div>
+        <div class="row type--center">
+            <span class="roster-settings__field" @click="$store.dispatch('sortFirstName')">First Name</span>
+            <span class="roster-settings__field" @click="$store.dispatch('sortLastName')">Last Name</span>
+            <span>
+                <i class="fas fa-2x fa-sort-alpha-up" @click="$store.dispatch('sortAscending')"></i>
+            </span>
+            <span>
+                <i class="fas fa-2x fa-sort-alpha-down" @click="$store.dispatch('sortDescending')"></i>
+            </span>
         </div>
-        
     </div>
 </template>
 
@@ -40,7 +37,7 @@
             //             this.$store.dispatch('sortFirstName');
             //             this.$store.dispatch('sortAscending');
             //             break;
-                        
+
             //         case "2":
             //             this.$store.dispatch('sortLastName');
             //             this.$store.dispatch('sortAscending');
