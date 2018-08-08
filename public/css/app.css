@@ -1910,8 +1910,7 @@ textarea {
     left: 0;
   }
   #loginLogo {
-    width: 97.5%;
-    padding: 0 2.5% 15% 2.5%;
+    padding: 0 12%;
   }
   #loginInput {
     padding-bottom: 3rem;
@@ -1936,7 +1935,7 @@ textarea {
     visibility: hidden;
   }
   .loginLoader--active {
-    top: 55%;
+    top: 50%;
     visibility: visible;
   }
 }
