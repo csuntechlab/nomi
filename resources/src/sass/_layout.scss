@@ -314,7 +314,7 @@ textarea {
 .settings_banner {
 	@include themify($themes) {
 		background: themed("toolBanner");
-		margin-bottom: 1rem;
+		margin-bottom: .1rem;
 		padding: 0.2rem 0;
 	}
 }
@@ -351,6 +351,14 @@ textarea {
 .course-card--selected {
 	@include themify($themes) {
 		color: themed("accentColor");
+	}
+}
+
+.roster-list__item{
+	padding: .4rem 1rem;
+	@include themify($themes) {
+		background-color: themed("panelColor");
+		border-bottom: 1px solid themed("backgroundColor")
 	}
 }
 

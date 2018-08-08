@@ -54,11 +54,13 @@ class StudentProfileServiceTest extends TestCase
         $this->webResourceRetriever
             ->shouldReceive('getStudent')
             ->withArgs([$email])
-            ->andReturn(\json_encode(['people' => [
-                'profile_image' => 'thisIsAnImage',
-                'individuals_id' => 'members:student',
-                'display_name' => 'Sun Ra',
-            ],
+            ->andReturn(\json_encode([
+                'people' => [
+                    'profile_image' => 'thisIsAnImage',
+                    'individuals_id' => 'members:student',
+                    'display_name' => 'Sun Ra',
+                ],
+                'success' => 'true',
         ]));
 
         $this->webResourceRetriever
@@ -89,6 +91,50 @@ class StudentProfileServiceTest extends TestCase
             ->andReturn(['images' => 'evenMoreImages']);
 
         $studentProfile->images = 'evenMoreImages';
+
+        $output = $studentService->getStudentProfile($email);
+
+        $this->assertEquals(\json_encode($studentProfile), $output);
+    }
+
+    /** @test */
+    public function getStudentProfile_returns_a_null_student_profile_if_call_is_not_successful()
+    {
+        $user = new User(['user_id' => 'members:professor']);
+        $this->be($user);
+
+        $studentService = new StudentProfileService(
+            $this->webResourceRetriever,
+            $this->rosterRetriever,
+            $this->imageCRUD
+        );
+
+        $note = factory(Note::class)->make([
+            'student_id' => 'members:student',
+            'user_id' => 'members:professor',
+            'notepad' => Crypt::encrypt('This is a note'),
+        ])->save();
+
+        $email = 'this.is.555@WorkingEmail.com';
+
+        $this->webResourceRetriever
+            ->shouldReceive('getStudent')
+            ->withArgs([$email])
+            ->andReturn(\json_encode([
+                'people' => [
+                    'profile_image' => 'thisIsAnImage',
+                    'individuals_id' => 'members:student',
+                    'display_name' => 'Sun Ra',
+                ],
+                'success' => 'false',
+        ]));
+
+        $this->imageCRUD
+            ->shouldReceive('getPriority')
+            ->withArgs([['student']])
+            ->andReturn(['likeness']);
+
+        $studentProfile = null;
 
         $output = $studentService->getStudentProfile($email);
 

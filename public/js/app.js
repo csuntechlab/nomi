@@ -22346,8 +22346,8 @@ var render = function() {
       attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
     },
     [
-      _c("div", { staticClass: "panel panel__container" }, [
-        _c("div", { staticClass: "row panel panel__item" }, [
+      _c("div", { staticClass: "roster-list__item" }, [
+        _c("div", { staticClass: "row" }, [
           _c(
             "div",
             { staticClass: "col-xs-3 col-md-2" },
