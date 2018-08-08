@@ -201,19 +201,22 @@ textarea[type="text"]:focus {
 	}
 }
 
-.roster-settings {
-	&__field {
-		height: 2%;
-		width: 10%;
-		@include themify($themes) {
-			background-color: themed("panelColor");
-		}
-	}
-
+.roster-sorting {
+	margin: 0.5rem 0;
 	&__button {
 		width: 100%;
+		margin: 0.5rem 0;
 		@include themify($themes) {
-			color: themed("buttonColor");
+			background-color: themed("panelColor") !important;
+			color: themed("textColor") !important;
+		}
+		&--selected {
+			width: 100%;
+			margin: 0.5rem 0;
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
 		}
 	}
 
@@ -223,9 +226,15 @@ textarea[type="text"]:focus {
 
 	&__name {
 		padding: 0.4rem 1rem;
+		@include themify($themes) {
+			background-color: themed("panelColor");
+			color: themed("textColor");
+		}
 		&--selected {
+			padding: 0.4rem 1rem;
 			@include themify($themes) {
-				background-color: themed("accentColor");
+				background-color: themed("buttonColor");
+				color: themed("buttonText");
 			}
 		}
 	}

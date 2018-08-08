@@ -20,7 +20,7 @@ export default {
     list: state => state.list,
     flash: state => state.flash,
     sortLastName: state => state.sortLastName,
-    sortDescending: state => state.sortDescending,
+    sortAscending: state => state.sortAscending,
     
     // Courses
     semester: state => state.semester,

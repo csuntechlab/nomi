@@ -12,7 +12,7 @@ export default {
     list: true,
     flash: false,
     sortLastName: true,
-    sortDescending: true,
+    sortAscending: true,
     
     // Themes
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
