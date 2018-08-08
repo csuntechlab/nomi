@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button" @click="$store.dispatch('setFlash')">
-                        <i class="fas fa-clone"></i> Flashcards
+                        <i class="fas fa-clone"></i> Cards
                     </button>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button--selected" @click="$store.dispatch('setFlash')">
-                        <i class="fas fa-clone"></i> Flashcards
+                        <i class="fas fa-clone"></i> Cards
                     </button>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button" @click="$store.dispatch('setFlash')">
-                        <i class="fas fa-clone"></i> Flashcards
+                        <i class="fas fa-clone"></i> Cards
                     </button>
                 </div>
             </div>

@@ -19901,7 +19901,7 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-clone" }),
-                  _vm._v(" Flashcards\n                ")
+                  _vm._v(" Cards\n                ")
                 ]
               )
             ])
@@ -19957,7 +19957,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Flashcards\n                ")
+                    _vm._v(" Cards\n                ")
                   ]
                 )
               ])
@@ -20012,7 +20012,7 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Flashcards\n                ")
+                    _vm._v(" Cards\n                ")
                   ]
                 )
               ])
