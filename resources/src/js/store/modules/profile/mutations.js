@@ -25,6 +25,7 @@ export default {
                 state.studentProfile.notes = response['data'].notes;
                 state.studentProfile.id = response['data'].student_id;
                 state.studentProfile.firstName = response['data'].first_name;
+                
             })
             .catch(e => {
                 state.profileLoadError = true;
