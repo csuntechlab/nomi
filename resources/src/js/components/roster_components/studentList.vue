@@ -21,8 +21,8 @@
                 show: false,
                 messages: true,
                 errors: [],
-                sortLastName: true,
-                sortDescending: true,
+                sortFirstName: true,
+                sortAscending: true,
             }
         },
 
