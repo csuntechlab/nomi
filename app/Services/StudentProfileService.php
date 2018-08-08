@@ -30,6 +30,9 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentProfile($email)
     {
+        if (\json_decode($this->webResourceRetriever->getStudent($email), true)['success'] == 'false') {
+            return \json_encode(null);
+        }
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];

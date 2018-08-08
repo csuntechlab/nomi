@@ -21,6 +21,7 @@
     </body>
     <script src="{{ asset('js/metaphor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    @if(env("PROD"))
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-123500967-1“></script>
     <script>
@@ -30,5 +31,6 @@
 
         gtag(‘config’, ‘UA-123500967-1’);
     </script>
+    @endif
     @yield('scripts')
 </html>
