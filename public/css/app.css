@@ -1936,7 +1936,7 @@ textarea {
 }
 
 .loginTitle {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 400;
   padding-bottom: 5px;
 }
@@ -1945,10 +1945,60 @@ textarea {
   float: right;
 }
 
-.loginForm {
-  border-radius: 100px !important;
-  margin-bottom: 20px;
-  opacity: 1;
+.input-container {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 3.5rem;
+  margin-bottom: 5%;
+  padding: 0 8%;
+  overflow: hidden;
+}
+
+.input-container > label {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  height: 1rem;
+}
+
+.input-container input {
+  -webkit-transition: 350ms;
+  transition: 350ms;
+}
+
+.input-container input:focus {
+  margin-top: 5%;
+  border-bottom: 1px;
+}
+
+.input-container input:focus + label {
+  font-size: 0.8rem;
+  visibility: visible;
+  margin-top: 2%;
+}
+
+.input-container input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.input-container input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+.login__username, .login__password {
+  border: 0 solid !important;
+  display: inline-block;
+  padding: 0 !important;
+  width: 100%;
+  outline: 0;
 }
 
 @media only screen and (max-width: 945px) {
