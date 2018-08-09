@@ -2,9 +2,8 @@
 
 <div id="login-mobile" class="login">
     <div id="panel__content">
-        <div id="loginContent">
+            <div id="loginContainer" class="login__container">
             <img id="loginLogo" src="./../public/images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
-            <div id="loginInput" class="loginContainer">
                 {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                 <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
                 <div class="input-container">
@@ -20,7 +19,6 @@
                 </button>
                 {{ Form::close() }}
             </div>
-        </div>
     </div>
     <div id="loginLoader" class="login__loader">
         <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
