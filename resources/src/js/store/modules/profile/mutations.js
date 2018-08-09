@@ -26,6 +26,7 @@ export default {
                 state.studentProfile.id = response['data'].student_id;
                 state.studentProfile.studentAudio = response['data'].studentAudio;
                 state.studentProfile.firstName = response['data'].first_name;
+                
             })
             .catch(e => {
                 state.profileLoadError = true;

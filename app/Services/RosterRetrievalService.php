@@ -66,6 +66,7 @@ class RosterRetrievalService implements RosterRetrievalContract
                 $unsanitizedStudent->image_priority = 'likeness';
             }
         }
+
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
@@ -85,6 +86,10 @@ class RosterRetrievalService implements RosterRetrievalContract
     {
         if ($imageManager == null) {
             $imageManager = new ImageManager(['driver' => 'imagick']);
+        }
+
+        if ($student->email == null) {
+            $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
         }
 
         $email = \str_replace('nr_', '', $student->email);

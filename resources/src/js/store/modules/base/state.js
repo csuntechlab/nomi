@@ -11,8 +11,8 @@ export default {
     // Views & Sorting
     list: true,
     flash: false,
-    sortLastName: true,
-    sortDescending: true,
+    sortLastName: false,
+    sortAscending: true,
     
     // Themes
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},

@@ -16,11 +16,17 @@
     <body>
         <div id='app'>
             <nav-bar></nav-bar>
+            @if ( $errors->count() > 0 )
+                <div id="error_bar" class="alert alert--warning" >
+                    <strong>Oops!</strong> Login Failed
+                </div>
+            @endif
             @yield('content')
         </div>
     </body>
     <script src="{{ asset('js/metaphor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    @if(env("PROD"))
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-123500967-1“></script>
     <script>
@@ -30,5 +36,6 @@
 
         gtag(‘config’, ‘UA-123500967-1’);
     </script>
+    @endif
     @yield('scripts')
 </html>

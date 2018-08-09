@@ -1,3 +1,6 @@
+:focus{
+	outline: none !important;
+}
 .makeBlue {
 	@include themify($themes) {
 		background-color: themed("navigationBars");
