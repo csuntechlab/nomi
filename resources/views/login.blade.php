@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div id="loginLoader" class="login-loader">
+    <div id="loginLoader" class="login__loader">
         <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
     </div>
 </div>
@@ -57,7 +57,7 @@
                         </button>
                         {{ Form::close() }}
                     </div>
-                    <div id="loginLoader" class="login-loader">
+                    <div id="loginLoader" class="login__loader">
                         <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
     localStorage.removeItem('nameface');
 
     function loading() {
-        document.getElementById("loginLoader").className += " login-loader--active";
-        document.getElementById("loginInput").className += " loginContainer--hide";
+        document.getElementById("loginLoader").className += " login__loader--active";
+        document.getElementById("loginContainer").className += " login__container--hide";
     }
 </script> @stop

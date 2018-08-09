@@ -2017,29 +2017,26 @@ textarea {
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
-  #loginContent {
-    margin-top: -30rem;
-  }
   #loginLogo {
-    padding: 7% 0;
+    padding: 10% 0;
   }
-  #loginInput {
+  #loginContainer {
     padding-bottom: 3rem;
   }
-  .loginContainer {
+  .login__container {
     position: fixed;
     margin: 15%;
     right: 0;
     left: 0;
-    top: 25%;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+    top: 5%;
+    -webkit-transition: .3s;
+    transition: .3s;
   }
-  .loginContainer--hide {
+  .login__container--hide {
     opacity: 0;
     visibility: hidden;
   }
-  .login-loader {
+  .login__loader {
     position: fixed;
     text-align: center;
     width: 100%;
@@ -2049,8 +2046,8 @@ textarea {
     transition: 0.4s;
     visibility: hidden;
   }
-  .login-loader--active {
-    top: 35%;
+  .login__loader--active {
+    top: 40%;
     visibility: visible;
   }
 }
@@ -2070,13 +2067,13 @@ textarea {
     margin: 0 auto;
     width: 100%;
   }
-  .login-loader {
+  .login__loader {
     position: relative;
     padding-left: 2.5%;
     top: -2.75rem;
     display: none;
   }
-  .login-loader--active {
+  .login__loader--active {
     display: block;
   }
 }
