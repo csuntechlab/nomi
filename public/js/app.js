@@ -22300,6 +22300,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -22329,7 +22332,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         image: function image() {
             return this.studentImages[this.student.student_id];
         }
-    })
+    }),
+    methods: {
+        listenAudio: function listenAudio() {
+            console.log(this.student.studentAudio);
+        }
+    }
+
 });
 
 /***/ }),
@@ -22381,6 +22390,15 @@ var render = function() {
                       "\n            "
                   )
                 ]
+              ),
+              _vm._v(" "),
+              _c(
+                "i",
+                {
+                  staticClass: "fas fa-1x fa-volume-up profile-edit-button",
+                  on: { click: _vm.listenAudio }
+                },
+                [_c("a", { attrs: { href: this.student.studenAudio } })]
               )
             ],
             1
@@ -25352,7 +25370,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             imagePriority: null,
             notes: null,
             firstName: null,
-            studentAudio: studentAudio
+            studentAudio: null
         };
 
         state.profileErrors = null;

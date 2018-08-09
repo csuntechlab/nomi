@@ -73,7 +73,7 @@ export default {
             imagePriority: null,
             notes: null,
             firstName: null,
-            studentAudio
+            studentAudio: null,
         };
 
         state.profileErrors = null;

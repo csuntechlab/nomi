@@ -9,6 +9,9 @@
                 <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                     {{display_name}}
                 </router-link>
+                <i class="fas fa-1x fa-volume-up profile-edit-button" @click="listenAudio">
+                    <a :href="this.student.studenAudio"></a>
+                </i>
             </div>
         </div>
         </div>
@@ -35,7 +38,7 @@ export default {
             
         ...mapGetters([
             'studentImages'  
-         ]),
+        ]),
 
         display_name: function() {
             return this.student.first_name + " " + this.student.last_name;
@@ -48,6 +51,12 @@ export default {
         image: function() {
             return this.studentImages[this.student.student_id];
         }
+    },
+    methods: {
+            listenAudio(){
+                console.log(this.student.studentAudio);
+            }
     }
+
 }
 </script>
