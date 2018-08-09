@@ -7,7 +7,14 @@
             <div id="loginInput" class="loginContainer">
                 {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                 <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
-                {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=> 'loginForm', 'placeholder' => 'Password']) }}
+                <div class="input-container">
+                    {{ Form::text('username', null, ['id' => 'login__username', 'placeholder' => 'Username']) }}
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-container">
+                    {{ Form::password('password', ['id'=> 'login__password', 'placeholder' => 'Password']) }}
+                    <label for="password">Password</label>
+                </div>
                 <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
                     Submit
                 </button>
@@ -37,8 +44,14 @@
                     <div id="loginInput">
                         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                         <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
-                        {{ Form::text('username', null, ['class' => 'loginForm', 'placeholder' => 'Username']) }} {{ Form::password('password', ['class'=>
-                        'loginForm', 'placeholder' => 'Password']) }}
+                        <div class="input-container">
+                            {{ Form::text('username', null, ['id' => 'login__username', 'placeholder' => 'Username']) }}
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-container">
+                            {{ Form::password('password', ['id'=> 'login__password', 'placeholder' => 'Password']) }}
+                            <label for="password">Password</label>
+                        </div>
                         <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
                             Submit
                         </button>
