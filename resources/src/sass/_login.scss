@@ -21,7 +21,7 @@
 
 // Mobile View
 @media only screen and (max-width: 945px) {
-    #login-mobile {
+	#login-mobile {
 		display: block;
 		position: absolute;
 		height: 100vh;
@@ -36,33 +36,28 @@
 		justify-content: flex-start;
 	}
 
-	#loginContent {
-		margin-top: -30rem;
-	}
-
 	#loginLogo {
-		padding: 7% 0;
+		padding: 10% 0;
 	}
 
-	#loginInput {
+	#loginContainer {
 		padding-bottom: 3rem;
 	}
 
-	.loginContainer {
+	.login__container {
 		position: fixed;
 		margin: 15%;
 		right: 0;
 		left: 0;
-		top: 25%;
-		transition: 0.3s;
+		top: 5%;
+		transition: .3s;
+		&--hide {
+			opacity: 0;
+			visibility: hidden;
+		}
 	}
 
-	.loginContainer--hide {
-		opacity: 0;
-		visibility: hidden;
-	}
-
-	.login-loader {
+	.login__loader {
 		position: fixed;
 		text-align: center;
 		width: 100%;
@@ -70,13 +65,11 @@
 		display: inline-block;
 		transition: 0.4s;
 		visibility: hidden;
+		&--active {
+			top: 40%;
+			visibility: visible;
+		}
 	}
-
-	.login-loader--active {
-		top: 35%;
-		visibility: visible;
-	}
-
 }
 
 // Desktop and Tablet View
@@ -97,14 +90,14 @@
 		width: 100%;
 	}
 
-	.login-loader {
+	.login__loader {
 		position: relative;
 		padding-left: 2.5%;
 		top: -2.75rem;
 		display: none;
 	}
 
-	.login-loader--active {
+	.login__loader--active {
 		display: block;
 	}
 }
@@ -191,7 +184,7 @@
 }
 
 @media only screen and (min-width: 946px) {
-    #login {
-        display: block;
-    }
+	#login {
+		display: block;
+	}
 }
