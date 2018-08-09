@@ -1946,6 +1946,7 @@ textarea {
 }
 
 .input-container {
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 32px;
   display: -webkit-box;
@@ -1975,7 +1976,6 @@ textarea {
 
 .input-container input:focus {
   margin-top: 5%;
-  border: 1px solid black;
   border-bottom: 1px;
 }
 
@@ -1993,11 +1993,12 @@ textarea {
   color: transparent;
 }
 
-#login__username, #login__password {
-  border: 0;
-  width: 100%;
+.login__username, .login__password {
+  border: 0 solid !important;
   display: inline-block;
-  padding: 0;
+  padding: 0 !important;
+  width: 100%;
+  outline: 0;
 }
 
 @media only screen and (max-width: 945px) {

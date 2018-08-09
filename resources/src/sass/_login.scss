@@ -14,6 +14,7 @@
 }
 
 .input-container {
+	background-color: white;
 	border: 1px solid #ccc;
 	border-radius: 32px;
 	display: flex;
@@ -37,7 +38,6 @@
 
 	input:focus {
 		margin-top: 5%;
-		border: 1px solid black;
 		border-bottom: 1px;
 	}
 
@@ -48,20 +48,21 @@
 	}
 
 	input:focus::-webkit-input-placeholder { 
-		color:transparent; 
+		color:transparent;
 	}
 
 	input:focus:-moz-placeholder { 
-		color:transparent; 
+		color:transparent;
 	}
 }
 
-#login {
+.login {
 	&__username, &__password {
-		border: 0;
-		width: 100%;
+		border: 0 solid !important;
 		display: inline-block;
-		padding: 0;
+		padding: 0 !important;
+		width: 100%;
+		outline: 0;
 	}
 }
 

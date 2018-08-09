@@ -8,11 +8,11 @@
                 {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                 <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
                 <div class="input-container">
-                    {{ Form::text('username', null, ['id' => 'login__username', 'placeholder' => 'Username']) }}
+                    {{ Form::text('username', null, ['class' => 'login__username', 'placeholder' => 'Username']) }}
                     <label for="username">Username</label>
                 </div>
                 <div class="input-container">
-                    {{ Form::password('password', ['id'=> 'login__password', 'placeholder' => 'Password']) }}
+                    {{ Form::password('password', ['class' => 'login__password', 'placeholder' => 'Password']) }}
                     <label for="password">Password</label>
                 </div>
                 <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
@@ -45,11 +45,11 @@
                         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                         <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
                         <div class="input-container">
-                            {{ Form::text('username', null, ['id' => 'login__username', 'placeholder' => 'Username']) }}
+                            {{ Form::text('username', null, ['class' => 'login__username', 'placeholder' => 'Username']) }}
                             <label for="username">Username</label>
                         </div>
                         <div class="input-container">
-                            {{ Form::password('password', ['id'=> 'login__password', 'placeholder' => 'Password']) }}
+                            {{ Form::password('password', ['class'=> 'login__password', 'placeholder' => 'Password']) }}
                             <label for="password">Password</label>
                         </div>
                         <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
