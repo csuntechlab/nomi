@@ -17,18 +17,10 @@
             </ul>
         </p>
 
-        <h3>Supported Browsers</h3>
+        <h3>Browser Support</h3>
         <p>
-            <ul>
-                <li><b>Chrome</b> - Chrome 21 to Current</li>
-                <i>Last Supported Date: (Jun 25, 2012)</i>
-                <li><b>Safari</b> - Safari 6.1 to Current</li>
-                <i>Last Supported Date: (Oct 21, 2013)</i>
-                <li><b>Safari iOS</b> - Safari iOS 7.1 to Current</li>
-                <i>Last Supported Date: (Mar 9, 2014)</i>
-                <li><b>Firefox</b> - Firefox 35 to Current</li>
-                <i>Last Supported Date: (Jan 12, 2015)</i>
-            </ul>
+            The web applications developed and maintained by META+LAB are designed and tested to work on the most current versions of major desktop web browsers, minus one version: <b>Mozilla Firefox</b>, <b>Google Chrome</b>, <b>Safari</b>.
+            Part of the mantra at META+LAB involves pushing boundaries. The use of such state-of-the-art technology will rely on the newest features and functionality available on browsers.
         </p>
     </div>
 </template>
