@@ -23344,6 +23344,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23439,11 +23440,17 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xs-2" }, [
-        _c(
-          "span",
-          { staticClass: "notes__status", attrs: { id: "charCount" } },
-          [_vm._v(_vm._s(_vm.characterCount) + "/600")]
-        )
+        this.student.notes == null
+          ? _c(
+              "span",
+              { staticClass: "notes__status", attrs: { id: "charCount" } },
+              [_vm._v("0/600")]
+            )
+          : _c(
+              "span",
+              { staticClass: "notes__status", attrs: { id: "charCount" } },
+              [_vm._v(_vm._s(_vm.characterCount) + "/600")]
+            )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-xs-10 type--right" }, [
