@@ -23419,7 +23419,13 @@ var render = function() {
     _c("form", { attrs: { autocomplete: "off" } }, [
       _c("textarea", {
         staticClass: "notes_text",
-        attrs: { maxlength: "600", type: "text", id: "ex0", name: "ex0" },
+        attrs: {
+          placeholder: "Write about " + this.student.firstName + ".",
+          maxlength: "600",
+          type: "text",
+          id: "ex0",
+          name: "ex0"
+        },
         domProps: { value: this.student.notes },
         on: {
           input: _vm.updateNotes,

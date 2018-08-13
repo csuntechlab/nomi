@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<form autocomplete="off">
-			<textarea class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
+			<textarea :placeholder="'Write about ' + this.student.firstName + '.'" class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
 		</form>
 		<div class="row">
 			<div class="col-xs-2">

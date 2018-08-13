@@ -60,7 +60,7 @@ class StudentProfileService implements StudentProfileContract
             'email' => $email,
             'student_id' => $profile['individuals_id'],
             'members_id' => $profile['individuals_id'],
-            'notes' => $note == null ? 'Notes go here.' : Crypt::decrypt($note->notepad),
+            'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
             'studentAudio' => $studentAudio,
         ];
