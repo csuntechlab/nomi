@@ -3,7 +3,7 @@
 <div id="login-mobile" class="login">
     <div id="panel__content">
             <div id="loginContainer" class="login__container">
-            <img id="loginLogo" src="./../public/images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
+            <img id="loginLogo" src="../images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
                 {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                 <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
                 <div class="input-container">
@@ -29,7 +29,7 @@
     <div id="panel">
         <div id="panel__right">
             <div id="loginBranding">
-                <img id="csunLogo" src="./../public/images/csunlogo-horizontal.svg" alt="CSUN Logo; California State University of Northridge">
+                <img id="csunLogo" src="../images/csunlogo-horizontal.svg" alt="CSUN Logo; California State University of Northridge">
             </div>
         </div>
 
@@ -37,7 +37,7 @@
             <div id="filter"></div>
             <div id="panel__login">
                 <div id="panel__content">
-                    <img id="loginLogo" src="./../public/images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
+                    <img id="loginLogo" src="../images/nomi-logo-horizontal.svg" alt="NOMI Logo; Names of Matador Individuals">
 
                     <div id="loginInput">
                         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
