@@ -168,7 +168,7 @@
 }
 
 #filter {
-	background-image: url("./../../public/images/blur.jpg");
+	background-image: url("../images/blur.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: rgba(235, 235, 235, 0.8);
@@ -191,7 +191,7 @@
 	width: 100%;
 
 	&__right {
-		background-image: url(./../../public/images/desktop-background.jpg);
+		background-image: url(../images/desktop-background.jpg);
 		background-repeat: no-repeat;
 		background-size: cover;
 		display: flex;
