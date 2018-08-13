@@ -1,0 +1,238 @@
+// Global
+.login {
+	display: none;
+}
+
+.loginTitle {
+	font-size: 1.75rem;
+	font-weight: 400;
+	padding-bottom: 5px;
+}
+
+.loginButton {
+	float: right;
+}
+
+.input-container {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 32px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	height: 3.5rem;
+	margin-bottom: 5%;
+	padding: 0 8%;
+	overflow: hidden;
+
+	& > label {
+		visibility: hidden;
+		position: absolute;
+		top: 0;
+		height: 1rem;
+	}
+
+	input {
+		transition: 350ms;
+	}
+
+	input:focus {
+		margin-top: 5%;
+		border-bottom: 1px;
+	}
+
+	input:focus + label {
+		font-size: 0.8rem;
+		visibility: visible;
+		margin-top: 2%;
+	}
+
+	input:focus::-webkit-input-placeholder { 
+		color:transparent;
+	}
+
+	input:focus:-moz-placeholder { 
+		color:transparent;
+	}
+}
+
+.login {
+	&__username, &__password {
+		border: 0 solid !important;
+		display: inline-block;
+		padding: 0 !important;
+		width: 100%;
+		outline: 0;
+	}
+}
+
+
+// Mobile View
+@media only screen and (max-width: 945px) {
+	#login-mobile {
+		display: block;
+		position: absolute;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+		z-index: 99;
+		top: 0;
+		left: 0;
+	}
+
+	#panel__content {
+		justify-content: flex-start;
+	}
+
+	#loginLogo {
+		padding: 10% 0;
+	}
+
+	#loginContainer {
+		padding-bottom: 3rem;
+	}
+
+	.login__container {
+		position: fixed;
+		margin: 15%;
+		right: 0;
+		left: 0;
+		top: 5%;
+		transition: .3s;
+		&--hide {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	.login__loader {
+		position: fixed;
+		text-align: center;
+		width: 100%;
+		top: 100%;
+		display: inline-block;
+		transition: 0.4s;
+		visibility: hidden;
+		&--active {
+			top: 40%;
+			visibility: visible;
+		}
+	}
+}
+
+// Desktop and Tablet View
+@media only screen and (min-width: 945px) {
+	#login {
+		position: absolute;
+		height: 100vh;
+		width: 100vw;
+		overflow: auto;
+		z-index: 99;
+		top: 0;
+		left: 0;
+	}
+
+	#loginLogo {
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	.login__loader {
+		position: relative;
+		padding-left: 2.5%;
+		top: -2.75rem;
+		display: none;
+	}
+
+	.login__loader--active {
+		display: block;
+	}
+}
+
+#loginInput {
+	padding-top: 1rem;
+}
+
+#loginBranding {
+	position: absolute;
+	padding: 1rem 3rem;
+	right: 8%;
+	height: 100%;
+	width: 25%;
+}
+
+#csunLogo {
+	position: absolute;
+	bottom: 3%;
+}
+
+#filter {
+	background-image: url("./../../public/images/blur.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: rgba(235, 235, 235, 0.8);
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	filter: grayscale(50%) opacity(60%) contrast(70%);
+}
+
+#backgroundImage {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#panel {
+	background-color: rgb(97, 108, 112);
+	position: relative;
+	display: flex;
+	height: 100%;
+	width: 100%;
+
+	&__right {
+		background-image: url(./../../public/images/desktop-background.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+		display: flex;
+		position: fixed;
+		justify-content: center;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 85.42%;
+		max-width: 1509px;
+	}
+
+	&__left {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 43.44%;
+	}
+
+	&__content {
+		height: 100%;
+		width: 66.12%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+		margin: 0 auto;
+	}
+
+	&__login {
+		position: absolute;
+		right: 0;
+		z-index: 105;
+		height: 100%;
+		width: 67.13%;
+	}
+}
+
+@media only screen and (min-width: 946px) {
+	#login {
+		display: block;
+	}
+}

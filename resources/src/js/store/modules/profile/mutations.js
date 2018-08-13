@@ -24,6 +24,8 @@ export default {
                 state.studentProfile.imagePriority = response['data'].image_priority;
                 state.studentProfile.notes = response['data'].notes;
                 state.studentProfile.id = response['data'].student_id;
+                state.studentProfile.firstName = response['data'].first_name;
+                
             })
             .catch(e => {
                 state.profileLoadError = true;
@@ -68,7 +70,8 @@ export default {
             bio: null,
             images: null,
             imagePriority: null,
-            notes: null
+            notes: null,
+            firstName: null,
         };
 
         state.profileErrors = null;

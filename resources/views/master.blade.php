@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="theme-login" id="mainBody" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
@@ -27,5 +27,16 @@
     </body>
     <script src="{{ asset('js/metaphor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    @if(env("PROD"))
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-123500967-1“></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag(‘js’, new Date());
+
+        gtag(‘config’, ‘UA-123500967-1’);
+    </script>
+    @endif
     @yield('scripts')
 </html>

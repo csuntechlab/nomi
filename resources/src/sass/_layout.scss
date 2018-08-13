@@ -31,10 +31,11 @@ textarea[type="text"]:focus {
 .primary-nav {
 	@include themify($themes) {
 		background-color: themed("navigationBars");
-		width: 100%;
-		height: rem(37);
-		top: 0%;
 		position: fixed;
+		height: rem(37);
+		width: 100%;
+		z-index: 99;
+		top: 0;
 
 		&__sub-brand {
 			color: themed("backgroundColor");
@@ -179,7 +180,7 @@ textarea[type="text"]:focus {
 }
 
 .tab__link--kerning {
-	letter-spacing: .1rem;
+	letter-spacing: 0.1rem;
 }
 
 .tab__link--active {
@@ -197,6 +198,45 @@ textarea[type="text"]:focus {
 	@include themify($themes) {
 		background: themed("inputColor");
 		border: themed("inputBorder");
+	}
+}
+
+.roster-sorting {
+	margin: 0.5rem 0;
+	&__button {
+		width: 100%;
+		margin: 0.5rem 0;
+		@include themify($themes) {
+			background-color: themed("panelColor") !important;
+			color: themed("textColor") !important;
+		}
+		&--selected {
+			width: 100%;
+			margin: 0.5rem 0;
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+
+	&__sort {
+		font-size: 1.4rem;
+	}
+
+	&__name {
+		padding: 0.4rem 1rem;
+		@include themify($themes) {
+			background-color: themed("panelColor");
+			color: themed("textColor");
+		}
+		&--selected {
+			padding: 0.4rem 1rem;
+			@include themify($themes) {
+				background-color: themed("buttonColor");
+				color: themed("buttonText");
+			}
+		}
 	}
 }
 
@@ -230,67 +270,6 @@ textarea {
 	}
 }
 
-/*Login Styling*/
-@media only screen and (max-width: 600px) {
-	.loginContainer {
-		margin: 0 15%;
-	}
-}
-
-@media only screen and (min-width: 600px) {
-	.loginContainer {
-		margin: 0 25%;
-	}
-}
-
-.loginContainer {
-	position: fixed;
-	right: 0;
-	left: 0;
-	top: 25%;
-	transition: 0.3s;
-}
-
-.loginContainer_hide {
-	opacity: 0;
-	visibility: hidden;
-}
-
-.loginTitle {
-	font-weight: 400;
-	padding-bottom: 5px;
-}
-
-.loginButton {
-	float: right;
-}
-
-.loginForm {
-	border-radius: 100px !important;
-	margin-bottom: 20px;
-	opacity: 1;
-}
-
-::placeholder {
-	color: black;
-	opacity: 0.7;
-}
-
-.login_load {
-	position: fixed;
-	text-align: center;
-	width: 100%;
-	top: 100%;
-	display: inline-block;
-	transition: 0.4s;
-	visibility: hidden;
-}
-
-.login_load_active {
-	top: 35%;
-	visibility: visible;
-}
-
 /*Navbar Styling*/
 .sr-only {
 	@include themify($themes) {
@@ -310,7 +289,7 @@ textarea {
 	left: 50px;
 	font-size: 1.5rem;
 	color: white;
-	letter-spacing: .1rem;
+	letter-spacing: 0.1rem;
 }
 
 .csun_logo {
@@ -335,7 +314,7 @@ textarea {
 .settings_banner {
 	@include themify($themes) {
 		background: themed("toolBanner");
-		margin-bottom: 1rem;
+		margin-bottom: .1rem;
 		padding: 0.2rem 0;
 	}
 }
@@ -356,7 +335,7 @@ textarea {
 	color: rgba(255, 255, 255, 0.6);
 	padding: 0.5rem 0;
 
-	&--active{
+	&--active {
 		color: rgba(255, 255, 255, 1);
 		padding: 0.5rem 0;
 	}
@@ -372,6 +351,14 @@ textarea {
 .course-card--selected {
 	@include themify($themes) {
 		color: themed("accentColor");
+	}
+}
+
+.roster-list__item{
+	padding: .4rem 1rem;
+	@include themify($themes) {
+		background-color: themed("panelColor");
+		border-bottom: 1px solid themed("backgroundColor")
 	}
 }
 

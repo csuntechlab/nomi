@@ -18,7 +18,6 @@
 .modal-container {
   max-width: 20em;
   margin: 0px auto;
-  padding: 1.5em 2em;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .33);
   transition: all .3s ease;
@@ -31,15 +30,36 @@
   margin-top: 0;
   @include themify($themes){
     color: themed('accentColor');
-}
+  }
 }
 
 .modal-body {
   margin: 20px 0;
 }
 
+.modal-body-container {
+  padding: 1.5em 2em;
+}
+
 .modal-default-button {
   float: right;
+}
+
+.modal-button-container {
+  display: inline-block;
+  padding: 5% 0;
+  bottom: 0%;
+  width: 50%;
+  height: 30%;
+  @include themify($themes){
+    background-color: themed('accentColor');
+  }
+}
+
+.modal-button {
+  @include themify($themes){
+    color: themed('panelColor');
+  }
 }
 
 .modal-enter {
@@ -55,3 +75,4 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
