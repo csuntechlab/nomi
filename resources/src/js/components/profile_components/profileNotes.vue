@@ -5,7 +5,8 @@
 		</form>
 		<div class="row">
 			<div class="col-xs-2">
-				<span id="charCount" class="notes__status">{{characterCount}}/600</span>
+				<span v-if="this.student.notes == null" id="charCount" class="notes__status">0/600</span>
+				<span v-else id="charCount" class="notes__status">{{characterCount}}/600</span>
 			</div>
 			<div class="col-xs-10 type--right">
 				<span v-show="this.unsavedChanges" class="notes__status notes__status--italic">Unsaved Changes</span>
