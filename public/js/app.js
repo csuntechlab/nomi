@@ -23247,6 +23247,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -23557,15 +23559,18 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("strong", [
-                  _vm._v("About " + _vm._s(this.student.firstName) + ":")
-                ]),
-                _vm._v(" "),
-                this.student.bio == null
+                this.student.bio != null
                   ? _c("span", { staticClass: "text_italic display_inline" }, [
-                      _vm._v(" Pending biography from student.")
+                      _c("strong", [
+                        _vm._v("About " + _vm._s(this.student.firstName) + ":")
+                      ]),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(this.student.bio) +
+                          "\n                    "
+                      )
                     ])
-                  : _c("span", [_vm._v(" " + _vm._s(this.student.bio))])
+                  : _c("span")
               ]),
               _vm._v(" "),
               _c("profile-notes", {
