@@ -45,6 +45,10 @@ Route::post('/update_note', 'StudentProfileController@updateNotes');
 Route::get('/get_settings', 'UserSettingsController@getSettings');
 Route::post('/update_theme', 'UserSettingsController@updateTheme');
 
+/** Support and Feedback */
+Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create');
+Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store');
+
 /**
  * Image CRUD Routes.
  */
