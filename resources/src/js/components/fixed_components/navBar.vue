@@ -4,6 +4,9 @@
         <div class="nav__header">
             {{this.displayCurrentTerm}}
         </div>
+        <a href="\feedback">
+            <i class="fas fa-bug feedback-button"></i>
+        </a>
     </nav>
 </template>
 

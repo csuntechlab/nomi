@@ -1519,6 +1519,56 @@ textarea {
   padding: 5%;
 }
 
+.feedback-button {
+  position: absolute;
+  height: 2.46666667rem;
+  right: 0;
+  padding: 1.4%;
+  font-size: 180%;
+}
+
+.theme-login .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+.theme-main .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+.theme-bluesTheme .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+.theme-Cloudy .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+.theme-Dark .feedback-button {
+  background-color: #fdd64d;
+  color: #303030;
+}
+
+@media only screen and (min-width: 400px) {
+  .feedback-button {
+    padding: 0.8%;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .feedback-button {
+    padding: 0.5%;
+  }
+}
+
 .makeWhite {
   -webkit-filter: grayScale(0%);
           filter: grayScale(0%);

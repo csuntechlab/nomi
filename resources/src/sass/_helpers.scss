@@ -176,6 +176,25 @@
 	padding:5%
 }
 
+.feedback-button {
+	position: absolute;
+	height: rem(37);
+	right: 0;
+    padding: 1.4%;
+    font-size: 180%;
+	@include themify($themes) {
+		background-color:#fdd64d;
+		color:#303030;
+	}
+	@media only screen and (min-width: 400px){
+		padding: 0.8%;
+	}
+	@media only screen and (min-width: 550px){
+		padding: 0.5%;
+	}
+
+}
+
 .makeWhite {
 	filter: grayScale(0%);
 	filter: grayScale(100%);

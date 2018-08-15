@@ -25576,6 +25576,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -25753,12 +25756,23 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "nav__header" }, [
         _vm._v("\n        " + _vm._s(this.displayCurrentTerm) + "\n    ")
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "\\feedback" } }, [
+      _c("i", { staticClass: "fas fa-bug feedback-button" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
