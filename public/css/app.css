@@ -73,37 +73,37 @@ Compiles to 2.4rem*/
 .theme-login body {
   background-color: #FFFFFF;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 .theme-main body {
   background-color: #E5E5E5;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 .theme-bluesTheme body {
   background-color: #d9e7ee;
   color: #575757;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 .theme-Cloudy body {
   background-color: #D8D8D8;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 .theme-OnceAMatadorAlwaysAMatador body {
   background-color: #FFFFFF;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 .theme-Dark body {
   background-color: #272727;
   color: #bababa;
-  padding-top: 2.4rem;
+  padding-top: 4rem;
 }
 
 html * {
@@ -157,8 +157,16 @@ textarea[type="text"]:focus {
 
 .theme-login .primary-nav {
   background-color: #D00D2D;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -170,8 +178,16 @@ textarea[type="text"]:focus {
 
 .theme-main .primary-nav {
   background-color: #0F1821;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -183,8 +199,16 @@ textarea[type="text"]:focus {
 
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -196,8 +220,16 @@ textarea[type="text"]:focus {
 
 .theme-Cloudy .primary-nav {
   background-color: #747474;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -209,8 +241,16 @@ textarea[type="text"]:focus {
 
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -222,8 +262,16 @@ textarea[type="text"]:focus {
 
 .theme-Dark .primary-nav {
   background-color: #1D1D1D;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
-  height: 2.46666667rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 350ms;
+  transition: 350ms;
+  height: 4rem;
   width: 100%;
   z-index: 99;
   top: 0;
@@ -231,6 +279,10 @@ textarea[type="text"]:focus {
 
 .theme-Dark .primary-nav__sub-brand {
   color: #272727;
+}
+
+.shrink-nav {
+  height: 2.5rem !important;
 }
 
 .theme-login .panel {
@@ -962,7 +1014,6 @@ textarea {
 
 .nav__header {
   position: absolute;
-  top: 2px;
   left: 50px;
   font-size: 1.5rem;
   color: white;
@@ -1399,7 +1450,6 @@ textarea {
   left: 15px;
   -webkit-transition: 25ms;
   transition: 25ms;
-  margin-top: -3.55px;
 }
 
 .back_button_disabled {
@@ -1413,6 +1463,15 @@ textarea {
 .back_button:active {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+}
+
+.course__return {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .subbrand_center {

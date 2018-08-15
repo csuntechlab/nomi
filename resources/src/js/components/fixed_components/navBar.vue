@@ -1,5 +1,5 @@
 <template>
-    <nav class="primary-nav">
+    <nav id="primary-nav" class="primary-nav">
         <back-button></back-button>
         <div class="nav__header">
             {{this.displayCurrentTerm}}
@@ -53,6 +53,14 @@ export default {
                     return this.displayedTerm;
                 }
             }
-    }
+    },
 };
+
+$(window).scroll(function() {
+    if ($(document).scrollTop() > 145) {
+        $('#primary-nav').addClass('shrink-nav');
+    } else {
+        $('#primary-nav').removeClass('shrink-nav');
+    }
+});
 </script>

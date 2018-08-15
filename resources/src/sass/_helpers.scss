@@ -99,7 +99,6 @@
 	position: absolute;
 	left: 15px;
 	transition: 25ms;
-	margin-top: -3.55px;
 }
 
 .back_button_disabled {
@@ -111,6 +110,11 @@
 
 .back_button:active {
 	transform: scale(1.2);
+}
+
+.course__return {
+	display: flex;
+	align-items: center;
 }
 
 .subbrand_center {

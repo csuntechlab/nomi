@@ -2,7 +2,7 @@ body {
 	@include themify($themes) {
 		background-color: themed("backgroundColor");
 		color: themed("textColor");
-		padding-top: rem(36);
+		padding-top: 4rem;
 	}
 }
 
@@ -31,8 +31,11 @@ textarea[type="text"]:focus {
 .primary-nav {
 	@include themify($themes) {
 		background-color: themed("navigationBars");
+		display: flex;
 		position: fixed;
-		height: rem(37);
+		align-items: center;
+		transition: 350ms;
+		height: 4rem;
 		width: 100%;
 		z-index: 99;
 		top: 0;
@@ -41,6 +44,10 @@ textarea[type="text"]:focus {
 			color: themed("backgroundColor");
 		}
 	}
+}
+
+.shrink-nav {
+	height: 2.5rem !important;
 }
 
 .panel {
@@ -285,7 +292,6 @@ textarea {
 
 .nav__header {
 	position: absolute;
-	top: 2px;
 	left: 50px;
 	font-size: 1.5rem;
 	color: white;

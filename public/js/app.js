@@ -25619,6 +25619,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     })
 });
 
+$(window).scroll(function () {
+    if ($(document).scrollTop() > 145) {
+        $('#primary-nav').addClass('shrink-nav');
+    } else {
+        $('#primary-nav').removeClass('shrink-nav');
+    }
+});
+
 /***/ }),
 /* 168 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -25711,14 +25719,14 @@ var render = function() {
   return !_vm.hideBack
     ? _c("div", [
         !_vm.disableBack
-          ? _c("div", [
+          ? _c("div", { staticClass: "course__return" }, [
               _c("i", {
                 staticClass: "fa fa-angle-left fa-3x back_button",
                 attrs: { title: "Go Back" },
                 on: { click: _vm.goBack }
               })
             ])
-          : _c("div", [
+          : _c("div", { staticClass: "course__return" }, [
               _c("i", {
                 staticClass:
                   "fa fa-angle-left fa-3x back_button back_button_disabled"
@@ -25747,7 +25755,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "primary-nav" },
+    { staticClass: "primary-nav", attrs: { id: "primary-nav" } },
     [
       _c("back-button"),
       _vm._v(" "),
