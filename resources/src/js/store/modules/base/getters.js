@@ -33,4 +33,5 @@ export default {
     // User
     facultyMember: state => state.facultyMember,
     facultyFullName: state => state.facultyMember.firstName + " " + state.facultyMember.lastName,
+    facultyFirstName: state => state.facultyMember.firstName,
 }
