@@ -20539,14 +20539,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   props: ["student"],
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(['studentImages']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])([]), {
 
     display_name: function display_name() {
       return this.student.first_name + " " + this.student.last_name;
     },
 
     image: function image() {
-      return this.studentImages[this.student.student_id];
+      return this.student.images.likeness;
     }
   }),
 
@@ -21659,7 +21659,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   props: ["student"],
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentImages', 'permission']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission']), {
     displayModal: function displayModal() {
       return this.showCroppaModal && this.permission;
     },
@@ -21674,7 +21674,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     image: function image() {
-      return this.studentImages[this.student.student_id];
+      return this.student.images.likeness;
     }
   }),
 
@@ -22316,7 +22316,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentImages']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])([]), {
 
         display_name: function display_name() {
             return this.student.first_name + " " + this.student.last_name;
@@ -22327,7 +22327,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         image: function image() {
-            return this.studentImages[this.student.student_id];
+            return this.student.images.likeness;
         }
     })
 });
@@ -22815,10 +22815,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         imageHandler: __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default.a,
         profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['studentImages', 'permission']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['permission']), {
         image: function image() {
-            var id = this.student.id.replace("members:", "");
-            return this.studentImages[id];
+            return this.student.images.likeness;
+        },
+
+        alpha: function alpha() {
+            return this.student.images.avatar;
         }
     }),
 
@@ -23133,6 +23136,28 @@ var render = function() {
                           _vm._v(" "),
                           _c("image-handler", {
                             attrs: { image_type: "likeness" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slidewrap" }, [
+                  _c(
+                    "div",
+                    { staticClass: "imagewrap" },
+                    [
+                      _c("profile-picture", { attrs: { image: _vm.avatar } }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("image-handler", {
+                            attrs: { image_type: "avatar" }
                           })
                         ],
                         1
@@ -24814,20 +24839,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = _capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = _capitalize(state.facultyMember.emailURI.split('.')[1]);
-                for (var course in state.courses) {
-                    if (state.courses.hasOwnProperty(course)) {
-                        var realCourse = state.courses[course];
-                        for (var student in realCourse.roster) {
-                            if (realCourse.roster.hasOwnProperty(student)) {
-                                var realStudent = realCourse.roster[student];
-                                var studentId = realStudent.student_id;
-                                var url = realStudent.images.likeness;
 
-                                state.studentImages[studentId] = url;
-                            }
-                        }
-                    }
-                }
                 window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
                     state.facultyMember.image = response.data.image;
                     state.facultyMember.id = response.data.id;
@@ -24848,20 +24860,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                for (var course in state.courses) {
-                    if (state.courses.hasOwnProperty(course)) {
-                        var realCourse = state.courses[course];
-                        for (var student in realCourse.roster) {
-                            if (realCourse.roster.hasOwnProperty(student)) {
-                                var realStudent = realCourse.roster[student];
-                                var studentId = realStudent.student_id;
-                                var url = realStudent.images.likeness;
 
-                                state.studentImages[studentId] = url;
-                            }
-                        }
-                    }
-                }
                 window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
                     state.facultyMember.image = response.data.image;
                     state.facultyMember.id = response.data.id;

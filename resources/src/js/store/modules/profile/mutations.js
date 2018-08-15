@@ -20,7 +20,6 @@ export default {
         window.axios.get('student_profile/'+email)
             .then(response => {
                 state.studentProfile.displayName = response['data'].display_name;
-                state.studentProfile.images = response['data'].images;
                 state.studentProfile.imagePriority = response['data'].image_priority;
                 state.studentProfile.notes = response['data'].notes;
                 state.studentProfile.id = response['data'].student_id;

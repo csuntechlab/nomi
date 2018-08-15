@@ -76,7 +76,7 @@ export default {
 	},
 
 	computed: {
-		...mapGetters(["studentProfile", "facultyMember", "studentImages"])
+		...mapGetters(["studentProfile", "facultyMember"])
     },
     
     methods: {

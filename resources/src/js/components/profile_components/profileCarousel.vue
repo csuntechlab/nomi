@@ -16,16 +16,16 @@
                                 </div>
                             </div>
                         </slide>
-                        <!--
-                            <slide class="slidewrap">
-                                <div class="imagewrap">
-                                    <profile-picture :image="studentProfile.images['avatar']"></profile-picture>
-                                    <div class="type--center">
-                                        <image-handler image_type="avatar"></image-handler>
-                                    </div>
+                        
+                        <slide class="slidewrap">
+                            <div class="imagewrap">
+                                <profile-picture :image="avatar"></profile-picture>
+                                <div class="type--center">
+                                    <image-handler image_type="avatar"></image-handler>
                                 </div>
-                            </slide>
-                            <slide class="slidewrap">
+                            </div>
+                        </slide>
+                            <!-- <slide class="slidewrap">
                                 <div class="imagewrap">
                                     <profile-picture :image="studentProfile.images['official']"></profile-picture>
                                     <div class="type--center">
@@ -110,13 +110,15 @@ export default {
         },
         computed: {
             ...mapGetters([
-                'studentImages',
                 'permission',
             ]),
             image: function() {
-                let id = this.student.id.replace("members:","");
-                return this.studentImages[id];
-            }
+                return this.student.images.likeness;
+            },
+
+            alpha: function() {
+                return this.student.images.avatar;
+            },
         },
 
         methods: {
