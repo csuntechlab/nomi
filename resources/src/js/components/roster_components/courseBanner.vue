@@ -22,8 +22,7 @@
                     return "tab__link";
             },
             setScrollBar(){
-                let courseID = window.location.hash.split('/')[2];
-                let courseTab = document.getElementById(courseID);
+                let courseTab = document.getElementById(this.currentCourse);
                 courseTab.scrollIntoView({
                     block:"end",
                 });
