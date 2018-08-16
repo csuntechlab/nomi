@@ -18,7 +18,7 @@
             <i class="fas fa-2x fa-cog"></i>
             <div class="bottom-nav__text">Settings</div>
         </router-link>
-        <router-link v-bind:class="{[selected]: this.currentLocation == 'profile'}" id="profile" class="col-xs-3 type--center bottom-nav__button" to="/settings" @click.native="setActive('profile')">
+        <div id="profile" class="col-xs-3 type--center bottom-nav__button" @click="showMenu()">
             <i v-if="facultyMember.image == null" class="fas fa-2x fa-user-circle"></i>
             <div v-else>
                 <div class="height_fix">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="bottom-nav__text">Profile</div>
-        </router-link>
+        </div>
     </div>
 </template>
 <script>
@@ -50,12 +50,14 @@ export default {
 	},
 
 	methods: {
+		showMenu(){
+			this.$store.dispatch('toggleMenu');
+		},
 		setActive(activeLocation) {
 			if (activeLocation != null) {
 				this.$store.dispatch("storeLocation", activeLocation);
 			}
 		},
-
 		resetNav() {
 			let buttons = document.querySelectorAll(".bottom-nav__button");
 			let i;

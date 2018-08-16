@@ -1,109 +1,37 @@
-/*Sass function that converts pixel values to rem
-Example: rem(36) for the rem equivalent of 36px
-Compiles to 2.4rem*/
-.menu {
-  z-index: 1;
-  background-color: #111;
-  overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 7%;
-  width: 100%;
-}
-
-.transparent_non-menu_layer {
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.menu_links {
-  color: white;
-  text-decoration: none;
-  font-size: 2.5vh;
-  margin: 0;
-  text-decoration: none;
-  text-align: center;
-  padding: .75% .75% .75% .75%;
-  display: block;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.menu_links:hover {
-  opacity: 0.5;
-}
-
-.faculty_links {
-  color: white;
-  text-decoration: none;
-  font-size: 3vh;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin: 0;
-  padding: 1%;
-  text-align: center;
-  display: block;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.extra_padding {
-  padding-bottom: 5%;
-}
-
-.menu .closebtn {
-  position: absolute;
-  top: 0;
-}
-
-.bottom-nav__profile-pic {
-  height: 2.2rem;
-}
-
 .theme-login body {
   background-color: #FFFFFF;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 .theme-main body {
   background-color: #E5E5E5;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 .theme-bluesTheme body {
   background-color: #d9e7ee;
   color: #575757;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 .theme-Cloudy body {
   background-color: #D8D8D8;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 .theme-OnceAMatadorAlwaysAMatador body {
   background-color: #FFFFFF;
   color: #464646;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 .theme-Dark body {
   background-color: #272727;
   color: #bababa;
-  padding-top: 2.4rem;
+  padding-top: rem(36);
 }
 
 html * {
@@ -158,7 +86,7 @@ textarea[type="text"]:focus {
 .theme-login .primary-nav {
   background-color: #D00D2D;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -171,7 +99,7 @@ textarea[type="text"]:focus {
 .theme-main .primary-nav {
   background-color: #0F1821;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -184,7 +112,7 @@ textarea[type="text"]:focus {
 .theme-bluesTheme .primary-nav {
   background-color: #0D3753;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -197,7 +125,7 @@ textarea[type="text"]:focus {
 .theme-Cloudy .primary-nav {
   background-color: #747474;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -210,7 +138,7 @@ textarea[type="text"]:focus {
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -223,7 +151,7 @@ textarea[type="text"]:focus {
 .theme-Dark .primary-nav {
   background-color: #1D1D1D;
   position: fixed;
-  height: 2.46666667rem;
+  height: rem(37);
   width: 100%;
   z-index: 99;
   top: 0;
@@ -1095,6 +1023,7 @@ textarea {
 }
 
 .bottom-nav {
+  z-index: 2;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -2332,6 +2261,124 @@ textarea {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+/*Sass function that converts pixel values to rem
+Example: rem(36) for the rem equivalent of 36px
+Compiles to 2.4rem*/
+.menu {
+  z-index: 1;
+  background-color: #111;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  left: 100%;
+  height: 100%;
+  width: 60%;
+}
+
+.transparent_non-menu_layer {
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.menu_links {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5vh;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75% 0.75% 0.75% 0.75%;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.menu_links:hover {
+  opacity: 0.5;
+}
+
+.side-menu {
+  z-index: 1;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 60%;
+}
+
+.theme-login .side-menu {
+  background-color: #d00d2d;
+}
+
+.theme-main .side-menu {
+  background-color: #4F9DA3;
+}
+
+.theme-bluesTheme .side-menu {
+  background-color: #4CA1DB;
+}
+
+.theme-Cloudy .side-menu {
+  background-color: #FFC836;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .side-menu {
+  background-color: #E74A37;
+}
+
+.theme-Dark .side-menu {
+  background-color: #426c96;
+}
+
+.side-menu--display {
+  left: 60%;
+}
+
+.side-menu--hide {
+  left: 100%;
+}
+
+.side-menu__link {
+  color: white;
+  text-decoration: none;
+  font-size: 3vh;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 1%;
+  text-align: center;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.extra_padding {
+  padding-bottom: 5%;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 0;
+}
+
+.bottom-nav__profile-pic {
+  height: 2.2rem;
 }
 
 /*  Fixed Safari font-awesome issue

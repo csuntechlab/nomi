@@ -5,7 +5,7 @@ export default {
     studentImages: {},
     errors: null,
     imagePermission: null,
-    menuShow: false,
+    displaySideMenu: false,
     currentLocation: 'home',
     
     // Views & Sorting

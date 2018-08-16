@@ -1,59 +1,47 @@
 <template>
 <div class="type--center">
-        <div v-if="show == true" id="outsideLayer" class="transparent_non-menu_layer"></div>
-        <div id="myMenu" class="side-menu" v-click-outside="closeMenu">
-            <div v-if="show == true">
-                <i class="fa fa-angle-down fa-3x type--center" @click="closeMenu"></i>
-            </div>
-            <div v-else>
-                <i class="fa fa-angle-up fa-3x type--center extra_padding" @click="openMenu"></i>
-            </div>
+        <div v-if="menuShow" id="outsideLayer" class="transparent_non-menu_layer"></div>
+        <div id="sideMenu" class="side-menu" v-click-outside="toggleMenu" v-bind:class="[menuShow ? 'side-menu--display' : 'side-menu--hide']">
             <div v-if="facultyMember.image === null" class="type--center">
-            <br>
-            <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
-            <br>
-            <br>
+            <i class="fas fa-user-circle fa-3x icon_theme"></i>
             </div>
             <div v-else>
-                <div class="height_fix">
-                    <img :src="facultyMember.image" class=" height_fix img--circle faculty_image" name="photo">
-                    <div class="faculty_links height_fix" :href="facultyMember.profile" title="User Name">{{facultyFullName}}</div>
+                <div>
+                    <img :src="facultyMember.image" class="img--circle" name="photo">
+                    <div class="side-menu__link" :href="facultyMember.profile" title="User Name">Hello, {{facultyFirstName}}</div>
                 </div>
             </div>
-                <div class="height_fix">
-                    <span @click="closeMenu()">
-                        <router-link class="menu_links" to="/">Courses</router-link>
-                    </span>
-                    <span @click="closeMenu()">
-                        <router-link class="menu_links" to="/settings">Settings</router-link>
-                    </span>
-                    <a class="menu_links" :href= "this.url + '/logout'" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
+                <div>
+                        <router-link class="menu_links" to="/">Faculty Profile</router-link>
+                    <a class="menu_links" :href= "this.url + '/logout'" title="Logout">Logout</a>
                 </div>
         </div>
     </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
-	name: "side-menu",
-
-	data: function() {
-		return {
-			show: false
-		};
-	},
+    name: "side-menu",
+    data() {
+        return{
+            url: '',
+        }
+    },
 	computed: {
-		...mapGetters(["courses", "facultyMember", "facultyFirstName"])
+		...mapGetters([
+			"courses",
+			"facultyMember",
+			"facultyFirstName",
+			"menuShow"
+		])
 	},
-	methods: {
-		openMenu: function() {
-			document.getElementById("myMenu").style.left = "40%";
-			this.show = true;
-		},
-
-		closeMenu: function() {
-			document.getElementById("myMenu").style.left = "100%";
-			this.show = false;
-		}
-	}
+	created: function() {
+		this.url = document.querySelector("meta[name=app-url]").content;
+    },
+    methods: {
+        toggleMenu(){
+            this.$store.dispatch('toggleMenu');
+        }
+    }
 };
 </script>

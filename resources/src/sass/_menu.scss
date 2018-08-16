@@ -1,67 +1,88 @@
 // new css
 
 .menu {
-  z-index: 1;
-  background-color: #111;
-  overflow: hidden;
-  transition: 0.5s;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 7%;
-  width: 100%;
+	z-index: 1;
+	background-color: #111;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	left: 100%;
+	height: 100%;
+	width: 60%;
 }
 
-.transparent_non-menu_layer{
-  z-index: 1;
-  background-color: rgba($color:#000000, $alpha: 0.7);
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
+.transparent_non-menu_layer {
+	z-index: 1;
+	background-color: rgba($color: #000000, $alpha: 0.7);
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
 }
 
 .menu_links {
-    color: white;
-    text-decoration: none;
-    font-size: 2.5vh;
-    margin: 0;
-    text-decoration: none;
-    text-align: center;
-    padding: .75% .75% .75% .75%;
-    display: block;
-    transition: 0.3s;
+	color: white;
+	text-decoration: none;
+	font-size: 2.5vh;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	padding: 0.75% 0.75% 0.75% 0.75%;
+	display: block;
+	transition: 0.3s;
 }
 
-.menu_links:hover{
-  opacity: 0.5;
+.menu_links:hover {
+	opacity: 0.5;
 }
 
-.faculty_links{
-  color: white;
-  text-decoration: none;
-  font-size: 3vh;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin: 0; 
-  padding: 1%;
-  text-align:center;
-  display: block;
-  transition: 0.3s;
+.side-menu {
+	@include themify($themes) {
+		background-color: themed("buttonColor");
+	}
+	z-index: 1;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	height: 100%;
+  width: 60%;
+  &--display{
+      left: 60%;
+  }
+  &--hide{
+      left: 100%;
+  }
+	&__link {
+		color: white;
+		text-decoration: none;
+		font-size: 3vh;
+		font-family: sans-serif;
+		font-weight: bold;
+		margin: 0;
+		padding: 1%;
+		text-align: center;
+		display: block;
+		transition: 0.3s;
+	}
 }
 
-.extra_padding{
-  padding-bottom: 5%;
+.extra_padding {
+	padding-bottom: 5%;
 }
 
 .menu .closebtn {
-  position: absolute;
-  top: 0;
+	position: absolute;
+	top: 0;
 }
 
-.bottom-nav__profile-pic{
-  height: 2.2rem;
+.bottom-nav__profile-pic {
+	height: 2.2rem;
 }
