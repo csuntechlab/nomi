@@ -17,13 +17,10 @@
             </ul>
         </p>
 
-        <h3>Supported Browsers</h3>
+        <h3>Browser Support</h3>
         <p>
-            <ul>
-                <li>Chrome</li>
-                <li>Safari</li>
-                <li>Firefox</li>
-            </ul>
+            The web applications developed and maintained by META+LAB are designed and tested to work on the most current versions of major desktop web browsers, minus one version: <b>Mozilla Firefox</b>, <b>Google Chrome</b>, <b>Safari</b>.
+            Part of the mantra at META+LAB involves pushing boundaries. The use of such state-of-the-art technology will rely on the newest features and functionality available on browsers.
         </p>
     </div>
 </template>

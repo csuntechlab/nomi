@@ -1,10 +1,14 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Services;
+
 use App\Contracts\WebResourceRetrieverContract;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7;
+
 class WebResourceRetrieverService implements WebResourceRetrieverContract
 {
     /**
@@ -31,8 +35,10 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             $course->id = $i;
             ++$i;
         }
+
         return $data;
     }
+
     /**
      * Retrieves roster from META+LAB Roster web service.
      *
@@ -62,24 +68,29 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             }
         }
     }
+
     /**
      * Retrieves media from META+LAB Media web service.
      *
+     * @param mixed $email
+     *
      * @return string
      */
-    public function getMedia()
+    public function getMedia($email)
     {
         $client = new Client();
         //hacky fix to remove @csun.edu
         return $client->get(
             'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
-            . \explode('@', \str_replace('nr_', '', auth()->user()->email))[0],
+            . \explode('@', \str_replace('nr_', '', $email))[0],
             ['verify' => false]
         )->getBody()->getContents();
     }
+
     public function getStudent($email)
     {
         $client = new Client();
+
         return $client->get(
             'https://api.metalab.csun.edu/directory/api/members?email='
             . \str_replace('nr_', '', $email),

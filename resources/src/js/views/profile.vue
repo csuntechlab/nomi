@@ -7,66 +7,85 @@
         </div>
         <div v-else>
             <profile-carousel :student="this.studentProfile"></profile-carousel>
-            <profile-info :student="this.studentProfile"></profile-info>
+            <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"></profile-info>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import profileCarousel from "../components/profile_components/profileCarousel.vue";
-    import profileInfo from "../components/profile_components/profileInfo.vue";
-    export default {
-        name: 'profile',
+import { mapGetters } from "vuex";
+import profileCarousel from "../components/profile_components/profileCarousel.vue";
+import profileInfo from "../components/profile_components/profileInfo.vue";
+export default {
+	name: "profile",
 
-        data: function () {
-            return {
-                imgUrl: null,
+	data: function() {
+		return {
+            imgUrl: null,
+            unsavedChanges: false,
+		};
+	},
+
+	beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			const answer = window.confirm(
+				"Do you really want to leave? You have unsaved changes."
+			);
+			if (answer) {
+				next();
+			} else {
+				next(false);
             }
+        }
+    },
+
+	components: {
+		profileCarousel,
+		profileInfo
+	},
+
+	created() {
+		this.$store.dispatch("disableBackButton");
+		this.$store.dispatch("showBackButton");
+		this.$store.dispatch("getStudentProfile", {
+			uri: this.$route.params.emailURI,
+			faculty_id: this.facultyMember.id
+		});
+	},
+
+	updated() {
+		this.$store.dispatch("enableBackButton");
+	},
+
+	beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			const answer = window.confirm(
+				"Do you really want to leave? You have unsaved changes."
+			);
+
+			if (answer) {
+				this.$store.dispatch("hideBackButton");
+				next();
+			} else {
+				next(false);
+			}
+		} else {
+			this.$store.dispatch("hideBackButton");
+			next();
+		}
+	},
+
+	computed: {
+		...mapGetters(["studentProfile", "facultyMember", "studentImages"])
+    },
+    
+    methods: {
+        setUnsavedChanges(){
+            this.unsavedChanges = true;
         },
-
-        components: {
-            profileCarousel,
-            profileInfo
-        },
-
-        created() {
-            this.$store.dispatch('disableBackButton');
-            this.$store.dispatch(
-                'getStudentProfile',
-                {
-                    uri: this.$route.params.emailURI,
-                    faculty_id: this.facultyMember.id
-                }
-            );
-        },
-
-        updated(){
-            this.$store.dispatch('enableBackButton');
-        },
-
-
-        beforeRouteLeave (to, from, next) {
-            if(this.unsavedChanges) {
-                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
-
-                if (answer) {
-                    next();
-                } else {
-                    next(false);
-                }
-            } else {
-                next();
-            }
-        },
-
-        computed: {
-            ...mapGetters([
-                'studentProfile',
-                'facultyMember',
-                'studentImages',
-
-            ]),
-        },
-    }
+        setChanges(){
+            this.unsavedChanges = false;
+        }
+    },
+};
 </script>

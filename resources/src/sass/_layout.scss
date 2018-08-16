@@ -1,243 +1,380 @@
 body {
-  @include themify($themes) {
-    background-color: themed("backgroundColor");
-    color: themed("textColor");
-    padding-top: 45px;
-  }
+	@include themify($themes) {
+		background-color: themed("backgroundColor");
+		color: themed("textColor");
+		padding-top: rem(36);
+	}
 }
 
 html * {
-  @include themify($themes) {
-    font-size: themed("mainFontSize");
-    font-family: themed("mainFontFamily");
-    color: themed("backgroundColor");
-  }
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	@include themify($themes) {
+		font-size: themed("mainFontSize");
+		color: themed("backgroundColor");
+	}
 }
 
 textarea[type="text"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+	box-sizing: border-box;
 }
 
 textarea[type="text"]:focus {
-  border: 3px solid lightblue;
+	border: 3px solid lightblue;
 }
 
 .primary-nav {
-  @include themify($themes) {
-    background-color: themed("navigationBars");
-    width: 100%;
-    top: 0%;
-    position: fixed;
+	@include themify($themes) {
+		background-color: themed("navigationBars");
+		position: fixed;
+		height: rem(37);
+		width: 100%;
+		z-index: 99;
+		top: 0;
 
-    .primary-nav__sub-brand {
-      color: themed("backgroundColor");
-    }
-  }
+		&__sub-brand {
+			color: themed("backgroundColor");
+		}
+	}
 }
 
 .panel {
-  @include themify($themes) {
-    border-radius: 3px;
-    background-color: themed("panelColor");
-    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-    border: none;
+	@include themify($themes) {
+		border-radius: 3px;
+		background-color: themed("panelColor");
+		box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+		border: none;
+		margin-bottom: 1rem;
 
-    .panel__img {
-      height: auto;
-      background-color: themed("panelColor");
-    }
-    .panel__header {
-      font-weight: bold;
-      border-bottom: 0;
-    }
-  }
+		&__img {
+			height: auto;
+			background-color: themed("panelColor");
+		}
+
+		&__container {
+			margin-bottom: 0.4rem;
+		}
+
+		&__item {
+			width: 100%;
+			margin: 0;
+		}
+
+		&__header {
+			padding-bottom: 1.5rem;
+			font-weight: bold;
+		}
+
+		&__emptyCourseHeader {
+			padding-bottom: 0.5rem;
+		}
+
+		&__emptyCourseContent {
+			line-height: 1;
+		}
+	}
+
+	&__listing {
+		margin: 0 auto;
+	}
+}
+
+.current_term {
+	font-weight: bold;
+	font-size: 1.6rem;
+	margin-bottom: 0;
+	margin-top: 0.833rem;
+}
+
+.course_banner {
+	@include themify($themes) {
+		background-color: themed("toolBanner");
+		color: themed("textColor");
+		margin-top: 0.833rem;
+		margin-bottom: 0.833rem;
+		padding: 10px 0;
+	}
+}
+
+.course_title {
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.course_padding {
+	margin-bottom: 0.7rem;
+}
+
+@media only screen and (max-width: 543px) {
+	.panel__header {
+		border-bottom: solid 1px rgba(90, 90, 90, 0.2);
+	}
+
+	.panel__content {
+		padding: 0.5rem 1rem;
+	}
+}
+.about_padding {
+	padding: 5%;
 }
 
 .gallery_name {
-  font-size: 1.3rem;
-  padding: 0 3% 5%;
+	font-size: 1.3rem;
+	padding: 0 3% 5%;
 }
 
 .flash_panel {
-  @include themify($themes) {
-    border-radius: 3px;
-    background-color: themed("panelColor");
-    box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-    border: none;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    margin-top: 6%;
-  }
+	@include themify($themes) {
+		border-radius: 3px;
+		background-color: themed("panelColor");
+		box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+		border: none;
+		display: inline-block;
+		position: relative;
+		width: 100%;
+		margin-top: 6%;
+	}
 }
 
 .flash_positioner {
-  margin-top: 100%;
+	margin-top: 100%;
 }
 
 .flash_element {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .profile_padding {
-  padding: 5%;
+	padding: 5%;
 }
 
 @media only screen and (min-width: 600px) {
-  .back_of_card {
-    font-size: 1.8em;
-    padding: 20% 6%;
-  }
+	.back_of_card {
+		font-size: 1.8em;
+		padding: 20% 6%;
+	}
 }
 
 @media only screen and (max-width: 600px) {
-  .back_of_card_mobile {
-    font-size: 1.3em;
-    padding: 20% 3%;
-  }
+	.back_of_card_mobile {
+		font-size: 1.3em;
+		padding: 20% 3%;
+	}
 }
 
+/*Course Select Banner*/
 .tab__link {
-  @include themify($themes) {
-    color: themed("textColor");
-    background-color: themed("backgroundColor");
-    border-bottom: 5px solid themed("backgroundColor");
-  }
+	@include themify($themes) {
+		color: themed("textColor");
+		border-bottom: none;
+	}
+}
+
+.tab__link--kerning {
+	letter-spacing: 0.1rem;
 }
 
 .tab__link--active {
-  @include themify($themes) {
-    display: block;
-    padding: 10px 20px;
-    font-weight: normal;
-    text-decoration: none;
-    color: themed("buttonColor");
-    border-bottom: 5px solid themed("buttonColor");
-  }
+	@include themify($themes) {
+		display: block;
+		padding: 5px 20px;
+		font-weight: normal;
+		text-decoration: none;
+		color: themed("accentColor");
+		border-bottom: 5px solid themed("accentColor");
+	}
+}
+
+.toolBar__field {
+	@include themify($themes) {
+		background: themed("inputColor");
+		border: themed("inputBorder");
+	}
+}
+
+.roster-sorting {
+	margin: 0.5rem 0;
+	&__button {
+		width: 100%;
+		margin: 0.5rem 0;
+		@include themify($themes) {
+			background-color: themed("panelColor") !important;
+			color: themed("textColor") !important;
+		}
+		&--selected {
+			width: 100%;
+			margin: 0.5rem 0;
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+
+	&__sort {
+		font-size: 1.4rem;
+	}
+
+	&__name {
+		padding: 0.4rem 1rem;
+		@include themify($themes) {
+			background-color: themed("panelColor");
+			color: themed("textColor");
+		}
+		&--selected {
+			padding: 0.4rem 1rem;
+			@include themify($themes) {
+				background-color: themed("buttonColor");
+				color: themed("buttonText");
+			}
+		}
+	}
+}
+
+input,
+select,
+textarea {
+	@include themify($themes) {
+		background: themed("inputColor");
+		border: themed("inputBorder");
+	}
 }
 
 //font awesome icon and menu
 .menu {
-  @include themify($themes) {
-    background-color: themed("navigationBars");
-    color: white;
-  }
+	@include themify($themes) {
+		background-color: themed("navigationBars");
+		color: white;
+	}
 }
 
 .col-xs-6 {
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
+	padding-left: 0.5rem !important;
+	padding-right: 0.5rem !important;
 }
 
 .btn {
-  @include themify($themes) {
-    background-color: themed("buttonColor");
-    color: themed("buttonText");
-    border: 2px solid transparent;
-  }
+	@include themify($themes) {
+		background-color: themed("buttonColor");
+		color: themed("buttonText");
+		border: 2px solid transparent;
+	}
 }
 
-@media only screen and (max-width: 600px) {
-  .loginContainer {
-    margin: 0 15%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .loginContainer {
-    margin: 0 25%;
-  }
-}
-
-.loginContainer {
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 25%;
-}
-
-.loginTitle {
-  font-weight: 400;
-  padding-bottom: 5px;
-}
-
-.loginButton {
-  float: right;
-}
-
-.loginForm {
-  border-radius: 100px !important;
-  margin-bottom: 20px;
-}
-
-::placeholder {
-  color: black;
-  opacity: 0.7;
-}
-
+/*Navbar Styling*/
 .sr-only {
-  @include themify($themes) {
-    color: themed("white");
-  }
+	@include themify($themes) {
+		color: themed("white");
+	}
 }
 
 .logo_parent {
-  text-align: center;
-  flex: 100%;
+	text-align: center;
+	flex: 100%;
+	margin-top: -5px;
+}
+
+.nav__header {
+	position: absolute;
+	top: 2px;
+	left: 50px;
+	font-size: 1.5rem;
+	color: white;
+	letter-spacing: 0.1rem;
 }
 
 .csun_logo {
-  @include themify($themes) {
-    width: 75px;
-    height: 45px;
-    background-image: white;
-  }
+	@include themify($themes) {
+		width: 65px;
+		height: 45px;
+		background-image: white;
+	}
 }
 
 .nomi_logo {
-  @include themify($themes) {
-    width: 75px;
-    height: 37px;
-    border-left: 1px solid #ccc;
-    padding-left: 8px;
-    margin-left: 4px;
-  }
+	@include themify($themes) {
+		width: 65px;
+		height: 30px;
+		border-left: 1px solid #ccc;
+		padding-left: 8px;
+		margin-left: 4px;
+		margin-top: 2px;
+	}
 }
 
-.error_bar {
-  @include themify($themes) {
-    background-color: themed("accentColor");
-    color: themed("buttonText");
-  }
+.settings_banner {
+	@include themify($themes) {
+		background: themed("toolBanner");
+		margin-bottom: .1rem;
+		padding: 0.2rem 0;
+	}
+}
+
+.bottom-nav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	width: 100%;
+	@include themify($themes) {
+		background: themed("navigationBars");
+	}
+}
+
+.bottom-nav__button {
+	color: rgba(255, 255, 255, 0.6);
+	padding: 0.5rem 0;
+
+	&--active {
+		color: rgba(255, 255, 255, 1);
+		padding: 0.5rem 0;
+	}
+
+	&--disabled {
+		@include themify($themes) {
+			color: themed("disabledBtnColor");
+		}
+		padding: 0.5rem 0;
+	}
+}
+
+.course-card--selected {
+	@include themify($themes) {
+		color: themed("accentColor");
+	}
+}
+
+.roster-list__item{
+	padding: .4rem 1rem;
+	@include themify($themes) {
+		background-color: themed("panelColor");
+		border-bottom: 1px solid themed("backgroundColor")
+	}
 }
 
 //theme colors in list
 #Matador {
-  background-color: #d00d2d;
+	background-color: #d00d2d;
 }
 
 #Navy {
-  background-color: #0f1821;
+	background-color: #0f1821;
 }
 
 #Blues {
-  background-color: #0d3753;
-}
-
-#Cloudy {
-  background-color: #747474;
+	background-color: #0d3753;
 }
 
 #Dark {
-  background-color: #475263;
+	background-color: #272727;
 }

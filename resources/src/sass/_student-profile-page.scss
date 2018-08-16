@@ -1,43 +1,62 @@
-.underlineStyling{
-    @include themify($themes) {
-        border-bottom:  5px solid themed('backgroundColor');
-    }
+.underlineStyling {
+	@include themify($themes) {
+		border-bottom: 5px solid themed("backgroundColor");
+	}
+}
+.underlineStyling--red {
+	@include themify($themes) {
+		border-bottom: 5px solid themed("accentColor");
+	}
+}
+
+.underline {
+	float: left;
+	width: 30px;
+	display: block;
+}
+.underlineContainer {
+	width: 90px;
+	display: inline-block;
+	float: none;
+	list-style-type: square;
+	box-sizing: content-box;
+	padding: 0px;
+}
+.addedUnderline {
+	width: 100%;
+	text-align: center;
+	height: 0px;
+}
+
+.profile {
+  &_image {
+    margin: 0 auto;
   }
-.underlineStyling--red{
-  @include themify($themes) {
-    border-bottom:  5px solid themed('accentColor');
+  
+  &_email {
+    margin-bottom: 10px;
+  }
+  
+  &_email_text {
+    text-decoration: underline;
+    margin-left: 6px;
   }
 }
 
-.underline{
-    float: left;
-    width: 30px;
-    display: block;
-  }
-.underlineContainer{
-    width: 90px;
-    display: inline-block;
-    float: none;
-    list-style-type: square;
-    box-sizing: content-box;
-    padding: 0px;
-  }
-.addedUnderline{
-    width: 100%;
-    text-align: center;
-    height: 0px;
+.notes__status {
+	padding-right: 5px;
+	opacity: .8;
+	font-size: .9rem;
+	vertical-align: top;
 }
 
-.profile_email{
-  margin-bottom: 10px;
+.notes__status--italic {
+	font-style: italic;
 }
 
-.profile_email_text{
-  text-decoration: underline;
-  margin-left: 6px;
-}
-
-.notes_status{
-  padding-right: 5px;
-  opacity: 0.5;
+.notes_text {
+	resize: none;
+	min-height: 100px;
+	overflow: hidden;
+	margin-bottom: 0 !important;
 }

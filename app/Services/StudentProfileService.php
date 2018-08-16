@@ -30,6 +30,9 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentProfile($email)
     {
+        if (\json_decode($this->webResourceRetriever->getStudent($email), true)['success'] == 'false') {
+            return \json_encode(null);
+        }
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];
@@ -45,6 +48,8 @@ class StudentProfileService implements StudentProfileContract
             ->imageCRUD
             ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
+        $studentAudio = \json_decode($this->webResourceRetriever->getMedia($email), true)['media'][0]['audio'];
+
         $studentProfile = (object) [
             'display_name' => $profile['display_name'],
             'first_name' => \explode(' ', $profile['display_name'])[0],
@@ -54,6 +59,7 @@ class StudentProfileService implements StudentProfileContract
             'members_id' => $profile['individuals_id'],
             'notes' => $note == null ? 'Notes go here.' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
+            'studentAudio' => $studentAudio,
         ];
 
         $moreInfo = $this->rosterRetriever->sanitizeStudent($studentProfile);

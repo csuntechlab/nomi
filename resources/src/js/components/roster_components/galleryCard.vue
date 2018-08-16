@@ -1,7 +1,7 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
-        <div class="editButton">
-            <i class="fa fa-edit fa-2x" @click="checkPermission"></i>
+        <div>
+            <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"></i>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
         <div class="panel">
@@ -26,9 +26,9 @@
 <script>
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
-import croppaProfile from "../../components/profile_components/croppaProfile.vue";
-import modal from "../../components/fixed_components/modal.vue";
-
+import croppaProfile from "../profile_components/croppaProfile.vue";
+import modal from "../fixed_components/modal.vue";
+import profilePicture from "../profile_components/profilePicture.vue";
 export default {
   name: "gallery-card",
 
@@ -43,7 +43,8 @@ export default {
   },
   components: {
     modal,
-    croppaProfile
+    croppaProfile,
+    profilePicture
   },
 
   props: ["student"],

@@ -1,29 +1,34 @@
 <template>
     <div>
-        <div class="pull-right textOverflow">
-            <h3>{{studentProfile.displayName || studentName}}</h3>
-        </div>
         <croppa
-                v-model="myCroppa"
-                :prevent-white-space="true"
-                :show-remove-button="false"
-                :initial-image="studentImage"
-                :quality="2"
-                @init="styleCanvas()"
-                @loading-start="loadingStart"
-                @loading-end="loadingEnd">
+            v-model="myCroppa"
+            :prevent-white-space="true"
+            :show-remove-button="false"
+            :initial-image="studentImage"
+            :quality="2"
+            @init="styleCanvas()"
+            @loading-start="loadingStart"
+            @loading-end="loadingEnd">
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
             <div class="croppa_loading_icon">
                 <i class="fas fa-spinner fa-spin fa-5x"></i>
             </div>
         </div>
-        <div class="type--center">
-            <div @click="chooseImage"><i class="fa fa-camera fa-3x"></i></div>
+
+        <div>
+            <div class="modal-button-container pull-left">
+                <div class="modal-button">
+                    <div @click="chooseImage" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
+                </div>
+            </div>
+            <div class="modal-button-container pull-right">
+                <div class="modal-button">
+                    <div @click.prevent="confirmImage" class="type--center"><i class="fa fa-check fa-2x"></i></div>
+                </div>
+            </div>
         </div>
-        <div class="type--center">
-            <div @click.prevent="confirmImage" type="button"><i class="fa fa-check fa-3x"></i></div>
-        </div>
+        
     </div>
 </template>
 <script>

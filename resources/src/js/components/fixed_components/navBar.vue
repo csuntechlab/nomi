@@ -1,23 +1,58 @@
 <template>
     <nav class="primary-nav">
         <back-button></back-button>
-        <div class="logo_parent">
-            <img class="csun_logo" :src="this.url + '/images/csun_logo.svg'" alt="CSUN Logo">
-            <span class="sr-only">California State University, Northridge (CSUN)</span>
-            <img class="nomi_logo" :src="this.url + '/images/nomi.svg'">
+        <div class="nav__header">
+            {{this.displayCurrentTerm}}
         </div>
     </nav>
 </template>
 
 <script>
-    export default {
-        data: function () {
-          return {
-              url: ''
-          }
-        },
-        created: function () {
-            this.url = document.querySelector('meta[name=app-url]').content;
-        },
+import { mapGetters } from "vuex";
+import backButton from "./backButton.vue"
+export default {
+	data: function() {
+		return {
+			url: ""
+		};
+    },
+    components: {
+        backButton
+    },
+	created: function() {
+		this.url = document.querySelector("meta[name=app-url]").content;
+    },
+    computed: {
+        ...mapGetters([
+            'term',
+        ]),
+
+        displayCurrentTerm() {
+                if (this.term != null) {
+                    let termCode = this.term;
+                    switch (termCode.charAt(3)) {
+                        case "3":
+                            this.displayedTerm = "Spring";
+                            break;
+                        case "5":
+                            this.displayedTerm = "Summer";
+                            break;
+                        case "7":
+                            this.displayedTerm = "Fall";
+                            break;
+                        case "9":
+                            this.displayedTerm = "Winter";
+                    }
+                    if (termCode.charAt(0) == "2") {
+                        this.displayedTerm +=
+                            " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
+                    } else {
+                        this.displayedTerm +=
+                            " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
+                    }
+                    return this.displayedTerm;
+                }
+            }
     }
+};
 </script>

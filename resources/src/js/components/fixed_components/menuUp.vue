@@ -24,9 +24,8 @@
                     <span @click="closeMenu()">
                         <router-link class="menu_links" to="/">Courses</router-link>
                     </span>
-                    <theme-selector></theme-selector>
                     <span @click="closeMenu()">
-                        <router-link class="menu_links" to="/about">About</router-link>
+                        <router-link class="menu_links" to="/settings">Settings</router-link>
                     </span>
                     <a class="menu_links" :href= "this.url + '/logout'" title="Logout" @click="$store.dispatch('hideBackButton')">Logout</a>
                 </div>

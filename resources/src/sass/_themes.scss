@@ -2,20 +2,31 @@ $themes: (
   login: (
     navigationBars: #D00D2D,
     backgroundColor: #FFFFFF,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #F0F0F0,
+    hoverColor: #ccc,
     buttonColor: #d00d2d,
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
-  navyTheme: (
+  main: ( /*aka NAVY theme - Needs to be renamed*/
     navigationBars: #0F1821,
-    backgroundColor: #E5E5E5,
-    textColor: #000,
-    panelColor: #F4F4F4,
     accentColor: #4F9DA3,
+    backgroundColor: #E5E5E5,
+    textColor: #464646,
+    
+    hoverColor: #ccc,
+    focusColor: #4F9DA3,
+    
     buttonColor: #4F9DA3,
-    buttonText: #000,
+    buttonText: #fff,
+    /*Gallery - Styles gallery edit button colors*/
+    galleryBtnBg:#4F9DA3,
+    galleryBtnText: #ffffff,
+    disabledBtnColor: rgba(255, 255, 255, 0.2),
+    
+    panelColor: #F4F4F4,
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
 	  mainFontFamily: helvetica,
@@ -23,25 +34,37 @@ $themes: (
 
   bluesTheme: (
     navigationBars: #0D3753,
-    backgroundColor: #d9e7ee,
-    textColor: #000,
-    panelColor: white,
     accentColor: #4CA1DB,
+    backgroundColor: #d9e7ee,
+    textColor: #575757,
+    
+    hoverColor: #ccc,
+    focusColor: #4CA1DB,
+    
     buttonColor: #4CA1DB,
     buttonText: #fff,
+
+    galleryBtnBg:#fff,
+    galleryBtnText: #2e88c5,
+    disabledBtnColor:rgba(0, 0, 0, 0.6),
+
+    panelColor: white,
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
 
-  Cloudy: (
+  Cloudy: ( /*No longer being updated. Needs to be removed*/
     navigationBars: #747474,
     backgroundColor: #D8D8D8,
-    textColor: #000,
+    textColor: #464646,
     panelColor: #FFFFFF,
+    hoverColor: #ccc,
     buttonColor: #FFC836,
-    buttonText: #000,
+    buttonText: #4e4e4e,
     accentColor: #747474,
+    toolBanner: rgba(255,255,255,0.5),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
@@ -49,49 +72,74 @@ $themes: (
 
   OnceAMatadorAlwaysAMatador: (
     navigationBars: #D22030,
+    accentColor: #E74A37,
     backgroundColor: #FFFFFF,
-    textColor: #000,
-    panelColor: #F0F0F0,
+    textColor: #464646,
+
+    hoverColor: rgb(221, 221, 221),
+    focusColor: #92A1CD,
+
+    galleryBtnBg:#fff,
+    galleryBtnText: #808080,
+    disabledBtnColor:rgba(0, 0, 0, 0.6),
+
     buttonColor: #E74A37,
     buttonText: #fff,
-    accentColor: #E74A37,
+
+    panelColor: #F0F0F0,
+    toolBanner: rgba(0,0,0,0.05),
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
 
   Dark: (
-    navigationBars: #272727,
-    backgroundColor: #303030,
-    textColor: rgb(164, 199, 199),
-    panelColor: #202020,
-    buttonColor: #2F557B,
-    buttonText: rgb(164, 199, 199),
-    accentColor: #2F557B,
+    navigationBars: #1D1D1D,
+    accentColor: #97B5D8,
+    backgroundColor: #272727,
+    textColor: #bababa,
+
+    hoverColor: #272727,
+    focusColor: rgb(66, 119, 172),
+
+    buttonColor: #426c96,
+    buttonText: #dadada,
+
+    galleryBtnBg:#426c96,
+    galleryBtnText: #dfe5ec,
+    disabledBtnColor: rgba(255, 255, 255, 0.2),
+
+    panelColor: #303030,
+    toolBanner: rgba(255,255,255,.05),
+
+    inputColor: #424242,
+    inputBorder: none,
 
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
+
+
   )
   
 );
-
 @mixin themify($themes: $themes) {
-  @each $theme, $map in $themes {
-
-    .theme-#{$theme} & {
-      $theme-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), '#{$key}');
-        $theme-map: map-merge($theme-map, ($key: $value)) !global;
-      }
-
-      @content;
-      $theme-map: null !global;
-    }
-
-  }
+	@each $theme, $map in $themes {
+		.theme-#{$theme} & {
+			$theme-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), "#{$key}");
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value
+					)
+				) !global;
+			}
+			@content;
+			$theme-map: null !global;
+		}
+	}
 }
-
 @function themed($key) {
-  @return map-get($theme-map, $key);
+	@return map-get($theme-map, $key);
 }

@@ -1,22 +1,35 @@
 export default {
+    // General
     courses: [],
     flashroster: [],
     studentImages: {},
+    errors: null,
+    imagePermission: null,
     menuShow: false,
+    currentLocation: 'home',
+    
+    // Views & Sorting
     list: true,
     flash: false,
-    sortLastName: true,
-    sortDescending: true,
-    errors: null,
+    sortLastName: false,
+    sortAscending: true,
+    
+    // Themes
     themeName: {theme: 'theme-OnceAMatadorAlwaysAMatador'},
+    
+    // Back Button
     hideBack: true,
     disableBack: false,
+    
+    // Courses
     semester: null,
     termYear: null,
     term: null,
+    selectedTerm: 'current',
     loadingClasses: true,
-    imagePermission: null,
-
+    currentCourse: null,
+    
+    // User Info
     facultyMember: {
         email: null,
         emailURI: null,

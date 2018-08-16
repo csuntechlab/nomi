@@ -4,7 +4,7 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <div class="fa fa-times-circle fa-3x pull-right modal_exit" @click="$emit('close')"></div>
+            <div class="fa fa-times-circle fa-2x pull-right modal_exit" @click="$emit('close')"></div>
             <slot class="type--center" name="header"></slot>
           </div>
           <div class="modal-body">

@@ -11,11 +11,8 @@
                             <div class="imagewrap">
                                 <profile-picture :image="image"></profile-picture>
                                 <div class="type--center">
+                                    <i class="fas fa-2x fa-cog profile-edit-button" @click="checkPermission"></i>
                                     <image-handler image_type="likeness"></image-handler>
-                                </div>
-                                <div class="type--center">
-                                    <button class="btn btn-default btn-sm" @click="checkPermission">Edit Photo</button>
-                                    <br>
                                 </div>
                             </div>
                         </slide>
@@ -80,8 +77,8 @@
 </template>
 <script>
 import croppaModal from "../profile_components/croppaModal.vue";
-import imageHandler from "../profile_components/imageHandler.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
+import imageHandler from "../profile_components/imageHandler.vue";
 import { mapGetters } from 'vuex';
 export default {
         name: "profile-carousel",
@@ -108,6 +105,8 @@ export default {
         },
         components: {
             croppaModal,
+            imageHandler,
+            profilePicture
         },
         computed: {
             ...mapGetters([
