@@ -21674,7 +21674,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     image: function image() {
-      return this.student.images.likeness;
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } else if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
     }
   }),
 
@@ -22013,12 +22017,14 @@ var render = function() {
     "div",
     { staticClass: "col-xs-6 col-md-4 col-lg-3" },
     [
-      _c("div", [
-        _c("i", {
-          staticClass: "fas fa-pencil-alt panel__edit-button",
-          on: { click: _vm.checkPermission }
-        })
-      ]),
+      this.student.image_priority === "likeness"
+        ? _c("div", [
+            _c("i", {
+              staticClass: "fas fa-pencil-alt panel__edit-button",
+              on: { click: _vm.checkPermission }
+            })
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "router-link",
@@ -22327,7 +22333,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         image: function image() {
-            return this.student.images.likeness;
+            if (this.student.image_priority === 'likeness') {
+                return this.student.images.likeness;
+            } else if (this.student.image_priority === 'avatar') {
+                return this.student.images.avatar;
+            }
         }
     })
 });

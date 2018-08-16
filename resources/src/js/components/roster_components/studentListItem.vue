@@ -45,7 +45,11 @@ export default {
         },
 
         image: function() {
-            return this.student.images.likeness;
+            if (this.student.image_priority === 'likeness') {
+                return this.student.images.likeness;
+            } else if (this.student.image_priority === 'avatar') {
+                return this.student.images.avatar;
+            }
         }
     }
 }
