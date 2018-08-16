@@ -7,7 +7,6 @@ namespace App\Services;
 use App\Contracts\ImageCRUDContract;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 
 class RosterRetrievalService implements RosterRetrievalContract
@@ -94,26 +93,6 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         $email = \str_replace('nr_', '', $student->email);
         $email = \substr($email, 0, \strpos($email, '@'));
-        $imageLocation = url('images/likeness.jpg');
-
-        // checks if image already exists
-        if (\file_exists(env('IMAGE_UPLOAD_LOCATION') . $email . '/likeness.jpg')) {
-            $imageLocation = url('images/' . $email . '/likeness.jpg');
-        }
-
-        $image = $imageLocation;
-
-        /*
-        if (!\property_exists($student, 'profile_image')) {
-            $student->profile_image = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg');
-        }
-
-        if (!\property_exists($student, 'avatar_image')) {
-            $student->avatar_image = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_avatar_default.jpg');
-        }
-        */
 
         return [
             'student_id' => $student->members_id,
@@ -125,8 +104,8 @@ class RosterRetrievalService implements RosterRetrievalContract
                 'avatar' => $student->avatar_photo,
                 'official' => $student->official_photo,
             ],
+            'name_recording' => $student->name_recording,
             'image_priority' => $student->image_priority,
-            'recognized' => false,
         ];
     }
 
