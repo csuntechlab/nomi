@@ -25578,6 +25578,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -25753,18 +25755,24 @@ var render = function() {
     [
       _c("back-button"),
       _vm._v(" "),
-      _c("div", { staticClass: "nav__header" }, [
-        _vm._v("\n        " + _vm._s(this.displayCurrentTerm) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "feedback-button pull-right",
-          attrs: { href: "\\feedback" }
-        },
-        [_vm._v("Feedback")]
-      )
+      this.displayCurrentTerm != null
+        ? _c("div", [
+            _c("div", { staticClass: "nav__header" }, [
+              _vm._v(
+                "\n        " + _vm._s(this.displayCurrentTerm) + "\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "feedback-button pull-right",
+                attrs: { href: "\\feedback" }
+              },
+              [_vm._v("Feedback")]
+            )
+          ])
+        : _vm._e()
     ],
     1
   )

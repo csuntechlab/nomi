@@ -1,10 +1,12 @@
 <template>
     <nav class="primary-nav">
         <back-button></back-button>
-        <div class="nav__header">
+        <div v-if="this.displayCurrentTerm != null">
+            <div class="nav__header">
             {{this.displayCurrentTerm}}
+            </div>
+            <a href="\feedback" class="feedback-button pull-right">Feedback</a>
         </div>
-        <a href="\feedback" class="feedback-button pull-right">Feedback</a>
     </nav>
 </template>
 

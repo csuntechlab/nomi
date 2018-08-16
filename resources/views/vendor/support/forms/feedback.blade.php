@@ -12,10 +12,7 @@
 
     <style type="text/css">
       .sub-container{
-        padding: 5%;
-      }
-      .header-container{
-        padding-top:1%;
+        padding: 3%;
       }
       .submit_button {
         float: right;
@@ -25,19 +22,19 @@
       .nomi-logo {
         float: right;
         height: 25%;
-      }
+      } 
       .back_button {
-        position:relative;
+        position:absolute;
         float: left;
         left: 3%;
-        height: 100%;
+        height: 75%;
         width: 5%;
+        margin-top:0.5%;
       }
       .header-bar {
         position: fixed;
 		    height: 3rem;
 		    width: 100%;
-		    z-index: 99;
         top: 0;
         background-color: #d00d2d;
       }
@@ -46,7 +43,9 @@
   <body>
     <div class="header-bar">
       <div class="header-container">
-      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
+        <div class="col-xs-6">
+          <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
+        </div>
       </div>
     </div>
     <div class="container sub-container">
