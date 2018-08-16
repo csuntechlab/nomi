@@ -9,10 +9,10 @@
                 <div>
                     <img :src="facultyMember.image" class="img--circle side-menu__img" name="photo">
                 </div>
-                <div class="side-menu__greeting" :href="facultyMember.profile" title="User Name">Hi, {{facultyFirstName}}</div>
+                <div class="side-menu__greeting" :href="facultyMember.profile" title="User Name">Hi, {{facultyMember.firstName}}</div>
             </div>
             <div class="side-menu__options">
-                <a class="side-menu__link" :href="'https://academics.csun.edu/faculty/' + facultyURI">
+                <a class="side-menu__link" :href="'https://academics.csun.edu/faculty/' + facultyMember.emailURI">
                     <i class="fas fa-user"/> Faculty Profile
                 </a>
                 <a class="side-menu__link" :href="this.url + '/logout'" title="Logout">
@@ -32,13 +32,10 @@ export default {
 		};
 	},
 	computed: {
-		...mapGetters([
-			"courses",
-			"facultyMember",
-            "facultyFirstName",
-            "facultyURI",
-            "displaySideMenu",
-		])
+		...mapGetters(["courses", "facultyMember", "displaySideMenu"]),
+		showMenu() {
+			return this.displaySideMenu;
+		}
 	},
 	created: function() {
 		this.url = document.querySelector("meta[name=app-url]").content;
@@ -49,11 +46,9 @@ export default {
 		}
 	},
 	watch: {
-		sideMenuOpen() {
-			if (this.displaySideMenu)
-                document.documentElement.style.overflow = 'hidden';
-            else
-                document.documentElement.style.overflow = 'auto';
+		showMenu(open) {
+			if (open) document.documentElement.style.overflow = "hidden";
+			else document.documentElement.style.overflow = "auto";
 		}
 	}
 };
