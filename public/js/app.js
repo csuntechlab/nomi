@@ -20151,8 +20151,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
         },
         setScrollBar: function setScrollBar() {
-            var courseID = window.location.hash.split('/')[2];
-            var courseTab = document.getElementById(courseID);
+            var courseTab = document.getElementById(this.currentCourse);
             courseTab.scrollIntoView({
                 block: "end"
             });
@@ -22567,12 +22566,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__);
-var _name$data$beforeRout;
-
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -22591,7 +22586,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_name$data$beforeRout = {
+/* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile",
 
 	data: function data() {
@@ -22600,18 +22595,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			unsavedChanges: false
 		};
 	},
-
-	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-		if (this.unsavedChanges) {
-			var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
-			if (answer) {
-				next();
-			} else {
-				next(false);
-			}
-		}
-	},
-
 
 	components: {
 		profileCarousel: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default.a,
@@ -22628,29 +22611,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
-	}
-}, _defineProperty(_name$data$beforeRout, "beforeRouteLeave", function beforeRouteLeave(to, from, next) {
-	if (this.unsavedChanges) {
-		var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
+	},
+	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+		if (this.profileLoadError) {
+			this.logErrors();
+			this.clearProfileErrors();
+		}
+		if (this.unsavedChanges) {
+			var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
 
-		if (answer) {
+			if (answer) {
+				this.$store.dispatch("hideBackButton");
+				next();
+			} else {
+				next(false);
+			}
+		} else {
 			this.$store.dispatch("hideBackButton");
 			next();
-		} else {
-			next(false);
 		}
-	} else {
-		this.$store.dispatch("hideBackButton");
-		next();
-	}
-}), _defineProperty(_name$data$beforeRout, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember"]))), _defineProperty(_name$data$beforeRout, "methods", {
-	setUnsavedChanges: function setUnsavedChanges() {
-		this.unsavedChanges = true;
 	},
-	setChanges: function setChanges() {
-		this.unsavedChanges = false;
-	}
-}), _name$data$beforeRout);
+
+
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])),
+
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearErrors", "clearProfileErrors"]), {
+		setUnsavedChanges: function setUnsavedChanges() {
+			this.unsavedChanges = true;
+		},
+		setChanges: function setChanges() {
+			this.unsavedChanges = false;
+		},
+		logErrors: function logErrors() {
+			console.log("Profile Error found: " + this.profileErrors);
+		}
+	})
+
+});
 
 /***/ }),
 /* 112 */
@@ -26785,35 +26782,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "error-bar",
+	name: "error-bar",
 
-    data: function data() {
-        return {
-            showError: false
-        };
-    },
+	data: function data() {
+		return {
+			showError: false
+		};
+	},
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['errors', 'profileErrors', 'profileLoadError'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["errors", "profileErrors", "profileLoadError", "currentCourse"])),
 
-    updated: function updated() {
-        this.enableBackButton();
-    },
+	updated: function updated() {
+		this.enableBackButton();
+	},
 
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['clearErrors', 'clearProfileErrors', 'enableBackButton']), {
-        logErrors: function logErrors() {
-            console.log("Error found: " + this.errors);
-            console.log("Profile Error found: " + this.profileErrors);
-        },
-        closeError: function closeError() {
-            if (this.profileLoadError == true) {
-                this.$router.go(-1);
-            }
-            this.logErrors();
-            this.clearErrors();
-            this.clearProfileErrors();
-        }
-    })
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["enableBackButton", "clearErrors"]), {
+		logErrors: function logErrors() {
+			console.log("Error found: " + this.errors);
+		},
+		closeError: function closeError() {
+			if (this.profileLoadError == true) {
+				var course = this.currentCourse;
+				this.$router.go(-1);
+			}
+			this.logErrors();
+			this.clearErrors();
+		}
+	})
 });
 
 /***/ }),
@@ -26824,7 +26820,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.errors || this.profileErrors
+  return this.errors || this.profileLoadError
     ? _c(
         "div",
         { staticClass: "alert alert--warning", attrs: { id: "error_bar" } },
