@@ -25337,6 +25337,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 if (getters.students.hasOwnProperty(student)) {
                     if (getters.students[student].email == tempEmail) {
                         state.studentProfile.images = getters.students[student].images;
+                        state.studentProfile.name_recording = getters.students[student].name_recording;
                         break;
                     }
                 }
