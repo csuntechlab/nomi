@@ -24533,7 +24533,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     studentImages: {},
     errors: null,
     imagePermission: null,
-    displaySideMenu: true,
+    displaySideMenu: false,
     currentLocation: 'home',
 
     // Views & Sorting
@@ -24583,8 +24583,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     studentImages: function studentImages(state) {
         return state.studentImages;
     },
-    menuShow: function menuShow(state) {
-        return state.menuShow;
+    displaySideMenu: function displaySideMenu(state) {
+        return state.displaySideMenu;
     },
     errors: function errors(state) {
         return state.errors;
@@ -26483,7 +26483,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	methods: {
 		showMenu: function showMenu() {
-			this.$store.dispatch('toggleMenu');
+			this.$store.dispatch("toggleMenu");
 		},
 		setActive: function setActive(activeLocation) {
 			if (activeLocation != null) {
@@ -27068,7 +27068,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "facultyFirstName", "menuShow"])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "facultyFirstName", "displaySideMenu"])),
     created: function created() {
         this.url = document.querySelector("meta[name=app-url]").content;
     },
@@ -27088,26 +27088,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "type--center" }, [
-    _vm.menuShow
+    _vm.displaySideMenu
       ? _c("div", {
           staticClass: "transparent_non-menu_layer",
-          attrs: { id: "outsideLayer" }
+          attrs: { id: "outsideLayer" },
+          on: { click: _vm.toggleMenu }
         })
       : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
       {
-        directives: [
-          {
-            name: "click-outside",
-            rawName: "v-click-outside",
-            value: _vm.toggleMenu,
-            expression: "toggleMenu"
-          }
-        ],
         staticClass: "side-menu",
-        class: [_vm.menuShow ? "side-menu--display" : "side-menu--hide"],
+        class: [_vm.displaySideMenu ? "side-menu--display" : "side-menu--hide"],
         attrs: { id: "sideMenu" }
       },
       [

@@ -3,7 +3,7 @@ export default {
     // General
     courses: state => state.courses,
     studentImages: state => state.studentImages,
-    menuShow: state => state.menuShow,
+    displaySideMenu: state => state.displaySideMenu,
     errors: state => state.errors,
     permission: state => state.imagePermission,
     currentLocation: state => state.currentLocation,

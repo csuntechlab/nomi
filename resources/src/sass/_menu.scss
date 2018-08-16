@@ -15,7 +15,7 @@
 }
 
 .transparent_non-menu_layer {
-	z-index: 1;
+	z-index: 2;
 	background-color: rgba($color: #000000, $alpha: 0.7);
 	margin: 0;
 	padding: 0;
@@ -45,7 +45,7 @@
 	@include themify($themes) {
 		background-color: themed("buttonColor");
 	}
-	z-index: 1;
+	z-index: 3;
 	overflow: hidden;
 	transition: 0.5s;
 	margin: 0;

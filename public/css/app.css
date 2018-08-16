@@ -17,7 +17,7 @@ Compiles to 2.4rem*/
 }
 
 .transparent_non-menu_layer {
-  z-index: 1;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
@@ -45,7 +45,7 @@ Compiles to 2.4rem*/
 }
 
 .side-menu {
-  z-index: 1;
+  z-index: 3;
   overflow: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -206,7 +206,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -219,7 +219,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -232,7 +232,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -245,7 +245,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -258,7 +258,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -271,7 +271,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -1141,7 +1141,7 @@ textarea {
 }
 
 .bottom-nav {
-  z-index: 2;
+  z-index: 4;
   position: fixed;
   bottom: 0;
   left: 0;

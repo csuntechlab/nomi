@@ -51,7 +51,7 @@ export default {
 
 	methods: {
 		showMenu(){
-			this.$store.dispatch('toggleMenu');
+			this.$store.dispatch("toggleMenu");
 		},
 		setActive(activeLocation) {
 			if (activeLocation != null) {
