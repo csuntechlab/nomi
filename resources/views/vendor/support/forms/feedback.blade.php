@@ -18,6 +18,7 @@
         float: right;
         background-color: #d00d2d;
         border-color: #d00d2d;
+        color: #fff; 
       }
       .nomi-logo {
         float: right;
@@ -103,7 +104,7 @@
               <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback message.">{{ old('content') }}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary submit_button">Submit</button>
+            <button type="submit" class="btn submit_button">Submit</button>
           </form>
         </div>
       </div>
