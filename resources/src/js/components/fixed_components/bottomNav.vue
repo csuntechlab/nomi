@@ -34,10 +34,10 @@ import { mapGetters, mapActions } from "vuex";
 export default {
 	name: "bottom-nav",
 
-	data(){
-		return{
-			selected: ['bottom-nav__button--active']
-		}
+	data() {
+		return {
+			selected: ["bottom-nav__button--active"]
+		};
 	},
 
 	computed: {
@@ -45,18 +45,20 @@ export default {
 			"courses",
 			"facultyMember",
 			"currentCourse",
-			"currentLocation"
-		]),
+			"currentLocation",
+			"displaySideMenu"
+		])
 	},
 
 	methods: {
-		showMenu(){
+		showMenu() {
 			this.$store.dispatch("toggleMenu");
 		},
 		setActive(activeLocation) {
-			if (activeLocation != null) {
+			if (activeLocation != null)
 				this.$store.dispatch("storeLocation", activeLocation);
-			}
+			if (this.displaySideMenu)
+				this.showMenu();
 		},
 		resetNav() {
 			let buttons = document.querySelectorAll(".bottom-nav__button");
