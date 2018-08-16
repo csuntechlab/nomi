@@ -1521,51 +1521,48 @@ textarea {
 
 .feedback-button {
   position: absolute;
-  height: 2.46666667rem;
-  right: 0;
-  padding: 1.4%;
-  font-size: 180%;
+  right: 2%;
+  padding-right: 1%;
+  padding-left: 1%;
+  padding-top: 0.5%;
+  padding-bottom: 1.5%;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .theme-login .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #d00d2d;
 }
 
 .theme-main .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #4F9DA3;
+  color: #fff;
 }
 
 .theme-bluesTheme .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #4CA1DB;
+  color: #fff;
 }
 
 .theme-Cloudy .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #FFC836;
+  color: #4e4e4e;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #E74A37;
+  color: #fff;
 }
 
 .theme-Dark .feedback-button {
-  background-color: #fdd64d;
-  color: #303030;
+  background-color: #426c96;
+  color: #dadada;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (max-width: 700px) {
   .feedback-button {
-    padding: 0.8%;
-  }
-}
-
-@media only screen and (min-width: 550px) {
-  .feedback-button {
-    padding: 0.5%;
+    padding-top: 2%;
+    padding-bottom: 4%;
   }
 }
 

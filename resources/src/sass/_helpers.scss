@@ -178,19 +178,20 @@
 
 .feedback-button {
 	position: absolute;
-	height: rem(37);
-	right: 0;
-    padding: 1.4%;
-    font-size: 180%;
+	right:2%;
+	padding-right: 1%;
+	padding-left: 1%;
+	padding-top: 0.5%;
+	padding-bottom: 1.5%;
+	border-bottom-left-radius:15px;
+	border-bottom-right-radius:15px;
 	@include themify($themes) {
-		background-color:#fdd64d;
-		color:#303030;
+		background-color: themed("buttonColor");
+		color: themed("buttonText");
 	}
-	@media only screen and (min-width: 400px){
-		padding: 0.8%;
-	}
-	@media only screen and (min-width: 550px){
-		padding: 0.5%;
+	@media only screen and (max-width: 700px){
+		padding-top: 2%;
+		padding-bottom: 4%;
 	}
 
 }

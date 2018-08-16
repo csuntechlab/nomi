@@ -23127,7 +23127,8 @@ var render = function() {
                         { staticClass: "type--center" },
                         [
                           _c("i", {
-                            staticClass: "fas fa-2x fa-cog profile-edit-button",
+                            staticClass:
+                              "fas fa-2x fa-pencil-alt profile-edit-button",
                             on: { click: _vm.checkPermission }
                           }),
                           _vm._v(" "),
@@ -25577,8 +25578,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -25758,21 +25757,19 @@ var render = function() {
         _vm._v("\n        " + _vm._s(this.displayCurrentTerm) + "\n    ")
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "a",
+        {
+          staticClass: "feedback-button pull-right",
+          attrs: { href: "\\feedback" }
+        },
+        [_vm._v("Feedback")]
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "\\feedback" } }, [
-      _c("i", { staticClass: "fas fa-bug feedback-button" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

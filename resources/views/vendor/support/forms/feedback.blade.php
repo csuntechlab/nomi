@@ -8,21 +8,59 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Submit Feedback | {{ $application_name }}</title>
+    <title>Feedback Form | NOMI</title>
 
     <style type="text/css">
-      .required {
-        color:red;
+      .sub-container{
+        padding: 5%;
+      }
+      .header-container{
+        padding-top:1%;
+      }
+      .submit_button {
+        float: right;
+        background-color: #d00d2d;
+        border-color: #d00d2d;
+      }
+      .nomi-logo {
+        float: right;
+        height: 25%;
+      }
+      .back_button {
+        position:relative;
+        float: left;
+        left: 3%;
+        height: 100%;
+        width: 5%;
+      }
+      .header-bar {
+        position: fixed;
+		    height: 3rem;
+		    width: 100%;
+		    z-index: 99;
+        top: 0;
+        background-color: #d00d2d;
       }
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="header-bar">
+      <div class="header-container">
+      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
+      </div>
+    </div>
+    <div class="container sub-container">
       <div class="row justify-content-md-center">
         <div class="col-sm-8">
-          <h1>Submit Feedback</h1>
-
-          <p>You are currently logged-in as {{ $submitter_name }} ({{ $submitter_email }}).</p>
+          <br>
+          <br>
+        <img class="nomi-logo" src="{{ asset('/images/apple-touch-icon.png') }}" alt="NOMI Logo; Names of Matador Individuals">
+          <br>
+          <br>
+          <br>
+          <h1>Feedback Form</h1>
+          <br>
+          <p>Hello, {{ $submitter_name }} {{ $submitter_email }}.</p>
         </div>
       </div>
 
@@ -63,11 +101,10 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
             <div class="form-group">
-              <label for="content"><span class="required">*</span> Feedback Message</label>
-              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback message...">{{ old('content') }}</textarea>
+              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback message.">{{ old('content') }}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            <button type="submit" class="btn btn-primary submit_button">Submit</button>
           </form>
         </div>
       </div>
@@ -75,6 +112,12 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+      function backtoNOMI() {
+        window.history.back()
+      }
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
