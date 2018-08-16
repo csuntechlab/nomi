@@ -39,10 +39,10 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="addedUnderline">
+        <div class="addedUnderline">
         <ul class="underlineContainer">
             <li class="underline">
-                <div v-if="studentProfile.imagePriority === 'likeness'">
+                <div v-if="student.imagePriority === 'likeness'">
                     <div class="">
                         <i class="fa fa-chevron-up icon_theme fa-2x"></i>
                     </div>
@@ -52,7 +52,7 @@
                 </div>
             </li>
             <li class="underline">
-                <div v-if="studentProfile.imagePriority === 'avatar'">
+                <div v-if="student.imagePriority === 'avatar'">
                     <div class="">
                         <i class="fa fa-chevron-up icon_theme fa-2x"></i>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="underlineStyling"></div>
                 </div>
             </li>
-            <li class="underline">
+            <!-- <li class="underline">
                 <div v-if="studentProfile.imagePriority === 'official'">
                     <div class="">
                         <i class="fa fa-chevron-up icon_theme fa-2x"></i>
@@ -70,9 +70,9 @@
                 <div v-else>
                     <div class="underlineStyling"></div>
                 </div>
-            </li>
+            </li> -->
         </ul>
-    </div> -->
+    </div>
     </div>
 </template>
 <script>
@@ -116,7 +116,7 @@ export default {
                 return this.student.images.likeness;
             },
 
-            alpha: function() {
+            avatar: function() {
                 return this.student.images.avatar;
             },
         },

@@ -62,10 +62,6 @@ class StudentProfileService implements StudentProfileContract
             'image_priority' => $imagePriority,
         ];
 
-        // $moreInfo = $this->rosterRetriever->sanitizeStudent($studentProfile);
-
-        // $studentProfile->images = $moreInfo['images'];
-
         return \json_encode($studentProfile);
     }
 

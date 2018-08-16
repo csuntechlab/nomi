@@ -2,11 +2,11 @@ export default {
     // General
     courses: [],
     flashroster: [],
-    studentImages: {},
     errors: null,
     imagePermission: null,
     menuShow: false,
     currentLocation: 'home',
+    students: [],
     
     // Views & Sorting
     list: true,

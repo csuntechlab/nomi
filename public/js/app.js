@@ -22633,7 +22633,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 		this.$store.dispatch("hideBackButton");
 		next();
 	}
-}), _defineProperty(_name$data$beforeRout, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", "studentImages"]))), _defineProperty(_name$data$beforeRout, "methods", {
+}), _defineProperty(_name$data$beforeRout, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember"]))), _defineProperty(_name$data$beforeRout, "methods", {
 	setUnsavedChanges: function setUnsavedChanges() {
 		this.unsavedChanges = true;
 	},
@@ -22820,7 +22820,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             return this.student.images.likeness;
         },
 
-        alpha: function alpha() {
+        avatar: function avatar() {
             return this.student.images.avatar;
         }
     }),
@@ -23182,10 +23182,43 @@ var render = function() {
           1
         )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "addedUnderline" }, [
+      _c("ul", { staticClass: "underlineContainer" }, [
+        _c("li", { staticClass: "underline" }, [
+          _vm.student.imagePriority === "likeness"
+            ? _c("div", [_vm._m(0)])
+            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "underline" }, [
+          _vm.student.imagePriority === "avatar"
+            ? _c("div", [_vm._m(1)])
+            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("i", { staticClass: "fa fa-chevron-up icon_theme fa-2x" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("i", { staticClass: "fa fa-chevron-up icon_theme fa-2x" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -24554,11 +24587,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     // General
     courses: [],
     flashroster: [],
-    studentImages: {},
     errors: null,
     imagePermission: null,
     menuShow: false,
     currentLocation: 'home',
+    students: [],
 
     // Views & Sorting
     list: true,
@@ -24604,8 +24637,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     courses: function courses(state) {
         return state.courses;
     },
-    studentImages: function studentImages(state) {
-        return state.studentImages;
+    students: function students(state) {
+        return state.students;
     },
     menuShow: function menuShow(state) {
         return state.menuShow;
@@ -24853,6 +24886,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             window.axios.get("data").then(function (response) {
                 state.term = response.data["term"];
                 state.courses = response.data["courses"];
+                state.students = response.data["allStudents"];
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
@@ -25236,7 +25270,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
-        context.commit('GET_STUDENT_PROFILE', payload);
+        var getters = context.getters;
+        context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters });
     },
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
@@ -25261,9 +25296,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
+    GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, _ref) {
+        var payload = _ref.payload,
+            getters = _ref.getters;
+
         var email = payload.uri + '@my.csun.edu';
         var data = new FormData();
+
+        var tempEmail = 'nr_' + email;
 
         data.append('faculty_id', payload.faculty_id);
         data.append('email', email);
@@ -25279,16 +25319,24 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
         window.axios.get('student_profile/' + email).then(function (response) {
             state.studentProfile.displayName = response['data'].display_name;
-            state.studentProfile.images = response['data'].images;
             state.studentProfile.imagePriority = response['data'].image_priority;
             state.studentProfile.notes = response['data'].notes;
             state.studentProfile.id = response['data'].student_id;
             state.studentProfile.firstName = response['data'].first_name;
+            for (var student in getters.students) {
+                if (getters.students.hasOwnProperty(student)) {
+                    if (getters.students[student].email == tempEmail) {
+                        state.studentProfile.images = getters.students[student].images;
+                        break;
+                    }
+                }
+            }
         }).catch(function (e) {
             state.profileLoadError = true;
             state.profileErrors = e.response.data.message;
         });
     },
+
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
         state.studentProfile.notes = notes;
     },
