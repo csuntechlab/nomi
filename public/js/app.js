@@ -24533,7 +24533,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     studentImages: {},
     errors: null,
     imagePermission: null,
-    displaySideMenu: false,
+    displaySideMenu: true,
     currentLocation: 'home',
 
     // Views & Sorting
