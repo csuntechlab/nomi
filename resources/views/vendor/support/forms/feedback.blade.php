@@ -12,6 +12,7 @@
 
     <style type="text/css">
       .sub-container{
+        display: inline-block;
         padding: 3%;
       }
       .submit_button {
@@ -25,12 +26,14 @@
         height: 25%;
       } 
       .back_button {
-        position:absolute;
+        position: relative;
         float: left;
         left: 3%;
-        height: 75%;
-        width: 5%;
-        margin-top:0.5%;
+        height: 100%;
+        padding: 1%;
+        width: 8%;
+        cursor: pointer;
+        border-color: black;
       }
       .header-bar {
         position: fixed;
@@ -38,16 +41,13 @@
 		    width: 100%;
         top: 0;
         background-color: #d00d2d;
+        z-index:101;
       }
     </style>
   </head>
   <body>
     <div class="header-bar">
-      <div class="header-container">
-        <div class="col-xs-6">
-          <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
-        </div>
-      </div>
+      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
     </div>
     <div class="container sub-container">
       <div class="row justify-content-md-center">
@@ -101,7 +101,7 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
             <div class="form-group">
-              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback message.">{{ old('content') }}</textarea>
+              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback.">{{ old('content') }}</textarea>
             </div>
 
             <button type="submit" class="btn submit_button">Submit</button>
@@ -113,7 +113,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
-      function backtoNOMI() {
+      function backtoNOMI(){
         window.history.back()
       }
     </script>
