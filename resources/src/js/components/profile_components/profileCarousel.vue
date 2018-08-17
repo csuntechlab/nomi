@@ -3,7 +3,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="type--center">{{this.student.displayName}}</h1>
+                    <div class="type--center">
+                        <span>
+                            <h2 class="">{{this.student.displayName}}</h2>
+                            <i class="fas fa-2x fa-volume-up profile-header__audio-button" @click="listenAudio()"></i>
+                        </span>
+                    </div>
                 </div>
                 <div class="type--center">
                     <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">
@@ -130,6 +135,9 @@ export default {
             this.showCroppaModal = true;
             if (this.permission == false)
                 this.$store.dispatch('nullifyPermissionResponse');
+            },
+            listenAudio() {
+                console.log(this.student.name_recording);
             }
         }
     }

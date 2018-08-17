@@ -22789,6 +22789,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -22841,6 +22846,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         checkPermission: function checkPermission() {
             this.showCroppaModal = true;
             if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
+        },
+        listenAudio: function listenAudio() {
+            console.log(this.student.name_recording);
         }
     }
 });
@@ -23113,8 +23121,20 @@ var render = function() {
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-sm-12" }, [
-          _c("h1", { staticClass: "type--center" }, [
-            _vm._v(_vm._s(this.student.displayName))
+          _c("div", { staticClass: "type--center" }, [
+            _c("span", [
+              _c("h2", {}, [_vm._v(_vm._s(this.student.displayName))]),
+              _vm._v(" "),
+              _c("i", {
+                staticClass:
+                  "fas fa-2x fa-volume-up profile-header__audio-button",
+                on: {
+                  click: function($event) {
+                    _vm.listenAudio()
+                  }
+                }
+              })
+            ])
           ])
         ]),
         _vm._v(" "),

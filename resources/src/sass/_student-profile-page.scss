@@ -60,3 +60,12 @@
 	overflow: hidden;
 	margin-bottom: 0 !important;
 }
+
+.profile-header__audio-button {
+	@include themify($themes) {
+		color: themed("accentColor");
+	}
+	position:relative;
+	cursor: pointer;
+	z-index: 2;
+}

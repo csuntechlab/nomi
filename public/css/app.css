@@ -1849,6 +1849,28 @@ textarea {
   margin-bottom: 0 !important;
 }
 
+.profile-header__audio-button {
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.theme-main .profile-header__audio-button {
+  color: #4F9DA3;
+}
+
+.theme-bluesTheme .profile-header__audio-button {
+  color: #4CA1DB;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile-header__audio-button {
+  color: #E74A37;
+}
+
+.theme-Dark .profile-header__audio-button {
+  color: #97B5D8;
+}
+
 .login {
   display: none;
 }
