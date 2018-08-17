@@ -5,7 +5,7 @@
                 <div class="col-sm-12">
                     <div class="type--center">
                         <span>
-                            <h2 class="">{{this.student.displayName}}</h2>
+                            <h2 class="pull-left">{{this.student.displayName}}</h2>
                             <i class="fas fa-2x fa-volume-up profile-header__audio-button" @click="listenAudio()"></i>
                         </span>
                     </div>
@@ -137,8 +137,17 @@ export default {
                 this.$store.dispatch('nullifyPermissionResponse');
             },
             listenAudio() {
-                console.log(this.student.name_recording);
-            }
+                    window.axios.get(this.student.name_recording, {
+                    }).then(response => {
+                        if (response.status) {
+                            console.log(this.student.name_recording);
+                        }
+                    }).catch(e => {
+                        alert("Sorry, this student has not submitted a recording of their name.");
+                    });
+                }
+            },
+            
+            
         }
-    }
 </script>
