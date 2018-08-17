@@ -5,7 +5,7 @@
             <div class="nav__header">
             {{this.displayCurrentTerm}}
             </div>
-            <a href="\feedback" class="feedback-button pull-right">Feedback</a>
+            <a :href="this.url + '/feedback'" class="feedback-button pull-right">Feedback</a>
         </div>
     </nav>
 </template>
