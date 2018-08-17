@@ -1460,6 +1460,11 @@ textarea {
   color: #dfe5ec;
 }
 
+.VueCarousel {
+  -ms-touch-action: none;
+      touch-action: none;
+}
+
 .makeWhite {
   -webkit-filter: grayScale(0%);
           filter: grayScale(0%);

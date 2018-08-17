@@ -141,8 +141,9 @@
 		color: themed("galleryBtnText");
 	}
 }
-
-
+.VueCarousel{
+	touch-action: none;
+}
 .makeWhite {
 	filter: grayScale(0%);
 	filter: grayScale(100%);
