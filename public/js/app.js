@@ -21789,7 +21789,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
                 window.axios.post('/api/upload', {
                     id: this.facultyMember.id,
-                    photo: url,
+                    profile_image: url,
                     image_type: 'likeness',
                     entity_type: 'student',
                     uri: uri

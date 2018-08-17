@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Contracts\ImageCRUDContract;
 use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
+use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,6 +46,30 @@ class ImageCRUDService implements ImageCRUDContract
                 'success' => 'false',
                 'message' => $validator->messages()->all(),
             ];
+        }
+        if ($request->profile_image) {
+            $guzzle = HandlerGuzzleFactory::fromDefaults();
+            $guzzle->setFormBody([
+                'profile_image' => $request->profile_image,
+                'image_type' => $request->image_type,
+                'entity_type' => $request->entity_type,
+                'secret_key' => env('MEDIA_KEY'),
+            ]);
+            $response = $guzzle->post(env('MEDIA_URL') . $request->uri . '/photo');
+            $guzzleResponse = $guzzle->resolveResponseBody($response, 'json');
+            if ($guzzleResponse->status === '200') {
+                return [
+                    'status' => '200',
+                    'success' => 'true',
+                    'message' => 'The image for ' . $emailUri . ' was successfully uploaded.',
+                ];
+            }
+
+            return [
+                    'status' => '400',
+                    'success' => 'false',
+                    'message' => 'An error occurred, please try again.',
+                ];
         }
     }
 
