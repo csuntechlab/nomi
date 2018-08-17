@@ -218,6 +218,28 @@
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+.course__button {
+	width: 5.5rem;
+}
+.course {
+	&__button {
+		width: 5.5rem;
+
+		@include themify($themes) {
+			background-color: themed("panelColor") !important;
+			color: themed("textColor") !important;
+		}
+
+		&--selected {
+			width: 100%;
+			margin: 0.5rem 0;
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+}
 .text_bold {
 	font-weight: bold;
 }
