@@ -1,67 +1,132 @@
 // new css
 
 .menu {
-  z-index: 1;
-  background-color: #111;
-  overflow: hidden;
-  transition: 0.5s;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 7%;
-  width: 100%;
+	z-index: 1;
+	background-color: #111;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	left: 100%;
+	height: 100%;
+	width: 60%;
 }
 
-.transparent_non-menu_layer{
-  z-index: 1;
-  background-color: rgba($color:#000000, $alpha: 0.7);
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
+.transparent_non-menu_layer {
+	z-index: 2;
+	background-color: rgba($color: #000000, $alpha: 0.7);
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
 }
 
 .menu_links {
-    color: white;
-    text-decoration: none;
-    font-size: 2.5vh;
-    margin: 0;
-    text-decoration: none;
-    text-align: center;
-    padding: .75% .75% .75% .75%;
+	color: white;
+	text-decoration: none;
+	font-size: 2.5vh;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	padding: 0.75% 0.75% 0.75% 0.75%;
+	display: block;
+	transition: 0.3s;
+}
+
+.menu_links:hover {
+	opacity: 0.5;
+}
+
+.side-menu {
+	@include themify($themes) {
+		background-color: themed("sideMenu");
+	}
+	z-index: 3;
+	color: white;
+	text-decoration: none;
+	overflow: hidden;
+	transition: 0.5s;
+	margin: 0;
+	position: fixed;
+	bottom: 0;
+	padding: 4rem 1.5rem;
+	height: 100%;
+	&__link {
+		font-size: 1.5rem;
+		font-family: sans-serif;
+		text-align: center;
     display: block;
+    padding: .5rem 0;
     transition: 0.3s;
+    &:hover {
+      opacity: .5;
+    }
+  }
+  &__options {
+    margin-top: 1rem;
+  }
+	&__greeting {
+		font-size: 2rem;
+		font-family: sans-serif;
+		font-weight: bold;
+		text-align: center;
+		display: block;
+	}
+	&__img {
+		max-width: 100%;
+		max-height: 100%;
+	}
 }
 
-.menu_links:hover{
-  opacity: 0.5;
+@media only screen and (max-width: 450px) {
+	.side-menu {
+		width: 70%;
+		&--display {
+			left: 30%;
+		}
+		&--hide {
+			left: 100%;
+		}
+	}
 }
 
-.faculty_links{
-  color: white;
-  text-decoration: none;
-  font-size: 3vh;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin: 0; 
-  padding: 1%;
-  text-align:center;
-  display: block;
-  transition: 0.3s;
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+	.side-menu {
+		width: 60%;
+		&--display {
+			left: 40%;
+		}
+		&--hide {
+			left: 100%;
+		}
+	}
 }
 
-.extra_padding{
-  padding-bottom: 5%;
+@media only screen and (min-width: 600px) {
+	.side-menu {
+		width: 40%;
+		&--display {
+			left: 60%;
+		}
+		&--hide {
+			left: 100%;
+		}
+	}
+}
+
+.extra_padding {
+	padding-bottom: 5%;
 }
 
 .menu .closebtn {
-  position: absolute;
-  top: 0;
+	position: absolute;
+	top: 0;
 }
 
-.bottom-nav__profile-pic{
-  height: 2.2rem;
+.bottom-nav__profile-pic {
+	height: 2.2rem;
 }
