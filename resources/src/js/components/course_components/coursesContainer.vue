@@ -7,13 +7,13 @@
         <div v-else>
             <div class="row course_banner fullscreen_width">
                 <div class="col-xs-4 type--right">
-                    <button @click="setPrevTerm" class="btn btn-sm course__button" >Previous</button>
+                    <button @click="setPrevTerm" class="btn btn-sm course__button" v-bind:class="[ this.isSelected ? 'course__button--selected' : '' ]">Previous</button>
                 </div>
                 <div class="col-xs-4 type--center">
-                    <button @click="setCurrTerm" class="btn btn-sm course__button" >Current</button>
+                    <button @click="setCurrTerm" class="btn btn-sm course__button" v-bind:class="[ this.isSelected ? 'course__button--selected' : '' ]">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button @click="setNeTerm" class="btn btn-sm course__button" >Upcoming</button>
+                    <button @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.isSelected ? 'course__button--selected' : '' ]">Upcoming</button>
                 </div>
             </div>
             <course-list></course-list>
@@ -52,7 +52,7 @@
                 "facultyFullName",
                 "term",
                 "selectedTerm",
-                "loadingClasses"
+                "loadingClasses",
             ]),
 
             shouldLoadClasses() {

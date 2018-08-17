@@ -19070,6 +19070,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
+                    class: [this.isSelected ? "course__button--selected" : ""],
                     on: { click: _vm.setPrevTerm }
                   },
                   [_vm._v("Previous")]
@@ -19081,6 +19082,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
+                    class: [this.isSelected ? "course__button--selected" : ""],
                     on: { click: _vm.setCurrTerm }
                   },
                   [_vm._v("Current")]
@@ -19092,6 +19094,7 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
+                    class: [this.isSelected ? "course__button--selected" : ""],
                     on: { click: _vm.setNeTerm }
                   },
                   [_vm._v("Upcoming")]
