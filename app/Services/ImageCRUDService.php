@@ -8,8 +8,7 @@ use App\Contracts\ImageCRUDContract;
 use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Intervention implementation of image CRUD.
@@ -26,28 +25,27 @@ class ImageCRUDService implements ImageCRUDContract
     /** Image uploading functionality. */
     public function upload()
     {
-        $id = request()->id;
-        $directory = env('IMAGE_UPLOAD_LOCATION') . request()->uri;
-        $savedImage = $directory . '/likeness.jpg';
-
-        $manager = new ImageManager(['driver' => 'imagick']);
-
-        $image = $manager->make(request()->photo);
-        if (!File::exists($directory)) {
-            File::makeDirectory($directory);
-        }
-
-        if (null !== $image->save($savedImage)) {
-            $this->clearCache($id);
-
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'profile_image' => [
+                    'required',
+                    function ($attribute, $value, $fail) {
+                        if (!\base64_decode($value)) {
+                            return $fail('Please include ' . $attribute . ' it is required.');
+                        }
+                    }, ],
+                'entity_type' => 'required|string',
+                'image_type' => 'required|string',
+            ]
+        );
+        if ($validator->fails()) {
             return [
-                'status' => true,
+                'status' => '422',
+                'success' => 'false',
+                'message' => $validator->messages()->all(),
             ];
         }
-
-        return [
-            'status' => false,
-        ];
     }
 
     /** Retrieve image priority

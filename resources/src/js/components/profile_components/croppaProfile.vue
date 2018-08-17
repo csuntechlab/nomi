@@ -87,7 +87,9 @@
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
-                        photo: url,
+                        profile_image: url,
+                        image_type: 'likeness',
+                        entity_type: 'student',
                         uri: uri
                     }).then(response => {
                         if (response.status) {
