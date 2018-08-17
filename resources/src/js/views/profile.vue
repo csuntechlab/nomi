@@ -67,7 +67,8 @@ export default {
 	},
 
 	computed: {
-		...mapGetters(["studentProfile", "facultyMember", "studentImages", 'errors', 'profileErrors', 'profileLoadError'])
+
+		...mapGetters(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])
 	},
 
 	methods: {
@@ -86,5 +87,6 @@ export default {
 			console.log("Profile Error found: " + this.profileErrors);
 		},
 	}
+
 };
 </script>

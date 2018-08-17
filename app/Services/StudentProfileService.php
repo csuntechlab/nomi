@@ -37,11 +37,11 @@ class StudentProfileService implements StudentProfileContract
         $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];
 
-        if ($profile['profile_image'] == null) {
-            $profile['profile_image'] = (string) $imageManager
-                ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
-                ->encode('data-url');
-        }
+        // if ($profile['profile_image'] == null) {
+        //     $profile['profile_image'] = (string) $imageManager
+        //         ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
+        //         ->encode('data-url');
+        // }
 
         $note = Note::where('user_id', auth()->user()->user_id)
             ->where('student_id', $profile['individuals_id'])
@@ -50,8 +50,6 @@ class StudentProfileService implements StudentProfileContract
         $imagePriority = $this
             ->imageCRUD
             ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
-
-        $studentAudio = \json_decode($this->webResourceRetriever->getMedia($email), true)['media'][0]['audio'];
 
         $studentProfile = (object) [
             'display_name' => $profile['display_name'],
@@ -62,12 +60,7 @@ class StudentProfileService implements StudentProfileContract
             'members_id' => $profile['individuals_id'],
             'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
-            'studentAudio' => $studentAudio,
         ];
-
-        $moreInfo = $this->rosterRetriever->sanitizeStudent($studentProfile);
-
-        $studentProfile->images = $moreInfo['images'];
 
         return \json_encode($studentProfile);
     }
