@@ -154,6 +154,10 @@ Compiles to 2.4rem*/
   height: 2.2rem;
 }
 
+body {
+  margin-bottom: 10%;
+}
+
 .theme-login body {
   background-color: #FFFFFF;
   color: #464646;
@@ -1803,7 +1807,7 @@ textarea {
   z-index: 2;
   position: absolute;
   border-radius: 100%;
-  font-size: 150%;
+  font-size: 1.8em;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
@@ -1832,14 +1836,14 @@ textarea {
   .profile-carousel__edit {
     bottom: 25%;
     right: 15%;
-    padding: 3%;
+    padding: 4%;
   }
 }
 
 @media only screen and (min-width: 400px) and (max-width: 600px) {
   .profile-carousel__edit {
     bottom: 25%;
-    right: 22%;
+    right: 26%;
     padding: 3%;
   }
 }
@@ -1848,7 +1852,7 @@ textarea {
   .profile-carousel__edit {
     bottom: 25%;
     right: 28%;
-    padding: 2%;
+    padding: 3%;
   }
 }
 
@@ -1856,7 +1860,7 @@ textarea {
   .profile-carousel__edit {
     bottom: 25%;
     right: 32%;
-    padding: 2%;
+    padding: 3%;
   }
 }
 
@@ -1864,7 +1868,7 @@ textarea {
   .profile-carousel__edit {
     bottom: 30%;
     right: 37%;
-    padding: 1%;
+    padding: 2%;
   }
 }
 

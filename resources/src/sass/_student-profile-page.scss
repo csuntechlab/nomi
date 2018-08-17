@@ -69,7 +69,7 @@
 	z-index: 2;
 	position: absolute;
 	border-radius: 100%;
-	font-size: 150%;
+	font-size: 1.8em;
 	-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 	@include themify($themes) {
@@ -79,27 +79,27 @@
 	@media only screen and (max-width: 400px) {
 		bottom: 25%;
 		right: 15%;
-		padding: 3%;
+		padding: 4%;
 	}
 	@media only screen and (min-width: 400px) and (max-width: 600px) {
 		bottom: 25%;
-		right: 22%;
+		right: 26%;
 		padding: 3%;
 	}
 	@media only screen and (min-width: 600px) and (max-width: 750px) {
 		bottom: 25%;
 		right: 28%;
-		padding: 2%;
+		padding: 3%;
 	}
 	@media only screen and (min-width: 750px) and (max-width: 1000px) {
 		bottom: 25%;
 		right: 32%;
-		padding: 2%;
+		padding: 3%;
 	}
 	@media only screen and (min-width: 1000px) {
 		bottom: 30%;
 		right: 37%;
-		padding: 1%;
+		padding: 2%;
 	}
 }
 

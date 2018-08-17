@@ -21485,7 +21485,7 @@ var render = function() {
     _vm._v(" "),
     this.editable
       ? _c("i", {
-          staticClass: "fas fa-2x fa-pencil-alt profile-carousel__edit",
+          staticClass: "fas fa-pencil-alt profile-carousel__edit",
           on: { click: _vm.checkPermission }
         })
       : _vm._e()
@@ -22618,10 +22618,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	created: function created() {
 		this.$store.dispatch("disableBackButton");
 		this.$store.dispatch("showBackButton");
+		console.log(this.studentProfile);
 		this.$store.dispatch("getStudentProfile", {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
+		console.log('after ' + this.studentProfile);
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
@@ -23615,7 +23617,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.studentProfile.images == null
+    this.studentProfile.images == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
