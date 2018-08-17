@@ -65,6 +65,7 @@ export default {
         data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
         data.append('faculty_id', payload.faculty_id);
+        console.log(data);
 
         window.axios.post('api/priority', data)
             .then(response => {

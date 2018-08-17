@@ -1460,65 +1460,6 @@ textarea {
   color: #dfe5ec;
 }
 
-.profile-edit-button {
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  border-radius: 100%;
-  padding: 5%;
-  font-size: 150%;
-  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
-}
-
-.theme-main .profile-edit-button {
-  background-color: #4F9DA3;
-  color: #ffffff;
-}
-
-.theme-bluesTheme .profile-edit-button {
-  background-color: #fff;
-  color: #2e88c5;
-}
-
-.theme-OnceAMatadorAlwaysAMatador .profile-edit-button {
-  background-color: #fff;
-  color: #808080;
-}
-
-.theme-Dark .profile-edit-button {
-  background-color: #426c96;
-  color: #dfe5ec;
-}
-
-@media only screen and (min-width: 350px) {
-  .profile-edit-button {
-    bottom: 0%;
-    right: 8%;
-    padding: 3%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .profile-edit-button {
-    bottom: 2%;
-    right: 15%;
-    padding: 3%;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .profile-edit-button {
-    bottom: 5%;
-    right: 25%;
-    padding: 3%;
-  }
-}
-
-.profile_edit-padding {
-  padding: 5%;
-}
-
 .makeWhite {
   -webkit-filter: grayScale(0%);
           filter: grayScale(0%);
@@ -1915,8 +1856,8 @@ textarea {
 
 .notes__status {
   padding-right: 5px;
-  opacity: .8;
-  font-size: .9rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
   vertical-align: top;
 }
 
@@ -1929,6 +1870,83 @@ textarea {
   min-height: 100px;
   overflow: hidden;
   margin-bottom: 0 !important;
+}
+
+.profile-carousel__default-btn {
+  margin-top: 0.66666667rem;
+}
+
+.profile-carousel__edit {
+  z-index: 2;
+  position: absolute;
+  border-radius: 100%;
+  font-size: 150%;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-main .profile-carousel__edit {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .profile-carousel__edit {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile-carousel__edit {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-Dark .profile-carousel__edit {
+  background-color: #426c96;
+  color: #dfe5ec;
+}
+
+@media only screen and (max-width: 400px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 15%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 22%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 750px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 28%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1000px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 32%;
+    padding: 2%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .profile-carousel__edit {
+    bottom: 30%;
+    right: 37%;
+    padding: 1%;
+  }
+}
+
+.profile-carousel__edit-padding {
+  padding: 5%;
 }
 
 .login {
