@@ -1,6 +1,6 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
-        <div>
+        <div v-if="this.student.image_priority === 'likeness'">
             <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"></i>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
@@ -52,7 +52,6 @@ export default {
   computed: {
 
     ...mapGetters([
-      'studentImages',
       'permission'  
     ]),
 
@@ -69,7 +68,11 @@ export default {
     },
 
     image: function() {
-      return this.studentImages[this.student.student_id];
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } else if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
     }
   },
 

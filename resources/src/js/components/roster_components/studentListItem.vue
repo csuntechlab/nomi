@@ -34,7 +34,6 @@ export default {
     computed: {
             
         ...mapGetters([
-            'studentImages'  
          ]),
 
         display_name: function() {
@@ -46,7 +45,11 @@ export default {
         },
 
         image: function() {
-            return this.studentImages[this.student.student_id];
+            if (this.student.image_priority === 'likeness') {
+                return this.student.images.likeness;
+            } else if (this.student.image_priority === 'avatar') {
+                return this.student.images.avatar;
+            }
         }
     }
 }
