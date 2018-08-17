@@ -13,6 +13,7 @@ Vue.component('nav-bar', require('./components/fixed_components/navBar.vue'));
 Vue.component('menu-bar', require('./components/fixed_components/menuBar.vue'));
 Vue.component('error-bar', require('./components/fixed_components/errorBar.vue'));
 Vue.component('permission-modal', require('./components/fixed_components/permissionModal.vue'));
+Vue.component('side-menu', require('./components/fixed_components/sideMenu.vue'));
 
 const app = new Vue({
     el: '#app',

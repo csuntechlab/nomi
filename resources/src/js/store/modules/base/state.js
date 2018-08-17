@@ -4,7 +4,7 @@ export default {
     flashroster: [],
     errors: null,
     imagePermission: null,
-    menuShow: false,
+    displaySideMenu: false,
     currentLocation: 'home',
     students: [],
     

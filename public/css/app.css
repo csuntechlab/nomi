@@ -11,12 +11,13 @@ Compiles to 2.4rem*/
   padding: 0;
   position: fixed;
   bottom: 0;
-  height: 7%;
-  width: 100%;
+  left: 100%;
+  height: 100%;
+  width: 60%;
 }
 
 .transparent_non-menu_layer {
-  z-index: 1;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.7);
   margin: 0;
   padding: 0;
@@ -33,7 +34,7 @@ Compiles to 2.4rem*/
   margin: 0;
   text-decoration: none;
   text-align: center;
-  padding: .75% .75% .75% .75%;
+  padding: 0.75% 0.75% 0.75% 0.75%;
   display: block;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -43,18 +44,101 @@ Compiles to 2.4rem*/
   opacity: 0.5;
 }
 
-.faculty_links {
+.side-menu {
+  z-index: 3;
   color: white;
   text-decoration: none;
-  font-size: 3vh;
-  font-family: sans-serif;
-  font-weight: bold;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   margin: 0;
-  padding: 1%;
+  position: fixed;
+  bottom: 0;
+  padding: 4rem 1.5rem;
+  height: 100%;
+}
+
+.theme-main .side-menu {
+  background-color: #172533;
+}
+
+.theme-bluesTheme .side-menu {
+  background-color: #104669;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .side-menu {
+  background-color: #a61926;
+}
+
+.theme-Dark .side-menu {
+  background-color: #2a2a2a;
+}
+
+.side-menu__link {
+  font-size: 1.5rem;
+  font-family: sans-serif;
   text-align: center;
   display: block;
+  padding: .5rem 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.side-menu__link:hover {
+  opacity: .5;
+}
+
+.side-menu__options {
+  margin-top: 1rem;
+}
+
+.side-menu__greeting {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+.side-menu__img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 450px) {
+  .side-menu {
+    width: 70%;
+  }
+  .side-menu--display {
+    left: 30%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+  .side-menu {
+    width: 60%;
+  }
+  .side-menu--display {
+    left: 40%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .side-menu {
+    width: 40%;
+  }
+  .side-menu--display {
+    left: 60%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
 }
 
 .extra_padding {
@@ -85,12 +169,6 @@ Compiles to 2.4rem*/
 .theme-bluesTheme body {
   background-color: #d9e7ee;
   color: #575757;
-  padding-top: 2.4rem;
-}
-
-.theme-Cloudy body {
-  background-color: #D8D8D8;
-  color: #464646;
   padding-top: 2.4rem;
 }
 
@@ -125,11 +203,6 @@ html * {
   color: #d9e7ee;
 }
 
-.theme-Cloudy html * {
-  font-size: 1.1rem;
-  color: #D8D8D8;
-}
-
 .theme-OnceAMatadorAlwaysAMatador html * {
   font-size: 1.1rem;
   color: #FFFFFF;
@@ -160,7 +233,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -173,7 +246,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -186,7 +259,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -194,25 +267,12 @@ textarea[type="text"]:focus {
   color: #d9e7ee;
 }
 
-.theme-Cloudy .primary-nav {
-  background-color: #747474;
-  position: fixed;
-  height: 2.46666667rem;
-  width: 100%;
-  z-index: 99;
-  top: 0;
-}
-
-.theme-Cloudy .primary-nav__sub-brand {
-  color: #D8D8D8;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .primary-nav {
   background-color: #D22030;
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -225,7 +285,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   top: 0;
 }
 
@@ -341,42 +401,6 @@ textarea[type="text"]:focus {
   line-height: 1;
 }
 
-.theme-Cloudy .panel {
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  border: none;
-  margin-bottom: 1rem;
-}
-
-.theme-Cloudy .panel__img {
-  height: auto;
-  background-color: #FFFFFF;
-}
-
-.theme-Cloudy .panel__container {
-  margin-bottom: 0.4rem;
-}
-
-.theme-Cloudy .panel__item {
-  width: 100%;
-  margin: 0;
-}
-
-.theme-Cloudy .panel__header {
-  padding-bottom: 1.5rem;
-  font-weight: bold;
-}
-
-.theme-Cloudy .panel__emptyCourseHeader {
-  padding-bottom: 0.5rem;
-}
-
-.theme-Cloudy .panel__emptyCourseContent {
-  line-height: 1;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .panel {
   border-radius: 3px;
   background-color: #F0F0F0;
@@ -483,14 +507,6 @@ textarea[type="text"]:focus {
   padding: 10px 0;
 }
 
-.theme-Cloudy .course_banner {
-  background-color: rgba(255, 255, 255, 0.5);
-  color: #464646;
-  margin-top: 0.833rem;
-  margin-bottom: 0.833rem;
-  padding: 10px 0;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .course_banner {
   background-color: rgba(0, 0, 0, 0.05);
   color: #464646;
@@ -570,18 +586,6 @@ textarea[type="text"]:focus {
   margin-top: 6%;
 }
 
-.theme-Cloudy .flash_panel {
-  border-radius: 3px;
-  background-color: #FFFFFF;
-  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-          box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  border: none;
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  margin-top: 6%;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .flash_panel {
   border-radius: 3px;
   background-color: #F0F0F0;
@@ -652,11 +656,6 @@ textarea[type="text"]:focus {
   border-bottom: none;
 }
 
-.theme-Cloudy .tab__link {
-  color: #464646;
-  border-bottom: none;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .tab__link {
   color: #464646;
   border-bottom: none;
@@ -695,15 +694,6 @@ textarea[type="text"]:focus {
   text-decoration: none;
   color: #4CA1DB;
   border-bottom: 5px solid #4CA1DB;
-}
-
-.theme-Cloudy .tab__link--active {
-  display: block;
-  padding: 5px 20px;
-  font-weight: normal;
-  text-decoration: none;
-  color: #747474;
-  border-bottom: 5px solid #747474;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .tab__link--active {
@@ -753,11 +743,6 @@ textarea[type="text"]:focus {
   color: #575757 !important;
 }
 
-.theme-Cloudy .roster-sorting__button {
-  background-color: #FFFFFF !important;
-  color: #464646 !important;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__button {
   background-color: #F0F0F0 !important;
   color: #464646 !important;
@@ -786,11 +771,6 @@ textarea[type="text"]:focus {
 .theme-bluesTheme .roster-sorting__button--selected {
   background-color: #4CA1DB !important;
   color: #fff !important;
-}
-
-.theme-Cloudy .roster-sorting__button--selected {
-  background-color: #FFC836 !important;
-  color: #4e4e4e !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__button--selected {
@@ -826,11 +806,6 @@ textarea[type="text"]:focus {
   color: #575757;
 }
 
-.theme-Cloudy .roster-sorting__name {
-  background-color: #FFFFFF;
-  color: #464646;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__name {
   background-color: #F0F0F0;
   color: #464646;
@@ -857,11 +832,6 @@ textarea[type="text"]:focus {
 .theme-bluesTheme .roster-sorting__name--selected {
   background-color: #4CA1DB;
   color: #fff;
-}
-
-.theme-Cloudy .roster-sorting__name--selected {
-  background-color: #FFC836;
-  color: #4e4e4e;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__name--selected {
@@ -896,11 +866,6 @@ textarea {
   color: white;
 }
 
-.theme-Cloudy .menu {
-  background-color: #747474;
-  color: white;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .menu {
   background-color: #D22030;
   color: white;
@@ -930,12 +895,6 @@ textarea {
 .theme-bluesTheme .btn {
   background-color: #4CA1DB;
   color: #fff;
-  border: 2px solid transparent;
-}
-
-.theme-Cloudy .btn {
-  background-color: #FFC836;
-  color: #4e4e4e;
   border: 2px solid transparent;
 }
 
@@ -987,12 +946,6 @@ textarea {
   background-image: white;
 }
 
-.theme-Cloudy .csun_logo {
-  width: 65px;
-  height: 45px;
-  background-image: white;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .csun_logo {
   width: 65px;
   height: 45px;
@@ -1024,15 +977,6 @@ textarea {
 }
 
 .theme-bluesTheme .nomi_logo {
-  width: 65px;
-  height: 30px;
-  border-left: 1px solid #ccc;
-  padding-left: 8px;
-  margin-left: 4px;
-  margin-top: 2px;
-}
-
-.theme-Cloudy .nomi_logo {
   width: 65px;
   height: 30px;
   border-left: 1px solid #ccc;
@@ -1076,12 +1020,6 @@ textarea {
   padding: 0.2rem 0;
 }
 
-.theme-Cloudy .settings_banner {
-  background: rgba(255, 255, 255, 0.5);
-  margin-bottom: .1rem;
-  padding: 0.2rem 0;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .settings_banner {
   background: rgba(0, 0, 0, 0.05);
   margin-bottom: .1rem;
@@ -1095,6 +1033,7 @@ textarea {
 }
 
 .bottom-nav {
+  z-index: 4;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -1113,10 +1052,6 @@ textarea {
 
 .theme-bluesTheme .bottom-nav {
   background: #0D3753;
-}
-
-.theme-Cloudy .bottom-nav {
-  background: #747474;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .bottom-nav {
@@ -1165,10 +1100,6 @@ textarea {
   color: #4CA1DB;
 }
 
-.theme-Cloudy .course-card--selected {
-  color: #747474;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .course-card--selected {
   color: #E74A37;
 }
@@ -1194,11 +1125,6 @@ textarea {
 .theme-bluesTheme .roster-list__item {
   background-color: white;
   border-bottom: 1px solid #d9e7ee;
-}
-
-.theme-Cloudy .roster-list__item {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #D8D8D8;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .roster-list__item {
@@ -1243,10 +1169,6 @@ textarea {
   background-color: #0D3753;
 }
 
-.theme-Cloudy .makeBlue {
-  background-color: #747474;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .makeBlue {
   background-color: #D22030;
 }
@@ -1263,10 +1185,6 @@ textarea {
   background-color: #4CA1DB;
 }
 
-.theme-Cloudy .accentColorBlue {
-  background-color: #747474;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .accentColorBlue {
   background-color: #E74A37;
 }
@@ -1281,10 +1199,6 @@ textarea {
 
 .theme-bluesTheme .icon_theme {
   color: #4CA1DB;
-}
-
-.theme-Cloudy .icon_theme {
-  color: #747474;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .icon_theme {
@@ -1311,12 +1225,6 @@ textarea {
   background-color: #0D3753;
   font-size: 1.1rem;
   color: #d9e7ee;
-}
-
-.theme-Cloudy .nav-bars {
-  background-color: #747474;
-  font-size: 1.1rem;
-  color: #D8D8D8;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .nav-bars {
@@ -1653,10 +1561,6 @@ textarea {
   color: white;
 }
 
-.theme-Cloudy .croppa-container {
-  color: #FFFFFF;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .croppa-container {
   color: #F0F0F0;
 }
@@ -1733,10 +1637,6 @@ textarea {
   background: white;
 }
 
-.theme-Cloudy .confirm_btn {
-  background: #FFFFFF;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .confirm_btn {
   background: #F0F0F0;
 }
@@ -1760,10 +1660,6 @@ textarea {
 }
 
 .theme-bluesTheme .confirm_btn:hover {
-  background: #ccc;
-}
-
-.theme-Cloudy .confirm_btn:hover {
   background: #ccc;
 }
 
@@ -1793,10 +1689,6 @@ textarea {
   background: white;
 }
 
-.theme-Cloudy .decline_btn {
-  background: #FFFFFF;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .decline_btn {
   background: #F0F0F0;
 }
@@ -1820,10 +1712,6 @@ textarea {
 }
 
 .theme-bluesTheme .decline_btn:hover {
-  background: #ccc;
-}
-
-.theme-Cloudy .decline_btn:hover {
   background: #ccc;
 }
 
@@ -1865,10 +1753,6 @@ textarea {
   border: 3px solid #4CA1DB;
 }
 
-.theme-Cloudy textarea[type="text"]:focus {
-  border: 3px solid;
-}
-
 .theme-OnceAMatadorAlwaysAMatador textarea[type="text"]:focus {
   border: 3px solid #92A1CD;
 }
@@ -1889,10 +1773,6 @@ textarea {
   border-bottom: 5px solid #d9e7ee;
 }
 
-.theme-Cloudy .underlineStyling {
-  border-bottom: 5px solid #D8D8D8;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .underlineStyling {
   border-bottom: 5px solid #FFFFFF;
 }
@@ -1911,10 +1791,6 @@ textarea {
 
 .theme-bluesTheme .underlineStyling--red {
   border-bottom: 5px solid #4CA1DB;
-}
-
-.theme-Cloudy .underlineStyling--red {
-  border-bottom: 5px solid #747474;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .underlineStyling--red {
@@ -2267,10 +2143,6 @@ textarea {
   background: white;
 }
 
-.theme-Cloudy .modal-container {
-  background: #FFFFFF;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .modal-container {
   background: #F0F0F0;
 }
@@ -2289,10 +2161,6 @@ textarea {
 
 .theme-bluesTheme .modal-header h3 {
   color: #4CA1DB;
-}
-
-.theme-Cloudy .modal-header h3 {
-  color: #747474;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .modal-header h3 {
@@ -2331,10 +2199,6 @@ textarea {
   background-color: #4CA1DB;
 }
 
-.theme-Cloudy .modal-button-container {
-  background-color: #747474;
-}
-
 .theme-OnceAMatadorAlwaysAMatador .modal-button-container {
   background-color: #E74A37;
 }
@@ -2353,10 +2217,6 @@ textarea {
 
 .theme-bluesTheme .modal-button {
   color: white;
-}
-
-.theme-Cloudy .modal-button {
-  color: #FFFFFF;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .modal-button {

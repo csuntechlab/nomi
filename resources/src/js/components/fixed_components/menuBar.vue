@@ -7,11 +7,9 @@
 </template>
 
 <script>
-    import menuUp from './menuUp.vue'
     import bottomNav from './bottomNav.vue'
     export default {
         components: {
-            menuUp,
             bottomNav
         },
 

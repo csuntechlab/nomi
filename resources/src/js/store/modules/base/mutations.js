@@ -101,7 +101,7 @@ export default {
     },
 
     TOGGLE_MENU (state) {
-        state.menuShow = !state.menuShow;
+        state.displaySideMenu = !state.displaySideMenu;
     },
 
     SHUFFLE_FLASH (state) {
