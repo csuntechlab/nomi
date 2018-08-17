@@ -82,15 +82,7 @@ class StudentProfileServiceTest extends TestCase
             'members_id' => 'members:student',
             'notes' => 'This is a note',
             'image_priority' => 'likeness',
-            'studentAudio' => 'haha',
         ];
-
-        $this->rosterRetriever
-            ->shouldReceive('sanitizeStudent')
-            ->once()
-            ->andReturn(['images' => 'evenMoreImages']);
-
-        $studentProfile->images = 'evenMoreImages';
 
         $output = $studentService->getStudentProfile($email);
 

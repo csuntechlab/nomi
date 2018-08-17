@@ -68,7 +68,21 @@ class SPAController extends Controller
         $user = auth()->user();
         $email = $user->email;
 
-        return ['courses' => $courses, 'students' => $students, 'email' => $email, 'term' => "$term"];
+        $allStudents = [];
+
+        foreach ($students as $class) {
+            $allStudents = \array_merge($allStudents, $class);
+        }
+
+        $allStudents = \array_unique($allStudents, SORT_REGULAR);
+
+        return [
+            'courses' => $courses,
+            'students' => $students,
+            'allStudents' => $allStudents,
+            'email' => $email,
+            'term' => "$term",
+        ];
     }
 
     /**

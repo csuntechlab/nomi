@@ -1,6 +1,7 @@
 export default {
     getStudentProfile (context, payload) {
-        context.commit('GET_STUDENT_PROFILE', payload);
+        var getters = context.getters
+        context.commit('GET_STUDENT_PROFILE', {payload, getters});
     },
 
     updateNotes (context, notes) {

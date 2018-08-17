@@ -34,21 +34,7 @@ export default {
                     state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                     state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                     state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                    for(let course in state.courses) {
-                        if (state.courses.hasOwnProperty(course)){
-                            let realCourse = state.courses[course];
-                            for(let student in realCourse.roster) {
-                                if(realCourse.roster.hasOwnProperty(student)){
-                                    let realStudent = realCourse.roster[student];
-                                    let studentId = realStudent.student_id;
-                                    let url = realStudent.images.likeness;
-    
-                                    state.studentImages[studentId] = url;
-                                }
-                            }
-                        }
-                        
-                    }
+                    
                     window.axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
@@ -67,6 +53,7 @@ export default {
             .then(response => {
                 state.term = response.data["term"];
                 state.courses = response.data["courses"];
+                state.students = response.data["allStudents"]
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
@@ -74,21 +61,7 @@ export default {
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                for(let course in state.courses) {
-                    if (state.courses.hasOwnProperty(course)){
-                        let realCourse = state.courses[course];
-                        for(let student in realCourse.roster) {
-                            if(realCourse.roster.hasOwnProperty(student)){
-                                let realStudent = realCourse.roster[student];
-                                let studentId = realStudent.student_id;
-                                let url = realStudent.images.likeness;
-
-                                state.studentImages[studentId] = url;
-                            }
-                        }
-                    }
-                    
-                }
+            
                 window.axios.get(`faculty_profile/${state.facultyMember.email}`)
                     .then(response => {
                         state.facultyMember.image = response.data.image;
