@@ -3,12 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="type--center">
-                        <span>
-                            <h2 class="pull-left">{{this.student.displayName}}</h2>
-                            <i class="fas fa-2x fa-volume-up profile-header__audio-button" @click="listenAudio()"></i>
-                        </span>
-                    </div>
+                    <h2 class="type--center">{{this.student.displayName}}</h2>
+                    <i class="fas fa-2x fa-volume-up profile-header__audio-button" @click="listenAudio()"></i>
                 </div>
                 <div class="type--center">
                     <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">
@@ -136,18 +132,18 @@ export default {
             if (this.permission == false)
                 this.$store.dispatch('nullifyPermissionResponse');
             },
-            listenAudio() {
-                    window.axios.get(this.student.name_recording, {
-                    }).then(response => {
-                        if (response.status) {
-                            console.log(this.student.name_recording);
-                        }
-                    }).catch(e => {
-                        alert("Sorry, this student has not submitted a recording of their name.");
-                    });
-                }
-            },
-            
+            // listenAudio() {
+            //         window.axios.get(this.student.name_recording, {
+            //         }).then(response => {
+            //             if (response.status) {
+            //                 console.log(this.student.name_recording);
+            //             }
+            //         }).catch(e => {
+            //             alert("Sorry, this student has not submitted a recording of their name.");
+            //         });
+            //     }
+            // },
+        }
             
         }
 </script>

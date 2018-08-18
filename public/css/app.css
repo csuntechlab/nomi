@@ -1850,9 +1850,12 @@ textarea {
 }
 
 .profile-header__audio-button {
-  position: relative;
   cursor: pointer;
   z-index: 2;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  margin: 0 8%;
 }
 
 .theme-main .profile-header__audio-button {
@@ -1869,6 +1872,19 @@ textarea {
 
 .theme-Dark .profile-header__audio-button {
   color: #97B5D8;
+}
+
+@media only screen and (max-width: 321px) {
+  .profile-header__audio-button {
+    margin: 0 5%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .profile-header__audio-button {
+    margin: 0 30%;
+    bottom: 5%;
+  }
 }
 
 .login {

@@ -5,11 +5,12 @@
             <div class="col-xs-3 col-md-2">
                 <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
             </div>
-            <div class="col-xs-9 col-md-10">
+            <div class="col-xs-7 col-md-8">
                 <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
                     {{display_name}}
                 </router-link>
             </div>
+            
         </div>
         </div>
     </router-link>
