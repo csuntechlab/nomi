@@ -113,11 +113,11 @@ export default {
                 'permission',
             ]),
             image: function() {
-                return this.student.images.likeness;
+                return this.student.student.images.likeness;
             },
 
             avatar: function() {
-                return this.student.images.avatar;
+                return this.student.student.images.avatar;
             },
         },
 

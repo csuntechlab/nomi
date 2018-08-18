@@ -21742,7 +21742,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-profile",
 
-    props: ['studentImage', 'emailURI', 'studentName'],
+    props: ['student'],
 
     data: function data() {
         return {
@@ -21840,7 +21840,7 @@ var render = function() {
         attrs: {
           "prevent-white-space": true,
           "show-remove-button": false,
-          "initial-image": _vm.studentImage,
+          "initial-image": this.student.images.likeness,
           quality: 2
         },
         on: {
@@ -22069,11 +22069,7 @@ var render = function() {
               _c(
                 "div",
                 { attrs: { slot: "body" }, slot: "body" },
-                [
-                  _c("croppa-profile", {
-                    attrs: { emailURI: _vm.email_uri, studentImage: _vm.image }
-                  })
-                ],
+                [_c("croppa-profile", { attrs: { student: this.student } })],
                 1
               )
             ]
@@ -22827,11 +22823,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['permission']), {
         image: function image() {
-            return this.student.images.likeness;
+            return this.student.student.images.likeness;
         },
 
         avatar: function avatar() {
-            return this.student.images.avatar;
+            return this.student.student.images.avatar;
         }
     }),
 
@@ -23677,7 +23673,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.studentProfile.images == null
+    this.studentProfile.student == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -25250,7 +25246,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         images: null,
         imagePriority: null,
         notes: null,
-        firstName: null
+        firstName: null,
+        student: null
     },
 
     profileErrors: null,
@@ -25337,8 +25334,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             for (var student in getters.students) {
                 if (getters.students.hasOwnProperty(student)) {
                     if (getters.students[student].email == tempEmail) {
-                        state.studentProfile.images = getters.students[student].images;
-                        state.studentProfile.name_recording = getters.students[student].name_recording;
+                        state.studentProfile.student = getters.students[student];
                         break;
                     }
                 }

@@ -29,8 +29,7 @@ export default {
                 for(var student in getters.students) {
                     if(getters.students.hasOwnProperty(student)) {
                         if(getters.students[student].email == tempEmail) {
-                            state.studentProfile.images = getters.students[student].images;
-                            state.studentProfile.name_recording = getters.students[student].name_recording;
+                            state.studentProfile.student = getters.students[student];
                             break;
                         }
                     }

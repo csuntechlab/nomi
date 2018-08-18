@@ -4,7 +4,7 @@
             v-model="myCroppa"
             :prevent-white-space="true"
             :show-remove-button="false"
-            :initial-image="studentImage"
+            :initial-image="this.student.images.likeness"
             :quality="2"
             @init="styleCanvas()"
             @loading-start="loadingStart"
@@ -37,7 +37,7 @@
     export default {
         name: "croppa-profile",
 
-        props:['studentImage', 'emailURI', 'studentName'],
+        props:['student'],
 
         data: function() {
             return{

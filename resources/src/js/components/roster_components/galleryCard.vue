@@ -16,7 +16,7 @@
         <modal v-if="displayModal" @close="showCroppaModal = false">
             <div slot="header"></div>
             <div slot="body">
-                <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
+                <croppa-profile :student="this.student"></croppa-profile>
             </div>
         </modal>
     </div>
