@@ -4,6 +4,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h2 class="type--center">{{this.student.displayName}}</h2>
+                    <audio id="audio_name">
+                        <source :src="this.student.name_recording"  type="audio/mpeg">
+                    </audio>
                     <i class="fas fa-2x fa-volume-up profile-header__audio-button" @click="listenAudio()"></i>
                 </div>
                 <div class="type--center">
@@ -132,18 +135,18 @@ export default {
             if (this.permission == false)
                 this.$store.dispatch('nullifyPermissionResponse');
             },
-            // listenAudio() {
-            //         window.axios.get(this.student.name_recording, {
-            //         }).then(response => {
-            //             if (response.status) {
-            //                 console.log(this.student.name_recording);
-            //             }
-            //         }).catch(e => {
-            //             alert("Sorry, this student has not submitted a recording of their name.");
-            //         });
-            //     }
-            // },
+            listenAudio() {
+                    window.axios.get(this.student.name_recording)
+                    .then(response => {
+                        if (response.status) {
+                            document.getElementById('audio_name').play();
+                            console.log(this.student.name_recording);
+                        }
+                    }).catch(e => {
+                        alert("Sorry, this student has not submitted a recording of their name.");
+                    });
+                }
         }
-            
-        }
+        
+}
 </script>

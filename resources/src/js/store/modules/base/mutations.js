@@ -73,7 +73,7 @@ export default {
             })
             .catch(e => {
                 state.errors = e.response.data.message;
-            });
+            }); 
         }
     },
 

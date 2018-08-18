@@ -22791,6 +22791,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -22843,6 +22846,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         checkPermission: function checkPermission() {
             this.showCroppaModal = true;
             if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
+        },
+        listenAudio: function listenAudio() {
+            var _this = this;
+
+            window.axios.get(this.student.name_recording).then(function (response) {
+                if (response.status) {
+                    document.getElementById('audio_name').play();
+                    console.log(_this.student.name_recording);
+                }
+            }).catch(function (e) {
+                alert("Sorry, this student has not submitted a recording of their name.");
+            });
         }
     }
 
@@ -23118,6 +23133,12 @@ var render = function() {
         _c("div", { staticClass: "col-sm-12" }, [
           _c("h2", { staticClass: "type--center" }, [
             _vm._v(_vm._s(this.student.displayName))
+          ]),
+          _vm._v(" "),
+          _c("audio", { attrs: { id: "audio_name" } }, [
+            _c("source", {
+              attrs: { src: this.student.name_recording, type: "audio/mpeg" }
+            })
           ]),
           _vm._v(" "),
           _c("i", {
