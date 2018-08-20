@@ -1372,11 +1372,6 @@ textarea {
   color: #dfe5ec;
 }
 
-.VueCarousel {
-  -ms-touch-action: none;
-      touch-action: none;
-}
-
 .feedback-button {
   position: absolute;
   right: 2%;

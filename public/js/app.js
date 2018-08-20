@@ -22605,7 +22605,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	data: function data() {
 		return {
-			imgUrl: null,
 			unsavedChanges: false
 		};
 	},
@@ -22618,12 +22617,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	created: function created() {
 		this.$store.dispatch("disableBackButton");
 		this.$store.dispatch("showBackButton");
-		console.log(this.studentProfile);
 		this.$store.dispatch("getStudentProfile", {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
-		console.log('after ' + this.studentProfile);
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
@@ -22649,9 +22646,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])),
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearErrors", "clearProfileErrors"]), {
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearProfileErrors"]), {
 		setUnsavedChanges: function setUnsavedChanges() {
 			this.unsavedChanges = true;
 		},
@@ -22915,16 +22912,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return this.studentProfile.imagePriority === _vm.image_type
-    ? _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default textOverflow",
-            on: { click: _vm.updateImageHandler }
-          },
-          [_vm._v("Default Set "), _c("i", { staticClass: "fas fa-check" })]
-        )
-      ])
+    ? _c("div", [_vm._m(0)])
     : _c("div", [
         _c(
           "button",
@@ -22936,7 +22924,17 @@ var render = function() {
         )
       ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn btn-default textOverflow" }, [
+      _vm._v("Default Set "),
+      _c("i", { staticClass: "fas fa-check" })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -25306,9 +25304,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
         data.append('student_id', state.studentProfile.id);
+        console.log(state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
         data.append('faculty_id', payload.faculty_id);
-
+        console.log(payload);
+        console.log(data);
         window.axios.post('api/priority', data).then(function (response) {
             state.studentProfile.imagePriority = payload.image_priority;
         }).catch(function (e) {

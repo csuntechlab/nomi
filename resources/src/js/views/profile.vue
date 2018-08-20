@@ -21,7 +21,6 @@ export default {
 
 	data: function() {
 		return {
-			imgUrl: null,
 			unsavedChanges: false
 		};
 	},
@@ -34,12 +33,10 @@ export default {
 	created() {
 		this.$store.dispatch("disableBackButton");
 		this.$store.dispatch("showBackButton");
-		console.log(this.studentProfile);
 		this.$store.dispatch("getStudentProfile", {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
-		console.log('after ' +this.studentProfile);
 	},
 
 	updated() {
@@ -70,12 +67,11 @@ export default {
 
 	computed: {
 
-		...mapGetters(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])
+		...mapGetters(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])
 	},
 
 	methods: {
 		...mapActions([
-			"clearErrors",
 			"clearProfileErrors",
 		]),
 		setUnsavedChanges() {
