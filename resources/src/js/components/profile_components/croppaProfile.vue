@@ -5,11 +5,11 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
+            :initial-image="this.student.images.likeness"
             @init="styleCanvas()"
             @loading-start="loadingStart"
-            @loading-end="loadingEnd"
-        >
-            <img crossOrigin="anonymous" :src="this.student.images.likeness">
+            @loading-end="loadingEnd">
+            <!-- <img crossOrigin="anonymous" :src="this.student.images.likeness"> -->
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
             <div class="croppa_loading_icon">
