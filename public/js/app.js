@@ -23109,8 +23109,8 @@ var render = function() {
               {
                 attrs: {
                   perPage: 1,
-                  paginationActiveColor: "#FFF",
-                  paginationColor: "rgba(255,255,255,.3)"
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
                 }
               },
               [
@@ -25304,11 +25304,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
         var data = new FormData();
         data.append('student_id', state.studentProfile.id);
-        console.log(state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
         data.append('faculty_id', payload.faculty_id);
-        console.log(payload);
-        console.log(data);
         window.axios.post('api/priority', data).then(function (response) {
             state.studentProfile.imagePriority = payload.image_priority;
         }).catch(function (e) {

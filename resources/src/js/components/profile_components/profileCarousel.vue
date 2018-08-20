@@ -6,7 +6,7 @@
                     <h1 class="type--center">{{this.student.displayName}}</h1>
                 </div>
                 <div class="type--center">
-                    <carousel :perPage="1" :paginationActiveColor="'#FFF'" :paginationColor="'rgba(255,255,255,.3)'">
+                    <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                         <slide class="slidewrap">
                             <div class="imagewrap">
                                 <profile-picture :image="image" :editable="true" @showModal="checkPermission()"></profile-picture>

@@ -6,7 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Traits\HasCompositePrimaryKey;
+use App\Traits\HasCompositePrimaryKey;
 
 class ImagePriority extends Model
 {
