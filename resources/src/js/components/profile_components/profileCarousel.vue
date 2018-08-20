@@ -145,7 +145,7 @@ export default {
                     }).catch(e => {
                         alert("Sorry, this student has not submitted a recording of their name.");
                     });
-                }
+            }
         }
         
 }

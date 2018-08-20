@@ -22307,6 +22307,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -22340,7 +22347,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return this.student.images.avatar;
             }
         }
-    })
+    }),
+    methods: {
+        listenAudio: function listenAudio() {
+            var _this = this;
+
+            window.axios.get(this.student.name_recording).then(function (response) {
+                if (response.status) {
+                    document.getElementById('audio_name').play();
+                    console.log(_this.student.name_recording);
+                }
+            }).catch(function (e) {
+                alert("Sorry, this student has not submitted a recording of their name.");
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -22351,55 +22372,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "router-link",
-    {
-      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
-    },
-    [
-      _c("div", { staticClass: "roster-list__item" }, [
-        _c("div", { staticClass: "row" }, [
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "roster-list__item" }, [
+      _c(
+        "div",
+        { staticClass: "row" },
+        [
           _c(
-            "div",
-            { staticClass: "col-xs-3 col-md-2" },
-            [
-              _c("profile-picture", {
-                staticClass: "pull-left ",
-                attrs: { name: _vm.display_name, image: _vm.image }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-xs-7 col-md-8" },
+            "router-link",
+            {
+              attrs: {
+                to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+              }
+            },
             [
               _c(
-                "router-link",
-                {
-                  staticClass:
-                    "type--center student_list_name student_list_name_mobile",
-                  attrs: {
-                    to:
-                      "/profile/" + this.$route.params.id + "/" + _vm.email_uri
-                  }
-                },
+                "div",
+                { staticClass: "col-xs-3 col-md-2" },
                 [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.display_name) +
-                      "\n            "
+                  _c("profile-picture", {
+                    staticClass: "pull-left ",
+                    attrs: { name: _vm.display_name, image: _vm.image }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-xs-7 col-md-8" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass:
+                        "type--center student_list_name student_list_name_mobile",
+                      attrs: {
+                        to:
+                          "/profile/" +
+                          this.$route.params.id +
+                          "/" +
+                          _vm.email_uri
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(_vm.display_name) +
+                          "\n                    "
+                      )
+                    ]
                   )
-                ]
+                ],
+                1
               )
-            ],
-            1
-          )
-        ])
-      ])
-    ]
-  )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-2 col-md-2" }, [
+            _c("audio", { attrs: { id: "audio_name" } }, [
+              _c("source", {
+                attrs: { src: this.student.name_recording, type: "audio/mpeg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fas fa-2x fa-volume-up student-list__audio-button",
+              on: {
+                click: function($event) {
+                  _vm.listenAudio()
+                }
+              }
+            })
+          ])
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

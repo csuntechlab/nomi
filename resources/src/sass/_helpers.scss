@@ -378,3 +378,12 @@ textarea[type="text"]:focus{
 		border: 3px solid themed("focusColor");
 	}
 }
+
+.student-list__audio-button {
+	@include themify($themes) {
+		color: themed("accentColor");
+	}
+	cursor: pointer;
+	position: relative;
+	padding-top: 50%;
+}
