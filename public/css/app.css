@@ -1548,11 +1548,6 @@ textarea {
   color: #bababa !important;
 }
 
-.course__button--selected {
-  width: 100%;
-  margin: 0.5rem 0;
-}
-
 .theme-login .course__button--selected {
   background-color: #d00d2d !important;
   color: !important;

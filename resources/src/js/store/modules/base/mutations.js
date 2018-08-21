@@ -314,7 +314,10 @@ export default {
         state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
         state.semester = "" + state.semester
         state.selectedTerm = 'next'
+    },
+
+    SET_SEM(payload) {
+        state.selectedTerm = payload;
     }
-
-
+    
 }

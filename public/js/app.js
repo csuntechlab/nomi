@@ -19070,7 +19070,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
-                    class: [this.isSelected ? "course__button--selected" : ""],
+                    class: [
+                      this.selectedTerm == "previous"
+                        ? "course__button--selected"
+                        : ""
+                    ],
                     on: { click: _vm.setPrevTerm }
                   },
                   [_vm._v("Previous")]
@@ -19082,7 +19086,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
-                    class: [this.isSelected ? "course__button--selected" : ""],
+                    class: [
+                      this.selectedTerm == "current"
+                        ? "course__button--selected"
+                        : ""
+                    ],
                     on: { click: _vm.setCurrTerm }
                   },
                   [_vm._v("Current")]
@@ -19094,7 +19102,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-sm course__button",
-                    class: [this.isSelected ? "course__button--selected" : ""],
+                    class: [
+                      this.selectedTerm == "next"
+                        ? "course__button--selected"
+                        : ""
+                    ],
                     on: { click: _vm.setNeTerm }
                   },
                   [_vm._v("Upcoming")]
@@ -24852,6 +24864,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	setNextTerm: function setNextTerm(context, payload) {
 		context.commit("SET_NEXT_TERM");
 		context.commit("GET_DATA");
+	},
+	setSem: function setSem(payload) {
+		context.commit("SET_SEM");
 	}
 });
 
@@ -25159,6 +25174,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
         state.semester = "" + state.semester;
         state.selectedTerm = 'next';
+    },
+    SET_SEM: function SET_SEM(payload) {
+        state.selectedTerm = payload;
     }
 });
 
