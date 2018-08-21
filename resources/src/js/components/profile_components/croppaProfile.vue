@@ -5,11 +5,11 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
-            :initial-image="this.student.images.likeness"
+            :initial-image="this.img"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <!-- <img crossOrigin="anonymous" :src="this.student.images.likeness"> -->
+            <!-- <img :src="this.img" slot="initial"> -->
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
             <div class="croppa_loading_icon">
@@ -48,6 +48,7 @@
                 disabled: true,
                 url: "",
                 loadingCroppa: false,
+                img: null
             }
         },
 
@@ -60,6 +61,11 @@
 
         created: function () {
             this.url = document.querySelector('meta[name=app-url]').content;
+
+            this.img = new Image(200, 200);
+            this.img.src = this.student.images.likeness;
+
+            this.img.crossOrigin = "Anonymous";
          },
 
         methods: {
@@ -75,6 +81,7 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
+                    console.log(this.myCroppa);
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let payload = {studentId: this.studentProfile.id, imgUrl: url};
                     this.$store.dispatch('updateImage', payload);

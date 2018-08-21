@@ -30,6 +30,7 @@ export default {
                     if(getters.students.hasOwnProperty(student)) {
                         if(getters.students[student].email == tempEmail) {
                             state.studentProfile.student = getters.students[student];
+                            state.studentProfile.images = getters.students[student].images;
                             break;
                         }
                     }

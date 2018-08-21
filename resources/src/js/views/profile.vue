@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="this.studentProfile.student == null" class="type--center">
+        <div v-if="this.studentProfile.images == null" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
