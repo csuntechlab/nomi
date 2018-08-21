@@ -5,7 +5,7 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
-            :initial-image="this.img"
+            :initial-image="this.student.images.likeness"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
@@ -47,8 +47,7 @@
                 myCroppa: null,
                 disabled: true,
                 url: "",
-                loadingCroppa: false,
-                img: null
+                loadingCroppa: false
             }
         },
 
@@ -61,11 +60,6 @@
 
         created: function () {
             this.url = document.querySelector('meta[name=app-url]').content;
-
-            this.img = new Image(200, 200);
-            this.img.src = this.student.images.likeness;
-
-            this.img.crossOrigin = "Anonymous";
          },
 
         methods: {
