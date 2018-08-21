@@ -1519,32 +1519,57 @@ textarea {
   width: 5.5rem;
 }
 
+.course__descriptor {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.theme-login .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-main .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .course__descriptor {
+  color: #575757 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-Dark .course__descriptor {
+  color: #bababa !important;
+}
+
 .course__button {
   width: 5.5rem;
 }
 
 .theme-login .course__button {
-  background-color: #F0F0F0 !important;
+  background-color: #ccc !important;
   color: #464646 !important;
 }
 
 .theme-main .course__button {
-  background-color: #F4F4F4 !important;
+  background-color: #ccc !important;
   color: #464646 !important;
 }
 
 .theme-bluesTheme .course__button {
-  background-color: white !important;
+  background-color: #ccc !important;
   color: #575757 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .course__button {
-  background-color: #F0F0F0 !important;
+  background-color: #dddddd !important;
   color: #464646 !important;
 }
 
 .theme-Dark .course__button {
-  background-color: #303030 !important;
+  background-color: #272727 !important;
   color: #bababa !important;
 }
 
