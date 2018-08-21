@@ -28,13 +28,13 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @if(env("PROD"))
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-123500967-1“></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123500967-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag(‘js’, new Date());
+        gtag('js', new Date());
 
-        gtag(‘config’, ‘UA-123500967-1’);
+        gtag('config', 'UA-123500967-1');
     </script>
     @endif
     @yield('scripts')

@@ -23150,7 +23150,8 @@ var render = function() {
                         { staticClass: "type--center" },
                         [
                           _c("i", {
-                            staticClass: "fas fa-2x fa-cog profile-edit-button",
+                            staticClass:
+                              "fas fa-2x fa-pencil-alt profile-edit-button",
                             on: { click: _vm.checkPermission }
                           }),
                           _vm._v(" "),
@@ -25644,6 +25645,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -25819,9 +25823,24 @@ var render = function() {
     [
       _c("back-button"),
       _vm._v(" "),
-      _c("div", { staticClass: "nav__header" }, [
-        _vm._v("\n        " + _vm._s(this.displayCurrentTerm) + "\n    ")
-      ])
+      this.displayCurrentTerm != null
+        ? _c("div", [
+            _c("div", { staticClass: "nav__header" }, [
+              _vm._v(
+                "\n        " + _vm._s(this.displayCurrentTerm) + "\n        "
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "feedback-button pull-right",
+                attrs: { href: this.url + "/feedback" }
+              },
+              [_vm._v("Feedback")]
+            )
+          ])
+        : _vm._e()
     ],
     1
   )
