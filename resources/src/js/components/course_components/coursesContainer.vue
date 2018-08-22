@@ -1,6 +1,20 @@
 <template>
     <div>
         <div v-if="this.shouldLoadClasses" class="type--center">
+            <div class="row course_banner fullscreen_width">
+                <div class="col-xs-12 type--center">
+                    <h1 class="course__descriptor">Selected Course</h1>
+                </div>
+                <div class="col-xs-4 type--right">
+                    <button @click="setPrevTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
+                </div>
+                <div class="col-xs-4 type--center">
+                    <button @click="setCurrTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
+                </div>
+                <div class="col-xs-4 type--left">
+                    <button @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Upcoming</button>
+                </div>
+            </div>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
         </div>
