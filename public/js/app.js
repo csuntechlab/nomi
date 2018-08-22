@@ -20542,7 +20542,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
-
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
             this.flashroster[this.courseid].forEach(function (student) {
@@ -20660,7 +20659,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     image: function image() {
-      return this.student.images.likeness;
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } else if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
     }
   }),
 
@@ -21571,10 +21574,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'profile-picture',
-    props: ['image', 'name']
+	name: "profile-picture",
+	props: ["image", "editable", "type"],
+	methods: {
+		checkPermission: function checkPermission() {
+			this.$emit('showModal');
+		}
+	}
 });
 
 /***/ }),
@@ -21587,9 +21596,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "profile_padding profile_image img--circle img--fluid",
-      attrs: { id: this.name + "-img", src: this.image, name: "photo" }
-    })
+      staticClass: "profile_padding img--circle img--fluid-custom",
+      class: [this.type == "profile" ? "profile__img" : "roster__img"],
+      attrs: { src: this.image, name: "photo" }
+    }),
+    _vm._v(" "),
+    this.editable
+      ? _c("i", {
+          staticClass: "fas fa-pencil-alt profile-carousel__edit",
+          on: { click: _vm.checkPermission }
+        })
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -21624,7 +21641,12 @@ var render = function() {
                 { staticClass: "card_face" },
                 [
                   _c("profile-picture", {
-                    attrs: { name: _vm.display_name, image: _vm.image }
+                    staticClass: "roster__img",
+                    attrs: {
+                      name: _vm.display_name,
+                      image: _vm.image,
+                      type: "roster"
+                    }
                   })
                 ],
                 1
@@ -22152,7 +22174,11 @@ var render = function() {
             _c(
               "div",
               { staticClass: "panel__content" },
-              [_c("profile-picture", { attrs: { image: _vm.image } })],
+              [
+                _c("profile-picture", {
+                  attrs: { image: _vm.image, type: "roster" }
+                })
+              ],
               1
             ),
             _vm._v(" "),
@@ -22477,8 +22503,12 @@ var render = function() {
             { staticClass: "col-xs-3 col-md-2" },
             [
               _c("profile-picture", {
-                staticClass: "pull-left ",
-                attrs: { name: _vm.display_name, image: _vm.image }
+                staticClass: "pull-left",
+                attrs: {
+                  name: _vm.display_name,
+                  image: _vm.image,
+                  type: "roster"
+                }
               })
             ],
             1
@@ -22706,7 +22736,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 	data: function data() {
 		return {
-			imgUrl: null,
 			unsavedChanges: false
 		};
 	},
@@ -22748,9 +22777,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])),
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearErrors", "clearProfileErrors"]), {
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearProfileErrors"]), {
 		setUnsavedChanges: function setUnsavedChanges() {
 			this.unsavedChanges = true;
 		},
@@ -22817,55 +22846,15 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaModal_vue__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaModal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_croppaModal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_imageHandler_vue__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_imageHandler_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaModal_vue__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaModal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_croppaModal_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -22909,54 +22898,52 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "profile-carousel",
+	name: "profile-carousel",
 
-    props: ['student'],
+	props: ["student"],
+	data: function data() {
+		return {
+			showCroppaModal: false
+		};
+	},
+	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
 
-    data: function data() {
-        return {
-            showCroppaModal: false
-        };
-    },
-    beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-        if (this.unsavedChanges) {
-            var answer = window.confirm('Do you really want to leave? You have unsaved changes.');
+			if (answer) {
+				next();
+			} else {
+				next(false);
+			}
+		} else {
+			next();
+		}
+	},
 
-            if (answer) {
-                next();
-            } else {
-                next(false);
-            }
-        } else {
-            next();
-        }
-    },
+	components: {
+		imageHandler: __WEBPACK_IMPORTED_MODULE_1__profile_components_imageHandler_vue___default.a,
+		profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a,
+		croppaModal: __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaModal_vue___default.a
+	},
+	methods: {
+		setImgUrl: function setImgUrl(url) {
+			this.showCroppaModal = false;
+			this.imgUrl = url;
+		},
+		checkPermission: function checkPermission() {
+			this.showCroppaModal = true;
+			if (this.permission == false) this.$store.dispatch("nullifyPermissionResponse");
+		}
+	},
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(["permission"]), {
+		image: function image() {
+			return this.student.images.likeness;
+		},
 
-    components: {
-        croppaModal: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaModal_vue___default.a,
-        imageHandler: __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default.a,
-        profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a
-    },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['permission']), {
-        image: function image() {
-            return this.student.images.likeness;
-        },
-
-        avatar: function avatar() {
-            return this.student.images.avatar;
-        }
-    }),
-
-    methods: {
-        setImgUrl: function setImgUrl(url) {
-            this.showCroppaModal = false;
-            this.imgUrl = url;
-        },
-        checkPermission: function checkPermission() {
-            this.showCroppaModal = true;
-            if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
-        }
-    }
+		avatar: function avatar() {
+			return this.student.images.avatar;
+		}
+	})
 });
 
 /***/ }),
@@ -22969,6 +22956,142 @@ var normalizeComponent = __webpack_require__(0)
 var __vue_script__ = __webpack_require__(115)
 /* template */
 var __vue_template__ = __webpack_require__(116)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\src\\js\\components\\profile_components\\imageHandler.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45526aff", Component.options)
+  } else {
+    hotAPI.reload("data-v-45526aff", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "image-handler",
+
+    props: ['image_type'],
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember'])),
+
+    methods: {
+        updateImageHandler: function updateImageHandler() {
+            document.getElementById("setDefaultBtn").innerHTML = 'Setting Default...';
+            this.$store.dispatch('updateStudentPriority', {
+                studentId: this.studentProfile.id.replace('members:', ''),
+                image_priority: this.image_type
+            });
+            this.$store.dispatch('updateImagePriority', {
+                image_priority: this.image_type,
+                faculty_id: this.facultyMember.id
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return this.studentProfile.imagePriority === _vm.image_type
+    ? _c("div", [_vm._m(0)])
+    : _c("div", [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-default textOverflow",
+            attrs: { id: "setDefaultBtn" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.updateImageHandler($event)
+              }
+            }
+          },
+          [_vm._v("Set Default")]
+        )
+      ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("button", { staticClass: "btn btn-default textOverflow" }, [
+      _vm._v("Default Set "),
+      _c("i", { staticClass: "fas fa-check" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-45526aff", module.exports)
+  }
+}
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(118)
+/* template */
+var __vue_template__ = __webpack_require__(119)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23007,7 +23130,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 115 */
+/* 118 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23058,7 +23181,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 116 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23099,123 +23222,6 @@ if (false) {
 }
 
 /***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(118)
-/* template */
-var __vue_template__ = __webpack_require__(119)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\src\\js\\components\\profile_components\\imageHandler.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-45526aff", Component.options)
-  } else {
-    hotAPI.reload("data-v-45526aff", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 118 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "image-handler",
-
-    props: ['image_type'],
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember'])),
-
-    methods: {
-        updateImageHandler: function updateImageHandler() {
-            var _this = this;
-
-            this.$store.dispatch('updateImagePriority', {
-                image_priority: this.image_type,
-                faculty_id: this.facultyMember.id
-            }).then(function () {
-                _this.$store.dispatch('getOnlyData');
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 119 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm.studentProfile.imagePriority === _vm.image_type
-    ? _c("div")
-    : _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default textOverflow",
-            on: { click: _vm.updateImageHandler }
-          },
-          [_vm._v("Set Default Image")]
-        )
-      ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-45526aff", module.exports)
-  }
-}
-
-/***/ }),
 /* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23238,31 +23244,36 @@ var render = function() {
           [
             _c(
               "carousel",
-              { attrs: { perPage: 1, paginationActiveColor: "#4F9DA3" } },
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                }
+              },
               [
                 _c("slide", { staticClass: "slidewrap" }, [
                   _c(
                     "div",
                     { staticClass: "imagewrap" },
                     [
-                      _c("profile-picture", { attrs: { image: _vm.image } }),
+                      _c("profile-picture", {
+                        attrs: {
+                          image: _vm.image,
+                          editable: true,
+                          type: "profile"
+                        },
+                        on: {
+                          showModal: function($event) {
+                            _vm.checkPermission()
+                          }
+                        }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "type--center" },
-                        [
-                          _c("i", {
-                            staticClass:
-                              "fas fa-2x fa-pencil-alt profile-edit-button",
-                            on: { click: _vm.checkPermission }
-                          }),
-                          _vm._v(" "),
-                          _c("image-handler", {
-                            attrs: { image_type: "likeness" }
-                          })
-                        ],
-                        1
-                      )
+                      _c("image-handler", {
+                        staticClass: "profile-carousel__default-btn",
+                        attrs: { image_type: "likeness" }
+                      })
                     ],
                     1
                   )
@@ -23273,18 +23284,14 @@ var render = function() {
                     "div",
                     { staticClass: "imagewrap" },
                     [
-                      _c("profile-picture", { attrs: { image: _vm.avatar } }),
+                      _c("profile-picture", {
+                        attrs: { image: _vm.avatar, type: "profile" }
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "type--center" },
-                        [
-                          _c("image-handler", {
-                            attrs: { image_type: "avatar" }
-                          })
-                        ],
-                        1
-                      )
+                      _c("image-handler", {
+                        staticClass: "profile-carousel__default-btn",
+                        attrs: { image_type: "avatar" }
+                      })
                     ],
                     1
                   )
@@ -23294,54 +23301,17 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("croppa-modal", {
-              attrs: { showModal: _vm.showCroppaModal, student: _vm.student },
-              on: {
-                close: function($event) {
-                  _vm.setImgUrl()
-                }
-              }
+              attrs: { showModal: _vm.showCroppaModal, student: this.student },
+              on: { close: _vm.setImgUrl }
             })
           ],
           1
         )
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "addedUnderline" }, [
-      _c("ul", { staticClass: "underlineContainer" }, [
-        _c("li", { staticClass: "underline" }, [
-          _vm.student.imagePriority === "likeness"
-            ? _c("div", [_vm._m(0)])
-            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "underline" }, [
-          _vm.student.imagePriority === "avatar"
-            ? _c("div", [_vm._m(1)])
-            : _c("div", [_c("div", { staticClass: "underlineStyling" })])
-        ])
-      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [
-      _c("i", { staticClass: "fa fa-chevron-up icon_theme fa-2x" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", {}, [
-      _c("i", { staticClass: "fa fa-chevron-up icon_theme fa-2x" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -23789,7 +23759,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.studentProfile.images == null
+    this.studentProfile.images == null
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -24867,7 +24837,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	updateImage: function updateImage(context, payload) {
 		context.commit("UPDATE_IMAGE", payload);
 	},
-
+	updateStudentPriority: function updateStudentPriority(context, payload) {
+		context.commit("UPDATE_STUDENT_PRIORITY", payload);
+	},
 
 	// Views & Sorting
 	setList: function setList(context) {
@@ -25030,6 +25002,22 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             }).catch(function (e) {
                 state.errors = e.response.data.message;
             });
+        }
+    },
+    UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
+        for (var i = 0, len = state.courses.length; i < len; i += 1) {
+            for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+                if (state.courses[i].roster[j].student_id === payload.studentId) {
+                    state.courses[i].roster[j].image_priority = payload.image_priority;
+                }
+            }
+        }
+        for (var _i = 0, _len = state.flashroster.length; _i < _len; _i += 1) {
+            for (var _j = 0, _jLen = state.flashroster[_i].length; _j < _jLen; _j += 1) {
+                if (state.flashroster[_i][_j].student_id === payload.studentId) {
+                    state.flashroster[_i][_j].image_priority = payload.image_priority;
+                }
+            }
         }
     },
     STORE_COURSE: function STORE_COURSE(state, payload) {
@@ -25481,12 +25469,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         });
     },
 
-    UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
+    UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
         var data = new FormData();
         data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
         data.append('faculty_id', payload.faculty_id);
-
         window.axios.post('api/priority', data).then(function (response) {
             state.studentProfile.imagePriority = payload.image_priority;
         }).catch(function (e) {
@@ -25771,7 +25758,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     created: function created() {
         this.url = document.querySelector("meta[name=app-url]").content;
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term', 'facultyMember']), {
         displayCurrentTerm: function displayCurrentTerm() {
             if (this.term != null) {
                 var termCode = this.term;
@@ -25931,13 +25918,17 @@ var render = function() {
     [
       _c("back-button"),
       _vm._v(" "),
-      this.displayCurrentTerm != null
+      this.facultyMember.id != null
         ? _c("div", [
-            _c("div", { staticClass: "nav__header" }, [
-              _vm._v(
-                "\n        " + _vm._s(this.displayCurrentTerm) + "\n        "
-              )
-            ]),
+            this.displayCurrentTerm != null
+              ? _c("div", { staticClass: "nav__header" }, [
+                  _vm._v(
+                    "\n        " +
+                      _vm._s(this.displayCurrentTerm) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "a",

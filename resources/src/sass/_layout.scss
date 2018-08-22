@@ -4,6 +4,7 @@ body {
 		color: themed("textColor");
 		padding-top: rem(36);
 	}
+	margin-bottom: 10%;
 }
 
 html * {
@@ -154,10 +155,6 @@ textarea[type="text"]:focus {
 	bottom: 0;
 	left: 0;
 	right: 0;
-}
-
-.profile_padding {
-	padding: 5%;
 }
 
 @media only screen and (min-width: 600px) {

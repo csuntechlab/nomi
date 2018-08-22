@@ -33,6 +33,9 @@ export default {
         context.commit("UPDATE_IMAGE", payload);
 	},
 
+	updateStudentPriority(context, payload) {
+		context.commit("UPDATE_STUDENT_PRIORITY", payload);
+	},
 	// Views & Sorting
 	setList(context) {
 		context.commit("SET_LIST");

@@ -77,6 +77,23 @@ export default {
         }
     },
 
+    UPDATE_STUDENT_PRIORITY (state,payload) {
+        for (let i = 0, len = state.courses.length; i < len; i += 1) {
+            for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+                if (state.courses[i].roster[j].student_id === payload.studentId) {
+                    state.courses[i].roster[j].image_priority = payload.image_priority;
+                }
+            }
+        }
+        for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
+			for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
+				if (state.flashroster[i][j].student_id === payload.studentId) {
+                    state.flashroster[i][j].image_priority = payload.image_priority;
+				}
+			}
+		}
+    },
+
     STORE_COURSE (state, payload){
         state.currentCourse = payload;
     },

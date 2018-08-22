@@ -1,8 +1,8 @@
 <template>
     <nav class="primary-nav">
         <back-button></back-button>
-        <div v-if="this.displayCurrentTerm != null">
-            <div class="nav__header">
+        <div v-if="this.facultyMember.id != null">
+            <div v-if="this.displayCurrentTerm != null" class="nav__header">
             {{this.displayCurrentTerm}}
             </div>
             <a :href="this.url + '/feedback'" class="feedback-button pull-right">Feedback</a>
@@ -28,6 +28,7 @@ export default {
     computed: {
         ...mapGetters([
             'term',
+            'facultyMember'
         ]),
 
         displayCurrentTerm() {
