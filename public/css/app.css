@@ -1873,7 +1873,6 @@ textarea {
 
 .profile-header__audio-button {
   cursor: pointer;
-  z-index: 100;
   position: absolute;
   bottom: 0%;
   right: 0%;
@@ -1902,10 +1901,17 @@ textarea {
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 520px) {
   .profile-header__audio-button {
-    margin: 0 30%;
-    bottom: 5%;
+    margin: 0 15%;
+    top: 0%;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .profile-header__audio-button {
+    margin: 0 25%;
+    top: 0%;
   }
 }
 
