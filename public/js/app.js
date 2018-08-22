@@ -24387,7 +24387,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("h3", [_vm._v("NOMI 1.0")]),
       _vm._v(" "),
-      _c("h5", [_vm._v("Pilot Release Date: 6/18/2018")]),
+      _c("h5", [_vm._v("Pilot Release Date: 8/27/2018")]),
       _vm._v(" "),
       _c("p", [
         _c("ol", [
