@@ -22383,7 +22383,7 @@ var render = function() {
     },
     [
       _c("div", { staticClass: "roster-list__item" }, [
-        _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "row roster-list__item-centering" }, [
           _c(
             "div",
             { staticClass: "col-xs-3 col-md-2" },

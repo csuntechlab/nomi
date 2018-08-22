@@ -358,6 +358,10 @@ textarea {
 		background-color: themed("panelColor");
 		border-bottom: 1px solid themed("backgroundColor")
 	}
+	&-centering{
+		display: flex;
+		align-items: center;
+	}
 }
 
 //theme colors in list
