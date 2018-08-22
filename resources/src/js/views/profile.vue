@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="studentProfile.images == null" class="type--center">
+        <div v-if="this.studentProfile.images == null" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import profileCarousel from "../components/profile_components/profileCarousel.vue";
 import profileInfo from "../components/profile_components/profileInfo.vue";
 export default {
@@ -21,23 +21,9 @@ export default {
 
 	data: function() {
 		return {
-            imgUrl: null,
-            unsavedChanges: false,
+			unsavedChanges: false
 		};
 	},
-
-	beforeRouteLeave(to, from, next) {
-		if (this.unsavedChanges) {
-			const answer = window.confirm(
-				"Do you really want to leave? You have unsaved changes."
-			);
-			if (answer) {
-				next();
-			} else {
-				next(false);
-            }
-        }
-    },
 
 	components: {
 		profileCarousel,
@@ -58,6 +44,10 @@ export default {
 	},
 
 	beforeRouteLeave(to, from, next) {
+		if(this.profileLoadError){
+			this.logErrors();
+			this.clearProfileErrors();
+		}
 		if (this.unsavedChanges) {
 			const answer = window.confirm(
 				"Do you really want to leave? You have unsaved changes."
@@ -76,16 +66,25 @@ export default {
 	},
 
 	computed: {
-		...mapGetters(["studentProfile", "facultyMember", "studentImages"])
-    },
-    
-    methods: {
-        setUnsavedChanges(){
-            this.unsavedChanges = true;
-        },
-        setChanges(){
-            this.unsavedChanges = false;
-        }
-    },
+
+		...mapGetters(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])
+	},
+
+	methods: {
+		...mapActions([
+			"clearProfileErrors",
+		]),
+		setUnsavedChanges() {
+			this.unsavedChanges = true;
+		},
+		setChanges() {
+			this.unsavedChanges = false;
+		},
+
+		logErrors() {
+			console.log("Profile Error found: " + this.profileErrors);
+		},
+	}
+
 };
 </script>

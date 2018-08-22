@@ -11,6 +11,7 @@ $themes: (
   ),
   main: ( /*aka NAVY theme - Needs to be renamed*/
     navigationBars: #0F1821,
+    sideMenu: #172533,
     accentColor: #4F9DA3,
     backgroundColor: #E5E5E5,
     textColor: #464646,
@@ -20,6 +21,7 @@ $themes: (
     
     buttonColor: #4F9DA3,
     buttonText: #fff,
+    
     /*Gallery - Styles gallery edit button colors*/
     galleryBtnBg:#4F9DA3,
     galleryBtnText: #ffffff,
@@ -34,6 +36,7 @@ $themes: (
 
   bluesTheme: (
     navigationBars: #0D3753,
+    sideMenu: #104669,
     accentColor: #4CA1DB,
     backgroundColor: #d9e7ee,
     textColor: #575757,
@@ -55,23 +58,9 @@ $themes: (
     mainFontFamily: sans-serif,
   ),
 
-  Cloudy: ( /*No longer being updated. Needs to be removed*/
-    navigationBars: #747474,
-    backgroundColor: #D8D8D8,
-    textColor: #464646,
-    panelColor: #FFFFFF,
-    hoverColor: #ccc,
-    buttonColor: #FFC836,
-    buttonText: #4e4e4e,
-    accentColor: #747474,
-    toolBanner: rgba(255,255,255,0.5),
-
-    mainFontSize: 1.1rem,
-    mainFontFamily: sans-serif,
-  ),
-
   OnceAMatadorAlwaysAMatador: (
     navigationBars: #D22030,
+    sideMenu: #a61926,
     accentColor: #E74A37,
     backgroundColor: #FFFFFF,
     textColor: #464646,
@@ -95,6 +84,7 @@ $themes: (
 
   Dark: (
     navigationBars: #1D1D1D,
+    sideMenu: #2a2a2a,
     accentColor: #97B5D8,
     backgroundColor: #272727,
     textColor: #bababa,

@@ -7,7 +7,8 @@ export default {
         images: null,
         imagePriority: null,
         notes: null,
-        firstName: null, 
+        firstName: null,
+        student: null
     },
 
     profileErrors: null,
