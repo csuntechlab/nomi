@@ -1,18 +1,12 @@
 <template>
     <div>
-        <div>
-            <student-list-item
-                v-for="student in this.courses[this.courseid].roster"
-                :key="student.display_name"
-                :student="student"
-            ></student-list-item>
-        </div>
+        <student-list-item v-for="student in this.courses[this.courseid].roster" :key="student.display_name" :student="student"/>
     </div>
 </template>
 
 <script>
-    import studentListItem from './studentListItem.vue';
-    import { mapGetters } from 'vuex';
+    import studentListItem from "./studentListItem.vue";
+    import { mapGetters } from "vuex";
     export default {
         name: "student-list",
 
@@ -23,19 +17,21 @@
                 errors: [],
                 sortFirstName: true,
                 sortAscending: true,
-            }
+            };
         },
 
         components: {
             studentListItem
         },
 
-        props: ['courseid'],
+        props: ["courseid"],
 
         computed: {
-            ...mapGetters([
-                'courses',
-            ]),
+            ...mapGetters(["courses"]),
         },
-    }
+
+        created() {
+            this.loading = true;
+        }
+    };
 </script>
