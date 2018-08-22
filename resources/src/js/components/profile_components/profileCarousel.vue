@@ -9,13 +9,13 @@
                     <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                         <slide class="slidewrap">
                             <div class="imagewrap">
-                                <profile-picture :image="image" :editable="true" @showModal="checkPermission()"></profile-picture>
+                                <profile-picture :image="image" :editable="true" :type="'profile'" @showModal="checkPermission()"></profile-picture>
                                 <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
                             </div>
                         </slide>
                         <slide class="slidewrap">
                             <div class="imagewrap">
-                                <profile-picture :image="avatar"></profile-picture>
+                                <profile-picture :image="avatar" :type="'profile'"></profile-picture>
                                     <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
                             </div>
                         </slide>

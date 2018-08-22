@@ -339,6 +339,22 @@
 	margin-bottom: 0;
 }
 
+//Images
+.img--fluid-custom{
+	display: block;
+	height: auto;
+	padding: 5%;
+	margin: 0 auto;
+}
+
+.roster__img{
+	width: 100%;
+}
+
+.profile__img{
+	width: 12rem;
+}
+
 textarea[type="text"]:focus{
 	@include themify($themes) {
 		border: 3px solid themed("focusColor");

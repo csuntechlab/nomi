@@ -20545,7 +20545,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     image: function image() {
-      return this.student.images.likeness;
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } else if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
     }
   }),
 
@@ -21460,7 +21464,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "editable"],
+	props: ["image", "editable", "type"],
 	methods: {
 		checkPermission: function checkPermission() {
 			this.$emit('showModal');
@@ -21478,7 +21482,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "profile_padding profile_image img--circle img--fluid",
+      staticClass: "profile_padding img--circle img--fluid-custom",
+      class: [this.type == "profile" ? "profile__img" : "roster__img"],
       attrs: { src: this.image, name: "photo" }
     }),
     _vm._v(" "),
@@ -21522,7 +21527,12 @@ var render = function() {
                 { staticClass: "card_face" },
                 [
                   _c("profile-picture", {
-                    attrs: { name: _vm.display_name, image: _vm.image }
+                    staticClass: "roster__img",
+                    attrs: {
+                      name: _vm.display_name,
+                      image: _vm.image,
+                      type: "roster"
+                    }
                   })
                 ],
                 1
@@ -22050,7 +22060,11 @@ var render = function() {
             _c(
               "div",
               { staticClass: "panel__content" },
-              [_c("profile-picture", { attrs: { image: _vm.image } })],
+              [
+                _c("profile-picture", {
+                  attrs: { image: _vm.image, type: "roster" }
+                })
+              ],
               1
             ),
             _vm._v(" "),
@@ -22375,8 +22389,12 @@ var render = function() {
             { staticClass: "col-xs-3 col-md-2" },
             [
               _c("profile-picture", {
-                staticClass: "pull-left ",
-                attrs: { name: _vm.display_name, image: _vm.image }
+                staticClass: "pull-left",
+                attrs: {
+                  name: _vm.display_name,
+                  image: _vm.image,
+                  type: "roster"
+                }
               })
             ],
             1
@@ -22890,8 +22908,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         updateImageHandler: function updateImageHandler() {
-            var _this = this;
-
             document.getElementById("setDefaultBtn").innerHTML = 'Setting Default...';
             this.$store.dispatch('updateStudentPriority', {
                 studentId: this.studentProfile.id.replace('members:', ''),
@@ -22900,10 +22916,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.$store.dispatch('updateImagePriority', {
                 image_priority: this.image_type,
                 faculty_id: this.facultyMember.id
-            }).then(function () {
-                _this.$store.dispatch('getOnlyData');
             });
-            vm.$forceUpdate();
         }
     }
 });
@@ -23131,7 +23144,11 @@ var render = function() {
                     { staticClass: "imagewrap" },
                     [
                       _c("profile-picture", {
-                        attrs: { image: _vm.image, editable: true },
+                        attrs: {
+                          image: _vm.image,
+                          editable: true,
+                          type: "profile"
+                        },
                         on: {
                           showModal: function($event) {
                             _vm.checkPermission()
@@ -23153,7 +23170,9 @@ var render = function() {
                     "div",
                     { staticClass: "imagewrap" },
                     [
-                      _c("profile-picture", { attrs: { image: _vm.avatar } }),
+                      _c("profile-picture", {
+                        attrs: { image: _vm.avatar, type: "profile" }
+                      }),
                       _vm._v(" "),
                       _c("image-handler", {
                         staticClass: "profile-carousel__default-btn",
@@ -24873,8 +24892,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
                 if (state.courses[i].roster[j].student_id === payload.studentId) {
                     state.courses[i].roster[j].image_priority = payload.image_priority;
-                    console.log(payload);
-                    console.log(state.courses[i].roster[j]);
+                }
+            }
+        }
+        for (var _i = 0, _len = state.flashroster.length; _i < _len; _i += 1) {
+            for (var _j = 0, _jLen = state.flashroster[_i].length; _j < _jLen; _j += 1) {
+                if (state.flashroster[_i][_j].student_id === payload.studentId) {
+                    state.flashroster[_i][_j].image_priority = payload.image_priority;
                 }
             }
         }
@@ -25614,7 +25638,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     created: function created() {
         this.url = document.querySelector("meta[name=app-url]").content;
     },
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term', 'facultyMember']), {
         displayCurrentTerm: function displayCurrentTerm() {
             if (this.term != null) {
                 var termCode = this.term;
@@ -25774,13 +25798,17 @@ var render = function() {
     [
       _c("back-button"),
       _vm._v(" "),
-      this.displayCurrentTerm != null
+      this.facultyMember.id != null
         ? _c("div", [
-            _c("div", { staticClass: "nav__header" }, [
-              _vm._v(
-                "\n        " + _vm._s(this.displayCurrentTerm) + "\n        "
-              )
-            ]),
+            this.displayCurrentTerm != null
+              ? _c("div", { staticClass: "nav__header" }, [
+                  _vm._v(
+                    "\n        " +
+                      _vm._s(this.displayCurrentTerm) +
+                      "\n        "
+                  )
+                ])
+              : _vm._e(),
             _vm._v(" "),
             _c(
               "a",

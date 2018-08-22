@@ -626,10 +626,6 @@ textarea[type="text"]:focus {
   right: 0;
 }
 
-.profile_padding {
-  padding: 5%;
-}
-
 @media only screen and (min-width: 600px) {
   .back_of_card {
     font-size: 1.8em;
@@ -1679,6 +1675,21 @@ textarea {
 
 .mb_0 {
   margin-bottom: 0;
+}
+
+.img--fluid-custom {
+  display: block;
+  height: auto;
+  padding: 5%;
+  margin: 0 auto;
+}
+
+.roster__img {
+  width: 100%;
+}
+
+.profile__img {
+  width: 12rem;
 }
 
 .theme-login textarea[type="text"]:focus {

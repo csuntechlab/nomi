@@ -37,10 +37,7 @@
                         image_priority: this.image_type,
                         faculty_id: this.facultyMember.id,
                     }
-                ).then(() => {
-                    this.$store.dispatch('getOnlyData');
-                });
-                vm.$forceUpdate();
+                );
             }
         }
     }

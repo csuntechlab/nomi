@@ -6,7 +6,7 @@
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
           <div class="panel">
             <div class="panel__content">
-                <profile-picture :image="image"/>
+                <profile-picture :image="image" :type="'roster'"/>
             </div>
             <div class="cardText clearPadding">
                 <div class="gallery_name type--center">{{display_name}}</div>
