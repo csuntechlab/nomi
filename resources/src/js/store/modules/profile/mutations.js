@@ -60,7 +60,7 @@ export default {
             });
     },
 
-    UPDATE_IMAGE_PRIORITY: function (state, payload) {
+    UPDATE_IMAGE_PRIORITY: function (state, payload, rootState) {
         let data = new FormData;
         data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);

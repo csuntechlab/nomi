@@ -3,7 +3,7 @@
         <button class="btn btn-default textOverflow">Default Set <i class="fas fa-check"/></button>
     </div>
     <div v-else>
-        <button class="btn btn-default textOverflow" @click="updateImageHandler">Set Default</button>
+        <button id="setDefaultBtn" class="btn btn-default textOverflow" @click.prevent="updateImageHandler">Set Default</button>
     </div>
 </template>
 
@@ -23,6 +23,14 @@
 
         methods: {
             updateImageHandler() {
+                document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
+                this.$store.dispatch(
+                    'updateStudentPriority',
+                    {
+                        studentId: this.studentProfile.id.replace('members:', ''),
+                        image_priority: this.image_type,
+                    }
+                );
                 this.$store.dispatch(
                     'updateImagePriority',
                     {
@@ -30,9 +38,9 @@
                         faculty_id: this.facultyMember.id,
                     }
                 ).then(() => {
-                    this.$store.dispatch('getOnlyData')
+                    this.$store.dispatch('getOnlyData');
                 });
-
+                vm.$forceUpdate();
             }
         }
     }

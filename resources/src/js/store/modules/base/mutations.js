@@ -77,6 +77,18 @@ export default {
         }
     },
 
+    UPDATE_STUDENT_PRIORITY (state,payload) {
+        for (let i = 0, len = state.courses.length; i < len; i += 1) {
+            for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+                if (state.courses[i].roster[j].student_id === payload.studentId) {
+                    state.courses[i].roster[j].image_priority = payload.image_priority;
+                    console.log(payload);
+                    console.log(state.courses[i].roster[j]);
+                }
+            }
+        }
+    },
+
     STORE_COURSE (state, payload){
         state.currentCourse = payload;
     },

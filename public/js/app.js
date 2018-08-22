@@ -20428,7 +20428,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
-
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
             this.flashroster[this.courseid].forEach(function (student) {
@@ -22893,12 +22892,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         updateImageHandler: function updateImageHandler() {
             var _this = this;
 
+            document.getElementById("setDefaultBtn").innerHTML = 'Setting Default...';
+            this.$store.dispatch('updateStudentPriority', {
+                studentId: this.studentProfile.id.replace('members:', ''),
+                image_priority: this.image_type
+            });
             this.$store.dispatch('updateImagePriority', {
                 image_priority: this.image_type,
                 faculty_id: this.facultyMember.id
             }).then(function () {
                 _this.$store.dispatch('getOnlyData');
             });
+            vm.$forceUpdate();
         }
     }
 });
@@ -22918,7 +22923,13 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-default textOverflow",
-            on: { click: _vm.updateImageHandler }
+            attrs: { id: "setDefaultBtn" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                _vm.updateImageHandler($event)
+              }
+            }
           },
           [_vm._v("Set Default")]
         )
@@ -24693,7 +24704,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	updateImage: function updateImage(context, payload) {
 		context.commit("UPDATE_IMAGE", payload);
 	},
-
+	updateStudentPriority: function updateStudentPriority(context, payload) {
+		context.commit("UPDATE_STUDENT_PRIORITY", payload);
+	},
 
 	// Views & Sorting
 	setList: function setList(context) {
@@ -24853,6 +24866,17 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             }).catch(function (e) {
                 state.errors = e.response.data.message;
             });
+        }
+    },
+    UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
+        for (var i = 0, len = state.courses.length; i < len; i += 1) {
+            for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+                if (state.courses[i].roster[j].student_id === payload.studentId) {
+                    state.courses[i].roster[j].image_priority = payload.image_priority;
+                    console.log(payload);
+                    console.log(state.courses[i].roster[j]);
+                }
+            }
         }
     },
     STORE_COURSE: function STORE_COURSE(state, payload) {
@@ -25301,7 +25325,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         });
     },
 
-    UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
+    UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
         var data = new FormData();
         data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
