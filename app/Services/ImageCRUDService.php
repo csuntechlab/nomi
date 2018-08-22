@@ -24,10 +24,10 @@ class ImageCRUDService implements ImageCRUDContract
     }
 
     /** Image uploading functionality. */
-    public function upload()
+    public function upload($data)
     {
         $validator = Validator::make(
-            $request->all(),
+            $data,
             [
                 'profile_image' => [
                     'required',
@@ -47,21 +47,22 @@ class ImageCRUDService implements ImageCRUDContract
                 'message' => $validator->messages()->all(),
             ];
         }
-        if ($request->profile_image) {
+        if ($data['profile_image']) {
             $guzzle = HandlerGuzzleFactory::fromDefaults();
             $guzzle->setFormBody([
-                'profile_image' => $request->profile_image,
-                'image_type' => $request->image_type,
-                'entity_type' => $request->entity_type,
+                'profile_image' => $data['profile_image'],
+                'image_type' => $data['image_type'],
+                'entity_type' => $data['entity_type'],
                 'secret_key' => env('MEDIA_KEY'),
             ]);
-            $response = $guzzle->post(env('MEDIA_URL') . $request->uri . '/photo');
+
+            $response = $guzzle->post(env('MEDIA_URL') . $data['uri'] . '/photo');
             $guzzleResponse = $guzzle->resolveResponseBody($response, 'json');
             if ($guzzleResponse->status === '200') {
                 return [
                     'status' => '200',
                     'success' => 'true',
-                    'message' => 'The image for ' . $emailUri . ' was successfully uploaded.',
+                    'message' => 'The image for ' . $data['uri'] . ' was successfully uploaded.',
                 ];
             }
 

@@ -75,24 +75,18 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
-                    console.log(this.myCroppa);
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let payload = {studentId: this.studentProfile.id, imgUrl: url};
                     this.$store.dispatch('updateImage', payload);
 
-                    let uri = null;
-                    if (this.studentProfile.emailURI == null){
-                        uri = this.emailURI;
-                    } else {
-                        uri = this.studentProfile.emailURI;
-                    }
+                    let emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
                         profile_image: url,
                         image_type: 'likeness',
                         entity_type: 'student',
-                        uri: uri
+                        uri: emuri
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('getOnlyData');
