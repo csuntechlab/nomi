@@ -3,7 +3,7 @@
         <div v-if="this.shouldLoadClasses" class="type--center">
             <div class="row course_banner fullscreen_width">
                 <div class="col-xs-12 type--center">
-                    <h1 class="course__descriptor">Selected Course</h1>
+                    <h1 class="course__descriptor">Selected Term</h1>
                 </div>
                 <div class="col-xs-4 type--right">
                     <button @click="setPrevTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
