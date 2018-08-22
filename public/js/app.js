@@ -18106,6 +18106,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19060,6 +19074,58 @@ var render = function() {
   return _c("div", [
     this.shouldLoadClasses
       ? _c("div", { staticClass: "type--center" }, [
+          _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 type--right" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm course__button",
+                  class: [
+                    this.selectedTerm == "previous"
+                      ? "course__button--selected"
+                      : ""
+                  ],
+                  on: { click: _vm.setPrevTerm }
+                },
+                [_vm._v("Previous")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 type--center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm course__button",
+                  class: [
+                    this.selectedTerm == "current"
+                      ? "course__button--selected"
+                      : ""
+                  ],
+                  on: { click: _vm.setCurrTerm }
+                },
+                [_vm._v("Current")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 type--left" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm course__button",
+                  class: [
+                    this.selectedTerm == "next"
+                      ? "course__button--selected"
+                      : ""
+                  ],
+                  on: { click: _vm.setNeTerm }
+                },
+                [_vm._v("Upcoming")]
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _c("br"),
           _vm._v(" "),
           _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
@@ -19068,7 +19134,7 @@ var render = function() {
           "div",
           [
             _c("div", { staticClass: "row course_banner fullscreen_width" }, [
-              _vm._m(0),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "col-xs-4 type--right" }, [
                 _c(
@@ -19126,6 +19192,16 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12 type--center" }, [
+      _c("h1", { staticClass: "course__descriptor" }, [
+        _vm._v("Selected Course")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
