@@ -4,6 +4,6 @@
     <permission-modal></permission-modal>
     <router-view></router-view>
     <side-menu></side-menu>
-    <div id="menu-bar-padding" style="height:60px"></div>
+    <div id="menu-bar-padding" style="height:80px"></div>
     <menu-bar></menu-bar>
 @stop
