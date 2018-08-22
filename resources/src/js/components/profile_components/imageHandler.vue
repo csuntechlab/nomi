@@ -1,7 +1,9 @@
 <template>
-    <div v-if="studentProfile.imagePriority === image_type"></div>
+    <div v-if="this.studentProfile.imagePriority === image_type">
+        <button class="btn btn-default textOverflow">Default Set <i class="fas fa-check"/></button>
+    </div>
     <div v-else>
-        <button class="btn btn-default textOverflow" @click="updateImageHandler">Set Default Image</button>
+        <button id="setDefaultBtn" class="btn btn-default textOverflow" @click.prevent="updateImageHandler">Set Default</button>
     </div>
 </template>
 
@@ -21,16 +23,21 @@
 
         methods: {
             updateImageHandler() {
+                document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
+                this.$store.dispatch(
+                    'updateStudentPriority',
+                    {
+                        studentId: this.studentProfile.id.replace('members:', ''),
+                        image_priority: this.image_type,
+                    }
+                );
                 this.$store.dispatch(
                     'updateImagePriority',
                     {
                         image_priority: this.image_type,
                         faculty_id: this.facultyMember.id,
                     }
-                ).then(() => {
-                    this.$store.dispatch('getOnlyData')
-                });
-
+                );
             }
         }
     }

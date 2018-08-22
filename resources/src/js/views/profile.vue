@@ -21,7 +21,6 @@ export default {
 
 	data: function() {
 		return {
-			imgUrl: null,
 			unsavedChanges: false
 		};
 	},
@@ -68,12 +67,11 @@ export default {
 
 	computed: {
 
-		...mapGetters(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])
+		...mapGetters(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])
 	},
 
 	methods: {
 		...mapActions([
-			"clearErrors",
 			"clearProfileErrors",
 		]),
 		setUnsavedChanges() {

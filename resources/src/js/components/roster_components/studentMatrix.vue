@@ -48,7 +48,6 @@ export default {
             'flash'
         ]),
     },
-
     methods: {
         markStudentAsRecognized: function(payload) {
             this.flashroster[this.courseid].forEach((student) => {
