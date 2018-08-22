@@ -1,22 +1,22 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
         <div v-if="this.student.image_priority === 'likeness'">
-            <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"></i>
+            <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"/>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-        <div class="panel">
+          <div class="panel">
             <div class="panel__content">
-                <profile-picture :image="image"></profile-picture>
+                <profile-picture :image="image" :type="'roster'"/>
             </div>
             <div class="cardText clearPadding">
                 <div class="gallery_name type--center">{{display_name}}</div>
             </div>
-        </div>
+          </div>
         </router-link>
         <modal v-if="displayModal" @close="showCroppaModal = false">
             <div slot="header"></div>
             <div slot="body">
-                <croppa-profile :emailURI="email_uri" :studentImage="image"></croppa-profile>
+                <croppa-profile :emailURI="email_uri" :studentImage="image"/>
             </div>
         </modal>
     </div>
