@@ -22352,13 +22352,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         listenAudio: function listenAudio() {
             var _this = this;
 
-            window.axios.get(this.student.name_recording).then(function (response) {
+            axios.get(this.student.name_recording).then(function (response) {
                 if (response.status) {
                     document.getElementById('audio_name').play();
                     console.log(_this.student.name_recording);
+                } else {
+                    alert("Sorry, this student has not submitted a recording of their name.");
                 }
             }).catch(function (e) {
-                alert("Sorry, this student has not submitted a recording of their name.");
+                console.log(e);
             });
         }
     }
@@ -22904,9 +22906,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 if (response.status) {
                     document.getElementById('audio_name').play();
                     console.log(_this.student.name_recording);
+                } else {
+                    alert("Sorry, this student has not submitted a recording of their name.");
                 }
             }).catch(function (e) {
-                alert("Sorry, this student has not submitted a recording of their name.");
+                console.log(e);
             });
         }
     }

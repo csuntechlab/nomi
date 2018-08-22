@@ -142,8 +142,11 @@ export default {
                             document.getElementById('audio_name').play();
                             console.log(this.student.name_recording);
                         }
+                        else {
+                            alert("Sorry, this student has not submitted a recording of their name.");
+                        }
                     }).catch(e => {
-                        alert("Sorry, this student has not submitted a recording of their name.");
+                        console.log(e);
                     });
             }
         }

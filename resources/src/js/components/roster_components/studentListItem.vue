@@ -62,14 +62,17 @@ export default {
     }, 
     methods: {
         listenAudio() {
-                    window.axios.get(this.student.name_recording)
+                    axios.get(this.student.name_recording)
                     .then(response => {
                         if (response.status) {
                             document.getElementById('audio_name').play();
                             console.log(this.student.name_recording);
+                            }
+                        else {
+                            alert("Sorry, this student has not submitted a recording of their name.");
                         }
                     }).catch(e => {
-                        alert("Sorry, this student has not submitted a recording of their name.");
+                        console.log(e);
                     });
             }
     }
