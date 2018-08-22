@@ -35,7 +35,12 @@
                             </slide>
                             -->
                     </carousel>
-                    <croppa-modal :showModal="showCroppaModal" :student="student" @close="setImgUrl()"></croppa-modal>
+                    <modal v-if="displayModal" @close="showCroppaModal = false">
+                        <div slot="header"></div>
+                        <div slot="body">
+                            <croppa-profile :student="this.student.student"></croppa-profile>
+                        </div>
+                    </modal>
                 </div>
             </div>
         </div>
@@ -75,9 +80,11 @@
     </div>
     </div>
 </template>
+
 <script>
-import croppaModal from "../profile_components/croppaModal.vue";
+import croppaProfile from "../profile_components/croppaProfile.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
+import modal from "../fixed_components/modal.vue";
 import imageHandler from "../profile_components/imageHandler.vue";
 import { mapGetters } from 'vuex';
 export default {
@@ -104,7 +111,8 @@ export default {
             }
         },
         components: {
-            croppaModal,
+            modal,
+            croppaProfile,
             imageHandler,
             profilePicture
         },
@@ -118,6 +126,10 @@ export default {
 
             avatar: function() {
                 return this.student.student.images.avatar;
+            },
+
+            displayModal(){
+                return(this.showCroppaModal && this.permission);
             },
         },
 
