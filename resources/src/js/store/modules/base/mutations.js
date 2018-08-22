@@ -231,9 +231,9 @@ export default {
     },
 
     UPDATE_IMAGE: function (state, payload) {
-        let id = payload.studentId;
-        let url = payload.imgUrl;
-        state.studentImages[id] = url;
+        // let id = payload.studentId;
+        // let url = payload.imgUrl;
+        // state.studentImages[id] = url;
     },
 
     SET_SPRING: function (state) {

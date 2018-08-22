@@ -85,7 +85,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
 
         //hacky fix to remove @csun.edu
         return $client->get(
-            'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
+            'http://api.sandbox.csun.edu/metalab/test/media/1.1/' . $emailUri . '/photo'
             . \explode('@', \str_replace('nr_', '', $email))[0],
             ['verify' => false]
         )->getBody()->getContents();
