@@ -205,6 +205,35 @@
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+.course__button {
+	width: 5.5rem;
+}
+.course {
+	&__descriptor {
+		font-weight: bold;
+		font-size: 1rem;
+
+		@include themify($themes) {
+			color: themed("textColor") !important;
+		}
+	}
+
+	&__button {
+		width: 5.5rem;
+
+		@include themify($themes) {
+			background-color: themed("hoverColor") !important;
+			color: themed("textColor") !important;
+		}
+
+		&--selected {
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+}
 .text_bold {
 	font-weight: bold;
 }

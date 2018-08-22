@@ -142,4 +142,8 @@ export default {
 		context.commit("GET_DATA");
 	},
 
+	setSem(payload){
+		context.commit("SET_SEM");
+	}
+
 };

@@ -92,24 +92,27 @@ textarea[type="text"]:focus {
 	margin-top: 0.833rem;
 }
 
-.course_banner {
-	@include themify($themes) {
-		background-color: themed("toolBanner");
-		color: themed("textColor");
-		margin-top: 0.833rem;
-		margin-bottom: 0.833rem;
-		padding: 10px 0;
+.course {
+	&_banner {
+		@include themify($themes) {
+			background-color: themed("toolBanner");
+			color: themed("textColor");
+			margin-top: 0.833rem;
+			margin-bottom: 0.833rem;
+			padding: 10px 0;
+		}
+	}
+
+	&_title {
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+	&_padding {
+		margin-bottom: 0.7rem;
 	}
 }
 
-.course_title {
-	font-weight: bold;
-	font-size: 1rem;
-}
-
-.course_padding {
-	margin-bottom: 0.7rem;
-}
 
 @media only screen and (max-width: 543px) {
 	.panel__header {

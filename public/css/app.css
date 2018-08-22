@@ -1456,6 +1456,89 @@ textarea {
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+.course__button {
+  width: 5.5rem;
+}
+
+.course__descriptor {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.theme-login .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-main .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .course__descriptor {
+  color: #575757 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-Dark .course__descriptor {
+  color: #bababa !important;
+}
+
+.course__button {
+  width: 5.5rem;
+}
+
+.theme-login .course__button {
+  background-color: #ccc !important;
+  color: #464646 !important;
+}
+
+.theme-main .course__button {
+  background-color: #ccc !important;
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .course__button {
+  background-color: #ccc !important;
+  color: #575757 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__button {
+  background-color: #dddddd !important;
+  color: #464646 !important;
+}
+
+.theme-Dark .course__button {
+  background-color: #272727 !important;
+  color: #bababa !important;
+}
+
+.theme-login .course__button--selected {
+  background-color: #d00d2d !important;
+  color: !important;
+}
+
+.theme-main .course__button--selected {
+  background-color: #4F9DA3 !important;
+  color: #fff !important;
+}
+
+.theme-bluesTheme .course__button--selected {
+  background-color: #4CA1DB !important;
+  color: #fff !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__button--selected {
+  background-color: #E74A37 !important;
+  color: #fff !important;
+}
+
+.theme-Dark .course__button--selected {
+  background-color: #426c96 !important;
+  color: #dadada !important;
+}
+
 .text_bold {
   font-weight: bold;
 }
