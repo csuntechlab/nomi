@@ -25,7 +25,7 @@
 
         <h4><strong>Android Users</strong></h4>
         <p>
-            Some funtionality is not currently supported on <b>Chrome</b> for Android. If you are using an Android device, we recommend using <b>Firefox</b> instead.
+            Some functionality is not currently supported on <b>Chrome</b> for Android. If you are using an Android device, we recommend using <b>Firefox</b> instead.
         </p>
     </div>
 </template>
