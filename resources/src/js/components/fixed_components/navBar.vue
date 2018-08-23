@@ -61,7 +61,7 @@ export default {
 			}
         },
         checkIfLogin(){
-            return window.location.pathname == '/';
+            return window.location == document.querySelector("meta[name=app-url]").content + '/#/';
         }
 	}
 };

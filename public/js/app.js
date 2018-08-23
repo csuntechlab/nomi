@@ -25830,7 +25830,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			}
 		},
 		checkIfLogin: function checkIfLogin() {
-			return window.location.pathname == '/';
+			return window.location == document.querySelector("meta[name=app-url]").content + '/#/';
 		}
 	})
 });
