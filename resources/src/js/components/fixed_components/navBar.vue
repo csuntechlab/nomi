@@ -5,7 +5,7 @@
             <div v-if="this.displayCurrentTerm != null" class="nav__header">
             {{this.displayCurrentTerm}}
             </div>
-            <a :href="this.url + '/feedback'" class="feedback-button pull-right">Feedback</a>
+            <a :href="this.url + '/support'" class="feedback-button pull-right">Feedback</a>
         </div>
     </nav>
 </template>
