@@ -61,7 +61,10 @@ export default {
 			}
         },
         checkIfLogin(){
-            return window.location == document.querySelector("meta[name=app-url]").content + '/#/';
+            if(document.getElementById("loginContainer"))
+                return true;
+            else
+                return false;
         }
 	}
 };
