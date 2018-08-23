@@ -24130,7 +24130,7 @@ var staticRenderFns = [
       _c("h4", [_c("strong", [_vm._v("Android Users")])]),
       _vm._v(" "),
       _c("p", [
-        _vm._v("\n        Some funtionality is not currently supported on "),
+        _vm._v("\n        Some functionality is not currently supported on "),
         _c("b", [_vm._v("Chrome")]),
         _vm._v(
           " for Android. If you are using an Android device, we recommend using "

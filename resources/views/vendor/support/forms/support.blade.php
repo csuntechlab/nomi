@@ -63,8 +63,8 @@
           <p>Hello, {{ $submitter_name }} {{ $submitter_email }}.</p>
         </div>
       </div>
-      <div class="col-sm-8">
-      <div class="form-group">	            
+      <div class="row justify-content-md-center">
+      <div class="form-group col-sm-8">	            
               <label for="impact"><span class="required">*</span> Impact</label>	              
               <select name="impact" id="impact" class="form-control">	
                 @foreach($impact as $key => $value)	
@@ -127,7 +127,7 @@
     </div>
     <script>
       function backtoNOMI(){
-        window.history.back()
+        window.location.href='/home';
       }
     </script>
 
