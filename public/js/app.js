@@ -24040,6 +24040,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "about-page"
@@ -24120,6 +24125,18 @@ var staticRenderFns = [
         _vm._v(
           ".\n        Part of the mantra at META+LAB involves pushing boundaries. The use of such state-of-the-art technology will rely on the newest features and functionality available on browsers.\n    "
         )
+      ]),
+      _vm._v(" "),
+      _c("h4", [_c("strong", [_vm._v("Android Users")])]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("\n        Some funtionality is not currently supported on "),
+        _c("b", [_vm._v("Chrome")]),
+        _vm._v(
+          " for Android. If you are using an Android device, we recommend using "
+        ),
+        _c("b", [_vm._v("Firefox")]),
+        _vm._v(" instead.\n    ")
       ])
     ])
   }
