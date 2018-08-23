@@ -25983,7 +25983,7 @@ var render = function() {
               "a",
               {
                 staticClass: "feedback-button pull-right",
-                attrs: { href: this.url + "/feedback" }
+                attrs: { href: this.url + "/support" }
               },
               [_vm._v("Feedback")]
             )
