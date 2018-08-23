@@ -47,7 +47,7 @@
   </head>
   <body>
   <div class="header-bar">
-      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
+      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" onclick="window.location='{{url('/home')}}'" alt="Back Button">
     </div>
     <div class="container sub-container">
       <div class="row justify-content-md-center">
@@ -115,21 +115,14 @@
         <div class="col-sm-8">
           <form method="POST" action="{{ route('feedback.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
             <div class="form-group">
               <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback.">{{ old('content') }}</textarea>
             </div>
-
             <button type="submit" class="btn submit_button">Submit</button>
           </form>
         </div>
       </div>
     </div>
-    <script>
-      function backtoNOMI(){
-        window.location.href='/home';
-      }
-    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
