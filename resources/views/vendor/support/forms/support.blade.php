@@ -63,6 +63,22 @@
           <p>Hello, {{ $submitter_name }} {{ $submitter_email }}.</p>
         </div>
       </div>
+      <div class="col-sm-8">
+      <div class="form-group">	            
+              <label for="impact"><span class="required">*</span> Impact</label>	              
+              <select name="impact" id="impact" class="form-control">	
+                @foreach($impact as $key => $value)	
+                  @if(old('impact') == $key)	
+                    <option value="{{ $key }}" selected="selected">	
+                  @else	
+                    <option value="{{ $key }}">	
+                  @endif	
+                  {{ $value }}	
+                  </option>	
+                @endforeach	
+              </select>	
+            </div>
+      </div>
 
       @if($errors->count() > 0)
         <div class="row justify-content-md-center">
