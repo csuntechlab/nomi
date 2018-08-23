@@ -33,6 +33,9 @@ export default {
         context.commit("UPDATE_IMAGE", payload);
 	},
 
+	updateStudentPriority(context, payload) {
+		context.commit("UPDATE_STUDENT_PRIORITY", payload);
+	},
 	// Views & Sorting
 	setList(context) {
 		context.commit("SET_LIST");
@@ -138,5 +141,9 @@ export default {
 		context.commit("SET_NEXT_TERM");
 		context.commit("GET_DATA");
 	},
+
+	setSem(payload){
+		context.commit("SET_SEM");
+	}
 
 };

@@ -189,6 +189,8 @@ return [
          * LDAP...
          */
         CSUNMetaLab\Authentication\Providers\AuthServiceProvider::class,
+        CSUNMetaLab\Support\Providers\SupportServiceProvider::class,
+        CSUNMetaLab\Guzzle\Providers\GuzzleServiceProvider::class,
 
         /*
          * Form Functionality...

@@ -48,8 +48,6 @@ class StudentProfileService implements StudentProfileContract
             ->imageCRUD
             ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
-        $studentAudio = \json_decode($this->webResourceRetriever->getMedia($email), true)['media'][0]['audio'];
-
         $studentProfile = (object) [
             'display_name' => $profile['display_name'],
             'first_name' => \explode(' ', $profile['display_name'])[0],
@@ -57,14 +55,9 @@ class StudentProfileService implements StudentProfileContract
             'email' => $email,
             'student_id' => $profile['individuals_id'],
             'members_id' => $profile['individuals_id'],
-            'notes' => $note == null ? 'Notes go here.' : Crypt::decrypt($note->notepad),
+            'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
-            'studentAudio' => $studentAudio,
         ];
-
-        $moreInfo = $this->rosterRetriever->sanitizeStudent($studentProfile);
-
-        $studentProfile->images = $moreInfo['images'];
 
         return \json_encode($studentProfile);
     }

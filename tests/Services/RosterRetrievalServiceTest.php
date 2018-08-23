@@ -44,7 +44,10 @@ class RosterRetrievalServiceTest extends TestCase
         $paulBlart->first_name = 'Paul';
         $paulBlart->last_name = 'Blart';
         $paulBlart->email = 'cop@mall.com';
-        $paulBlart->images = $images;
+        $paulBlart->likeness_photo = $images['likeness'];
+        $paulBlart->avatar_photo = $images['avatar'];
+        $paulBlart->official_photo = $images['official'];
+        $paulBlart->name_recording = 'pew';
         $paulBlart->image_priority = 'likeness';
 
         $shrek = new \stdClass();
@@ -53,7 +56,10 @@ class RosterRetrievalServiceTest extends TestCase
         $shrek->first_name = 'Shrek';
         $shrek->last_name = 'Nelson';
         $shrek->email = 'ogre@swamp.com';
-        $shrek->images = $images;
+        $shrek->likeness_photo = $images['likeness'];
+        $shrek->avatar_photo = $images['avatar'];
+        $shrek->official_photo = $images['official'];
+        $shrek->name_recording = 'pew';
         $shrek->image_priority = 'likeness';
 
         $bigJim = new \stdClass();
@@ -62,7 +68,10 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->first_name = 'Big';
         $bigJim->last_name = 'Jim';
         $bigJim->email = 'mountainman@parks.gov';
-        $bigJim->images = $images;
+        $bigJim->likeness_photo = $images['likeness'];
+        $bigJim->avatar_photo = $images['avatar'];
+        $bigJim->official_photo = $images['official'];
+        $bigJim->name_recording = 'pew';
         $bigJim->image_priority = 'official';
 
         $frank = new \stdClass();
@@ -71,7 +80,10 @@ class RosterRetrievalServiceTest extends TestCase
         $frank->first_name = 'Frank';
         $frank->last_name = 'Tank';
         $frank->email = 'mountainman@parks.gov';
-        $frank->images = $images;
+        $frank->likeness_photo = $images['likeness'];
+        $frank->avatar_photo = $images['avatar'];
+        $frank->official_photo = $images['official'];
+        $frank->name_recording = 'pew';
         $frank->image_priority = null;
 
         $roster = [$paulBlart, $shrek, $bigJim, $frank];
@@ -84,7 +96,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'images' => $images,
                 'image_priority' => 'official',
-                'recognized' => false,
+                'name_recording' => 'pew',
             ],
 
             [
@@ -94,7 +106,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'images' => $images,
                 'image_priority' => 'likeness',
-                'recognized' => false,
+                'name_recording' => 'pew',
             ],
 
             [
@@ -104,7 +116,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'cop@mall.com',
                 'images' => $images,
                 'image_priority' => 'likeness',
-                'recognized' => false,
+                'name_recording' => 'pew',
             ],
         ];
 
@@ -121,14 +133,16 @@ class RosterRetrievalServiceTest extends TestCase
         $student->last_name = 'Connor';
         $student->email = 'john.connor.123@my.csun.edu';
         $student->image_priority = 'avatar';
-
-        $recognized = false;
+        $student->name_recording = 'pew';
 
         $images = [
             'likeness' => 'http://localhost/images/likeness.jpg',
             'avatar' => 'images/student_avatar_default.jpg',
             'official' => 'images/student_profile_default.jpg',
         ];
+        $student->likeness_photo = $images['likeness'];
+        $student->avatar_photo = $images['avatar'];
+        $student->official_photo = $images['official'];
 
         $this->assertEquals(
             $rosterService->sanitizeStudent($student),
@@ -139,7 +153,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => $student->email,
                 'images' => $images,
                 'image_priority' => $student->image_priority,
-                'recognized' => $recognized,
+                'name_recording' => 'pew',
             ]
         );
     }

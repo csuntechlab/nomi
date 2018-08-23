@@ -54,11 +54,11 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         try {
             return env('APP_ENV') == 'production' ?
                 $client->get(
-                    env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
                     ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
                 )
                 : $client->get(
-                    env('ROSTER_URL') . '/terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
                     ['verify' => false]
                 );
         } catch (RequestException $e) {
@@ -81,7 +81,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
         //hacky fix to remove @csun.edu
         return $client->get(
-            'http://media.sandbox.csun.edu/api/1.0/faculty/media/'
+            'http://api.sandbox.csun.edu/metalab/test/media/1.1/' . $emailUri . '/photo'
             . \explode('@', \str_replace('nr_', '', $email))[0],
             ['verify' => false]
         )->getBody()->getContents();

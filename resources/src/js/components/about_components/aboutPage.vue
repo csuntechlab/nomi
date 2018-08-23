@@ -22,6 +22,11 @@
             The web applications developed and maintained by META+LAB are designed and tested to work on the most current versions of major desktop web browsers, minus one version: <b>Mozilla Firefox</b>, <b>Google Chrome</b>, <b>Safari</b>.
             Part of the mantra at META+LAB involves pushing boundaries. The use of such state-of-the-art technology will rely on the newest features and functionality available on browsers.
         </p>
+
+        <h4><strong>Android Users</strong></h4>
+        <p>
+            Some functionality is not currently supported on <b>Chrome</b> for Android. If you are using an Android device, we recommend using <b>Firefox</b> instead.
+        </p>
     </div>
 </template>
 

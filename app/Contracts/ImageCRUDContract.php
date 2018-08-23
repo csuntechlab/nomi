@@ -6,7 +6,7 @@ namespace App\Contracts;
 
 interface ImageCRUDContract
 {
-    public function upload();
+    public function upload($data);
 
     public function updatePriority();
 

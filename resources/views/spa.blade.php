@@ -3,6 +3,7 @@
     <error-bar></error-bar>
     <permission-modal></permission-modal>
     <router-view></router-view>
-    <div id="menu-bar-padding" style="height:60px"></div>
+    <side-menu></side-menu>
+    <div id="menu-bar-padding" style="height:80px"></div>
     <menu-bar></menu-bar>
 @stop

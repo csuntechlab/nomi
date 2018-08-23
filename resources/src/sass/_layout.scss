@@ -4,6 +4,7 @@ body {
 		color: themed("textColor");
 		padding-top: rem(36);
 	}
+	margin-bottom: 10%;
 }
 
 html * {
@@ -34,7 +35,7 @@ textarea[type="text"]:focus {
 		position: fixed;
 		height: rem(37);
 		width: 100%;
-		z-index: 99;
+		z-index: 1;
 		top: 0;
 
 		&__sub-brand {
@@ -91,24 +92,27 @@ textarea[type="text"]:focus {
 	margin-top: 0.833rem;
 }
 
-.course_banner {
-	@include themify($themes) {
-		background-color: themed("toolBanner");
-		color: themed("textColor");
-		margin-top: 0.833rem;
-		margin-bottom: 0.833rem;
-		padding: 10px 0;
+.course {
+	&_banner {
+		@include themify($themes) {
+			background-color: themed("toolBanner");
+			color: themed("textColor");
+			margin-top: 0.833rem;
+			margin-bottom: 0.833rem;
+			padding: 10px 0;
+		}
+	}
+
+	&_title {
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+	&_padding {
+		margin-bottom: 0.7rem;
 	}
 }
 
-.course_title {
-	font-weight: bold;
-	font-size: 1rem;
-}
-
-.course_padding {
-	margin-bottom: 0.7rem;
-}
 
 @media only screen and (max-width: 543px) {
 	.panel__header {
@@ -151,10 +155,6 @@ textarea[type="text"]:focus {
 	bottom: 0;
 	left: 0;
 	right: 0;
-}
-
-.profile_padding {
-	padding: 5%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -320,6 +320,7 @@ textarea {
 }
 
 .bottom-nav {
+	z-index: 4;
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -333,18 +334,17 @@ textarea {
 
 .bottom-nav__button {
 	color: rgba(255, 255, 255, 0.6);
-	padding: 0.5rem 0;
+	padding: .75rem 0 .5rem;
 
 	&--active {
 		color: rgba(255, 255, 255, 1);
-		padding: 0.5rem 0;
+		padding: .75rem 0 .5rem;
 	}
-
 	&--disabled {
 		@include themify($themes) {
 			color: themed("disabledBtnColor");
 		}
-		padding: 0.5rem 0;
+		padding: .75rem 0 .5rem;
 	}
 }
 

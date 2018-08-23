@@ -142,38 +142,25 @@
 	}
 }
 
-.profile-edit-button {
+.feedback-button {
 	position: absolute;
-    bottom: 0%;
-	right: 0%;
-    border-radius: 100%;
-    padding: 5%;
-    font-size: 150%;
-    -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+	right:2%;
+	padding-right: 2%;
+	padding-left: 2%;
+	padding-top: 0.5%;
+	padding-bottom: 0.5%;
+	border-bottom-left-radius:10px;
+	border-bottom-right-radius:10px;
 	@include themify($themes) {
-		background-color: themed("galleryBtnBg");
-		color: themed("galleryBtnText");
+		background-color: themed("buttonColor");
+		color: themed("buttonText");
 	}
-	@media only screen and (min-width: 350px){
-		bottom: 0%;
-		right: 8%;
-		padding: 3%;
+	@media only screen and (max-width: 699px){
+		padding-top: 1%;
+		padding-bottom: 1%;
 	}
-	@media only screen and (min-width: 600px){
-		bottom: 2%;
-		right: 15%;
-		padding: 3%;
-	}
-	@media only screen and (min-width: 1000px){
-		bottom: 5%;
-		right: 25%;
-		padding: 3%;
-	}
-}
 
-.profile_edit-padding {
-	padding:5%
+
 }
 
 .makeWhite {
@@ -212,12 +199,41 @@
 	position: fixed;
 	z-index: 1;
 	right: 20px;
-	bottom: 9%;
+	bottom: 80px;
 	padding: 12px;
 	border-radius: 50%;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+.course__button {
+	width: 5.5rem;
+}
+.course {
+	&__descriptor {
+		font-weight: bold;
+		font-size: 1rem;
+
+		@include themify($themes) {
+			color: themed("textColor") !important;
+		}
+	}
+
+	&__button {
+		width: 5.5rem;
+
+		@include themify($themes) {
+			background-color: themed("hoverColor") !important;
+			color: themed("textColor") !important;
+		}
+
+		&--selected {
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+}
 .text_bold {
 	font-weight: bold;
 }
@@ -269,7 +285,7 @@
 }
 
 .profile_notes_padding {
-	padding-top: 2rem;
+	padding-top: 1rem;
 }
 
 .modal_btn {
@@ -350,6 +366,22 @@
 
 .mb_0 {
 	margin-bottom: 0;
+}
+
+//Images
+.img--fluid-custom{
+	display: block;
+	height: auto;
+	padding: 5%;
+	margin: 0 auto;
+}
+
+.roster__img{
+	width: 100%;
+}
+
+.profile__img{
+	width: 12rem;
 }
 
 textarea[type="text"]:focus{

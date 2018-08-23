@@ -8,9 +8,11 @@
                         {{this.student.emailURI}}@my.csun.edu
                     </div>
                     <div>
-                        <strong>About {{this.student.firstName}}:</strong>
-                        <span v-if="this.student.bio == null" class="text_italic display_inline"> Pending biography from student.</span>
-                        <span v-else> {{this.student.bio}}</span>
+                        <span v-if="this.student.bio != null" class="text_italic display_inline">
+                            <strong>About {{this.student.firstName}}:</strong>
+                            {{this.student.bio}}
+                        </span>
+                        <span v-else></span>
                     </div>
                     <profile-notes class="profile_notes_padding" :student="student" @unsavedChanges="sendUnsavedChanges" @committedChanges="sendChanges"></profile-notes>
                 </div>

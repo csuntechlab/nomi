@@ -2,7 +2,7 @@
     <div class="panel-content">
         <h1>Version History</h1>
         <h3>NOMI 1.0</h3>
-        <h5>Pilot Release Date: 6/18/2018</h5>
+        <h5>Pilot Release Date: 8/27/2018</h5>
         <p>
         <ol>
             <li>Flashcards to learn student names</li>
