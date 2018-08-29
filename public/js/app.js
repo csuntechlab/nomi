@@ -21870,7 +21870,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 
@@ -21966,28 +21965,40 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("croppa", {
-        attrs: {
-          "prevent-white-space": true,
-          "show-remove-button": false,
-          quality: 2,
-          "initial-image": this.student.images.likeness
-        },
-        on: {
-          init: function($event) {
-            _vm.styleCanvas()
+      _c(
+        "croppa",
+        {
+          attrs: {
+            "prevent-white-space": true,
+            "show-remove-button": false,
+            quality: 2
           },
-          "loading-start": _vm.loadingStart,
-          "loading-end": _vm.loadingEnd
-        },
-        model: {
-          value: _vm.myCroppa,
-          callback: function($$v) {
-            _vm.myCroppa = $$v
+          on: {
+            init: function($event) {
+              _vm.styleCanvas()
+            },
+            "loading-start": _vm.loadingStart,
+            "loading-end": _vm.loadingEnd
           },
-          expression: "myCroppa"
-        }
-      }),
+          model: {
+            value: _vm.myCroppa,
+            callback: function($$v) {
+              _vm.myCroppa = $$v
+            },
+            expression: "myCroppa"
+          }
+        },
+        [
+          _c("img", {
+            attrs: {
+              slot: "initial",
+              crossorigin: "anonymous",
+              src: this.student.images.likeness
+            },
+            slot: "initial"
+          })
+        ]
+      ),
       _vm._v(" "),
       _vm.loadingCroppa
         ? _c("div", { staticClass: "croppa_loading" }, [_vm._m(0)])
