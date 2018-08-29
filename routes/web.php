@@ -27,36 +27,36 @@ Route::get('/logout', function () {
 });
 
 /** Web Service API Routes. */
-Route::get('/courses/{term}', 'WebResourceController@courses');
-Route::get('/roster/{term}/{course}', 'WebResourceController@roster');
-Route::get('/media/{email}', 'WebResourceController@media');
-Route::get('/student/{email}', 'WebResourceController@student');
+Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
+Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
+Route::get('/media/{email}', 'WebResourceController@media')->middleware('auth');
+Route::get('/student/{email}', 'WebResourceController@student')->middleware('auth');
 
 /** Roster API Routes. */
-Route::get('/students/{term}/{course}', 'RosterController@getStudents');
-Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents');
+Route::get('/students/{term}/{course}', 'RosterController@getStudents')->middleware('auth');
+Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents')->middleware('auth');
 
 /** Student API Routes */
-Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile');
-Route::get('/student_profile/{email}', 'StudentProfileController@getProfile');
-Route::post('/update_note', 'StudentProfileController@updateNotes');
+Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
+Route::get('/student_profile/{email}', 'StudentProfileController@getProfile')->middleware('auth');
+Route::post('/update_note', 'StudentProfileController@updateNotes')->middleware('auth');
 
 /** User Settings API Routes */
-Route::get('/get_settings', 'UserSettingsController@getSettings');
-Route::post('/update_theme', 'UserSettingsController@updateTheme');
+Route::get('/get_settings', 'UserSettingsController@getSettings')->middleware('auth');
+Route::post('/update_theme', 'UserSettingsController@updateTheme')->middleware('auth');
 
 /** Support and Feedback */
-Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create');
-Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store');
-Route::get('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@create')->name('support.create');
-Route::post('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@store')->name('support.store');
+Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create')->middleware('auth');
+Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store')->middleware('auth');
+Route::get('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@create')->name('support.create')->middleware('auth');
+Route::post('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@store')->name('support.store')->middleware('auth');
 
 /**
  * Image CRUD Routes.
  */
 Route::group(['prefix' => 'api'], function () {
-    Route::post('/upload', 'ImageController@uploadImage');
-    Route::post('/priority', 'ImageController@updatePriority');
+    Route::post('/upload', 'ImageController@uploadImage')->middleware('auth');
+    Route::post('/priority', 'ImageController@updatePriority')->middleware('auth');
 });
 
 /** META+LAB Feedback Routes */
