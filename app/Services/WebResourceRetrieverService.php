@@ -96,8 +96,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
 
         return $client->get(
-            'https://api.metalab.csun.edu/directory/api/members?email='
-            . \str_replace('nr_', '', $email),
+            env('DIRECTORY_URL') . \str_replace('nr_', '', $email),
             ['verify' => false]
         )->getBody()->getContents();
     }
