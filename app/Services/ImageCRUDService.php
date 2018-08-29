@@ -58,6 +58,7 @@ class ImageCRUDService implements ImageCRUDContract
 
             $response = $guzzle->post(env('MEDIA_URL') . $data['uri'] . '/photo');
             $guzzleResponse = $guzzle->resolveResponseBody($response, 'json');
+            dd($guzzleResponse);
             if ($guzzleResponse->status === '200') {
                 return [
                     'status' => '200',
