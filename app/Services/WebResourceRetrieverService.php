@@ -57,11 +57,11 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         try {
             return env('APP_ENV') == 'production' ?
                 $client->get(
-                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes' . $class->class_number,
                     ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
                 )
                 : $client->get(
-                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes' . $class->class_number,
                     ['verify' => false]
                 );
         } catch (RequestException $e) {
@@ -96,8 +96,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
 
         return $client->get(
-            'https://api.metalab.csun.edu/directory/api/members?email='
-            . \str_replace('nr_', '', $email),
+            env('DIRECTORY_URL') . \str_replace('nr_', '', $email),
             ['verify' => false]
         )->getBody()->getContents();
     }
