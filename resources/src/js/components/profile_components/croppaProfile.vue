@@ -8,7 +8,7 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-             <img crossorigin="anonymous" :src="this.student.images.likeness" slot="initial">
+             <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial">
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
             <div class="croppa_loading_icon">
