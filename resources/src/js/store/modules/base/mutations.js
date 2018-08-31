@@ -30,7 +30,7 @@ export default {
                     state.loadingClasses = false;
                     state.flashroster = response.data["students"];
                     state.facultyMember.email = response.data["email"];
-                    state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                     state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                     state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                     state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
@@ -57,7 +57,7 @@ export default {
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);

@@ -41,7 +41,7 @@ export default {
         },
             
         email_uri : function () {
-            return this.student.email.split('@')[0].replace("nr_", "");
+            return this.student.email.split('@')[0];
         },
 
         image: function() {
