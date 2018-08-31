@@ -3,8 +3,6 @@ export default {
         let email = payload.uri+'@my.csun.edu';
         let data = new FormData;
 
-        let tempEmail = 'nr_' + email;
-
         data.append('faculty_id', payload.faculty_id);
         data.append('email', email);
 
@@ -28,7 +26,7 @@ export default {
                 state.studentProfile.firstName = response['data'].first_name;
                 for(var student in getters.students) {
                     if(getters.students.hasOwnProperty(student)) {
-                        if(getters.students[student].email == tempEmail) {
+                        if(getters.students[student].email == email) {
                             state.studentProfile.student = getters.students[student];
                             state.studentProfile.images = getters.students[student].images;
                             break;
