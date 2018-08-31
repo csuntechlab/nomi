@@ -91,7 +91,6 @@ class RosterRetrievalService implements RosterRetrievalContract
             $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
         }
 
-        $email = \str_replace('nr_', '', $student->email);
         $email = \substr($email, 0, \strpos($email, '@'));
 
         return [
