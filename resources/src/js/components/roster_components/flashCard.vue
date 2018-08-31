@@ -3,10 +3,10 @@
         <div class="flash_panel"  @click="updateRecognized">
           <div class="flash_positioner"></div>
             <div class="flash_element">
-                <div v-if="!known" class="card_face">
+                <div v-show="!known" class="card_face">
                     <profile-picture class="roster__img" :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
-                <div v-else>
+                <div v-show="known">
                     <div class="type--center textOverflow back_of_card back_of_card_mobile">
                         {{display_name}}
                     </div>
