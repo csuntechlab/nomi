@@ -61,6 +61,7 @@ class StudentProfileServiceTest extends TestCase
                     'display_name' => 'Sun Ra',
                 ],
                 'success' => 'true',
+                'status' => '200',
         ]));
 
         $this->webResourceRetriever
@@ -119,6 +120,7 @@ class StudentProfileServiceTest extends TestCase
                     'display_name' => 'Sun Ra',
                 ],
                 'success' => 'false',
+                'status' => 400,
         ]));
 
         $this->imageCRUD
@@ -130,7 +132,7 @@ class StudentProfileServiceTest extends TestCase
 
         $output = $studentService->getStudentProfile($email);
 
-        $this->assertEquals(\json_encode($studentProfile), $output);
+        $this->assertEquals($studentProfile, $output);
     }
 
     /** @test */
