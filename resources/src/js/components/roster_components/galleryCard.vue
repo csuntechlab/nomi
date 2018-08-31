@@ -64,7 +64,7 @@ export default {
     },
 
     email_uri: function() {
-      return this.student.email;
+      return this.student.email.split("@")[0];
     },
 
     image: function() {
