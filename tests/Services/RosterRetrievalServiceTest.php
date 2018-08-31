@@ -94,6 +94,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => 'Big',
                 'last_name' => 'Jim',
                 'email' => 'mountainman@parks.gov',
+                'email_uri' => 'mountainman',
                 'images' => $images,
                 'image_priority' => 'official',
                 'name_recording' => 'pew',
@@ -104,6 +105,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => 'Frank',
                 'last_name' => 'Tank',
                 'email' => 'mountainman@parks.gov',
+                'email_uri' => 'mountainman',
                 'images' => $images,
                 'image_priority' => 'likeness',
                 'name_recording' => 'pew',
@@ -114,6 +116,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => 'Paul',
                 'last_name' => 'Blart',
                 'email' => 'cop@mall.com',
+                'email_uri' => 'cop',
                 'images' => $images,
                 'image_priority' => 'likeness',
                 'name_recording' => 'pew',
@@ -132,6 +135,7 @@ class RosterRetrievalServiceTest extends TestCase
         $student->first_name = 'John';
         $student->last_name = 'Connor';
         $student->email = 'john.connor.123@my.csun.edu';
+        $student->emailUri = 'john.connor.123';
         $student->image_priority = 'avatar';
         $student->name_recording = 'pew';
 
@@ -151,6 +155,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => $student->first_name,
                 'last_name' => $student->last_name,
                 'email' => $student->email,
+                'email_uri' => $student->emailUri,
                 'images' => $images,
                 'image_priority' => $student->image_priority,
                 'name_recording' => 'pew',
