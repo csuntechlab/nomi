@@ -83,22 +83,18 @@ class RosterRetrievalService implements RosterRetrievalContract
 
     public function sanitizeStudent($student, $imageManager = null)
     {
-        if ($imageManager == null) {
-            $imageManager = new ImageManager(['driver' => 'imagick']);
-        }
-
         if ($student->email == null) {
             $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
         }
 
-        $email = \str_replace('nr_', '', $student->email);
-        $email = \substr($email, 0, \strpos($email, '@'));
+        $emailUri = \substr($student->email, 0, \strpos($student->email, '@'));
 
         return [
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,
             'last_name' => $student->last_name,
             'email' => $student->email,
+            'email_uri' => $emailUri,
             'images' => [
                 'likeness' => $student->likeness_photo,
                 'avatar' => $student->avatar_photo,

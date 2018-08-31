@@ -10,7 +10,6 @@ use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Models\Note;
 use Illuminate\Support\Facades\Crypt;
-use Intervention\Image\ImageManager;
 
 class StudentProfileService implements StudentProfileContract
 {
@@ -30,39 +29,31 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentProfile($email)
     {
-        if (\json_decode($this->webResourceRetriever->getStudent($email), true)['success'] == 'false') {
-            return \json_encode(null);
-        }
-        $imageManager = new ImageManager(['driver' => 'imagick']);
         $email = $this->ensureStudentEmailWorks($email);
-        $profile = \json_decode($this->webResourceRetriever->getStudent($email), true)['people'];
+        $profile = \json_decode($this->webResourceRetriever->getStudent($email), true);
+        if ($profile['status'] === '200') {
+            $profile = $profile['people'];
+            $note = Note::where('user_id', auth()->user()->user_id)
+                ->where('student_id', $profile['individuals_id'])
+                ->first();
 
-        // if ($profile['profile_image'] == null) {
-        //     $profile['profile_image'] = (string) $imageManager
-        //         ->make(env('IMAGE_UPLOAD_LOCATION') . '/student_profile_default.jpg')
-        //         ->encode('data-url');
-        // }
+            $imagePriority = $this
+                ->imageCRUD
+                ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
-        $note = Note::where('user_id', auth()->user()->user_id)
-            ->where('student_id', $profile['individuals_id'])
-            ->first();
+            $studentProfile = (object) [
+                'display_name' => $profile['display_name'],
+                'first_name' => \explode(' ', $profile['display_name'])[0],
+                'last_name' => \substr(\strstr($profile['display_name'], ' '), 1),
+                'email' => $email,
+                'student_id' => $profile['individuals_id'],
+                'members_id' => $profile['individuals_id'],
+                'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
+                'image_priority' => $imagePriority,
+            ];
 
-        $imagePriority = $this
-            ->imageCRUD
-            ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
-
-        $studentProfile = (object) [
-            'display_name' => $profile['display_name'],
-            'first_name' => \explode(' ', $profile['display_name'])[0],
-            'last_name' => \substr(\strstr($profile['display_name'], ' '), 1),
-            'email' => $email,
-            'student_id' => $profile['individuals_id'],
-            'members_id' => $profile['individuals_id'],
-            'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
-            'image_priority' => $imagePriority,
-        ];
-
-        return \json_encode($studentProfile);
+            return \json_encode($studentProfile);
+        }
     }
 
     public function updateStudentNotes($data)

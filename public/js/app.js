@@ -21804,7 +21804,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     email_uri: function email_uri() {
-      return this.student.email.split("@")[0].replace("nr_", "");
+      return this.student.email;
     },
 
     image: function image() {
@@ -22470,7 +22470,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         email_uri: function email_uri() {
-            return this.student.email.split('@')[0].replace("nr_", "");
+            return this.student.email.split('@')[0];
         },
 
         image: function image() {
@@ -25022,7 +25022,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = _capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = _capitalize(state.facultyMember.emailURI.split('.')[1]);
@@ -25044,7 +25044,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
@@ -25477,8 +25477,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         var email = payload.uri + '@my.csun.edu';
         var data = new FormData();
 
-        var tempEmail = 'nr_' + email;
-
         data.append('faculty_id', payload.faculty_id);
         data.append('email', email);
 
@@ -25499,7 +25497,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             state.studentProfile.firstName = response['data'].first_name;
             for (var student in getters.students) {
                 if (getters.students.hasOwnProperty(student)) {
-                    if (getters.students[student].email == tempEmail) {
+                    if (getters.students[student].email == email) {
                         state.studentProfile.student = getters.students[student];
                         state.studentProfile.images = getters.students[student].images;
                         break;
