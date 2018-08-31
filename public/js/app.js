@@ -21956,7 +21956,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     email_uri: function email_uri() {
-      return this.student.email;
+      return this.student.email.split("@")[0];
     },
 
     image: function image() {
