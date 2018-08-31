@@ -82,7 +82,7 @@ class ImageCRUDService implements ImageCRUDContract
     public function getPriority($student_ids)
     {
         $out = [];
-        if (count($student_ids) > 1) {
+        if (\count($student_ids) > 1) {
             $array = [];
             foreach ($student_ids as $student_id) {
                 \array_push($array, 'members:' . $student_id);
@@ -96,21 +96,19 @@ class ImageCRUDService implements ImageCRUDContract
                 }
             }
         } else {
-            $student_ids[0] = 'members:'.$student_ids[0];
+            $student_ids[0] = 'members:' . $student_ids[0];
             $user = $this->userModelRepository->getUsersWithImagePriority($student_ids);
-            if (count($user) === 0) {
+            if (\count($user) === 0) {
                 \array_push($out, 'likeness');
             } else {
+                $user = $user[0];
                 if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
                     \array_push($out, $user['image_priority']['image_priority']);
                 } else {
                     \array_push($out, 'likeness');
                 }
             }
-
         }
-
-
 
         return $out;
     }
