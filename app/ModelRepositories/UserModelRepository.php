@@ -11,7 +11,7 @@ class UserModelRepository implements UserModelRepositoryInterface
 {
     public function getUsersWithImagePriority(array $userIds): array
     {
-        return User::with('ImagePriority')
+        return User::with('imagePriority')
         ->whereIn('user_id', $userIds)
         ->get()->toArray();
     }
