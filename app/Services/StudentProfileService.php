@@ -10,7 +10,6 @@ use App\Contracts\StudentProfileContract;
 use App\Contracts\WebResourceRetrieverContract;
 use App\Models\Note;
 use Illuminate\Support\Facades\Crypt;
-use Intervention\Image\ImageManager;
 
 class StudentProfileService implements StudentProfileContract
 {
@@ -55,7 +54,6 @@ class StudentProfileService implements StudentProfileContract
 
             return \json_encode($studentProfile);
         }
-
     }
 
     public function updateStudentNotes($data)
