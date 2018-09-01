@@ -32,7 +32,7 @@
             this.url = document.querySelector('meta[name=app-url]').content;
         },
 
-         methods: {
+        methods: {
             updateTheme: function(theme) {
                 let data = new FormData();
                 data.append('theme', theme);
@@ -47,7 +47,7 @@
                     console.log(e)
                 });
             }
-         }
+        }
     
 
     }
