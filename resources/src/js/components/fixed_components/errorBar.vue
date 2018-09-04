@@ -45,7 +45,6 @@ export default {
                 let course = this.currentCourse;
 				this.$router.go(-1);
             }
-            this.logErrors();
             this.clearErrors();
 		},
 	}
