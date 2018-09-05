@@ -23,7 +23,15 @@ class ImageController extends Controller
 
     public function uploadImage(Request $request)
     {
-        return $this->imageCRUDContract->upload($request);
+        $data = [
+            'id' => $request->id,
+            'profile_image' => $request->profile_image,
+            'image_type' => $request->image_type,
+            'entity_type' => $request->entity_type,
+            'uri' => $request->uri,
+        ];
+
+        return $this->imageCRUDContract->upload($data);
     }
 
     public function updatePriority(Request $request)

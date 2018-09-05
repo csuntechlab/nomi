@@ -58,6 +58,10 @@ Compiles to 2.4rem*/
   height: 100%;
 }
 
+.theme-login .side-menu {
+  background-color: #a61926;
+}
+
 .theme-main .side-menu {
   background-color: #172533;
 }
@@ -154,6 +158,10 @@ Compiles to 2.4rem*/
   height: 2.2rem;
 }
 
+body {
+  margin-bottom: 10%;
+}
+
 .theme-login body {
   background-color: #FFFFFF;
   color: #464646;
@@ -229,7 +237,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .primary-nav {
-  background-color: #D00D2D;
+  background-color: #D22030;
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
@@ -485,6 +493,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .course_banner {
+  background-color: rgba(0, 0, 0, 0.05);
   color: #464646;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
@@ -622,10 +631,6 @@ textarea[type="text"]:focus {
   right: 0;
 }
 
-.profile_padding {
-  padding: 5%;
-}
-
 @media only screen and (min-width: 600px) {
   .back_of_card {
     font-size: 1.8em;
@@ -675,7 +680,8 @@ textarea[type="text"]:focus {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  border-bottom: 5px solid;
+  color: #E74A37;
+  border-bottom: 5px solid #E74A37;
 }
 
 .theme-main .tab__link--active {
@@ -760,7 +766,7 @@ textarea[type="text"]:focus {
 
 .theme-login .roster-sorting__button--selected {
   background-color: #d00d2d !important;
-  color: !important;
+  color: #fff !important;
 }
 
 .theme-main .roster-sorting__button--selected {
@@ -822,6 +828,7 @@ textarea[type="text"]:focus {
 
 .theme-login .roster-sorting__name--selected {
   background-color: #d00d2d;
+  color: #fff;
 }
 
 .theme-main .roster-sorting__name--selected {
@@ -852,7 +859,7 @@ textarea {
 }
 
 .theme-login .menu {
-  background-color: #D00D2D;
+  background-color: #D22030;
   color: white;
 }
 
@@ -883,6 +890,7 @@ textarea {
 
 .theme-login .btn {
   background-color: #d00d2d;
+  color: #fff;
   border: 2px solid transparent;
 }
 
@@ -1004,6 +1012,7 @@ textarea {
 }
 
 .theme-login .settings_banner {
+  background: rgba(0, 0, 0, 0.05);
   margin-bottom: .1rem;
   padding: 0.2rem 0;
 }
@@ -1043,7 +1052,7 @@ textarea {
 }
 
 .theme-login .bottom-nav {
-  background: #D00D2D;
+  background: #D22030;
 }
 
 .theme-main .bottom-nav {
@@ -1064,16 +1073,20 @@ textarea {
 
 .bottom-nav__button {
   color: rgba(255, 255, 255, 0.6);
-  padding: 0.5rem 0;
+  padding: .75rem 0 .5rem;
 }
 
 .bottom-nav__button--active {
   color: white;
-  padding: 0.5rem 0;
+  padding: .75rem 0 .5rem;
 }
 
 .bottom-nav__button--disabled {
-  padding: 0.5rem 0;
+  padding: .75rem 0 .5rem;
+}
+
+.theme-login .bottom-nav__button--disabled {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .theme-main .bottom-nav__button--disabled {
@@ -1090,6 +1103,10 @@ textarea {
 
 .theme-Dark .bottom-nav__button--disabled {
   color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-login .course-card--selected {
+  color: #E74A37;
 }
 
 .theme-main .course-card--selected {
@@ -1158,7 +1175,7 @@ textarea {
 }
 
 .theme-login .makeBlue {
-  background-color: #D00D2D;
+  background-color: #D22030;
 }
 
 .theme-main .makeBlue {
@@ -1177,6 +1194,10 @@ textarea {
   background-color: #1D1D1D;
 }
 
+.theme-login .accentColorBlue {
+  background-color: #E74A37;
+}
+
 .theme-main .accentColorBlue {
   background-color: #4F9DA3;
 }
@@ -1191,6 +1212,10 @@ textarea {
 
 .theme-Dark .accentColorBlue {
   background-color: #97B5D8;
+}
+
+.theme-login .icon_theme {
+  color: #E74A37;
 }
 
 .theme-main .icon_theme {
@@ -1210,7 +1235,7 @@ textarea {
 }
 
 .theme-login .nav-bars {
-  background-color: #D00D2D;
+  background-color: #D22030;
   font-size: 1.1rem;
   color: #FFFFFF;
 }
@@ -1348,6 +1373,11 @@ textarea {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
 
+.theme-login .panel__edit-button {
+  background-color: #fff;
+  color: #808080;
+}
+
 .theme-main .panel__edit-button {
   background-color: #4F9DA3;
   color: #ffffff;
@@ -1368,65 +1398,6 @@ textarea {
   color: #dfe5ec;
 }
 
-.profile-edit-button {
-  position: absolute;
-  bottom: 0%;
-  right: 0%;
-  border-radius: 100%;
-  padding: 5%;
-  font-size: 150%;
-  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
-}
-
-.theme-main .profile-edit-button {
-  background-color: #4F9DA3;
-  color: #ffffff;
-}
-
-.theme-bluesTheme .profile-edit-button {
-  background-color: #fff;
-  color: #2e88c5;
-}
-
-.theme-OnceAMatadorAlwaysAMatador .profile-edit-button {
-  background-color: #fff;
-  color: #808080;
-}
-
-.theme-Dark .profile-edit-button {
-  background-color: #426c96;
-  color: #dfe5ec;
-}
-
-@media only screen and (min-width: 350px) {
-  .profile-edit-button {
-    bottom: 0%;
-    right: 8%;
-    padding: 3%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .profile-edit-button {
-    bottom: 2%;
-    right: 15%;
-    padding: 3%;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .profile-edit-button {
-    bottom: 5%;
-    right: 25%;
-    padding: 3%;
-  }
-}
-
-.profile_edit-padding {
-  padding: 5%;
-}
-
 .feedback-button {
   position: absolute;
   right: 2%;
@@ -1440,6 +1411,7 @@ textarea {
 
 .theme-login .feedback-button {
   background-color: #d00d2d;
+  color: #fff;
 }
 
 .theme-main .feedback-button {
@@ -1508,11 +1480,94 @@ textarea {
   position: fixed;
   z-index: 1;
   right: 20px;
-  bottom: 9%;
+  bottom: 80px;
   padding: 12px;
   border-radius: 50%;
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.course__button {
+  width: 5.5rem;
+}
+
+.course__descriptor {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.theme-login .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-main .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .course__descriptor {
+  color: #575757 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__descriptor {
+  color: #464646 !important;
+}
+
+.theme-Dark .course__descriptor {
+  color: #bababa !important;
+}
+
+.course__button {
+  width: 5.5rem;
+}
+
+.theme-login .course__button {
+  background-color: #dddddd !important;
+  color: #464646 !important;
+}
+
+.theme-main .course__button {
+  background-color: #ccc !important;
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .course__button {
+  background-color: #ccc !important;
+  color: #575757 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__button {
+  background-color: #dddddd !important;
+  color: #464646 !important;
+}
+
+.theme-Dark .course__button {
+  background-color: #272727 !important;
+  color: #bababa !important;
+}
+
+.theme-login .course__button--selected {
+  background-color: #d00d2d !important;
+  color: #fff !important;
+}
+
+.theme-main .course__button--selected {
+  background-color: #4F9DA3 !important;
+  color: #fff !important;
+}
+
+.theme-bluesTheme .course__button--selected {
+  background-color: #4CA1DB !important;
+  color: #fff !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .course__button--selected {
+  background-color: #E74A37 !important;
+  color: #fff !important;
+}
+
+.theme-Dark .course__button--selected {
+  background-color: #426c96 !important;
+  color: #dadada !important;
 }
 
 .text_bold {
@@ -1647,7 +1702,7 @@ textarea {
 }
 
 .theme-login .confirm_btn:hover {
-  background: #ccc;
+  background: #dddddd;
 }
 
 .theme-main .confirm_btn:hover {
@@ -1699,7 +1754,7 @@ textarea {
 }
 
 .theme-login .decline_btn:hover {
-  background: #ccc;
+  background: #dddddd;
 }
 
 .theme-main .decline_btn:hover {
@@ -1736,8 +1791,23 @@ textarea {
   margin-bottom: 0;
 }
 
+.img--fluid-custom {
+  display: block;
+  height: auto;
+  padding: 5%;
+  margin: 0 auto;
+}
+
+.roster__img {
+  width: 100%;
+}
+
+.profile__img {
+  width: 12rem;
+}
+
 .theme-login textarea[type="text"]:focus {
-  border: 3px solid;
+  border: 3px solid #92A1CD;
 }
 
 .theme-main textarea[type="text"]:focus {
@@ -1777,7 +1847,7 @@ textarea {
 }
 
 .theme-login .underlineStyling--red {
-  border-bottom: 5px solid;
+  border-bottom: 5px solid #E74A37;
 }
 
 .theme-main .underlineStyling--red {
@@ -1833,8 +1903,8 @@ textarea {
 
 .notes__status {
   padding-right: 5px;
-  opacity: .8;
-  font-size: .9rem;
+  opacity: 0.8;
+  font-size: 0.9rem;
   vertical-align: top;
 }
 
@@ -1847,6 +1917,88 @@ textarea {
   min-height: 100px;
   overflow: hidden;
   margin-bottom: 0 !important;
+}
+
+.profile-carousel__default-btn {
+  margin-top: 0.66666667rem;
+}
+
+.profile-carousel__edit {
+  z-index: 2;
+  position: absolute;
+  border-radius: 100%;
+  font-size: 1.8em;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-login .profile-carousel__edit {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-main .profile-carousel__edit {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .profile-carousel__edit {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile-carousel__edit {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-Dark .profile-carousel__edit {
+  background-color: #426c96;
+  color: #dfe5ec;
+}
+
+@media only screen and (max-width: 400px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 15%;
+    padding: 4%;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 26%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 750px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 28%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1000px) {
+  .profile-carousel__edit {
+    bottom: 25%;
+    right: 32%;
+    padding: 3%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .profile-carousel__edit {
+    bottom: 30%;
+    right: 37%;
+    padding: 2%;
+  }
+}
+
+.profile-carousel__edit-padding {
+  padding: 5%;
 }
 
 .login {
@@ -2150,6 +2302,10 @@ textarea {
   margin-top: 0;
 }
 
+.theme-login .modal-header h3 {
+  color: #E74A37;
+}
+
 .theme-main .modal-header h3 {
   color: #4F9DA3;
 }
@@ -2184,6 +2340,10 @@ textarea {
   bottom: 0%;
   width: 50%;
   height: 30%;
+}
+
+.theme-login .modal-button-container {
+  background-color: #E74A37;
 }
 
 .theme-main .modal-button-container {

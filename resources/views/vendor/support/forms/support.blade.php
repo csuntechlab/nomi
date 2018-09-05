@@ -8,22 +8,76 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Submit Support Request | {{ $application_name }}</title>
+    <title>Submit Support Request | NOMI </title>
 
-    <style type="text/css">
-      .required {
-        color: red;
+  <style type="text/css">
+      .sub-container{
+        display: inline-block;
+        padding: 3%;
+      }
+      .submit_button {
+        float: right;
+        background-color: #d00d2d;
+        border-color: #d00d2d;
+        color: #fff; 
+      }
+      .nomi-logo {
+        float: right;
+        height: 25%;
+      } 
+      .back_button {
+        position: relative;
+        float: left;
+        left: 3%;
+        height: 100%;
+        padding: 1%;
+        width: 8%;
+        cursor: pointer;
+        border-color: black;
+      }
+      .header-bar {
+        position: fixed;
+		    height: 3rem;
+		    width: 100%;
+        top: 0;
+        background-color: #d00d2d;
+        z-index:101;
       }
     </style>
   </head>
   <body>
-    <div class="container">
+  <div class="header-bar">
+      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" onclick="window.location='{{url('/home')}}'" alt="Back Button">
+    </div>
+    <div class="container sub-container">
       <div class="row justify-content-md-center">
         <div class="col-sm-8">
-          <h1>Submit Support Request</h1>
-
-          <p>You are currently logged-in as {{ $submitter_name }} ({{ $submitter_email }}).</p>
+          <br>
+          <br>
+        <img class="nomi-logo" src="{{ asset('/images/apple-touch-icon.png') }}" alt="NOMI Logo; Names of Matador Individuals">
+          <br>
+          <br>
+          <br>
+          <h1>Feedback Form</h1>
+          <br>
+          <p>Hello, {{ $submitter_name }} {{ $submitter_email }}.</p>
         </div>
+      </div>
+      <div class="row justify-content-md-center">
+      <div class="form-group col-sm-8">	            
+              <label for="impact"><span class="required">*</span> Impact</label>	              
+              <select name="impact" id="impact" class="form-control">	
+                @foreach($impact as $key => $value)	
+                  @if(old('impact') == $key)	
+                    <option value="{{ $key }}" selected="selected">	
+                  @else	
+                    <option value="{{ $key }}">	
+                  @endif	
+                  {{ $value }}	
+                  </option>	
+                @endforeach	
+              </select>	
+            </div>
       </div>
 
       @if($errors->count() > 0)
@@ -59,30 +113,12 @@
 
       <div class="row justify-content-md-center">
         <div class="col-sm-8">
-          <form method="POST" action="{{ route('support.store') }}">
+          <form method="POST" action="{{ route('feedback.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
             <div class="form-group">
-              <label for="impact"><span class="required">*</span> Impact</label>
-              <select name="impact" id="impact" class="form-control">
-                @foreach($impact as $key => $value)
-                  @if(old('impact') == $key)
-                    <option value="{{ $key }}" selected="selected">
-                  @else
-                    <option value="{{ $key }}">
-                  @endif
-                  {{ $value }}
-                  </option>
-                @endforeach
-              </select>
+              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your feedback.">{{ old('content') }}</textarea>
             </div>
-
-            <div class="form-group">
-              <label for="content"><span class="required">*</span> Support Request Message</label>
-              <textarea class="form-control" rows="5" name="content" id="content" placeholder="Please enter your support request message...">{{ old('content') }}</textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit Support Request</button>
+            <button type="submit" class="btn submit_button">Submit</button>
           </form>
         </div>
       </div>

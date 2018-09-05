@@ -1,11 +1,24 @@
 $themes: (
   login: (
-    navigationBars: #D00D2D,
+    navigationBars: #D22030,
+    sideMenu: #a61926,
+    accentColor: #E74A37,
     backgroundColor: #FFFFFF,
     textColor: #464646,
-    panelColor: #F0F0F0,
-    hoverColor: #ccc,
+
+    hoverColor: rgb(221, 221, 221),
+    focusColor: #92A1CD,
+
+    galleryBtnBg:#fff,
+    galleryBtnText: #808080,
+    disabledBtnColor:rgba(0, 0, 0, 0.6),
+
     buttonColor: #d00d2d,
+    buttonText: #fff,
+
+    panelColor: #F0F0F0,
+    toolBanner: rgba(0,0,0,0.05),
+
     mainFontSize: 1.1rem,
     mainFontFamily: sans-serif,
   ),
@@ -21,6 +34,7 @@ $themes: (
     
     buttonColor: #4F9DA3,
     buttonText: #fff,
+    
     /*Gallery - Styles gallery edit button colors*/
     galleryBtnBg:#4F9DA3,
     galleryBtnText: #ffffff,

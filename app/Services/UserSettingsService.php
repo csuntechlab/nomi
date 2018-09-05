@@ -42,7 +42,7 @@ class UserSettingsService implements UserSettingsContract
 
     public function getCurrentTerm()
     {
-        $today = Carbon::now()->toDateTimeString();
+        $today = Carbon::now()->addWeeks(2)->toDateTimeString();
 
         $term = $this->termModelRepository->getCurrentTerm($today);
 

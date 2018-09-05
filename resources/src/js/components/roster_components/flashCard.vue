@@ -3,10 +3,10 @@
         <div class="flash_panel"  @click="updateRecognized">
           <div class="flash_positioner"></div>
             <div class="flash_element">
-                <div v-if="!known" class="card_face">
-                    <profile-picture :name="display_name" :image="image"></profile-picture>
+                <div v-show="!known" class="card_face">
+                    <profile-picture class="roster__img" :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
-                <div v-else>
+                <div v-show="known">
                     <div class="type--center textOverflow back_of_card back_of_card_mobile">
                         {{display_name}}
                     </div>
@@ -47,7 +47,11 @@ export default {
     },
 
     image: function() {
-      return this.student.images.likeness;
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } else if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
     }
   },
 

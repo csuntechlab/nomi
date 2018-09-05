@@ -22,9 +22,9 @@ class FacultyProfileService implements FacultyProfileContract
 
         $member = \json_decode($faculty, true)['people'];
 
-        if (is_null($member['profile_image'])) {
-            $member['profile_image'] = asset('images/likeness.jpg');
-        }
+        // if (is_null($member['profile_image'])) {
+        //     $member['profile_image'] = asset('images/likeness.jpg');
+        // }
 
         return [
             'image' => $member['profile_image'],

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="studentProfile.images == null" class="type--center">
+        <div v-if="this.studentProfile.images == null" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
@@ -21,7 +21,6 @@ export default {
 
 	data: function() {
 		return {
-			imgUrl: null,
 			unsavedChanges: false
 		};
 	},
@@ -68,12 +67,11 @@ export default {
 
 	computed: {
 
-		...mapGetters(["studentProfile", "facultyMember", 'errors', 'profileErrors', 'profileLoadError'])
+		...mapGetters(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])
 	},
 
 	methods: {
 		...mapActions([
-			"clearErrors",
 			"clearProfileErrors",
 		]),
 		setUnsavedChanges() {

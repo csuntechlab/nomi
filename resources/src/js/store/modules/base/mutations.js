@@ -30,7 +30,7 @@ export default {
                     state.loadingClasses = false;
                     state.flashroster = response.data["students"];
                     state.facultyMember.email = response.data["email"];
-                    state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                     state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                     state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                     state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
@@ -57,7 +57,7 @@ export default {
                 state.loadingClasses = false;
                 state.flashroster = response.data["students"];
                 state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.replace("nr_", "").split('@')[0];
+                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
                 state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
                 state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
                 state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
@@ -75,6 +75,23 @@ export default {
                 state.errors = e.response.data.message;
             });
         }
+    },
+
+    UPDATE_STUDENT_PRIORITY (state,payload) {
+        for (let i = 0, len = state.courses.length; i < len; i += 1) {
+            for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+                if (state.courses[i].roster[j].student_id === payload.studentId) {
+                    state.courses[i].roster[j].image_priority = payload.image_priority;
+                }
+            }
+        }
+        for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
+			for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
+				if (state.flashroster[i][j].student_id === payload.studentId) {
+                    state.flashroster[i][j].image_priority = payload.image_priority;
+				}
+			}
+		}
     },
 
     STORE_COURSE (state, payload){
@@ -214,9 +231,9 @@ export default {
     },
 
     UPDATE_IMAGE: function (state, payload) {
-        let id = payload.studentId;
-        let url = payload.imgUrl;
-        state.studentImages[id] = url;
+        // let id = payload.studentId;
+        // let url = payload.imgUrl;
+        // state.studentImages[id] = url;
     },
 
     SET_SPRING: function (state) {
@@ -314,7 +331,10 @@ export default {
         state.termYear = state.termYear.slice(0,1) + 0 + state.termYear.slice(1)
         state.semester = "" + state.semester
         state.selectedTerm = 'next'
+    },
+
+    SET_SEM(payload) {
+        state.selectedTerm = payload;
     }
-
-
+    
 }

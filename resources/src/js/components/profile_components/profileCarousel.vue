@@ -6,23 +6,17 @@
                     <h1 class="type--center">{{this.student.displayName}}</h1>
                 </div>
                 <div class="type--center">
-                    <carousel :perPage="1" :paginationActiveColor="'#4F9DA3'">
+                    <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                         <slide class="slidewrap">
                             <div class="imagewrap">
-                                <profile-picture :image="image"></profile-picture>
-                                <div class="type--center">
-                                    <i class="fas fa-2x fa-pencil-alt profile-edit-button" @click="checkPermission"></i>
-                                    <image-handler image_type="likeness"></image-handler>
-                                </div>
+                                <profile-picture :image="image" :editable="true" :type="'profile'" @showModal="checkPermission()"></profile-picture>
+                                <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
                             </div>
                         </slide>
-                        
                         <slide class="slidewrap">
                             <div class="imagewrap">
-                                <profile-picture :image="avatar"></profile-picture>
-                                <div class="type--center">
-                                    <image-handler image_type="avatar"></image-handler>
-                                </div>
+                                <profile-picture :image="avatar" :type="'profile'"></profile-picture>
+                                    <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
                             </div>
                         </slide>
                             <!-- <slide class="slidewrap">
@@ -35,102 +29,80 @@
                             </slide>
                             -->
                     </carousel>
-                    <croppa-modal :showModal="showCroppaModal" :student="student" @close="setImgUrl()"></croppa-modal>
+                    <modal v-if="displayModal" @close="showCroppaModal = false">
+                        <div slot="header"></div>
+                        <div slot="body">
+                            <croppa-profile :student="this.student.student"></croppa-profile>
+                        </div>
+                    </modal>
                 </div>
             </div>
         </div>
-        <div class="addedUnderline">
-        <ul class="underlineContainer">
-            <li class="underline">
-                <div v-if="student.imagePriority === 'likeness'">
-                    <div class="">
-                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="underlineStyling"></div>
-                </div>
-            </li>
-            <li class="underline">
-                <div v-if="student.imagePriority === 'avatar'">
-                    <div class="">
-                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="underlineStyling"></div>
-                </div>
-            </li>
-            <!-- <li class="underline">
-                <div v-if="studentProfile.imagePriority === 'official'">
-                    <div class="">
-                        <i class="fa fa-chevron-up icon_theme fa-2x"></i>
-                    </div>
-                </div>
-                <div v-else>
-                    <div class="underlineStyling"></div>
-                </div>
-            </li> -->
-        </ul>
-    </div>
     </div>
 </template>
+
 <script>
-import croppaModal from "../profile_components/croppaModal.vue";
+import croppaProfile from "../profile_components/croppaProfile.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
+import modal from "../fixed_components/modal.vue";
 import imageHandler from "../profile_components/imageHandler.vue";
-import { mapGetters } from 'vuex';
+import croppaModal from "../profile_components/croppaModal.vue";
+import { mapGetters } from "vuex";
 export default {
-        name: "profile-carousel",
+	name: "profile-carousel",
 
-        props: ['student'],
+	props: ["student"],
+	data: function() {
+		return {
+			showCroppaModal: false
+		};
+	},
+	beforeRouteLeave(to, from, next) {
+		if (this.unsavedChanges) {
+			const answer = window.confirm(
+				"Do you really want to leave? You have unsaved changes."
+			);
 
-        data: function () {
-            return {
-                showCroppaModal: false,
-            }
+			if (answer) {
+				next();
+			} else {
+				next(false);
+			}
+		} else {
+			next();
+		}
+	},
+	components: {
+		imageHandler,
+		profilePicture,
+        croppaModal,
+        croppaProfile,
+        modal
+	},
+	methods: {
+		setImgUrl(url) {
+			this.showCroppaModal = false;
+			this.imgUrl = url;
+		},
+		checkPermission() {
+			this.showCroppaModal = true;
+			if (this.permission == false)
+				this.$store.dispatch("nullifyPermissionResponse");
+		}
+	},
+	computed: {
+		...mapGetters(["permission"]),
+		image: function() {
+			return this.student.images.likeness;
+		},
+
+		avatar: function() {
+			return this.student.images.avatar;
+		},
+
+        displayModal(){
+            return(this.showCroppaModal && this.permission);
         },
-        beforeRouteLeave(to, from, next) {
-            if (this.unsavedChanges) {
-                const answer = window.confirm('Do you really want to leave? You have unsaved changes.');
-
-                if (answer) {
-                    next();
-                } else {
-                    next(false);
-                }
-            } else {
-                next();
-            }
-        },
-        components: {
-            croppaModal,
-            imageHandler,
-            profilePicture
-        },
-        computed: {
-            ...mapGetters([
-                'permission',
-            ]),
-            image: function() {
-                return this.student.images.likeness;
-            },
-
-            avatar: function() {
-                return this.student.images.avatar;
-            },
-        },
-
-        methods: {
-            setImgUrl (url) {
-                this.showCroppaModal = false;
-                this.imgUrl = url;
-            },
-            checkPermission() {
-            this.showCroppaModal = true;
-            if (this.permission == false)
-                this.$store.dispatch('nullifyPermissionResponse');
-            }
-        }
-    }
+	}
+};
 </script>

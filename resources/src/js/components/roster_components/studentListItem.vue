@@ -3,7 +3,7 @@
         <div class="roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
-                <profile-picture class="pull-left " :name="display_name" :image="image"></profile-picture>
+                <profile-picture class="pull-left" :name="display_name" :image="image" :type="'roster'"></profile-picture>
             </div>
             <div class="col-xs-9 col-md-10">
                 <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
@@ -41,7 +41,7 @@ export default {
         },
             
         email_uri : function () {
-            return this.student.email.split('@')[0].replace("nr_", "");
+            return this.student.email.split('@')[0];
         },
 
         image: function() {

@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "csun-metalab/laravel-directory-authentication": "^1.4",
         "csun-metalab/laravel-force-https": "^1.0",
+        "csun-metalab/laravel-guzzle": "^1.0",
         "csun-metalab/laravel-proxypass": "^1.1",
         "csun-metalab/laravel-support": "^1.0",
         "fideloper/proxy": "~3.3",

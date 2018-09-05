@@ -4,11 +4,11 @@
             v-model="myCroppa"
             :prevent-white-space="true"
             :show-remove-button="false"
-            :initial-image="studentImage"
             :quality="2"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
+             <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial">
         </croppa>
         <div v-if="loadingCroppa" class="croppa_loading">
             <div class="croppa_loading_icon">
@@ -37,7 +37,7 @@
     export default {
         name: "croppa-profile",
 
-        props:['studentImage', 'emailURI', 'studentName'],
+        props:['student'],
 
         data: function() {
             return{
@@ -46,7 +46,7 @@
                 myCroppa: null,
                 disabled: true,
                 url: "",
-                loadingCroppa: false,
+                loadingCroppa: false
             }
         },
 
@@ -78,17 +78,14 @@
                     let payload = {studentId: this.studentProfile.id, imgUrl: url};
                     this.$store.dispatch('updateImage', payload);
 
-                    let uri = null;
-                    if (this.studentProfile.emailURI == null){
-                        uri = this.emailURI;
-                    } else {
-                        uri = this.studentProfile.emailURI;
-                    }
+                    let emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
-                        photo: url,
-                        uri: uri
+                        profile_image: url,
+                        image_type: 'likeness',
+                        entity_type: 'student',
+                        uri: emuri
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('getOnlyData');

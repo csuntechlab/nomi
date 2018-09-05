@@ -7,9 +7,9 @@ namespace App\Services;
 use App\Contracts\ImageCRUDContract;
 use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
+use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Intervention implementation of image CRUD.
@@ -24,30 +24,54 @@ class ImageCRUDService implements ImageCRUDContract
     }
 
     /** Image uploading functionality. */
-    public function upload()
+    public function upload($data)
     {
-        $id = request()->id;
-        $directory = env('IMAGE_UPLOAD_LOCATION') . request()->uri;
-        $savedImage = $directory . '/likeness.jpg';
-
-        $manager = new ImageManager(['driver' => 'imagick']);
-
-        $image = $manager->make(request()->photo);
-        if (!File::exists($directory)) {
-            File::makeDirectory($directory);
-        }
-
-        if (null !== $image->save($savedImage)) {
-            $this->clearCache($id);
-
+        $validator = Validator::make(
+            $data,
+            [
+                'profile_image' => [
+                    'required',
+                    function ($attribute, $value, $fail) {
+                        if (!\base64_decode($value)) {
+                            return $fail('Please include ' . $attribute . ' it is required.');
+                        }
+                    }, ],
+                'entity_type' => 'required|string',
+                'image_type' => 'required|string',
+            ]
+        );
+        if ($validator->fails()) {
             return [
-                'status' => true,
+                'status' => '422',
+                'success' => 'false',
+                'message' => $validator->messages()->all(),
             ];
         }
+        if ($data['profile_image']) {
+            $guzzle = HandlerGuzzleFactory::fromDefaults();
+            $guzzle->setFormBody([
+                'profile_image' => $data['profile_image'],
+                'image_type' => $data['image_type'],
+                'entity_type' => $data['entity_type'],
+                'secret_key' => env('MEDIA_KEY'),
+            ]);
 
-        return [
-            'status' => false,
-        ];
+            $response = $guzzle->post(env('MEDIA_URL') . $data['uri'] . '/photo');
+            $guzzleResponse = $guzzle->resolveResponseBody($response, 'json');
+            if ($guzzleResponse->status === '200') {
+                return [
+                    'status' => '200',
+                    'success' => 'true',
+                    'message' => 'The image for ' . $data['uri'] . ' was successfully uploaded.',
+                ];
+            }
+
+            return [
+                    'status' => '400',
+                    'success' => 'false',
+                    'message' => 'An error occurred, please try again.',
+                ];
+        }
     }
 
     /** Retrieve image priority
@@ -57,20 +81,32 @@ class ImageCRUDService implements ImageCRUDContract
      */
     public function getPriority($student_ids)
     {
-        $array = [];
         $out = [];
-
-        foreach ($student_ids as $student_id) {
-            \array_push($array, 'members:' . $student_id);
-        }
-
-        $users = $this->userModelRepository->getUsersWithImagePriority($array);
-
-        foreach ($users as $user) {
-            if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
-                \array_push($out, $user['image_priority']['image_priority']);
-            } else {
+        if (\count($student_ids) > 1) {
+            $array = [];
+            foreach ($student_ids as $student_id) {
+                \array_push($array, 'members:' . $student_id);
+            }
+            $users = $this->userModelRepository->getUsersWithImagePriority($array);
+            foreach ($users as $user) {
+                if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
+                    \array_push($out, $user['image_priority']['image_priority']);
+                } else {
+                    \array_push($out, 'likeness');
+                }
+            }
+        } else {
+            $student_ids[0] = 'members:' . $student_ids[0];
+            $user = $this->userModelRepository->getUsersWithImagePriority($student_ids);
+            if (\count($user) === 0) {
                 \array_push($out, 'likeness');
+            } else {
+                $user = $user[0];
+                if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
+                    \array_push($out, $user['image_priority']['image_priority']);
+                } else {
+                    \array_push($out, 'likeness');
+                }
             }
         }
 
