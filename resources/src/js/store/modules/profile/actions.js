@@ -1,15 +1,23 @@
 export default {
     getStudentProfile (context, payload) {
+        let response = payload;
         let email = payload.uri+'@my.csun.edu';
-        var getters = context.getters
-        context.commit('GET_STUDENT_PROFILE', {payload, getters});
 
         window.axios.get('student/'+email)
             .then(response => {
                 context.commit('GET_STUDENT_BIO', response)
             })
             .catch(error => {
-                context-commit('API_STUDENT_FAILURE', error)
+                context.commit('API_STUDENT_FAILURE', error)
+            });
+        
+        window.axios.get('student_profile/'+email)
+            .then(payload => {
+                var getters = context.getters
+                context.commit('GET_STUDENT_PROFILE', {payload, getters, response});
+            })
+            .catch(error => {
+                context.commit('API_STUDENT_FAILURE', error)
             });
     },
 

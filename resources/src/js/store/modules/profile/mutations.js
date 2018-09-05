@@ -8,36 +8,28 @@ export default {
         state.profileErrors = payload.response.data.message;
     },
 
-    GET_STUDENT_PROFILE: function (state, {payload, getters}) {
-        let email = payload.uri+'@my.csun.edu';
+    GET_STUDENT_PROFILE: function (state, {payload, getters, response}) {
+        let email = response.uri+'@my.csun.edu';
         let data = new FormData;
 
-        data.append('faculty_id', payload.faculty_id);
+        data.append('faculty_id', response.faculty_id);
         data.append('email', email);
 
-        state.studentProfile.emailURI = payload.uri;
-
-        window.axios.get('student_profile/'+email)
-            .then(response => {
-                state.studentProfile.displayName = response['data'].display_name;
-                state.studentProfile.imagePriority = response['data'].image_priority;
-                state.studentProfile.notes = response['data'].notes;
-                state.studentProfile.id = response['data'].student_id;
-                state.studentProfile.firstName = response['data'].first_name;
-                for(var student in getters.students) {
-                    if(getters.students.hasOwnProperty(student)) {
-                        if(getters.students[student].email == email) {
-                            state.studentProfile.student = getters.students[student];
-                            state.studentProfile.images = getters.students[student].images;
-                            break;
-                        }
-                    }
+        state.studentProfile.emailURI = payload['data'].uri;
+        state.studentProfile.displayName = payload['data'].display_name;
+        state.studentProfile.imagePriority = payload['data'].image_priority;
+        state.studentProfile.notes = payload['data'].notes;
+        state.studentProfile.id = payload['data'].student_id;
+        state.studentProfile.firstName = payload['data'].first_name;
+        for(var student in getters.students) {
+            if(getters.students.hasOwnProperty(student)) {
+                if(getters.students[student].email == email) {
+                    state.studentProfile.student = getters.students[student];
+                    state.studentProfile.images = getters.students[student].images;
+                    break;
                 }
-            })
-            .catch(e => {
-                state.profileLoadError = true;
-                state.profileErrors = e.response.data.message;
-            });
+            }
+        }
     },
 
     GET_STUDENT_BIO (state, payload) {

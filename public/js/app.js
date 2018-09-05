@@ -25486,14 +25486,20 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
+        var response = payload;
         var email = payload.uri + '@my.csun.edu';
-        var getters = context.getters;
-        context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters });
 
         window.axios.get('student/' + email).then(function (response) {
             context.commit('GET_STUDENT_BIO', response);
         }).catch(function (error) {
-            context - commit('API_STUDENT_FAILURE', error);
+            context.commit('API_STUDENT_FAILURE', error);
+        });
+
+        window.axios.get('student_profile/' + email).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
         });
     },
     updateNotes: function updateNotes(context, notes) {
@@ -25536,35 +25542,30 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 
     GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, _ref) {
         var payload = _ref.payload,
-            getters = _ref.getters;
+            getters = _ref.getters,
+            response = _ref.response;
 
-        var email = payload.uri + '@my.csun.edu';
+        var email = response.uri + '@my.csun.edu';
         var data = new FormData();
 
-        data.append('faculty_id', payload.faculty_id);
+        data.append('faculty_id', response.faculty_id);
         data.append('email', email);
 
-        state.studentProfile.emailURI = payload.uri;
-
-        window.axios.get('student_profile/' + email).then(function (response) {
-            state.studentProfile.displayName = response['data'].display_name;
-            state.studentProfile.imagePriority = response['data'].image_priority;
-            state.studentProfile.notes = response['data'].notes;
-            state.studentProfile.id = response['data'].student_id;
-            state.studentProfile.firstName = response['data'].first_name;
-            for (var student in getters.students) {
-                if (getters.students.hasOwnProperty(student)) {
-                    if (getters.students[student].email == email) {
-                        state.studentProfile.student = getters.students[student];
-                        state.studentProfile.images = getters.students[student].images;
-                        break;
-                    }
+        state.studentProfile.emailURI = payload['data'].uri;
+        state.studentProfile.displayName = payload['data'].display_name;
+        state.studentProfile.imagePriority = payload['data'].image_priority;
+        state.studentProfile.notes = payload['data'].notes;
+        state.studentProfile.id = payload['data'].student_id;
+        state.studentProfile.firstName = payload['data'].first_name;
+        for (var student in getters.students) {
+            if (getters.students.hasOwnProperty(student)) {
+                if (getters.students[student].email == email) {
+                    state.studentProfile.student = getters.students[student];
+                    state.studentProfile.images = getters.students[student].images;
+                    break;
                 }
             }
-        }).catch(function (e) {
-            state.profileLoadError = true;
-            state.profileErrors = e.response.data.message;
-        });
+        }
     },
 
     GET_STUDENT_BIO: function GET_STUDENT_BIO(state, payload) {
