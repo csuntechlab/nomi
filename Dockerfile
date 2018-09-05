@@ -13,12 +13,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   imagemagick \
   php-imagick \
   php7.2-ldap \
-  yarn \
-  vim \
-  wget \
   php7.2-sqlite3 \
   sqlite3 \
-  
+  vim \
+  wget \
+  yarn \
  # Install NVM
   && wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \
 # Define Bashrc source
