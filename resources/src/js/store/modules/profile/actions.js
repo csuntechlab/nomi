@@ -1,7 +1,16 @@
 export default {
     getStudentProfile (context, payload) {
+        let email = payload.uri+'@my.csun.edu';
         var getters = context.getters
         context.commit('GET_STUDENT_PROFILE', {payload, getters});
+
+        window.axios.get('student/'+email)
+            .then(response => {
+                context.commit('GET_STUDENT_BIO', response)
+            })
+            .catch(error => {
+                context-commit('API_STUDENT_FAILURE', error)
+            });
     },
 
     updateNotes (context, notes) {
@@ -9,11 +18,20 @@ export default {
     },
 
     commitNotes (context) {
-        context.commit('COMMIT_NOTES');
+        window.axios.post('update_note', data)
+            .catch(error => {
+                context.commit("API_FAILURE", error)
+            });
     },
 
-    updateImagePriority (context, payload) {
-        context.commit('UPDATE_IMAGE_PRIORITY', payload);
+    updateImagePriority (context) {
+        window.axios.post('api/priority', data)
+            .then(response => {
+                context.commit('UPDATE_IMAGE_PRIORITY', response)
+            })
+            .catch(error => {
+                context.commit('API_FAILURE', error)
+            });
     },
 
     nullifyStudentProfile (context) {

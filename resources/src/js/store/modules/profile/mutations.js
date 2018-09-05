@@ -1,4 +1,13 @@
 export default {
+    API_FAILURE (state, payload) {
+        state.profileErrors = payload.response.data.message;
+    },
+
+    API_STUDENT_FAILURE (state, payload)  {
+        state.profileLoadError = true;
+        state.profileErrors = payload.response.data.message;
+    },
+
     GET_STUDENT_PROFILE: function (state, {payload, getters}) {
         let email = payload.uri+'@my.csun.edu';
         let data = new FormData;
@@ -7,15 +16,6 @@ export default {
         data.append('email', email);
 
         state.studentProfile.emailURI = payload.uri;
-
-        window.axios.get('student/'+email)
-            .then(response => {
-                state.studentProfile.bio = response['data']['people'].biography;
-            })
-            .catch(e => {
-                state.profileLoadError = true;
-                state.profileErrors = e.response.data.message;
-            });
 
         window.axios.get('student_profile/'+email)
             .then(response => {
@@ -38,9 +38,10 @@ export default {
                 state.profileLoadError = true;
                 state.profileErrors = e.response.data.message;
             });
-        
+    },
 
-
+    GET_STUDENT_BIO (state, payload) {
+        state.studentProfile.bio = payload['data']['people'].biography;
     },
 
     UPDATE_NOTES: function (state, notes) {
@@ -51,25 +52,13 @@ export default {
         let data = new FormData;
         data.append('student_id', state.studentProfile.id);
         data.append('notepad', state.studentProfile.notes);
-
-        window.axios.post('update_note', data)
-            .catch(e => {
-                state.profileErrors = e.response.data.message;
-            });
     },
 
     UPDATE_IMAGE_PRIORITY: function (state, payload, rootState) {
         let data = new FormData;
         data.append('student_id', state.studentProfile.id);
         data.append('image_priority', payload.image_priority);
-        data.append('faculty_id', payload.faculty_id);
-        window.axios.post('api/priority', data)
-            .then(response => {
-                state.studentProfile.imagePriority = payload.image_priority;
-            })
-            .catch(e => {
-                state.profileErrors = e.response.data.message;
-            });
+        data.append('faculty_id', payload.faculty_id); 
     },
 
     NULLIFY_STUDENT_PROFILE: function (state) {
