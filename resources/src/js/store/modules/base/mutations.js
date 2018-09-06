@@ -13,67 +13,25 @@ export default {
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
-        if(state.termYear != null){
+        state.term = payload.data.term;
+
+        if(state.termYear != null) {
             let chosenTerm = state.termYear + state.semester;
             chosenTerm = chosenTerm.slice(0,1) + chosenTerm.slice(2);
             state.term = chosenTerm;
-    
-            function capitalize(name) {
-                return name.charAt(0).toUpperCase() + name.substr(1);
-            }
-    
-            window.axios.get(`data/${state.term}`)
-                .then(response => {
-                    state.term = response.data["term"];
-                    state.courses = response.data["courses"];
-                    state.loadingClasses = false;
-                    state.flashroster = response.data["students"];
-                    state.facultyMember.email = response.data["email"];
-                    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-                    state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                    state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-                    state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-                    
-                    window.axios.get(`faculty_profile/${state.facultyMember.email}`)
-                    .then(response => {
-                        state.facultyMember.image = response.data.image;
-                        state.facultyMember.id = response.data.id;
-                    })
-                    .catch(e => {
-                        state.errors = e.response.data.message;
-                    });
-                })
-                .catch(e => {
-                    state.errors = e.response.data.message;
-                });
-            }
-        else{
-        window.axios.get(`data`)
-            .then(response => {
-                state.term = response.data["term"];
-                state.courses = response.data["courses"];
-                state.students = response.data["allStudents"]
-                state.loadingClasses = false;
-                state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-            
-                window.axios.get(`faculty_profile/${state.facultyMember.email}`)
-                    .then(response => {
-                        state.facultyMember.image = response.data.image;
-                        state.facultyMember.id = response.data.id;
-                    })
-                    .catch(e => {
-                        state.errors = e.response.data.message;
-                    });
-            })
-            .catch(e => {
-                state.errors = e.response.data.message;
-            });
+        } else {
+            state.students = payload.data.allStudents;
         }
+
+        state.term = payload.data.term;
+        state.courses = payload.data.courses;
+        state.loadingClasses = false;
+        state.flashroster = payload.data.students;
+        state.facultyMember.email = payload.data.email;
+        state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
+        state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+        state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+        state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
     },
 
     GET_FACULTY_PROFILE (state, payload) {

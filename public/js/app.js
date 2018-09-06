@@ -25047,17 +25047,89 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	},
 	setPreviousTerm: function setPreviousTerm(context, payload) {
 		context.commit("SET_PREVIOUS_TERM");
-		context.commit("GET_DATA");
+		if (context.state.termYear != null) {
+			window.axios.get("data/" + context.state.term).then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		} else {
+			window.axios.get("data").then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		}
 	},
 	setCurrentTerm: function setCurrentTerm(context, payload) {
 		context.commit("SET_CURRENT_TERM");
-		context.commit("GET_DATA");
+		if (context.state.termYear != null) {
+			window.axios.get("data/" + context.state.term).then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		} else {
+			window.axios.get("data").then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		}
 	},
 	setNextTerm: function setNextTerm(context, payload) {
 		context.commit("SET_NEXT_TERM");
-		context.commit("GET_DATA");
+		if (context.state.termYear != null) {
+			window.axios.get("data/" + context.state.term).then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		} else {
+			window.axios.get("data").then(function (response) {
+				context.commit("GET_DATA", response);
+
+				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
+					context.commit("GET_FACULTY_PROFILE", response);
+				}).catch(function (error) {
+					context.commit("API_FAILURE", error);
+				});
+			}).catch(function (error) {
+				context.commit("API_FAILURE", error);
+			});
+		}
 	},
-	setSem: function setSem(payload) {
+	setSem: function setSem(context) {
 		context.commit("SET_SEM");
 	}
 });
@@ -25080,58 +25152,25 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
-        if (state.termYear != null) {
-            var _capitalize = function _capitalize(name) {
-                return name.charAt(0).toUpperCase() + name.substr(1);
-            };
+        state.term = payload.data.term;
 
+        if (state.termYear != null) {
             var chosenTerm = state.termYear + state.semester;
             chosenTerm = chosenTerm.slice(0, 1) + chosenTerm.slice(2);
             state.term = chosenTerm;
-
-            window.axios.get("data/" + state.term).then(function (response) {
-                state.term = response.data["term"];
-                state.courses = response.data["courses"];
-                state.loadingClasses = false;
-                state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                state.facultyMember.firstName = _capitalize(state.facultyMember.emailURI.split('.')[0]);
-                state.facultyMember.lastName = _capitalize(state.facultyMember.emailURI.split('.')[1]);
-
-                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
-                    state.facultyMember.image = response.data.image;
-                    state.facultyMember.id = response.data.id;
-                }).catch(function (e) {
-                    state.errors = e.response.data.message;
-                });
-            }).catch(function (e) {
-                state.errors = e.response.data.message;
-            });
         } else {
-            window.axios.get("data").then(function (response) {
-                state.term = response.data["term"];
-                state.courses = response.data["courses"];
-                state.students = response.data["allStudents"];
-                state.loadingClasses = false;
-                state.flashroster = response.data["students"];
-                state.facultyMember.email = response.data["email"];
-                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-
-                window.axios.get("faculty_profile/" + state.facultyMember.email).then(function (response) {
-                    state.facultyMember.image = response.data.image;
-                    state.facultyMember.id = response.data.id;
-                }).catch(function (e) {
-                    state.errors = e.response.data.message;
-                });
-            }).catch(function (e) {
-                state.errors = e.response.data.message;
-            });
+            state.students = payload.data.allStudents;
         }
+
+        state.term = payload.data.term;
+        state.courses = payload.data.courses;
+        state.loadingClasses = false;
+        state.flashroster = payload.data.students;
+        state.facultyMember.email = payload.data.email;
+        state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
+        state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+        state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+        state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
     },
     GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
         state.facultyMember.image = payload.data.image;
