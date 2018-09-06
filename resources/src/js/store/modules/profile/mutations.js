@@ -9,13 +9,13 @@ export default {
     },
 
     GET_STUDENT_PROFILE: function (state, {payload, getters, response}) {
-        let email = response.uri+'@my.csun.edu';
+        let email = response.uri;
         let data = new FormData;
 
         data.append('faculty_id', response.faculty_id);
         data.append('email', email);
-
-        state.studentProfile.emailURI = payload['data'].uri;
+        
+        state.studentProfile.emailURI = response.uri;
         state.studentProfile.displayName = payload['data'].display_name;
         state.studentProfile.imagePriority = payload['data'].image_priority;
         state.studentProfile.notes = payload['data'].notes;
