@@ -9,7 +9,7 @@ export default {
     },
 
     GET_STUDENT_PROFILE: function (state, {payload, getters, response}) {
-        let email = response.uri;
+        let email = response.uri + '@my.csun.edu';
         let data = new FormData;
 
         data.append('faculty_id', response.faculty_id);

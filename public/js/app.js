@@ -25580,7 +25580,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
             getters = _ref.getters,
             response = _ref.response;
 
-        var email = response.uri;
+        var email = response.uri + '@my.csun.edu';
         var data = new FormData();
 
         data.append('faculty_id', response.faculty_id);
