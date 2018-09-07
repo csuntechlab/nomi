@@ -26732,15 +26732,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["enableBackButton", "clearErrors"]), {
-		logErrors: function logErrors() {
-			console.log("Error found: " + this.errors);
-		},
 		closeError: function closeError() {
 			if (this.profileLoadError == true) {
 				var course = this.currentCourse;
 				this.$router.go(-1);
 			}
-			this.logErrors();
 			this.clearErrors();
 		}
 	})
