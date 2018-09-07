@@ -13,7 +13,7 @@
 	}
 }
 
-.icon_theme {
+.icon__theme {
 	@include themify($themes) {
 		color: themed("accentColor");
 	}
@@ -27,7 +27,7 @@
 	}
 }
 
-.textOverflow {
+.text-overflow {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
 }
@@ -37,18 +37,18 @@
 //   width: 95px;
 // }
 
-.imagewrap {
+.image-wrap {
 	display: inline-block;
 	position: relative;
 	width: 60%;
 }
 
-.slidewrap {
+.slide-wrap {
 	width: 55%;
 	height: 45%;
 }
 
-.clearPadding {
+.clear-padding {
 	padding: 0;
 }
 
@@ -94,7 +94,7 @@
 	margin-bottom: 7%;
 }
 
-.back_button {
+.back-button {
 	color: white;
 	position: absolute;
 	left: 15px;
@@ -102,28 +102,28 @@
 	margin-top: -3.55px;
 }
 
-.back_button_disabled {
+.back-button--disabled {
 	color: rgba($color: #fff, $alpha: 0.2);
 	position: absolute;
 	left: 15px;
 	transition: 25ms;
 }
 
-.back_button:active {
+.back-button:active {
 	transform: scale(1.2);
 }
 
-.subbrand_center {
+.subbrand-center {
 	margin-left: 1%;
 	padding-left: 1%;
 	margin-right: 1%;
 }
 
-.margin_between_containers {
+.margin-between-containers {
 	margin-top: 7%;
 }
 
-.flash_card {
+.flash-card {
 	padding: 5px !important;
 }
 
@@ -167,7 +167,7 @@
 	filter: grayScale(0%);
 	filter: grayScale(100%);
 }
-.modal_exit {
+.modal--exit {
 	color: gray;
 	margin-bottom: 0;
 	margin-top: 5%;
@@ -175,27 +175,27 @@
 	margin-right: 5%;
 }
 
-.name_container {
+.name__container {
 	height: 31vmin;
 }
 
-.card_face {
+.card-face {
 	float: inherit;
 }
 
-.email_padding {
+.email__padding {
 	padding: 1em 0.5em 1em 0.5em;
 }
 
-.btn_padding {
+.btn__padding {
 	padding: 0.4em 0 0.4em 0;
 }
 
-.sort_filters {
+.sort-filters {
 	margin: 0 auto 10px;
 }
 
-.shuffle_button {
+.shuffle-button {
 	position: fixed;
 	z-index: 1;
 	right: 20px;
@@ -234,11 +234,11 @@
 		}
 	}
 }
-.text_bold {
+.text-bold {
 	font-weight: bold;
 }
 
-.croppa_loading {
+.croppa-loading {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -250,7 +250,7 @@
 	background-color: rgba($color: #000000, $alpha: 0.3);
 }
 
-.croppa_loading_icon {
+.croppa-loading_icon {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -265,11 +265,11 @@
 	}
 }
 
-.display_inline {
+.display-inline {
 	display: inline;
 }
 
-.display_inline_block {
+.display-inline-block {
 	display: inline-block;
 }
 
@@ -277,18 +277,18 @@
 	font-style: italic;
 }
 
-.profile_info_container {
+.profile-info-container {
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 1.875rem;
 	padding-right: 01.875rem;
 }
 
-.profile_notes_padding {
+.profile-notes-padding {
 	padding-top: 1rem;
 }
 
-.modal_btn {
+.modal-btn {
 	display: inline-block;
 	padding: 6px 20px;
 	margin: 0 3%;
@@ -314,7 +314,7 @@
 	margin: 0 0.6em;
 }
 
-.confirm_btn {
+.confirm-btn {
 	@include themify($themes) {
 		background: themed("panelColor");
 	}
@@ -323,39 +323,39 @@
 	padding: 0;
 }
 
-.confirm_btn:hover {
-  @include themify($themes) {
+.confirm-btn:hover {
+@include themify($themes) {
     background: themed("hoverColor");
 	}
-  color: green;
+	color: green;
 	border-color: #adadad;
 	padding: 0;
 }
 
-.decline_btn {
-  @include themify($themes) {
-    background: themed("panelColor");
+.decline-btn {
+	@include themify($themes) {
+    	background: themed("panelColor");
 	}
-  color: red;
-  border-color: #ccc;
+	color: red;
+	border-color: #ccc;
 	padding: 0;
 }
 
-.decline_btn:hover {
-  @include themify($themes) {
-    background: themed("hoverColor");
+.decline-btn:hover {
+	@include themify($themes) {
+		background: themed("hoverColor");
 	}
-  color: red;
+	color: red;
 	background-color: #e6e6e6;
 	border-color: #adadad;
 }
 
-.permission_footer {
+.permission-footer {
 	margin: 15% 0 5%;
 	text-align: center;
 }
 
-.fullscreen_width {
+.fullscreen-width {
 	width: 100vw;
 	position: relative;
 	left: 50%;
@@ -364,7 +364,7 @@
 	margin-right: -50vw;
 }
 
-.mb_0 {
+.mb-0 {
 	margin-bottom: 0;
 }
 

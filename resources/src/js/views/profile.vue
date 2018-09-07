@@ -3,7 +3,7 @@
         <div v-if="this.studentProfile.images == null" class="type--center">
             <br>
             <br>
-            <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
+            <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
         </div>
         <div v-else>
             <profile-carousel :student="this.studentProfile"></profile-carousel>

@@ -1,7 +1,7 @@
 <template>
-<div class="row fullscreen_width">
+<div class="row fullscreen-width">
     <div class="panel col-lg-12 col-md-12 col-xs-12 type--center">
-        <h5 class="panel__header panel__emptyCourseHeader mb_0">
+        <h5 class="panel__header panel__emptyCourseHeader mb-0">
             You are not teaching any classes this semester.
         </h5>
         <div class="panel__content panel__emptyCourseContent">

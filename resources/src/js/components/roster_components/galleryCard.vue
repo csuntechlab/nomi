@@ -9,7 +9,7 @@
                 <profile-picture :image="image" :type="'roster'"/>
             </div>
             <div class="cardText clearPadding">
-                <div class="gallery_name type--center">{{display_name}}</div>
+                <div class="gallery__name type--center">{{display_name}}</div>
             </div>
           </div>
         </router-link>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a href="#" class="menu_links" @click="showModal=true">
+        <a href="#" class="menu__links" @click="showModal=true">
             Theme
         </a>
         <modal v-if="showModal" @close="showModal = false">
