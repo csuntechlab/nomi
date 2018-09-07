@@ -14,7 +14,7 @@
                 <div class="login__wrapper">
                     <img class="login__logo" src="{{ asset('/images/nomi-logo-horizontal.svg') }}" alt="NOMI Logo; Names of Matador Individuals">
 
-                    <div id="login__container">
+                    <div id="login__container" class="login__container">
                         {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                         <h1 class="login__title">LOGIN</h1>
                         <div class="login__input-container">
