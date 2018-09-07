@@ -2087,7 +2087,7 @@ textarea {
     padding: 10% 0;
   }
   #loginContainer {
-    margin: 0 20% 0 20%;
+    margin: 20% 20% 0 20%;
   }
   .login__loader {
     position: fixed;
