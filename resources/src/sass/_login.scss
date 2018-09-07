@@ -87,6 +87,14 @@
 
 	#loginContainer {
 		margin: 20% 20% 0 20%;
+		transition: .4s;
+		
+	}
+	.login__container{
+		&--hide {	
+			opacity: 0;	
+			visibility: hidden;	
+		}
 	}
 
 	.login__loader {
