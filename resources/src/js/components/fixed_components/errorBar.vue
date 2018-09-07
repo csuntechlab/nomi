@@ -36,10 +36,6 @@ export default {
             "clearErrors"
 		]),
 
-		logErrors() {
-			console.log("Error found: " + this.errors);
-		},
-
 		closeError() {
 			if (this.profileLoadError == true) {
                 let course = this.currentCourse;
