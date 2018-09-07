@@ -36,8 +36,11 @@ class AuthVerifierService implements AuthVerifierContract
                 return true;
             }
 
-        Auth::logout();
-        return false;
+            Auth::logout();
+
+            return false;
         }
+
+        return false;
     }
 }
