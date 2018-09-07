@@ -1,30 +1,4 @@
 @extends('master') @section('content')
-
-<div id="login-mobile" class="login">
-    <div>
-            <div id="loginContainer">
-            <img id="loginLogo" src="{{ asset('/images/nomi-logo-horizontal.svg') }}" alt="NOMI Logo; Names of Matador Individuals">
-                {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-                <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
-                <div class="input-container">
-                    {{ Form::text('username', null, ['class' => 'login__username', 'placeholder' => 'Username']) }}
-                    <label for="username">Username</label>
-                </div>
-                <div class="input-container">
-                    {{ Form::password('password', ['class' => 'login__password', 'placeholder' => 'Password']) }}
-                    <label for="password">Password</label>
-                </div>
-                <button class="loginButton btn btn-primary" type="submit" onclick="loading()">
-                    Submit
-                </button>
-                {{ Form::close() }}
-            </div>
-    </div>
-    <div id="loginLoader" class="login__loader">
-        <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
-    </div>
-</div>
-
 <div id="login" class="login">
     <div class="login-container row">
         <div class="login-container__right col-xs-0 col-lg-10">
