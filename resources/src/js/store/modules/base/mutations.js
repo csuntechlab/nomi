@@ -1,42 +1,80 @@
 export default {
-    API_FAILURE (state, payload) {
-        state.errors = payload.response.data.message;
+    GET_SETTINGS (state) {
+        window.axios.get('get_settings')
+            .then(response =>{
+                state.themeName = response.data;
+                document.getElementById("mainBody").className = state.themeName.theme;
+            }).catch(e => {
+                state.errors = e.response.data.message;
+            });
     },
 
-    GET_SETTINGS (state, payload) {
-        state.themeName = payload.data;
-        document.getElementById("mainBody").className = state.themeName.theme;
-    },
-
-    GET_DATA (state, payload) {
+    GET_DATA (state) {
         function capitalize(name) {
             return name.charAt(0).toUpperCase() + name.substr(1);
         }
 
-        state.term = payload.data.term;
-
-        if(state.termYear != null) {
+        if(state.termYear != null){
             let chosenTerm = state.termYear + state.semester;
             chosenTerm = chosenTerm.slice(0,1) + chosenTerm.slice(2);
             state.term = chosenTerm;
-        } else {
-            state.students = payload.data.allStudents;
+    
+            function capitalize(name) {
+                return name.charAt(0).toUpperCase() + name.substr(1);
+            }
+    
+            window.axios.get(`data/${state.term}`)
+                .then(response => {
+                    state.term = response.data["term"];
+                    state.courses = response.data["courses"];
+                    state.loadingClasses = false;
+                    state.flashroster = response.data["students"];
+                    state.facultyMember.email = response.data["email"];
+                    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
+                    state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                    state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                    state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+                    
+                    window.axios.get(`faculty_profile/${state.facultyMember.email}`)
+                    .then(response => {
+                        state.facultyMember.image = response.data.image;
+                        state.facultyMember.id = response.data.id;
+                    })
+                    .catch(e => {
+                        state.errors = e.response.data.message;
+                    });
+                })
+                .catch(e => {
+                    state.errors = e.response.data.message;
+                });
+            }
+        else{
+        window.axios.get(`data`)
+            .then(response => {
+                state.term = response.data["term"];
+                state.courses = response.data["courses"];
+                state.students = response.data["allStudents"]
+                state.loadingClasses = false;
+                state.flashroster = response.data["students"];
+                state.facultyMember.email = response.data["email"];
+                state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
+                state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
+                state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
+                state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
+            
+                window.axios.get(`faculty_profile/${state.facultyMember.email}`)
+                    .then(response => {
+                        state.facultyMember.image = response.data.image;
+                        state.facultyMember.id = response.data.id;
+                    })
+                    .catch(e => {
+                        state.errors = e.response.data.message;
+                    });
+            })
+            .catch(e => {
+                state.errors = e.response.data.message;
+            });
         }
-
-        state.term = payload.data.term;
-        state.courses = payload.data.courses;
-        state.loadingClasses = false;
-        state.flashroster = payload.data.students;
-        state.facultyMember.email = payload.data.email;
-        state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-        state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-        state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-        state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
-    },
-
-    GET_FACULTY_PROFILE (state, payload) {
-        state.facultyMember.image = payload.data.image;
-        state.facultyMember.id = payload.data.id;
     },
 
     UPDATE_STUDENT_PRIORITY (state,payload) {

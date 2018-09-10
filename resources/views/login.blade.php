@@ -1,4 +1,5 @@
 @extends('master') @section('content')
+
 <div id="login" class="login">
     <div class="login-container row">
         <div class="login-container__right col-xs-0 col-lg-10">
@@ -13,25 +14,29 @@
                 <div class="login__wrapper">
                     <img class="login__logo" src="{{ asset('/images/nomi-logo-horizontal.svg') }}" alt="NOMI Logo; Names of Matador Individuals">
 
-                    <div id="login__container" class="login__container">
-                        {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
-                        <h1 class="login__title">LOGIN</h1>
-                        <div class="login__input-container">
-                            {{ Form::text('username', null, ['class' => 'login__username', 'placeholder' => 'Username']) }}
-                            <label for="username">Username</label>
+                    <div class="login__container">
+                        <div id="login__container" class="login__container">
+                            {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
+                            <h1 class="login__title">LOGIN</h1>
+                            <div class="login__input-container">
+                                {{ Form::text('username', null, ['class' => 'login__username', 'placeholder' => 'Username']) }}
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="login__input-container">
+                                {{ Form::password('password', ['class'=> 'login__password', 'placeholder' => 'Password']) }}
+                                <label for="password">Password</label>
+                            </div>
+                            <button class="login__button btn btn-primary" type="submit" onclick="loading()">
+                                Submit
+                            </button>
+                            {{ Form::close() }}
                         </div>
-                        <div class="login__input-container">
-                            {{ Form::password('password', ['class'=> 'login__password', 'placeholder' => 'Password']) }}
-                            <label for="password">Password</label>
+                        
+                        <div class="login-loader">
+                            <div id="login__loader" class="login-loader__loader">
+                                <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
+                            </div>
                         </div>
-                        <button class="login__button btn btn-primary" type="submit" onclick="loading()">
-                            Submit
-                        </button>
-                        {{ Form::close() }}
-                    </div>
-
-                    <div id="login__loader" class="login__loader">
-                        <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
                     </div>
                 </div>
             </div>
@@ -44,11 +49,7 @@
     localStorage.removeItem('nameface');
 
     function loading() {
-<<<<<<< HEAD
-        document.getElementById("login__loader").className += " login__loader--active";
+        document.getElementById("login__loader").className += " login-loader__loader--active";
         document.getElementById("login__container").className += " login__container--hide";
-=======
-        document.getElementById("loginContainer").className += " login__container--hide";
->>>>>>> 4e831eeca376fc84254fea29e249c7c1960b7d63
     }
 </script> @stop
