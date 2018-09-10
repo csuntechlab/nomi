@@ -119,6 +119,7 @@ class StudentProfileServiceTest extends TestCase
                     'profile_image' => 'thisIsAnImage',
                     'individuals_id' => 'members:student',
                     'display_name' => 'Sun Ra',
+                    'bio' => 'This is my bio, look, I am interesting.',
                 ],
                 'success' => 'false',
                 'status' => 400,
