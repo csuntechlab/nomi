@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Contracts\AuthVerifierContract;
 use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class AuthVerifierService implements AuthVerifierContract
 {
@@ -34,6 +35,8 @@ class AuthVerifierService implements AuthVerifierContract
             if (null !== $query) {
                 return true;
             }
+
+            Auth::logout();
 
             return false;
         }

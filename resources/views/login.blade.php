@@ -1,8 +1,8 @@
 @extends('master') @section('content')
 
 <div id="login-mobile" class="login">
-    <div id="panel__content">
-            <div id="loginContainer" class="login__container">
+    <div>
+            <div id="loginContainer">
             <img id="loginLogo" src="{{ asset('/images/nomi-logo-horizontal.svg') }}" alt="NOMI Logo; Names of Matador Individuals">
                 {{ Form::open(['url' => route('post.login'), 'method' => 'post']) }}
                 <h1 id="loginTitle" class="loginTitle">LOGIN</h1>
@@ -69,7 +69,6 @@
     localStorage.removeItem('nameface');
 
     function loading() {
-        document.getElementById("loginLoader").className += " login__loader--active";
         document.getElementById("loginContainer").className += " login__container--hide";
     }
 </script> @stop
