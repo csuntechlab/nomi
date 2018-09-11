@@ -554,9 +554,38 @@ textarea[type="text"]:focus {
   padding: 5%;
 }
 
-.gallery_name {
+.gallery__layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.gallery-card {
+  margin-bottom: 1rem;
+}
+
+.gallery-card__content {
+  height: 100%;
+}
+
+.gallery__name {
   font-size: 1.3rem;
   padding: 0 3% 5%;
+}
+
+@media only screen and (max-width: 292px) {
+  __card {
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    height: inherit;
+  }
 }
 
 .theme-login .flash_panel {

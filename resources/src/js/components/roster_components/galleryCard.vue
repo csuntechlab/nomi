@@ -1,10 +1,10 @@
 <template>
-    <div class="col-xs-6 col-md-4 col-lg-3">
+    <div class="gallery-card col-xs-6 col-md-4 col-lg-3">
         <div v-if="this.student.image_priority === 'likeness'">
             <i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"/>
         </div>
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-          <div class="panel">
+          <div class="panel gallery-card__content">
             <div class="panel__content">
                 <profile-picture :image="image" :type="'roster'"/>
             </div>
