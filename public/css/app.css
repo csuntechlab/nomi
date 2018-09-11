@@ -1391,9 +1391,13 @@ textarea {
   padding: 5px !important;
 }
 
+.panel__test {
+  position: relative;
+}
+
 .panel__edit-button {
   position: absolute;
-  bottom: 25%;
+  bottom: 5%;
   right: 15%;
   border-radius: 100%;
   padding: 5%;

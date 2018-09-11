@@ -21790,6 +21790,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -21797,58 +21799,58 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "gallery-card",
+	name: "gallery-card",
+	props: ["student"],
 
-  data: function data() {
-    return {
-      messages: true,
-      errors: [],
-      myCroppa: null,
-      showCroppaModal: false,
-      showMe: true
-    };
-  },
-  components: {
-    modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a,
-    croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
-  },
+	data: function data() {
+		return {
+			messages: true,
+			errors: [],
+			myCroppa: null,
+			showCroppaModal: false,
+			showMe: true
+		};
+	},
 
-  props: ["student"],
+	components: {
+		modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a,
+		croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
+		profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
+	},
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission']), {
-    displayModal: function displayModal() {
-      return this.showCroppaModal && this.permission;
-    },
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission']), {
+		displayModal: function displayModal() {
+			return this.showCroppaModal && this.permission;
+		},
 
 
-    display_name: function display_name() {
-      return this.student.first_name + " " + this.student.last_name[0] + ".";
-    },
+		display_name: function display_name() {
+			return this.student.first_name + " " + this.student.last_name[0] + ".";
+		},
 
-    email_uri: function email_uri() {
-      return this.student.email.split("@")[0];
-    },
+		email_uri: function email_uri() {
+			return this.student.email.split("@")[0];
+		},
 
-    image: function image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } else if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
-    }
-  }),
+		image: function image() {
+			if (this.student.image_priority === 'likeness') {
+				return this.student.images.likeness;
+			} else if (this.student.image_priority === 'avatar') {
+				return this.student.images.avatar;
+			}
+		}
+	}),
 
-  methods: {
-    setImgUrl: function setImgUrl(url) {
-      this.showCroppaModal = false;
-      this.imgUrl = url;
-    },
-    checkPermission: function checkPermission() {
-      this.showCroppaModal = true;
-      if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
-    }
-  }
+	methods: {
+		setImgUrl: function setImgUrl(url) {
+			this.showCroppaModal = false;
+			this.imgUrl = url;
+		},
+		checkPermission: function checkPermission() {
+			this.showCroppaModal = true;
+			if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
+		}
+	}
 });
 
 /***/ }),
@@ -22183,15 +22185,6 @@ var render = function() {
     "div",
     { staticClass: "gallery-card col-xs-6 col-md-4 col-lg-3" },
     [
-      this.student.image_priority === "likeness"
-        ? _c("div", [
-            _c("i", {
-              staticClass: "fas fa-pencil-alt panel__edit-button",
-              on: { click: _vm.checkPermission }
-            })
-          ])
-        : _vm._e(),
-      _vm._v(" "),
       _c(
         "router-link",
         {
@@ -22201,16 +22194,27 @@ var render = function() {
         },
         [
           _c("div", { staticClass: "panel gallery-card__content" }, [
-            _c(
-              "div",
-              { staticClass: "panel__content" },
-              [
-                _c("profile-picture", {
-                  attrs: { image: _vm.image, type: "roster" }
-                })
-              ],
-              1
-            ),
+            _c("div", { staticClass: "panel__test" }, [
+              _c(
+                "div",
+                { staticClass: "panel__content" },
+                [
+                  _c("profile-picture", {
+                    attrs: { image: _vm.image, type: "roster" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              this.student.image_priority === "likeness"
+                ? _c("div", [
+                    _c("i", {
+                      staticClass: "fas fa-pencil-alt panel__edit-button",
+                      on: { click: _vm.checkPermission }
+                    })
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "cardText clearPadding" }, [
               _c("div", { staticClass: "gallery_name type--center" }, [
@@ -25563,15 +25567,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         var response = payload;
         var email = payload.uri + '@my.csun.edu';
 
-        window.axios.get('student/' + email).then(function (response) {
-            context.commit('GET_STUDENT_BIO', response);
-        }).catch(function (error) {
-            context.commit('API_STUDENT_FAILURE', error);
-        });
-
         window.axios.get('student_profile/' + email).then(function (payload) {
             var getters = context.getters;
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', response);
         }).catch(function (error) {
             context.commit('API_STUDENT_FAILURE', error);
         });
