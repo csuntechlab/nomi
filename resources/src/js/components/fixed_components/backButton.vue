@@ -17,6 +17,7 @@
         methods: {
             goBack: function () {
                 if(document.getElementById('charCount')){
+                    this.$store.dispatch('clearStudent');
                     this.$router.push({name: 'class', params: {id: this.currentCourse}});
                 }
                 else

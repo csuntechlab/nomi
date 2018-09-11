@@ -18879,6 +18879,9 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -18912,6 +18915,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "course-list-item",
@@ -18927,7 +18931,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 
-	methods: {
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["currentStudent"]), {
 		convertTime: function convertTime(OriginalTime) {
 			var time = OriginalTime;
 			var hour = parseInt(time.substring(0, 2));
@@ -18940,10 +18944,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return time;
 		},
 		storeSelectedCourse: function storeSelectedCourse() {
-			this.$store.dispatch("storeLocation", 'class');
-			this.$store.dispatch('storeCourse', this.course.id);
+			this.$store.dispatch("storeLocation", "class");
+			this.$store.dispatch("storeCourse", this.course.id);
+		},
+		clearStudent: function clearStudent() {
+			if (this.currentStudent) this.$store.dispatch("clearStudent");
 		}
-	}
+	})
 });
 
 /***/ }),
@@ -18961,7 +18968,7 @@ var render = function() {
       attrs: { to: "/class/" + this.course.id },
       nativeOn: {
         click: function($event) {
-          _vm.storeSelectedCourse()
+          _vm.storeSelectedCourse(), _vm.clearStudent()
         }
       }
     },
@@ -22927,7 +22934,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
-		this.$store.dispatch("storeStudent", this.studentProfile.emailURI);
+	},
+	mounted: function mounted() {
+		this.$store.dispatch("storeStudent", this.$route.params.emailURI);
 	},
 	updated: function updated() {
 		this.$store.dispatch("enableBackButton");
@@ -26213,6 +26222,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     methods: {
         goBack: function goBack() {
             if (document.getElementById('charCount')) {
+                this.$store.dispatch('clearStudent');
                 this.$router.push({ name: 'class', params: { id: this.currentCourse } });
             } else this.$router.go(-1);
         }
@@ -26751,6 +26761,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["enableBackButton", "clearErrors"]), {
 		closeError: function closeError() {
 			if (this.profileLoadError == true) {
+				this.$store.dispatch('clearStudents');
 				this.$router.push({ name: 'class', params: { id: this.currentCourse } });
 			}
 			this.clearErrors();

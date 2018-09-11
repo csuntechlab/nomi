@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse()">
+    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse(), clearStudent()">
         <div class="panel course_padding fullscreen_width col-xs-12">
             <div class="panel__header type--center">
                 <h2 class="course_title pull-left">{{course.title}}</h2>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
 	name: "course-list-item",
 
@@ -48,6 +49,7 @@ export default {
 	},
 
 	methods: {
+		...mapGetters(["currentStudent"]),
 		convertTime(OriginalTime) {
 			let time = OriginalTime;
 			let hour = parseInt(time.substring(0, 2));
@@ -61,8 +63,12 @@ export default {
 		},
 
 		storeSelectedCourse() {
-            this.$store.dispatch("storeLocation", 'class')
-            this.$store.dispatch('storeCourse', this.course.id);
+			this.$store.dispatch("storeLocation", "class");
+			this.$store.dispatch("storeCourse", this.course.id);
+		},
+
+		clearStudent() {
+			if (this.currentStudent) this.$store.dispatch("clearStudent");
 		}
 	}
 };
