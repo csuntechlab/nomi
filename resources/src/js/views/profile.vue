@@ -37,6 +37,7 @@ export default {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
+		this.$store.dispatch("storeStudent", this.studentProfile.emailURI);
 	},
 
 	updated() {

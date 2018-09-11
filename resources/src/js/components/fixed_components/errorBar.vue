@@ -38,8 +38,7 @@ export default {
 
 		closeError() {
 			if (this.profileLoadError == true) {
-                let course = this.currentCourse;
-				this.$router.go(-1);
+                this.$router.push({name: 'class', params: {id: this.currentCourse}});
             }
             this.clearErrors();
 		},
