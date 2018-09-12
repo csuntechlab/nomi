@@ -64,7 +64,7 @@ class AuthVerifierServiceTest extends TestCase
             ->andReturn($user);
 
         Auth::shouldReceive('logout')
-         ->andReturn([]);
+            ->andReturn([]);
 
         $service = new AuthVerifierService($this->retriever);
 
