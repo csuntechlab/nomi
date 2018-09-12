@@ -26,6 +26,9 @@ Route::get('/logout', function () {
     return redirect('/');
 });
 
+/** Login API Routes */
+Route::get('/login', 'LoginController@validateUser')->middleware('auth');
+
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
 Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
