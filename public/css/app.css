@@ -596,8 +596,6 @@ textarea[type="text"]:focus {
 .fullscreen-width {
   width: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
 }
@@ -1396,6 +1394,159 @@ textarea[type="text"]:focus {
   text-align: center;
 }
 
+.menu {
+  z-index: 1;
+  background-color: #111;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  left: 100%;
+  height: 100%;
+  width: 60%;
+}
+
+.menu .closebtn {
+  position: absolute;
+  top: 0;
+}
+
+.menu--transparent {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.menu__links {
+  color: white;
+  text-decoration: none;
+  font-size: 2.5vh;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75% 0.75% 0.75% 0.75%;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.menu__links:hover {
+  opacity: 0.5;
+}
+
+.side-menu {
+  z-index: 3;
+  color: white;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  padding: 4rem 1.5rem;
+  height: 100%;
+}
+
+.theme-login .side-menu {
+  background-color: #a61926;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .side-menu {
+  background-color: #a61926;
+}
+
+.theme-main .side-menu {
+  background-color: #172533;
+}
+
+.theme-bluesTheme .side-menu {
+  background-color: #104669;
+}
+
+.theme-Dark .side-menu {
+  background-color: #2a2a2a;
+}
+
+.side-menu__link {
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  display: block;
+  padding: .5rem 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.side-menu__link:hover {
+  opacity: .5;
+}
+
+.side-menu__options {
+  margin-top: 1rem;
+}
+
+.side-menu__greeting {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+.side-menu__img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media only screen and (max-width: 450px) {
+  .side-menu {
+    width: 70%;
+  }
+  .side-menu--display {
+    left: 30%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 600px) {
+  .side-menu {
+    width: 60%;
+  }
+  .side-menu--display {
+    left: 40%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .side-menu {
+    width: 40%;
+  }
+  .side-menu--display {
+    left: 60%;
+  }
+  .side-menu--hide {
+    left: 100%;
+  }
+}
+
+.bottom-nav__profile-pic {
+  height: 2.2rem;
+}
+
 .sort-filters {
   margin: 0 auto 10px;
 }
@@ -1516,12 +1667,12 @@ textarea[type="text"]:focus {
   border-bottom: 1px solid #272727;
 }
 
-.roster-sorting {
-  margin: 0.5rem 0;
+.roster__img {
+  width: 100%;
 }
 
-.roster-sorting__img {
-  width: 100%;
+.roster-sorting {
+  margin: 0.5rem 0;
 }
 
 .roster-sorting__button {
@@ -1873,159 +2024,6 @@ textarea[type="text"]:focus {
 
 .theme-Dark .croppa-container {
   color: #303030;
-}
-
-.menu {
-  z-index: 1;
-  background-color: #111;
-  overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  left: 100%;
-  height: 100%;
-  width: 60%;
-}
-
-.menu .closebtn {
-  position: absolute;
-  top: 0;
-}
-
-.menu--transparent {
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.7);
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.menu__links {
-  color: white;
-  text-decoration: none;
-  font-size: 2.5vh;
-  margin: 0;
-  text-decoration: none;
-  text-align: center;
-  padding: 0.75% 0.75% 0.75% 0.75%;
-  display: block;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.menu__links:hover {
-  opacity: 0.5;
-}
-
-.side-menu {
-  z-index: 3;
-  color: white;
-  text-decoration: none;
-  overflow: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  margin: 0;
-  position: fixed;
-  bottom: 0;
-  padding: 4rem 1.5rem;
-  height: 100%;
-}
-
-.theme-login .side-menu {
-  background-color: #a61926;
-}
-
-.theme-OnceAMatadorAlwaysAMatador .side-menu {
-  background-color: #a61926;
-}
-
-.theme-main .side-menu {
-  background-color: #172533;
-}
-
-.theme-bluesTheme .side-menu {
-  background-color: #104669;
-}
-
-.theme-Dark .side-menu {
-  background-color: #2a2a2a;
-}
-
-.side-menu__link {
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  text-align: center;
-  display: block;
-  padding: .5rem 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.side-menu__link:hover {
-  opacity: .5;
-}
-
-.side-menu__options {
-  margin-top: 1rem;
-}
-
-.side-menu__greeting {
-  font-size: 2rem;
-  font-family: sans-serif;
-  font-weight: bold;
-  text-align: center;
-  display: block;
-}
-
-.side-menu__img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-@media only screen and (max-width: 450px) {
-  .side-menu {
-    width: 70%;
-  }
-  .side-menu--display {
-    left: 30%;
-  }
-  .side-menu--hide {
-    left: 100%;
-  }
-}
-
-@media only screen and (min-width: 450px) and (max-width: 600px) {
-  .side-menu {
-    width: 60%;
-  }
-  .side-menu--display {
-    left: 40%;
-  }
-  .side-menu--hide {
-    left: 100%;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .side-menu {
-    width: 40%;
-  }
-  .side-menu--display {
-    left: 60%;
-  }
-  .side-menu--hide {
-    left: 100%;
-  }
-}
-
-.bottom-nav__profile-pic {
-  height: 2.2rem;
 }
 
 /*  Fixed Safari font-awesome issue
