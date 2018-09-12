@@ -63,8 +63,8 @@ class AuthVerifierServiceTest extends TestCase
         Auth::shouldReceive('user')
             ->andReturn($user);
 
-        Auth::shouldReceive('logout') 
-        ->andReturn([]);
+        Auth::shouldReceive('logout')
+         ->andReturn([]);
 
         $service = new AuthVerifierService($this->retriever);
 
