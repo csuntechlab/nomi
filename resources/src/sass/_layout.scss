@@ -1,12 +1,3 @@
-body {
-	@include themify($themes) {
-		background-color: themed("backgroundColor");
-		color: themed("textColor");
-		padding-top: rem(36);
-	}
-	margin-bottom: 10%;
-}
-
 html * {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	@include themify($themes) {
@@ -15,33 +6,13 @@ html * {
 	}
 }
 
-textarea[type="text"] {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: inline-block;
-	border: 1px solid #ccc;
-	border-radius: 12px;
-	box-sizing: border-box;
-}
-
-textarea[type="text"]:focus {
-	border: 3px solid lightblue;
-}
-
-.primary-nav {
+body {
 	@include themify($themes) {
-		background-color: themed("navigationBars");
-		position: fixed;
-		height: rem(37);
-		width: 100%;
-		z-index: 1;
-		top: 0;
-
-		&__sub-brand {
-			color: themed("backgroundColor");
-		}
+		background-color: themed("backgroundColor");
+		color: themed("textColor");
+		padding-top: rem(36);
 	}
+	margin-bottom: 10%;
 }
 
 .panel {
@@ -70,175 +41,43 @@ textarea[type="text"]:focus {
 			padding-bottom: 1.5rem;
 			font-weight: bold;
 		}
-
-		&__emptyCourseHeader {
-			padding-bottom: 0.5rem;
-		}
-
-		&__emptyCourseContent {
-			line-height: 1;
-		}
 	}
 
 	&__listing {
 		margin: 0 auto;
 	}
+
+	@media only screen and (max-width: 543px) {
+		&__header {
+			border-bottom: solid 1px rgba(90, 90, 90, 0.2);
+		}
+	
+		&__content {
+			padding: 0.5rem 1rem;
+		}
+	}
 }
 
-.current_term {
-	font-weight: bold;
-	font-size: 1.6rem;
-	margin-bottom: 0;
-	margin-top: 0.833rem;
-}
-
-.course {
-	&__banner {
+.tab {
+	&__link {
 		@include themify($themes) {
-			background-color: themed("toolBanner");
 			color: themed("textColor");
-			margin-top: 0.833rem;
-			margin-bottom: 0.833rem;
-			padding: 10px 0;
-		}
-	}
-
-	&__title {
-		font-weight: bold;
-		font-size: 1rem;
-	}
-
-	&__padding {
-		margin-bottom: 0.7rem;
-	}
-}
-
-
-@media only screen and (max-width: 543px) {
-	.panel__header {
-		border-bottom: solid 1px rgba(90, 90, 90, 0.2);
-	}
-
-	.panel__content {
-		padding: 0.5rem 1rem;
-	}
-}
-.about__padding {
-	padding: 5%;
-}
-
-.gallery__name {
-	font-size: 1.3rem;
-	padding: 0 3% 5%;
-}
-
-.flash {
-	&__panel {
-		@include themify($themes) {
-			border-radius: 3px;
-			background-color: themed("panelColor");
-			box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-			border: none;
-			display: inline-block;
-			position: relative;
-			width: 100%;
-			margin-top: 6%;
+			border-bottom: none;
 		}
 	}
 	
-	&__positioner {
-		margin-top: 100%;
+	&__link--kerning {
+		letter-spacing: 0.1rem;
 	}
 	
-	&__element {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
-	
-}
-
-@media only screen and (min-width: 600px) {
-	.back-of-card {
-		font-size: 1.8em;
-		padding: 20% 6%;
-	}
-}
-
-@media only screen and (max-width: 600px) {
-	.back-of-card-mobile {
-		font-size: 1.3em;
-		padding: 20% 3%;
-	}
-}
-
-/*Course Select Banner*/
-.tab__link {
-	@include themify($themes) {
-		color: themed("textColor");
-		border-bottom: none;
-	}
-}
-
-.tab__link--kerning {
-	letter-spacing: 0.1rem;
-}
-
-.tab__link--active {
-	@include themify($themes) {
-		display: block;
-		padding: 5px 20px;
-		font-weight: normal;
-		text-decoration: none;
-		color: themed("accentColor");
-		border-bottom: 5px solid themed("accentColor");
-	}
-}
-
-.toolBar__field {
-	@include themify($themes) {
-		background: themed("inputColor");
-		border: themed("inputBorder");
-	}
-}
-
-.roster-sorting {
-	margin: 0.5rem 0;
-	&__button {
-		width: 100%;
-		margin: 0.5rem 0;
+	&__link--active {
 		@include themify($themes) {
-			background-color: themed("panelColor") !important;
-			color: themed("textColor") !important;
-		}
-		&--selected {
-			width: 100%;
-			margin: 0.5rem 0;
-			@include themify($themes) {
-				background-color: themed("buttonColor") !important;
-				color: themed("buttonText") !important;
-			}
-		}
-	}
-
-	&__sort {
-		font-size: 1.4rem;
-	}
-
-	&__name {
-		padding: 0.4rem 1rem;
-		@include themify($themes) {
-			background-color: themed("panelColor");
-			color: themed("textColor");
-		}
-		&--selected {
-			padding: 0.4rem 1rem;
-			@include themify($themes) {
-				background-color: themed("buttonColor");
-				color: themed("buttonText");
-			}
+			display: block;
+			padding: 5px 20px;
+			font-weight: normal;
+			text-decoration: none;
+			color: themed("accentColor");
+			border-bottom: 5px solid themed("accentColor");
 		}
 	}
 }
@@ -249,14 +88,6 @@ textarea {
 	@include themify($themes) {
 		background: themed("inputColor");
 		border: themed("inputBorder");
-	}
-}
-
-//font awesome icon and menu
-.menu {
-	@include themify($themes) {
-		background-color: themed("navigationBars");
-		color: white;
 	}
 }
 
@@ -271,113 +102,4 @@ textarea {
 		color: themed("buttonText");
 		border: 2px solid transparent;
 	}
-}
-
-/*Navbar Styling*/
-.sr-only {
-	@include themify($themes) {
-		color: themed("white");
-	}
-}
-
-.logo_parent {
-	text-align: center;
-	flex: 100%;
-	margin-top: -5px;
-}
-
-.nav__header {
-	position: absolute;
-	top: 2px;
-	left: 50px;
-	font-size: 1.5rem;
-	color: white;
-	letter-spacing: 0.1rem;
-}
-
-.csun_logo {
-	@include themify($themes) {
-		width: 65px;
-		height: 45px;
-		background-image: white;
-	}
-}
-
-.nomi_logo {
-	@include themify($themes) {
-		width: 65px;
-		height: 30px;
-		border-left: 1px solid #ccc;
-		padding-left: 8px;
-		margin-left: 4px;
-		margin-top: 2px;
-	}
-}
-
-.settings_banner {
-	@include themify($themes) {
-		background: themed("toolBanner");
-		margin-bottom: .1rem;
-		padding: 0.2rem 0;
-	}
-}
-
-.bottom-nav {
-	z-index: 4;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	margin: 0;
-	width: 100%;
-	@include themify($themes) {
-		background: themed("navigationBars");
-	}
-}
-
-.bottom-nav__button {
-	color: rgba(255, 255, 255, 0.6);
-	padding: .75rem 0 .5rem;
-
-	&--active {
-		color: rgba(255, 255, 255, 1);
-		padding: .75rem 0 .5rem;
-	}
-	&--disabled {
-		@include themify($themes) {
-			color: themed("disabledBtnColor");
-		}
-		padding: .75rem 0 .5rem;
-	}
-}
-
-.course-card--selected {
-	@include themify($themes) {
-		color: themed("accentColor");
-	}
-}
-
-.roster-list__item{
-	padding: .4rem 1rem;
-	@include themify($themes) {
-		background-color: themed("panelColor");
-		border-bottom: 1px solid themed("backgroundColor")
-	}
-}
-
-//theme colors in list
-#Matador {
-	background-color: #d00d2d;
-}
-
-#Navy {
-	background-color: #0f1821;
-}
-
-#Blues {
-	background-color: #0d3753;
-}
-
-#Dark {
-	background-color: #272727;
 }

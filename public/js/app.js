@@ -17952,7 +17952,7 @@ var render = function() {
       _c(
         "select",
         {
-          staticClass: "toolBar__field",
+          staticClass: "course__field",
           attrs: { name: "semester-select", id: "sem-select" },
           on: { input: _vm.handleSelect }
         },
@@ -17981,7 +17981,7 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
-        staticClass: "toolBar__field",
+        staticClass: "course__field",
         attrs: { id: "inputYear", type: "text", placeholder: "Year" },
         domProps: { value: _vm.year },
         on: {
@@ -18992,7 +18992,7 @@ var staticRenderFns = [
         [
           _c(
             "h5",
-            { staticClass: "panel__header panel__emptyCourseHeader mb-0" },
+            { staticClass: "panel__header course__header--empty mb-0" },
             [
               _vm._v(
                 "\n            You are not teaching any classes this semester.\n        "
@@ -19000,23 +19000,17 @@ var staticRenderFns = [
             ]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel__content panel__emptyCourseContent" },
-            [
-              _c("div", { staticClass: "row" }, [
-                _vm._v(
-                  "Feel free to review your past and future classes by selecting a different term."
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _vm._v("Enjoy your semester!")
-              ])
-            ]
-          )
+          _c("div", { staticClass: "panel__content course__content--empty" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm._v(
+                "Feel free to review your past and future classes by selecting a different term."
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [_vm._v("Enjoy your semester!")])
+          ])
         ]
       )
     ])
@@ -22212,7 +22206,7 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "cardText clearPadding" }, [
+            _c("div", { staticClass: "card-text clearPadding" }, [
               _c("div", { staticClass: "gallery__name type--center" }, [
                 _vm._v(_vm._s(_vm.display_name))
               ])
@@ -24366,7 +24360,7 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "panel about__padding" }, [
+    _c("div", { staticClass: "panel about" }, [
       _vm.showAbout
         ? _c("div", [_c("about-page")], 1)
         : _c("div", [_c("version-history")], 1)
@@ -24599,11 +24593,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "colorThemes" }, [
+      _c("div", { staticClass: "theme" }, [
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Matador", name: "OnceAMatadorAlwaysAMatador" },
             on: {
               click: function($event) {
@@ -24617,7 +24611,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Navy", name: "navy" },
             on: {
               click: function($event) {
@@ -24631,7 +24625,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Blues", name: "bluesTheme" },
             on: {
               click: function($event) {
@@ -24645,7 +24639,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Dark", name: "Dark" },
             on: {
               click: function($event) {
@@ -26095,14 +26089,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "primary-nav" },
+    { staticClass: "navbar" },
     [
       _c("back-button"),
       _vm._v(" "),
       !_vm.checkIfLogin
         ? _c("div", [
             this.displayCurrentTerm != null
-              ? _c("div", { staticClass: "nav__header" }, [
+              ? _c("div", { staticClass: "navbar__header" }, [
                   _vm._v(
                     "\n        " +
                       _vm._s(this.displayCurrentTerm) +

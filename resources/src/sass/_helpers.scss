@@ -1,15 +1,24 @@
 :focus{
 	outline: none !important;
 }
-.makeBlue {
-	@include themify($themes) {
-		background-color: themed("navigationBars");
-	}
+
+textarea[type="text"] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+	box-sizing: border-box;
 }
 
-.accentColorBlue {
+textarea[type="text"]:focus {
+	border: 3px solid lightblue;
+}
+
+textarea[type="text"]:focus{
 	@include themify($themes) {
-		background-color: themed("accentColor");
+		border: 3px solid themed("focusColor");
 	}
 }
 
@@ -19,72 +28,9 @@
 	}
 }
 
-.nav-bars {
-	@include themify($themes) {
-		background-color: themed("navigationBars");
-		font-size: themed("mainFontSize");
-		color: themed("backgroundColor");
-	}
-}
-
 .text-overflow {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
-}
-
-// .cardOverflow{
-//   white-space: wrap;
-//   width: 95px;
-// }
-
-.image-wrap {
-	display: inline-block;
-	position: relative;
-	width: 60%;
-}
-
-.slide-wrap {
-	width: 55%;
-	height: 45%;
-}
-
-.clear-padding {
-	padding: 0;
-}
-
-.colorThemes {
-	padding: 5%;
-}
-
-.colorTheme_item {
-	padding: 5% 0;
-	color: white;
-	width: 100%;
-	border: 2px solid transparent;
-    font-weight: bold;
-    letter-spacing: .1rem;
-}
-
-@media only screen and (max-width: 367px) {
-	.student_list_name_mobile {
-		font-size: 4vw;
-	}
-}
-
-@media only screen and (min-width: 368px) {
-	.student_list_name_mobile {
-		font-size: 1.3rem;
-	}
-}
-
-@media only screen and (min-width: 600px) {
-	.student_list_name {
-		font-size: 2rem;
-	}
-}
-
-.cardText {
-	font-size: 4vh;
 }
 
 .center {
@@ -94,37 +40,8 @@
 	margin-bottom: 7%;
 }
 
-.back-button {
-	color: white;
-	position: absolute;
-	left: 15px;
-	transition: 25ms;
-	margin-top: -3.55px;
-}
-
-.back-button--disabled {
-	color: rgba($color: #fff, $alpha: 0.2);
-	position: absolute;
-	left: 15px;
-	transition: 25ms;
-}
-
-.back-button:active {
-	transform: scale(1.2);
-}
-
-.subbrand-center {
-	margin-left: 1%;
-	padding-left: 1%;
-	margin-right: 1%;
-}
-
 .margin-between-containers {
 	margin-top: 7%;
-}
-
-.flash-card {
-	padding: 5px !important;
 }
 
 .panel__edit-button {
@@ -142,127 +59,8 @@
 	}
 }
 
-.feedback-button {
-	position: absolute;
-	right:2%;
-	padding-right: 2%;
-	padding-left: 2%;
-	padding-top: 0.5%;
-	padding-bottom: 0.5%;
-	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
-	@include themify($themes) {
-		background-color: themed("buttonColor");
-		color: themed("buttonText");
-	}
-	@media only screen and (max-width: 699px){
-		padding-top: 1%;
-		padding-bottom: 1%;
-	}
-
-
-}
-
-.makeWhite {
-	filter: grayScale(0%);
-	filter: grayScale(100%);
-}
-.modal--exit {
-	color: gray;
-	margin-bottom: 0;
-	margin-top: 5%;
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.name__container {
-	height: 31vmin;
-}
-
-.card-face {
-	float: inherit;
-}
-
-.email__padding {
-	padding: 1em 0.5em 1em 0.5em;
-}
-
-.btn__padding {
-	padding: 0.4em 0 0.4em 0;
-}
-
-.sort-filters {
-	margin: 0 auto 10px;
-}
-
-.shuffle-button {
-	position: fixed;
-	z-index: 1;
-	right: 20px;
-	bottom: 80px;
-	padding: 12px;
-	border-radius: 50%;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.course__button {
-	width: 5.5rem;
-}
-.course {
-	&__descriptor {
-		font-weight: bold;
-		font-size: 1rem;
-
-		@include themify($themes) {
-			color: themed("textColor") !important;
-		}
-	}
-
-	&__button {
-		width: 5.5rem;
-
-		@include themify($themes) {
-			background-color: themed("hoverColor") !important;
-			color: themed("textColor") !important;
-		}
-
-		&--selected {
-			@include themify($themes) {
-				background-color: themed("buttonColor") !important;
-				color: themed("buttonText") !important;
-			}
-		}
-	}
-}
 .text-bold {
 	font-weight: bold;
-}
-
-.croppa-loading {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 2;
-	background-color: rgba($color: #000000, $alpha: 0.3);
-}
-
-.croppa-loading_icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	color: rgba($color: #fff, $alpha: 0.5);
-	transform: translate(-50%, -50%);
-}
-
-.croppa-container {
-	padding: 0 2em 2em;  
-	@include themify($themes){
-		color: themed('panelColor');
-	}
 }
 
 .display-inline {
@@ -275,43 +73,6 @@
 
 .text_italic {
 	font-style: italic;
-}
-
-.profile-info-container {
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 1.875rem;
-	padding-right: 01.875rem;
-}
-
-.profile-notes-padding {
-	padding-top: 1rem;
-}
-
-.modal-btn {
-	display: inline-block;
-	padding: 6px 20px;
-	margin: 0 3%;
-	font-size: 15px;
-	font-weight: 500;
-	line-height: 1.8;
-	text-align: center;
-	text-decoration: none;
-	text-shadow: none;
-	white-space: nowrap;
-	vertical-align: middle;
-	touch-action: manipulation;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	background-image: none;
-	border: 2px solid transparent;
-	border-radius: 100%;
-	height: 2.2em;
-	width: 2.2em;
-	margin: 0 0.6em;
 }
 
 .confirm-btn {
@@ -350,11 +111,6 @@
 	border-color: #adadad;
 }
 
-.permission-footer {
-	margin: 15% 0 5%;
-	text-align: center;
-}
-
 .fullscreen-width {
 	width: 100vw;
 	position: relative;
@@ -368,24 +124,9 @@
 	margin-bottom: 0;
 }
 
-//Images
 .img--fluid-custom{
 	display: block;
 	height: auto;
 	padding: 5%;
 	margin: 0 auto;
-}
-
-.roster__img{
-	width: 100%;
-}
-
-.profile__img{
-	width: 12rem;
-}
-
-textarea[type="text"]:focus{
-	@include themify($themes) {
-		border: 3px solid themed("focusColor");
-	}
 }

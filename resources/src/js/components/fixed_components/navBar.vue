@@ -1,8 +1,8 @@
 <template>
-    <nav class="primary-nav">
+    <nav class="navbar">
         <back-button></back-button>
         <div v-if="!checkIfLogin">
-            <div v-if="this.displayCurrentTerm != null" class="nav__header">
+            <div v-if="this.displayCurrentTerm != null" class="navbar__header">
             {{this.displayCurrentTerm}}
             </div>
             <a :href="this.url + '/support'" class="feedback-button pull-right">Feedback</a>

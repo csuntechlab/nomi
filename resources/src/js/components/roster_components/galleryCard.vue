@@ -8,7 +8,7 @@
             <div class="panel__content">
                 <profile-picture :image="image" :type="'roster'"/>
             </div>
-            <div class="cardText clearPadding">
+            <div class="card-text clearPadding">
                 <div class="gallery__name type--center">{{display_name}}</div>
             </div>
           </div>
