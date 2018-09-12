@@ -50,6 +50,7 @@ class StudentProfileService implements StudentProfileContract
                 'members_id' => $profile['individuals_id'],
                 'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
                 'image_priority' => $imagePriority,
+                'bio' => $profile['biography'],
             ];
 
             return \json_encode($studentProfile);
