@@ -596,6 +596,8 @@ textarea[type="text"]:focus {
 .fullscreen-width {
   width: 100vw;
   position: relative;
+  left: 50%;
+  right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
 }
@@ -2024,6 +2026,15 @@ textarea[type="text"]:focus {
 
 .theme-Dark .croppa-container {
   color: #303030;
+}
+
+.fullscreen-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 /*  Fixed Safari font-awesome issue
