@@ -233,6 +233,10 @@ body {
   font-weight: bold;
 }
 
+.panel__wrapper {
+  position: relative;
+}
+
 .panel__listing {
   margin: 0 auto;
 }
@@ -439,7 +443,7 @@ textarea[type="text"]:focus {
 
 .panel__edit-button {
   position: absolute;
-  bottom: 25%;
+  bottom: 5%;
   right: 15%;
   border-radius: 100%;
   padding: 5%;
@@ -1797,6 +1801,27 @@ textarea[type="text"]:focus {
 .theme-Dark .roster-sorting__name--selected {
   background-color: #426c96;
   color: #dadada;
+}
+
+.gallery__layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.gallery-card {
+  margin-bottom: 1rem;
+}
+
+.gallery-card__content {
+  height: 100%;
 }
 
 .gallery__name {

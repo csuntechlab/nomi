@@ -99,9 +99,26 @@
 }
 
 // Gallery Card
-.gallery__name {
-	font-size: 1.3rem;
-	padding: 0 3% 5%;
+
+.gallery {
+	&__layout {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+	}
+
+	&-card {
+		margin-bottom: 1rem;
+
+		&__content {
+			height: 100%;
+		}
+	}
+
+	&__name {
+		font-size: 1.3rem;
+		padding: 0 3% 5%;
+	}
 }
 
 .card {
