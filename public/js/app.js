@@ -20420,9 +20420,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: "course-banner",
 
     methods: {
-        activeTab: function activeTab(id) {
-            if (id.toString() === this.$route.params.id) return "tab__link--active";else return "tab__link";
-        },
         setScrollBar: function setScrollBar() {
             var courseTab = document.getElementById(this.currentCourse);
             courseTab.scrollIntoView({
@@ -20471,8 +20468,11 @@ var render = function() {
           _c(
             "router-link",
             {
-              class: _vm.activeTab(course.id),
-              attrs: { to: "/class/" + course.id }
+              staticClass: "tab__link",
+              attrs: {
+                "active-class": "tab__link--active",
+                to: "/class/" + course.id
+              }
             },
             [
               _c("div", { staticClass: "text_bold" }, [
@@ -22943,7 +22943,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
 		if (this.profileLoadError) {
-			this.logErrors();
 			this.clearProfileErrors();
 		}
 		if (this.unsavedChanges) {
@@ -22970,9 +22969,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 		setChanges: function setChanges() {
 			this.unsavedChanges = false;
-		},
-		logErrors: function logErrors() {
-			console.log("Profile Error found: " + this.profileErrors);
 		}
 	})
 
@@ -26449,7 +26445,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
 //
 //
 //

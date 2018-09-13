@@ -1,7 +1,7 @@
 <template>
     <ul id="scrollBar" class="tabs cf">
         <li v-for="course in this.courses" :id="course.id" :key="course.title" :course="course" class="tab__list" @click="storeCourse(course.id)">
-            <router-link :class="activeTab(course.id)" :to="'/class/'+course.id">
+            <router-link class="tab__link" active-class="tab__link--active" :to="'/class/'+course.id">
                 <div class="text_bold">
                     {{course.subject}} {{course.catalog_number}} ({{course.class_number}})
                 </div>
@@ -15,12 +15,6 @@
         name: "course-banner",
 
         methods: {
-            activeTab: function (id) {
-                if (id.toString() === this.$route.params.id)
-                    return "tab__link--active";
-                else
-                    return "tab__link";
-            },
             setScrollBar(){
                 let courseTab = document.getElementById(this.currentCourse);
                 courseTab.scrollIntoView({

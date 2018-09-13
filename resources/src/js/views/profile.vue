@@ -49,7 +49,6 @@ export default {
 
 	beforeRouteLeave(to, from, next) {
 		if(this.profileLoadError){
-			this.logErrors();
 			this.clearProfileErrors();
 		}
 		if (this.unsavedChanges) {
@@ -83,10 +82,6 @@ export default {
 		},
 		setChanges() {
 			this.unsavedChanges = false;
-		},
-
-		logErrors() {
-			console.log("Profile Error found: " + this.profileErrors);
 		},
 	}
 
