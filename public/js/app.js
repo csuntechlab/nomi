@@ -19075,7 +19075,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "previous"
                       ? "course__button--selected"
@@ -19091,7 +19091,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "current"
                       ? "course__button--selected"
@@ -19107,7 +19107,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "next"
                       ? "course__button--selected"
