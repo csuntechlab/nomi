@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="list-grid"></label>
-        <div class="row fullscreen_width roster-sorting">
+        <div class="row fullscreen-width roster-sorting">
             <div v-if="this.list">
                 <!-- 0, selected  -->
                 <div class="col-xs-4">
