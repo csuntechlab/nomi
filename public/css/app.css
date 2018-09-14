@@ -610,6 +610,10 @@ textarea[type="text"]:focus {
   margin-bottom: 0;
 }
 
+.no-click {
+  pointer-events: none;
+}
+
 .img--fluid-custom {
   display: block;
   height: auto;
