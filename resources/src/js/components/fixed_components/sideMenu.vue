@@ -1,9 +1,9 @@
 <template>
     <div class="type--center">
-        <div v-if="displaySideMenu" id="outsideLayer" class="transparent_non-menu_layer" @click="toggleMenu"></div>
+        <div v-if="displaySideMenu" id="outsideLayer" class="menu--transparent" @click="toggleMenu"></div>
         <div id="sideMenu" class="side-menu" v-bind:class="[displaySideMenu ? 'side-menu--display' : 'side-menu--hide']">
             <div v-if="facultyMember.image === null" class="type--center">
-                <i class="fas fa-user-circle fa-3x icon_theme"></i>
+                <i class="fas fa-user-circle fa-3x icon__theme"></i>
             </div>
             <div v-else>
                 <div>

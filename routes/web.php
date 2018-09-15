@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 /** Routes associated with login. */
 Route::get('/', 'LoginController@index')->name('login');
+Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@validateUser')->name('post.login');
 
 /** Route for home page. Takes us to the SPA. */
@@ -25,6 +26,8 @@ Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
 });
+
+
 
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');

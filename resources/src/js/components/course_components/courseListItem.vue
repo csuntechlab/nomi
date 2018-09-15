@@ -1,8 +1,8 @@
 <template>
     <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse()">
-        <div class="panel course_padding fullscreen_width col-xs-12">
+        <div class="panel course__padding fullscreen-width col-xs-12">
             <div class="panel__header type--center">
-                <h2 class="course_title pull-left">{{course.title}}</h2>
+                <h2 class="course__title pull-left">{{course.title}}</h2>
             </div>
             <div class="panel__content">
                 <div class="row">

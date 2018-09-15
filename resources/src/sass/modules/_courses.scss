@@ -1,0 +1,66 @@
+.course {
+	&__title {
+		font-weight: bold;
+		font-size: 1rem;
+	}
+
+	&__padding {
+		margin-bottom: 0.7rem;
+	}
+
+	&__header--empty {
+		padding-bottom: 0.5rem;
+	}
+
+	&__content--empty {
+		line-height: 1;
+	}
+
+	&__field {
+		@include themify($themes) {
+			background: themed("inputColor");
+			border: themed("inputBorder");
+		}
+	}
+
+	&__descriptor {
+		font-weight: bold;
+		font-size: 1rem;
+
+		@include themify($themes) {
+			color: themed("textColor") !important;
+		}
+	}
+
+	&__banner {
+		@include themify($themes) {
+			background-color: themed("toolBanner");
+			color: themed("textColor");
+			margin-top: 0.833rem;
+			margin-bottom: 0.833rem;
+			padding: 10px 0;
+		}
+	}
+
+	&__button {
+		width: 5.5rem;
+
+		@include themify($themes) {
+			background-color: themed("hoverColor") !important;
+			color: themed("textColor") !important;
+		}
+
+		&--selected {
+			@include themify($themes) {
+				background-color: themed("buttonColor") !important;
+				color: themed("buttonText") !important;
+			}
+		}
+	}
+
+	&-card--selected {
+		@include themify($themes) {
+			color: themed("accentColor");
+		}
+	}
+}
