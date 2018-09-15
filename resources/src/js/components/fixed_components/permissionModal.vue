@@ -17,7 +17,7 @@
                             <button class="modal_btn decline_btn fa fa-2x fa-times" @click="deny()"></button>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </transition>
