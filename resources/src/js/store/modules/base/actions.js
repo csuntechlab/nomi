@@ -90,9 +90,17 @@ export default {
         context.commit("TOGGLE_MENU");
 	},
     
-    handlePermissionResponse(context, payload) {
-        context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-    },
+    // handlePermissionResponse(context, payload) {
+    //     context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	// },
+	
+	getUploadPermission(context, payload) {
+		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	},
+
+	updateUploadPermission(context, payload) {
+		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	},
     
     nullifyPermissionResponse(context) {
         context.commit("NULLIFY_PERMISSION_RESPONSE");

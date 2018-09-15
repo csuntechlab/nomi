@@ -47,12 +47,18 @@
             ]),
 
             accept() {
-                this.handlePermissionResponse(true);
+                // this.handlePermissionResponse(true);
+                this.$store.dispatch("updateUploadPermission");
             },
 
             deny() {
-                this.handlePermissionResponse(false);
+                // this.handlePermissionResponse(false);
+                this.$store.dispatch("updateUploadPermission");
             }
-        }
+        },
+
+        created() {
+		    this.$store.dispatch("getUploadPermission");
+	    }
     }
 </script>
