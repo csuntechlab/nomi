@@ -33,17 +33,11 @@ export default {
     },
 
     GET_STUDENT_BIO (state, payload) {
-        state.studentProfile.bio = payload['data']['people'].biography;
+        state.studentProfile.bio = payload.data.bio;
     },
 
     UPDATE_NOTES: function (state, notes) {
         state.studentProfile.notes = notes;
-    },
-
-    COMMIT_NOTES: function (state) {
-        let data = new FormData;
-        data.append('student_id', state.studentProfile.id);
-        data.append('notepad', state.studentProfile.notes);
     },
 
     UPDATE_IMAGE_PRIORITY: function (state, payload, rootState) {
