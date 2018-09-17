@@ -25564,7 +25564,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         window.axios.get('student_profile/' + email).then(function (payload) {
             var getters = context.getters;
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-            context.commit('GET_STUDENT_BIO', response);
+            context.commit('GET_STUDENT_BIO', payload);
         }).catch(function (error) {
             context.commit('API_STUDENT_FAILURE', error);
         });
@@ -25573,6 +25573,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         context.commit('UPDATE_NOTES', notes);
     },
     commitNotes: function commitNotes(context) {
+        var data = new FormData();
+        data.append('student_id', context.state.studentProfile.id);
+        data.append('notepad', context.state.studentProfile.notes);
+
         window.axios.post('update_note', data).catch(function (error) {
             context.commit("API_FAILURE", error);
         });
@@ -25636,18 +25640,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
 
     GET_STUDENT_BIO: function GET_STUDENT_BIO(state, payload) {
-        state.studentProfile.bio = payload['data']['people'].biography;
+        state.studentProfile.bio = payload.data.bio;
     },
 
 
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
         state.studentProfile.notes = notes;
-    },
-
-    COMMIT_NOTES: function COMMIT_NOTES(state) {
-        var data = new FormData();
-        data.append('student_id', state.studentProfile.id);
-        data.append('notepad', state.studentProfile.notes);
     },
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
