@@ -12,7 +12,7 @@ class CreateUploadPermissionTable extends Migration
      */
     public function up()
     {
-        Schema::create('upload_permission', function (Blueprint $table) {
+        Schema::create('upload_permissions', function (Blueprint $table) {
             $table->timestamps();
 
             $table->string('user_id', 128);
@@ -24,6 +24,6 @@ class CreateUploadPermissionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('upload_permission');
+        Schema::dropIfExists('upload_permissions');
     }
 }

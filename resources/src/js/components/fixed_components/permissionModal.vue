@@ -44,16 +44,15 @@
         methods: {
             ...mapActions([
                 'handlePermissionResponse',
+                'storePermission',
             ]),
 
             accept() {
-                // this.handlePermissionResponse(true);
-                this.$store.dispatch("updateUploadPermission");
+                this.storePermission(true);
             },
 
             deny() {
-                // this.handlePermissionResponse(false);
-                this.$store.dispatch("updateUploadPermission");
+                this.storePermission(false);
             }
         },
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Contracts\UploadPermissionContract;
+
 class UploadPermissionController extends Controller
 {
     protected $uploadPermissionContract;
@@ -13,17 +15,13 @@ class UploadPermissionController extends Controller
         $this->uploadPermissionContract = $uploadPermissionContract;
     }
 
-    public function getUploadPermission($user_id)
+    public function getUploadPermission()
     {
-        return $this->uploadPermissionContract->getUploadPermission($user_id);
+        return $this->uploadPermissionContract->getUploadPermission();
     }
 
-    public function updateUploadPermission(Request $request)
+    public function storePermission()
     {
-        $data = [
-            'user_id' => $request->user_id,
-        ];
-
-        return $this->uploadPermissionContract->updateUploadPermission($data);
+        return $this->uploadPermissionContract->storePermission();
     }
 }

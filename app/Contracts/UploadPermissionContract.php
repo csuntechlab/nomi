@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Contracts;
 
-interface StudentProfileContract
+interface UploadPermissionContract
 {
-    public function getUploadPermission($user_id);
+    public function getUploadPermission();
 
-    public function updateUploadPermission($data);
+    public function storePermission();
 }

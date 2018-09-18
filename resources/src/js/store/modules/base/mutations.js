@@ -226,7 +226,15 @@ export default {
         state.loadingClasses = false;
     },
 
-    HANDLE_PERMISSION_RESPONSE(state, payload){
+    // HANDLE_PERMISSION_RESPONSE(state, payload){
+    //     state.imagePermission = payload;
+    // },
+
+    GET_UPLOAD_PERMISSION(state, payload){
+        state.imagePermission = payload;
+    },
+
+    STORE_PERMISSION(state, payload){
         state.imagePermission = payload;
     },
 
