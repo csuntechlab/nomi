@@ -2,8 +2,8 @@
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
         <div class="row type--center roster-sorting">
-            <span v-if="!sortLastName" class="roster-sorting__name--selected roster--align" @click="$store.dispatch('sortFirstName')">First Name</span>
-            <span v-else class="roster-sorting__name roster--align" @click="$store.dispatch('sortFirstName')">First Name</span>
+            <span v-if="!sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortFirstName')">First Name</span>
+            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortFirstName')">First Name</span>
             <span v-if="sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortLastName')">Last Name</span>
             <span v-else class="roster-sorting__name" @click="$store.dispatch('sortLastName')">Last Name</span>
             <span v-if="sortAscending == true" class="fas roster-sorting__sort" @click="sortDes">

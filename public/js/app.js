@@ -19748,7 +19748,7 @@ var render = function() {
             ? _c(
                 "span",
                 {
-                  staticClass: "roster-sorting__name--selected roster--align",
+                  staticClass: "roster-sorting__name--selected",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortFirstName")
@@ -19760,7 +19760,7 @@ var render = function() {
             : _c(
                 "span",
                 {
-                  staticClass: "roster-sorting__name roster--align",
+                  staticClass: "roster-sorting__name",
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortFirstName")
