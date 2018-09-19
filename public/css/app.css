@@ -1682,7 +1682,16 @@ textarea[type="text"]:focus {
 }
 
 .roster-sorting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0.5rem 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .roster-sorting__button {
@@ -1746,11 +1755,65 @@ textarea[type="text"]:focus {
 }
 
 .roster-sorting__sort {
-  font-size: 1.4rem;
+  height: 34px;
+  width: 40px;
+  padding: 0.2rem;
+  margin-left: 4px;
+}
+
+.theme-login .roster-sorting__sort {
+  background-color: #F0F0F0 !important;
+  color: #464646 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort {
+  background-color: #F0F0F0 !important;
+  color: #464646 !important;
+}
+
+.theme-main .roster-sorting__sort {
+  background-color: #F4F4F4 !important;
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .roster-sorting__sort {
+  background-color: white !important;
+  color: #575757 !important;
+}
+
+.theme-Dark .roster-sorting__sort {
+  background-color: #303030 !important;
+  color: #bababa !important;
+}
+
+.roster-sorting__sort * {
+  height: 100%;
+  width: 100%;
+}
+
+.theme-login .roster-sorting__sort * {
+  fill: #d00d2d !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort * {
+  fill: #E74A37 !important;
+}
+
+.theme-main .roster-sorting__sort * {
+  fill: #4F9DA3 !important;
+}
+
+.theme-bluesTheme .roster-sorting__sort * {
+  fill: #4CA1DB !important;
+}
+
+.theme-Dark .roster-sorting__sort * {
+  fill: #426c96 !important;
 }
 
 .roster-sorting__name {
   padding: 0.4rem 1rem;
+  display: inline-block;
 }
 
 .theme-login .roster-sorting__name {
@@ -1779,6 +1842,7 @@ textarea[type="text"]:focus {
 }
 
 .roster-sorting__name--selected {
+  display: inline-block;
   padding: 0.4rem 1rem;
 }
 
