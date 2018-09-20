@@ -15,4 +15,22 @@ class ClassInstructorsTableRepository implements ClassInstructorsTableRepository
         ->where('user_id', $userId)
         ->first();
     }
+
+    public function find($userId)
+    {
+        return ClassInstructors::userId($userId)
+        ->first();
+    }
+
+    public function save($classInstructor)
+    {
+        $classInstructor->save();
+    }
+
+    public function all()
+    {
+        return ClassInstructors::all();
+    }
+
+
 }
