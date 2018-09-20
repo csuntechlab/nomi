@@ -5,12 +5,14 @@
             <div slot="body">
                 <croppa-profile :studentImage="student.images['likeness']"></croppa-profile>
             </div>
+            
         </modal>
     </div>
 </template>
 <script>
     import modal from "../fixed_components/modal.vue";
     import croppaProfile from "./croppaProfile.vue";
+    import croppaFunctionality from "./croppaFunctionality";
     import { mapGetters } from 'vuex';
     export default {
         name: "croppa-modal",
@@ -33,6 +35,7 @@
 
         components: {
             croppaProfile,
+            croppaFunctionality,
             modal
         },
 
