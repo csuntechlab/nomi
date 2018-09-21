@@ -6,9 +6,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Note extends Model
+class ClassInstructors extends Model
 {
-    protected $fillable [
+    protected $table = 'class_instructors';
+    protected $fillable = [
       'classes_id',
       'term_id',
       'term',

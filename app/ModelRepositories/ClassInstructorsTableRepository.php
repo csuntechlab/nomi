@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\ModelRepositories;
 
 use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
+use App\Models\ClassInstructors;
 use Illuminate\Support\Facades\DB;
 
 class ClassInstructorsTableRepository implements ClassInstructorsTableRepositoryInterface
