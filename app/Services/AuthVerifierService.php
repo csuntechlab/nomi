@@ -31,9 +31,7 @@ class AuthVerifierService implements AuthVerifierContract
     {
         if (auth()->attempt($cred)) {
             $query = $this->repository
-                ->find(auth()->user()->user_id)
-                ->toArray();
-              dd($query);
+                ->find(auth()->user()->user_id);
             if (null !== $query) {
                 return true;
             }
