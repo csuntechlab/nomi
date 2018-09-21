@@ -8,6 +8,5 @@ interface ClassInstructorsTableRepositoryInterface
 {
     // public function verifyUserWasAtOnePointAClassInstructor($userId);
     public function find($userId);
-    public function save(ClassInstructors $classInstructor);
     public function all();
 }

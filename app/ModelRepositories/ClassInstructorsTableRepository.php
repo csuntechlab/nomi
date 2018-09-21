@@ -23,11 +23,6 @@ class ClassInstructorsTableRepository implements ClassInstructorsTableRepository
         ->first();
     }
 
-    public function save(ClassInstructors $classInstructor)
-    {
-        $classInstructor->save();
-    }
-
     public function all()
     {
         return ClassInstructors::all();
