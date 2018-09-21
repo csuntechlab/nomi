@@ -23,7 +23,7 @@ class ClassInstructorsTableRepository implements ClassInstructorsTableRepository
         ->first();
     }
 
-    public function save(ClassInstructor $classInstructor)
+    public function save(ClassInstructors $classInstructor)
     {
         $classInstructor->save();
     }
