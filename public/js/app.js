@@ -24956,11 +24956,31 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	toggleMenu: function toggleMenu(context) {
 		context.commit("TOGGLE_MENU");
 	},
-	handlePermissionResponse: function handlePermissionResponse(context, payload) {
-		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-	},
+
+
+	// handlePermissionResponse(context, payload) {
+	//     context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	// }, 
+
 	nullifyPermissionResponse: function nullifyPermissionResponse(context) {
 		context.commit("NULLIFY_PERMISSION_RESPONSE");
+	},
+	getUploadPermission: function getUploadPermission(context, payload) {
+		window.axios.get("get_upload_permission").then(function (response) {
+			context.commit("GET_UPLOAD_PERMISSION", response.data.permission);
+		}).catch(function (error) {
+			context.commit("API_FAILURE", error);
+		});
+	},
+	storePermission: function storePermission(context, payload) {
+		window.axios.post("store_permission").then(function (response) {
+			context.commit("STORE_PERMISSION", response);
+		}).catch(function (error) {
+			context.commit("API_FAILURE", error);
+		});
+	},
+	displayModal: function displayModal(context) {
+		context.commit("DISPLAY_MODAL");
 	},
 	updateImage: function updateImage(context, payload) {
 		context.commit("UPDATE_IMAGE", payload);
@@ -25359,8 +25379,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
         state.loadingClasses = false;
     },
-    HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
+    GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
         state.imagePermission = payload;
+    },
+    STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
+        state.imagePermission = true;
     },
     NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
         state.imagePermission = null;
@@ -26719,18 +26742,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "permission-modal",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
 
     components: {
         modal: __WEBPACK_IMPORTED_MODULE_1__modal_vue___default.a
     },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse']), {
+    beforeCreate: function beforeCreate() {
+        this.$store.dispatch("getUploadPermission");
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['storePermission', 'getUploadPermission']), {
         accept: function accept() {
-            this.handlePermissionResponse(true);
+            this.$store.dispatch('storePermission', this.facultyMember.id);
         },
         deny: function deny() {
-            this.handlePermissionResponse(false);
+            // this.storePermission(false);
+            console.log("exit");
         }
     })
 });

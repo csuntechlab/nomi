@@ -32,7 +32,8 @@
 
         computed: {
             ...mapGetters([
-                'permission'
+                'permission',
+                'facultyMember',
             ]),
 
         },
@@ -41,24 +42,25 @@
             modal
         },
 
+        beforeCreate() {
+            this.$store.dispatch("getUploadPermission");
+	    },
+
         methods: {
             ...mapActions([
-                'handlePermissionResponse',
+
                 'storePermission',
                 'getUploadPermission',
             ]),
 
             accept() {
-                this.storePermission();
+                this.$store.dispatch('storePermission', this.facultyMember.id);
             },
 
             deny() {
-                this.storePermission();
+                // this.storePermission(false);
+                console.log("exit");
             }
         },
-
-        created() {
-            this.$store.dispatch("getUploadPermission");
-	    }
     }
 </script>

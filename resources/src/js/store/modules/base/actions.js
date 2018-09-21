@@ -101,7 +101,7 @@ export default {
 	getUploadPermission(context, payload) {
 		window.axios.get(`get_upload_permission`)
 			.then(response =>{
-				context.commit("GET_UPLOAD_PERMISSION", payload);
+				context.commit("GET_UPLOAD_PERMISSION", response.data.permission);
 			})
 			.catch(error => {
 				context.commit("API_FAILURE", error)
@@ -110,12 +110,16 @@ export default {
 
 	storePermission(context, payload) {
 		window.axios.post(`store_permission`)
-			.then(response =>{
-				context.commit("STORE_PERMISSION", payload);
+			.then((response) =>{
+				context.commit("STORE_PERMISSION", response);
 			})
 			.catch(error => {
 				context.commit("API_FAILURE", error)
 			});
+	},
+
+	displayModal(context){
+		context.commit("DISPLAY_MODAL");
 	},
     
 	updateImage(context, payload) {
