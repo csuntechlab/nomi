@@ -30,7 +30,7 @@ class UploadPermissionControllerTest extends TestCase
             ->shouldReceive('getUploadPermission')
             ->once();
 
-        $controller->getUploadPermission('hehe');
+        $controller->getUploadPermission('false');
     }
 
     /**
@@ -38,6 +38,12 @@ class UploadPermissionControllerTest extends TestCase
      */
     public function storePermission_store_permission_from_retriever()
     {
-        ///
+        $controller = new UploadPermissionController($this->retriever);
+
+        $this->retriever
+            ->shouldReceive('storePermission')
+            ->once();
+
+        $controller->storePermission('123456');
     }
 }

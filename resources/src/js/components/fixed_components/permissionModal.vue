@@ -45,19 +45,20 @@
             ...mapActions([
                 'handlePermissionResponse',
                 'storePermission',
+                'getUploadPermission',
             ]),
 
             accept() {
-                this.storePermission(true);
+                this.storePermission();
             },
 
             deny() {
-                this.storePermission(false);
+                this.storePermission();
             }
         },
 
         created() {
-		    this.$store.dispatch("getUploadPermission");
+            this.$store.dispatch("getUploadPermission");
 	    }
     }
 </script>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Services;
 
+use App\Contracts\UploadPermissionContract;
 use App\Services\UploadPermissionService;
 use Mockery;
 use Tests\TestCase;
@@ -19,26 +20,20 @@ class UploadPermissionServiceTest extends TestCase
     }
 
     /** @test */
-    public function getUploadPermission_returns_an_image_and_id()
+    public function getUploadPermission_returns_indication_that_faculty_gave_permission()
     {
-        $facultyService = new UploadPermissionService($this->retriever);
+        $UploadPermissionService = new UploadPermissionService($this->retriever);
 
         $this->retriever
             ->shouldReceive('getUploadPermission')
-            ->withArgs(['MrTeacherMan@gmail.com'])
-            ->andReturn(\json_encode(['people' => [
-                'profile_image' => 'thisIsAnImage',
-                'individuals_id' => 'thisIsAnId',
-            ],
-        ]));
+            ->andReturn(
+                \json_encode(['permission' => false])
+        );
+    }
 
-        $returnArray = [
-            'image' => 'thisIsAnImage',
-            'id' => 'thisIsAnId',
-        ];
-
-        $output = $facultyService->getUploadPermission('MrTeacherMan@gmail.com');
-
-        $this->assertEquals($output, $returnArray);
+    /** @test */
+    public function storeUploadPermission_stores_permission()
+    {
+        $UploadPermissionService = new UploadPermissionService($this->retriever);
     }
 }
