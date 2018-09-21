@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class ClassInstructorsTableRepository implements ClassInstructorsTableRepositoryInterface
 {
-    public function verifyUserWasAtOnePointAClassInstructor($userId)
-    {
-        return DB::table('class_instructors')
-        ->where('user_id', $userId)
-        ->first();
-    }
-
     public function find($userId)
     {
         return ClassInstructors::userId($userId)
