@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\ModelRepositories;
 
 use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
+use App\Models\ClassInstructors;
 use Illuminate\Support\Facades\DB;
 
 class ClassInstructorsTableRepository implements ClassInstructorsTableRepositoryInterface
@@ -15,4 +16,17 @@ class ClassInstructorsTableRepository implements ClassInstructorsTableRepository
         ->where('user_id', $userId)
         ->first();
     }
+
+    public function find($userId)
+    {
+        return ClassInstructors::userId($userId)
+        ->first();
+    }
+
+    public function all()
+    {
+        return ClassInstructors::all();
+    }
+
+
 }
