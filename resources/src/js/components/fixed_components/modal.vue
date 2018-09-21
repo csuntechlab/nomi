@@ -1,10 +1,10 @@
 <template>
   <transition name="modal">
     <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
+      <div class="modal__wrapper">
+        <div class="modal__container">
           <div class="modal-header">
-            <div class="fa fa-times-circle fa-2x pull-right modal_exit" @click="$emit('close')"></div>
+            <div class="fa fa-times-circle fa-2x pull-right modal--exit" @click="$emit('close')"></div>
             <slot class="type--center" name="header"></slot>
           </div>
           <div class="modal-body">

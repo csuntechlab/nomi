@@ -1,5 +1,3 @@
-// new css
-
 .menu {
 	z-index: 1;
 	background-color: #111;
@@ -12,33 +10,38 @@
 	left: 100%;
 	height: 100%;
 	width: 60%;
-}
 
-.transparent_non-menu_layer {
-	z-index: 2;
-	background-color: rgba($color: #000000, $alpha: 0.7);
-	margin: 0;
-	padding: 0;
-	position: fixed;
-	bottom: 0;
-	height: 100%;
-	width: 100%;
-}
+	& .closebtn {
+		position: absolute;
+		top: 0;
+	}
 
-.menu_links {
-	color: white;
-	text-decoration: none;
-	font-size: 2.5vh;
-	margin: 0;
-	text-decoration: none;
-	text-align: center;
-	padding: 0.75% 0.75% 0.75% 0.75%;
-	display: block;
-	transition: 0.3s;
-}
+	&--transparent {
+		z-index: 2;
+		background-color: rgba($color: #000000, $alpha: 0.7);
+		margin: 0;
+		padding: 0;
+		position: fixed;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
 
-.menu_links:hover {
-	opacity: 0.5;
+	&__links {
+		color: white;
+		text-decoration: none;
+		font-size: 2.5vh;
+		margin: 0;
+		text-decoration: none;
+		text-align: center;
+		padding: 0.75% 0.75% 0.75% 0.75%;
+		display: block;
+		transition: 0.3s;
+	}
+	
+	&__links:hover {
+		opacity: 0.5;
+	}
 }
 
 .side-menu {
@@ -55,20 +58,24 @@
 	bottom: 0;
 	padding: 4rem 1.5rem;
 	height: 100%;
+
 	&__link {
 		font-size: 1.5rem;
 		font-family: sans-serif;
 		text-align: center;
-    display: block;
-    padding: .5rem 0;
-    transition: 0.3s;
-    &:hover {
-      opacity: .5;
-    }
-  }
-  &__options {
-    margin-top: 1rem;
-  }
+		display: block;
+		padding: .5rem 0;
+		transition: 0.3s;
+	
+		&:hover {
+			opacity: .5;
+		}
+	}
+	
+	&__options {
+    	margin-top: 1rem;
+	
+	}
 	&__greeting {
 		font-size: 2rem;
 		font-family: sans-serif;
@@ -116,15 +123,6 @@
 			left: 100%;
 		}
 	}
-}
-
-.extra_padding {
-	padding-bottom: 5%;
-}
-
-.menu .closebtn {
-	position: absolute;
-	top: 0;
 }
 
 .bottom-nav__profile-pic {

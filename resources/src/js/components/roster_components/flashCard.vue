@@ -1,13 +1,13 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
-        <div class="flash_panel"  @click="updateRecognized">
-          <div class="flash_positioner"></div>
-            <div class="flash_element">
-                <div v-show="!known" class="card_face">
+        <div class="flash__panel"  @click="updateRecognized">
+          <div class="flash__positioner"></div>
+            <div class="flash__element">
+                <div v-show="!known" class="card-face">
                     <profile-picture class="roster__img" :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
                 <div v-show="known">
-                    <div class="type--center textOverflow back_of_card back_of_card_mobile">
+                    <div class="type--center text-overflow back-of-card back-of-card-mobile">
                         {{display_name}}
                     </div>
                 </div>

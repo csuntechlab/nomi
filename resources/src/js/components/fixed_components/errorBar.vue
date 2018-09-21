@@ -36,11 +36,16 @@ export default {
             "clearErrors"
 		]),
 
+		logErrors() {
+			console.log("Error found: " + this.errors);
+		},
+
 		closeError() {
 			if (this.profileLoadError == true) {
 				this.$store.dispatch('clearStudents');
                 this.$router.push({name: 'class', params: {id: this.currentCourse}});
             }
+            this.logErrors();
             this.clearErrors();
 		},
 	}

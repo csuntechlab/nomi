@@ -18105,7 +18105,7 @@ var render = function() {
       _c(
         "select",
         {
-          staticClass: "toolBar__field",
+          staticClass: "course__field",
           attrs: { name: "semester-select", id: "sem-select" },
           on: { input: _vm.handleSelect }
         },
@@ -18134,7 +18134,7 @@ var render = function() {
             modifiers: { lazy: true }
           }
         ],
-        staticClass: "toolBar__field",
+        staticClass: "course__field",
         attrs: { id: "inputYear", type: "text", placeholder: "Year" },
         domProps: { value: _vm.year },
         on: {
@@ -18978,7 +18978,7 @@ var render = function() {
         { staticClass: "panel course_padding fullscreen_width col-xs-12" },
         [
           _c("div", { staticClass: "panel__header type--center" }, [
-            _c("h2", { staticClass: "course_title pull-left" }, [
+            _c("h2", { staticClass: "course__title pull-left" }, [
               _vm._v(_vm._s(_vm.course.title))
             ])
           ]),
@@ -19145,14 +19145,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row fullscreen_width" }, [
+    return _c("div", { staticClass: "row fullscreen-width" }, [
       _c(
         "div",
         { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
         [
           _c(
             "h5",
-            { staticClass: "panel__header panel__emptyCourseHeader mb_0" },
+            { staticClass: "panel__header course__header--empty mb-0" },
             [
               _vm._v(
                 "\r\n            You are not teaching any classes this semester.\r\n        "
@@ -19160,23 +19160,17 @@ var staticRenderFns = [
             ]
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "panel__content panel__emptyCourseContent" },
-            [
-              _c("div", { staticClass: "row" }, [
-                _vm._v(
-                  "Feel free to review your past and future classes by selecting a different term."
-                )
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _vm._v("Enjoy your semester!")
-              ])
-            ]
-          )
+          _c("div", { staticClass: "panel__content course__content--empty" }, [
+            _c("div", { staticClass: "row" }, [
+              _vm._v(
+                "Feel free to review your past and future classes by selecting a different term."
+              )
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [_vm._v("Enjoy your semester!")])
+          ])
         ]
       )
     ])
@@ -19234,14 +19228,14 @@ var render = function() {
   return _c("div", [
     this.shouldLoadClasses
       ? _c("div", { staticClass: "type--center" }, [
-          _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+          _c("div", { staticClass: "row course__banner fullscreen-width" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-xs-4 type--right" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "previous"
                       ? "course__button--selected"
@@ -19257,7 +19251,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "current"
                       ? "course__button--selected"
@@ -19273,7 +19267,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-sm course__button",
+                  staticClass: "btn btn-sm course__button no-click",
                   class: [
                     this.selectedTerm == "next"
                       ? "course__button--selected"
@@ -19288,12 +19282,12 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon__theme" })
         ])
       : _c(
           "div",
           [
-            _c("div", { staticClass: "row course_banner fullscreen_width" }, [
+            _c("div", { staticClass: "row course__banner fullscreen-width" }, [
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "col-xs-4 type--right" }, [
@@ -20122,7 +20116,7 @@ var render = function() {
   return _c("div", [
     _c("label", { attrs: { for: "list-grid" } }),
     _vm._v(" "),
-    _c("div", { staticClass: "row fullscreen_width roster-sorting" }, [
+    _c("div", { staticClass: "row fullscreen-width roster-sorting" }, [
       this.list
         ? _c("div", [
             _c("div", { staticClass: "col-xs-4" }, [
@@ -20318,20 +20312,20 @@ var render = function() {
           [
             _c(
               "div",
-              { staticClass: "row sort_filters" },
+              { staticClass: "row sort-filters" },
               [_c("list-grid-selector")],
               1
             ),
             _vm._v(" "),
             !this.list && this.flash
-              ? _c("shuffle-button", { staticClass: "btn shuffle_button" })
+              ? _c("shuffle-button", { staticClass: "btn shuffle-button" })
               : _vm._e()
           ],
           1
         )
       : _c(
           "div",
-          { staticClass: "row sort_filters" },
+          { staticClass: "row sort-filters" },
           [_c("list-grid-selector"), _vm._v(" "), _c("sort-selector")],
           1
         )
@@ -21788,11 +21782,11 @@ var render = function() {
   return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
     _c(
       "div",
-      { staticClass: "flash_panel", on: { click: _vm.updateRecognized } },
+      { staticClass: "flash__panel", on: { click: _vm.updateRecognized } },
       [
-        _c("div", { staticClass: "flash_positioner" }),
+        _c("div", { staticClass: "flash__positioner" }),
         _vm._v(" "),
-        _c("div", { staticClass: "flash_element" }, [
+        _c("div", { staticClass: "flash__element" }, [
           _c(
             "div",
             {
@@ -21804,7 +21798,7 @@ var render = function() {
                   expression: "!known"
                 }
               ],
-              staticClass: "card_face"
+              staticClass: "card-face"
             },
             [
               _c("profile-picture", {
@@ -21836,7 +21830,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "type--center textOverflow back_of_card back_of_card_mobile"
+                    "type--center text-overflow back-of-card back-of-card-mobile"
                 },
                 [
                   _vm._v(
@@ -21950,6 +21944,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -21957,58 +21953,58 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "gallery-card",
+	name: "gallery-card",
+	props: ["student"],
 
-  data: function data() {
-    return {
-      messages: true,
-      errors: [],
-      myCroppa: null,
-      showCroppaModal: false,
-      showMe: true
-    };
-  },
-  components: {
-    modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a,
-    croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
-  },
+	data: function data() {
+		return {
+			messages: true,
+			errors: [],
+			myCroppa: null,
+			showCroppaModal: false,
+			showMe: true
+		};
+	},
 
-  props: ["student"],
+	components: {
+		modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a,
+		croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
+		profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
+	},
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission']), {
-    displayModal: function displayModal() {
-      return this.showCroppaModal && this.permission;
-    },
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission']), {
+		displayModal: function displayModal() {
+			return this.showCroppaModal && this.permission;
+		},
 
 
-    display_name: function display_name() {
-      return this.student.first_name + " " + this.student.last_name[0] + ".";
-    },
+		display_name: function display_name() {
+			return this.student.first_name + " " + this.student.last_name[0] + ".";
+		},
 
-    email_uri: function email_uri() {
-      return this.student.email.split("@")[0];
-    },
+		email_uri: function email_uri() {
+			return this.student.email.split("@")[0];
+		},
 
-    image: function image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } else if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
-    }
-  }),
+		image: function image() {
+			if (this.student.image_priority === 'likeness') {
+				return this.student.images.likeness;
+			} else if (this.student.image_priority === 'avatar') {
+				return this.student.images.avatar;
+			}
+		}
+	}),
 
-  methods: {
-    setImgUrl: function setImgUrl(url) {
-      this.showCroppaModal = false;
-      this.imgUrl = url;
-    },
-    checkPermission: function checkPermission() {
-      this.showCroppaModal = true;
-      if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
-    }
-  }
+	methods: {
+		setImgUrl: function setImgUrl(url) {
+			this.showCroppaModal = false;
+			this.imgUrl = url;
+		},
+		checkPermission: function checkPermission() {
+			this.showCroppaModal = true;
+			if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
+		}
+	}
 });
 
 /***/ }),
@@ -22184,11 +22180,11 @@ var render = function() {
       ),
       _vm._v(" "),
       _vm.loadingCroppa
-        ? _c("div", { staticClass: "croppa_loading" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "croppa-loading" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
       _c("div", [
-        _c("div", { staticClass: "modal-button-container pull-left" }, [
+        _c("div", { staticClass: "modal-button__container pull-left" }, [
           _c("div", { staticClass: "modal-button" }, [
             _c(
               "div",
@@ -22198,7 +22194,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "modal-button-container pull-right" }, [
+        _c("div", { staticClass: "modal-button__container pull-right" }, [
           _c("div", { staticClass: "modal-button" }, [
             _c(
               "div",
@@ -22225,7 +22221,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "croppa_loading_icon" }, [
+    return _c("div", { staticClass: "croppa-loading_icon" }, [
       _c("i", { staticClass: "fas fa-spinner fa-spin fa-5x" })
     ])
   }
@@ -22291,14 +22287,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "modal" } }, [
     _c("div", { staticClass: "modal-mask" }, [
-      _c("div", { staticClass: "modal-wrapper" }, [
-        _c("div", { staticClass: "modal-container" }, [
+      _c("div", { staticClass: "modal__wrapper" }, [
+        _c("div", { staticClass: "modal__container" }, [
           _c(
             "div",
             { staticClass: "modal-header" },
             [
               _c("div", {
-                staticClass: "fa fa-times-circle fa-2x pull-right modal_exit",
+                staticClass: "fa fa-times-circle fa-2x pull-right modal--exit",
                 on: {
                   click: function($event) {
                     _vm.$emit("close")
@@ -22341,17 +22337,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-xs-6 col-md-4 col-lg-3" },
+    { staticClass: "gallery-card col-xs-6 col-md-4 col-lg-3" },
     [
-      this.student.image_priority === "likeness"
-        ? _c("div", [
-            _c("i", {
-              staticClass: "fas fa-pencil-alt panel__edit-button",
-              on: { click: _vm.checkPermission }
-            })
-          ])
-        : _vm._e(),
-      _vm._v(" "),
       _c(
         "router-link",
         {
@@ -22360,20 +22347,31 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "panel" }, [
-            _c(
-              "div",
-              { staticClass: "panel__content" },
-              [
-                _c("profile-picture", {
-                  attrs: { image: _vm.image, type: "roster" }
-                })
-              ],
-              1
-            ),
+          _c("div", { staticClass: "panel gallery-card__content" }, [
+            _c("div", { staticClass: "panel__wrapper" }, [
+              _c(
+                "div",
+                { staticClass: "panel__content" },
+                [
+                  _c("profile-picture", {
+                    attrs: { image: _vm.image, type: "roster" }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              this.student.image_priority === "likeness"
+                ? _c("div", [
+                    _c("i", {
+                      staticClass: "fas fa-pencil-alt panel__edit-button",
+                      on: { click: _vm.checkPermission }
+                    })
+                  ])
+                : _vm._e()
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "cardText clearPadding" }, [
-              _c("div", { staticClass: "gallery_name type--center" }, [
+              _c("div", { staticClass: "gallery__name type--center" }, [
                 _vm._v(_vm._s(_vm.display_name))
               ])
             ])
@@ -22440,7 +22438,7 @@ var render = function() {
         )
       : _c(
           "div",
-          { staticClass: "row container panel__listing" },
+          { staticClass: "row container panel__listing gallery__layout" },
           _vm._l(this.courses[this.courseid].roster, function(student) {
             return _c("gallery-card", {
               key: student.student_id,
@@ -23248,7 +23246,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-default textOverflow",
+            staticClass: "btn btn-default text-overflow",
             attrs: { id: "setDefaultBtn" },
             on: {
               click: function($event) {
@@ -23266,7 +23264,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-default textOverflow" }, [
+    return _c("button", { staticClass: "btn btn-default text-overflow" }, [
       _vm._v("Default Set "),
       _c("i", { staticClass: "fas fa-check" })
     ])
@@ -23451,10 +23449,10 @@ var render = function() {
                 }
               },
               [
-                _c("slide", { staticClass: "slidewrap" }, [
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "imagewrap" },
+                    { staticClass: "image-wrap" },
                     [
                       _c("profile-picture", {
                         attrs: {
@@ -23478,10 +23476,10 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("slide", { staticClass: "slidewrap" }, [
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "imagewrap" },
+                    { staticClass: "image-wrap" },
                     [
                       _c("profile-picture", {
                         attrs: { image: _vm.avatar, type: "profile" }
@@ -23906,7 +23904,7 @@ var render = function() {
       "div",
       {
         staticClass:
-          "profile_info_container type--center margin_between_containers"
+          "profile-info-container type--center margin-between-containers"
       },
       [
         _c("div", { staticClass: "row" }, [
@@ -23932,7 +23930,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", [
                 this.student.bio != null
-                  ? _c("span", { staticClass: "text_italic display_inline" }, [
+                  ? _c("span", { staticClass: "text_italic display-inline" }, [
                       _c("strong", [
                         _vm._v("About " + _vm._s(this.student.firstName) + ":")
                       ]),
@@ -23946,7 +23944,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("profile-notes", {
-                staticClass: "profile_notes_padding",
+                staticClass: "profile-notes-padding",
                 attrs: { student: _vm.student },
                 on: {
                   unsavedChanges: _vm.sendUnsavedChanges,
@@ -23986,7 +23984,7 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon_theme" })
+          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon__theme" })
         ])
       : _c(
           "div",
@@ -24525,7 +24523,7 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "panel about_padding" }, [
+    _c("div", { staticClass: "panel about" }, [
       _vm.showAbout
         ? _c("div", [_c("about-page")], 1)
         : _c("div", [_c("version-history")], 1)
@@ -24758,11 +24756,11 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
-      _c("div", { staticClass: "colorThemes" }, [
+      _c("div", { staticClass: "theme" }, [
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Matador", name: "OnceAMatadorAlwaysAMatador" },
             on: {
               click: function($event) {
@@ -24776,7 +24774,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Navy", name: "navy" },
             on: {
               click: function($event) {
@@ -24790,7 +24788,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Blues", name: "bluesTheme" },
             on: {
               click: function($event) {
@@ -24804,7 +24802,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "colorTheme_item ",
+            staticClass: "theme__item",
             attrs: { id: "Dark", name: "Dark" },
             on: {
               click: function($event) {
@@ -25729,7 +25727,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         window.axios.get('student_profile/' + email).then(function (payload) {
             var getters = context.getters;
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-            context.commit('GET_STUDENT_BIO', response);
+            context.commit('GET_STUDENT_BIO', payload);
         }).catch(function (error) {
             context.commit('API_STUDENT_FAILURE', error);
         });
@@ -25738,6 +25736,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
         context.commit('UPDATE_NOTES', notes);
     },
     commitNotes: function commitNotes(context) {
+        var data = new FormData();
+        data.append('student_id', context.state.studentProfile.id);
+        data.append('notepad', context.state.studentProfile.notes);
+
         window.axios.post('update_note', data).catch(function (error) {
             context.commit("API_FAILURE", error);
         });
@@ -25807,18 +25809,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
 
     GET_STUDENT_BIO: function GET_STUDENT_BIO(state, payload) {
-        state.studentProfile.bio = payload['data']['people'].biography;
+        state.studentProfile.bio = payload.data.bio;
     },
 
 
     UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
         state.studentProfile.notes = notes;
-    },
-
-    COMMIT_NOTES: function COMMIT_NOTES(state) {
-        var data = new FormData();
-        data.append('student_id', state.studentProfile.id);
-        data.append('notepad', state.studentProfile.notes);
     },
 
     UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
@@ -26240,7 +26236,7 @@ var render = function() {
         !_vm.disableBack
           ? _c("div", [
               _c("i", {
-                staticClass: "fa fa-angle-left fa-3x back_button",
+                staticClass: "fa fa-angle-left fa-3x back-button",
                 attrs: { title: "Go Back" },
                 on: { click: _vm.goBack }
               })
@@ -26248,7 +26244,7 @@ var render = function() {
           : _c("div", [
               _c("i", {
                 staticClass:
-                  "fa fa-angle-left fa-3x back_button back_button_disabled"
+                  "fa fa-angle-left fa-3x back-button back-button--disabled"
               })
             ])
       ])
@@ -26274,14 +26270,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "nav",
-    { staticClass: "primary-nav" },
+    { staticClass: "navbar" },
     [
       _c("back-button"),
       _vm._v(" "),
       !_vm.checkIfLogin
         ? _c("div", [
             this.displayCurrentTerm != null
-              ? _c("div", { staticClass: "nav__header" }, [
+              ? _c("div", { staticClass: "navbar__header" }, [
                   _vm._v(
                     "\n        " +
                       _vm._s(this.displayCurrentTerm) +
@@ -26754,11 +26750,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["enableBackButton", "clearErrors"]), {
+		logErrors: function logErrors() {
+			console.log("Error found: " + this.errors);
+		},
 		closeError: function closeError() {
 			if (this.profileLoadError == true) {
 				this.$store.dispatch('clearStudents');
 				this.$router.push({ name: 'class', params: { id: this.currentCourse } });
 			}
+			this.logErrors();
 			this.clearErrors();
 		}
 	})
@@ -26926,9 +26926,9 @@ var render = function() {
           "div",
           { staticClass: "modal-mask", attrs: { id: "permission_modal" } },
           [
-            _c("div", { staticClass: "modal-wrapper" }, [
-              _c("div", { staticClass: "modal-container" }, [
-                _c("div", { staticClass: "modal-body-container" }, [
+            _c("div", { staticClass: "modal__wrapper" }, [
+              _c("div", { staticClass: "modal__container" }, [
+                _c("div", { staticClass: "modal-body__container" }, [
                   _c(
                     "div",
                     { staticClass: "modal-header" },
@@ -26948,9 +26948,9 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "permission_footer" }, [
+                  _c("div", { staticClass: "permission-footer" }, [
                     _c("button", {
-                      staticClass: "modal_btn confirm_btn fa fa-2x fa-check",
+                      staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
                       on: {
                         click: function($event) {
                           _vm.accept()
@@ -26959,7 +26959,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("button", {
-                      staticClass: "modal_btn decline_btn fa fa-2x fa-times",
+                      staticClass: "modal-btn decline-btn fa fa-2x fa-times",
                       on: {
                         click: function($event) {
                           _vm.deny()
@@ -27106,7 +27106,7 @@ var render = function() {
   return _c("div", { staticClass: "type--center" }, [
     _vm.displaySideMenu
       ? _c("div", {
-          staticClass: "transparent_non-menu_layer",
+          staticClass: "menu--transparent",
           attrs: { id: "outsideLayer" },
           on: { click: _vm.toggleMenu }
         })
@@ -27122,7 +27122,7 @@ var render = function() {
       [
         _vm.facultyMember.image === null
           ? _c("div", { staticClass: "type--center" }, [
-              _c("i", { staticClass: "fas fa-user-circle fa-3x icon_theme" })
+              _c("i", { staticClass: "fas fa-user-circle fa-3x icon__theme" })
             ])
           : _c("div", [
               _c("div", [

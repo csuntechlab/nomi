@@ -8,7 +8,7 @@
                 @markRecognized="markStudentAsRecognized"
             ></flash-card>
         </div>
-        <div v-else class="row container panel__listing">
+        <div v-else class="row container panel__listing gallery__layout">
             <gallery-card
                 v-for="student in this.courses[this.courseid].roster"
                 :key="student.student_id"
