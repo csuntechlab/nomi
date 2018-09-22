@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" v-if="this.permission == null" id="permission_modal">
+        <div class="modal-mask" v-if="this.permission == false" id="permission_modal">
             <div class="modal__wrapper">
                 <div class="modal__container">
                     <div class="modal-body__container">
@@ -34,6 +34,7 @@
             ...mapGetters([
                 'permission',
                 'facultyMember',
+                // 'displayPermissionModal',
             ]),
 
         },
@@ -48,19 +49,22 @@
 
         methods: {
             ...mapActions([
-
+                // 'handlePermissionResponse',
                 'storePermission',
                 'getUploadPermission',
             ]),
 
             accept() {
                 this.$store.dispatch('storePermission', this.facultyMember.id);
+                this.handlePermissionResponse(true);
             },
 
             deny() {
-                // this.storePermission(false);
-                console.log("exit");
-            }
+                this.handlePermissionResponse(false);
+                // if (this.permission == false)
+				// this.$store.dispatch("nullifyPermissionResponse");
+		        // }
+            },
         },
     }
 </script>

@@ -118,9 +118,9 @@ export default {
 			});
 	},
 
-	displayModal(context){
-		context.commit("DISPLAY_MODAL");
-	},
+	// displayPermissionModal(context){
+	// 	context.commit("DISPLAY_PERMISSION_MODAL");
+	// },
     
 	updateImage(context, payload) {
         context.commit("UPDATE_IMAGE", payload);

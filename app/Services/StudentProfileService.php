@@ -52,6 +52,8 @@ class StudentProfileService implements StudentProfileContract
                 'image_priority' => $imagePriority,
                 'bio' => $profile['biography'],
             ];
+
+            return \json_encode($studentProfile);
         }
     }
 

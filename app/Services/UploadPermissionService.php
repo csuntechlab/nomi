@@ -12,10 +12,10 @@ class UploadPermissionService implements UploadPermissionContract
     public function getUploadPermission()
     {
         $permission = UploadPermission::where('user_id', auth()->user()->user_id)->first();
-        $hasPermission = false;
+        $hasPermission = true;
 
-        if ($permission !== null) {
-            $hasPermission = true;
+        if ($permission == null) {
+            $hasPermission = false;
         }
 
         return \json_encode(['permission' => $hasPermission]);

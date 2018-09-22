@@ -4,36 +4,25 @@ declare(strict_types=1);
 
 namespace Tests\Services;
 
-use App\Contracts\UploadPermissionContract;
-use App\Services\UploadPermissionService;
-use Mockery;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class UploadPermissionServiceTest extends TestCase
 {
-    public $retriever;
+    use DatabaseMigrations;
 
-    public function setUp()
+    /** @test */
+    public function getUploadPermission_returns_true_when_faculty_gave_permission()
     {
-        parent::setUp();
-        $this->retriever = Mockery::spy(UploadPermissionContract::class);
     }
 
     /** @test */
-    public function getUploadPermission_returns_indication_that_faculty_gave_permission()
+    public function getUploadPermission_returns_false_when_faculty_has_not_given_permission()
     {
-        $UploadPermissionService = new UploadPermissionService($this->retriever);
-
-        $this->retriever
-            ->shouldReceive('getUploadPermission')
-            ->andReturn(
-                \json_encode(['permission' => false])
-        );
     }
 
     /** @test */
     public function storeUploadPermission_stores_permission()
     {
-        $UploadPermissionService = new UploadPermissionService($this->retriever);
     }
 }

@@ -24758,10 +24758,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     courses: [],
     flashroster: [],
     errors: null,
-    imagePermission: null,
+    imagePermission: true,
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],
+    // displayPermissionModal:true,
 
     // Views & Sorting
     list: true,
@@ -24822,6 +24823,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     currentLocation: function currentLocation(state) {
         return state.currentLocation;
     },
+    // displayPermissionModal: state => state. displayPermissionModal,
 
     // Back Button
     hideBack: function hideBack(state) {
@@ -24956,12 +24958,9 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 	toggleMenu: function toggleMenu(context) {
 		context.commit("TOGGLE_MENU");
 	},
-
-
-	// handlePermissionResponse(context, payload) {
-	//     context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-	// }, 
-
+	handlePermissionResponse: function handlePermissionResponse(context, payload) {
+		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	},
 	nullifyPermissionResponse: function nullifyPermissionResponse(context) {
 		context.commit("NULLIFY_PERMISSION_RESPONSE");
 	},
@@ -24979,9 +24978,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
 			context.commit("API_FAILURE", error);
 		});
 	},
-	displayModal: function displayModal(context) {
-		context.commit("DISPLAY_MODAL");
-	},
+
+
+	// displayPermissionModal(context){
+	// 	context.commit("DISPLAY_PERMISSION_MODAL");
+	// },
+
 	updateImage: function updateImage(context, payload) {
 		context.commit("UPDATE_IMAGE", payload);
 	},
@@ -25379,15 +25381,24 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
         state.loadingClasses = false;
     },
-    GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
+    HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
         state.imagePermission = payload;
-    },
-    STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
-        state.imagePermission = true;
     },
     NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
         state.imagePermission = null;
     },
+    GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
+        state.imagePermission = payload;
+    },
+    STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
+        state.imagePermission = payload;
+    },
+
+
+    // DISPLAY_PERMISSION_MODAL(state){
+    //     state.displayPermissionModal = !state.displayPermissionModal;
+    // },
+
     SET_PREVIOUS_TERM: function SET_PREVIOUS_TERM(state) {
         state.loadingClasses = true;
         state.termYear = state.term.slice(0, 3);
@@ -26742,7 +26753,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "permission-modal",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']
+    // 'displayPermissionModal',
+    )),
 
     components: {
         modal: __WEBPACK_IMPORTED_MODULE_1__modal_vue___default.a
@@ -26753,13 +26766,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['storePermission', 'getUploadPermission']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
         accept: function accept() {
             this.$store.dispatch('storePermission', this.facultyMember.id);
+            this.handlePermissionResponse(true);
         },
         deny: function deny() {
-            // this.storePermission(false);
-            console.log("exit");
+            this.handlePermissionResponse(false);
+            // if (this.permission == false)
+            // this.$store.dispatch("nullifyPermissionResponse");
+            // }
         }
     })
 });
@@ -26773,7 +26789,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "modal" } }, [
-    this.permission == null
+    this.permission != true
       ? _c(
           "div",
           { staticClass: "modal-mask", attrs: { id: "permission_modal" } },

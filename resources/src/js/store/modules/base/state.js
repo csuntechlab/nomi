@@ -3,10 +3,11 @@ export default {
     courses: [],
     flashroster: [],
     errors: null,
-    imagePermission: null,
+    imagePermission: true,
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],
+    // displayPermissionModal:true,
     
     // Views & Sorting
     list: true,

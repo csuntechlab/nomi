@@ -226,17 +226,25 @@ export default {
         state.loadingClasses = false;
     },
 
+    // HANDLE_PERMISSION_RESPONSE(state, payload){	   
+    //     state.imagePermission = payload;	       
+    // },
+
+    NULLIFY_PERMISSION_RESPONSE(state){
+        state.imagePermission = null;
+    },
+
     GET_UPLOAD_PERMISSION(state, payload){
         state.imagePermission = payload;
     },
 
     STORE_PERMISSION(state, payload){
-        state.imagePermission = true; 
+        state.imagePermission = payload; 
     },
 
-    NULLIFY_PERMISSION_RESPONSE(state){
-        state.imagePermission = null;
-    },
+    // DISPLAY_PERMISSION_MODAL(state){
+    //     state.displayPermissionModal = !state.displayPermissionModal;
+    // },
 
     SET_PREVIOUS_TERM(state) {
         state.loadingClasses = true;
