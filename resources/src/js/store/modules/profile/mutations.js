@@ -65,5 +65,13 @@ export default {
     CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
         state.profileLoadError = false;
+    },
+
+    STORE_STUDENT (state, payload){
+        state.currentStudent = payload;
+    },
+
+    CLEAR_STUDENT (state) {
+        state.currentStudent = null;
     }
 }
