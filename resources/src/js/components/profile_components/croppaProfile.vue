@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="profile_padding img--circle img--fluid-custom">
         <croppa
             v-model="myCroppa"
             :prevent-white-space="true"
@@ -8,7 +8,7 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial">
+            <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial" >
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading">
             <div class="croppa-loading_icon">
@@ -37,11 +37,22 @@
             }
         },
 
+        mounted() {
+            this.$root.$on('chooseImage', () => {
+                this.chooseImage()
+            }),
+            this.$root.$on('confirmImage', () => {
+                this.confirmImage()
+            })
+        },
+
         computed: {
             ...mapGetters([
                 'studentProfile',
                 'facultyMember'
-            ])
+            ]),
+
+            
         },
 
         created: function () {
@@ -86,10 +97,6 @@
                         this.$parent.$emit('close', url);
                     });
                 }
-            },
-
-            authorizeImageUpload: function() {
-                
             },
 
             styleCanvas: function() {

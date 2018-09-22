@@ -4,10 +4,7 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<profile-picture :image="image" :type="'roster'"/>
-					</div>
-					<div v-if="this.student.image_priority === 'likeness'">
-						<i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"/>
+						<profile-picture :editable="true" :image="image" :type="'roster'"/>
 					</div>
 				</div>
 				<div class="cardText clearPadding">

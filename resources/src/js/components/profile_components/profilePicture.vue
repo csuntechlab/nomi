@@ -1,7 +1,7 @@
 <template>
     <div>
         <img :src="this.image" class="profile_padding img--circle img--fluid-custom" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
-        <i v-if="this.editable" class="fas fa-pencil-alt profile-carousel__edit" @click="checkPermission"/>
+        <i v-if="this.editable" class="fas fa-pencil-alt panel__edit-button pull-right" @click="checkPermission"/>
     </div>
 </template>
 

@@ -13,5 +13,30 @@
 </div>
 </template>
 <script>
+import modal from "../fixed_components/modal.vue";
+import { mapGetters } from 'vuex';
+export default {
+        name: "croppa-functionality",
+
+        computed: {
+            ...mapGetters([
+                'permission'
+            ]),
+
+        },
+
+        components: {
+            modal
+        },
+
+        methods: {
+            chooseImage() {
+                this.$root.$emit('chooseImage');
+            },
+            confirmImage() {
+                this.$root.$emit('confirmImage');
+            }
+        }
+    }
 
 </script>

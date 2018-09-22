@@ -1,25 +1,34 @@
 <template>
 <div>
    <div class="container">
-      <div class="row">
-         <div class="col-sm-12">
+      <div >
+         <div>
             <h1 class="type--center">{{this.student.displayName}}</h1>
          </div>
+         <div style="padding: 15%;">
+         <profile-picture class="padding" :image="image" :editable="true" :type="'profile'" @showModal="checkPermission()"></profile-picture>
+         </div>
+            
          <div class="type--center">
-            <profile-picture :image="image" :editable="true" :type="'profile'" @showModal="checkPermission()"></profile-picture>
-            <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
-            <modal v-if="displayModal" @close="showCroppaModal = false">
-               <div slot="header"></div>
+            
+            <modal v-if="displayModal">
+              <div slot="header">
+                 <strong class="type--center">{{this.student.displayName}}</strong>
+              </div>
                <div slot="body">
-                  <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                  <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'"  @pageChange="handleSlideClick">
                      <slide class="slide-wrap">
-                        <div class="image-wrap">
+                        <div>
                            <croppa-profile :student="this.student.student"></croppa-profile>
+                           <i>Faculty Uploaded</i>
+                           <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
                         </div>
+                        
                      </slide>
                      <slide class="slide-wrap">
-                        <div class="image-wrap">
+                        <div>
                            <profile-picture :image="avatar" :type="'profile'"></profile-picture>
+                           <i>Faculty Uploaded</i>
                            <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
                         </div>
                      </slide>
@@ -34,7 +43,7 @@
                         -->
                   </carousel>
                </div>
-               <croppa-functionality></croppa-functionality>
+               
             </modal>
          </div>
       </div>
@@ -48,7 +57,6 @@ import profilePicture from "../profile_components/profilePicture.vue";
 import croppaFunctionality from "../profile_components/croppaFunctionality.vue";
 import modal from "../fixed_components/modal.vue";
 import imageHandler from "../profile_components/imageHandler.vue";
-import croppaModal from "../profile_components/croppaModal.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "profile-carousel",
@@ -77,20 +85,20 @@ export default {
   components: {
     imageHandler,
     profilePicture,
-    croppaModal,
     croppaProfile,
     croppaFunctionality,
     modal
   },
   methods: {
-    setImgUrl(url) {
-      this.showCroppaModal = false;
-      this.imgUrl = url;
-    },
     checkPermission() {
       this.showCroppaModal = true;
+      this.$root.$emit('showModal');
       if (this.permission == false)
         this.$store.dispatch("nullifyPermissionResponse");
+    },
+
+    handleSlideClick() {
+      this.$root.$emit('newSlide');
     }
   },
   computed: {
