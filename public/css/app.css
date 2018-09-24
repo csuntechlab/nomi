@@ -1754,6 +1754,10 @@ textarea[type="text"]:focus {
   color: #dadada !important;
 }
 
+.roster-sorting-container {
+  width: 100%;
+}
+
 .roster-sorting__sort {
   height: 34px;
   width: 40px;
