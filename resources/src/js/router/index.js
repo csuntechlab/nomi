@@ -16,6 +16,7 @@ const router = new VueRouter({
             component: Home
         },
         {
+            name: 'class',
             path: '/class/:id',
             component: Class
         },

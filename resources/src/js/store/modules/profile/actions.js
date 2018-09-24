@@ -45,5 +45,13 @@ export default {
 
     clearProfileErrors (context) {
         context.commit('CLEAR_PROFILE_ERRORS')
+    },
+
+    storeStudent (context, payload) {
+        context.commit('STORE_STUDENT', payload)
+    },
+
+    clearStudent (context) {
+        context.commit('CLEAR_STUDENT')
     }
 }
