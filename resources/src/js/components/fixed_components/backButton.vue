@@ -1,10 +1,10 @@
 <template>
     <div v-if="!hideBack">
         <div v-if="!disableBack">
-            <i class="fa fa-angle-left fa-3x back_button" title="Go Back" @click="goBack"></i>
+            <i class="fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
         </div>
         <div v-else>
-            <i class="fa fa-angle-left fa-3x back_button back_button_disabled"></i>
+            <i class="fa fa-angle-left fa-3x back-button back-button--disabled"></i>
         </div>
     </div>
 </template>
@@ -16,14 +16,20 @@
 
         methods: {
             goBack: function () {
-                this.$router.go(-1);
+                if(document.getElementById('charCount')){
+                    this.$store.dispatch('clearStudent');
+                    this.$router.push({name: 'class', params: {id: this.currentCourse}});
+                }
+                else
+                    this.$router.go(-1);
             }
         },
 
         computed: {
             ...mapGetters([
                 'hideBack',
-                'disableBack'
+                'disableBack',
+                'currentCourse'
             ]),
         }
     }

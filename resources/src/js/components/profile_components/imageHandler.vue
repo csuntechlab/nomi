@@ -1,9 +1,9 @@
 <template>
     <div v-if="this.studentProfile.imagePriority === image_type">
-        <button class="btn btn-default textOverflow">Default Set <i class="fas fa-check"/></button>
+        <button class="btn btn-default text-overflow">Default Set <i class="fas fa-check"/></button>
     </div>
     <div v-else>
-        <button id="setDefaultBtn" class="btn btn-default textOverflow" @click.prevent="updateImageHandler">Set Default</button>
+        <button id="setDefaultBtn" class="btn btn-default text-overflow" @click.prevent="updateImageHandler">Set Default</button>
     </div>
 </template>
 

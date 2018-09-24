@@ -1,90 +1,36 @@
 :focus{
 	outline: none !important;
 }
-.makeBlue {
+
+textarea[type="text"] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+
+textarea[type="text"]:focus {
+	border: 3px solid lightblue;
+}
+
+textarea[type="text"]:focus{
 	@include themify($themes) {
-		background-color: themed("navigationBars");
+		border: 3px solid themed("focusColor");
 	}
 }
 
-.accentColorBlue {
-	@include themify($themes) {
-		background-color: themed("accentColor");
-	}
-}
-
-.icon_theme {
+.icon__theme {
 	@include themify($themes) {
 		color: themed("accentColor");
 	}
 }
 
-.nav-bars {
-	@include themify($themes) {
-		background-color: themed("navigationBars");
-		font-size: themed("mainFontSize");
-		color: themed("backgroundColor");
-	}
-}
-
-.textOverflow {
+.text-overflow {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
-}
-
-// .cardOverflow{
-//   white-space: wrap;
-//   width: 95px;
-// }
-
-.imagewrap {
-	display: inline-block;
-	position: relative;
-	width: 60%;
-}
-
-.slidewrap {
-	width: 55%;
-	height: 45%;
-}
-
-.clearPadding {
-	padding: 0;
-}
-
-.colorThemes {
-	padding: 5%;
-}
-
-.colorTheme_item {
-	padding: 5% 0;
-	color: white;
-	width: 100%;
-	border: 2px solid transparent;
-    font-weight: bold;
-    letter-spacing: .1rem;
-}
-
-@media only screen and (max-width: 367px) {
-	.student_list_name_mobile {
-		font-size: 4vw;
-	}
-}
-
-@media only screen and (min-width: 368px) {
-	.student_list_name_mobile {
-		font-size: 1.3rem;
-	}
-}
-
-@media only screen and (min-width: 600px) {
-	.student_list_name {
-		font-size: 2rem;
-	}
-}
-
-.cardText {
-	font-size: 4vh;
 }
 
 .center {
@@ -94,44 +40,15 @@
 	margin-bottom: 7%;
 }
 
-.back_button {
-	color: white;
-	position: absolute;
-	left: 15px;
-	transition: 25ms;
-	margin-top: -3.55px;
-}
-
-.back_button_disabled {
-	color: rgba($color: #fff, $alpha: 0.2);
-	position: absolute;
-	left: 15px;
-	transition: 25ms;
-}
-
-.back_button:active {
-	transform: scale(1.2);
-}
-
-.subbrand_center {
-	margin-left: 1%;
-	padding-left: 1%;
-	margin-right: 1%;
-}
-
-.margin_between_containers {
+.margin-between-containers {
 	margin-top: 7%;
-}
-
-.flash_card {
-	padding: 5px !important;
 }
 
 .panel__edit-button {
 	position: absolute;
-    bottom: 25%;
+    bottom: 5%;
     right: 15%;
-    border-radius: 100%;
+	border-radius: 100%;
     padding: 5%;
     font-size: 150%;
     -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -142,134 +59,15 @@
 	}
 }
 
-.feedback-button {
-	position: absolute;
-	right:2%;
-	padding-right: 2%;
-	padding-left: 2%;
-	padding-top: 0.5%;
-	padding-bottom: 0.5%;
-	border-bottom-left-radius:10px;
-	border-bottom-right-radius:10px;
-	@include themify($themes) {
-		background-color: themed("buttonColor");
-		color: themed("buttonText");
-	}
-	@media only screen and (max-width: 699px){
-		padding-top: 1%;
-		padding-bottom: 1%;
-	}
-
-
-}
-
-.makeWhite {
-	filter: grayScale(0%);
-	filter: grayScale(100%);
-}
-.modal_exit {
-	color: gray;
-	margin-bottom: 0;
-	margin-top: 5%;
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.name_container {
-	height: 31vmin;
-}
-
-.card_face {
-	float: inherit;
-}
-
-.email_padding {
-	padding: 1em 0.5em 1em 0.5em;
-}
-
-.btn_padding {
-	padding: 0.4em 0 0.4em 0;
-}
-
-.sort_filters {
-	margin: 0 auto 10px;
-}
-
-.shuffle_button {
-	position: fixed;
-	z-index: 1;
-	right: 20px;
-	bottom: 80px;
-	padding: 12px;
-	border-radius: 50%;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.course__button {
-	width: 5.5rem;
-}
-.course {
-	&__descriptor {
-		font-weight: bold;
-		font-size: 1rem;
-
-		@include themify($themes) {
-			color: themed("textColor") !important;
-		}
-	}
-
-	&__button {
-		width: 5.5rem;
-
-		@include themify($themes) {
-			background-color: themed("hoverColor") !important;
-			color: themed("textColor") !important;
-		}
-
-		&--selected {
-			@include themify($themes) {
-				background-color: themed("buttonColor") !important;
-				color: themed("buttonText") !important;
-			}
-		}
-	}
-}
-.text_bold {
+.text-bold {
 	font-weight: bold;
 }
 
-.croppa_loading {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: 100%;
-	width: 100%;
-	z-index: 2;
-	background-color: rgba($color: #000000, $alpha: 0.3);
-}
-
-.croppa_loading_icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	color: rgba($color: #fff, $alpha: 0.5);
-	transform: translate(-50%, -50%);
-}
-
-.croppa-container {
-	padding: 0 2em 2em;  
-	@include themify($themes){
-		color: themed('panelColor');
-	}
-}
-
-.display_inline {
+.display-inline {
 	display: inline;
 }
 
-.display_inline_block {
+.display-inline-block {
 	display: inline-block;
 }
 
@@ -277,44 +75,7 @@
 	font-style: italic;
 }
 
-.profile_info_container {
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 1.875rem;
-	padding-right: 01.875rem;
-}
-
-.profile_notes_padding {
-	padding-top: 1rem;
-}
-
-.modal_btn {
-	display: inline-block;
-	padding: 6px 20px;
-	margin: 0 3%;
-	font-size: 15px;
-	font-weight: 500;
-	line-height: 1.8;
-	text-align: center;
-	text-decoration: none;
-	text-shadow: none;
-	white-space: nowrap;
-	vertical-align: middle;
-	touch-action: manipulation;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	background-image: none;
-	border: 2px solid transparent;
-	border-radius: 100%;
-	height: 2.2em;
-	width: 2.2em;
-	margin: 0 0.6em;
-}
-
-.confirm_btn {
+.confirm-btn {
 	@include themify($themes) {
 		background: themed("panelColor");
 	}
@@ -323,69 +84,53 @@
 	padding: 0;
 }
 
-.confirm_btn:hover {
-  @include themify($themes) {
+.confirm-btn:hover {
+@include themify($themes) {
     background: themed("hoverColor");
 	}
-  color: green;
+	color: green;
 	border-color: #adadad;
 	padding: 0;
 }
 
-.decline_btn {
-  @include themify($themes) {
-    background: themed("panelColor");
+.decline-btn {
+	@include themify($themes) {
+    	background: themed("panelColor");
 	}
-  color: red;
-  border-color: #ccc;
+	color: red;
+	border-color: #ccc;
 	padding: 0;
 }
 
-.decline_btn:hover {
-  @include themify($themes) {
-    background: themed("hoverColor");
+.decline-btn:hover {
+	@include themify($themes) {
+		background: themed("hoverColor");
 	}
-  color: red;
+	color: red;
 	background-color: #e6e6e6;
 	border-color: #adadad;
 }
 
-.permission_footer {
-	margin: 15% 0 5%;
-	text-align: center;
-}
-
-.fullscreen_width {
+.fullscreen-width {
 	width: 100vw;
 	position: relative;
-	left: 50%;
+	left: 50%; 
 	right: 50%;
 	margin-left: -50vw;
 	margin-right: -50vw;
 }
 
-.mb_0 {
+.mb-0 {
 	margin-bottom: 0;
 }
 
-//Images
+.no-click {
+	pointer-events: none;
+}
+
 .img--fluid-custom{
 	display: block;
 	height: auto;
 	padding: 5%;
 	margin: 0 auto;
-}
-
-.roster__img{
-	width: 100%;
-}
-
-.profile__img{
-	width: 12rem;
-}
-
-textarea[type="text"]:focus{
-	@include themify($themes) {
-		border: 3px solid themed("focusColor");
-	}
 }

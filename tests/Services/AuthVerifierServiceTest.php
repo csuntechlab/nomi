@@ -22,9 +22,8 @@ class AuthVerifierServiceTest extends TestCase
     }
 
     /** @test */
-    public function isVerified_returns_true_with_good_creds()
+    public function find_returns_true_with_good_creds()
     {
-        $this->markTestSkipped('Silly silly');
         $user = new User([
             'user_id' => 'members:1',
             'rank' => 'beast',
@@ -42,17 +41,15 @@ class AuthVerifierServiceTest extends TestCase
         $service = new AuthVerifierService($this->retriever);
 
         $this->retriever
-            ->shouldReceive('verifyUserWasAtOnePointAClassInstructor')
+            ->shouldReceive('find')
             ->andReturn(['there is something here']);
 
         $this->assertTrue($service->isVerified([]));
     }
 
     /** @test */
-    public function isVerified_returns_false_with_bad_creds()
+    public function find_returns_false_with_bad_creds()
     {
-        $this->markTestSkipped('Silly silly');
-
         $user = new User([
             'user_id' => 'members:1',
             'rank' => 'beast',
@@ -66,20 +63,21 @@ class AuthVerifierServiceTest extends TestCase
         Auth::shouldReceive('user')
             ->andReturn($user);
 
+        Auth::shouldReceive('logout')
+            ->andReturn([]);
+
         $service = new AuthVerifierService($this->retriever);
 
         $this->retriever
-            ->shouldReceive('verifyUserWasAtOnePointAClassInstructor')
+            ->shouldReceive('find')
             ->andReturn(null);
 
         $this->assertFalse($service->isVerified([]));
     }
 
     /** @test */
-    public function isVerified_returns_false_with_no_user_rank()
+    public function find_returns_false_with_no_user_rank()
     {
-        $this->markTestSkipped('Silly silly');
-
         $user = new User([
             'user_id' => 'members:1',
         ]);

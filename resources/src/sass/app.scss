@@ -1,15 +1,17 @@
-@import "themes";
+// Global
 @import "functions";
-@import "menu";
-
-// Re-usable styling
+@import "themes";
 @import "layout";
 @import "helpers";
 
-// Non-reusable styling
-@import "student-profile-page";
-@import "login";
-@import "modal";
+// Modules
+@import "./modules/login";
+@import "./modules/navbar";
+@import "./modules/courses";
+@import "./modules/settings";
+@import "./modules/modal";
+@import "./modules/menu";
+@import "./modules/student-page";
 
 /*  Fixed Safari font-awesome issue
     * @import "node_modules/font-awesome/scss/font-awesome";

@@ -92,7 +92,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         $client = new Client();
 
         return $client->get(
-            env('DIRECTORY_URL') . \str_replace('nr_', '', $email),
+            env('DIRECTORY_URL') . $email,
             ['verify' => false]
         )->getBody()->getContents();
     }

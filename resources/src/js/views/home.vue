@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <courses-container></courses-container>
     </div>
 </template>
@@ -17,11 +17,9 @@ export default {
 
 	created() {
 		this.$store.dispatch("clearErrors");
-    },
-    
+	},
 	beforeCreate() {
-        this.$store.dispatch("getOnlyData");
-        
+		this.$store.dispatch("getOnlyData");
     },
 };
 </script>

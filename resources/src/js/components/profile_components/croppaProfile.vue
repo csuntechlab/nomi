@@ -8,21 +8,21 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-             <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial">
+            <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial">
         </croppa>
-        <div v-if="loadingCroppa" class="croppa_loading">
-            <div class="croppa_loading_icon">
+        <div v-if="loadingCroppa" class="croppa-loading">
+            <div class="croppa-loading_icon">
                 <i class="fas fa-spinner fa-spin fa-5x"></i>
             </div>
         </div>
 
         <div>
-            <div class="modal-button-container pull-left">
+            <div class="modal-button__container pull-left">
                 <div class="modal-button">
                     <div @click="chooseImage" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
                 </div>
             </div>
-            <div class="modal-button-container pull-right">
+            <div class="modal-button__container pull-right">
                 <div class="modal-button">
                     <div @click.prevent="confirmImage" class="type--center"><i class="fa fa-check fa-2x"></i></div>
                 </div>

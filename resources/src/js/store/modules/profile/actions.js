@@ -1,20 +1,13 @@
 export default {
     getStudentProfile (context, payload) {
-        let response = payload;
-        let email = payload.uri+'@my.csun.edu';
-
-        window.axios.get('student/'+email)
-            .then(response => {
-                context.commit('GET_STUDENT_BIO', response)
-            })
-            .catch(error => {
-                context.commit('API_STUDENT_FAILURE', error)
-            });
+        let response = payload
+        let email = payload.uri+'@my.csun.edu'
         
         window.axios.get('student_profile/'+email)
             .then(payload => {
                 var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE', {payload, getters, response});
+                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                context.commit('GET_STUDENT_BIO', payload)
             })
             .catch(error => {
                 context.commit('API_STUDENT_FAILURE', error)
@@ -22,10 +15,14 @@ export default {
     },
 
     updateNotes (context, notes) {
-        context.commit('UPDATE_NOTES', notes);
+        context.commit('UPDATE_NOTES', notes)
     },
 
     commitNotes (context) {
+        let data = new FormData;
+        data.append('student_id', context.state.studentProfile.id);
+        data.append('notepad', context.state.studentProfile.notes);
+
         window.axios.post('update_note', data)
             .catch(error => {
                 context.commit("API_FAILURE", error)
@@ -43,10 +40,18 @@ export default {
     },
 
     nullifyStudentProfile (context) {
-        context.commit('NULLIFY_STUDENT_PROFILE');
+        context.commit('NULLIFY_STUDENT_PROFILE')
     },
 
     clearProfileErrors (context) {
-        context.commit('CLEAR_PROFILE_ERRORS');
+        context.commit('CLEAR_PROFILE_ERRORS')
+    },
+
+    storeStudent (context, payload) {
+        context.commit('STORE_STUDENT', payload)
+    },
+
+    clearStudent (context) {
+        context.commit('CLEAR_STUDENT')
     }
 }

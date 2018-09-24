@@ -1,8 +1,8 @@
 <template>
     <div>
         <label for="list-grid"></label>
-        <div class="row fullscreen_width roster-sorting">
-            <div v-if="this.list">
+        <div class="row fullscreen-width roster-sorting">
+            <div v-if="this.list" class="roster-sorting-container">
                 <!-- 0, selected  -->
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button--selected" @click="$store.dispatch('setList')">
@@ -20,7 +20,7 @@
                     </button>
                 </div>
             </div>
-            <div v-else-if="this.flash">
+            <div v-else-if="this.flash" class="roster-sorting-container">
                 <!-- 2 selected -->
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button" @click="$store.dispatch('setList')">
@@ -38,7 +38,7 @@
                     </button>
                 </div>
             </div>
-            <div v-else>
+            <div v-else class="roster-sorting-container">
                 <div class="col-xs-4">
                     <button class="btn btn-sm roster-sorting__button" @click="$store.dispatch('setList')">
                         <i class="fas fa-list-ul"></i> List
