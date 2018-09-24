@@ -7,7 +7,7 @@ export default {
             .then(payload => {
                 var getters = context.getters
                 context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', response)
+                context.commit('GET_STUDENT_BIO', payload)
             })
             .catch(error => {
                 context.commit('API_STUDENT_FAILURE', error)
@@ -19,6 +19,10 @@ export default {
     },
 
     commitNotes (context) {
+        let data = new FormData;
+        data.append('student_id', context.state.studentProfile.id);
+        data.append('notepad', context.state.studentProfile.notes);
+
         window.axios.post('update_note', data)
             .catch(error => {
                 context.commit("API_FAILURE", error)
@@ -41,5 +45,13 @@ export default {
 
     clearProfileErrors (context) {
         context.commit('CLEAR_PROFILE_ERRORS')
+    },
+
+    storeStudent (context, payload) {
+        context.commit('STORE_STUDENT', payload)
+    },
+
+    clearStudent (context) {
+        context.commit('CLEAR_STUDENT')
     }
 }

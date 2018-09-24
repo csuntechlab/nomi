@@ -33,17 +33,11 @@ export default {
     },
 
     GET_STUDENT_BIO (state, payload) {
-        state.studentProfile.bio = payload['data']['people'].biography;
+        state.studentProfile.bio = payload.data.bio;
     },
 
     UPDATE_NOTES: function (state, notes) {
         state.studentProfile.notes = notes;
-    },
-
-    COMMIT_NOTES: function (state) {
-        let data = new FormData;
-        data.append('student_id', state.studentProfile.id);
-        data.append('notepad', state.studentProfile.notes);
     },
 
     UPDATE_IMAGE_PRIORITY: function (state, payload, rootState) {
@@ -71,5 +65,13 @@ export default {
     CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
         state.profileLoadError = false;
+    },
+
+    STORE_STUDENT (state, payload){
+        state.currentStudent = payload;
+    },
+
+    CLEAR_STUDENT (state) {
+        state.currentStudent = null;
     }
 }
