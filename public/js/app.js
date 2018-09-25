@@ -20311,7 +20311,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         convertTime: function convertTime(originalTime) {
-            console.log(originalTime);
             var time = originalTime;
             var hour = parseInt(time.substring(0, 2));
             var min = time.substring(2, 4) + " a.m.";
@@ -20324,10 +20323,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             time = hour + ":" + min;
             return time;
         },
-        classStartTime: function classStartTime(time) {
-            return this.convertTime(time);
+        convertDays: function convertDays(originalDays) {
+            var days = originalDays;
+            var split = days.split("");
+
+            // M T W R F S
+            // Mo Tu We Th Fr Sa
+            var result = split.map(function (day) {
+                if (day === 'M') day = 'Mo';
+                if (day === 'T') day = 'Tu';
+                if (day === 'W') day = 'We';
+                if (day === 'R') day = 'Th';
+                if (day === 'F') day = 'Fr';
+                if (day === 'S') day = 'Sa';
+                return day;
+            });
+
+            return result.join("");
         },
-        classEndTime: function classEndTime(time) {
+        classStartTime: function classStartTime(time) {
             return this.convertTime(time);
         },
         setScrollBar: function setScrollBar() {
@@ -20395,10 +20409,10 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "text-bold" }, [
+              _c("div", { staticClass: "text-bold text-size--large" }, [
                 _vm._v(
                   "\n                " +
-                    _vm._s(course.meetings[0].days) +
+                    _vm._s(_vm.convertDays(course.meetings[0].days)) +
                     " " +
                     _vm._s(_vm.classStartTime(course.meetings[0].start_time)) +
                     "\n            "

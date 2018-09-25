@@ -5,8 +5,8 @@
                 <div class="text-bold">
                     {{course.subject}} {{course.catalog_number}}
                 </div>
-                <div class="text-bold">
-                    {{course.meetings[0].days}} {{ classStartTime(course.meetings[0].start_time) }}
+                <div class="text-bold text-size--large">
+                    {{ convertDays(course.meetings[0].days) }} {{ classStartTime(course.meetings[0].start_time) }}
                 </div>
             </router-link>
         </li>
@@ -19,7 +19,6 @@
 
         methods: {
             convertTime(originalTime) {
-                console.log(originalTime);
                 let time = originalTime;
                 let hour = parseInt(time.substring(0, 2));
                 let min = time.substring(2, 4) + " a.m.";
@@ -33,11 +32,26 @@
                 return time;
             },
 
-            classStartTime(time) {
-			    return this.convertTime(time);
-		    },
+            convertDays(originalDays) {
+                let days = originalDays;
+                let split = days.split("");
 
-		    classEndTime(time) {
+                // M T W R F S
+                // Mo Tu We Th Fr Sa
+                let result =  split.map(day => {
+                    if ( day === 'M' ) day = 'Mo';
+                    if ( day === 'T' ) day = 'Tu';
+                    if ( day === 'W' ) day = 'We';
+                    if ( day === 'R' ) day = 'Th';
+                    if ( day === 'F' ) day = 'Fr';
+                    if ( day === 'S' ) day = 'Sa';
+                    return day
+                });
+
+                return result.join("");
+            },
+
+            classStartTime(time) {
 			    return this.convertTime(time);
 		    },
             

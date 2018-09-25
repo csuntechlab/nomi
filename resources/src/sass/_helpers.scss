@@ -63,6 +63,22 @@ textarea[type="text"]:focus{
 	font-weight: bold;
 }
 
+.text-size--full {
+	font-size: 100%;
+}
+
+.text-size--large {
+	font-size: 80%;
+}
+
+.text-size--medium {
+	font-size: 60%;
+}
+
+.text-size--small {
+	font-size: 30%;
+}
+
 .display-inline {
 	display: inline;
 }
