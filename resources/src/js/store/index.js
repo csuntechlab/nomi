@@ -13,7 +13,6 @@ const store = new Vuex.Store({
 
     modules: {
         base,
-        game,
         profile
     }
 });
