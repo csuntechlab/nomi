@@ -7,7 +7,6 @@ export default {
     errors: state => state.errors,
     permission: state => state.imagePermission,
     currentLocation: state => state.currentLocation,
-    // displayPermissionModal: state => state. displayPermissionModal,
 
     // Back Button
     hideBack: state => state.hideBack,

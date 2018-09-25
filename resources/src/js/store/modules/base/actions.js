@@ -90,9 +90,9 @@ export default {
         context.commit("TOGGLE_MENU");
 	},
     
-    // handlePermissionResponse(context, payload) {
-    //     context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-	// }, 
+    handlePermissionResponse(context, payload) {
+        context.commit("HANDLE_PERMISSION_RESPONSE", payload);
+	}, 
 
 	nullifyPermissionResponse(context) {
         context.commit("NULLIFY_PERMISSION_RESPONSE");
@@ -117,11 +117,7 @@ export default {
 				context.commit("API_FAILURE", error)
 			});
 	},
-
-	// displayPermissionModal(context){
-	// 	context.commit("DISPLAY_PERMISSION_MODAL");
-	// },
-    
+	
 	updateImage(context, payload) {
         context.commit("UPDATE_IMAGE", payload);
 	},

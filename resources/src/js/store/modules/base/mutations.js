@@ -226,9 +226,9 @@ export default {
         state.loadingClasses = false;
     },
 
-    // HANDLE_PERMISSION_RESPONSE(state, payload){	   
-    //     state.imagePermission = payload;	       
-    // },
+    HANDLE_PERMISSION_RESPONSE(state, payload){	   
+        state.imagePermission = payload;	       
+    },
 
     NULLIFY_PERMISSION_RESPONSE(state){
         state.imagePermission = null;
@@ -241,10 +241,6 @@ export default {
     STORE_PERMISSION(state, payload){
         state.imagePermission = payload; 
     },
-
-    // DISPLAY_PERMISSION_MODAL(state){
-    //     state.displayPermissionModal = !state.displayPermissionModal;
-    // },
 
     SET_PREVIOUS_TERM(state) {
         state.loadingClasses = true;

@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" v-if="this.permission == false" id="permission_modal">
+        <div class="modal-mask" v-if="this.show" id="permission_modal">
             <div class="modal__wrapper">
                 <div class="modal__container">
                     <div class="modal-body__container">
@@ -20,6 +20,7 @@
                 </div> 
             </div>
         </div>
+        <div v-else></div>
     </transition>
 </template>
 
@@ -30,11 +31,16 @@
     export default {
         name: "permission-modal",
 
+        data: function() {
+            return{
+                show: true,
+            }
+        },
+
         computed: {
             ...mapGetters([
                 'permission',
                 'facultyMember',
-                // 'displayPermissionModal',
             ]),
 
         },
@@ -45,11 +51,17 @@
 
         beforeCreate() {
             this.$store.dispatch("getUploadPermission");
+            if(this.permission == false){
+                this.show = true;
+            }
+            else{
+                this.show = false;
+            }
 	    },
 
         methods: {
             ...mapActions([
-                // 'handlePermissionResponse',
+                'handlePermissionResponse',
                 'storePermission',
                 'getUploadPermission',
             ]),
@@ -61,9 +73,8 @@
 
             deny() {
                 this.handlePermissionResponse(false);
-                // if (this.permission == false)
-				// this.$store.dispatch("nullifyPermissionResponse");
-		        // }
+                this.show = false;
+				// this.$store.dispatch('nullifyPermissionResponse');
             },
         },
     }

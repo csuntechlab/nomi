@@ -7,7 +7,6 @@ export default {
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],
-    // displayPermissionModal:true,
     
     // Views & Sorting
     list: true,
