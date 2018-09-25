@@ -30,7 +30,7 @@
         float: left;
         left: 3%;
         height: 100%;
-        padding: 1%;
+        padding: 1.5%;
         width: 8%;
         cursor: pointer;
         border-color: black;
