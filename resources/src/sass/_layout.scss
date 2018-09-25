@@ -69,6 +69,17 @@ body {
 			border-bottom: none;
 		}
 	}
+
+	&__link-alt {
+		@include themify($themes) {
+			display: block;
+			padding: 5px 20px;
+			font-weight: normal;
+			text-decoration: none;
+			color: themed("textColor");
+			border-bottom: 5px solid themed("altAccent");
+		}
+	}
 	
 	&__link--kerning {
 		letter-spacing: 0.1rem;
