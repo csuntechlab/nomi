@@ -24807,7 +24807,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
     courses: [],
     flashroster: [],
     errors: null,
-    imagePermission: null,
+    imagePermission: true,
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],
