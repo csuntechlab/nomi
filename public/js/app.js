@@ -18791,6 +18791,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			time = hour + ":" + min;
 			return time;
 		},
+		convertDays: function convertDays(originalDays) {
+			var days = originalDays;
+			var split = days.split("");
+
+			// M T W R F S
+			// Mo Tu We Th Fr Sa
+			var result = split.map(function (day) {
+				if (day === 'M') day = 'Mo';
+				if (day === 'T') day = 'Tu';
+				if (day === 'W') day = 'We';
+				if (day === 'R') day = 'Th';
+				if (day === 'F') day = 'Fr';
+				if (day === 'S') day = 'Sa';
+				return day;
+			});
+
+			return result.join("");
+		},
 		storeSelectedCourse: function storeSelectedCourse() {
 			this.$store.dispatch("storeLocation", "class");
 			this.$store.dispatch("storeCourse", this.course.id);
@@ -18863,7 +18881,7 @@ var render = function() {
                   _c("b", [_vm._v("Days")]),
                   _vm._v(
                     ": " +
-                      _vm._s(_vm.course.meetings[0].days) +
+                      _vm._s(_vm.convertDays(_vm.course.meetings[0].days)) +
                       "\n                    "
                   )
                 ]),

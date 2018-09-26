@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div>
-                            <b>Days</b>: {{course.meetings[0].days}}
+                            <b>Days</b>: {{ convertDays(course.meetings[0].days) }}
                         </div>
                         <div>
                             <b>Time</b>: {{classStartTime}} - {{classEndTime}}
@@ -50,6 +50,7 @@ export default {
 
 	methods: {
 		...mapGetters(["currentStudent"]),
+		
 		convertTime(OriginalTime) {
 			let time = OriginalTime;
 			let hour = parseInt(time.substring(0, 2));
@@ -60,6 +61,25 @@ export default {
 			}
 			time = hour + ":" + min;
 			return time;
+		},
+
+		convertDays(originalDays) {
+			let days = originalDays;
+			let split = days.split("");
+
+			// M T W R F S
+			// Mo Tu We Th Fr Sa
+			let result =  split.map(day => {
+				if ( day === 'M' ) day = 'Mo';
+				if ( day === 'T' ) day = 'Tu';
+				if ( day === 'W' ) day = 'We';
+				if ( day === 'R' ) day = 'Th';
+				if ( day === 'F' ) day = 'Fr';
+				if ( day === 'S' ) day = 'Sa';
+				return day
+			});
+
+			return result.join("");
 		},
 
 		storeSelectedCourse() {
