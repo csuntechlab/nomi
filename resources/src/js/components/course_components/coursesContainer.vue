@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-if="this.shouldLoadClasses" class="type--center">
-            <div class="row course__banner fullscreen-width">
+            <div class="row course__banner">
                 <div class="col-xs-12 type--center">
                     <h1 class="course__descriptor">Selected Term</h1>
                 </div>
@@ -19,7 +19,7 @@
             <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
         </div>
         <div v-else>
-            <div class="row course__banner fullscreen-width">
+            <div class="row course__banner">
                 <div class="col-xs-12 type--center">
                     <h1 class="course__descriptor">Selected Term</h1>
                 </div>
