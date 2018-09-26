@@ -3,7 +3,7 @@ export default {
     courses: [],
     flashroster: [],
     errors: null,
-    imagePermission: true,
+    imagePermission: null,
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],

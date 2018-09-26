@@ -39,33 +39,23 @@ class UploadPermissionServiceTest extends TestCase
 
         $uploadPermissionService = new UploadPermissionService();
 
-        $uploadPermission = factory(UploadPermission::class)->make([
-            'user_id' => 'members:professor',
-        ])->save();
-
         $output = $uploadPermissionService->getUploadPermission();
 
         $this->assertEquals(\json_encode(['permission' => false]), $output);
     }
 
     /** @test */
-    public function storeUploadPermission_stores_permission()
+    public function storeUploadPermission_stores_user_id()
     {
         $user = new User(['user_id' => 'members:professor']);
         $this->be($user);
 
         $uploadPermissionService = new UploadPermissionService();
 
-        $data = [
-            'user_id' => 'professor',
-        ];
+        $uploadPermissionService->storePermission();
 
-        $uploadPermissionService->storePermission($data);
-
-        $data['user_id'] = 'members:professor';
-
-        $this->assertDatabaseHas('user_id', [
-            'user_id' => $data['user_id'],
-        ]);
+        $this->assertDatabaseHas('upload_permissions', [
+            'user_id' => $user['user_id'],
+            ]);
     }
 }

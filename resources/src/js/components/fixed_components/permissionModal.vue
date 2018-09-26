@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" v-if="this.show" id="permission_modal">
+        <div class="modal-mask" v-show="this.permission == null" id="permission_modal">
             <div class="modal__wrapper">
                 <div class="modal__container">
                     <div class="modal-body__container">
@@ -20,7 +20,6 @@
                 </div> 
             </div>
         </div>
-        <div v-else></div>
     </transition>
 </template>
 
@@ -49,14 +48,8 @@
             modal
         },
 
-        beforeCreate() {
+        created() {
             this.$store.dispatch("getUploadPermission");
-            if(this.permission == false){
-                this.show = true;
-            }
-            else{
-                this.show = false;
-            }
 	    },
 
         methods: {
@@ -73,8 +66,6 @@
 
             deny() {
                 this.handlePermissionResponse(false);
-                this.show = false;
-				// this.$store.dispatch('nullifyPermissionResponse');
             },
         },
     }

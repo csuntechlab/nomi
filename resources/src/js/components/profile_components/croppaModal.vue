@@ -21,7 +21,7 @@
             ]),
 
             displayModal(){
-                return(this.showModal && this.permission);
+                return(this.showModal && !this.permission);
             }
 
         },

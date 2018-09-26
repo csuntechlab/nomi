@@ -236,6 +236,9 @@ export default {
 
     GET_UPLOAD_PERMISSION(state, payload){
         state.imagePermission = payload;
+        if(payload == false){
+            state.imagePermission = null;
+        }
     },
 
     STORE_PERMISSION(state, payload){
