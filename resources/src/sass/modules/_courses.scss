@@ -33,6 +33,10 @@
 	}
 
 	&__banner {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+
 		@include themify($themes) {
 			background-color: themed("toolBanner");
 			color: themed("textColor");

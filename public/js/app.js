@@ -19076,7 +19076,7 @@ var render = function() {
   return _c("div", [
     this.shouldLoadClasses
       ? _c("div", { staticClass: "type--center" }, [
-          _c("div", { staticClass: "row course__banner fullscreen-width" }, [
+          _c("div", { staticClass: "row course__banner" }, [
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "col-xs-4 type--right" }, [
@@ -19135,7 +19135,7 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("div", { staticClass: "row course__banner fullscreen-width" }, [
+            _c("div", { staticClass: "row course__banner" }, [
               _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "col-xs-4 type--right" }, [

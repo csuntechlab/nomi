@@ -598,12 +598,12 @@ textarea[type="text"]:focus {
 }
 
 .fullscreen-width {
-  width: 100vw;
+  width: 100%;
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: -50%;
+  margin-right: -50%;
 }
 
 .mb-0 {
@@ -1112,6 +1112,12 @@ textarea[type="text"]:focus {
 
 .theme-Dark .course__descriptor {
   color: #bababa !important;
+}
+
+.course__banner {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .theme-login .course__banner {
@@ -2126,12 +2132,12 @@ textarea[type="text"]:focus {
 }
 
 .fullscreen-width {
-  width: 100vw;
+  width: 100%;
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: -50%;
+  margin-right: -50%;
 }
 
 /*  Fixed Safari font-awesome issue
