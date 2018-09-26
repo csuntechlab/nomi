@@ -33,7 +33,6 @@ export default {
     },
 
     GET_FACULTY_PROFILE (state, payload) {
-        console.log(payload)
         state.facultyMember.image = payload.data.image;
         state.facultyMember.id = payload.data.id;
         state.facultyMember.firstName = payload.data.name_first;

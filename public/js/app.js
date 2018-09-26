@@ -25218,7 +25218,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
         state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
     },
     GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
-        console.log(payload);
         state.facultyMember.image = payload.data.image;
         state.facultyMember.id = payload.data.id;
         state.facultyMember.firstName = payload.data.name_first;
