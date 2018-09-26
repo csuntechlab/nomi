@@ -25216,12 +25216,13 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
         state.facultyMember.email = payload.data.email;
         state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
         state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-        state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-        state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
     },
     GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
+        console.log(payload);
         state.facultyMember.image = payload.data.image;
         state.facultyMember.id = payload.data.id;
+        state.facultyMember.firstName = payload.data.name_first;
+        state.facultyMember.lastName = payload.data.name_last;
     },
     UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
         for (var i = 0, len = state.courses.length; i < len; i += 1) {
