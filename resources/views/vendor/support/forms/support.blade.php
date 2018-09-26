@@ -19,12 +19,12 @@
         float: right;
         background-color: #d00d2d;
         border-color: #d00d2d;
-        color: #fff; 
+        color: #fff;
       }
       .nomi-logo {
         float: right;
         height: 25%;
-      } 
+      }
       .back-button {
         position: relative;
         float: left;
@@ -60,23 +60,23 @@
           <br>
           <h1>Feedback Form</h1>
           <br>
-          <p>Hello, {{ $submitter_name }} {{ $submitter_email }}.</p>
+          <p>Hello, {{ substr($submitter_email, 0, strpos($submitter_email, '.')) }}</p>
         </div>
       </div>
       <div class="row justify-content-md-center">
-      <div class="form-group col-sm-8">	            
-              <label for="impact"><span class="required">*</span> Impact</label>	              
-              <select name="impact" id="impact" class="form-control">	
-                @foreach($impact as $key => $value)	
-                  @if(old('impact') == $key)	
-                    <option value="{{ $key }}" selected="selected">	
-                  @else	
-                    <option value="{{ $key }}">	
-                  @endif	
-                  {{ $value }}	
-                  </option>	
-                @endforeach	
-              </select>	
+      <div class="form-group col-sm-8">
+              <label for="impact"><span class="required">*</span> Impact</label>
+              <select name="impact" id="impact" class="form-control">
+                @foreach($impact as $key => $value)
+                  @if(old('impact') == $key)
+                    <option value="{{ $key }}" selected="selected">
+                  @else
+                    <option value="{{ $key }}">
+                  @endif
+                  {{ $value }}
+                  </option>
+                @endforeach
+              </select>
             </div>
       </div>
 
