@@ -6,7 +6,7 @@ namespace App\Contracts;
 
 interface UploadPermissionContract
 {
-    public function getUploadPermission();
+    public function getUploadPermission(): String;
 
     public function storePermission();
 }

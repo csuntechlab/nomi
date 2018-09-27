@@ -9,7 +9,7 @@ use App\Models\UploadPermission;
 
 class UploadPermissionService implements UploadPermissionContract
 {
-    public function getUploadPermission()
+    public function getUploadPermission(): String
     {
         $permission = UploadPermission::where('user_id', auth()->user()->user_id)->first();
         $hasPermission = false;

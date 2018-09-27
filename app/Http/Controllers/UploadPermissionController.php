@@ -8,20 +8,20 @@ use App\Contracts\UploadPermissionContract;
 
 class UploadPermissionController extends Controller
 {
-    protected $uploadPermissionContract;
+    protected $uploadPermissionUtility;
 
-    public function __construct(UploadPermissionContract $uploadPermissionContract)
+    public function __construct(UploadPermissionContract $uploadPermissionUtility)
     {
-        $this->uploadPermissionContract = $uploadPermissionContract;
+        $this->uploadPermissionUtility = $uploadPermissionUtility;
     }
 
     public function getUploadPermission()
     {
-        return $this->uploadPermissionContract->getUploadPermission();
+        return $this->uploadPermissionUtility->getUploadPermission();
     }
 
     public function storePermission()
     {
-        return $this->uploadPermissionContract->storePermission();
+        return $this->uploadPermissionUtility->storePermission();
     }
 }
