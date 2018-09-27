@@ -38,7 +38,9 @@
 		margin: 20px 0;
 	}
 
-	
+	// &__container {
+	// 	padding: 1.5em 2em;
+	// }
 
 	&-default-button {
 		float: right;
@@ -70,8 +72,6 @@
 		margin: 0 0.6em;
 	}
 
-	
-
 	&-button {
 		@include themify($themes) {
 			color: themed('panelColor');
@@ -92,11 +92,11 @@
 
 	&--exit {
 		color: gray;
-		height: 10%;
 		margin-bottom: 0;
 		margin-top: 5%;
 		margin-left: 5%;
 		margin-right: 5%;
+		height: 10%;
 	}
 
 	&--adjust{

@@ -65,5 +65,15 @@ export default {
     CLEAR_PROFILE_ERRORS: function (state) {
         state.profileErrors = null;
         state.profileLoadError = false;
+    },
+
+    //Modal Specific
+    TOGGLE_MODAL: function(state, payload){
+        state.modalVisible = payload;
+    },
+
+    DATA_FOR_MODAL: function(state, payload){
+        state.modalData = payload;
     }
+
 }

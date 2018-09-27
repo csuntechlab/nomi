@@ -1407,11 +1407,11 @@ textarea[type="text"]:focus {
 
 .modal--exit {
   color: gray;
-  height: 10%;
   margin-bottom: 0;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
+  height: 10%;
 }
 
 .modal--adjust {
@@ -1914,6 +1914,11 @@ textarea[type="text"]:focus {
   width: 100%;
 }
 
+.profile__edit-container {
+  display: block;
+  position: relative;
+}
+
 .profile-carousel__edit {
   z-index: 2;
   position: absolute;
@@ -2083,10 +2088,6 @@ textarea[type="text"]:focus {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-}
-
-.padding {
-  padding: 15%;
 }
 
 /*  Fixed Safari font-awesome issue

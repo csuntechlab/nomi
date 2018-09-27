@@ -180,7 +180,7 @@ module.exports = function normalizeComponent (
 /* unused harmony export Store */
 /* unused harmony export install */
 /* unused harmony export mapState */
-/* unused harmony export mapMutations */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return mapMutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return mapGetters; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapActions; });
 /* unused harmony export createNamespacedHelpers */
@@ -20686,7 +20686,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flashCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flashCard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__galleryCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -20709,6 +20711,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 
@@ -20729,10 +20733,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     components: {
         FlashCard: __WEBPACK_IMPORTED_MODULE_0__flashCard___default.a,
-        GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a
+        GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a,
+        modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
     methods: {
         markStudentAsRecognized: function markStudentAsRecognized(payload) {
             this.flashroster[this.courseid].forEach(function (student) {
@@ -21759,6 +21764,9 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -21767,14 +21775,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "editable", "type"],
-	methods: {
+	props: ["image", "student", "type", "editable"],
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["modalVisible"])),
+
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal']), {
+		showModal: function showModal() {
+			this.dataForModal(this.student);
+			this.toggleModal(!this.modalVisible);
+		},
 		checkPermission: function checkPermission() {
-			this.$emit('showModal');
+			if (this.permission == false) {
+				this.$store.dispatch("nullifyPermissionResponse");
+			}
 		}
-	}
+	})
 });
 
 /***/ }),
@@ -21787,15 +21805,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("img", {
-      staticClass: "profile_padding img--circle img--fluid-custom",
+      staticClass: "img--circle",
       class: [this.type == "profile" ? "profile__img" : "roster__img"],
-      attrs: { src: this.image, name: "photo" }
+      attrs: { src: _vm.image, name: "photo" }
     }),
     _vm._v(" "),
     this.editable
       ? _c("i", {
           staticClass: "fas fa-pencil-alt panel__edit-button pull-right",
-          on: { click: _vm.checkPermission }
+          on: {
+            click: function($event) {
+              _vm.showModal()
+            }
+          }
         })
       : _vm._e()
   ])
@@ -21952,18 +21974,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -21996,15 +22012,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		return {
 			messages: true,
 			errors: [],
-			myCroppa: null,
-			showCroppaModal: false,
-			showMe: true
+			showCroppaModal: false
 		};
 	},
 
 	components: {
-		modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a,
 		croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
+		imageHandler: __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default.a,
 		profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
 	},
 
@@ -22246,6 +22260,11 @@ if (false) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_carouselModal_vue__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_carouselModal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_carouselModal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -22273,6 +22292,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -22280,34 +22301,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   data: function data() {
     return {
-      showModal: false,
       croppaAvailable: true
     };
   },
 
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["modalVisible", "modalData"])),
+
   mounted: function mounted() {
     var _this = this;
 
-    this.$root.$on('showModal', function () {
-      _this.toggle();
-    }), this.$root.$on('newSlide', function () {
+    this.$root.$on('newSlide', function () {
       _this.croppaToggle();
     });
   },
 
 
   components: {
-    croppaFunctionality: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue___default.a
+    croppaFunctionality: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue___default.a,
+    carouselModal: __WEBPACK_IMPORTED_MODULE_1__profile_components_carouselModal_vue___default.a
   },
-  methods: {
-    toggle: function toggle() {
-      this.showModal = !this.showModal;
-      this.croppaAvailable = true;
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["d" /* mapMutations */])(['TOGGLE_MODAL']), Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapActions */])(['toggleModal']), {
+    showModal: function showModal() {
+      this.toggleModal(!this.modalVisible);
     },
     croppaToggle: function croppaToggle() {
       this.croppaAvailable = !this.croppaAvailable;
     }
-  }
+  })
 });
 
 /***/ }),
@@ -22318,7 +22338,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.showModal
+  return _vm.modalVisible
     ? _c("transition", { attrs: { name: "modal" } }, [
         _c("div", { staticClass: "modal-mask" }, [
           _c("div", { staticClass: "modal__wrapper" }, [
@@ -22331,15 +22351,13 @@ var render = function() {
                     _c("i", {
                       staticClass:
                         "fa fa-times-circle fa-2x pull-right modal--exit",
-                      on: {
-                        click: function($event) {
-                          _vm.toggle()
-                        }
-                      }
+                      on: { click: _vm.showModal }
                     })
                   ]),
                   _vm._v(" "),
-                  _vm._t("header")
+                  _vm._t("header", [
+                    _c("carousel-modal", { attrs: { student: _vm.modalData } })
+                  ])
                 ],
                 2
               ),
@@ -22382,59 +22400,40 @@ var render = function() {
     "div",
     { staticClass: "gallery-card col-xs-6 col-md-4 col-lg-3" },
     [
-      _c(
-        "router-link",
-        {
-          attrs: {
-            to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
-          }
-        },
-        [
-          _c("div", { staticClass: "panel gallery-card__content" }, [
-            _c("div", { staticClass: "panel__wrapper" }, [
-              _c(
-                "div",
-                { staticClass: "panel__content" },
-                [
-                  _c("profile-picture", {
-                    attrs: { editable: true, image: _vm.image, type: "roster" }
-                  })
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "cardText clearPadding" }, [
-              _c("div", { staticClass: "gallery__name type--center" }, [
-                _vm._v(_vm._s(_vm.display_name))
-              ])
-            ])
-          ])
-        ]
-      ),
+      _c("router-link", {
+        attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
+      }),
       _vm._v(" "),
-      _vm.displayModal
-        ? _c(
-            "modal",
-            {
-              on: {
-                close: function($event) {
-                  _vm.showCroppaModal = false
-                }
-              }
-            },
+      _c("div", { staticClass: "panel gallery-card__content" }, [
+        _c("div", { staticClass: "panel__wrapper" }, [
+          _c(
+            "div",
+            { staticClass: "panel__content" },
             [
-              _c("div", { attrs: { slot: "header" }, slot: "header" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { attrs: { slot: "body" }, slot: "body" },
-                [_c("croppa-profile", { attrs: { student: this.student } })],
-                1
-              )
-            ]
+              _c("profile-picture", {
+                attrs: {
+                  student: _vm.student,
+                  editable: true,
+                  image: _vm.image,
+                  type: "roster"
+                },
+                on: {
+                  showModal: function($event) {
+                    _vm.checkPermission()
+                  }
+                }
+              })
+            ],
+            1
           )
-        : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "cardText clearPadding" }, [
+          _c("div", { staticClass: "gallery__name type--center" }, [
+            _vm._v(_vm._s(_vm.display_name))
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -22473,12 +22472,17 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "row container panel__listing gallery__layout" },
-          _vm._l(this.courses[this.courseid].roster, function(student) {
-            return _c("gallery-card", {
-              key: student.student_id,
-              attrs: { student: student }
-            })
-          })
+          [
+            _vm._l(this.courses[this.courseid].roster, function(student) {
+              return _c("gallery-card", {
+                key: student.student_id,
+                attrs: { student: student }
+              })
+            }),
+            _vm._v(" "),
+            _c("modal")
+          ],
+          2
         )
   ])
 }
@@ -22921,10 +22925,12 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileContainer_vue__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileContainer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -22941,6 +22947,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 
@@ -22955,8 +22963,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 
 	components: {
-		profileCarousel: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileCarousel_vue___default.a,
-		profileInfo: __WEBPACK_IMPORTED_MODULE_2__components_profile_components_profileInfo_vue___default.a
+		profileContainer: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileContainer_vue___default.a,
+		modal: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default.a,
+		profileInfo: __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue___default.a
 	},
 
 	created: function created() {
@@ -23008,187 +23017,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(114)
-/* template */
-var __vue_template__ = __webpack_require__(123)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/src/js/components/profile_components/profileCarousel.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-53b06d48", Component.options)
-  } else {
-    hotAPI.reload("data-v-53b06d48", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 114 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaFunctionality_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaFunctionality_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_croppaFunctionality_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_components_imageHandler_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__profile_components_imageHandler_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "profile-carousel",
-
-  props: ["student"],
-  data: function data() {
-    return {
-      showCroppaModal: false
-    };
-  },
-  beforeRouteLeave: function beforeRouteLeave(to, from, next) {
-    if (this.unsavedChanges) {
-      var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
-
-      if (answer) {
-        next();
-      } else {
-        next(false);
-      }
-    } else {
-      next();
-    }
-  },
-
-  components: {
-    imageHandler: __WEBPACK_IMPORTED_MODULE_4__profile_components_imageHandler_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a,
-    croppaProfile: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default.a,
-    croppaFunctionality: __WEBPACK_IMPORTED_MODULE_2__profile_components_croppaFunctionality_vue___default.a,
-    modal: __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue___default.a
-  },
-  methods: {
-    checkPermission: function checkPermission() {
-      this.showCroppaModal = true;
-      this.$root.$emit('showModal');
-      if (this.permission == false) this.$store.dispatch("nullifyPermissionResponse");
-    },
-    handleSlideClick: function handleSlideClick() {
-      this.$root.$emit('newSlide');
-    }
-  },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_5_vuex__["c" /* mapGetters */])(["permission"]), {
-    image: function image() {
-      return this.student.images.likeness;
-    },
-
-    avatar: function avatar() {
-      return this.student.images.avatar;
-    },
-
-    displayModal: function displayModal() {
-      return this.showCroppaModal && this.permission;
-    }
-  })
-});
-
-/***/ }),
+/* 113 */,
+/* 114 */,
 /* 115 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23258,15 +23088,7 @@ var render = function() {
       _c("div", { staticClass: "modal-button" }, [
         _c(
           "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                _vm.confirmImage($event)
-              }
-            }
-          },
+          { staticClass: "type--center", on: { click: _vm.confirmImage } },
           [_c("i", { staticClass: "fa fa-check fa-2x" })]
         )
       ])
@@ -23423,129 +23245,7 @@ if (false) {
 /* 120 */,
 /* 121 */,
 /* 122 */,
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", [
-        _c("div", [
-          _c("h1", { staticClass: "type--center" }, [
-            _vm._v(_vm._s(this.student.displayName))
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticStyle: { padding: "15%" } },
-          [
-            _c("profile-picture", {
-              staticClass: "padding",
-              attrs: { image: _vm.image, editable: true, type: "profile" },
-              on: {
-                showModal: function($event) {
-                  _vm.checkPermission()
-                }
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "type--center" },
-          [
-            _vm.displayModal
-              ? _c("modal", [
-                  _c("div", { attrs: { slot: "header" }, slot: "header" }, [
-                    _c("strong", { staticClass: "type--center" }, [
-                      _vm._v(_vm._s(this.student.displayName))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { attrs: { slot: "body" }, slot: "body" },
-                    [
-                      _c(
-                        "carousel",
-                        {
-                          attrs: {
-                            perPage: 1,
-                            paginationActiveColor: "#919191",
-                            paginationColor: "rgba(145,145,145,.3)"
-                          },
-                          on: { pageChange: _vm.handleSlideClick }
-                        },
-                        [
-                          _c("slide", { staticClass: "slide-wrap" }, [
-                            _c(
-                              "div",
-                              [
-                                _c("croppa-profile", {
-                                  attrs: { student: this.student.student }
-                                }),
-                                _vm._v(" "),
-                                _c("i", [_vm._v("Faculty Uploaded")]),
-                                _vm._v(" "),
-                                _c("image-handler", {
-                                  staticClass: "profile-carousel__default-btn",
-                                  attrs: { image_type: "likeness" }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("slide", { staticClass: "slide-wrap" }, [
-                            _c(
-                              "div",
-                              [
-                                _c("profile-picture", {
-                                  attrs: { image: _vm.avatar, type: "profile" }
-                                }),
-                                _vm._v(" "),
-                                _c("i", [_vm._v("Faculty Uploaded")]),
-                                _vm._v(" "),
-                                _c("image-handler", {
-                                  staticClass: "profile-carousel__default-btn",
-                                  attrs: { image_type: "avatar" }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ])
-              : _vm._e()
-          ],
-          1
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-53b06d48", module.exports)
-  }
-}
-
-/***/ }),
+/* 123 */,
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -23994,7 +23694,11 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("profile-carousel", { attrs: { student: this.studentProfile } }),
+            _c("modal"),
+            _vm._v(" "),
+            _c("profile-container", {
+              attrs: { student: this.studentProfile }
+            }),
             _vm._v(" "),
             _c("profile-info", {
               attrs: { student: this.studentProfile },
@@ -25695,7 +25399,11 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
 
     profileErrors: null,
-    profileLoadError: false
+    profileLoadError: false,
+
+    //Modal Specifc
+    modalVisible: false,
+    modalData: null
 });
 
 /***/ }),
@@ -25712,6 +25420,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     profileLoadError: function profileLoadError(state) {
         return state.profileLoadError;
+    },
+    modalVisible: function modalVisible(state) {
+        return state.modalVisible;
+    },
+    modalData: function modalData(state) {
+        return state.modalData;
     }
 });
 
@@ -25757,6 +25471,12 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     },
     clearProfileErrors: function clearProfileErrors(context) {
         context.commit('CLEAR_PROFILE_ERRORS');
+    },
+    toggleModal: function toggleModal(context, payload) {
+        context.commit("TOGGLE_MODAL", payload);
+    },
+    dataForModal: function dataForModal(context, payload) {
+        context.commit("DATA_FOR_MODAL", payload);
     }
 });
 
@@ -25837,7 +25557,17 @@ var store = new __WEBPACK_IMPORTED_MODULE_5_vuex__["a" /* default */].Store({
     CLEAR_PROFILE_ERRORS: function CLEAR_PROFILE_ERRORS(state) {
         state.profileErrors = null;
         state.profileLoadError = false;
+    },
+
+    //Modal Specific
+    TOGGLE_MODAL: function TOGGLE_MODAL(state, payload) {
+        state.modalVisible = payload;
+    },
+
+    DATA_FOR_MODAL: function DATA_FOR_MODAL(state, payload) {
+        state.modalData = payload;
     }
+
 });
 
 /***/ }),
@@ -27168,6 +26898,349 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(195)
+/* template */
+var __vue_template__ = __webpack_require__(196)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/profile_components/profileContainer.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-07f7c496", Component.options)
+  } else {
+    hotAPI.reload("data-v-07f7c496", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 195 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "profile-container",
+  props: ['student'],
+  components: {
+    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+  }
+});
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", [
+        _c("div", [
+          _c("h1", { staticClass: "type--center" }, [
+            _vm._v(_vm._s(_vm.student.displayName))
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          [
+            _c("profile-picture", {
+              attrs: {
+                student: _vm.student,
+                image: _vm.student.images[_vm.student.imagePriority],
+                editable: true,
+                type: "profile"
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-07f7c496", module.exports)
+  }
+}
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(198)
+/* template */
+var __vue_template__ = __webpack_require__(199)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/profile_components/carouselModal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-48f7bdc0", Component.options)
+  } else {
+    hotAPI.reload("data-v-48f7bdc0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 198 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "carouselModal",
+
+  props: ["student"],
+  // beforeRouteLeave(to, from, next) {
+  //   if (this.unsavedChanges) {
+  //     const answer = window.confirm(
+  //       "Do you really want to leave? You have unsaved changes."
+  //     );
+
+  //     if (answer) {
+  //       next();
+  //     } else {
+  //       next(false);
+  //     }
+  //   } else {
+  //     next();
+  //   }
+  // },
+  components: {
+    imageHandler: __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue___default.a,
+    profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a,
+    croppaProfile: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default.a
+  },
+  methods: {
+    checkPermission: function checkPermission() {
+      this.showCroppaModal = true;
+      if (this.permission == false) this.$store.dispatch("nullifyPermissionResponse");
+    },
+    handleSlideClick: function handleSlideClick() {
+      this.$root.$emit('newSlide');
+    }
+  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["permission"]))
+});
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { slot: "header" }, slot: "header" }, [
+      _c("strong", { staticClass: "type--center" }, [
+        _vm._v(_vm._s(_vm.student.displayName))
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { attrs: { slot: "body" }, slot: "body" },
+      [
+        _c(
+          "carousel",
+          {
+            attrs: {
+              perPage: 1,
+              paginationActiveColor: "#919191",
+              paginationColor: "rgba(145,145,145,.3)"
+            },
+            on: { pageChange: _vm.handleSlideClick }
+          },
+          [
+            _c("slide", { staticClass: "slide-wrap" }, [
+              _c(
+                "div",
+                [
+                  _c("croppa-profile", { attrs: { student: _vm.student } }),
+                  _vm._v(" "),
+                  _c("i", [_vm._v("Student Uploaded")]),
+                  _vm._v(" "),
+                  _c("image-handler", {
+                    staticClass: "profile-carousel__default-btn",
+                    attrs: { image_type: "likeness" }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("slide", { staticClass: "slide-wrap" }, [
+              _c(
+                "div",
+                [
+                  _c("profile-picture", {
+                    attrs: {
+                      image: _vm.student.images.avatar,
+                      editable: false,
+                      type: "profile"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("i", [_vm._v("Faculty Uploaded")]),
+                  _vm._v(" "),
+                  _c("image-handler", {
+                    staticClass: "profile-carousel__default-btn",
+                    attrs: { image_type: "avatar" }
+                  })
+                ],
+                1
+              )
+            ])
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-48f7bdc0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

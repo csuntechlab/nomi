@@ -1,12 +1,12 @@
 <template>
-  <transition v-if="showModal" name="modal">
-    <div class="modal-mask">
+  <transition v-if="modalVisible" name="modal">
+    <div class="modal-mask" >
       <div class="modal__wrapper">
         <div class="modal__container">
           <div class="modal-header clearfix">
-            <div class="modal--adjust"><i class="fa fa-times-circle fa-2x pull-right modal--exit" @click="toggle()"></i></div>
+            <div class="modal--adjust"><i class="fa fa-times-circle fa-2x pull-right modal--exit" @click="showModal"></i></div>
             <slot name="header">
-              
+              <carousel-modal :student="modalData"></carousel-modal>
             </slot>
           </div>
           <div class="modal-body">
@@ -27,38 +27,43 @@
 
 <script>
     import croppaFunctionality from "../profile_components/croppaFunctionality.vue";
+    import carouselModal from "../profile_components/carouselModal.vue";
+    import { mapGetters, mapMutations, mapActions } from 'vuex';
     export default {
         name: "modal",
 
         data: function() {
           return{
-            showModal: false,
-            croppaAvailable: true
+            croppaAvailable: true,
           }
         },
 
-        mounted(){
-          this.$root.$on('showModal', () => {
-                this.toggle()
-            }),
+        computed: {
+          ...mapGetters(["modalVisible", "modalData"])
+        },
 
+        mounted(){
             this.$root.$on('newSlide', () => {
                 this.croppaToggle()
             })
         },
 
         components: {
-            croppaFunctionality
+            croppaFunctionality,
+            carouselModal
         },
         methods: {
-          toggle(){
-            this.showModal = !this.showModal;
-            this.croppaAvailable = true;
-          },
+           ...mapMutations(['TOGGLE_MODAL']),
+           ...mapActions(['toggleModal']),
+
+           showModal() {
+             this.toggleModal(!this.modalVisible)
+           },
+
           croppaToggle(){
             this.croppaAvailable = !this.croppaAvailable;
           }
-        }
+        },
     }
 </script>
 

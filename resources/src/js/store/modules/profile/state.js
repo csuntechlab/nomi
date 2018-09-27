@@ -10,7 +10,12 @@ export default {
         firstName: null,
         student: null
     },
+    
 
     profileErrors: null,
-    profileLoadError: false
+    profileLoadError: false,
+
+    //Modal Specifc
+    modalVisible: false,
+    modalData: null
 }

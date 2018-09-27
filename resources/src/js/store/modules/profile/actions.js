@@ -45,5 +45,13 @@ export default {
 
     clearProfileErrors (context) {
         context.commit('CLEAR_PROFILE_ERRORS')
+    },
+
+    toggleModal (context, payload) {
+        context.commit("TOGGLE_MODAL", payload)
+    },
+
+    dataForModal (context, payload){
+        context.commit("DATA_FOR_MODAL", payload)
     }
 }

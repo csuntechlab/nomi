@@ -184,6 +184,10 @@
 	&__img{
 		width: 100%;
 	}
+	&__edit-container{
+		display:block;
+		position: relative;
+	}
 	
 	&-carousel__edit {
 		z-index: 2;
@@ -315,8 +319,4 @@
 	right: 50%;
 	margin-left: -50vw;
 	margin-right: -50vw;
-}
-
-.padding{
-	padding: 15%;
 }
