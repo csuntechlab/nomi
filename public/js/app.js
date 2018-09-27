@@ -18791,6 +18791,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			time = hour + ":" + min;
 			return time;
 		},
+		convertDays: function convertDays(originalDays) {
+			var days = originalDays;
+			var split = days.split("");
+
+			// M T W R F S
+			// Mo Tu We Th Fr Sa
+			var result = split.map(function (day) {
+				if (day === 'M') day = 'Mo';
+				if (day === 'T') day = 'Tu';
+				if (day === 'W') day = 'We';
+				if (day === 'R') day = 'Th';
+				if (day === 'F') day = 'Fr';
+				if (day === 'S') day = 'Sa';
+				return day;
+			});
+
+			return result.join("");
+		},
 		storeSelectedCourse: function storeSelectedCourse() {
 			this.$store.dispatch("storeLocation", "class");
 			this.$store.dispatch("storeCourse", this.course.id);
@@ -18863,7 +18881,7 @@ var render = function() {
                   _c("b", [_vm._v("Days")]),
                   _vm._v(
                     ": " +
-                      _vm._s(_vm.course.meetings[0].days) +
+                      _vm._s(_vm.convertDays(_vm.course.meetings[0].days)) +
                       "\n                    "
                   )
                 ]),
@@ -20301,12 +20319,49 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "course-banner",
 
     methods: {
+        convertTime: function convertTime(originalTime) {
+            var time = originalTime;
+            var hour = parseInt(time.substring(0, 2));
+            var min = time.substring(2, 4) + " a.m.";
+
+            if (hour > 12) {
+                hour = hour - 12;
+                min = min.substring(0, 2) + " p.m.";
+            }
+
+            time = hour + ":" + min;
+            return time;
+        },
+        convertDays: function convertDays(originalDays) {
+            var days = originalDays;
+            var split = days.split("");
+
+            // M T W R F S
+            // Mo Tu We Th Fr Sa
+            var result = split.map(function (day) {
+                if (day === 'M') day = 'Mo';
+                if (day === 'T') day = 'Tu';
+                if (day === 'W') day = 'We';
+                if (day === 'R') day = 'Th';
+                if (day === 'F') day = 'Fr';
+                if (day === 'S') day = 'Sa';
+                return day;
+            });
+
+            return result.join("");
+        },
+        classStartTime: function classStartTime(time) {
+            return this.convertTime(time);
+        },
         setScrollBar: function setScrollBar() {
             var courseTab = document.getElementById(this.currentCourse);
             courseTab.scrollIntoView({
@@ -20355,7 +20410,7 @@ var render = function() {
           _c(
             "router-link",
             {
-              staticClass: "tab__link",
+              staticClass: "tab__link-alt",
               attrs: {
                 "active-class": "tab__link--active",
                 to: "/class/" + course.id
@@ -20368,9 +20423,17 @@ var render = function() {
                     _vm._s(course.subject) +
                     " " +
                     _vm._s(course.catalog_number) +
-                    " (" +
-                    _vm._s(course.class_number) +
-                    ")\n            "
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-bold text-size--large" }, [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.convertDays(course.meetings[0].days)) +
+                    " " +
+                    _vm._s(_vm.classStartTime(course.meetings[0].start_time)) +
+                    "\n            "
                 )
               ])
             ]

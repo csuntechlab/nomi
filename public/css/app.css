@@ -275,6 +275,51 @@ body {
   border-bottom: none;
 }
 
+.theme-login .tab__link-alt {
+  display: block;
+  padding: 5px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #464646;
+  border-bottom: 5px solid #FF7864;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .tab__link-alt {
+  display: block;
+  padding: 5px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #464646;
+  border-bottom: 5px solid #FF7864;
+}
+
+.theme-main .tab__link-alt {
+  display: block;
+  padding: 5px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #464646;
+  border-bottom: 5px solid #5FB8BE;
+}
+
+.theme-bluesTheme .tab__link-alt {
+  display: block;
+  padding: 5px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #575757;
+  border-bottom: 5px solid #82C7FF;
+}
+
+.theme-Dark .tab__link-alt {
+  display: block;
+  padding: 5px 20px;
+  font-weight: normal;
+  text-decoration: none;
+  color: #bababa;
+  border-bottom: 5px solid #C5E0FF;
+}
+
 .tab__link--kerning {
   letter-spacing: 0.1rem;
 }
@@ -320,8 +365,8 @@ body {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #97B5D8;
-  border-bottom: 5px solid #97B5D8;
+  color: #6FA0D8;
+  border-bottom: 5px solid #6FA0D8;
 }
 
 .theme-Dark input, .theme-Dark
@@ -422,7 +467,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .icon__theme {
-  color: #97B5D8;
+  color: #6FA0D8;
 }
 
 .text-overflow {
@@ -479,6 +524,22 @@ textarea[type="text"]:focus {
 
 .text-bold {
   font-weight: bold;
+}
+
+.text-size--full {
+  font-size: 100%;
+}
+
+.text-size--large {
+  font-size: 80%;
+}
+
+.text-size--medium {
+  font-size: 60%;
+}
+
+.text-size--small {
+  font-size: 30%;
 }
 
 .display-inline {
@@ -1231,7 +1292,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .course-card--selected {
-  color: #97B5D8;
+  color: #6FA0D8;
 }
 
 .about {
@@ -1307,7 +1368,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .modal-header h3 {
-  color: #97B5D8;
+  color: #6FA0D8;
 }
 
 .modal-body {
@@ -1394,7 +1455,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-Dark .modal-button__container {
-  background-color: #97B5D8;
+  background-color: #6FA0D8;
 }
 
 .modal--exit {
