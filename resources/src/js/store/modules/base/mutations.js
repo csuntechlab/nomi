@@ -226,12 +226,23 @@ export default {
         state.loadingClasses = false;
     },
 
-    HANDLE_PERMISSION_RESPONSE(state, payload){
-        state.imagePermission = payload;
+    HANDLE_PERMISSION_RESPONSE(state, payload){	   
+        state.imagePermission = payload;	       
     },
 
     NULLIFY_PERMISSION_RESPONSE(state){
         state.imagePermission = null;
+    },
+
+    GET_UPLOAD_PERMISSION(state, payload){
+        state.imagePermission = payload;
+        if(payload == false){
+            state.imagePermission = null;
+        }
+    },
+
+    STORE_PERMISSION(state, payload){
+        state.imagePermission = payload; 
     },
 
     SET_PREVIOUS_TERM(state) {

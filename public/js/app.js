@@ -23251,7 +23251,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['permission']), {
         displayModal: function displayModal() {
-            return this.showModal && this.permission;
+            return this.showModal && !this.permission;
         }
     }),
 
@@ -24807,7 +24807,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
     courses: [],
     flashroster: [],
     errors: null,
-    imagePermission: null,
+    imagePermission: true,
     displaySideMenu: false,
     currentLocation: 'home',
     students: [],
@@ -25010,6 +25010,20 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 	},
 	nullifyPermissionResponse: function nullifyPermissionResponse(context) {
 		context.commit("NULLIFY_PERMISSION_RESPONSE");
+	},
+	getUploadPermission: function getUploadPermission(context, payload) {
+		window.axios.get("get_upload_permission").then(function (response) {
+			context.commit("GET_UPLOAD_PERMISSION", response.data.permission);
+		}).catch(function (error) {
+			context.commit("API_FAILURE", error);
+		});
+	},
+	storePermission: function storePermission(context, payload) {
+		window.axios.post("store_permission").then(function (response) {
+			context.commit("STORE_PERMISSION", response);
+		}).catch(function (error) {
+			context.commit("API_FAILURE", error);
+		});
 	},
 	updateImage: function updateImage(context, payload) {
 		context.commit("UPDATE_IMAGE", payload);
@@ -25413,6 +25427,15 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
     },
     NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
         state.imagePermission = null;
+    },
+    GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
+        state.imagePermission = payload;
+        if (payload == false) {
+            state.imagePermission = null;
+        }
+    },
+    STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
+        state.imagePermission = payload;
     },
     SET_PREVIOUS_TERM: function SET_PREVIOUS_TERM(state) {
         state.loadingClasses = true;
@@ -26723,14 +26746,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "permission-modal",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission'])),
+    data: function data() {
+        return {
+            show: true
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
 
     components: {
         modal: __WEBPACK_IMPORTED_MODULE_1__modal_vue___default.a
     },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse']), {
+    created: function created() {
+        this.$store.dispatch("getUploadPermission");
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
         accept: function accept() {
+            this.$store.dispatch('storePermission', this.facultyMember.id);
             this.handlePermissionResponse(true);
         },
         deny: function deny() {
@@ -26748,58 +26783,63 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("transition", { attrs: { name: "modal" } }, [
-    this.permission == null
-      ? _c(
-          "div",
-          { staticClass: "modal-mask", attrs: { id: "permission_modal" } },
-          [
-            _c("div", { staticClass: "modal__wrapper" }, [
-              _c("div", { staticClass: "modal__container" }, [
-                _c("div", { staticClass: "modal-body__container" }, [
-                  _c(
-                    "div",
-                    { staticClass: "modal-header" },
-                    [
-                      _vm._t("header", [
-                        _c("h4", [_vm._v("Permission Needed")])
-                      ])
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("h5", [
-                      _vm._v(
-                        "Photo and Camera access required for full functionality"
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "permission-footer" }, [
-                    _c("button", {
-                      staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
-                      on: {
-                        click: function($event) {
-                          _vm.accept()
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "modal-btn decline-btn fa fa-2x fa-times",
-                      on: {
-                        click: function($event) {
-                          _vm.deny()
-                        }
-                      }
-                    })
-                  ])
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: this.permission == null,
+            expression: "this.permission == null"
+          }
+        ],
+        staticClass: "modal-mask",
+        attrs: { id: "permission_modal" }
+      },
+      [
+        _c("div", { staticClass: "modal__wrapper" }, [
+          _c("div", { staticClass: "modal__container" }, [
+            _c("div", { staticClass: "modal-body__container" }, [
+              _c(
+                "div",
+                { staticClass: "modal-header" },
+                [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
+                2
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("h5", [
+                  _vm._v(
+                    "Photo and Camera access required for full functionality"
+                  )
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "permission-footer" }, [
+                _c("button", {
+                  staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
+                  on: {
+                    click: function($event) {
+                      _vm.accept()
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("button", {
+                  staticClass: "modal-btn decline-btn fa fa-2x fa-times",
+                  on: {
+                    click: function($event) {
+                      _vm.deny()
+                    }
+                  }
+                })
               ])
             ])
-          ]
-        )
-      : _vm._e()
+          ])
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
