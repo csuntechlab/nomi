@@ -44,7 +44,7 @@ class UserSettingsService implements UserSettingsContract
     {
         $today = Carbon::now()->addWeeks(2)->toDateTimeString();
 
-        $term = $this->termModelRepository->getCurrentTerm($today);
+        $term = $this->termModelRepository->find($today);
 
         if ($term != null) {
             return $term['term_id'];

@@ -6,5 +6,6 @@ namespace App\ModelRepositoryInterfaces;
 
 interface TermModelRepositoryInterface
 {
-    public function getCurrentTerm($today): array;
+    public function find($today): array;
+    public function all(): array;
 }
