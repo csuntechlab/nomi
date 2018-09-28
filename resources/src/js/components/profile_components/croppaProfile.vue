@@ -68,7 +68,7 @@
                 this.loadingCroppa = false;
             },
 
-            confirmImage: function (emailURI) {
+            confirmImage: function () {
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
