@@ -25,7 +25,7 @@
         float: right;
         height: 25%;
       } 
-      .back_button {
+      .back-button {
         position: relative;
         float: left;
         left: 3%;
@@ -47,7 +47,7 @@
   </head>
   <body>
   <div class="header-bar">
-      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" onclick="window.location='{{url('/home')}}'" alt="Back Button">
+      <img class="back-button" src="{{ asset('/images/chevron-left.svg') }}" onclick="window.history.back()" alt="Back Button">
     </div>
     <div class="container sub-container">
       <div class="row justify-content-md-center">

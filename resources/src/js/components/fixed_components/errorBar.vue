@@ -42,8 +42,8 @@ export default {
 
 		closeError() {
 			if (this.profileLoadError == true) {
-                let course = this.currentCourse;
-				this.$router.go(-1);
+				this.$store.dispatch('clearStudents');
+                this.$router.push({name: 'class', params: {id: this.currentCourse}});
             }
             this.logErrors();
             this.clearErrors();

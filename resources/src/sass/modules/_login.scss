@@ -1,0 +1,228 @@
+.login {
+	display: block;
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	z-index: 99;
+	top: 0;
+	left: 0;
+
+	&__branding {
+		position: absolute;
+		padding: 1rem 3rem;
+		right: 8%;
+		height: 100%;
+		width: 25%;
+	}
+
+	&__csun-logo {
+		position: absolute;
+		bottom: 3%;
+	}
+
+	&__logo {
+		padding: 5% 0;
+	}
+
+	&-container {
+		background-color: rgb(97, 108, 112);
+		position: relative;
+		display: flex;
+		margin: auto;
+		height: 100%;
+		width: 100%;
+
+		&__right {
+			background-image: url(../images/desktop-background.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			display: flex;
+			position: absolute;
+			padding: 0;
+			justify-content: center;
+			top: 0;
+			right: 0;
+			height: 100%;
+			max-width: 1509px;
+		}
+
+		&__left {
+			display: flex;
+			position: absolute;
+			overflow-y: auto;
+			padding: 0;
+			margin: 0;
+			transition: 350ms ease-out;
+			top: 0;
+			left: 0;
+			height: 100%;
+		}
+	}
+
+	&__content {
+		padding: 0;
+		margin: 0;
+		height: 100%;
+	}
+
+	&__container {
+		padding-bottom: 1rem;
+	}
+
+	&__wrapper {
+		height: 100%;
+		display: flex;
+		padding: 0;
+		margin: 0 auto;
+		flex-direction: column;
+		align-content: center;
+	}
+
+	//	User Input
+	&__input-container {
+		background-color: white;
+		border: 1px solid #ccc;
+		border-radius: 32px;
+		display: flex;
+		align-items: center;
+		position: relative;
+		height: 3.5rem;
+		margin-bottom: 5%;
+		padding: 0 8%;
+		overflow: hidden;
+
+		& > label {
+			visibility: hidden;
+			position: absolute;
+			top: 0;
+			height: 1rem;
+		}
+	
+		input {
+			transition: 350ms;
+		}
+	
+		input:focus {
+			margin-top: 5%;
+			border-bottom: 1px;
+		}
+	
+		input:focus + label {
+			font-size: 0.8rem;
+			visibility: visible;
+			margin-top: 2%;
+		}
+	
+		input:focus::-webkit-input-placeholder { 
+			color:transparent;
+		}
+	
+		input:focus:-moz-placeholder { 
+			color:transparent;
+		}
+	}
+
+	&__title {
+		font-size: 1.75rem;
+		font-weight: 400;
+		padding-bottom: 5px;
+	}
+	
+
+	&__input {
+		padding-top: 1rem;
+	}
+
+	&__button{
+		float: right;
+	}
+
+	&__username, 
+	&__password {
+		border: 0 solid !important;
+		display: inline-block;
+		padding: 0 !important;
+		width: 100%;
+		outline: 0;
+	}
+
+	&-loader {
+		display: block;
+		text-align: center;
+
+		&__loader {
+			display: none;
+			margin-top: 5rem;
+			position: relative;
+			transition: 0.4s;
+			visibility: hidden;
+
+			&--active {
+				display: block;
+				visibility: visible;
+			}
+		}
+	}
+
+	&__container--hide {
+		display: none;
+	}
+
+	//	Responsive Queries
+	@media only screen and (max-width: 768px) {
+		&__filter {
+			display: none;
+		}
+
+		& {
+			z-index: -99;
+		}
+
+		&-container {
+			background: white;
+		}
+
+		&__wrapper {
+			padding-top: 4rem;
+			width: 75%;
+		}
+
+	}
+
+	@media only screen and (min-width: 769px) {
+		&__filter {
+			background-image: url("../images/blur.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-color: rgba(235, 235, 235, 0.8);
+			position: absolute;
+			padding: 0;
+			height: 100%;
+			width: 100%;
+			filter: grayscale(50%) opacity(80%) contrast(80%);
+		}
+
+		&__wrapper {
+			padding-top: 4rem;
+			width: 50%;
+		}
+	}
+
+	@media only screen and (min-width: 992px) {
+		&__filter {
+			filter: grayscale(50%) opacity(70%) contrast(70%);
+		}
+
+		&__content {
+			position: absolute;
+			right: 0;
+		}
+
+		&__wrapper {
+			justify-content: center;
+			padding-top: 0;
+			width: 75%;
+		}
+	}
+}

@@ -4,7 +4,7 @@
             Submit
         </button>
         <div v-if="ok" class="type--center">
-            <i class="fa fa-spinner fa-spin fa-3x icon_theme"></i>
+            <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
         </div>
     </div>
 

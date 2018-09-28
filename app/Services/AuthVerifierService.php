@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Contracts\AuthVerifierContract;
 use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class AuthVerifierService implements AuthVerifierContract
 {
@@ -18,7 +19,7 @@ class AuthVerifierService implements AuthVerifierContract
 
     /**
      * Description: Takes in user credentials, checks them against
-     *              the CSUN/LDAP servers, and returns true or false
+     *              the CSUN/LDAPz servers, and returns true or false
      *              based on whether the credentials are valid and
      *              whether the valid user is CSUN faculty or not.
      *
@@ -30,10 +31,12 @@ class AuthVerifierService implements AuthVerifierContract
     {
         if (auth()->attempt($cred)) {
             $query = $this->repository
-                ->verifyUserWasAtOnePointAClassInstructor(auth()->user()->user_id);
+                ->find(auth()->user()->user_id);
             if (null !== $query) {
                 return true;
             }
+
+            auth()->logout();
 
             return false;
         }
