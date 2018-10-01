@@ -26453,7 +26453,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      this.currentCourse == null
+      this.currentCourse == null || this.courses.length == 0
         ? _c(
             "div",
             {

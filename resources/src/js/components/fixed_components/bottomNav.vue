@@ -4,7 +4,7 @@
             <i class="fas fa-2x fa-chalkboard-teacher"></i>
             <div class="bottom-nav__text">Courses</div>
         </router-link>
-        <div v-if="this.currentCourse == null" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
+        <div v-if="this.currentCourse == null || this.courses.length == 0" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
             <i class="fas fa-2x fa-user-graduate"></i>
             <div class="bottom-nav__text">Students</div>
         </div>
