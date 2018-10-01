@@ -1,5 +1,4 @@
 import base from './modules/base'
-import game from './modules/game'
 import profile from './modules/profile'
 import createPersistedState from 'vuex-persistedstate';
 import Vue from "vue";
@@ -14,7 +13,6 @@ const store = new Vuex.Store({
 
     modules: {
         base,
-        game,
         profile
     }
 });

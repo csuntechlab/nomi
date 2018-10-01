@@ -20,7 +20,7 @@ class FacultyProfileServiceTest extends TestCase
     }
 
     /** @test */
-    public function getFacultyProfile_returns_an_image_and_id()
+    public function getFacultyProfile_returns_image_id_firstname_and_lastname()
     {
         $facultyService = new FacultyProfileService($this->retriever);
 
@@ -30,12 +30,16 @@ class FacultyProfileServiceTest extends TestCase
             ->andReturn(\json_encode(['people' => [
                 'profile_image' => 'thisIsAnImage',
                 'individuals_id' => 'thisIsAnId',
+                'first_name' => 'anakin',
+                'last_name' => 'skywalker',
             ],
         ]));
 
         $returnArray = [
             'image' => 'thisIsAnImage',
             'id' => 'thisIsAnId',
+            'name_first' => 'anakin',
+            'name_last' => 'skywalker',
         ];
 
         $output = $facultyService->getFacultyProfile('MrTeacherMan@gmail.com');

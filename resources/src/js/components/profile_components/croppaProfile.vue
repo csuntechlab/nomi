@@ -59,7 +59,7 @@
 
         created: function () {
             this.url = document.querySelector('meta[name=app-url]').content;
-         },
+        },
 
         methods: {
             loadingStart(){
