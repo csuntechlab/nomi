@@ -26395,7 +26395,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentStudent", "currentLocation", "flashroster"])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentStudent", "currentLocation", "selectedTerm"])),
 
 	methods: {
 		showMenu: function showMenu() {
@@ -26453,7 +26453,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      this.currentCourse == null || this.flashroster.length == 0
+      this.currentCourse == null || this.selectedTerm != "current"
         ? _c(
             "div",
             {
