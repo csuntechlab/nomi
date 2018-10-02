@@ -6,8 +6,9 @@
                 <profile-picture class="pull-left" :name="display_name" :image="image" :type="'roster'"></profile-picture>
             </div>
             <div class="col-xs-9 col-md-10">
-                <router-link class="type--center student_list_name student_list_name_mobile" :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-                    {{display_name}}
+                <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+                    <div class="student_list_first_name student_list_first_name_mobile">{{this.student.first_name}}</div>
+                    <div class="student_list_last_name student_list_last_name_mobile">{{this.student.last_name}}</div>
                 </router-link>
             </div>
         </div>

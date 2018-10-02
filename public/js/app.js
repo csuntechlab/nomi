@@ -22766,6 +22766,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -22838,18 +22839,28 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass:
-                    "type--center student_list_name student_list_name_mobile",
                   attrs: {
                     to:
                       "/profile/" + this.$route.params.id + "/" + _vm.email_uri
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.display_name) +
-                      "\n            "
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "student_list_first_name student_list_first_name_mobile"
+                    },
+                    [_vm._v(_vm._s(this.student.first_name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "student_list_last_name student_list_last_name_mobile"
+                    },
+                    [_vm._v(_vm._s(this.student.last_name))]
                   )
                 ]
               )
