@@ -1,11 +1,6 @@
 <template>
     <div v-if="!hideBack">
-        <div v-if="!disableBack">
-            <i class="fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
-        </div>
-        <div v-else>
-            <i class="fa fa-angle-left fa-3x back-button back-button--disabled"></i>
-        </div>
+        <i class="fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
     </div>
 </template>
 
@@ -16,12 +11,8 @@
 
         methods: {
             goBack: function () {
-                if(document.getElementById('charCount')){
-                    this.$store.dispatch('clearStudent');
-                    this.$router.push({name: 'class', params: {id: this.currentCourse}});
-                }
-                else
-                    this.$router.go(-1);
+                this.$store.dispatch('clearStudent');
+                this.$router.replace({name: 'class', params: {id: this.currentCourse}});
             }
         },
 

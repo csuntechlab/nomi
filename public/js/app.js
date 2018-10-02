@@ -22653,41 +22653,27 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-xs-9 col-md-10" },
-            [
+          _c("div", { staticClass: "col-xs-9 col-md-10" }, [
+            _c("span", [
               _c(
-                "router-link",
+                "div",
                 {
-                  attrs: {
-                    to:
-                      "/profile/" + this.$route.params.id + "/" + _vm.email_uri
-                  }
+                  staticClass:
+                    "student_list_first_name student_list_first_name_mobile"
                 },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "student_list_first_name student_list_first_name_mobile"
-                    },
-                    [_vm._v(_vm._s(this.student.first_name))]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "student_list_last_name student_list_last_name_mobile"
-                    },
-                    [_vm._v(_vm._s(this.student.last_name))]
-                  )
-                ]
+                [_vm._v(_vm._s(this.student.first_name))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "student_list_last_name student_list_last_name_mobile"
+                },
+                [_vm._v(_vm._s(this.student.last_name))]
               )
-            ],
-            1
-          )
+            ])
+          ])
         ])
       ])
     ]
@@ -23945,7 +23931,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    this.studentProfile.images == null
+    this.studentProfile.images == null ||
+    this.$route.params.emailURI != this.studentProfile.emailURI
       ? _c("div", { staticClass: "type--center" }, [
           _c("br"),
           _vm._v(" "),
@@ -26126,11 +26113,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -26138,10 +26120,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         goBack: function goBack() {
-            if (document.getElementById('charCount')) {
-                this.$store.dispatch('clearStudent');
-                this.$router.push({ name: 'class', params: { id: this.currentCourse } });
-            } else this.$router.go(-1);
+            this.$store.dispatch('clearStudent');
+            this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
         }
     },
 
@@ -26158,20 +26138,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return !_vm.hideBack
     ? _c("div", [
-        !_vm.disableBack
-          ? _c("div", [
-              _c("i", {
-                staticClass: "fa fa-angle-left fa-3x back-button",
-                attrs: { title: "Go Back" },
-                on: { click: _vm.goBack }
-              })
-            ])
-          : _c("div", [
-              _c("i", {
-                staticClass:
-                  "fa fa-angle-left fa-3x back-button back-button--disabled"
-              })
-            ])
+        _c("i", {
+          staticClass: "fa fa-angle-left fa-3x back-button",
+          attrs: { title: "Go Back" },
+          on: { click: _vm.goBack }
+        })
       ])
     : _vm._e()
 }
