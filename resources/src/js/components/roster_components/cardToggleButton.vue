@@ -7,14 +7,15 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex';
+
     export default {
-        name: "card-toggle-button",
-        computed: {
-            ...mapGetters([
-                'flash',
-                'list'
-            ])
-        }
-    }
+      name: 'card-toggle-button',
+      computed: {
+        ...mapGetters([
+          'flash',
+          'list',
+        ]),
+      },
+    };
 </script>

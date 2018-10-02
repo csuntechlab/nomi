@@ -5,21 +5,22 @@
 </template>
 
 <script>
-import termSelector from "../components/course_components/termSelector.vue";
-import coursesContainer from "../components/course_components/coursesContainer.vue";
-export default {
-    name: "home",
-    
-    components: {
-        termSelector,
-        coursesContainer
-    },
+import termSelector from '../components/course_components/termSelector.vue';
+import coursesContainer from '../components/course_components/coursesContainer.vue';
 
-	created() {
-		this.$store.dispatch("clearErrors");
-	},
-	beforeCreate() {
-		this.$store.dispatch("getOnlyData");
-    },
+export default {
+  name: 'home',
+
+  components: {
+    termSelector,
+    coursesContainer,
+  },
+
+  created() {
+    this.$store.dispatch('clearErrors');
+  },
+  beforeCreate() {
+    this.$store.dispatch('getOnlyData');
+  },
 };
 </script>

@@ -16,41 +16,41 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import modal from "../fixed_components/modal.vue";
-import profilePicture from "../profile_components/profilePicture.vue";
+import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
+import modal from '../fixed_components/modal.vue';
+import profilePicture from '../profile_components/profilePicture.vue';
 
 export default {
-    name: "student-list-item",
+  name: 'student-list-item',
 
-    props:["student"],
+  props: ['student'],
 
-    components: {
-        modal,
-        profilePicture
+  components: {
+    modal,
+    profilePicture,
+  },
+
+  computed: {
+
+    ...mapGetters([
+    ]),
+
+    display_name() {
+      return `${this.student.first_name} ${this.student.last_name}`;
     },
 
-    computed: {
-            
-        ...mapGetters([
-         ]),
+    email_uri() {
+      return this.student.email.split('@')[0];
+    },
 
-        display_name: function() {
-            return this.student.first_name + " " + this.student.last_name;
-        },
-            
-        email_uri : function () {
-            return this.student.email.split('@')[0];
-        },
-
-        image: function() {
-            if (this.student.image_priority === 'likeness') {
-                return this.student.images.likeness;
-            } else if (this.student.image_priority === 'avatar') {
-                return this.student.images.avatar;
-            }
-        }
-    }
-}
+    image() {
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
+    },
+  },
+};
 </script>

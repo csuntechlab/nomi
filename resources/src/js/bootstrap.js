@@ -14,13 +14,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+const token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.appToken = token.content;
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.appToken = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 
@@ -28,11 +28,11 @@ if (token) {
  * Add the app url to the javascript side of things
  */
 
-let url = document.head.querySelector('meta[name="app-url"]');
+const url = document.head.querySelector('meta[name="app-url"]');
 
 if (url) {
-    window.axios.defaults.baseURL = url.content;
-    window.appURL = url.content;
+  window.axios.defaults.baseURL = url.content;
+  window.appURL = url.content;
 } else {
-    console.error("Please set the app url 'meta' tag");
+  console.error("Please set the app url 'meta' tag");
 }

@@ -22,41 +22,41 @@
 
 <script>
 export default {
-    name: "course-card",
-    
-    data: function () {
-        return {
-            show: true,
-            messages: true,
-            errors: [],
-        }
+  name: 'course-card',
+
+  data() {
+    return {
+      show: true,
+      messages: true,
+      errors: [],
+    };
+  },
+
+  props: ['course'],
+
+  computed: {
+    classStartTime() {
+      return this.convertTime(this.course.meetings[0].start_time);
     },
 
-    props: ['course'],
-
-    computed: {
-        classStartTime: function () {
-            return this.convertTime(this.course.meetings[0].start_time)
-        },
-
-        classEndTime: function() {
-            return this.convertTime(this.course.meetings[0].end_time)
-        }
+    classEndTime() {
+      return this.convertTime(this.course.meetings[0].end_time);
     },
+  },
 
-    methods: {
-        convertTime: function (OriginalTime) {
-            let time = OriginalTime;
-            let hour = parseInt(time.substring(0, 2));
-            let min = time.substring(2, 4) + "am";
-            if(hour > 12) {
-                hour = hour - 12;
-                min = min.substring(0, 2) + "pm"
-            }
-            time = hour + ":" + min;
-            return time
-        },
-    }
-    
-}
+  methods: {
+    convertTime(OriginalTime) {
+      let time = OriginalTime;
+      let hour = parseInt(time.substring(0, 2));
+      let min = `${time.substring(2, 4)}am`;
+      if (hour > 12) {
+        hour -= 12;
+        min = `${min.substring(0, 2)}pm`;
+      }
+      time = `${hour}:${min}`;
+      return time;
+    },
+  },
+
+};
 </script>

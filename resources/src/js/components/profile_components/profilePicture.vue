@@ -7,12 +7,12 @@
 
 <script>
 export default {
-	name: "profile-picture",
-	props: ["image", "editable", "type"],
-	methods: {
-		checkPermission() {
-			this.$emit('showModal');
-		}
-	},
+  name: 'profile-picture',
+  props: ['image', 'editable', 'type'],
+  methods: {
+    checkPermission() {
+      this.$emit('showModal');
+    },
+  },
 };
 </script>

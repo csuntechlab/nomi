@@ -10,27 +10,26 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex';
+
     export default {
-        name: "back-button",
+      name: 'back-button',
 
-        methods: {
-            goBack: function () {
-                if(document.getElementById('charCount')){
-                    this.$store.dispatch('clearStudent');
-                    this.$router.push({name: 'class', params: {id: this.currentCourse}});
-                }
-                else
-                    this.$router.go(-1);
-            }
-        },
+      methods: {
+        goBack() {
+          if (document.getElementById('charCount')) {
+            this.$store.dispatch('clearStudent');
+            this.$router.push({ name: 'class', params: { id: this.currentCourse } });
+          } else this.$router.go(-1);
+    },
+      },
 
-        computed: {
-            ...mapGetters([
-                'hideBack',
-                'disableBack',
-                'currentCourse'
-            ]),
-        }
-    }
+      computed: {
+        ...mapGetters([
+          'hideBack',
+          'disableBack',
+          'currentCourse',
+        ]),
+      },
+    };
 </script>

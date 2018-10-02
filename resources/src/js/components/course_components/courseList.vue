@@ -10,28 +10,29 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import courseListItem from './courseListItem.vue'
-    import emptyCourseItem from './emptyCourseItem.vue'
+    import { mapGetters } from 'vuex';
+    import courseListItem from './courseListItem.vue';
+    import emptyCourseItem from './emptyCourseItem.vue';
+
     export default {
-        name: "course-list",
-        data: function () {
-            return {
-                messages: true,
-                errors: [],
-            }
-        },
+      name: 'course-list',
+      data() {
+    return {
+          messages: true,
+          errors: [],
+    };
+  },
 
-        computed: {
-            ...mapGetters([
-                'courses',
-            ])
-        },
+      computed: {
+        ...mapGetters([
+          'courses',
+        ]),
+      },
 
-        components: {
-            courseListItem,
-            emptyCourseItem
-        },
+      components: {
+        courseListItem,
+        emptyCourseItem,
+      },
 
-    }
+    };
 </script>

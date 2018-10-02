@@ -1,7 +1,7 @@
 import Croppa from 'vue-croppa';
-import router from './router';
-import store from './store'
 import VueCarousel from 'vue-carousel';
+import router from './router';
+import store from './store';
 
 require('./bootstrap');
 window.Vue = require('vue');
@@ -16,7 +16,7 @@ Vue.component('permission-modal', require('./components/fixed_components/permiss
 Vue.component('side-menu', require('./components/fixed_components/sideMenu.vue'));
 
 const app = new Vue({
-    el: '#app',
-    router,
-    store,
+  el: '#app',
+  router,
+  store,
 });

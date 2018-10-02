@@ -6,49 +6,50 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapActions } from "vuex";
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
+
 export default {
-	name: "error-bar",
+  name: 'error-bar',
 
-	data: function() {
-		return {
-			showError: false
-		};
-	},
+  data() {
+    return {
+      showError: false,
+    };
+  },
 
-	computed: {
-		...mapGetters([
-			"errors",
-			"profileErrors",
-			"profileLoadError",
-			"currentCourse"
-		])
-	},
+  computed: {
+    ...mapGetters([
+      'errors',
+      'profileErrors',
+      'profileLoadError',
+      'currentCourse',
+    ]),
+  },
 
-	updated() {
-		this.enableBackButton();
-	},
+  updated() {
+    this.enableBackButton();
+  },
 
-	methods: {
-		...mapActions([
-            "enableBackButton",
-            "clearErrors"
-		]),
+  methods: {
+    ...mapActions([
+      'enableBackButton',
+      'clearErrors',
+    ]),
 
-		logErrors() {
-			console.log("Error found: " + this.errors);
-		},
+    logErrors() {
+      console.log(`Error found: ${this.errors}`);
+    },
 
-		closeError() {
-			if (this.profileLoadError == true) {
-				this.$store.dispatch('clearStudents');
-                this.$router.push({name: 'class', params: {id: this.currentCourse}});
-            }
-            this.logErrors();
-            this.clearErrors();
-		},
-	}
+    closeError() {
+      if (this.profileLoadError == true) {
+        this.$store.dispatch('clearStudents');
+        this.$router.push({ name: 'class', params: { id: this.currentCourse } });
+      }
+      this.logErrors();
+      this.clearErrors();
+    },
+  },
 };
 </script>
 

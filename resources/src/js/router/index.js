@@ -9,38 +9,38 @@ import Settings from '../views/settings';
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: [
-        {
-            name: 'home',
-            path: '/',
-            component: Home
-        },
-        {
-            name: 'class',
-            path: '/class/:id',
-            component: Class
-        },
-        {
-            name: 'profile',
-            path: '/profile/:courseID/:emailURI',
-            component: Profile,
-            props: true,
-        },
-        {
-            name: 'about',
-            path: '/about',
-            component: About
-        },
-        {
-            name: 'settings',
-            path: '/settings',
-            component: Settings
-        }
-    ],
+  routes: [
+    {
+      name: 'home',
+      path: '/',
+      component: Home,
+    },
+    {
+      name: 'class',
+      path: '/class/:id',
+      component: Class,
+    },
+    {
+      name: 'profile',
+      path: '/profile/:courseID/:emailURI',
+      component: Profile,
+      props: true,
+    },
+    {
+      name: 'about',
+      path: '/about',
+      component: About,
+    },
+    {
+      name: 'settings',
+      path: '/settings',
+      component: Settings,
+    },
+  ],
 
-    scrollBehavior (to, from, savedPosition) {
-        return { x: 0, y: 0 }
-    }
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
 });
 
 export default router;

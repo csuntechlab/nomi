@@ -5,12 +5,12 @@
 </template>
 
 <script>
-    import AboutBanner from "../components/about_components/aboutBanner";
+    import AboutBanner from '../components/about_components/aboutBanner';
 
     export default {
-        components: {
-            AboutBanner
-        },
-        name: "About",
-    }
+      components: {
+        AboutBanner,
+      },
+      name: 'About',
+    };
 </script>

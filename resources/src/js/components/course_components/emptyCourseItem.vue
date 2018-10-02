@@ -15,6 +15,6 @@
 
 <script>
 export default {
-    name: "empty-course-item"
-}
+  name: 'empty-course-item',
+};
 </script>

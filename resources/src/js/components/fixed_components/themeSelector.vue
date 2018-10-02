@@ -16,40 +16,40 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import modal from "../fixed_components/modal.vue";
+    import { mapGetters } from 'vuex';
+    import modal from './modal.vue';
     
     export default {
-        name: "theme-selector",
+      name: 'theme-selector',
 
-        data: function () {
-            return {
-                showModal: false
-            }
-        },
+      data() {
+    return {
+          showModal: false,
+    };
+  },
 
-        created: function () {
-            this.url = document.querySelector('meta[name=app-url]').content;
-        },
+      created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
 
-        methods: {
-            updateTheme: function(theme) {
-                let data = new FormData();
-                data.append('theme', theme);
-                                
-                axios.post(this.url + '/update_theme', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }).then(() => {
-                    document.getElementById("mainBody").className = theme;
-                }).catch(e => {
-                    console.log(e)
-                });
-            }
-        }
+      methods: {
+        updateTheme(theme) {
+          const data = new FormData();
+          data.append('theme', theme);
+
+          axios.post(`${this.url}/update_theme`, data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then(() => {
+            document.getElementById('mainBody').className = theme;
+          }).catch((e) => {
+            console.log(e);
+          });
+    },
+      },
     
 
-    }
+    };
 </script>
 

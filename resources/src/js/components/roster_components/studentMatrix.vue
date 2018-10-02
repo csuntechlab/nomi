@@ -19,43 +19,44 @@
 </template>
 
 <script>
-import FlashCard from './flashCard';
-import GalleryCard from "./galleryCard";
 import { mapGetters } from 'vuex';
+import FlashCard from './flashCard';
+import GalleryCard from './galleryCard';
+
 export default {
-    name: "student-matrix",
+  name: 'student-matrix',
 
-    data: function () {
-        return {
-            messages: true,
-            errors: [],
-            sortLastName: true,
-            sortDescending: true
+  data() {
+    return {
+      messages: true,
+      errors: [],
+      sortLastName: true,
+      sortDescending: true,
+    };
+  },
+
+  props: ['courseid'],
+
+  components: {
+    FlashCard,
+    GalleryCard,
+  },
+
+  computed: {
+    ...mapGetters([
+      'courses',
+      'flashroster',
+      'flash',
+    ]),
+  },
+  methods: {
+    markStudentAsRecognized(payload) {
+      this.flashroster[this.courseid].forEach((student) => {
+        if (student.student_id === payload.student_id) {
+          student.recognized = payload.known;
         }
+      });
     },
-
-    props: ['courseid'],
-
-    components: {
-        FlashCard,
-        GalleryCard,
-    },
-
-    computed: {
-        ...mapGetters([
-            'courses',
-            'flashroster',
-            'flash'
-        ]),
-    },
-    methods: {
-        markStudentAsRecognized: function(payload) {
-            this.flashroster[this.courseid].forEach((student) => {
-                if(student.student_id === payload.student_id) {
-                    student.recognized = payload.known;
-                }
-            });
-        }
-    },
-}
+  },
+};
 </script>
