@@ -22584,6 +22584,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -22603,7 +22604,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])([]), {
 
         display_name: function display_name() {
-            return this.student.first_name + " " + this.student.last_name;
+            return this.student.first_name + ' ' + this.student.last_name;
         },
 
         email_uri: function email_uri() {
@@ -22659,18 +22660,28 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass:
-                    "type--center student_list_name student_list_name_mobile",
                   attrs: {
                     to:
                       "/profile/" + this.$route.params.id + "/" + _vm.email_uri
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(_vm.display_name) +
-                      "\n            "
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "student_list_first_name student_list_first_name_mobile"
+                    },
+                    [_vm._v(_vm._s(this.student.first_name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "student_list_last_name student_list_last_name_mobile"
+                    },
+                    [_vm._v(_vm._s(this.student.last_name))]
                   )
                 ]
               )
@@ -25710,6 +25721,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
         state.studentProfile.notes = payload['data'].notes;
         state.studentProfile.id = payload['data'].student_id;
         state.studentProfile.firstName = payload['data'].first_name;
+        state.studentProfile.lastName = payload['data'].last_name;
         for (var student in getters.students) {
             if (getters.students.hasOwnProperty(student)) {
                 if (getters.students[student].email == email) {

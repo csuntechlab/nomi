@@ -2129,20 +2129,40 @@ textarea[type="text"]:focus {
   height: 45%;
 }
 
+.student_list_first_name_mobile {
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 367px) {
-  .student_list_name_mobile {
+  .student_list_first_name_mobile {
+    font-size: 5vw;
+  }
+}
+
+@media only screen and (min-width: 368px) {
+  .student_list_first_name_mobile {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 367px) {
+  .student_list_last_name_mobile {
     font-size: 4vw;
   }
 }
 
 @media only screen and (min-width: 368px) {
-  .student_list_name_mobile {
+  .student_list_last_name_mobile {
     font-size: 1.3rem;
   }
 }
 
 @media only screen and (min-width: 600px) {
-  .student_list_name {
+  .student_list_first_name {
+    font-weight: bold;
+    font-size: 2.1rem;
+  }
+  .student_list_last_name {
     font-size: 2rem;
   }
 }
