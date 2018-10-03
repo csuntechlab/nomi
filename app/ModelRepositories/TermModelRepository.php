@@ -9,11 +9,16 @@ use App\Models\Term;
 
 class TermModelRepository implements TermModelRepositoryInterface
 {
-    public function getCurrentTerm($today): array
+    public function find($today): array
     {
-        return Term::where('begin_date', '<=', $today)
-                    ->where('end_date', '>=', $today)
-                    ->first()
-                    ->toArray();
+        return Term::currentTerm($today)
+        ->first()
+        ->toArray();
+    }
+
+    public function all(): array
+    {
+        return Term::all()
+        ->toArray();
     }
 }

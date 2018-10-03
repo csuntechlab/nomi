@@ -21,6 +21,7 @@ export default {
         state.studentProfile.notes = payload['data'].notes;
         state.studentProfile.id = payload['data'].student_id;
         state.studentProfile.firstName = payload['data'].first_name;
+        state.studentProfile.lastName = payload['data'].last_name;
         for(var student in getters.students) {
             if(getters.students.hasOwnProperty(student)) {
                 if(getters.students[student].email == email) {
