@@ -887,7 +887,7 @@ textarea[type="text"]:focus {
     z-index: -99;
   }
   .login--error {
-    margin-top: 2.5rem;
+    margin-top: 2.45rem;
   }
   .login-container {
     background: white;
