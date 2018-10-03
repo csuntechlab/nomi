@@ -4,7 +4,7 @@
             <i class="fas fa-2x fa-chalkboard-teacher"></i>
             <div class="bottom-nav__text">Courses</div>
         </router-link>
-        <div v-if="this.currentCourse == null || this.selectedTerm != 'current'" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
+        <div v-if="this.currentCourse == null || this.loadingClasses == true" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
             <i class="fas fa-2x fa-user-graduate"></i>
             <div class="bottom-nav__text">Students</div>
         </div>
@@ -34,7 +34,8 @@ export default {
 
 	data() {
 		return {
-			selected: ["bottom-nav__button--active"]
+			selected: ["bottom-nav__button--active"],
+			disable: true,
 		};
 	},
 
@@ -45,7 +46,8 @@ export default {
 			"currentCourse",
 			"currentStudent",
 			"currentLocation",
-			"selectedTerm"
+			"displaySideMenu",
+			"loadingClasses"
 		])
 	},
 
@@ -72,6 +74,14 @@ export default {
 			}
 			else
 				this.$router.push({name: 'class', params: {id: this.currentCourse}});
+		},
+		checkdisable() {
+			if(this.loadingClasses == true){
+				if(this.currentCourse == null){
+					disable == true;
+				}
+
+			}
 		}
 	}
 };

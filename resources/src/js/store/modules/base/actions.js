@@ -117,6 +117,10 @@ export default {
 				context.commit("API_FAILURE", error)
 			});
 	},
+
+	nullifyCourse(context) {
+        context.commit("NULLIFY_COURSE");
+    },
 	
 	updateImage(context, payload) {
         context.commit("UPDATE_IMAGE", payload);
