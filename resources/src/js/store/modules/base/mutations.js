@@ -245,6 +245,10 @@ export default {
         state.imagePermission = payload; 
     },
 
+    NULLIFY_COURSE (state){
+        state.currentCourse = null;
+    },
+
     SET_PREVIOUS_TERM(state) {
         state.loadingClasses = true;
         state.termYear = state.term.slice(0,3)
