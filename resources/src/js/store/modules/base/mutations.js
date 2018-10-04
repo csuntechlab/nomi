@@ -195,6 +195,7 @@ export default {
     state.semester = 5;
   },
 
+
   SET_FALL(state) {
     state.semester = 7;
   },
@@ -232,6 +233,10 @@ export default {
 
   STORE_PERMISSION(state, payload) {
     state.imagePermission = payload;
+  },
+
+  NULLIFY_COURSE(state) {
+    state.currentCourse = null;
   },
 
   SET_PREVIOUS_TERM(state) {

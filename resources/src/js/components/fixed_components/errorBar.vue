@@ -1,7 +1,7 @@
 <template>
     <div v-if="this.errors || this.profileLoadError" id="error_bar" class="alert alert--warning">
         <strong>Oops!</strong> Something went wrong
-         <a href="#" class="alert__close" @click="closeError()" >&times;</a>
+        	<a href="#" class="alert__close" @click="closeError()" >&times;</a>
     </div>
 </template>
 

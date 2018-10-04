@@ -12,7 +12,7 @@
                     <button @click="setCurrTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button @click="setNeTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Upcoming</button>
+                    <button @click="setNeTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
                 </div>
             </div>
             <br>
@@ -30,7 +30,7 @@
                     <button @click="setCurrTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Upcoming</button>
+                    <button @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
                 </div>
             </div>
             <course-list></course-list>
@@ -113,6 +113,7 @@ import courseList from './courseList';
         ]),
 
         setPrevTerm() {
+          this.$store.dispatch('nullifyCourse');
           if (this.selectedTerm != 'previous') {
             this.setPreviousTerm();
           }
@@ -125,6 +126,7 @@ import courseList from './courseList';
         },
 
         setNeTerm() {
+          this.$store.dispatch('nullifyCourse');
           if (this.selectedTerm != 'next') {
             this.setNextTerm();
           }
