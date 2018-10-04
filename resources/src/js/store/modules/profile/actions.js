@@ -53,5 +53,13 @@ export default {
 
     dataForModal (context, payload){
         context.commit("DATA_FOR_MODAL", payload)
+    },
+    
+    storeStudent (context, payload) {
+        context.commit('STORE_STUDENT', payload)
+    },
+
+    clearStudent (context) {
+        context.commit('CLEAR_STUDENT')
     }
 }

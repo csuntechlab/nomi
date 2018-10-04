@@ -74,6 +74,15 @@ export default {
 
     DATA_FOR_MODAL: function(state, payload){
         state.modalData = payload;
+    },
+
+    //store student state
+    STORE_STUDENT (state, payload){
+        state.currentStudent = payload;
+    },
+
+    CLEAR_STUDENT (state) {
+        state.currentStudent = null;
     }
 
 }

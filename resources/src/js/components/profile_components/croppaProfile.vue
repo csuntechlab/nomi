@@ -1,20 +1,20 @@
 <template>
-    <div class="profile_padding img--circle img--fluid-custom">
+    <div class="profile__img">
         <croppa
-            v-model="myCroppa"
+            v-model="croppa"
             :prevent-white-space="true"
             :show-remove-button="false"
+            :auto-sizing="true"
             :quality="2"
+            :disabled = disabled
             @init="styleCanvas()"
-            @loading-start="loadingStart"
-            @loading-end="loadingEnd">
-            <img crossOrigin="anonymous" :src="this.student.images.likeness" slot="initial" >
+            >
+            <!-- <img slot="initial" :src="studentProfile.student.images.likeness"/> -->
+             <div class="croppa-loading__icon" v-if="croppa && croppa.loading">
+                 <i class="fas fa-spinner fa-spin fa-5x"></i>
+             </div>
+            <img crossOrigin="anonymous" :src="studentProfile.student.images.likeness" slot="initial" >
         </croppa>
-        <div v-if="loadingCroppa" class="croppa-loading">
-            <div class="croppa-loading_icon">
-                <i class="fas fa-spinner fa-spin fa-5x"></i>
-            </div>
-        </div>
         
     </div>
 </template>
@@ -30,19 +30,20 @@
             return{
                 messages: true,
                 errors: [],
-                myCroppa: null,
+                croppa: null,
                 disabled: true,
                 url: "",
                 loadingCroppa: false
             }
         },
-
+ 
         mounted() {
             this.$root.$on('chooseImage', () => {
                 this.chooseImage()
             }),
             this.$root.$on('confirmImage', () => {
                 this.confirmImage()
+                
             })
         },
 
@@ -54,10 +55,11 @@
 
             
         },
+        
 
         created: function () {
             this.url = document.querySelector('meta[name=app-url]').content;
-         },
+        },
 
         methods: {
             loadingStart(){
@@ -69,38 +71,52 @@
             },
 
             confirmImage: function () {
-                if (!this.myCroppa.hasImage()) {
+                
+                if (!this.croppa.hasImage()) {
                     alert('no image');
                 } else {
-                    let url = this.myCroppa.generateDataUrl('jpg', .8);
-                    let payload = {studentId: this.studentProfile.id, imgUrl: url};
-                    this.$store.dispatch('updateImage', payload);
-
-                    let emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
-
-                    window.axios.post('/api/upload', {
+                    // console.log(this.myCroppa.generateDataUrl('jpg', .8);
+                    var url = this.croppa.generateDataUrl('image/jpg', .8);
+                    console.log(url);
+                    // let payload = {studentId: this.studentProfile.id, imgUrl: url};
+                    let payload = {
                         id: this.facultyMember.id,
                         profile_image: url,
                         image_type: 'likeness',
                         entity_type: 'student',
-                        uri: emuri
+                        uri: this.studentProfile.emailURI
+                    };
+                    console.log(payload);
+                    // this.$store.dispatch('updateImage', payload);
+
+                    // let emuri = this.studentProfile.email.substring(0, this.studentProfile.email.indexOf('@'));
+
+                    window.axios.post('/api/upload', {
+                        payload
                     }).then(response => {
                         if (response.status) {
+                            this.disabled = true;
                             this.$store.dispatch('getOnlyData');
                             this.$parent.$emit('close', url);
+                            console.log(response.status);
                         } else {
                             console.error('OH NO');
                         }
                     }).catch(e => {
                         url = null;
                         console.log(e);
+                        this.disabled = true;
                         this.$parent.$emit('close', url);
                     });
+
+                this.croppa.refresh()
                 }
+                // this.app.$forceUpdate()
+                
             },
 
             styleCanvas: function() {
-                let elm = this.myCroppa.getCanvas();
+                let elm = this.croppa.getCanvas();
 
                 elm.style.width="100%";
                 elm.style.height="100%";
@@ -108,8 +124,9 @@
             },
 
             chooseImage: function() {
-                this.myCroppa.chooseFile();
-                this.switch = false;
+                this.disabled = false;
+                console.log(this)
+                this.croppa.chooseFile();
             }
         }
     }

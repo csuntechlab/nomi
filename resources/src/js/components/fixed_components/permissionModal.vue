@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask" v-if="this.permission == null" id="permission_modal">
+        <div class="modal-mask" v-show="this.permission == null" id="permission_modal">
             <div class="modal__wrapper">
                 <div class="modal__container">
                     <div class="modal-body__container">
@@ -17,7 +17,7 @@
                             <button class="modal-btn decline-btn fa fa-2x fa-times" @click="deny()"></button>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </transition>
@@ -29,25 +29,39 @@
     export default {
         name: "permission-modal",
 
+        data: function() {
+            return{
+                show: true,
+            }
+        },
+
         computed: {
             ...mapGetters([
-                'permission'
+                'permission',
+                'facultyMember',
             ]),
 
         },
-        
+
+        created() {
+            this.$store.dispatch("getUploadPermission");
+	    },
+
         methods: {
             ...mapActions([
                 'handlePermissionResponse',
+                'storePermission',
+                'getUploadPermission',
             ]),
 
             accept() {
+                this.$store.dispatch('storePermission', this.facultyMember.id);
                 this.handlePermissionResponse(true);
             },
 
             deny() {
                 this.handlePermissionResponse(false);
-            }
-        }
+            },
+        },
     }
 </script>

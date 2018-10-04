@@ -48,6 +48,10 @@ Route::post('/update_note', 'StudentProfileController@updateNotes')->middleware(
 Route::get('/get_settings', 'UserSettingsController@getSettings')->middleware('auth');
 Route::post('/update_theme', 'UserSettingsController@updateTheme')->middleware('auth');
 
+/** Upload Permission API Routes */
+Route::get('/get_upload_permission', 'UploadPermissionController@getUploadPermission')->middleware('auth');
+Route::post('/store_permission', 'UploadPermissionController@storePermission')->middleware('auth');
+
 /** Support and Feedback */
 Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create')->middleware('auth');
 Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store')->middleware('auth');

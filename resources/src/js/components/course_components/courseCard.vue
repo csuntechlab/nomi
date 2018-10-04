@@ -55,7 +55,7 @@ export default {
             }
             time = hour + ":" + min;
             return time
-        }
+        },
     }
     
 }

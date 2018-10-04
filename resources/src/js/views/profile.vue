@@ -42,13 +42,16 @@ export default {
 		});
 	},
 
+	mounted() {
+		this.$store.dispatch("storeStudent", this.$route.params.emailURI);
+	},
+
 	updated() {
 		this.$store.dispatch("enableBackButton");
 	},
 
 	beforeRouteLeave(to, from, next) {
 		if(this.profileLoadError){
-			this.logErrors();
 			this.clearProfileErrors();
 		}
 		if (this.unsavedChanges) {
@@ -82,10 +85,6 @@ export default {
 		},
 		setChanges() {
 			this.unsavedChanges = false;
-		},
-
-		logErrors() {
-			console.log("Profile Error found: " + this.profileErrors);
 		},
 	}
 

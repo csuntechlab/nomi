@@ -30,13 +30,13 @@ export default {
         state.facultyMember.email = payload.data.email;
         state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
         state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-        state.facultyMember.firstName = capitalize(state.facultyMember.emailURI.split('.')[0]);
-        state.facultyMember.lastName = capitalize(state.facultyMember.emailURI.split('.')[1]);
     },
 
     GET_FACULTY_PROFILE (state, payload) {
         state.facultyMember.image = payload.data.image;
         state.facultyMember.id = payload.data.id;
+        state.facultyMember.firstName = payload.data.name_first;
+        state.facultyMember.lastName = payload.data.name_last;
     },
 
     UPDATE_STUDENT_PRIORITY (state,payload) {
@@ -193,9 +193,9 @@ export default {
     },
 
     UPDATE_IMAGE: function (state, payload) {
-        // let id = payload.studentId;
-        // let url = payload.imgUrl;
-        // state.studentImages[id] = url;
+        let id = payload.studentId;
+        let url = payload.imgUrl;
+        state.studentImages[id] = url;
     },
 
     SET_SPRING: function (state) {
@@ -226,12 +226,23 @@ export default {
         state.loadingClasses = false;
     },
 
-    HANDLE_PERMISSION_RESPONSE(state, payload){
-        state.imagePermission = payload;
+    HANDLE_PERMISSION_RESPONSE(state, payload){	   
+        state.imagePermission = payload;	       
     },
 
     NULLIFY_PERMISSION_RESPONSE(state){
         state.imagePermission = null;
+    },
+
+    GET_UPLOAD_PERMISSION(state, payload){
+        state.imagePermission = payload;
+        if(payload == false){
+            state.imagePermission = null;
+        }
+    },
+
+    STORE_PERMISSION(state, payload){
+        state.imagePermission = payload; 
     },
 
     SET_PREVIOUS_TERM(state) {

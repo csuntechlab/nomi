@@ -29,6 +29,8 @@ class FacultyProfileService implements FacultyProfileContract
         return [
             'image' => $member['profile_image'],
             'id' => $member['individuals_id'],
+            'name_first' => $member['first_name'],
+            'name_last' => $member['last_name']
         ];
     }
 }

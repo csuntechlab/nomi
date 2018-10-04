@@ -1,6 +1,6 @@
 <template>
-    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse()">
-        <div class="panel course__padding fullscreen-width col-xs-12">
+    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse(), clearStudent()">
+        <div class="panel course_padding fullscreen_width col-xs-12">
             <div class="panel__header type--center">
                 <h2 class="course__title pull-left">{{course.title}}</h2>
             </div>
@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-6">
                         <div>
-                            <b>Days</b>: {{course.meetings[0].days}}
+                            <b>Days</b>: {{ convertDays(course.meetings[0].days) }}
                         </div>
                         <div>
                             <b>Time</b>: {{classStartTime}} - {{classEndTime}}
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
 	name: "course-list-item",
 
@@ -48,6 +49,8 @@ export default {
 	},
 
 	methods: {
+		...mapGetters(["currentStudent"]),
+		
 		convertTime(OriginalTime) {
 			let time = OriginalTime;
 			let hour = parseInt(time.substring(0, 2));
@@ -60,9 +63,32 @@ export default {
 			return time;
 		},
 
+		convertDays(originalDays) {
+			let days = originalDays;
+			let split = days.split("");
+
+			// M T W R F S
+			// Mo Tu We Th Fr Sa
+			let result =  split.map(day => {
+				if ( day === 'M' ) day = 'Mo';
+				if ( day === 'T' ) day = 'Tu';
+				if ( day === 'W' ) day = 'We';
+				if ( day === 'R' ) day = 'Th';
+				if ( day === 'F' ) day = 'Fr';
+				if ( day === 'S' ) day = 'Sa';
+				return day
+			});
+
+			return result.join("");
+		},
+
 		storeSelectedCourse() {
-            this.$store.dispatch("storeLocation", 'class')
-            this.$store.dispatch('storeCourse', this.course.id);
+			this.$store.dispatch("storeLocation", "class");
+			this.$store.dispatch("storeCourse", this.course.id);
+		},
+
+		clearStudent() {
+			if (this.currentStudent) this.$store.dispatch("clearStudent");
 		}
 	}
 };

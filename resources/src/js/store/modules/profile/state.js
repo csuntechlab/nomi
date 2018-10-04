@@ -12,6 +12,7 @@ export default {
     },
     
 
+    currentStudent: null,
     profileErrors: null,
     profileLoadError: false,
 

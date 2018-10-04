@@ -2,12 +2,12 @@
 <div>
     <div class="modal-button__container pull-left">
         <div class="modal-button">
-            <div @click="chooseImage" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
+            <div @click="chooseImage()" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
         </div>
     </div>
     <div class="modal-button__container pull-right">
         <div class="modal-button">
-            <div @click="confirmImage" class="type--center"><i class="fa fa-check fa-2x"></i></div>
+            <div @click="confirmImage()" class="type--center"><i class="fa fa-check fa-2x"></i></div>
         </div>
     </div>
 </div>
@@ -17,6 +17,12 @@ import modal from "../fixed_components/modal.vue";
 import { mapGetters } from 'vuex';
 export default {
         name: "croppa-functionality",
+
+        data: function() {
+            return{
+                disabled: true,
+            }
+        },
 
         computed: {
             ...mapGetters([
@@ -31,6 +37,7 @@ export default {
 
         methods: {
             chooseImage() {
+                
                 this.$root.$emit('chooseImage');
             },
             confirmImage() {

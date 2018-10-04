@@ -78,6 +78,22 @@ textarea[type="text"]:focus{
 	font-weight: bold;
 }
 
+.text-size--full {
+	font-size: 100%;
+}
+
+.text-size--large {
+	font-size: 80%;
+}
+
+.text-size--medium {
+	font-size: 60%;
+}
+
+.text-size--small {
+	font-size: 30%;
+}
+
 .display-inline {
 	display: inline;
 }
@@ -127,12 +143,12 @@ textarea[type="text"]:focus{
 }
 
 .fullscreen-width {
-	width: 100vw;
+	width: 100%;
 	position: relative;
 	left: 50%; 
 	right: 50%;
-	margin-left: -50vw;
-	margin-right: -50vw;
+	margin-left: -50%;
+	margin-right: -50%;
 }
 
 .mb-0 {

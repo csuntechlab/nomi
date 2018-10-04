@@ -16,14 +16,20 @@
 
         methods: {
             goBack: function () {
-                this.$router.go(-1);
+                if(document.getElementById('charCount')){
+                    this.$store.dispatch('clearStudent');
+                    this.$router.push({name: 'class', params: {id: this.currentCourse}});
+                }
+                else
+                    this.$router.go(-1);
             }
         },
 
         computed: {
             ...mapGetters([
                 'hideBack',
-                'disableBack'
+                'disableBack',
+                'currentCourse'
             ]),
         }
     }
