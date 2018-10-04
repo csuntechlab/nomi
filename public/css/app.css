@@ -693,6 +693,13 @@ textarea[type="text"]:focus {
   left: 0;
 }
 
+.login--error {
+  position: absolute;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  z-index: 1;
+}
+
 .login__branding {
   position: absolute;
   padding: 1rem 3rem;
@@ -878,6 +885,9 @@ textarea[type="text"]:focus {
   }
   .login {
     z-index: -99;
+  }
+  .login--error {
+    margin-top: 2.45rem;
   }
   .login-container {
     background: white;
