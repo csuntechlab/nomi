@@ -26,47 +26,48 @@
 <script>
     import { mapGetters } from 'vuex';
     import { mapActions } from 'vuex';
-    import modal from "./modal.vue";
+    import modal from './modal.vue';
+
     export default {
-        name: "permission-modal",
+      name: 'permission-modal',
 
-        data: function() {
-            return{
-                show: true,
-            }
-        },
+      data() {
+    return {
+          show: true,
+    };
+  },
 
-        computed: {
-            ...mapGetters([
-                'permission',
-                'facultyMember',
-            ]),
+      computed: {
+        ...mapGetters([
+          'permission',
+          'facultyMember',
+        ]),
 
-        },
+      },
 
-        components: {
-            modal
-        },
+      components: {
+        modal,
+      },
 
-        created() {
-            this.$store.dispatch("getUploadPermission");
+      created() {
+        this.$store.dispatch('getUploadPermission');
 	    },
 
-        methods: {
-            ...mapActions([
-                'handlePermissionResponse',
-                'storePermission',
-                'getUploadPermission',
-            ]),
+      methods: {
+        ...mapActions([
+          'handlePermissionResponse',
+          'storePermission',
+          'getUploadPermission',
+        ]),
 
-            accept() {
-                this.$store.dispatch('storePermission', this.facultyMember.id);
-                this.handlePermissionResponse(true);
-            },
-
-            deny() {
-                this.handlePermissionResponse(false);
-            },
+        accept() {
+          this.$store.dispatch('storePermission', this.facultyMember.id);
+          this.handlePermissionResponse(true);
         },
-    }
+
+        deny() {
+          this.handlePermissionResponse(false);
+        },
+      },
+    };
 </script>

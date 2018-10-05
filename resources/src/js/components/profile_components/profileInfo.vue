@@ -21,29 +21,30 @@
     </div>
 </template>
 <script>
-    import profileNotes from "./profileNotes.vue";
-    import profilePicture from "./profilePicture.vue";
+    import profileNotes from './profileNotes.vue';
+    import profilePicture from './profilePicture.vue';
+
     export default {
-        name: "profile-info",
-        props: [
-            'student'
-        ],
-        data: function () {
-            return {
-                showEmail: false,
-            }
+      name: 'profile-info',
+      props: [
+        'student',
+      ],
+      data() {
+    return {
+          showEmail: false,
+    };
+  },
+      components: {
+        profileNotes,
+        profilePicture,
+      },
+      methods: {
+        sendUnsavedChanges() {
+          this.$emit('unsavedChanges');
         },
-        components: {
-            profileNotes,
-            profilePicture
+        sendChanges() {
+          this.$emit('committedChanges');
         },
-        methods: {
-            sendUnsavedChanges(){
-                this.$emit('unsavedChanges');
-            },
-            sendChanges(){
-                this.$emit('committedChanges');
-            }
-        }
-    }
+      },
+    };
 </script>

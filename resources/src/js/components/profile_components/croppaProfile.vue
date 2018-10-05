@@ -32,91 +32,91 @@
     </div>
 </template>
 <script>
-    import { mapGetters } from "vuex";
+    import { mapGetters } from 'vuex';
 
     export default {
-        name: "croppa-profile",
+      name: 'croppa-profile',
 
-        props:['student'],
+      props: ['student'],
 
-        data: function() {
-            return{
-                messages: true,
-                errors: [],
-                myCroppa: null,
-                disabled: true,
-                url: "",
-                loadingCroppa: false
-            }
+      data() {
+    return {
+          messages: true,
+          errors: [],
+          myCroppa: null,
+          disabled: true,
+          url: '',
+          loadingCroppa: false,
+    };
+  },
+
+      computed: {
+        ...mapGetters([
+          'studentProfile',
+          'facultyMember',
+        ]),
+      },
+
+      created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
+
+      methods: {
+        loadingStart() {
+          this.loadingCroppa = true;
         },
 
-        computed: {
-            ...mapGetters([
-                'studentProfile',
-                'facultyMember'
-            ])
+        loadingEnd() {
+          this.loadingCroppa = false;
         },
 
-        created: function () {
-            this.url = document.querySelector('meta[name=app-url]').content;
-        },
+        confirmImage(emailURI) {
+          if (!this.myCroppa.hasImage()) {
+            alert('no image');
+          } else {
+            let url = this.myCroppa.generateDataUrl('jpg', 0.8);
+            const payload = { studentId: this.studentProfile.id, imgUrl: url };
+            this.$store.dispatch('updateImage', payload);
 
-        methods: {
-            loadingStart(){
-                this.loadingCroppa = true;
-            },
+            const emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
 
-            loadingEnd(){
-                this.loadingCroppa = false;
-            },
+            window.axios.post('/api/upload', {
+              id: this.facultyMember.id,
+              profile_image: url,
+              image_type: 'likeness',
+              entity_type: 'student',
+              uri: emuri,
+            }).then((response) => {
+              if (response.status) {
+                this.$store.dispatch('getOnlyData');
+                this.$parent.$emit('close', url);
+              } else {
+                console.error('OH NO');
+              }
+            }).catch((e) => {
+              url = null;
+              console.log(e);
+              this.$parent.$emit('close', url);
+            });
+          }
+    },
 
-            confirmImage: function (emailURI) {
-                if (!this.myCroppa.hasImage()) {
-                    alert('no image');
-                } else {
-                    let url = this.myCroppa.generateDataUrl('jpg', .8);
-                    let payload = {studentId: this.studentProfile.id, imgUrl: url};
-                    this.$store.dispatch('updateImage', payload);
+        authorizeImageUpload() {
 
-                    let emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
+    },
 
-                    window.axios.post('/api/upload', {
-                        id: this.facultyMember.id,
-                        profile_image: url,
-                        image_type: 'likeness',
-                        entity_type: 'student',
-                        uri: emuri
-                    }).then(response => {
-                        if (response.status) {
-                            this.$store.dispatch('getOnlyData');
-                            this.$parent.$emit('close', url);
-                        } else {
-                            console.error('OH NO');
-                        }
-                    }).catch(e => {
-                        url = null;
-                        console.log(e);
-                        this.$parent.$emit('close', url);
-                    });
-                }
-            },
+        styleCanvas() {
+          const elm = this.myCroppa.getCanvas();
 
-            authorizeImageUpload: function() {
-                
-            },
+          elm.style.width = '100%';
+          elm.style.height = '100%';
+          elm.style.borderRadius = '50%';
+    },
 
-            styleCanvas: function() {
-                let elm = this.myCroppa.getCanvas();
-
-                elm.style.width="100%";
-                elm.style.height="100%";
-                elm.style.borderRadius="50%";
-            },
-
-            chooseImage: function() {
-                this.myCroppa.chooseFile();
-                this.switch = false;
-            }
-        }
-    }
+        chooseImage() {
+          this.myCroppa.chooseFile();
+          this.switch = false;
+    },
+      },
+    };
 </script>

@@ -9,38 +9,39 @@
     </div>
 </template>
 <script>
-    import modal from "../fixed_components/modal.vue";
-    import croppaProfile from "./croppaProfile.vue";
     import { mapGetters } from 'vuex';
+import modal from '../fixed_components/modal.vue';
+import croppaProfile from './croppaProfile.vue';
+
     export default {
-        name: "croppa-modal",
+      name: 'croppa-modal',
 
-        computed: {
-            ...mapGetters([
-                'permission'
-            ]),
+      computed: {
+        ...mapGetters([
+          'permission',
+        ]),
 
-            displayModal(){
-                return(this.showModal && !this.permission);
-            }
-
+        displayModal() {
+          return (this.showModal && !this.permission);
         },
 
-        props: [
-            'showModal',
-            'student'
-        ],
+      },
 
-        components: {
-            croppaProfile,
-            modal
+      props: [
+        'showModal',
+        'student',
+      ],
+
+      components: {
+        croppaProfile,
+        modal,
+      },
+
+      methods: {
+        closeCroppaModal() {
+          this.$emit('setImgUrl');
+          this.$emit('close');
         },
-
-        methods: {
-            closeCroppaModal() {
-                this.$emit('setImgUrl');
-                this.$emit('close');
-            }
-        }
-    }
+      },
+    };
 </script>

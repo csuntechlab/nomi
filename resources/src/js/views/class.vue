@@ -9,18 +9,19 @@
 </template>
 
 <script>
-import settingsBanner from "../components/roster_components/settingsBanner.vue";
-import courseBanner from "../components/roster_components/courseBanner.vue";
-import rosterContainer from "../components/roster_components/rosterContainer.vue";
+import settingsBanner from '../components/roster_components/settingsBanner.vue';
+import courseBanner from '../components/roster_components/courseBanner.vue';
+import rosterContainer from '../components/roster_components/rosterContainer.vue';
+
 export default {
-    name: "class",
-    components: {
-        settingsBanner,
-        courseBanner,
-        rosterContainer
-    },
-	created() {
-        this.$store.dispatch("clearErrors");
-    }
-}
+  name: 'class',
+  components: {
+    settingsBanner,
+    courseBanner,
+    rosterContainer,
+  },
+  created() {
+    this.$store.dispatch('clearErrors');
+  },
+};
 </script>

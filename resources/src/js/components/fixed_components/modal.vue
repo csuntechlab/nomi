@@ -22,16 +22,17 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    export default {
-        name: "modal",
+    import { mapGetters } from 'vuex';
 
-        data() {
-            return  {
-                showModal: false
-            }
-        },
-    }
+    export default {
+      name: 'modal',
+
+      data() {
+        return {
+          showModal: false,
+        };
+      },
+    };
 </script>
 
 

@@ -11,14 +11,12 @@
 </template>
 <script>
     export default {
-        name: "loading-button",
+      name: 'loading-button',
 
-        data: () => {
-            return {
-                ok: false
-            }
-        }
-    }
+      data: () => ({
+        ok: false,
+      }),
+    };
 </script>
 <style>
 

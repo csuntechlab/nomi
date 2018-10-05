@@ -1,57 +1,57 @@
 export default {
-    getStudentProfile (context, payload) {
-        let response = payload
-        let email = payload.uri+'@my.csun.edu'
-        
-        window.axios.get('student_profile/'+email)
-            .then(payload => {
-                var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', payload)
-            })
-            .catch(error => {
-                context.commit('API_STUDENT_FAILURE', error)
-            });
-    },
+  getStudentProfile(context, payload) {
+    const response = payload;
+    const email = `${payload.uri}@my.csun.edu`;
 
-    updateNotes (context, notes) {
-        context.commit('UPDATE_NOTES', notes)
-    },
+    window.axios.get(`student_profile/${email}`)
+      .then((payload) => {
+        const getters = context.getters;
+        context.commit('GET_STUDENT_PROFILE', { payload, getters, response });
+        context.commit('GET_STUDENT_BIO', payload);
+      })
+      .catch((error) => {
+        context.commit('API_STUDENT_FAILURE', error);
+      });
+  },
 
-    commitNotes (context) {
-        let data = new FormData;
-        data.append('student_id', context.state.studentProfile.id);
-        data.append('notepad', context.state.studentProfile.notes);
+  updateNotes(context, notes) {
+    context.commit('UPDATE_NOTES', notes);
+  },
 
-        window.axios.post('update_note', data)
-            .catch(error => {
-                context.commit("API_FAILURE", error)
-            });
-    },
+  commitNotes(context) {
+    const data = new FormData();
+    data.append('student_id', context.state.studentProfile.id);
+    data.append('notepad', context.state.studentProfile.notes);
 
-    updateImagePriority (context) {
-        window.axios.post('api/priority', data)
-            .then(response => {
-                context.commit('UPDATE_IMAGE_PRIORITY', response)
-            })
-            .catch(error => {
-                context.commit('API_FAILURE', error)
-            });
-    },
+    window.axios.post('update_note', data)
+      .catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-    nullifyStudentProfile (context) {
-        context.commit('NULLIFY_STUDENT_PROFILE')
-    },
+  updateImagePriority(context) {
+    window.axios.post('api/priority', data)
+      .then((response) => {
+        context.commit('UPDATE_IMAGE_PRIORITY', response);
+      })
+      .catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-    clearProfileErrors (context) {
-        context.commit('CLEAR_PROFILE_ERRORS')
-    },
+  nullifyStudentProfile(context) {
+    context.commit('NULLIFY_STUDENT_PROFILE');
+  },
 
-    storeStudent (context, payload) {
-        context.commit('STORE_STUDENT', payload)
-    },
+  clearProfileErrors(context) {
+    context.commit('CLEAR_PROFILE_ERRORS');
+  },
 
-    clearStudent (context) {
-        context.commit('CLEAR_STUDENT')
-    }
-}
+  storeStudent(context, payload) {
+    context.commit('STORE_STUDENT', payload);
+  },
+
+  clearStudent(context) {
+    context.commit('CLEAR_STUDENT');
+  },
+};
