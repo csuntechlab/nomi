@@ -1898,23 +1898,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .roster-sorting__sort * {
-  fill: #d00d2d !important;
+  fill: #464646 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort * {
-  fill: #E74A37 !important;
+  fill: #464646 !important;
 }
 
 .theme-main .roster-sorting__sort * {
-  fill: #4F9DA3 !important;
+  fill: #464646 !important;
 }
 
 .theme-bluesTheme .roster-sorting__sort * {
-  fill: #4CA1DB !important;
+  fill: #575757 !important;
 }
 
 .theme-Dark .roster-sorting__sort * {
-  fill: #426c96 !important;
+  fill: #bababa !important;
 }
 
 .theme-login .roster-sorting__sort--active * {

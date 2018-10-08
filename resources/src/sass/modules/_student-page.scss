@@ -107,7 +107,7 @@
 				height: 100%;
 				width: 100%;
 				@include themify($themes) {
-					fill: themed("buttonColor") !important;
+					fill: themed("textColor") !important;
 				}
 			}
 			
