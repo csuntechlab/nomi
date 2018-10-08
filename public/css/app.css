@@ -1867,6 +1867,31 @@ textarea[type="text"]:focus {
   color: #bababa !important;
 }
 
+.theme-login .roster-sorting__sort--active {
+  background-color: #d00d2d !important;
+  color: #464646 !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort--active {
+  background-color: #E74A37 !important;
+  color: #464646 !important;
+}
+
+.theme-main .roster-sorting__sort--active {
+  background-color: #4F9DA3 !important;
+  color: #464646 !important;
+}
+
+.theme-bluesTheme .roster-sorting__sort--active {
+  background-color: #4CA1DB !important;
+  color: #575757 !important;
+}
+
+.theme-Dark .roster-sorting__sort--active {
+  background-color: #426c96 !important;
+  color: #bababa !important;
+}
+
 .roster-sorting__sort * {
   height: 100%;
   width: 100%;
@@ -1890,6 +1915,26 @@ textarea[type="text"]:focus {
 
 .theme-Dark .roster-sorting__sort * {
   fill: #426c96 !important;
+}
+
+.theme-login .roster-sorting__sort--active * {
+  fill: #fff !important;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort--active * {
+  fill: #fff !important;
+}
+
+.theme-main .roster-sorting__sort--active * {
+  fill: #fff !important;
+}
+
+.theme-bluesTheme .roster-sorting__sort--active * {
+  fill: #fff !important;
+}
+
+.theme-Dark .roster-sorting__sort--active * {
+  fill: #dadada !important;
 }
 
 .roster-sorting__name {
