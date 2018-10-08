@@ -17,6 +17,7 @@
         <div class="login-container__left row col-xs-12 col-lg-6 col-xl-5">
             <div class="login__filter col-xs-0 col-md-12"></div>
             <div class="login__content row col-xs-12 col-lg-8">
+                <div class="login__nav-bar"></div>
                 <div class="login__wrapper">
                     <img class="login__logo" src="{{ asset('/images/nomi-logo-horizontal.svg') }}" alt="NOMI Logo; Names of Matador Individuals">
 

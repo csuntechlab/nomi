@@ -1,5 +1,6 @@
 <template>
     <div>
+        <nav-bar></nav-bar>
         <course-banner></course-banner>
         <settings-banner></settings-banner>
         <div class="container-full">
@@ -11,17 +12,20 @@
 <script>
 import settingsBanner from '../components/roster_components/settingsBanner.vue';
 import courseBanner from '../components/roster_components/courseBanner.vue';
+import navBar from '../components/fixed_components/navBar.vue';
 import rosterContainer from '../components/roster_components/rosterContainer.vue';
 
 export default {
-  name: 'class',
-  components: {
-    settingsBanner,
-    courseBanner,
-    rosterContainer,
-  },
-  created() {
-    this.$store.dispatch('clearErrors');
-  },
+    name: 'class',
+    components: {
+        settingsBanner,
+        courseBanner,
+        rosterContainer,
+        navBar,
+    },
+
+    created() {
+        this.$store.dispatch('clearErrors');
+    },
 };
 </script>
