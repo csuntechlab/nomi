@@ -32,72 +32,67 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
+
 export default {
-	name: "course-list-item",
+  name: 'course-list-item',
 
-	props: ["course"],
+  props: ['course'],
 
-	computed: {
-		classStartTime() {
-			return this.convertTime(this.course.meetings[0].start_time);
-		},
+  computed: {
+    classStartTime() {
+      return this.convertTime(this.course.meetings[0].start_time);
+    },
 
-		classEndTime() {
-			return this.convertTime(this.course.meetings[0].end_time);
-		}
-	},
+    classEndTime() {
+      return this.convertTime(this.course.meetings[0].end_time);
+    },
+  },
 
-	methods: {
-		...mapGetters(["currentStudent"]),
-		
-		convertTime(OriginalTime) {
-			let time = OriginalTime;
-			let hour = parseInt(time.substring(0, 2));
-			let min = time.substring(2, 4) + " a.m.";
-			if (hour > 12) {
-				hour = hour - 12;
-				min = min.substring(0, 2) + " p.m.";
-			}
-			time = hour + ":" + min;
-			return time;
-		},
+  methods: {
+    ...mapGetters(['currentStudent']),
 
-		convertDays(originalDays) {
-			let days = originalDays;
-			let split = days.split("");
+    convertTime(OriginalTime) {
+      let time = OriginalTime;
+      let hour = parseInt(time.substring(0, 2));
+      let min = `${time.substring(2, 4)} a.m.`;
+      if (hour > 12) {
+        hour -= 12;
+        min = `${min.substring(0, 2)} p.m.`;
+      }
+      time = `${hour}:${min}`;
+      return time;
+    },
 
-			// M T W R F S
-			// Mo Tu We Th Fr Sa
-			let result =  split.map(day => {
-				if ( day === 'M' ) day = 'Mo';
-				if ( day === 'T' ) day = 'Tu';
-				if ( day === 'W' ) day = 'We';
-				if ( day === 'R' ) day = 'Th';
-				if ( day === 'F' ) day = 'Fr';
-				if ( day === 'S' ) day = 'Sa';
-				return day
-			});
+    convertDays(originalDays) {
+      const days = originalDays;
+      const split = days.split('');
 
-			return result.join("");
-		},
+      // M T W R F S
+      // Mo Tu We Th Fr Sa
+      const result = split.map((day) => {
+        if (day === 'M') day = 'Mo';
+        if (day === 'T') day = 'Tu';
+        if (day === 'W') day = 'We';
+        if (day === 'R') day = 'Th';
+        if (day === 'F') day = 'Fr';
+        if (day === 'S') day = 'Sa';
+        return day;
+      });
 
-		storeSelectedCourse() {
-			this.$store.dispatch("storeLocation", "class");
-			this.$store.dispatch("storeCourse", this.course.id);
-		},
+      return result.join('');
+    },
 
-		clearStudent() {
-			if (this.currentStudent) this.$store.dispatch("clearStudent");
-		}
-	}
+    storeSelectedCourse() {
+      this.$store.dispatch('storeLocation', 'class');
+      this.$store.dispatch('storeCourse', this.course.id);
+    },
+
+    clearStudent() {
+      if (this.currentStudent) {
+        this.$store.dispatch('clearStudent');
+      }
+    },
+  },
 };
 </script>
-
-<style scoped>
-.list__item {
-	padding: 20px;
-	-webkit-box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 5px 9px 3px rgba(0, 0, 0, 0.2);
-}
-</style>

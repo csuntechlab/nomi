@@ -61,15 +61,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-export default {
-    name: "list-grid-selector",
+import { mapGetters } from 'vuex';
 
-    computed: {
-        ...mapGetters([
-            'list',
-            'flash'
-        ])
-    },
-}
+export default {
+  name: 'list-grid-selector',
+
+  computed: {
+    ...mapGetters([
+      'list',
+      'flash',
+    ]),
+  },
+};
 </script>

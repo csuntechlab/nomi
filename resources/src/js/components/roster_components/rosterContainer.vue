@@ -10,29 +10,30 @@
 </template>
 
 <script>
-    import studentMatrix from "./studentMatrix"
-    import studentList from "./studentList"
-    import { mapGetters } from "vuex"
+    import { mapGetters } from 'vuex';
+import studentMatrix from './studentMatrix';
+import studentList from './studentList';
+
     export default {
-        name: "roster-container",
+      name: 'roster-container',
 
-        components: {
-            studentMatrix,
-            studentList,
-        },
+      components: {
+        studentMatrix,
+        studentList,
+      },
 
-        props: [
-            'courseid'
-        ],
+      props: [
+        'courseid',
+      ],
 
-        computed: {
-            ...mapGetters([
-                'list',
-            ])
-        },
+      computed: {
+        ...mapGetters([
+          'list',
+        ]),
+      },
 
-        created () {
-            this.$store.dispatch('nullifyStudentProfile');
-        }
-    }
+      created() {
+        this.$store.dispatch('nullifyStudentProfile');
+      },
+    };
 </script>

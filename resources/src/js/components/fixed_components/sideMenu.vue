@@ -23,33 +23,34 @@
     </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
+
 export default {
-	name: "side-menu",
-	data() {
-		return {
-			url: ""
-		};
-	},
-	computed: {
-		...mapGetters(["courses", "facultyMember", "displaySideMenu"]),
-		showMenu() {
-			return this.displaySideMenu;
-		}
-	},
-	created: function() {
-		this.url = document.querySelector("meta[name=app-url]").content;
-	},
-	methods: {
-		toggleMenu() {
-			this.$store.dispatch("toggleMenu");
-		}
-	},
-	watch: {
-		showMenu(open) {
-			if (open) document.documentElement.style.overflow = "hidden";
-			else document.documentElement.style.overflow = "auto";
-		}
-	}
+  name: 'side-menu',
+  data() {
+    return {
+      url: '',
+    };
+  },
+  computed: {
+    ...mapGetters(['courses', 'facultyMember', 'displaySideMenu']),
+    showMenu() {
+      return this.displaySideMenu;
+    },
+  },
+  created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
+  methods: {
+    toggleMenu() {
+      this.$store.dispatch('toggleMenu');
+    },
+  },
+  watch: {
+    showMenu(open) {
+      if (open) document.documentElement.style.overflow = 'hidden';
+      else document.documentElement.style.overflow = 'auto';
+    },
+  },
 };
 </script>

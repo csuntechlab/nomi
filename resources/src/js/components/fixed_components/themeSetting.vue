@@ -16,38 +16,38 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex';
 
     export default {
-        name: "theme-setting",
+      name: 'theme-setting',
 
-        data: function () {
-            return {
-                showModal: false
-            }
-        },
+      data() {
+    return {
+          showModal: false,
+    };
+  },
 
-        created: function () {
-            this.url = document.querySelector('meta[name=app-url]').content;
-        },
+      created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
 
-        methods: {
-            updateTheme: function (theme) {
-                let data = new FormData();
-                data.append('theme', theme);
+      methods: {
+        updateTheme(theme) {
+          const data = new FormData();
+          data.append('theme', theme);
 
-                axios.post(this.url + '/update_theme', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                }).then(() => {
-                    document.getElementById("mainBody").className = theme;
-                }).catch(e => {
-                    console.log(e)
-                });
-            }
-        }
+          axios.post(`${this.url}/update_theme`, data, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then(() => {
+            document.getElementById('mainBody').className = theme;
+          }).catch((e) => {
+            console.log(e);
+          });
+    },
+      },
 
 
-    }
+    };
 </script>

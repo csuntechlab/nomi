@@ -28,11 +28,6 @@
     <body>
         <div id='app'>
             <nav-bar></nav-bar>
-            @if ( $errors->count() > 0 )
-                <div id="error_bar" class="alert alert--warning" >
-                    <strong>Oops!</strong> Login Failed
-                </div>
-            @endif
             @yield('content')
         </div>
     </body>

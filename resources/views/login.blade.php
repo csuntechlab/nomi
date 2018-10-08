@@ -1,6 +1,12 @@
 @extends('master') @section('content')
 
 <div id="login" class="login">
+    @if ( $errors->count() > 0 )
+        <div id="error_bar" class="alert alert--warning login--error" >
+            <strong>Oops!</strong> Login Failed
+        </div>
+    @endif
+
     <div class="login-container row">
         <div class="login-container__right col-xs-0 col-lg-10">
             <div class="login__branding">

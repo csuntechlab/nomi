@@ -7,14 +7,15 @@
 </template>
 
 <script>
-    import bottomNav from './bottomNav.vue'
-    export default {
-        components: {
-            bottomNav
-        },
+    import bottomNav from './bottomNav.vue';
 
-        beforeCreate() {
-            this.$store.dispatch('getOnlySettings');
-        }
-    }
+    export default {
+      components: {
+        bottomNav,
+      },
+
+      beforeCreate() {
+        this.$store.dispatch('getOnlySettings');
+      },
+    };
 </script>
