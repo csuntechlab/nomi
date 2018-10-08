@@ -11,7 +11,7 @@
                     <path :d="this.sort_a_to_z" fill="currentColor"/>
                 </svg>
             </span>
-            <span v-else class="fas roster-sorting__sort roster-sorting__sort--active" @click="sortAsc">
+            <span v-else class="fas roster-sorting__sort" @click="sortAsc">
                 <svg enable-background="new 0 0 448 512" version="1.1" viewBox="0 0 448 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                     <path :d="this.sort_z_to_a"/>
                 </svg>

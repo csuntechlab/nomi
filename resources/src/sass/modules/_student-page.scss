@@ -93,13 +93,6 @@
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
 			}
-
-			&--active {
-				@include themify($themes) {
-					background-color: themed("buttonColor") !important;
-					color: themed("textColor") !important;
-				}
-			}
 		}
 
 		&__sort {
@@ -108,12 +101,6 @@
 				width: 100%;
 				@include themify($themes) {
 					fill: themed("textColor") !important;
-				}
-			}
-			
-			&--active * {
-				@include themify($themes) {
-					fill: themed("buttonText") !important;
 				}
 			}
 		}
