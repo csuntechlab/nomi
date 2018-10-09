@@ -14,7 +14,7 @@ class ImageController extends Controller
     /**
      * ImageController constructor.
      *
-     * @param imageCRUDUtility $imageCRUDUtility
+     * @param ImageCrudContract $imageCRUDUtility
      */
     public function __construct(ImageCRUDContract $imageCRUDUtility)
     {

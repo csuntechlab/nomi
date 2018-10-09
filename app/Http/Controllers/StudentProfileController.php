@@ -11,9 +11,9 @@ class StudentProfileController extends Controller
 {
     protected $studentProfileUtility;
 
-    public function __construct(StudentProfileContract $studentProfileContract)
+    public function __construct(StudentProfileContract $studentProfileUtility)
     {
-        $this->studentProfileUtility = $studentProfileContract;
+        $this->studentProfileUtility = $studentProfileUtility;
     }
 
     public function getProfile($email)

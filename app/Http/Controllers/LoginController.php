@@ -14,7 +14,7 @@ class LoginController extends Controller
     /**
      * LoginController constructor.
      *
-     * @param authVerifierUtility $authVerifierUtility
+     * @param AuthVerifierContract $authVerifierUtility
      */
     public function __construct(
         AuthVerifierContract $authVerifierUtility
