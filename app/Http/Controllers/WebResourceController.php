@@ -8,18 +8,18 @@ use App\Contracts\WebResourceRetrieverContract;
 
 class WebResourceController extends Controller
 {
-    private $webResourceRetriever;
+    private $webResourceUtility;
 
     /**
      * WebResourceController constructor.
      *
-     * @param WebResourceRetrieverContract $webResourceRetriever
+     * @param WebResourceRetrieverContract $webResourceUtility
      * @param UserSettingsContract         $userSettingsRetriever
      */
     public function __construct(
-        WebResourceRetrieverContract $webResourceRetriever
+        WebResourceRetrieverContract $webResourceUtility
         ) {
-        $this->webResourceRetriever = $webResourceRetriever;
+        $this->webResourceUtility = $webResourceUtility;
     }
 
     /**
@@ -29,7 +29,7 @@ class WebResourceController extends Controller
      */
     public function courses($term)
     {
-        return $this->webResourceRetriever->getCourses($term);
+        return $this->webResourceUtility->getCourses($term);
     }
 
     /**
@@ -40,7 +40,7 @@ class WebResourceController extends Controller
      */
     public function roster($term, $course)
     {
-        return $this->webResourceRetriever->getRoster($term, $course);
+        return $this->webResourceUtility->getRoster($term, $course);
     }
 
     /**
@@ -50,7 +50,7 @@ class WebResourceController extends Controller
      */
     public function media($email)
     {
-        return $this->webResourceRetriever->getMedia($email);
+        return $this->webResourceUtility->getMedia($email);
     }
 
     /**
@@ -60,6 +60,6 @@ class WebResourceController extends Controller
      */
     public function student($email)
     {
-        return $this->webResourceRetriever->getStudent($email);
+        return $this->webResourceUtility->getStudent($email);
     }
 }
