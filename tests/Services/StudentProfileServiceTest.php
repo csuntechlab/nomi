@@ -85,7 +85,6 @@ class StudentProfileServiceTest extends TestCase
             'notes' => 'This is a note',
             'image_priority' => 'likeness',
             'bio' => 'This is my bio, look, I am interesting',
-            'isFaculty' => 0,
         ];
 
         $output = $studentService->getStudentProfile($email);

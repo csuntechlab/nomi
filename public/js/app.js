@@ -19092,7 +19092,7 @@ var staticRenderFns = [
             { staticClass: "panel__header course__header--empty mb-0" },
             [
               _vm._v(
-                "\r\n            You are not teaching any classes this semester.\r\n        "
+                "\n            You are not teaching any classes this semester.\n        "
               )
             ]
           ),
@@ -23673,26 +23673,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'profile-info',
-  props: ['student'],
-  data: function data() {
-    return {
-      showEmail: false
-    };
-  },
-
-  components: {
-    profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_1__profilePicture_vue___default.a
-  },
-  methods: {
-    sendUnsavedChanges: function sendUnsavedChanges() {
-      this.$emit('unsavedChanges');
+    name: 'profile-info',
+    props: ['student'],
+    data: function data() {
+        return {
+            showEmail: false
+        };
     },
-    sendChanges: function sendChanges() {
-      this.$emit('committedChanges');
+
+    components: {
+        profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
+        profilePicture: __WEBPACK_IMPORTED_MODULE_1__profilePicture_vue___default.a
+    },
+    methods: {
+        sendUnsavedChanges: function sendUnsavedChanges() {
+            this.$emit('unsavedChanges');
+        },
+        sendChanges: function sendChanges() {
+            this.$emit('committedChanges');
+        }
     }
-  }
 });
 
 /***/ }),
@@ -23976,8 +23976,8 @@ var render = function() {
                 }),
                 _vm._v(
                   "\n                    " +
-                    _vm._s(this.student.emailURI) +
-                    "@my.csun.edu\n                "
+                    _vm._s(this.student.student.email) +
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
@@ -24828,7 +24828,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\r\n        Select Theme\r\n    ")
+      _vm._v("\n        Select Theme\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -24844,7 +24844,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\r\n        Matador")]
+          [_vm._v("\n        Matador")]
         ),
         _vm._v(" "),
         _c(
@@ -25160,7 +25160,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     var email = payload.uri + '@my.csun.edu';
 
     window.axios.get('student_profile/' + email).then(function (payload) {
-      console.log(payload);
       var getters = context.getters;
       context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
       context.commit('GET_STUDENT_BIO', payload);

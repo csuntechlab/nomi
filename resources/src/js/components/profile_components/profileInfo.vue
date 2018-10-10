@@ -5,7 +5,7 @@
                 <div class="col-sm-12">
                     <div class="profile_email">
                         <i class="fas fa-envelope" @click="showEmail = true"></i>
-                        {{this.student.emailURI}}@my.csun.edu
+                        {{this.student.student.email}}
                     </div>
                     <div>
                         <span v-if="this.student.bio != null" class="text_italic display-inline">
@@ -21,30 +21,30 @@
     </div>
 </template>
 <script>
-    import profileNotes from './profileNotes.vue';
-    import profilePicture from './profilePicture.vue';
+import profileNotes from './profileNotes.vue';
+import profilePicture from './profilePicture.vue';
 
-    export default {
-      name: 'profile-info',
-      props: [
+export default {
+    name: 'profile-info',
+    props: [
         'student',
-      ],
-      data() {
+    ],
+    data() {
     return {
-          showEmail: false,
+        showEmail: false,
     };
-  },
-      components: {
+},
+    components: {
         profileNotes,
         profilePicture,
-      },
-      methods: {
+    },
+    methods: {
         sendUnsavedChanges() {
-          this.$emit('unsavedChanges');
+        this.$emit('unsavedChanges');
         },
         sendChanges() {
-          this.$emit('committedChanges');
+        this.$emit('committedChanges');
         },
-      },
-    };
+    },
+};
 </script>
