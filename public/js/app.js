@@ -23673,26 +23673,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'profile-info',
-  props: ['student'],
-  data: function data() {
-    return {
-      showEmail: false
-    };
-  },
-
-  components: {
-    profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_1__profilePicture_vue___default.a
-  },
-  methods: {
-    sendUnsavedChanges: function sendUnsavedChanges() {
-      this.$emit('unsavedChanges');
+    name: 'profile-info',
+    props: ['student'],
+    data: function data() {
+        return {
+            showEmail: false
+        };
     },
-    sendChanges: function sendChanges() {
-      this.$emit('committedChanges');
+
+    components: {
+        profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
+        profilePicture: __WEBPACK_IMPORTED_MODULE_1__profilePicture_vue___default.a
+    },
+    methods: {
+        sendUnsavedChanges: function sendUnsavedChanges() {
+            this.$emit('unsavedChanges');
+        },
+        sendChanges: function sendChanges() {
+            this.$emit('committedChanges');
+        }
     }
-  }
 });
 
 /***/ }),
@@ -23976,8 +23976,8 @@ var render = function() {
                 }),
                 _vm._v(
                   "\n                    " +
-                    _vm._s(this.student.emailURI) +
-                    "@my.csun.edu\n                "
+                    _vm._s(this.student.student.email) +
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
@@ -25218,7 +25218,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         getters = _ref.getters,
         response = _ref.response;
 
-    var email = response.uri + '@my.csun.edu';
+    var email = payload.data.email;
     var data = new FormData();
 
     data.append('faculty_id', response.faculty_id);
