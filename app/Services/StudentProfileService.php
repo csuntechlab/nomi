@@ -30,6 +30,11 @@ class StudentProfileService implements StudentProfileContract
     public function getStudentProfile($email)
     {
         $email = $this->ensureStudentEmailWorks($email);
+        $emailNeedle = strstr($email, '@');
+        $isFaculty = 0;
+        if($emailNeedle == '@csun.edu'){
+          $isFaculty = 1;
+        }
         $profile = \json_decode($this->webResourceRetriever->getStudent($email), true);
         if ($profile['status'] === '200') {
             $profile = $profile['people'];
@@ -51,6 +56,7 @@ class StudentProfileService implements StudentProfileContract
                 'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
                 'image_priority' => $imagePriority,
                 'bio' => $profile['biography'],
+                'isFaculty' => $isFaculty,
             ];
 
             return \json_encode($studentProfile);
