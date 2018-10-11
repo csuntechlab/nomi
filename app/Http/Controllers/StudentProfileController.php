@@ -9,16 +9,16 @@ use Illuminate\Http\Request;
 
 class StudentProfileController extends Controller
 {
-    protected $studentProfileService;
+    protected $studentProfileUtility;
 
-    public function __construct(StudentProfileContract $studentProfileContract)
+    public function __construct(StudentProfileContract $studentProfileUtility)
     {
-        $this->studentProfileService = $studentProfileContract;
+        $this->studentProfileUtility = $studentProfileUtility;
     }
 
     public function getProfile($email)
     {
-        return $this->studentProfileService->getStudentProfile($email);
+        return $this->studentProfileUtility->getStudentProfile($email);
     }
 
     public function updateNotes(Request $request)
@@ -28,6 +28,6 @@ class StudentProfileController extends Controller
             'notepad' => $request->notepad,
         ];
 
-        return $this->studentProfileService->updateStudentNotes($data);
+        return $this->studentProfileUtility->updateStudentNotes($data);
     }
 }

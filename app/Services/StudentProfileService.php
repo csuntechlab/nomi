@@ -13,24 +13,24 @@ use Illuminate\Support\Facades\Crypt;
 
 class StudentProfileService implements StudentProfileContract
 {
-    protected $webResourceRetriever = null;
-    protected $rosterRetriever = null;
-    protected $imageCRUD = null;
+    protected $webResourceUtility = null;
+    protected $rosterRetrieverUtility = null;
+    protected $imageCRUDUtility = null;
 
     public function __construct(
-        WebResourceRetrieverContract $webResourceRetriever,
-        RosterRetrievalContract $rosterRetriever,
-        ImageCRUDContract $imageCRUD
+        WebResourceRetrieverContract $webResourceUtility,
+        RosterRetrievalContract $rosterRetrieverUtility,
+        ImageCRUDContract $imageCRUDUtility
     ) {
-        $this->webResourceRetriever = $webResourceRetriever;
-        $this->rosterRetriever = $rosterRetriever;
-        $this->imageCRUD = $imageCRUD;
+        $this->webResourceUtility = $webResourceUtility;
+        $this->rosterRetrieverUtility = $rosterRetrieverUtility;
+        $this->imageCRUDUtility = $imageCRUDUtility;
     }
 
     public function getStudentProfile($email)
     {
         $email = $this->ensureStudentEmailWorks($email);
-        $profile = \json_decode($this->webResourceRetriever->getStudent($email), true);
+        $profile = \json_decode($this->webResourceUtility->getStudent($email), true);
         if ($profile['status'] === '200') {
             $profile = $profile['people'];
             $note = Note::where('user_id', auth()->user()->user_id)
@@ -38,7 +38,7 @@ class StudentProfileService implements StudentProfileContract
                 ->first();
 
             $imagePriority = $this
-                ->imageCRUD
+                ->imageCRUDUtility
                 ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
             $studentProfile = (object) [

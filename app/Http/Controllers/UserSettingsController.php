@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 
 class UserSettingsController extends Controller
 {
-    protected $settingsService;
+    protected $settingsUtility;
 
-    public function __construct(UserSettingsContract $settings)
+    public function __construct(UserSettingsContract $settingsUtility)
     {
-        $this->settingsService = $settings;
+        $this->settingsUtility = $settingsUtility;
     }
 
     public function getSettings(Request $request)
     {
-        return $this->settingsService->getSettings($request);
+        return $this->settingsUtility->getSettings($request);
     }
 
     public function updateTheme(Request $request)
     {
-        return $this->settingsService->updateTheme($request);
+        return $this->settingsUtility->updateTheme($request);
     }
 }

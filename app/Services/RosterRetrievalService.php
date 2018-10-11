@@ -11,15 +11,15 @@ use Intervention\Image\ImageManager;
 
 class RosterRetrievalService implements RosterRetrievalContract
 {
-    protected $webResourceRetriever = null;
-    protected $imageCRUDContract = null;
+    protected $webResourceUtility = null;
+    protected $imageCRUDUtility = null;
 
     public function __construct(
-        WebResourceRetrieverContract $webResourceRetriever,
-        ImageCRUDContract $imageCRUDContract
+        WebResourceRetrieverContract $webResourceUtility,
+        ImageCRUDContract $imageCRUDUtility
     ) {
-        $this->webResourceRetriever = $webResourceRetriever;
-        $this->imageCRUDContract = $imageCRUDContract;
+        $this->webResourceUtility = $webResourceUtility;
+        $this->imageCRUDUtility = $imageCRUDUtility;
     }
 
     /**
@@ -34,7 +34,7 @@ class RosterRetrievalService implements RosterRetrievalContract
     public function getStudentsFromRoster($term, $course)
     {
         // Grabs the roster information without the instructor
-        $roster = $this->webResourceRetriever->getRoster($term, $course)->getBody()->getContents();
+        $roster = $this->webResourceUtility->getRoster($term, $course)->getBody()->getContents();
 
         return $this->processMembers(\json_decode($roster)->members);
     }
@@ -55,7 +55,7 @@ class RosterRetrievalService implements RosterRetrievalContract
             \array_push($memberIDs, $student->members_id);
         }
 
-        $priorities = $this->imageCRUDContract->getPriority($memberIDs);
+        $priorities = $this->imageCRUDUtility->getPriority($memberIDs);
 
         for ($i = 0; $i < \count($priorities); ++$i) {
             $unsanitizedStudents[$i]->image_priority = $priorities[$i];
