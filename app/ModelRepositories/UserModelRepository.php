@@ -9,10 +9,17 @@ use App\Models\User;
 
 class UserModelRepository implements UserModelRepositoryInterface
 {
-    public function getUsersWithImagePriority(array $userIds): array
+    public function find(array $userIds): array
     {
         return User::with('imagePriority')
         ->whereIn('user_id', $userIds)
-        ->get()->toArray();
+        ->get()
+        ->toArray();
+    }
+
+    public function all(): array
+    {
+        return User::all()
+        ->toArray();
     }
 }
