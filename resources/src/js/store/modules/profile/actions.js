@@ -2,23 +2,6 @@ export default {
     getStudentProfile (context, payload) {
             let email = payload.uri+'@my.csun.edu'
             let response = payload
-
-        // if(payload.email != null)
-        // {
-        //     email = payload.email
-        //     response = {
-        //         uri: payload.emailURI,
-        //         faculty_id: payload.faculty_id
-        //     }
-            
-        // } else {
-        //     email = payload.uri+'@my.csun.edu'
-        //     response = payload
-        // }
-        console.log(email);
-        console.log(response);
-        
-        
         window.axios.get('student_profile/'+email)
             .then(payload => {
                 var getters = context.getters

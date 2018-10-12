@@ -907,6 +907,14 @@ textarea[type="text"]:focus {
   .login--error {
     margin-top: 2.45rem;
   }
+  .login__nav-bar {
+    background-color: #D22030;
+    position: fixed;
+    height: 2.467rem;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+  }
   .login-container {
     background: white;
   }
@@ -1896,23 +1904,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .roster-sorting__sort * {
-  fill: #d00d2d !important;
+  fill: #464646 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .roster-sorting__sort * {
-  fill: #E74A37 !important;
+  fill: #464646 !important;
 }
 
 .theme-main .roster-sorting__sort * {
-  fill: #4F9DA3 !important;
+  fill: #464646 !important;
 }
 
 .theme-bluesTheme .roster-sorting__sort * {
-  fill: #4CA1DB !important;
+  fill: #575757 !important;
 }
 
 .theme-Dark .roster-sorting__sort * {
-  fill: #426c96 !important;
+  fill: #bababa !important;
 }
 
 .roster-sorting__name {

@@ -18,6 +18,6 @@
 
 <script>
     export default {
-        name: "version-history",
-    }
+      name: 'version-history',
+    };
 </script>

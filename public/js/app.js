@@ -13086,10 +13086,10 @@ module.exports = __webpack_require__(180);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_croppa__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_croppa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_croppa__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(143);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_carousel__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_carousel__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(143);
 
 
 
@@ -13098,7 +13098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(158);
 window.Vue = __webpack_require__(6);
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_carousel___default.a);
+Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_carousel___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_croppa___default.a);
 
 Vue.component('nav-bar', __webpack_require__(159));
@@ -13108,9 +13108,9 @@ Vue.component('permission-modal', __webpack_require__(174));
 Vue.component('side-menu', __webpack_require__(177));
 
 var app = new Vue({
-    el: '#app',
-    router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */],
-    store: __WEBPACK_IMPORTED_MODULE_2__store__["a" /* default */]
+  el: '#app',
+  router: __WEBPACK_IMPORTED_MODULE_2__router__["a" /* default */],
+  store: __WEBPACK_IMPORTED_MODULE_3__store__["a" /* default */]
 });
 
 /***/ }),
@@ -14989,32 +14989,32 @@ return VueCroppa;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
-    routes: [{
-        name: 'home',
-        path: '/',
-        component: __WEBPACK_IMPORTED_MODULE_2__views_home___default.a
-    }, {
-        name: 'class',
-        path: '/class/:id',
-        component: __WEBPACK_IMPORTED_MODULE_3__views_class___default.a
-    }, {
-        name: 'profile',
-        path: '/profile/:courseID/:emailURI',
-        component: __WEBPACK_IMPORTED_MODULE_4__views_profile___default.a,
-        props: true
-    }, {
-        name: 'about',
-        path: '/about',
-        component: __WEBPACK_IMPORTED_MODULE_5__views_about___default.a
-    }, {
-        name: 'settings',
-        path: '/settings',
-        component: __WEBPACK_IMPORTED_MODULE_6__views_settings___default.a
-    }],
+  routes: [{
+    name: 'home',
+    path: '/',
+    component: __WEBPACK_IMPORTED_MODULE_2__views_home___default.a
+  }, {
+    name: 'class',
+    path: '/class/:id',
+    component: __WEBPACK_IMPORTED_MODULE_3__views_class___default.a
+  }, {
+    name: 'profile',
+    path: '/profile/:courseID/:emailURI',
+    component: __WEBPACK_IMPORTED_MODULE_4__views_profile___default.a,
+    props: true
+  }, {
+    name: 'about',
+    path: '/about',
+    component: __WEBPACK_IMPORTED_MODULE_5__views_about___default.a
+  }, {
+    name: 'settings',
+    path: '/settings',
+    component: __WEBPACK_IMPORTED_MODULE_6__views_settings___default.a
+  }],
 
-    scrollBehavior: function scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 };
-    }
+  scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
@@ -17962,32 +17962,38 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue__);
 //
 //
 //
 //
 //
 //
+//
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "home",
+    name: 'home',
 
     components: {
-        termSelector: __WEBPACK_IMPORTED_MODULE_0__components_course_components_termSelector_vue___default.a,
-        coursesContainer: __WEBPACK_IMPORTED_MODULE_1__components_course_components_coursesContainer_vue___default.a
+        termSelector: __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue___default.a,
+        coursesContainer: __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue___default.a,
+        navBar: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default.a
     },
 
     created: function created() {
-        this.$store.dispatch("clearErrors");
+        this.$store.dispatch('clearErrors');
     },
     beforeCreate: function beforeCreate() {
-        this.$store.dispatch("getOnlyData");
+        this.$store.dispatch('getOnlyData');
     }
 });
 
@@ -18070,57 +18076,59 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "term-selector",
+  name: 'term-selector',
 
-    data: function data() {
-        return {
-            season: 3,
-            year: null,
-            formValidated: true
-        };
-    },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['semester'])),
-
-    created: function created() {
-        this.$store.dispatch('doneLoadingClasses');
-    },
+  data: function data() {
+    return {
+      season: 3,
+      year: null,
+      formValidated: true
+    };
+  },
 
 
-    methods: {
-        handleSubmit: function handleSubmit() {
-            if (this.formValidated) {
-                this.$store.dispatch('loadingClassesTrue');
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['semester'])),
 
-                switch (this.season) {
-                    case "0":
-                        this.$store.dispatch('setSpring');
-                        break;
-                    case "1":
-                        this.$store.dispatch('setSummer');
-                        break;
-                    case "2":
-                        this.$store.dispatch('setFall');
-                        break;
-                    case "3":
-                        this.$store.dispatch('setWinter');
-                        break;
-                }
-                this.$store.dispatch('setTermYear', this.year);
-                this.$store.dispatch('getOnlyData');
-            }
-        },
-        handleSelect: function handleSelect(input) {
-            this.season = input.target.value;
-        },
-        validateYear: function validateYear() {
-            var inputYear = document.getElementById('inputYear').value;
-            var yearRegex = /^(20|19)\d\d/;
-            this.formValidated = yearRegex.test(inputYear);
-            this.handleSubmit();
+  created: function created() {
+    this.$store.dispatch('doneLoadingClasses');
+  },
+
+
+  methods: {
+    handleSubmit: function handleSubmit() {
+      if (this.formValidated) {
+        this.$store.dispatch('loadingClassesTrue');
+
+        switch (this.season) {
+          case '0':
+            this.$store.dispatch('setSpring');
+            break;
+          case '1':
+            this.$store.dispatch('setSummer');
+            break;
+          case '2':
+            this.$store.dispatch('setFall');
+            break;
+          case '3':
+            this.$store.dispatch('setWinter');
+            break;
         }
+        this.$store.dispatch('setTermYear', this.year);
+        this.$store.dispatch('getOnlyData');
+      }
+    },
+    handleSelect: function handleSelect(input) {
+      this.season = input.target.value;
+    },
+    validateYear: function validateYear() {
+      var inputYear = document.getElementById('inputYear').value;
+      var yearRegex = /^(20|19)\d\d/;
+      this.formValidated = yearRegex.test(inputYear);
+      this.handleSubmit();
     }
+  }
 });
 
 /***/ }),
@@ -18275,9 +18283,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__courseList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__courseList__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseList__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__courseList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__courseList__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -18326,73 +18334,75 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "courses-container",
+  name: 'courses-container',
 
-    data: function data() {
-        return {
-            displayedTerm: ""
-        };
+  data: function data() {
+    return {
+      displayedTerm: ''
+    };
+  },
+
+
+  components: {
+    courseList: __WEBPACK_IMPORTED_MODULE_1__courseList___default.a
+  },
+
+  // On page load, sets 'Spring' as default season option
+  created: function created() {
+    this.$store.dispatch('setSpring');
+  },
+
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'selectedTerm', 'loadingClasses']), {
+    shouldLoadClasses: function shouldLoadClasses() {
+      if (this.facultyMember.image === null || this.loadingClasses) return true;
+      return false;
     },
-
-    components: {
-        courseList: __WEBPACK_IMPORTED_MODULE_0__courseList___default.a
-    },
-
-    //On page load, sets 'Spring' as default season option
-    created: function created() {
-        this.$store.dispatch("setSpring");
-    },
-
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["list", "courses", "facultyMember", "facultyFullName", "term", "selectedTerm", "loadingClasses"]), {
-        shouldLoadClasses: function shouldLoadClasses() {
-            if (this.facultyMember.image === null || this.loadingClasses) return true;else return false;
-        },
-        displayCurrentTerm: function displayCurrentTerm() {
-            if (this.term != null) {
-                var termCode = this.term;
-                switch (termCode.charAt(3)) {
-                    case "3":
-                        this.displayedTerm = "Spring";
-                        break;
-                    case "5":
-                        this.displayedTerm = "Summer";
-                        break;
-                    case "7":
-                        this.displayedTerm = "Fall";
-                        break;
-                    case "9":
-                        this.displayedTerm = "Winter";
-                }
-                if (termCode.charAt(0) == "2") {
-                    this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
-                } else {
-                    this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
-                }
-                return this.displayedTerm;
-            }
+    displayCurrentTerm: function displayCurrentTerm() {
+      if (this.term != null) {
+        var termCode = this.term;
+        switch (termCode.charAt(3)) {
+          case '3':
+            this.displayedTerm = 'Spring';
+            break;
+          case '5':
+            this.displayedTerm = 'Summer';
+            break;
+          case '7':
+            this.displayedTerm = 'Fall';
+            break;
+          case '9':
+            this.displayedTerm = 'Winter';
         }
-    }),
-
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(["setPreviousTerm", "setCurrentTerm", "setNextTerm"]), {
-        setPrevTerm: function setPrevTerm() {
-            this.$store.dispatch('nullifyCourse');
-            if (this.selectedTerm != 'previous') {
-                this.setPreviousTerm();
-            }
-        },
-        setCurrTerm: function setCurrTerm() {
-            if (this.selectedTerm != 'current') {
-                this.setCurrentTerm();
-            }
-        },
-        setNeTerm: function setNeTerm() {
-            this.$store.dispatch('nullifyCourse');
-            if (this.selectedTerm != 'next') {
-                this.setNextTerm();
-            }
+        if (termCode.charAt(0) == '2') {
+          this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+        } else {
+          this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
         }
-    })
+        return this.displayedTerm;
+      }
+    }
+  }),
+
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['setPreviousTerm', 'setCurrentTerm', 'setNextTerm']), {
+    setPrevTerm: function setPrevTerm() {
+      this.$store.dispatch('nullifyCourse');
+      if (this.selectedTerm != 'previous') {
+        this.setPreviousTerm();
+      }
+    },
+    setCurrTerm: function setCurrTerm() {
+      if (this.selectedTerm != 'current') {
+        this.setCurrentTerm();
+      }
+    },
+    setNeTerm: function setNeTerm() {
+      this.$store.dispatch('nullifyCourse');
+      if (this.selectedTerm != 'next') {
+        this.setNextTerm();
+      }
+    }
+  })
 });
 
 /***/ }),
@@ -18470,21 +18480,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "course-list",
-    data: function data() {
-        return {
-            messages: true,
-            errors: []
-        };
-    },
+  name: 'course-list',
+  data: function data() {
+    return {
+      messages: true,
+      errors: []
+    };
+  },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses'])),
 
-    components: {
-        courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a,
-        emptyCourseItem: __WEBPACK_IMPORTED_MODULE_2__emptyCourseItem_vue___default.a
-    }
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses'])),
+
+  components: {
+    courseListItem: __WEBPACK_IMPORTED_MODULE_1__courseListItem_vue___default.a,
+    emptyCourseItem: __WEBPACK_IMPORTED_MODULE_2__emptyCourseItem_vue___default.a
+  }
 
 });
 
@@ -18579,60 +18591,61 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "course-list-item",
+  name: 'course-list-item',
 
-	props: ["course"],
+  props: ['course'],
 
-	computed: {
-		classStartTime: function classStartTime() {
-			return this.convertTime(this.course.meetings[0].start_time);
-		},
-		classEndTime: function classEndTime() {
-			return this.convertTime(this.course.meetings[0].end_time);
-		}
-	},
+  computed: {
+    classStartTime: function classStartTime() {
+      return this.convertTime(this.course.meetings[0].start_time);
+    },
+    classEndTime: function classEndTime() {
+      return this.convertTime(this.course.meetings[0].end_time);
+    }
+  },
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["currentStudent"]), {
-		convertTime: function convertTime(OriginalTime) {
-			var time = OriginalTime;
-			var hour = parseInt(time.substring(0, 2));
-			var min = time.substring(2, 4) + " a.m.";
-			if (hour > 12) {
-				hour = hour - 12;
-				min = min.substring(0, 2) + " p.m.";
-			}
-			time = hour + ":" + min;
-			return time;
-		},
-		convertDays: function convertDays(originalDays) {
-			var days = originalDays;
-			var split = days.split("");
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['currentStudent']), {
+    convertTime: function convertTime(OriginalTime) {
+      var time = OriginalTime;
+      var hour = parseInt(time.substring(0, 2));
+      var min = time.substring(2, 4) + ' a.m.';
+      if (hour > 12) {
+        hour -= 12;
+        min = min.substring(0, 2) + ' p.m.';
+      }
+      time = hour + ':' + min;
+      return time;
+    },
+    convertDays: function convertDays(originalDays) {
+      var days = originalDays;
+      var split = days.split('');
 
-			// M T W R F S
-			// Mo Tu We Th Fr Sa
-			var result = split.map(function (day) {
-				if (day === 'M') day = 'Mo';
-				if (day === 'T') day = 'Tu';
-				if (day === 'W') day = 'We';
-				if (day === 'R') day = 'Th';
-				if (day === 'F') day = 'Fr';
-				if (day === 'S') day = 'Sa';
-				return day;
-			});
+      // M T W R F S
+      // Mo Tu We Th Fr Sa
+      var result = split.map(function (day) {
+        if (day === 'M') day = 'Mo';
+        if (day === 'T') day = 'Tu';
+        if (day === 'W') day = 'We';
+        if (day === 'R') day = 'Th';
+        if (day === 'F') day = 'Fr';
+        if (day === 'S') day = 'Sa';
+        return day;
+      });
 
-			return result.join("");
-		},
-		storeSelectedCourse: function storeSelectedCourse() {
-			this.$store.dispatch("storeLocation", "class");
-			this.$store.dispatch("storeCourse", this.course.id);
-		},
-		clearStudent: function clearStudent() {
-			if (this.currentStudent) {
-				this.$store.dispatch("clearStudent");
-			}
-		}
-	})
+      return result.join('');
+    },
+    storeSelectedCourse: function storeSelectedCourse() {
+      this.$store.dispatch('storeLocation', 'class');
+      this.$store.dispatch('storeCourse', this.course.id);
+    },
+    clearStudent: function clearStudent() {
+      if (this.currentStudent) {
+        this.$store.dispatch('clearStudent');
+      }
+    }
+  })
 });
 
 /***/ }),
@@ -18809,7 +18822,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "empty-course-item"
+  name: 'empty-course-item'
 });
 
 /***/ }),
@@ -19062,7 +19075,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("courses-container")], 1)
+  return _c("div", [_c("nav-bar"), _vm._v(" "), _c("courses-container")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19131,8 +19144,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_roster_components_settingsBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_roster_components_settingsBanner_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_roster_components_courseBanner_vue__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_roster_components_courseBanner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_roster_components_courseBanner_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_roster_components_rosterContainer_vue__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_roster_components_rosterContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_roster_components_rosterContainer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue__);
 //
 //
 //
@@ -19143,19 +19158,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "class",
+    name: 'class',
     components: {
         settingsBanner: __WEBPACK_IMPORTED_MODULE_0__components_roster_components_settingsBanner_vue___default.a,
         courseBanner: __WEBPACK_IMPORTED_MODULE_1__components_roster_components_courseBanner_vue___default.a,
-        rosterContainer: __WEBPACK_IMPORTED_MODULE_2__components_roster_components_rosterContainer_vue___default.a
+        rosterContainer: __WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue___default.a,
+        navBar: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue___default.a
     },
+
     created: function created() {
-        this.$store.dispatch("clearErrors");
+        this.$store.dispatch('clearErrors');
     }
 });
 
@@ -19212,15 +19232,15 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__sortSelector_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_listGridSelector_vue__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_listGridSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fixed_components_listGridSelector_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shuffleButton_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shuffleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__shuffleButton_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cardToggleButton_vue__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cardToggleButton_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__cardToggleButton_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sortSelector_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sortSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__sortSelector_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fixed_components_listGridSelector_vue__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__fixed_components_listGridSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__fixed_components_listGridSelector_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -19244,17 +19264,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "settings-banner",
+  name: 'settings-banner',
 
-    components: {
-        shuffleButton: __WEBPACK_IMPORTED_MODULE_0__shuffleButton_vue___default.a,
-        cardToggleButton: __WEBPACK_IMPORTED_MODULE_1__cardToggleButton_vue___default.a,
-        sortSelector: __WEBPACK_IMPORTED_MODULE_2__sortSelector_vue___default.a,
-        listGridSelector: __WEBPACK_IMPORTED_MODULE_3__fixed_components_listGridSelector_vue___default.a
-    },
+  components: {
+    shuffleButton: __WEBPACK_IMPORTED_MODULE_1__shuffleButton_vue___default.a,
+    cardToggleButton: __WEBPACK_IMPORTED_MODULE_2__cardToggleButton_vue___default.a,
+    sortSelector: __WEBPACK_IMPORTED_MODULE_3__sortSelector_vue___default.a,
+    listGridSelector: __WEBPACK_IMPORTED_MODULE_4__fixed_components_listGridSelector_vue___default.a
+  },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["c" /* mapGetters */])(['courseTitle', 'list', 'flash']))
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courseTitle', 'list', 'flash']))
 });
 
 /***/ }),
@@ -19322,10 +19343,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "shuffle-button",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'shuffle-button',
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
 });
 
 /***/ }),
@@ -19430,9 +19452,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "card-toggle-button",
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
+  name: 'card-toggle-button',
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list']))
 });
 
 /***/ }),
@@ -19557,24 +19580,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "sort-selector",
+  name: 'sort-selector',
 
-    created: function created() {
-        this.sort_a_to_z = "M187.298 395.314l-79.984 80.002c-6.248 6.247-16.383 6.245-22.627 0L4.705 395.314C-5.365 385.244 1.807 368 16.019 368H64V48c0-8.837 7.163-16 16-16h32c8.837 0 16 7.163 16 16v320h47.984c14.241 0 21.363 17.264 11.314 27.314zm119.075-180.007A12 12 0 0 1 294.838 224h-35.717c-8.22 0-14.007-8.078-11.362-15.861l57.096-168A12 12 0 0 1 316.217 32h39.566c5.139 0 9.708 3.273 11.362 8.139l57.096 168C426.886 215.922 421.1 224 412.879 224h-35.735a12 12 0 0 1-11.515-8.622l-8.301-28.299h-42.863l-8.092 28.228zm22.857-78.697h13.367l-6.6-22.937-6.767 22.937zm12.575 287.323l67.451-95.698a12 12 0 0 0 2.192-6.913V300c0-6.627-5.373-12-12-12H274.522c-6.627 0-12 5.373-12 12v28.93c0 6.627 5.373 12 12 12h56.469c-.739.991-1.497 2.036-2.27 3.133l-67.203 95.205a12.001 12.001 0 0 0-2.196 6.92V468c0 6.627 5.373 12 12 12h129.355c6.627 0 12-5.373 12-12v-28.93c0-6.627-5.373-12-12-12h-61.146c.74-.993 1.5-2.039 2.274-3.137z";
-        this.sort_z_to_a = "m187.3 395.3l-80 80c-6.2 6.2-16.4 6.2-22.6 0l-80-80c-10.1-10.1-2.9-27.3 11.3-27.3h48v-320c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v320h48c14.2 0 21.3 17.3 11.3 27.3zm141.9-14.3h13.4l-6.6-22.9-6.8 22.9zm12.6-213.1l67.5-95.7c1.4-2 2.2-4.4 2.2-6.9v-21.3c0-6.6-5.4-12-12-12h-125c-6.6 0-12 5.4-12 12v28.9c0 6.6 5.4 12 12 12h56.5c-0.7 1-1.5 2-2.3 3.1l-67.2 95.2c-1.4 2-2.2 4.4-2.2 6.9v21.9c0 6.6 5.4 12 12 12h129.4c6.6 0 12-5.4 12-12v-28.9c0-6.6-5.4-12-12-12h-61.1c0.7-1 1.4-2.1 2.2-3.2zm-35.5 300.4c-1.5 5.1-6.2 8.7-11.5 8.7h-35.8c-8.2 0-14-8.1-11.4-15.9l57.1-168c1.7-4.9 6.2-8.1 11.4-8.1h39.6c5.1 0 9.7 3.3 11.4 8.1l57.1 168c2.6 7.8-3.1 15.9-11.4 15.9h-35.7c-5.3 0-10-3.5-11.5-8.6l-8.3-28.3h-42.9l-8.1 28.2z";
+  created: function created() {
+    this.sort_a_to_z = 'M187.298 395.314l-79.984 80.002c-6.248 6.247-16.383 6.245-22.627 0L4.705 395.314C-5.365 385.244 1.807 368 16.019 368H64V48c0-8.837 7.163-16 16-16h32c8.837 0 16 7.163 16 16v320h47.984c14.241 0 21.363 17.264 11.314 27.314zm119.075-180.007A12 12 0 0 1 294.838 224h-35.717c-8.22 0-14.007-8.078-11.362-15.861l57.096-168A12 12 0 0 1 316.217 32h39.566c5.139 0 9.708 3.273 11.362 8.139l57.096 168C426.886 215.922 421.1 224 412.879 224h-35.735a12 12 0 0 1-11.515-8.622l-8.301-28.299h-42.863l-8.092 28.228zm22.857-78.697h13.367l-6.6-22.937-6.767 22.937zm12.575 287.323l67.451-95.698a12 12 0 0 0 2.192-6.913V300c0-6.627-5.373-12-12-12H274.522c-6.627 0-12 5.373-12 12v28.93c0 6.627 5.373 12 12 12h56.469c-.739.991-1.497 2.036-2.27 3.133l-67.203 95.205a12.001 12.001 0 0 0-2.196 6.92V468c0 6.627 5.373 12 12 12h129.355c6.627 0 12-5.373 12-12v-28.93c0-6.627-5.373-12-12-12h-61.146c.74-.993 1.5-2.039 2.274-3.137z';
+    this.sort_z_to_a = 'm187.3 395.3l-80 80c-6.2 6.2-16.4 6.2-22.6 0l-80-80c-10.1-10.1-2.9-27.3 11.3-27.3h48v-320c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v320h48c14.2 0 21.3 17.3 11.3 27.3zm141.9-14.3h13.4l-6.6-22.9-6.8 22.9zm12.6-213.1l67.5-95.7c1.4-2 2.2-4.4 2.2-6.9v-21.3c0-6.6-5.4-12-12-12h-125c-6.6 0-12 5.4-12 12v28.9c0 6.6 5.4 12 12 12h56.5c-0.7 1-1.5 2-2.3 3.1l-67.2 95.2c-1.4 2-2.2 4.4-2.2 6.9v21.9c0 6.6 5.4 12 12 12h129.4c6.6 0 12-5.4 12-12v-28.9c0-6.6-5.4-12-12-12h-61.1c0.7-1 1.4-2.1 2.2-3.2zm-35.5 300.4c-1.5 5.1-6.2 8.7-11.5 8.7h-35.8c-8.2 0-14-8.1-11.4-15.9l57.1-168c1.7-4.9 6.2-8.1 11.4-8.1h39.6c5.1 0 9.7 3.3 11.4 8.1l57.1 168c2.6 7.8-3.1 15.9-11.4 15.9h-35.7c-5.3 0-10-3.5-11.5-8.6l-8.3-28.3h-42.9l-8.1 28.2z';
+  },
+
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortAscending', 'sortLastName'])),
+
+  methods: {
+    sortAsc: function sortAsc() {
+      this.$store.dispatch('sortAscending');
     },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['flash', 'list', 'sortAscending', 'sortLastName'])),
-
-    methods: {
-        sortAsc: function sortAsc() {
-            this.$store.dispatch('sortAscending');
-        },
-        sortDes: function sortDes() {
-            this.$store.dispatch('sortDescending');
-        }
+    sortDes: function sortDes() {
+      this.$store.dispatch('sortDescending');
     }
+  }
 
 });
 
@@ -19826,10 +19851,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "list-grid-selector",
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash']))
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'list-grid-selector',
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash']))
 });
 
 /***/ }),
@@ -20140,61 +20166,62 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "course-banner",
+  name: 'course-banner',
 
-    methods: {
-        convertTime: function convertTime(originalTime) {
-            var time = originalTime;
-            var hour = parseInt(time.substring(0, 2));
-            var min = time.substring(2, 4) + " a.m.";
+  methods: {
+    convertTime: function convertTime(originalTime) {
+      var time = originalTime;
+      var hour = parseInt(time.substring(0, 2));
+      var min = time.substring(2, 4) + ' a.m.';
 
-            if (hour > 12) {
-                hour = hour - 12;
-                min = min.substring(0, 2) + " p.m.";
-            }
+      if (hour > 12) {
+        hour -= 12;
+        min = min.substring(0, 2) + ' p.m.';
+      }
 
-            time = hour + ":" + min;
-            return time;
-        },
-        convertDays: function convertDays(originalDays) {
-            var days = originalDays;
-            var split = days.split("");
-
-            // M T W R F S
-            // Mo Tu We Th Fr Sa
-            var result = split.map(function (day) {
-                if (day === 'M') day = 'Mo';
-                if (day === 'T') day = 'Tu';
-                if (day === 'W') day = 'We';
-                if (day === 'R') day = 'Th';
-                if (day === 'F') day = 'Fr';
-                if (day === 'S') day = 'Sa';
-                return day;
-            });
-
-            return result.join("");
-        },
-        classStartTime: function classStartTime(time) {
-            return this.convertTime(time);
-        },
-        setScrollBar: function setScrollBar() {
-            var courseTab = document.getElementById(this.currentCourse);
-            courseTab.scrollIntoView({
-                block: "end"
-            });
-        },
-        storeCourse: function storeCourse(courseId) {
-            this.$store.dispatch('storeCourse', courseId);
-        }
+      time = hour + ':' + min;
+      return time;
     },
+    convertDays: function convertDays(originalDays) {
+      var days = originalDays;
+      var split = days.split('');
 
-    mounted: function mounted() {
-        this.setScrollBar();
+      // M T W R F S
+      // Mo Tu We Th Fr Sa
+      var result = split.map(function (day) {
+        if (day === 'M') day = 'Mo';
+        if (day === 'T') day = 'Tu';
+        if (day === 'W') day = 'We';
+        if (day === 'R') day = 'Th';
+        if (day === 'F') day = 'Fr';
+        if (day === 'S') day = 'Sa';
+        return day;
+      });
+
+      return result.join('');
     },
+    classStartTime: function classStartTime(time) {
+      return this.convertTime(time);
+    },
+    setScrollBar: function setScrollBar() {
+      var courseTab = document.getElementById(this.currentCourse);
+      courseTab.scrollIntoView({
+        block: 'end'
+      });
+    },
+    storeCourse: function storeCourse(courseId) {
+      this.$store.dispatch('storeCourse', courseId);
+    }
+  },
+
+  mounted: function mounted() {
+    this.setScrollBar();
+  },
 
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'currentCourse']))
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'currentCourse']))
 
 });
 
@@ -20323,11 +20350,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentMatrix__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__studentMatrix__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__studentList__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentMatrix__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentMatrix___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__studentMatrix__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__studentList__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__studentList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__studentList__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -20345,21 +20372,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "roster-container",
+  name: 'roster-container',
 
-    components: {
-        studentMatrix: __WEBPACK_IMPORTED_MODULE_0__studentMatrix___default.a,
-        studentList: __WEBPACK_IMPORTED_MODULE_1__studentList___default.a
-    },
+  components: {
+    studentMatrix: __WEBPACK_IMPORTED_MODULE_1__studentMatrix___default.a,
+    studentList: __WEBPACK_IMPORTED_MODULE_2__studentList___default.a
+  },
 
-    props: ['courseid'],
+  props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(['list'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list'])),
 
-    created: function created() {
-        this.$store.dispatch('nullifyStudentProfile');
-    }
+  created: function created() {
+    this.$store.dispatch('nullifyStudentProfile');
+  }
 });
 
 /***/ }),
@@ -20415,13 +20443,13 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flashCard__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__flashCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__flashCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__galleryCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__galleryCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__flashCard__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__flashCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__flashCard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galleryCard__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galleryCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__galleryCard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -20450,36 +20478,38 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "student-matrix",
+  name: 'student-matrix',
 
-    data: function data() {
-        return {
-            messages: true,
-            errors: [],
-            sortLastName: true,
-            sortDescending: true
-        };
-    },
+  data: function data() {
+    return {
+      messages: true,
+      errors: [],
+      sortLastName: true,
+      sortDescending: true
+    };
+  },
 
-    props: ['courseid'],
 
-    components: {
-        FlashCard: __WEBPACK_IMPORTED_MODULE_0__flashCard___default.a,
-        GalleryCard: __WEBPACK_IMPORTED_MODULE_1__galleryCard___default.a,
-        modal: __WEBPACK_IMPORTED_MODULE_2__fixed_components_modal_vue___default.a
-    },
+  props: ['courseid'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_3_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
-    methods: {
-        markStudentAsRecognized: function markStudentAsRecognized(payload) {
-            this.flashroster[this.courseid].forEach(function (student) {
-                if (student.student_id === payload.student_id) {
-                    student.recognized = payload.known;
-                }
-            });
+  components: {
+    FlashCard: __WEBPACK_IMPORTED_MODULE_1__flashCard___default.a,
+    GalleryCard: __WEBPACK_IMPORTED_MODULE_2__galleryCard___default.a,
+    modal: __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue___default.a
+  },
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
+  methods: {
+    markStudentAsRecognized: function markStudentAsRecognized(payload) {
+      this.flashroster[this.courseid].forEach(function (student) {
+        if (student.student_id === payload.student_id) {
+          student.recognized = payload.known;
         }
+      });
     }
+  }
 });
 
 /***/ }),
@@ -20564,8 +20594,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "flash-card",
+  name: 'flash-card',
 
   data: function data() {
     return {
@@ -20575,22 +20606,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
+
   components: {
     profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a
   },
 
-  props: ["student"],
+  props: ['student'],
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])([]), {
-
     display_name: function display_name() {
-      return this.student.first_name + " " + this.student.last_name;
+      return this.student.first_name + ' ' + this.student.last_name;
     },
-
     image: function image() {
       if (this.student.image_priority === 'likeness') {
         return this.student.images.likeness;
-      } else if (this.student.image_priority === 'avatar') {
+      }if (this.student.image_priority === 'avatar') {
         return this.student.images.avatar;
       }
     }
@@ -20599,7 +20629,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   methods: {
     updateRecognized: function updateRecognized() {
       this.known = !this.known;
-      this.$emit("markRecognized", {
+      this.$emit('markRecognized', {
         student_id: this.student.student_id,
         known: this.known
       });
@@ -21513,15 +21543,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
 	props: ["image", "student", "type", "editable"],
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["modalVisible"])),
 
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal']), {
 		showModal: function showModal() {
 
 			this.toggleModal(true);
-
 			this.dataForModal(this.student);
-			console.log(this.student);
 		},
 		checkPermission: function checkPermission() {
 			if (this.permission == false) {
@@ -21708,12 +21735,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -21737,69 +21760,45 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
-
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "gallery-card",
-	props: ["student"],
+		name: 'gallery-card',
+		props: ['student'],
 
-	data: function data() {
-		return {
-			messages: true,
-			errors: [],
-			showCroppaModal: false
-		};
-	},
+		data: function data() {
+				return {
+						messages: true,
+						errors: [],
+						showCroppaModal: false
+				};
+		},
 
-	components: {
-		croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a,
-		imageHandler: __WEBPACK_IMPORTED_MODULE_2__profile_components_imageHandler_vue___default.a,
-		profilePicture: __WEBPACK_IMPORTED_MODULE_3__profile_components_profilePicture_vue___default.a
-	},
+		components: {
+				profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a
+		},
 
-	created: function created() {
-		this.$store.dispatch("getStudentProfile", {
-			uri: this.student.email_uri,
-			faculty_id: this.facultyMember.id
-		});
-		console.log(this.student);
-	},
-
-
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'studentProfile', 'facultyMember', 'modalVisible', 'modalData']), {
-		displayModal: function displayModal() {
-			return this.showCroppaModal && this.permission;
+		created: function created() {
+				this.$store.dispatch("getStudentProfile", {
+						uri: this.student.email_uri,
+						faculty_id: this.facultyMember.id
+				});
 		},
 
 
-		display_name: function display_name() {
-			return this.student.first_name + " " + this.student.last_name[0] + ".";
-		},
-
-		email_uri: function email_uri() {
-			return this.student.email.split("@")[0];
-		},
-
-		image: function image() {
-			if (this.student.image_priority === 'likeness') {
-				return this.student.images.likeness;
-			} else if (this.student.image_priority === 'avatar') {
-				return this.student.images.avatar;
-			}
-		}
-	}),
-
-	methods: {
-		setImgUrl: function setImgUrl(url) {
-			this.showCroppaModal = false;
-			this.imgUrl = url;
-		},
-		checkPermission: function checkPermission() {
-			this.showCroppaModal = true;
-			if (this.permission == false) this.$store.dispatch('nullifyPermissionResponse');
-		}
-	}
+		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+				display_name: function display_name() {
+						return this.student.first_name + " " + this.student.last_name[0] + ".";
+				},
+				email_uri: function email_uri() {
+						return this.student.email.split('@')[0];
+				},
+				image: function image() {
+						if (this.student.image_priority === 'likeness') {
+								return this.student.images.likeness;
+						}if (this.student.image_priority === 'avatar') {
+								return this.student.images.avatar;
+						}
+				}
+		})
 });
 
 /***/ }),
@@ -21889,7 +21888,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     uri: emuri
                 }).then(function (response) {
                     if (response.status) {
-                        console.log(response);
                         _this2.$store.dispatch('getOnlyData');
                         _this2.$parent.$emit('close', url);
                     } else {
@@ -22016,8 +22014,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "image-handler",
+    name: 'image-handler',
 
     props: ['image_type'],
 
@@ -22182,7 +22181,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "modal",
+  name: 'modal',
 
   data: function data() {
     return {
@@ -22545,7 +22544,6 @@ var render = function() {
         _c(
           "carousel",
           {
-            staticStyle: { top: "100px" },
             attrs: {
               perPage: 1,
               paginationActiveColor: "#919191",
@@ -22760,9 +22758,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__studentListItem_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentListItem_vue__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__studentListItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__studentListItem_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -22774,30 +22772,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "student-list",
+  name: 'student-list',
 
-    data: function data() {
-        return {
-            show: false,
-            messages: true,
-            errors: [],
-            sortFirstName: true,
-            sortAscending: true
-        };
-    },
+  data: function data() {
+    return {
+      show: false,
+      messages: true,
+      errors: [],
+      sortFirstName: true,
+      sortAscending: true
+    };
+  },
 
-    components: {
-        studentListItem: __WEBPACK_IMPORTED_MODULE_0__studentListItem_vue___default.a
-    },
 
-    props: ["courseid"],
+  components: {
+    studentListItem: __WEBPACK_IMPORTED_MODULE_1__studentListItem_vue___default.a
+  },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["courses"])),
+  props: ['courseid'],
 
-    created: function created() {
-        this.loading = true;
-    }
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses'])),
+
+  created: function created() {
+    this.loading = true;
+  }
 });
 
 /***/ }),
@@ -22885,33 +22885,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "student-list-item",
+  name: 'student-list-item',
 
-    props: ["student"],
+  props: ['student'],
 
-    components: {
-        modal: __WEBPACK_IMPORTED_MODULE_1__fixed_components_modal_vue___default.a,
-        profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a
+  components: {
+    modal: __WEBPACK_IMPORTED_MODULE_1__fixed_components_modal_vue___default.a,
+    profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a
+  },
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])([]), {
+    display_name: function display_name() {
+      return this.student.first_name + ' ' + this.student.last_name;
     },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])([]), {
-
-        display_name: function display_name() {
-            return this.student.first_name + ' ' + this.student.last_name;
-        },
-
-        email_uri: function email_uri() {
-            return this.student.email.split('@')[0];
-        },
-
-        image: function image() {
-            if (this.student.image_priority === 'likeness') {
-                return this.student.images.likeness;
-            } else if (this.student.image_priority === 'avatar') {
-                return this.student.images.avatar;
-            }
-        }
-    })
+    email_uri: function email_uri() {
+      return this.student.email.split('@')[0];
+    },
+    image: function image() {
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      }if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
+    }
+  })
 });
 
 /***/ }),
@@ -23053,6 +23050,8 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("nav-bar"),
+      _vm._v(" "),
       _c("course-banner"),
       _vm._v(" "),
       _c("settings-banner"),
@@ -23139,6 +23138,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -23156,13 +23157,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "profile",
+	name: 'profile',
 
 	data: function data() {
 		return {
@@ -23170,49 +23174,51 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		};
 	},
 
+
 	components: {
 		profileContainer: __WEBPACK_IMPORTED_MODULE_1__components_profile_components_profileContainer_vue___default.a,
 		modal: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_modal_vue___default.a,
-		profileInfo: __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue___default.a
+		profileInfo: __WEBPACK_IMPORTED_MODULE_3__components_profile_components_profileInfo_vue___default.a,
+		navBar: __WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue___default.a
 	},
 
 	created: function created() {
-		this.$store.dispatch("disableBackButton");
-		this.$store.dispatch("showBackButton");
-		this.$store.dispatch("getStudentProfile", {
+		this.$store.dispatch('disableBackButton');
+		this.$store.dispatch('showBackButton');
+		this.$store.dispatch('getStudentProfile', {
 			uri: this.$route.params.emailURI,
 			faculty_id: this.facultyMember.id
 		});
 	},
 	mounted: function mounted() {
-		this.$store.dispatch("storeStudent", this.$route.params.emailURI);
+		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 	updated: function updated() {
-		this.$store.dispatch("enableBackButton");
+		this.$store.dispatch('enableBackButton');
 	},
 	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
 		if (this.profileLoadError) {
 			this.clearProfileErrors();
 		}
 		if (this.unsavedChanges) {
-			var answer = window.confirm("Do you really want to leave? You have unsaved changes.");
+			var answer = window.confirm('Do you really want to leave? You have unsaved changes.');
 
 			if (answer) {
-				this.$store.dispatch("hideBackButton");
+				this.$store.dispatch('hideBackButton');
 				next();
 			} else {
 				next(false);
 			}
 		} else {
-			this.$store.dispatch("hideBackButton");
+			this.$store.dispatch('hideBackButton');
 			next();
 		}
 	},
 
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "facultyMember", 'profileErrors', 'profileLoadError'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember', 'profileErrors', 'profileLoadError'])),
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["clearProfileErrors"]), {
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['clearProfileErrors']), {
 		setUnsavedChanges: function setUnsavedChanges() {
 			this.unsavedChanges = true;
 		},
@@ -23220,7 +23226,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			this.unsavedChanges = false;
 		}
 	})
-
 });
 
 /***/ }),
@@ -23429,14 +23434,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "profile-info",
+    name: 'profile-info',
     props: ['student'],
     data: function data() {
         return {
             showEmail: false
         };
     },
+
     components: {
         profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
         profilePicture: __WEBPACK_IMPORTED_MODULE_1__profilePicture_vue___default.a
@@ -23526,65 +23533,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "profile-notes",
+		name: 'profile-notes',
 
-	props: ["student"],
+		props: ['student'],
 
-	data: function data() {
-		return {
-			unsavedChanges: false,
-			noteSaved: false,
-			showEmail: false
-		};
-	},
-
-	components: {
-		modal: __WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue___default.a
-	},
-
-	mounted: function mounted() {
-		this.resizeNotes();
-	},
-
-
-	methods: {
-		updateNotes: function updateNotes(e) {
-			var _this = this;
-
-			this.resizeNotes();
-			this.$store.dispatch("updateNotes", e.target.value).then(function () {
-				_this.noteSaved = false;
-				_this.unsavedChanges = true;
-				_this.$emit("unsavedChanges");
-			});
+		data: function data() {
+				return {
+						unsavedChanges: false,
+						noteSaved: false,
+						showEmail: false
+				};
 		},
-		commitNotes: function commitNotes() {
-			var _this2 = this;
 
-			if (this.unsavedChanges == true) {
-				this.$store.dispatch("commitNotes").then(function () {
-					_this2.noteSaved = true;
-					_this2.unsavedChanges = false;
-					_this2.$emit("committedChanges");
-				});
-			}
+
+		components: {
+				modal: __WEBPACK_IMPORTED_MODULE_0__fixed_components_modal_vue___default.a
 		},
-		resizeNotes: function resizeNotes() {
-			var size = document.querySelector("#ex0").scrollHeight;
-			document.getElementById("ex0").style.height = size + "px";
+
+		mounted: function mounted() {
+				this.resizeNotes();
 		},
-		scrollToNotes: function scrollToNotes() {
-			document.getElementById("ex0").scrollIntoView();
+
+
+		methods: {
+				updateNotes: function updateNotes(e) {
+						var _this = this;
+
+						this.resizeNotes();
+						this.$store.dispatch('updateNotes', e.target.value).then(function () {
+								_this.noteSaved = false;
+								_this.unsavedChanges = true;
+								_this.$emit('unsavedChanges');
+						});
+				},
+				commitNotes: function commitNotes() {
+						var _this2 = this;
+
+						if (this.unsavedChanges == true) {
+								this.$store.dispatch('commitNotes').then(function () {
+										_this2.noteSaved = true;
+										_this2.unsavedChanges = false;
+										_this2.$emit('committedChanges');
+								});
+						}
+				},
+				resizeNotes: function resizeNotes() {
+						var size = document.querySelector('#ex0').scrollHeight;
+						document.getElementById('ex0').style.height = size + 'px';
+				},
+				scrollToNotes: function scrollToNotes() {
+						document.getElementById('ex0').scrollIntoView();
+				}
+		},
+		computed: {
+				characterCount: function characterCount() {
+						if (this.student.notes != null) {
+								return this.student.notes.length;
+						}
+				}
 		}
-	},
-	computed: {
-		characterCount: function characterCount() {
-			if (this.student.notes != null) {
-				return this.student.notes.length;
-			}
-		}
-	}
 });
 
 /***/ }),
@@ -23730,8 +23739,8 @@ var render = function() {
                 }),
                 _vm._v(
                   "\n                    " +
-                    _vm._s(this.student.emailURI) +
-                    "@my.csun.edu\n                "
+                    _vm._s(this.student.student.email) +
+                    "\n                "
                 )
               ]),
               _vm._v(" "),
@@ -23784,36 +23793,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    this.studentProfile.images == null ||
-    this.$route.params.emailURI != this.studentProfile.emailURI
-      ? _c("div", { staticClass: "type--center" }, [
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon__theme" })
-        ])
-      : _c(
-          "div",
-          [
-            _c("modal"),
+  return _c(
+    "div",
+    [
+      _c("nav-bar"),
+      _vm._v(" "),
+      this.studentProfile.images == null ||
+      this.$route.params.emailURI != this.studentProfile.emailURI
+        ? _c("div", { staticClass: "type--center" }, [
+            _c("br"),
             _vm._v(" "),
-            _c("profile-container", {
-              attrs: { student: this.studentProfile.student }
-            }),
+            _c("br"),
             _vm._v(" "),
-            _c("profile-info", {
-              attrs: { student: this.studentProfile },
-              on: {
-                unsavedChanges: _vm.setUnsavedChanges,
-                committedChanges: _vm.setChanges
-              }
-            })
-          ],
-          1
-        )
-  ])
+            _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon__theme" })
+          ])
+        : _c(
+            "div",
+            [
+              _c("modal"),
+              _vm._v(" "),
+              _c("profile-container", {
+                attrs: { student: this.studentProfile.student }
+              }),
+              _vm._v(" "),
+              _c("profile-info", {
+                attrs: { student: this.studentProfile },
+                on: {
+                  unsavedChanges: _vm.setUnsavedChanges,
+                  committedChanges: _vm.setChanges
+                }
+              })
+            ],
+            1
+          )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23878,22 +23893,27 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_about_components_aboutBanner__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_about_components_aboutBanner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_about_components_aboutBanner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner__);
 //
 //
 //
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
-        AboutBanner: __WEBPACK_IMPORTED_MODULE_0__components_about_components_aboutBanner___default.a
+        AboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
+        navBar: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default.a
     },
-    name: "About"
+    name: 'About'
 });
 
 /***/ }),
@@ -23942,24 +23962,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        VersionHistory: __WEBPACK_IMPORTED_MODULE_1__versionHistoryPage___default.a,
-        AboutPage: __WEBPACK_IMPORTED_MODULE_0__aboutPage___default.a },
-    name: "about-banner",
-    data: function data() {
-        return {
-            showAbout: true
-        };
-    },
+  components: {
+    VersionHistory: __WEBPACK_IMPORTED_MODULE_1__versionHistoryPage___default.a,
+    AboutPage: __WEBPACK_IMPORTED_MODULE_0__aboutPage___default.a
+  },
+  name: 'about-banner',
+  data: function data() {
+    return {
+      showAbout: true
+    };
+  },
 
-    methods: {
-        selectAbout: function selectAbout() {
-            this.showAbout = true;
-        },
-        selectVersion: function selectVersion() {
-            this.showAbout = false;
-        }
+
+  methods: {
+    selectAbout: function selectAbout() {
+      this.showAbout = true;
+    },
+    selectVersion: function selectVersion() {
+      this.showAbout = false;
     }
+  }
 
 });
 
@@ -24050,7 +24072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "about-page"
+  name: 'about-page'
 });
 
 /***/ }),
@@ -24226,7 +24248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "version-history"
+  name: 'version-history'
 });
 
 /***/ }),
@@ -24360,7 +24382,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("about-banner")], 1)
+  return _c("div", [_c("nav-bar"), _vm._v(" "), _c("about-banner")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24425,10 +24447,12 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue__ = __webpack_require__(139);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSetting_vue__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSetting_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSetting_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_components_aboutBanner__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_about_components_aboutBanner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_about_components_aboutBanner__);
 //
 //
 //
@@ -24436,16 +24460,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Settings",
-  components: {
-    aboutBanner: __WEBPACK_IMPORTED_MODULE_1__components_about_components_aboutBanner___default.a,
-    themeSetting: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_themeSetting_vue___default.a
-  }
+    name: 'Settings',
+    components: {
+        aboutBanner: __WEBPACK_IMPORTED_MODULE_2__components_about_components_aboutBanner___default.a,
+        themeSetting: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSetting_vue___default.a,
+        navBar: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default.a
+    }
 });
 
 /***/ }),
@@ -24523,34 +24552,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "theme-setting",
+  name: 'theme-setting',
 
-    data: function data() {
-        return {
-            showModal: false
-        };
-    },
+  data: function data() {
+    return {
+      showModal: false
+    };
+  },
+  created: function created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
 
-    created: function created() {
-        this.url = document.querySelector('meta[name=app-url]').content;
-    },
 
-    methods: {
-        updateTheme: function updateTheme(theme) {
-            var data = new FormData();
-            data.append('theme', theme);
+  methods: {
+    updateTheme: function updateTheme(theme) {
+      var data = new FormData();
+      data.append('theme', theme);
 
-            axios.post(this.url + '/update_theme', data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            }).then(function () {
-                document.getElementById("mainBody").className = theme;
-            }).catch(function (e) {
-                console.log(e);
-            });
+      axios.post(this.url + '/update_theme', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
+      }).then(function () {
+        document.getElementById('mainBody').className = theme;
+      }).catch(function (e) {
+        console.log(e);
+      });
     }
+  }
 
 });
 
@@ -24648,8 +24677,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
-    [_c("theme-setting"), _vm._v(" "), _c("about-banner")],
+    [
+      _c("nav-bar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "container" },
+        [_c("theme-setting"), _vm._v(" "), _c("about-banner")],
+        1
+      )
+    ],
     1
   )
 }
@@ -24668,29 +24705,29 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_base__ = __webpack_require__(144);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_profile__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex_persistedstate__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_profile__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_base__ = __webpack_require__(144);
 
 
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */]);
 
-var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
-    plugins: [Object(__WEBPACK_IMPORTED_MODULE_2_vuex_persistedstate__["a" /* default */])({
-        key: 'nameface'
-    })],
+var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
+  plugins: [Object(__WEBPACK_IMPORTED_MODULE_0_vuex_persistedstate__["a" /* default */])({
+    key: 'nameface'
+  })],
 
-    modules: {
-        base: __WEBPACK_IMPORTED_MODULE_0__modules_base__["a" /* default */],
-        profile: __WEBPACK_IMPORTED_MODULE_1__modules_profile__["a" /* default */]
-    }
+  modules: {
+    base: __WEBPACK_IMPORTED_MODULE_4__modules_base__["a" /* default */],
+    profile: __WEBPACK_IMPORTED_MODULE_3__modules_profile__["a" /* default */]
+  }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (store);
@@ -24710,10 +24747,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
-    getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
-    actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
-    mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
 });
 
 /***/ }),
@@ -24722,46 +24759,46 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    // General
-    courses: [],
-    flashroster: [],
-    errors: null,
-    imagePermission: true,
-    displaySideMenu: false,
-    currentLocation: 'home',
-    students: [],
+  // General
+  courses: [],
+  flashroster: [],
+  errors: null,
+  imagePermission: true,
+  displaySideMenu: false,
+  currentLocation: 'home',
+  students: [],
 
-    // Views & Sorting
-    list: true,
-    flash: false,
-    sortLastName: false,
-    sortAscending: true,
+  // Views & Sorting
+  list: true,
+  flash: false,
+  sortLastName: false,
+  sortAscending: true,
 
-    // Themes
-    themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
+  // Themes
+  themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
 
-    // Back Button
-    hideBack: true,
-    disableBack: false,
+  // Back Button
+  hideBack: true,
+  disableBack: false,
 
-    // Courses
-    semester: null,
-    termYear: null,
-    term: null,
-    selectedTerm: 'current',
-    loadingClasses: true,
-    currentCourse: null,
+  // Courses
+  semester: null,
+  termYear: null,
+  term: null,
+  selectedTerm: 'current',
+  loadingClasses: true,
+  currentCourse: null,
 
-    // User Info
-    facultyMember: {
-        email: null,
-        emailURI: null,
-        profile: null,
-        firstName: null,
-        lastName: null,
-        image: null,
-        id: null
-    }
+  // User Info
+  facultyMember: {
+    email: null,
+    emailURI: null,
+    profile: null,
+    firstName: null,
+    lastName: null,
+    image: null,
+    id: null
+  }
 });
 
 /***/ }),
@@ -24771,83 +24808,83 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
 
-    // General
-    courses: function courses(state) {
-        return state.courses;
-    },
-    students: function students(state) {
-        return state.students;
-    },
-    displaySideMenu: function displaySideMenu(state) {
-        return state.displaySideMenu;
-    },
-    errors: function errors(state) {
-        return state.errors;
-    },
-    permission: function permission(state) {
-        return state.imagePermission;
-    },
-    currentLocation: function currentLocation(state) {
-        return state.currentLocation;
-    },
+  // General
+  courses: function courses(state) {
+    return state.courses;
+  },
+  students: function students(state) {
+    return state.students;
+  },
+  displaySideMenu: function displaySideMenu(state) {
+    return state.displaySideMenu;
+  },
+  errors: function errors(state) {
+    return state.errors;
+  },
+  permission: function permission(state) {
+    return state.imagePermission;
+  },
+  currentLocation: function currentLocation(state) {
+    return state.currentLocation;
+  },
 
-    // Back Button
-    hideBack: function hideBack(state) {
-        return state.hideBack;
-    },
-    disableBack: function disableBack(state) {
-        return state.disableBack;
-    },
+  // Back Button
+  hideBack: function hideBack(state) {
+    return state.hideBack;
+  },
+  disableBack: function disableBack(state) {
+    return state.disableBack;
+  },
 
-    // Themes
-    themeName: function themeName(state) {
-        return state.themeName;
-    },
+  // Themes
+  themeName: function themeName(state) {
+    return state.themeName;
+  },
 
-    // Views & Sorting
-    flashroster: function flashroster(state) {
-        return state.flashroster;
-    },
-    list: function list(state) {
-        return state.list;
-    },
-    flash: function flash(state) {
-        return state.flash;
-    },
-    sortLastName: function sortLastName(state) {
-        return state.sortLastName;
-    },
-    sortAscending: function sortAscending(state) {
-        return state.sortAscending;
-    },
+  // Views & Sorting
+  flashroster: function flashroster(state) {
+    return state.flashroster;
+  },
+  list: function list(state) {
+    return state.list;
+  },
+  flash: function flash(state) {
+    return state.flash;
+  },
+  sortLastName: function sortLastName(state) {
+    return state.sortLastName;
+  },
+  sortAscending: function sortAscending(state) {
+    return state.sortAscending;
+  },
 
-    // Courses
-    semester: function semester(state) {
-        return state.semester;
-    },
-    termYear: function termYear(state) {
-        return state.termYear;
-    },
-    term: function term(state) {
-        return state.term;
-    },
-    selectedTerm: function selectedTerm(state) {
-        return state.selectedTerm;
-    },
-    loadingClasses: function loadingClasses(state) {
-        return state.loadingClasses;
-    },
-    currentCourse: function currentCourse(state) {
-        return state.currentCourse;
-    },
+  // Courses
+  semester: function semester(state) {
+    return state.semester;
+  },
+  termYear: function termYear(state) {
+    return state.termYear;
+  },
+  term: function term(state) {
+    return state.term;
+  },
+  selectedTerm: function selectedTerm(state) {
+    return state.selectedTerm;
+  },
+  loadingClasses: function loadingClasses(state) {
+    return state.loadingClasses;
+  },
+  currentCourse: function currentCourse(state) {
+    return state.currentCourse;
+  },
 
-    // User
-    facultyMember: function facultyMember(state) {
-        return state.facultyMember;
-    },
-    facultyFullName: function facultyFullName(state) {
-        return state.facultyMember.firstName + " " + state.facultyMember.lastName;
-    }
+  // User
+  facultyMember: function facultyMember(state) {
+    return state.facultyMember;
+  },
+  facultyFullName: function facultyFullName(state) {
+    return state.facultyMember.firstName + " " + state.facultyMember.lastName;
+  }
 });
 
 /***/ }),
@@ -24856,265 +24893,265 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-	// General
-	getAllUserData: function getAllUserData(context) {
-		if (context.state.termYear != null) {
-			window.axios.get("data/" + context.state.term).then(function (response) {
-				context.commit("GET_DATA", response);
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				context.commit("GET_DATA", response);
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		}
+  // General
+  getAllUserData: function getAllUserData(context) {
+    if (context.state.termYear != null) {
+      window.axios.get('data/' + context.state.term).then(function (response) {
+        context.commit('GET_DATA', response);
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    } else {
+      window.axios.get('data').then(function (response) {
+        context.commit('GET_DATA', response);
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    }
 
-		window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-			context.commit("GET_FACULTY_PROFILE", response);
-		}).catch(function (error) {
-			context.commit("API_FAILURE", error);
-		});
+    window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+      context.commit('GET_FACULTY_PROFILE', response);
+    }).catch(function (error) {
+      context.commit('API_FAILURE', error);
+    });
 
-		window.axios.get('get_settings').then(function (response) {
-			context.commit("GET_SETTINGS", response);
-		}).catch(function (error) {
-			context.commit("API_FAILURE", error);
-		});
-	},
-	getOnlyData: function getOnlyData(context) {
-		if (context.state.termYear != null) {
-			window.axios.get("data/" + context.state.term).then(function (response) {
-				context.commit("GET_DATA", response);
+    window.axios.get('get_settings').then(function (response) {
+      context.commit('GET_SETTINGS', response);
+    }).catch(function (error) {
+      context.commit('API_FAILURE', error);
+    });
+  },
+  getOnlyData: function getOnlyData(context) {
+    if (context.state.termYear != null) {
+      window.axios.get('data/' + context.state.term).then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				context.commit("GET_DATA", response);
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    } else {
+      window.axios.get('data').then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		}
-	},
-	getOnlySettings: function getOnlySettings(context) {
-		window.axios.get('get_settings').then(function (response) {
-			context.commit("GET_SETTINGS", response);
-		}).catch(function (error) {
-			context.commit("API_FAILURE", error);
-		});
-	},
-	clearErrors: function clearErrors(context) {
-		context.commit("CLEAR_ERRORS");
-	},
-	toggleMenu: function toggleMenu(context) {
-		context.commit("TOGGLE_MENU");
-	},
-	handlePermissionResponse: function handlePermissionResponse(context, payload) {
-		context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-	},
-	nullifyPermissionResponse: function nullifyPermissionResponse(context) {
-		context.commit("NULLIFY_PERMISSION_RESPONSE");
-	},
-	getUploadPermission: function getUploadPermission(context, payload) {
-		window.axios.get("get_upload_permission").then(function (response) {
-			context.commit("GET_UPLOAD_PERMISSION", response.data.permission);
-		}).catch(function (error) {
-			context.commit("API_FAILURE", error);
-		});
-	},
-	storePermission: function storePermission(context, payload) {
-		window.axios.post("store_permission").then(function (response) {
-			context.commit("STORE_PERMISSION", response);
-		}).catch(function (error) {
-			context.commit("API_FAILURE", error);
-		});
-	},
-	nullifyCourse: function nullifyCourse(context) {
-		context.commit("NULLIFY_COURSE");
-	},
-	updateImage: function updateImage(context, payload) {
-		context.commit("UPDATE_IMAGE", payload);
-	},
-	updateStudentPriority: function updateStudentPriority(context, payload) {
-		context.commit("UPDATE_STUDENT_PRIORITY", payload);
-	},
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    }
+  },
+  getOnlySettings: function getOnlySettings(context) {
+    window.axios.get('get_settings').then(function (response) {
+      context.commit('GET_SETTINGS', response);
+    }).catch(function (error) {
+      context.commit('API_FAILURE', error);
+    });
+  },
+  clearErrors: function clearErrors(context) {
+    context.commit('CLEAR_ERRORS');
+  },
+  toggleMenu: function toggleMenu(context) {
+    context.commit('TOGGLE_MENU');
+  },
+  handlePermissionResponse: function handlePermissionResponse(context, payload) {
+    context.commit('HANDLE_PERMISSION_RESPONSE', payload);
+  },
+  nullifyPermissionResponse: function nullifyPermissionResponse(context) {
+    context.commit('NULLIFY_PERMISSION_RESPONSE');
+  },
+  getUploadPermission: function getUploadPermission(context, payload) {
+    window.axios.get('get_upload_permission').then(function (response) {
+      context.commit('GET_UPLOAD_PERMISSION', response.data.permission);
+    }).catch(function (error) {
+      context.commit('API_FAILURE', error);
+    });
+  },
+  storePermission: function storePermission(context, payload) {
+    window.axios.post('store_permission').then(function (response) {
+      context.commit('STORE_PERMISSION', response);
+    }).catch(function (error) {
+      context.commit('API_FAILURE', error);
+    });
+  },
+  nullifyCourse: function nullifyCourse(context) {
+    context.commit('NULLIFY_COURSE');
+  },
+  updateImage: function updateImage(context, payload) {
+    context.commit('UPDATE_IMAGE', payload);
+  },
+  updateStudentPriority: function updateStudentPriority(context, payload) {
+    context.commit('UPDATE_STUDENT_PRIORITY', payload);
+  },
 
-	// Views & Sorting
-	setList: function setList(context) {
-		context.commit("SET_LIST");
-	},
-	setGallery: function setGallery(context) {
-		context.commit("SET_GALLERY");
-	},
-	setFlash: function setFlash(context) {
-		context.commit("SET_FLASH");
-	},
-	shuffleFlash: function shuffleFlash(context) {
-		context.commit("SHUFFLE_FLASH");
-	},
-	sortFirstName: function sortFirstName(context) {
-		context.commit("SORT_FIRST_NAME");
-		context.commit("SORT_ROSTER");
-	},
-	sortLastName: function sortLastName(context) {
-		context.commit("SORT_LAST_NAME");
-		context.commit("SORT_ROSTER");
-	},
-	sortDescending: function sortDescending(context) {
-		context.commit("SORT_DSC");
-		context.commit("SORT_ROSTER");
-	},
-	sortAscending: function sortAscending(context) {
-		context.commit("SORT_ASC");
-		context.commit("SORT_ROSTER");
-	},
-
-
-	// Back Button
-	hideBackButton: function hideBackButton(context) {
-		context.commit("HIDE_BACK_BUTTON");
-	},
-	showBackButton: function showBackButton(context) {
-		context.commit("SHOW_BACK_BUTTON");
-	},
-	disableBackButton: function disableBackButton(context) {
-		context.commit("DISABLE_BACK_BUTTON");
-	},
-	enableBackButton: function enableBackButton(context) {
-		context.commit("ENABLE_BACK_BUTTON");
-	},
+  // Views & Sorting
+  setList: function setList(context) {
+    context.commit('SET_LIST');
+  },
+  setGallery: function setGallery(context) {
+    context.commit('SET_GALLERY');
+  },
+  setFlash: function setFlash(context) {
+    context.commit('SET_FLASH');
+  },
+  shuffleFlash: function shuffleFlash(context) {
+    context.commit('SHUFFLE_FLASH');
+  },
+  sortFirstName: function sortFirstName(context) {
+    context.commit('SORT_FIRST_NAME');
+    context.commit('SORT_ROSTER');
+  },
+  sortLastName: function sortLastName(context) {
+    context.commit('SORT_LAST_NAME');
+    context.commit('SORT_ROSTER');
+  },
+  sortDescending: function sortDescending(context) {
+    context.commit('SORT_DSC');
+    context.commit('SORT_ROSTER');
+  },
+  sortAscending: function sortAscending(context) {
+    context.commit('SORT_ASC');
+    context.commit('SORT_ROSTER');
+  },
 
 
-	// Courses
-	setSpring: function setSpring(context) {
-		context.commit("SET_SPRING");
-	},
-	setSummer: function setSummer(context) {
-		context.commit("SET_SUMMER");
-	},
-	setFall: function setFall(context) {
-		context.commit("SET_FALL");
-	},
-	setWinter: function setWinter(context) {
-		context.commit("SET_WINTER");
-	},
-	setTermYear: function setTermYear(context, payload) {
-		context.commit("SET_TERM_YEAR", payload);
-	},
-	loadingClassesTrue: function loadingClassesTrue(context) {
-		context.commit("SET_CLASS_IS_LOADING");
-	},
-	doneLoadingClasses: function doneLoadingClasses(context) {
-		context.commit("SET_CLASS_DONE_LOADING");
-	},
-	storeCourse: function storeCourse(context, payload) {
-		context.commit("STORE_COURSE", payload);
-	},
-	storeLocation: function storeLocation(context, payload) {
-		context.commit("STORE_LOCATION", payload);
-	},
-	setPreviousTerm: function setPreviousTerm(context, payload) {
-		context.commit("SET_PREVIOUS_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get("data/" + context.state.term).then(function (response) {
-				context.commit("GET_DATA", response);
+  // Back Button
+  hideBackButton: function hideBackButton(context) {
+    context.commit('HIDE_BACK_BUTTON');
+  },
+  showBackButton: function showBackButton(context) {
+    context.commit('SHOW_BACK_BUTTON');
+  },
+  disableBackButton: function disableBackButton(context) {
+    context.commit('DISABLE_BACK_BUTTON');
+  },
+  enableBackButton: function enableBackButton(context) {
+    context.commit('ENABLE_BACK_BUTTON');
+  },
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				context.commit("GET_DATA", response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		}
-	},
-	setCurrentTerm: function setCurrentTerm(context, payload) {
-		context.commit("SET_CURRENT_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get("data/" + context.state.term).then(function (response) {
-				context.commit("GET_DATA", response);
+  // Courses
+  setSpring: function setSpring(context) {
+    context.commit('SET_SPRING');
+  },
+  setSummer: function setSummer(context) {
+    context.commit('SET_SUMMER');
+  },
+  setFall: function setFall(context) {
+    context.commit('SET_FALL');
+  },
+  setWinter: function setWinter(context) {
+    context.commit('SET_WINTER');
+  },
+  setTermYear: function setTermYear(context, payload) {
+    context.commit('SET_TERM_YEAR', payload);
+  },
+  loadingClassesTrue: function loadingClassesTrue(context) {
+    context.commit('SET_CLASS_IS_LOADING');
+  },
+  doneLoadingClasses: function doneLoadingClasses(context) {
+    context.commit('SET_CLASS_DONE_LOADING');
+  },
+  storeCourse: function storeCourse(context, payload) {
+    context.commit('STORE_COURSE', payload);
+  },
+  storeLocation: function storeLocation(context, payload) {
+    context.commit('STORE_LOCATION', payload);
+  },
+  setPreviousTerm: function setPreviousTerm(context, payload) {
+    context.commit('SET_PREVIOUS_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get('data/' + context.state.term).then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				context.commit("GET_DATA", response);
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    } else {
+      window.axios.get('data').then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		}
-	},
-	setNextTerm: function setNextTerm(context, payload) {
-		context.commit("SET_NEXT_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get("data/" + context.state.term).then(function (response) {
-				context.commit("GET_DATA", response);
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    }
+  },
+  setCurrentTerm: function setCurrentTerm(context, payload) {
+    context.commit('SET_CURRENT_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get('data/' + context.state.term).then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		} else {
-			window.axios.get("data").then(function (response) {
-				context.commit("GET_DATA", response);
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    } else {
+      window.axios.get('data').then(function (response) {
+        context.commit('GET_DATA', response);
 
-				window.axios.get("faculty_profile/" + context.state.facultyMember.email).then(function (response) {
-					context.commit("GET_FACULTY_PROFILE", response);
-				}).catch(function (error) {
-					context.commit("API_FAILURE", error);
-				});
-			}).catch(function (error) {
-				context.commit("API_FAILURE", error);
-			});
-		}
-	},
-	setSem: function setSem(context) {
-		context.commit("SET_SEM");
-	}
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    }
+  },
+  setNextTerm: function setNextTerm(context, payload) {
+    context.commit('SET_NEXT_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get('data/' + context.state.term).then(function (response) {
+        context.commit('GET_DATA', response);
+
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    } else {
+      window.axios.get('data').then(function (response) {
+        context.commit('GET_DATA', response);
+
+        window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
+          context.commit('GET_FACULTY_PROFILE', response);
+        }).catch(function (error) {
+          context.commit('API_FAILURE', error);
+        });
+      }).catch(function (error) {
+        context.commit('API_FAILURE', error);
+      });
+    }
+  },
+  setSem: function setSem(context) {
+    context.commit('SET_SEM');
+  }
 });
 
 /***/ }),
@@ -25123,306 +25160,284 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    API_FAILURE: function API_FAILURE(state, payload) {
-        state.errors = payload.response.data.message;
-    },
-    GET_SETTINGS: function GET_SETTINGS(state, payload) {
-        state.themeName = payload.data;
-        document.getElementById("mainBody").className = state.themeName.theme;
-    },
-    GET_DATA: function GET_DATA(state, payload) {
-        function capitalize(name) {
-            return name.charAt(0).toUpperCase() + name.substr(1);
-        }
-
-        state.term = payload.data.term;
-
-        if (state.termYear != null) {
-            var chosenTerm = state.termYear + state.semester;
-            chosenTerm = chosenTerm.slice(0, 1) + chosenTerm.slice(2);
-            state.term = chosenTerm;
-        } else {
-            state.students = payload.data.allStudents;
-        }
-
-        state.term = payload.data.term;
-        state.courses = payload.data.courses;
-        state.loadingClasses = false;
-        state.flashroster = payload.data.students;
-        state.facultyMember.email = payload.data.email;
-        state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-        state.facultyMember.profile = "http://www.csun.edu/faculty/profiles/" + state.facultyMember.name;
-    },
-    GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
-        state.facultyMember.image = payload.data.image;
-        state.facultyMember.id = payload.data.id;
-        state.facultyMember.firstName = payload.data.name_first;
-        state.facultyMember.lastName = payload.data.name_last;
-    },
-    UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
-        for (var i = 0, len = state.courses.length; i < len; i += 1) {
-            for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
-                if (state.courses[i].roster[j].student_id === payload.studentId) {
-                    state.courses[i].roster[j].image_priority = payload.image_priority;
-                }
-            }
-        }
-        for (var _i = 0, _len = state.flashroster.length; _i < _len; _i += 1) {
-            for (var _j = 0, _jLen = state.flashroster[_i].length; _j < _jLen; _j += 1) {
-                if (state.flashroster[_i][_j].student_id === payload.studentId) {
-                    state.flashroster[_i][_j].image_priority = payload.image_priority;
-                }
-            }
-        }
-    },
-    STORE_COURSE: function STORE_COURSE(state, payload) {
-        state.currentCourse = payload;
-    },
-    STORE_LOCATION: function STORE_LOCATION(state, payload) {
-        state.currentLocation = payload;
-    },
-    SET_LIST: function SET_LIST(state) {
-        state.list = true;
-        state.flash = false;
-    },
-    SET_GALLERY: function SET_GALLERY(state) {
-        state.list = false;
-        state.flash = false;
-    },
-    SET_FLASH: function SET_FLASH(state) {
-        state.list = false;
-        state.flash = true;
-    },
-    TOGGLE_MENU: function TOGGLE_MENU(state) {
-        state.displaySideMenu = !state.displaySideMenu;
-    },
-    SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
-        function shuffle(students) {
-            var currentIndex = students.length,
-                temporaryValue = void 0,
-                randomIndex = void 0;
-
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-
-                // Pick a remaining element...
-                randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex -= 1;
-
-                // And swap it with the current element.
-                temporaryValue = students[currentIndex];
-                students[currentIndex] = students[randomIndex];
-                students[randomIndex] = temporaryValue;
-            }
-        }
-
-        var len = state.flashroster.length;
-
-        var _loop = function _loop(i) {
-            var unKnownStudents = [];
-            var knownStudents = [];
-
-            state.flashroster[i].forEach(function (student) {
-                if (student.recognized === true) {
-                    knownStudents.push(student);
-                } else {
-                    unKnownStudents.push(student);
-                }
-            });
-
-            shuffle(unKnownStudents);
-            shuffle(knownStudents);
-
-            state.flashroster[i] = unKnownStudents.concat(knownStudents);
-        };
-
-        for (var i = 0; i < len; ++i) {
-            _loop(i);
-        }
-
-        state.flash = false;
-        state.flash = true;
-    },
-
-
-    SORT_ROSTER: function SORT_ROSTER(state) {
-        var len = state.courses.length;
-        for (var i = 0; i < len; ++i) {
-            var sortedRoster = function sortedRoster(self) {
-                if (state.sortLastName === true) {
-                    if (state.sortAscending === true) {
-                        return self.sort(function (a, b) {
-                            return a.last_name.localeCompare(b.last_name);
-                        });
-                    } else {
-                        return self.sort(function (a, b) {
-                            return a.last_name.localeCompare(b.last_name);
-                        }).reverse();
-                    }
-                } else {
-                    if (state.sortAscending === true) {
-                        return self.sort(function (a, b) {
-                            return a.first_name.localeCompare(b.first_name);
-                        });
-                    } else {
-                        return self.sort(function (a, b) {
-                            return a.first_name.localeCompare(b.first_name);
-                        }).reverse();
-                    }
-                }
-            };
-
-            state.courses[i].roster = sortedRoster(state.courses[i].roster);
-        }
-    },
-
-    SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
-        state.sortLastName = false;
-    },
-
-    SORT_LAST_NAME: function SORT_LAST_NAME(state) {
-        state.sortLastName = true;
-    },
-
-    SORT_ASC: function SORT_ASC(state) {
-        state.sortAscending = true;
-    },
-
-    SORT_DSC: function SORT_DSC(state) {
-        state.sortAscending = false;
-    },
-
-    CLEAR_ERRORS: function CLEAR_ERRORS(state) {
-        state.errors = null;
-    },
-
-    HIDE_BACK_BUTTON: function HIDE_BACK_BUTTON(state) {
-        state.hideBack = true;
-    },
-
-    SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
-        state.hideBack = false;
-    },
-
-    DISABLE_BACK_BUTTON: function DISABLE_BACK_BUTTON(state) {
-        state.disableBack = true;
-    },
-
-    ENABLE_BACK_BUTTON: function ENABLE_BACK_BUTTON(state) {
-        state.disableBack = false;
-    },
-
-    UPDATE_IMAGE: function UPDATE_IMAGE(state, payload) {
-        var id = payload.studentId;
-        var url = payload.imgUrl;
-        state.studentImages[id] = url;
-    },
-
-    SET_SPRING: function SET_SPRING(state) {
-        state.semester = 3;
-    },
-
-    SET_SUMMER: function SET_SUMMER(state) {
-        state.semester = 5;
-    },
-
-    SET_FALL: function SET_FALL(state) {
-        state.semester = 7;
-    },
-
-    SET_WINTER: function SET_WINTER(state) {
-        state.semester = 9;
-    },
-
-    SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
-        state.termYear = payload;
-    },
-
-    SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
-        state.loadingClasses = true;
-    },
-    SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
-        state.loadingClasses = false;
-    },
-    HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
-        state.imagePermission = payload;
-    },
-    NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
-        state.imagePermission = null;
-    },
-    GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
-        state.imagePermission = payload;
-        if (payload == false) {
-            state.imagePermission = null;
-        }
-    },
-    STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
-        state.imagePermission = payload;
-    },
-    NULLIFY_COURSE: function NULLIFY_COURSE(state) {
-        state.currentCourse = null;
-    },
-    SET_PREVIOUS_TERM: function SET_PREVIOUS_TERM(state) {
-        state.loadingClasses = true;
-        state.termYear = state.term.slice(0, 3);
-        state.semester = state.term.slice(3);
-        if (state.selectedTerm == 'current') {
-            state.semester = state.semester - 2;
-            if (state.semester < 3) {
-                state.semester = 9;
-                state.termYear = state.termYear - 1;
-            }
-        } else if (state.selectedTerm == 'next') {
-            state.semester = state.semester - 4;
-            if (state.semester == 1) {
-                state.semester = 9;
-                state.termYear = state.termYear - 1;
-            } else if (state.semester == -1) {
-                state.semester = 7;
-                state.termYear = state.termYear - 1;
-            }
-        }
-        state.term = "" + state.termYear + state.semester;
-        state.termYear = "" + state.termYear;
-        state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
-        state.semester = "" + state.semester;
-        state.selectedTerm = 'previous';
-    },
-    SET_CURRENT_TERM: function SET_CURRENT_TERM(state) {
-        state.loadingClasses = true;
-        state.semester = null;
-        state.termYear = null;
-        state.selectedTerm = 'current';
-    },
-    SET_NEXT_TERM: function SET_NEXT_TERM(state) {
-        state.loadingClasses = true;
-        state.termYear = parseInt(state.term.slice(0, 3));
-        state.semester = parseInt(state.term.slice(3));
-        if (state.selectedTerm == 'current') {
-            state.semester = state.semester + 2;
-            if (state.semester > 9) {
-                state.semester = 3;
-                state.termYear = state.termYear + 1;
-            }
-        } else if (state.selectedTerm == 'previous') {
-            state.semester = state.semester + 4;
-            if (state.semester == 11) {
-                state.semester = 3;
-                state.termYear = state.termYear + 1;
-            } else if (state.semester == 13) {
-                state.semester = 5;
-                state.termYear = state.termYear + 1;
-            }
-        }
-        state.term = "" + state.termYear + state.semester;
-        state.termYear = "" + state.termYear;
-        state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
-        state.semester = "" + state.semester;
-        state.selectedTerm = 'next';
-    },
-    SET_SEM: function SET_SEM(payload) {
-        state.selectedTerm = payload;
+  API_FAILURE: function API_FAILURE(state, payload) {
+    state.errors = payload.response.data.message;
+  },
+  GET_SETTINGS: function GET_SETTINGS(state, payload) {
+    state.themeName = payload.data;
+    document.getElementById('mainBody').className = state.themeName.theme;
+  },
+  GET_DATA: function GET_DATA(state, payload) {
+    function capitalize(name) {
+      return name.charAt(0).toUpperCase() + name.substr(1);
     }
+
+    state.term = payload.data.term;
+
+    if (state.termYear != null) {
+      var chosenTerm = state.termYear + state.semester;
+      chosenTerm = chosenTerm.slice(0, 1) + chosenTerm.slice(2);
+      state.term = chosenTerm;
+    } else {
+      state.students = payload.data.allStudents;
+    }
+
+    state.term = payload.data.term;
+    state.courses = payload.data.courses;
+    state.loadingClasses = false;
+    state.flashroster = payload.data.students;
+    state.facultyMember.email = payload.data.email;
+    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
+    state.facultyMember.profile = 'http://www.csun.edu/faculty/profiles/' + state.facultyMember.name;
+  },
+  GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
+    state.facultyMember.image = payload.data.image;
+    state.facultyMember.id = payload.data.id;
+    state.facultyMember.firstName = payload.data.name_first;
+    state.facultyMember.lastName = payload.data.name_last;
+  },
+  UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
+    for (var i = 0, len = state.courses.length; i < len; i += 1) {
+      for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+        if (state.courses[i].roster[j].student_id === payload.studentId) {
+          state.courses[i].roster[j].image_priority = payload.image_priority;
+        }
+      }
+    }
+    for (var _i = 0, _len = state.flashroster.length; _i < _len; _i += 1) {
+      for (var _j = 0, _jLen = state.flashroster[_i].length; _j < _jLen; _j += 1) {
+        if (state.flashroster[_i][_j].student_id === payload.studentId) {
+          state.flashroster[_i][_j].image_priority = payload.image_priority;
+        }
+      }
+    }
+  },
+  STORE_COURSE: function STORE_COURSE(state, payload) {
+    state.currentCourse = payload;
+  },
+  STORE_LOCATION: function STORE_LOCATION(state, payload) {
+    state.currentLocation = payload;
+  },
+  SET_LIST: function SET_LIST(state) {
+    state.list = true;
+    state.flash = false;
+  },
+  SET_GALLERY: function SET_GALLERY(state) {
+    state.list = false;
+    state.flash = false;
+  },
+  SET_FLASH: function SET_FLASH(state) {
+    state.list = false;
+    state.flash = true;
+  },
+  TOGGLE_MENU: function TOGGLE_MENU(state) {
+    state.displaySideMenu = !state.displaySideMenu;
+  },
+  SHUFFLE_FLASH: function SHUFFLE_FLASH(state) {
+    function shuffle(students) {
+      var currentIndex = students.length;var temporaryValue = void 0;var randomIndex = void 0;
+
+      // While there remain elements to shuffle...
+      while (currentIndex !== 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = students[currentIndex];
+        students[currentIndex] = students[randomIndex];
+        students[randomIndex] = temporaryValue;
+      }
+    }
+
+    var len = state.flashroster.length;
+
+    var _loop = function _loop(i) {
+      var unKnownStudents = [];
+      var knownStudents = [];
+
+      state.flashroster[i].forEach(function (student) {
+        if (student.recognized === true) {
+          knownStudents.push(student);
+        } else {
+          unKnownStudents.push(student);
+        }
+      });
+
+      shuffle(unKnownStudents);
+      shuffle(knownStudents);
+
+      state.flashroster[i] = unKnownStudents.concat(knownStudents);
+    };
+
+    for (var i = 0; i < len; ++i) {
+      _loop(i);
+    }
+
+    state.flash = false;
+    state.flash = true;
+  },
+  SORT_ROSTER: function SORT_ROSTER(state) {
+    var len = state.courses.length;
+    for (var i = 0; i < len; ++i) {
+      var sortedRoster = function sortedRoster(self) {
+        if (state.sortLastName === true) {
+          if (state.sortAscending === true) {
+            return self.sort(function (a, b) {
+              return a.last_name.localeCompare(b.last_name);
+            });
+          }
+          return self.sort(function (a, b) {
+            return a.last_name.localeCompare(b.last_name);
+          }).reverse();
+        }
+        if (state.sortAscending === true) {
+          return self.sort(function (a, b) {
+            return a.first_name.localeCompare(b.first_name);
+          });
+        }
+        return self.sort(function (a, b) {
+          return a.first_name.localeCompare(b.first_name);
+        }).reverse();
+      };
+
+      state.courses[i].roster = sortedRoster(state.courses[i].roster);
+    }
+  },
+  SORT_FIRST_NAME: function SORT_FIRST_NAME(state) {
+    state.sortLastName = false;
+  },
+  SORT_LAST_NAME: function SORT_LAST_NAME(state) {
+    state.sortLastName = true;
+  },
+  SORT_ASC: function SORT_ASC(state) {
+    state.sortAscending = true;
+  },
+  SORT_DSC: function SORT_DSC(state) {
+    state.sortAscending = false;
+  },
+  CLEAR_ERRORS: function CLEAR_ERRORS(state) {
+    state.errors = null;
+  },
+  HIDE_BACK_BUTTON: function HIDE_BACK_BUTTON(state) {
+    state.hideBack = true;
+  },
+  SHOW_BACK_BUTTON: function SHOW_BACK_BUTTON(state) {
+    state.hideBack = false;
+  },
+  DISABLE_BACK_BUTTON: function DISABLE_BACK_BUTTON(state) {
+    state.disableBack = true;
+  },
+
+
+  UPDATE_IMAGE: function UPDATE_IMAGE(state, payload) {
+    // let id = payload.studentId;
+    // let url = payload.imgUrl;
+    // state.studentImages[id] = url;
+  },
+  ENABLE_BACK_BUTTON: function ENABLE_BACK_BUTTON(state) {
+    state.disableBack = false;
+  },
+  SET_SPRING: function SET_SPRING(state) {
+    state.semester = 3;
+  },
+  SET_SUMMER: function SET_SUMMER(state) {
+    state.semester = 5;
+  },
+  SET_FALL: function SET_FALL(state) {
+    state.semester = 7;
+  },
+  SET_WINTER: function SET_WINTER(state) {
+    state.semester = 9;
+  },
+  SET_TERM_YEAR: function SET_TERM_YEAR(state, payload) {
+    state.termYear = payload;
+  },
+  SET_CLASS_IS_LOADING: function SET_CLASS_IS_LOADING(state) {
+    state.loadingClasses = true;
+  },
+  SET_CLASS_DONE_LOADING: function SET_CLASS_DONE_LOADING(state) {
+    state.loadingClasses = false;
+  },
+  HANDLE_PERMISSION_RESPONSE: function HANDLE_PERMISSION_RESPONSE(state, payload) {
+    state.imagePermission = payload;
+  },
+  NULLIFY_PERMISSION_RESPONSE: function NULLIFY_PERMISSION_RESPONSE(state) {
+    state.imagePermission = null;
+  },
+  GET_UPLOAD_PERMISSION: function GET_UPLOAD_PERMISSION(state, payload) {
+    state.imagePermission = payload;
+    if (payload == false) {
+      state.imagePermission = null;
+    }
+  },
+  STORE_PERMISSION: function STORE_PERMISSION(state, payload) {
+    state.imagePermission = payload;
+  },
+  NULLIFY_COURSE: function NULLIFY_COURSE(state) {
+    state.currentCourse = null;
+  },
+  SET_PREVIOUS_TERM: function SET_PREVIOUS_TERM(state) {
+    state.loadingClasses = true;
+    state.termYear = state.term.slice(0, 3);
+    state.semester = state.term.slice(3);
+    if (state.selectedTerm == 'current') {
+      state.semester -= 2;
+      if (state.semester < 3) {
+        state.semester = 9;
+        state.termYear -= 1;
+      }
+    } else if (state.selectedTerm == 'next') {
+      state.semester -= 4;
+      if (state.semester == 1) {
+        state.semester = 9;
+        state.termYear -= 1;
+      } else if (state.semester == -1) {
+        state.semester = 7;
+        state.termYear -= 1;
+      }
+    }
+    state.term = '' + state.termYear + state.semester;
+    state.termYear = '' + state.termYear;
+    state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
+    state.semester = '' + state.semester;
+    state.selectedTerm = 'previous';
+  },
+  SET_CURRENT_TERM: function SET_CURRENT_TERM(state) {
+    state.loadingClasses = true;
+    state.semester = null;
+    state.termYear = null;
+    state.selectedTerm = 'current';
+  },
+  SET_NEXT_TERM: function SET_NEXT_TERM(state) {
+    state.loadingClasses = true;
+    state.termYear = parseInt(state.term.slice(0, 3));
+    state.semester = parseInt(state.term.slice(3));
+    if (state.selectedTerm == 'current') {
+      state.semester += 2;
+      if (state.semester > 9) {
+        state.semester = 3;
+        state.termYear += 1;
+      }
+    } else if (state.selectedTerm == 'previous') {
+      state.semester += 4;
+      if (state.semester == 11) {
+        state.semester = 3;
+        state.termYear += 1;
+      } else if (state.semester == 13) {
+        state.semester = 5;
+        state.termYear += 1;
+      }
+    }
+    state.term = '' + state.termYear + state.semester;
+    state.termYear = '' + state.termYear;
+    state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
+    state.semester = '' + state.semester;
+    state.selectedTerm = 'next';
+  },
+  SET_SEM: function SET_SEM(payload) {
+    state.selectedTerm = payload;
+  }
 });
 
 /***/ }),
@@ -25440,10 +25455,10 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
-    getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
-    actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
-    mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
 });
 
 /***/ }),
@@ -25515,22 +25530,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
     getStudentProfile: function getStudentProfile(context, payload) {
         var email = payload.uri + '@my.csun.edu';
         var response = payload;
-
-        // if(payload.email != null)
-        // {
-        //     email = payload.email
-        //     response = {
-        //         uri: payload.emailURI,
-        //         faculty_id: payload.faculty_id
-        //     }
-
-        // } else {
-        //     email = payload.uri+'@my.csun.edu'
-        //     response = payload
-        // }
-        console.log(email);
-        console.log(response);
-
         window.axios.get('student_profile/' + email).then(function (payload) {
             var getters = context.getters;
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
@@ -25596,102 +25595,94 @@ var store = new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    API_FAILURE: function API_FAILURE(state, payload) {
-        state.profileErrors = payload.response.data.message;
-    },
-    API_STUDENT_FAILURE: function API_STUDENT_FAILURE(state, payload) {
-        state.profileLoadError = true;
-        state.profileErrors = payload.response.data.message;
-    },
+  API_FAILURE: function API_FAILURE(state, payload) {
+    state.profileErrors = payload.response.data.message;
+  },
+  API_STUDENT_FAILURE: function API_STUDENT_FAILURE(state, payload) {
+    state.profileLoadError = true;
+    state.profileErrors = payload.response.data.message;
+  },
+  GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, _ref) {
+    var payload = _ref.payload,
+        getters = _ref.getters,
+        response = _ref.response;
 
+    var email = payload.data.email;
+    var data = new FormData();
 
-    GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, _ref) {
-        var payload = _ref.payload,
-            getters = _ref.getters,
-            response = _ref.response;
+    data.append('faculty_id', response.faculty_id);
+    data.append('email', email);
 
-        var email = response.uri + '@my.csun.edu';
-        var data = new FormData();
-
-        data.append('faculty_id', response.faculty_id);
-        data.append('email', email);
-
-        state.studentProfile.emailURI = response.uri;
-        state.studentProfile.displayName = payload['data'].display_name;
-        state.studentProfile.imagePriority = payload['data'].image_priority;
-        state.studentProfile.notes = payload['data'].notes;
-        state.studentProfile.id = payload['data'].student_id;
-        state.studentProfile.firstName = payload['data'].first_name;
-        state.studentProfile.lastName = payload['data'].last_name;
-        for (var student in getters.students) {
-            if (getters.students.hasOwnProperty(student)) {
-                if (getters.students[student].email == email) {
-                    state.studentProfile.student = getters.students[student];
-                    state.studentProfile.images = getters.students[student].images;
-                    break;
-                }
-            }
+    state.studentProfile.emailURI = response.uri;
+    state.studentProfile.displayName = payload.data.display_name;
+    state.studentProfile.imagePriority = payload.data.image_priority;
+    state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.id = payload.data.student_id;
+    state.studentProfile.firstName = payload.data.first_name;
+    for (var student in getters.students) {
+      if (getters.students.hasOwnProperty(student)) {
+        if (getters.students[student].email == email) {
+          state.studentProfile.student = getters.students[student];
+          state.studentProfile.images = getters.students[student].images;
+          break;
         }
-    },
-
-    GET_STUDENT_BIO: function GET_STUDENT_BIO(state, payload) {
-        state.studentProfile.bio = payload.data.bio;
-    },
-
-
-    UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
-        state.studentProfile.notes = notes;
-    },
-
-    UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
-        var data = new FormData();
-        data.append('student_id', state.studentProfile.id);
-        data.append('image_priority', payload.image_priority);
-        data.append('faculty_id', payload.faculty_id);
-    },
-
-    NULLIFY_STUDENT_PROFILE: function NULLIFY_STUDENT_PROFILE(state) {
-        state.studentProfile = {
-            id: null,
-            emailURI: null,
-            displayName: null,
-            bio: null,
-            images: null,
-            imagePriority: null,
-            notes: null,
-            firstName: null
-        };
-
-        state.profileErrors = null;
-    },
-
-    CLEAR_PROFILE_ERRORS: function CLEAR_PROFILE_ERRORS(state) {
-        state.profileErrors = null;
-        state.profileLoadError = false;
-    },
-
-    //Modal Specific
-    TOGGLE_MODAL: function TOGGLE_MODAL(state, payload) {
-        state.modalVisible = payload;
-    },
-
-    DATA_FOR_MODAL: function DATA_FOR_MODAL(state, payload) {
-        state.modalData = payload;
-    },
-
-    //store student state
-    STORE_STUDENT: function STORE_STUDENT(state, payload) {
-        state.currentStudent = payload;
-    },
-    CLEAR_STUDENT: function CLEAR_STUDENT(state) {
-        state.currentStudent = null;
-    },
-
-
-    //toggle cropping functionality
-    TOGGLE_CROPPING: function TOGGLE_CROPPING(state, payload) {
-        state.toggleCroppa = payload;
+      }
     }
+  },
+  GET_STUDENT_BIO: function GET_STUDENT_BIO(state, payload) {
+    state.studentProfile.bio = payload.data.bio;
+  },
+  UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
+    state.studentProfile.notes = notes;
+  },
+  UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
+    var data = new FormData();
+    data.append('student_id', state.studentProfile.id);
+    data.append('image_priority', payload.image_priority);
+    data.append('faculty_id', payload.faculty_id);
+  },
+  NULLIFY_STUDENT_PROFILE: function NULLIFY_STUDENT_PROFILE(state) {
+    state.studentProfile = {
+      id: null,
+      emailURI: null,
+      displayName: null,
+      bio: null,
+      images: null,
+      imagePriority: null,
+      notes: null,
+      firstName: null
+    };
+
+    state.profileErrors = null;
+  },
+  CLEAR_PROFILE_ERRORS: function CLEAR_PROFILE_ERRORS(state) {
+    state.profileErrors = null;
+    state.profileLoadError = false;
+  },
+
+
+  //Modal Specific
+  TOGGLE_MODAL: function TOGGLE_MODAL(state, payload) {
+    state.modalVisible = payload;
+  },
+
+  DATA_FOR_MODAL: function DATA_FOR_MODAL(state, payload) {
+    state.modalData = payload;
+  },
+
+  //toggle cropping functionality
+  TOGGLE_CROPPING: function TOGGLE_CROPPING(state, payload) {
+    state.toggleCroppa = payload;
+  },
+
+
+  //store student
+  STORE_STUDENT: function STORE_STUDENT(state, payload) {
+    state.currentStudent = payload;
+  },
+  CLEAR_STUDENT: function CLEAR_STUDENT(state) {
+    state.currentStudent = null;
+  }
 });
 
 /***/ }),
@@ -25846,10 +25837,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.appToken = token.content;
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.appToken = token.content;
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
 /**
@@ -25859,10 +25850,10 @@ if (token) {
 var url = document.head.querySelector('meta[name="app-url"]');
 
 if (url) {
-    window.axios.defaults.baseURL = url.content;
-    window.appURL = url.content;
+  window.axios.defaults.baseURL = url.content;
+  window.appURL = url.content;
 } else {
-    console.error("Please set the app url 'meta' tag");
+  console.error("Please set the app url 'meta' tag");
 }
 
 /***/ }),
@@ -25938,47 +25929,53 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			url: ""
-		};
-	},
-	components: {
-		backButton: __WEBPACK_IMPORTED_MODULE_1__backButton_vue___default.a
-	},
-	created: function created() {
-		this.url = document.querySelector("meta[name=app-url]").content;
-	},
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["term"]), {
-		displayCurrentTerm: function displayCurrentTerm() {
-			if (this.term != null) {
-				var termCode = this.term;
-				switch (termCode.charAt(3)) {
-					case "3":
-						this.displayedTerm = "Spring";
-						break;
-					case "5":
-						this.displayedTerm = "Summer";
-						break;
-					case "7":
-						this.displayedTerm = "Fall";
-						break;
-					case "9":
-						this.displayedTerm = "Winter";
-				}
-				if (termCode.charAt(0) == "2") {
-					this.displayedTerm += " " + termCode.charAt(0) + "0" + termCode.substring(1, 3);
-				} else {
-					this.displayedTerm += " " + termCode.charAt(0) + "9" + termCode.substring(1, 3);
-				}
-				return this.displayedTerm;
-			}
-		},
-		checkIfLogin: function checkIfLogin() {
-			if (document.getElementById("loginContainer")) return true;else return false;
-		}
-	})
+  data: function data() {
+    return {
+      url: ''
+    };
+  },
+
+  components: {
+    backButton: __WEBPACK_IMPORTED_MODULE_1__backButton_vue___default.a
+  },
+  created: function created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
+    displayCurrentTerm: function displayCurrentTerm() {
+      if (this.term != null) {
+        var termCode = this.term;
+        switch (termCode.charAt(3)) {
+          case '3':
+            this.displayedTerm = 'Spring';
+            break;
+          case '5':
+            this.displayedTerm = 'Summer';
+            break;
+          case '7':
+            this.displayedTerm = 'Fall';
+            break;
+          case '9':
+            this.displayedTerm = 'Winter';
+        }
+        if (termCode.charAt(0) == '2') {
+          this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+        } else {
+          this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+        }
+        return this.displayedTerm;
+      }
+    },
+    checkIfLogin: function checkIfLogin() {
+      if (document.getElementById('loginContainer')) {
+        return true;
+      }
+      return false;
+    }
+  })
 });
 
 /***/ }),
@@ -26045,17 +26042,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "back-button",
+  name: 'back-button',
 
-    methods: {
-        goBack: function goBack() {
-            this.$store.dispatch('clearStudent');
-            this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
-        }
-    },
+  methods: {
+    goBack: function goBack() {
+      this.$store.dispatch('clearStudent');
+      this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
+    }
+  },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['hideBack', 'disableBack', 'currentCourse']))
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['hideBack', 'disableBack', 'currentCourse']))
 });
 
 /***/ }),
@@ -26201,14 +26199,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        bottomNav: __WEBPACK_IMPORTED_MODULE_0__bottomNav_vue___default.a
-    },
 
-    beforeCreate: function beforeCreate() {
-        this.$store.dispatch('getOnlySettings');
-    }
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    bottomNav: __WEBPACK_IMPORTED_MODULE_0__bottomNav_vue___default.a
+  },
+
+  beforeCreate: function beforeCreate() {
+    this.$store.dispatch('getOnlySettings');
+  }
 });
 
 /***/ }),
@@ -26298,47 +26297,54 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "bottom-nav",
+  name: 'bottom-nav',
 
-	data: function data() {
-		return {
-			selected: ["bottom-nav__button--active"],
-			disable: true
-		};
-	},
+  data: function data() {
+    return {
+      selected: ['bottom-nav__button--active'],
+      disable: true
+    };
+  },
 
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "currentCourse", "currentStudent", "currentLocation", "displaySideMenu", "loadingClasses"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'facultyMember', 'currentCourse', 'currentStudent', 'currentLocation', 'displaySideMenu', 'loadingClasses'])),
 
-	methods: {
-		showMenu: function showMenu() {
-			this.$store.dispatch("toggleMenu");
-		},
-		setActive: function setActive(activeLocation) {
-			if (activeLocation != null) this.$store.dispatch("storeLocation", activeLocation);
-			if (this.displaySideMenu) this.showMenu();
-		},
-		resetNav: function resetNav() {
-			var buttons = document.querySelectorAll(".bottom-nav__button");
-			var i = void 0;
-			for (i = 0; i < buttons.length; i += 1) {
-				buttons[i].style.color = "rgba(255,255,255,0.6)";
-			}
-		},
-		classOrStudent: function classOrStudent() {
-			if (this.currentStudent) {
-				this.$router.push({ name: 'profile', params: { courseID: this.currentCourse, emailURI: this.currentStudent } });
-			} else this.$router.push({ name: 'class', params: { id: this.currentCourse } });
-		},
-		checkdisable: function checkdisable() {
-			if (this.loadingClasses == true) {
-				if (this.currentCourse == null) {
-					disable == true;
-				}
-			}
-		}
-	}
+  methods: {
+    showMenu: function showMenu() {
+      this.$store.dispatch('toggleMenu');
+    },
+    setActive: function setActive(activeLocation) {
+      if (activeLocation != null) {
+        this.$store.dispatch('storeLocation', activeLocation);
+      }
+      if (this.displaySideMenu) {
+        this.showMenu();
+      }
+    },
+    resetNav: function resetNav() {
+      var buttons = document.querySelectorAll('.bottom-nav__button');
+      var i = void 0;
+      for (i = 0; i < buttons.length; i += 1) {
+        buttons[i].style.color = 'rgba(255,255,255,0.6)';
+      }
+    },
+    classOrStudent: function classOrStudent() {
+      if (this.currentStudent) {
+        this.$router.push({ name: 'profile', params: { courseID: this.currentCourse, emailURI: this.currentStudent } });
+      } else {
+        this.$router.push({ name: 'class', params: { id: this.currentCourse } });
+      }
+    },
+    checkdisable: function checkdisable() {
+      if (this.loadingClasses == true) {
+        if (this.currentCourse == null) {
+          disable == true;
+        }
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -26567,35 +26573,37 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "error-bar",
+  name: 'error-bar',
 
-	data: function data() {
-		return {
-			showError: false
-		};
-	},
-
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["errors", "profileErrors", "profileLoadError", "currentCourse"])),
-
-	updated: function updated() {
-		this.enableBackButton();
-	},
+  data: function data() {
+    return {
+      showError: false
+    };
+  },
 
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(["enableBackButton", "clearErrors"]), {
-		logErrors: function logErrors() {
-			console.log("Error found: " + this.errors);
-		},
-		closeError: function closeError() {
-			if (this.profileLoadError == true) {
-				this.$store.dispatch('clearStudents');
-				this.$router.push({ name: 'class', params: { id: this.currentCourse } });
-			}
-			this.logErrors();
-			this.clearErrors();
-		}
-	})
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['errors', 'profileErrors', 'profileLoadError', 'currentCourse'])),
+
+  updated: function updated() {
+    this.enableBackButton();
+  },
+
+
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['enableBackButton', 'clearErrors']), {
+    logErrors: function logErrors() {
+      console.log('Error found: ' + this.errors);
+    },
+    closeError: function closeError() {
+      if (this.profileLoadError == true) {
+        this.$store.dispatch('clearStudents');
+        this.$router.push({ name: 'class', params: { id: this.currentCourse } });
+      }
+      this.logErrors();
+      this.clearErrors();
+    }
+  })
 });
 
 /***/ }),
@@ -26723,32 +26731,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "permission-modal",
+  name: 'permission-modal',
 
-    data: function data() {
-        return {
-            show: true
-        };
+  data: function data() {
+    return {
+      show: true
+    };
+  },
+
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
+
+  created: function created() {
+    this.$store.dispatch("getUploadPermission");
+  },
+
+
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
+    accept: function accept() {
+      this.$store.dispatch('storePermission', this.facultyMember.id);
+      this.handlePermissionResponse(true);
     },
-
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
-
-    created: function created() {
-        this.$store.dispatch("getUploadPermission");
-    },
-
-
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
-        accept: function accept() {
-            this.$store.dispatch('storePermission', this.facultyMember.id);
-            this.handlePermissionResponse(true);
-        },
-        deny: function deny() {
-            this.handlePermissionResponse(false);
-        }
-    })
+    deny: function deny() {
+      this.handlePermissionResponse(false);
+    }
+  })
 });
 
 /***/ }),
@@ -26911,32 +26919,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-	name: "side-menu",
-	data: function data() {
-		return {
-			url: ""
-		};
-	},
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["courses", "facultyMember", "displaySideMenu"]), {
-		showMenu: function showMenu() {
-			return this.displaySideMenu;
-		}
-	}),
-	created: function created() {
-		this.url = document.querySelector("meta[name=app-url]").content;
-	},
-	methods: {
-		toggleMenu: function toggleMenu() {
-			this.$store.dispatch("toggleMenu");
-		}
-	},
-	watch: {
-		showMenu: function showMenu(open) {
-			if (open) document.documentElement.style.overflow = "hidden";else document.documentElement.style.overflow = "auto";
-		}
-	}
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'side-menu',
+  data: function data() {
+    return {
+      url: ''
+    };
+  },
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'facultyMember', 'displaySideMenu']), {
+    showMenu: function showMenu() {
+      return this.displaySideMenu;
+    }
+  }),
+  created: function created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
+
+  methods: {
+    toggleMenu: function toggleMenu() {
+      this.$store.dispatch('toggleMenu');
+    }
+  },
+  watch: {
+    showMenu: function showMenu(open) {
+      if (open) document.documentElement.style.overflow = 'hidden';else document.documentElement.style.overflow = 'auto';
+    }
+  }
 });
 
 /***/ }),

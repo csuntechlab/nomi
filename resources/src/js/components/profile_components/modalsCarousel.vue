@@ -8,7 +8,7 @@
         
     </div>
       <div slot="body">
-        <carousel style="top: 100px" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'"  @pageChange="handleSlideClick">
+        <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'"  @pageChange="handleSlideClick">
             <slide class="slide-wrap">
               <div>
                   <croppa-profile :student="student"></croppa-profile>

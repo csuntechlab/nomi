@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Validator;
  */
 class ImageCRUDService implements ImageCRUDContract
 {
-    protected $userModelRepository = null;
+    protected $userModelUtility = null;
 
-    public function __construct(UserModelRepositoryInterface $userModelRepository)
+    public function __construct(UserModelRepositoryInterface $userModelUtility)
     {
-        $this->userModelRepository = $userModelRepository;
+        $this->userModelUtility = $userModelUtility;
     }
 
     /** Image uploading functionality. */
@@ -87,7 +87,9 @@ class ImageCRUDService implements ImageCRUDContract
             foreach ($student_ids as $student_id) {
                 \array_push($array, 'members:' . $student_id);
             }
-            $users = $this->userModelRepository->getUsersWithImagePriority($array);
+
+            $users = $this->userModelUtility->find($array);
+
             foreach ($users as $user) {
                 if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
                     \array_push($out, $user['image_priority']['image_priority']);
@@ -97,7 +99,9 @@ class ImageCRUDService implements ImageCRUDContract
             }
         } else {
             $student_ids[0] = 'members:' . $student_ids[0];
-            $user = $this->userModelRepository->getUsersWithImagePriority($student_ids);
+
+            $user = $this->userModelUtility->find($student_ids);
+
             if (\count($user) === 0) {
                 \array_push($out, 'likeness');
             } else {

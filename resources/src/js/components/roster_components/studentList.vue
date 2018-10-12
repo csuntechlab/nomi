@@ -5,33 +5,34 @@
 </template>
 
 <script>
-    import studentListItem from "./studentListItem.vue";
-    import { mapGetters } from "vuex";
+    import { mapGetters } from 'vuex';
+import studentListItem from './studentListItem.vue';
+
     export default {
-        name: "student-list",
+      name: 'student-list',
 
-        data: function () {
-            return {
-                show: false,
-                messages: true,
-                errors: [],
-                sortFirstName: true,
-                sortAscending: true,
-            };
-        },
+      data() {
+    return {
+          show: false,
+          messages: true,
+          errors: [],
+          sortFirstName: true,
+          sortAscending: true,
+    };
+  },
 
-        components: {
-            studentListItem
-        },
+      components: {
+        studentListItem,
+      },
 
-        props: ["courseid"],
+      props: ['courseid'],
 
-        computed: {
-            ...mapGetters(["courses"]),
-        },
+      computed: {
+        ...mapGetters(['courses']),
+      },
 
-        created() {
-            this.loading = true;
-        }
+      created() {
+        this.loading = true;
+      },
     };
 </script>

@@ -11,10 +11,6 @@ import { mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
 	name: "profile-picture",
 	props: ["image", "student", "type", "editable"],
-	computed: {
-		...mapGetters(["modalVisible"]),
-
-	},
 
 	methods: {
 		...mapActions(['toggleModal', 'dataForModal']),
@@ -22,9 +18,7 @@ export default {
 		showModal() {
 			
 			this.toggleModal(true);
-
 			this.dataForModal(this.student);
-			console.log(this.student);
 		},
 
 		checkPermission() {

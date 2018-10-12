@@ -5,23 +5,24 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex';
+
     export default {
-        name: "back-button",
+      name: 'back-button',
 
-        methods: {
-            goBack: function () {
-                this.$store.dispatch('clearStudent');
-                this.$router.replace({name: 'class', params: {id: this.currentCourse}});
-            }
-        },
+      methods: {
+        goBack() {
+          this.$store.dispatch('clearStudent');
+          this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
+    },
+      },
 
-        computed: {
-            ...mapGetters([
-                'hideBack',
-                'disableBack',
-                'currentCourse'
-            ]),
-        }
-    }
+      computed: {
+        ...mapGetters([
+          'hideBack',
+          'disableBack',
+          'currentCourse',
+        ]),
+      },
+    };
 </script>

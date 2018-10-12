@@ -17,60 +17,61 @@
 	</div>
 </template>
 <script>
-	import modal from "../fixed_components/modal.vue";
+	import modal from '../fixed_components/modal.vue';
+
 	export default {
-		name: "profile-notes",
+	  name: 'profile-notes',
 
-		props: ["student"],
+	  props: ['student'],
 
-		data: function () {
-			return {
-				unsavedChanges: false,
-				noteSaved: false,
-				showEmail: false
-			};
-		},
+	  data() {
+    return {
+      unsavedChanges: false,
+      noteSaved: false,
+      showEmail: false,
+    };
+  },
 
-		components: {
-			modal
-		},
+	  components: {
+	    modal,
+	  },
 
-		mounted() {
-			this.resizeNotes();
-		},
+	  mounted() {
+	    this.resizeNotes();
+	  },
 
-		methods: {
-			updateNotes(e) {
-				this.resizeNotes();
-				this.$store.dispatch("updateNotes", e.target.value).then(() => {
-					this.noteSaved = false;
-					this.unsavedChanges = true;
-					this.$emit("unsavedChanges");
-				});
-			},
-			commitNotes() {
-				if (this.unsavedChanges == true) {
-					this.$store.dispatch("commitNotes").then(() => {
-						this.noteSaved = true;
-						this.unsavedChanges = false;
-						this.$emit("committedChanges");
-					});
-				}
-			},
-			resizeNotes() {
-				let size = document.querySelector("#ex0").scrollHeight;
-				document.getElementById("ex0").style.height = size + "px";
-			},
-			scrollToNotes() {
-				document.getElementById("ex0").scrollIntoView();
-			}
-		},
-		computed: {
-			characterCount() {
-				if (this.student.notes != null) {
-					return this.student.notes.length;
-				}
-			}
-		}
+	  methods: {
+	    updateNotes(e) {
+	      this.resizeNotes();
+	      this.$store.dispatch('updateNotes', e.target.value).then(() => {
+	        this.noteSaved = false;
+	        this.unsavedChanges = true;
+	        this.$emit('unsavedChanges');
+	      });
+	    },
+	    commitNotes() {
+	      if (this.unsavedChanges == true) {
+	        this.$store.dispatch('commitNotes').then(() => {
+	          this.noteSaved = true;
+	          this.unsavedChanges = false;
+	          this.$emit('committedChanges');
+	        });
+	      }
+	    },
+	    resizeNotes() {
+	      const size = document.querySelector('#ex0').scrollHeight;
+	      document.getElementById('ex0').style.height = `${size}px`;
+	    },
+	    scrollToNotes() {
+	      document.getElementById('ex0').scrollIntoView();
+	    },
+	  },
+	  computed: {
+	    characterCount() {
+	      if (this.student.notes != null) {
+	        return this.student.notes.length;
+	      }
+	    },
+	  },
 	};
 </script>

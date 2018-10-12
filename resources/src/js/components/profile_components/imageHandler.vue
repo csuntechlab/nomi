@@ -8,11 +8,12 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    export default {
-        name: "image-handler",
+    import { mapGetters } from 'vuex';
 
-        props: ['image_type'],
+    export default {
+      name: 'image-handler',
+
+      props: ['image_type'],
 
         computed: {
             ...mapGetters([

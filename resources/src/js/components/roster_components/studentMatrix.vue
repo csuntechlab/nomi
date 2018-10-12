@@ -20,23 +20,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import FlashCard from './flashCard';
 import GalleryCard from "./galleryCard";
 import modal from "../fixed_components/modal.vue";
-import { mapGetters } from 'vuex';
+
+
 export default {
-    name: "student-matrix",
+  name: 'student-matrix',
 
-    data: function () {
-        return {
-            messages: true,
-            errors: [],
-            sortLastName: true,
-            sortDescending: true
-        }
-    },
+  data() {
+    return {
+      messages: true,
+      errors: [],
+      sortLastName: true,
+      sortDescending: true,
+    };
+  },
 
-    props: ['courseid'],
+  props: ['courseid'],
 
     components: {
         FlashCard,
@@ -44,21 +46,21 @@ export default {
         modal
     },
 
-    computed: {
-        ...mapGetters([
-            'courses',
-            'flashroster',
-            'flash'
-        ]),
-    },
-    methods: {
-        markStudentAsRecognized: function(payload) {
-            this.flashroster[this.courseid].forEach((student) => {
-                if(student.student_id === payload.student_id) {
-                    student.recognized = payload.known;
-                }
-            });
+  computed: {
+    ...mapGetters([
+      'courses',
+      'flashroster',
+      'flash',
+    ]),
+  },
+  methods: {
+    markStudentAsRecognized(payload) {
+      this.flashroster[this.courseid].forEach((student) => {
+        if (student.student_id === payload.student_id) {
+          student.recognized = payload.known;
         }
+      });
     },
-}
+  },
+};
 </script>

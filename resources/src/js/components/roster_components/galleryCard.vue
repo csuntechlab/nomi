@@ -17,14 +17,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import croppaProfile from "../profile_components/croppaProfile.vue";
-import imageHandler from "../profile_components/imageHandler.vue";
+import { mapGetters, mapState } from "vuex";
 import profilePicture from "../profile_components/profilePicture.vue";
 export default {
-	name: "gallery-card",
-	props: ["student"],
+  name: 'gallery-card',
+  props: ['student'],
 
 	data: function() {
 		return {
@@ -35,8 +32,6 @@ export default {
 	},
 
 	components: {
-		croppaProfile,
-		imageHandler,
 		profilePicture
 	},
 
@@ -45,54 +40,30 @@ export default {
 			uri: this.student.email_uri,
 			faculty_id: this.facultyMember.id
 		});
-		console.log(this.student)
-		
-		
 	},
 
 	computed: {
 
 		...mapGetters([
 			'permission',
-			'studentProfile',
 			'facultyMember',
-			'modalVisible',
-			'modalData'
 		]),
 
-		displayModal(){
-			return(this.showCroppaModal && this.permission);
-		},
+    display_name() {
+      return `${this.student.first_name} ${this.student.last_name[0]}.`;
+    },
 
-		display_name: function() {
-			return this.student.first_name + " " + this.student.last_name[0] + ".";
-		},
+    email_uri() {
+      return this.student.email.split('@')[0];
+    },
 
-		email_uri: function() {
-			return this.student.email.split("@")[0];
-		},
-
-		image: function() {
-			if (this.student.image_priority === 'likeness') {
-			return this.student.images.likeness;
-			} else if (this.student.image_priority === 'avatar') {
-			return this.student.images.avatar;
-			}
-		}
-		},
-
-	methods: {
-		setImgUrl(url) {
-			this.showCroppaModal = false;
-			this.imgUrl = url;
-		},
-		checkPermission() {
-			this.showCroppaModal = true;
-			if (this.permission == false)
-			this.$store.dispatch('nullifyPermissionResponse');
-		},
-
-		
-	}
+    image() {
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
+    },
+  },
 };
 </script>

@@ -79,7 +79,6 @@
                         uri: emuri,
                     }).then(response => {
                         if (response.status) {
-                            console.log(response);
                             this.$store.dispatch('getOnlyData');
                             this.$parent.$emit('close', url);
                         } else {

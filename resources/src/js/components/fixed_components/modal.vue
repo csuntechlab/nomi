@@ -24,7 +24,7 @@
     import modalsCarousel from "../profile_components/modalsCarousel.vue";
     import { mapGetters, mapMutations, mapActions } from 'vuex';
     export default {
-        name: "modal",
+      name: 'modal',
 
         data: function() {
           return{
