@@ -6,7 +6,26 @@
                 <h1 class="type--center">{{student.first_name + " " + student.last_name}}</h1>
             </div>
             <div>
-                <profile-picture :student="student" :image="student.images[student.image_priority]" :editable="true" :type="'profile'"></profile-picture>
+                
+                <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
+                        
+                        <div class="type--center">
+                            <i>Faculty Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Student Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                </carousel>
             </div>
         </div>
     </div>
@@ -19,6 +38,6 @@ export default {
   props: ['student'],
   components:{
       profilePicture
-  }
+  },
 }
 </script>

@@ -29,10 +29,11 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 import croppaProfile from "../profile_components/croppaProfile.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
-import { mapGetters, mapMutations, mapActions } from 'vuex';
 import imageHandler from "../profile_components/imageHandler.vue";
+
 export default {
   name: "modals-carousel",
 

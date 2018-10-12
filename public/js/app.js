@@ -22437,11 +22437,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -22483,6 +22483,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
   name: "modals-carousel",
 
@@ -22490,10 +22491,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
   components: {
     imageHandler: __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue___default.a,
-    profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a,
-    croppaProfile: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaProfile_vue___default.a
+    profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a,
+    croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible", "toggleCroppa", "facultyMember"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible", "toggleCroppa", "facultyMember"])),
 
   methods: {
     checkPermission: function checkPermission() {
@@ -22509,7 +22510,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch("toggleCropping", false);
     }
   }
-}, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["c" /* mapGetters */])(["permission"]))));
+}, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"]))));
 
 /***/ }),
 /* 103 */
@@ -23297,6 +23298,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23327,14 +23347,60 @@ var render = function() {
         _c(
           "div",
           [
-            _c("profile-picture", {
-              attrs: {
-                student: _vm.student,
-                image: _vm.student.images[_vm.student.image_priority],
-                editable: true,
-                type: "profile"
-              }
-            })
+            _c(
+              "carousel",
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                }
+              },
+              [
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("profile-picture", {
+                        attrs: {
+                          student: _vm.student,
+                          image: _vm.student.images.likeness,
+                          editable: true,
+                          type: "profile"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "type--center" }, [
+                        _c("i", [_vm._v("Faculty Uploaded")])
+                      ])
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("profile-picture", {
+                        attrs: {
+                          student: _vm.student,
+                          image: _vm.student.images.avatar,
+                          editable: false,
+                          type: "profile"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "type--center" }, [
+                        _c("i", [_vm._v("Student Uploaded")])
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            )
           ],
           1
         )
