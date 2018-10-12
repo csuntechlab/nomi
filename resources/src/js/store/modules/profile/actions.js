@@ -1,7 +1,23 @@
 export default {
     getStudentProfile (context, payload) {
-        let response = payload
-        let email = payload.uri+'@my.csun.edu'
+            let email = payload.uri+'@my.csun.edu'
+            let response = payload
+
+        // if(payload.email != null)
+        // {
+        //     email = payload.email
+        //     response = {
+        //         uri: payload.emailURI,
+        //         faculty_id: payload.faculty_id
+        //     }
+            
+        // } else {
+        //     email = payload.uri+'@my.csun.edu'
+        //     response = payload
+        // }
+        console.log(email);
+        console.log(response);
+        
         
         window.axios.get('student_profile/'+email)
             .then(payload => {
@@ -47,11 +63,26 @@ export default {
         context.commit('CLEAR_PROFILE_ERRORS')
     },
 
+    //modal specific
+    toggleModal (context, payload) {
+        context.commit("TOGGLE_MODAL", payload)
+    },
+
+    dataForModal (context, payload){
+        context.commit("DATA_FOR_MODAL", payload)
+    },
+    
+    //back button
     storeStudent (context, payload) {
         context.commit('STORE_STUDENT', payload)
     },
 
     clearStudent (context) {
         context.commit('CLEAR_STUDENT')
+    },
+
+    //cropping functionality
+    toggleCropping (context, payload) {
+        context.commit('TOGGLE_CROPPING', payload)
     }
 }

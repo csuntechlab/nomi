@@ -38,9 +38,9 @@
 		margin: 20px 0;
 	}
 
-	&__container {
-		padding: 1.5em 2em;
-	}
+	// &__container {
+	// 	padding: 1.5em 2em;
+	// }
 
 	&-default-button {
 		float: right;
@@ -96,6 +96,15 @@
 		margin-top: 5%;
 		margin-left: 5%;
 		margin-right: 5%;
+		height: 10%;
+	}
+
+	&--adjust{
+		height: 2em;
+	}
+
+	&--profile{
+		padding: 0;
 	}
 }
 

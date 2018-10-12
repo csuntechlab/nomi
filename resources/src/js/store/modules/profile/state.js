@@ -8,10 +8,19 @@ export default {
         imagePriority: null,
         notes: null,
         firstName: null,
-        student: null
+        student: null,
+
     },
+    
 
     currentStudent: null,
     profileErrors: null,
-    profileLoadError: false
+    profileLoadError: false,
+
+    //Modal Specifc
+    modalVisible: false,
+    modalData: null,
+
+    //Croppa functionality
+    toggleCroppa: false,
 }

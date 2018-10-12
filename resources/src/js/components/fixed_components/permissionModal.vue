@@ -26,7 +26,6 @@
 <script>
     import { mapGetters } from 'vuex';
     import { mapActions } from 'vuex';
-    import modal from "./modal.vue";
     export default {
         name: "permission-modal",
 
@@ -42,10 +41,6 @@
                 'facultyMember',
             ]),
 
-        },
-
-        components: {
-            modal
         },
 
         created() {

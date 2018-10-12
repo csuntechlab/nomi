@@ -68,11 +68,27 @@ export default {
         state.profileLoadError = false;
     },
 
+    //Modal Specific
+    TOGGLE_MODAL: function(state, payload){
+        state.modalVisible = payload;
+    },
+
+    DATA_FOR_MODAL: function(state, payload){
+        state.modalData = payload;
+    },
+
+    //store student state
     STORE_STUDENT (state, payload){
         state.currentStudent = payload;
     },
 
     CLEAR_STUDENT (state) {
         state.currentStudent = null;
+    },
+
+    //toggle cropping functionality
+    TOGGLE_CROPPING (state, payload) {
+        state.toggleCroppa = payload;
     }
+
 }

@@ -6,7 +6,8 @@
             <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
         </div>
         <div v-else>
-            <profile-carousel :student="this.studentProfile"></profile-carousel>
+			<modal></modal>
+            <profile-container :student="this.studentProfile.student"></profile-container>
             <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"></profile-info>
         </div>
     </div>
@@ -14,7 +15,8 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import profileCarousel from "../components/profile_components/profileCarousel.vue";
+import profileContainer from "../components/profile_components/profileContainer.vue";
+import modal from "../components/fixed_components/modal.vue";
 import profileInfo from "../components/profile_components/profileInfo.vue";
 export default {
 	name: "profile",
@@ -26,7 +28,8 @@ export default {
 	},
 
 	components: {
-		profileCarousel,
+		profileContainer,
+		modal,
 		profileInfo
 	},
 

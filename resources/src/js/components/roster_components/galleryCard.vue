@@ -1,26 +1,17 @@
 <template>
     <div class="gallery-card col-xs-6 col-md-4 col-lg-3">
         <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+		</router-link>
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<profile-picture :image="image" :type="'roster'"/>
-					</div>
-					<div v-if="this.student.image_priority === 'likeness'">
-						<i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"/>
+						<profile-picture :student="student" :editable="true" :image="image" :type="'roster'" />
 					</div>
 				</div>
 				<div class="cardText clearPadding">
 					<div class="gallery__name type--center">{{display_name}}</div>
 				</div>
         	</div>
-        </router-link>
-        <modal v-if="displayModal" @close="showCroppaModal = false">
-            <div slot="header"></div>
-            <div slot="body">
-                <croppa-profile :student="this.student"></croppa-profile>
-            </div>
-        </modal>
     </div>
         
 </template>
@@ -29,7 +20,7 @@
 import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 import croppaProfile from "../profile_components/croppaProfile.vue";
-import modal from "../fixed_components/modal.vue";
+import imageHandler from "../profile_components/imageHandler.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
 export default {
 	name: "gallery-card",
@@ -39,22 +30,34 @@ export default {
 		return {
 			messages: true,
 			errors: [],
-			myCroppa: null,
 			showCroppaModal: false,
-			showMe: true
 		};
 	},
 
 	components: {
-		modal,
 		croppaProfile,
+		imageHandler,
 		profilePicture
+	},
+
+	created() {
+		this.$store.dispatch("getStudentProfile", {
+			uri: this.student.email_uri,
+			faculty_id: this.facultyMember.id
+		});
+		console.log(this.student)
+		
+		
 	},
 
 	computed: {
 
 		...mapGetters([
-			'permission'  
+			'permission',
+			'studentProfile',
+			'facultyMember',
+			'modalVisible',
+			'modalData'
 		]),
 
 		displayModal(){
@@ -87,7 +90,9 @@ export default {
 			this.showCroppaModal = true;
 			if (this.permission == false)
 			this.$store.dispatch('nullifyPermissionResponse');
-		}
+		},
+
+		
 	}
 };
 </script>

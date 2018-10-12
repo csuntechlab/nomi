@@ -482,6 +482,12 @@ textarea[type="text"]:focus {
   margin-bottom: 7%;
 }
 
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
 .margin-between-containers {
   margin-top: 7%;
 }
@@ -490,8 +496,8 @@ textarea[type="text"]:focus {
   position: absolute;
   bottom: 5%;
   right: 15%;
-  border-radius: 100%;
   padding: 5%;
+  border-radius: 100%;
   font-size: 150%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
@@ -520,6 +526,14 @@ textarea[type="text"]:focus {
 .theme-Dark .panel__edit-button {
   background-color: #426c96;
   color: #dfe5ec;
+}
+
+.panel__edit-button--profile {
+  position: relative;
+  bottom: 8%;
+  right: 20%;
+  padding: 5%;
+  border-radius: 100%;
 }
 
 .text-bold {
@@ -680,6 +694,10 @@ textarea[type="text"]:focus {
   height: auto;
   padding: 5%;
   margin: 0 auto;
+}
+
+.padding {
+  padding: 15%;
 }
 
 .login {
@@ -1385,10 +1403,6 @@ textarea[type="text"]:focus {
   margin: 20px 0;
 }
 
-.modal__container {
-  padding: 1.5em 2em;
-}
-
 .modal-default-button {
   float: right;
 }
@@ -1474,6 +1488,15 @@ textarea[type="text"]:focus {
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
+  height: 10%;
+}
+
+.modal--adjust {
+  height: 2em;
+}
+
+.modal--profile {
+  padding: 0;
 }
 
 .permission-footer {
@@ -2033,7 +2056,12 @@ textarea[type="text"]:focus {
 }
 
 .profile__img {
-  width: 12rem;
+  width: 100%;
+}
+
+.profile__edit-container {
+  display: block;
+  position: relative;
 }
 
 .profile-carousel__edit {
@@ -2072,7 +2100,7 @@ textarea[type="text"]:focus {
 
 @media only screen and (max-width: 400px) {
   .profile-carousel__edit {
-    bottom: 25%;
+    bottom: 40%;
     right: 15%;
     padding: 4%;
   }
@@ -2080,7 +2108,7 @@ textarea[type="text"]:focus {
 
 @media only screen and (min-width: 400px) and (max-width: 600px) {
   .profile-carousel__edit {
-    bottom: 25%;
+    bottom: 40%;
     right: 26%;
     padding: 3%;
   }
@@ -2088,7 +2116,7 @@ textarea[type="text"]:focus {
 
 @media only screen and (min-width: 600px) and (max-width: 750px) {
   .profile-carousel__edit {
-    bottom: 25%;
+    bottom: 40%;
     right: 28%;
     padding: 3%;
   }
@@ -2096,7 +2124,7 @@ textarea[type="text"]:focus {
 
 @media only screen and (min-width: 750px) and (max-width: 1000px) {
   .profile-carousel__edit {
-    bottom: 25%;
+    bottom: 40%;
     right: 32%;
     padding: 3%;
   }
@@ -2196,10 +2224,6 @@ textarea[type="text"]:focus {
   color: rgba(255, 255, 255, 0.5);
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-}
-
-.croppa-container {
-  padding: 0 2em 2em;
 }
 
 .theme-login .croppa-container {
