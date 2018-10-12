@@ -88,8 +88,8 @@ class ImageCRUDService implements ImageCRUDContract
                 \array_push($array, 'members:' . $student_id);
             }
 
-            $users = $this->userModelRepository->find($array);
-          
+            $users = $this->userModelUtility->find($array);
+
             foreach ($users as $user) {
                 if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
                     \array_push($out, $user['image_priority']['image_priority']);
@@ -100,7 +100,7 @@ class ImageCRUDService implements ImageCRUDContract
         } else {
             $student_ids[0] = 'members:' . $student_ids[0];
 
-            $user = $this->userModelRepository->find($student_ids);
+            $user = $this->userModelUtility->find($student_ids);
 
             if (\count($user) === 0) {
                 \array_push($out, 'likeness');
