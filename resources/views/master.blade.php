@@ -27,7 +27,6 @@
 
     <body>
         <div id='app'>
-            <nav-bar></nav-bar>
             @yield('content')
         </div>
     </body>

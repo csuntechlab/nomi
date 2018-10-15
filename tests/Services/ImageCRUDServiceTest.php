@@ -38,7 +38,7 @@ class ImageCRUDServiceTest extends TestCase
         ];
 
         $this->userModelRepository
-            ->shouldReceive('getUsersWithImagePriority')
+            ->shouldReceive('find')
             ->once()
             ->andReturn([
                 [

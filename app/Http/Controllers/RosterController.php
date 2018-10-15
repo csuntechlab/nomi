@@ -8,15 +8,15 @@ use App\Contracts\RosterRetrievalContract;
 
 class RosterController extends Controller
 {
-    protected $rosterRetriever = null;
+    protected $rosterUtility = null;
 
-    public function __construct(RosterRetrievalContract $rosterRetriever)
+    public function __construct(RosterRetrievalContract $rosterUtility)
     {
-        $this->rosterRetriever = $rosterRetriever;
+        $this->rosterUtility = $rosterUtility;
     }
 
     public function getStudents($term, $course)
     {
-        return $this->rosterRetriever->getStudentsFromRoster($term, $course);
+        return $this->rosterUtility->getStudentsFromRoster($term, $course);
     }
 }

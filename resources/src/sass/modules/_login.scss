@@ -190,6 +190,15 @@
 			margin-top: 2.45rem;
 		}
 
+		&__nav-bar {
+			background-color: #D22030;
+			position: fixed;
+			height: 2.467rem;
+			width: 100%;
+			z-index: 1;
+			top: 0;
+		}
+
 		&-container {
 			background: white;
 		}
