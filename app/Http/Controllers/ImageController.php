@@ -9,16 +9,16 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public $imageCRUDContract;
+    public $imageCRUDUtility;
 
     /**
      * ImageController constructor.
      *
-     * @param ImageCRUDContract $imageCRUDContract
+     * @param ImageCrudContract $imageCRUDUtility
      */
-    public function __construct(ImageCRUDContract $imageCRUDContract)
+    public function __construct(ImageCRUDContract $imageCRUDUtility)
     {
-        $this->imageCRUDContract = $imageCRUDContract;
+        $this->imageCRUDUtility = $imageCRUDUtility;
     }
 
     public function uploadImage(Request $request)
@@ -31,16 +31,16 @@ class ImageController extends Controller
             'uri' => $request->uri,
         ];
 
-        return $this->imageCRUDContract->upload($data);
+        return $this->imageCRUDUtility->upload($data);
     }
 
     public function updatePriority(Request $request)
     {
-        return $this->imageCRUDContract->updatePriority($request);
+        return $this->imageCRUDUtility->updatePriority($request);
     }
 
     public function getPriority($student_id)
     {
-        return $this->imageCRUDContract->getPriority($student_id);
+        return $this->imageCRUDUtility->getPriority($student_id);
     }
 }

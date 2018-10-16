@@ -6,5 +6,7 @@ namespace App\ModelRepositoryInterfaces;
 
 interface UserModelRepositoryInterface
 {
-    public function getUsersWithImagePriority(array $userIds): array;
+    public function find(array $userIds): array;
+
+    public function all(): array;
 }

@@ -7,6 +7,7 @@ namespace App\ModelRepositories;
 use App\ModelRepositoryInterfaces\ClassInstructorsTableRepositoryInterface;
 use App\Models\ClassInstructors;
 
+// Currently is tightly coupled to the Model
 class ClassInstructorsTableRepository implements ClassInstructorsTableRepositoryInterface
 {
     public function find($userId)

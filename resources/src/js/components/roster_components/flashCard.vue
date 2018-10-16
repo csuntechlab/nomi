@@ -17,17 +17,18 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapGetters } from "vuex";
-import profilePicture from "../profile_components/profilePicture.vue";
-export default {
-  name: "flash-card",
+import axios from 'axios';
+import { mapGetters } from 'vuex';
+import profilePicture from '../profile_components/profilePicture.vue';
 
-  data: function() {
+export default {
+  name: 'flash-card',
+
+  data() {
     return {
       known: false,
       messages: true,
-      errors: []
+      errors: [],
     };
   },
 
@@ -35,35 +36,35 @@ export default {
     profilePicture,
   },
 
-  props: ["student"],
+  props: ['student'],
 
   computed: {
 
     ...mapGetters([
     ]),
 
-    display_name: function() {
-      return this.student.first_name + " " + this.student.last_name;
+    display_name() {
+      return `${this.student.first_name} ${this.student.last_name}`;
     },
 
-    image: function() {
+    image() {
       if (this.student.image_priority === 'likeness') {
         return this.student.images.likeness;
-      } else if (this.student.image_priority === 'avatar') {
+      } if (this.student.image_priority === 'avatar') {
         return this.student.images.avatar;
       }
-    }
+    },
   },
 
   methods: {
-    updateRecognized: function() {
+    updateRecognized() {
       this.known = !this.known;
-      this.$emit("markRecognized", {
+      this.$emit('markRecognized', {
         student_id: this.student.student_id,
-        known: this.known
+        known: this.known,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

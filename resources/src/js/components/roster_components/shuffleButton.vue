@@ -7,14 +7,15 @@
 </template>
 <script>
     import { mapGetters } from 'vuex';
-    export default {
-        name: "shuffle-button",
 
-        computed: {
-            ...mapGetters([
-                'flash',
-                'list',
-            ])
-        }
-    }
+    export default {
+      name: 'shuffle-button',
+
+      computed: {
+        ...mapGetters([
+          'flash',
+          'list',
+        ]),
+      },
+    };
 </script>

@@ -8,8 +8,4 @@ services:
       - '8080:80'
     volumes:
       - .:/var/www/
-  composer:
-    image: composer:latest
-    command: install
-    volumes:
-      - .:/app/
+  

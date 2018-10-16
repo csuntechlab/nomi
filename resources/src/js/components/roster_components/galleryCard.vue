@@ -26,68 +26,68 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapState } from "vuex";
-import croppaProfile from "../profile_components/croppaProfile.vue";
-import modal from "../fixed_components/modal.vue";
-import profilePicture from "../profile_components/profilePicture.vue";
+import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
+import croppaProfile from '../profile_components/croppaProfile.vue';
+import modal from '../fixed_components/modal.vue';
+import profilePicture from '../profile_components/profilePicture.vue';
+
 export default {
-	name: "gallery-card",
-	props: ["student"],
+  name: 'gallery-card',
+  props: ['student'],
 
-	data: function() {
-		return {
-			messages: true,
-			errors: [],
-			myCroppa: null,
-			showCroppaModal: false,
-			showMe: true
-		};
-	},
+  data() {
+    return {
+      messages: true,
+      errors: [],
+      myCroppa: null,
+      showCroppaModal: false,
+      showMe: true,
+    };
+  },
 
-	components: {
-		modal,
-		croppaProfile,
-		profilePicture
-	},
+  components: {
+    modal,
+    croppaProfile,
+    profilePicture,
+  },
 
-	computed: {
+  computed: {
 
-		...mapGetters([
-			'permission'  
-		]),
+    ...mapGetters([
+      'permission',
+    ]),
 
-		displayModal(){
-			return(this.showCroppaModal && this.permission);
-		},
+    displayModal() {
+      return (this.showCroppaModal && this.permission);
+    },
 
-		display_name: function() {
-			return this.student.first_name + " " + this.student.last_name[0] + ".";
-		},
+    display_name() {
+      return `${this.student.first_name} ${this.student.last_name[0]}.`;
+    },
 
-		email_uri: function() {
-			return this.student.email.split("@")[0];
-		},
+    email_uri() {
+      return this.student.email.split('@')[0];
+    },
 
-		image: function() {
-			if (this.student.image_priority === 'likeness') {
-			return this.student.images.likeness;
-			} else if (this.student.image_priority === 'avatar') {
-			return this.student.images.avatar;
-			}
-		}
-		},
+    image() {
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      } if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
+    },
+  },
 
-	methods: {
-		setImgUrl(url) {
-			this.showCroppaModal = false;
-			this.imgUrl = url;
-		},
-		checkPermission() {
-			this.showCroppaModal = true;
-			if (this.permission == false)
-			this.$store.dispatch('nullifyPermissionResponse');
-		}
-	}
+  methods: {
+    setImgUrl(url) {
+      this.showCroppaModal = false;
+      this.imgUrl = url;
+    },
+    checkPermission() {
+      this.showCroppaModal = true;
+      if (this.permission == false) { this.$store.dispatch('nullifyPermissionResponse'); }
+    },
+  },
 };
 </script>

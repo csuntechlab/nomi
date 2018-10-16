@@ -9,17 +9,17 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    protected $authVerifierContract;
+    protected $authVerifierUtility;
 
     /**
      * LoginController constructor.
      *
-     * @param AuthVerifierContract $authVerifierContract
+     * @param AuthVerifierContract $authVerifierUtility
      */
     public function __construct(
-        AuthVerifierContract $authVerifierContract
+        AuthVerifierContract $authVerifierUtility
     ) {
-        $this->authVerifierContract = $authVerifierContract;
+        $this->authVerifierUtility = $authVerifierUtility;
     }
 
     /**
@@ -38,7 +38,7 @@ class LoginController extends Controller
 
     /**
      * Description: Logs in a user by authenticating them against
-     *              the LDAP servers using the authVerifierContract.
+     *              the LDAP servers using the authVerifierUtility.
      *
      * @param Request $request
      *
@@ -48,7 +48,7 @@ class LoginController extends Controller
     {
         $credentials = $request->all('username', 'password');
 
-        if ($this->authVerifierContract->isVerified($credentials)) {
+        if ($this->authVerifierUtility->isVerified($credentials)) {
             return redirect()->route('home');
         }
 

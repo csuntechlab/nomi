@@ -42,67 +42,67 @@
 </template>
 
 <script>
-import croppaProfile from "../profile_components/croppaProfile.vue";
-import profilePicture from "../profile_components/profilePicture.vue";
-import modal from "../fixed_components/modal.vue";
-import imageHandler from "../profile_components/imageHandler.vue";
-import croppaModal from "../profile_components/croppaModal.vue";
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
+import croppaProfile from './croppaProfile.vue';
+import profilePicture from './profilePicture.vue';
+import modal from '../fixed_components/modal.vue';
+import imageHandler from './imageHandler.vue';
+import croppaModal from './croppaModal.vue';
+
 export default {
-	name: "profile-carousel",
+  name: 'profile-carousel',
 
-	props: ["student"],
-	data: function() {
-		return {
-			showCroppaModal: false
-		};
-	},
-	beforeRouteLeave(to, from, next) {
-		if (this.unsavedChanges) {
-			const answer = window.confirm(
-				"Do you really want to leave? You have unsaved changes."
-			);
+  props: ['student'],
+  data() {
+    return {
+      showCroppaModal: false,
+    };
+  },
+  beforeRouteLeave(to, from, next) {
+    if (this.unsavedChanges) {
+      const answer = window.confirm(
+        'Do you really want to leave? You have unsaved changes.',
+      );
 
-			if (answer) {
-				next();
-			} else {
-				next(false);
-			}
-		} else {
-			next();
-		}
-	},
-	components: {
-		imageHandler,
-		profilePicture,
-        croppaModal,
-        croppaProfile,
-        modal
-	},
-	methods: {
-		setImgUrl(url) {
-			this.showCroppaModal = false;
-			this.imgUrl = url;
-		},
-		checkPermission() {
-			this.showCroppaModal = true;
-			if (this.permission == false)
-				this.$store.dispatch("nullifyPermissionResponse");
-		}
-	},
-	computed: {
-		...mapGetters(["permission"]),
-		image: function() {
-			return this.student.images.likeness;
-		},
+      if (answer) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
+  },
+  components: {
+    imageHandler,
+    profilePicture,
+    croppaModal,
+    croppaProfile,
+    modal,
+  },
+  methods: {
+    setImgUrl(url) {
+      this.showCroppaModal = false;
+      this.imgUrl = url;
+    },
+    checkPermission() {
+      this.showCroppaModal = true;
+      if (this.permission == false) { this.$store.dispatch('nullifyPermissionResponse'); }
+    },
+  },
+  computed: {
+    ...mapGetters(['permission']),
+    image() {
+      return this.student.images.likeness;
+    },
 
-		avatar: function() {
-			return this.student.images.avatar;
-		},
+    avatar() {
+      return this.student.images.avatar;
+    },
 
-        displayModal(){
-            return(this.showCroppaModal && this.permission);
-        },
-	}
+    displayModal() {
+      return (this.showCroppaModal && this.permission);
+    },
+  },
 };
 </script>

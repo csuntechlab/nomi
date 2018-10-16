@@ -9,16 +9,16 @@ use App\Contracts\WebResourceRetrieverContract;
 
 class FacultyProfileService implements FacultyProfileContract
 {
-    protected $webResourceRetriever = null;
+    protected $webResourceUtility = null;
 
-    public function __construct(WebResourceRetrieverContract $webResourceRetriever)
+    public function __construct(WebResourceRetrieverContract $webResourceUtility)
     {
-        $this->webResourceRetriever = $webResourceRetriever;
+        $this->webResourceUtility = $webResourceUtility;
     }
 
     public function getFacultyProfile($email)
     {
-        $faculty = $this->webResourceRetriever->getStudent($email);
+        $faculty = $this->webResourceUtility->getStudent($email);
 
         $member = \json_decode($faculty, true)['people'];
 
@@ -29,6 +29,8 @@ class FacultyProfileService implements FacultyProfileContract
         return [
             'image' => $member['profile_image'],
             'id' => $member['individuals_id'],
+            'name_first' => $member['first_name'],
+            'name_last' => $member['last_name'],
         ];
     }
 }

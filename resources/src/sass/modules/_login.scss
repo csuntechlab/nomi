@@ -8,6 +8,13 @@
 	top: 0;
 	left: 0;
 
+	&--error {
+		position: absolute;
+		width: 100%;
+		border-radius: 0 0 5px 5px;
+		z-index: 1;
+	}
+
 	&__branding {
 		position: absolute;
 		padding: 1rem 3rem;
@@ -177,6 +184,19 @@
 
 		& {
 			z-index: -99;
+		}
+
+		&--error {
+			margin-top: 2.45rem;
+		}
+
+		&__nav-bar {
+			background-color: #D22030;
+			position: fixed;
+			height: 2.467rem;
+			width: 100%;
+			z-index: 1;
+			top: 0;
 		}
 
 		&-container {

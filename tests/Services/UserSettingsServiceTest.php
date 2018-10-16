@@ -34,7 +34,7 @@ class UserSettingsServiceTest extends TestCase
         Carbon::setTestNow($testNow);
 
         $this->termModelRepository
-            ->shouldReceive('getCurrentTerm')
+            ->shouldReceive('find')
             ->once()
             ->andReturn([
                 'term_id' => 2185,

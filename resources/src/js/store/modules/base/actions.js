@@ -1,320 +1,336 @@
 export default {
-    // General
-	getAllUserData(context) {
-        if (context.state.termYear != null) {
-			window.axios.get(`data/${context.state.term}`)
-			.then(response =>{
-				context.commit("GET_DATA", response)
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-		} else {
-			window.axios.get(`data`)
-				.then(response =>{
-					context.commit("GET_DATA", response)
-				})
-				.catch(error => {
-					context.commit("API_FAILURE", error)
-				});
-		}
+  // General
+  getAllUserData(context) {
+    if (context.state.termYear != null) {
+      window.axios.get(`data/${context.state.term}`)
+        .then((response) => {
+          context.commit('GET_DATA', response);
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    } else {
+      window.axios.get('data')
+        .then((response) => {
+          context.commit('GET_DATA', response);
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    }
 
-		window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-			.then(response =>{
-				context.commit("GET_FACULTY_PROFILE", response)
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
+    window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+      .then((response) => {
+        context.commit('GET_FACULTY_PROFILE', response);
+      })
+      .catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
 
-		window.axios.get('get_settings')
-			.then(response =>{
-				context.commit("GET_SETTINGS", response)
-			}).catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-	},
+    window.axios.get('get_settings')
+      .then((response) => {
+        context.commit('GET_SETTINGS', response);
+      }).catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-	getOnlyData(context) {
-		if (context.state.termYear != null) {
-			window.axios.get(`data/${context.state.term}`)
-			.then(response =>{
-				context.commit("GET_DATA", response)
+  getOnlyData(context) {
+    if (context.state.termYear != null) {
+      window.axios.get(`data/${context.state.term}`)
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-				window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-					.then(response =>{
-						context.commit("GET_FACULTY_PROFILE", response)
-					})
-					.catch(error => {
-						context.commit("API_FAILURE", error)
-					});
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    } else {
+      window.axios.get('data')
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-		} else {
-			window.axios.get(`data`)
-				.then(response =>{
-					context.commit("GET_DATA", response)
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    }
+  },
 
-					window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-						.then(response =>{
-							context.commit("GET_FACULTY_PROFILE", response)
-						})
-						.catch(error => {
-							context.commit("API_FAILURE", error)
-						});
+  getOnlySettings(context) {
+    window.axios.get('get_settings')
+      .then((response) => {
+        context.commit('GET_SETTINGS', response);
+      }).catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-				})
-				.catch(error => {
-					context.commit("API_FAILURE", error)
-				});
-		}
-	},
-	
-	getOnlySettings(context) {
-		window.axios.get('get_settings')
-			.then(response =>{
-				context.commit("GET_SETTINGS", response)
-			}).catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-	},
-    
-	clearErrors(context) {
-        context.commit("CLEAR_ERRORS");
-	},
-    
-	toggleMenu(context) {
-        context.commit("TOGGLE_MENU");
-	},
-    
-    handlePermissionResponse(context, payload) {
-        context.commit("HANDLE_PERMISSION_RESPONSE", payload);
-    },
-    
-    nullifyPermissionResponse(context) {
-        context.commit("NULLIFY_PERMISSION_RESPONSE");
-    },
-    
-	updateImage(context, payload) {
-        context.commit("UPDATE_IMAGE", payload);
-	},
+  clearErrors(context) {
+    context.commit('CLEAR_ERRORS');
+  },
 
-	updateStudentPriority(context, payload) {
-		context.commit("UPDATE_STUDENT_PRIORITY", payload);
-	},
-	// Views & Sorting
-	setList(context) {
-		context.commit("SET_LIST");
-	},
+  toggleMenu(context) {
+    context.commit('TOGGLE_MENU');
+  },
 
-	setGallery(context) {
-		context.commit("SET_GALLERY");
-	},
+  handlePermissionResponse(context, payload) {
+    context.commit('HANDLE_PERMISSION_RESPONSE', payload);
+  },
 
-	setFlash(context) {
-		context.commit("SET_FLASH");
-	},
+  nullifyPermissionResponse(context) {
+    context.commit('NULLIFY_PERMISSION_RESPONSE');
+  },
 
-	shuffleFlash(context) {
-		context.commit("SHUFFLE_FLASH");
-	},
+  getUploadPermission(context, payload) {
+    window.axios.get('get_upload_permission')
+      .then((response) => {
+        context.commit('GET_UPLOAD_PERMISSION', response.data.permission);
+      })
+      .catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-	sortFirstName(context) {
-		context.commit("SORT_FIRST_NAME");
-		context.commit("SORT_ROSTER");
-	},
+  storePermission(context, payload) {
+    window.axios.post('store_permission')
+      .then((response) => {
+        context.commit('STORE_PERMISSION', response);
+      })
+      .catch((error) => {
+        context.commit('API_FAILURE', error);
+      });
+  },
 
-	sortLastName(context) {
-		context.commit("SORT_LAST_NAME");
-		context.commit("SORT_ROSTER");
-	},
+  nullifyCourse(context) {
+    context.commit('NULLIFY_COURSE');
+  },
 
-	sortDescending(context) {
-		context.commit("SORT_DSC");
-		context.commit("SORT_ROSTER");
-	},
+  updateImage(context, payload) {
+    context.commit('UPDATE_IMAGE', payload);
+  },
 
-	sortAscending(context) {
-		context.commit("SORT_ASC");
-		context.commit("SORT_ROSTER");
-	},
+  updateStudentPriority(context, payload) {
+    context.commit('UPDATE_STUDENT_PRIORITY', payload);
+  },
+  // Views & Sorting
+  setList(context) {
+    context.commit('SET_LIST');
+  },
 
-	// Back Button
-	hideBackButton(context) {
-		context.commit("HIDE_BACK_BUTTON");
-	},
+  setGallery(context) {
+    context.commit('SET_GALLERY');
+  },
 
-	showBackButton(context) {
-		context.commit("SHOW_BACK_BUTTON");
-	},
+  setFlash(context) {
+    context.commit('SET_FLASH');
+  },
 
-	disableBackButton(context) {
-		context.commit("DISABLE_BACK_BUTTON");
-	},
+  shuffleFlash(context) {
+    context.commit('SHUFFLE_FLASH');
+  },
 
-	enableBackButton(context) {
-		context.commit("ENABLE_BACK_BUTTON");
-    },
-    
-    // Courses
-	setSpring(context) {
-		context.commit("SET_SPRING");
-	},
+  sortFirstName(context) {
+    context.commit('SORT_FIRST_NAME');
+    context.commit('SORT_ROSTER');
+  },
 
-	setSummer(context) {
-		context.commit("SET_SUMMER");
-	},
+  sortLastName(context) {
+    context.commit('SORT_LAST_NAME');
+    context.commit('SORT_ROSTER');
+  },
 
-	setFall(context) {
-		context.commit("SET_FALL");
-	},
+  sortDescending(context) {
+    context.commit('SORT_DSC');
+    context.commit('SORT_ROSTER');
+  },
 
-	setWinter(context) {
-		context.commit("SET_WINTER");
-	},
+  sortAscending(context) {
+    context.commit('SORT_ASC');
+    context.commit('SORT_ROSTER');
+  },
 
-	setTermYear(context, payload) {
-		context.commit("SET_TERM_YEAR", payload);
-	},
+  // Back Button
+  hideBackButton(context) {
+    context.commit('HIDE_BACK_BUTTON');
+  },
 
-	loadingClassesTrue(context) {
-		context.commit("SET_CLASS_IS_LOADING");
-	},
+  showBackButton(context) {
+    context.commit('SHOW_BACK_BUTTON');
+  },
 
-	doneLoadingClasses(context) {
-		context.commit("SET_CLASS_DONE_LOADING");
-    },
-    
-    storeCourse(context, payload) {
-        context.commit("STORE_COURSE", payload);
-    },
+  disableBackButton(context) {
+    context.commit('DISABLE_BACK_BUTTON');
+  },
 
-    storeLocation(context, payload){
-		context.commit("STORE_LOCATION", payload);
-	},
+  enableBackButton(context) {
+    context.commit('ENABLE_BACK_BUTTON');
+  },
 
-	setPreviousTerm(context, payload){
-		context.commit("SET_PREVIOUS_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get(`data/${context.state.term}`)
-			.then(response =>{
-				context.commit("GET_DATA", response)
+  // Courses
+  setSpring(context) {
+    context.commit('SET_SPRING');
+  },
 
-				window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-					.then(response =>{
-						context.commit("GET_FACULTY_PROFILE", response)
-					})
-					.catch(error => {
-						context.commit("API_FAILURE", error)
-					});
+  setSummer(context) {
+    context.commit('SET_SUMMER');
+  },
 
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-		} else {
-			window.axios.get(`data`)
-				.then(response =>{
-					context.commit("GET_DATA", response)
+  setFall(context) {
+    context.commit('SET_FALL');
+  },
 
-					window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-						.then(response =>{
-							context.commit("GET_FACULTY_PROFILE", response)
-						})
-						.catch(error => {
-							context.commit("API_FAILURE", error)
-						});
+  setWinter(context) {
+    context.commit('SET_WINTER');
+  },
 
-				})
-				.catch(error => {
-					context.commit("API_FAILURE", error)
-				});
-		}
-	},
+  setTermYear(context, payload) {
+    context.commit('SET_TERM_YEAR', payload);
+  },
 
-	setCurrentTerm(context, payload){
-		context.commit("SET_CURRENT_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get(`data/${context.state.term}`)
-			.then(response =>{
-				context.commit("GET_DATA", response)
+  loadingClassesTrue(context) {
+    context.commit('SET_CLASS_IS_LOADING');
+  },
 
-				window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-					.then(response =>{
-						context.commit("GET_FACULTY_PROFILE", response)
-					})
-					.catch(error => {
-						context.commit("API_FAILURE", error)
-					});
+  doneLoadingClasses(context) {
+    context.commit('SET_CLASS_DONE_LOADING');
+  },
 
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-		} else {
-			window.axios.get(`data`)
-				.then(response =>{
-					context.commit("GET_DATA", response)
+  storeCourse(context, payload) {
+    context.commit('STORE_COURSE', payload);
+  },
 
-					window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-						.then(response =>{
-							context.commit("GET_FACULTY_PROFILE", response)
-						})
-						.catch(error => {
-							context.commit("API_FAILURE", error)
-						});
+  storeLocation(context, payload) {
+    context.commit('STORE_LOCATION', payload);
+  },
 
-				})
-				.catch(error => {
-					context.commit("API_FAILURE", error)
-				});
-		}
-	},
+  setPreviousTerm(context, payload) {
+    context.commit('SET_PREVIOUS_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get(`data/${context.state.term}`)
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-	setNextTerm(context, payload){
-		context.commit("SET_NEXT_TERM");
-		if (context.state.termYear != null) {
-			window.axios.get(`data/${context.state.term}`)
-			.then(response =>{
-				context.commit("GET_DATA", response)
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    } else {
+      window.axios.get('data')
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-				window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-					.then(response =>{
-						context.commit("GET_FACULTY_PROFILE", response)
-					})
-					.catch(error => {
-						context.commit("API_FAILURE", error)
-					});
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    }
+  },
 
-			})
-			.catch(error => {
-				context.commit("API_FAILURE", error)
-			});
-		} else {
-			window.axios.get(`data`)
-				.then(response =>{
-					context.commit("GET_DATA", response)
+  setCurrentTerm(context, payload) {
+    context.commit('SET_CURRENT_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get(`data/${context.state.term}`)
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-					window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-						.then(response =>{
-							context.commit("GET_FACULTY_PROFILE", response)
-						})
-						.catch(error => {
-							context.commit("API_FAILURE", error)
-						});
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    } else {
+      window.axios.get('data')
+        .then((response) => {
+          context.commit('GET_DATA', response);
 
-				})
-				.catch(error => {
-					context.commit("API_FAILURE", error)
-				});
-		}
-	},
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    }
+  },
 
-	setSem(context){
-		context.commit("SET_SEM");
-	}
+  setNextTerm(context, payload) {
+    context.commit('SET_NEXT_TERM');
+    if (context.state.termYear != null) {
+      window.axios.get(`data/${context.state.term}`)
+        .then((response) => {
+          context.commit('GET_DATA', response);
+
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    } else {
+      window.axios.get('data')
+        .then((response) => {
+          context.commit('GET_DATA', response);
+
+          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+            .then((response) => {
+              context.commit('GET_FACULTY_PROFILE', response);
+            })
+            .catch((error) => {
+              context.commit('API_FAILURE', error);
+            });
+        })
+        .catch((error) => {
+          context.commit('API_FAILURE', error);
+        });
+    }
+  },
+
+  setSem(context) {
+    context.commit('SET_SEM');
+  },
 
 };
