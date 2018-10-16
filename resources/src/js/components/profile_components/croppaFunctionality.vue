@@ -17,7 +17,6 @@ import modal from "../fixed_components/modal.vue";
 import { mapGetters, mapActions } from 'vuex';
 export default {
         name: "croppa-functionality",
-
         data: function() {
             return{
                 disabled: true,

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
+        <router-link :to="'/profile/'+course_id+'/'+email">
+		<img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
+        </router-link>
 		<i v-if="this.editable" class="fas fa-pencil-alt panel__edit-button pull-right" @click="showModal()"/>
     </div>
 </template>
@@ -10,12 +12,13 @@ import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable"],
+	props: ["image", "student", "type", "editable", "email", "course_id"],
 	computed: {
-    ...mapGetters(["permission"])
-  	},
+	...mapGetters(["permission"])
+	
+	},
 	methods: {
-		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse']),
+		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
 
 		showModal() {
 			if(this.permission === true)

@@ -7,7 +7,8 @@
               <div>
                   <croppa-profile :student="student"></croppa-profile>
                   <div class="type--center">
-                    <i>Student Uploaded</i>
+                    
+                    <i>Faculty Uploaded</i>
                     <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
                   </div>
               </div>
@@ -16,7 +17,7 @@
               <div>
                   <profile-picture :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
                   <div class="type--center">
-                    <i>Faculty Uploaded</i>
+                    <i>Student Uploaded</i>
                     <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
                   </div>
               </div>

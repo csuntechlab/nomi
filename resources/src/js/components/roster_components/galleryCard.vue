@@ -1,17 +1,20 @@
 <template>
     <div class="gallery-card col-xs-6 col-md-4 col-lg-3">
-        <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
-		</router-link>
+        
+		
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<profile-picture :student="student" :editable="true" :image="image" :type="'roster'" />
+						<profile-picture :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'roster'" />
 					</div>
 				</div>
+				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
 				<div class="cardText clearPadding">
 					<div class="gallery__name type--center">{{display_name}}</div>
 				</div>
+				</router-link>
         	</div>
+					
     </div>
         
 </template>

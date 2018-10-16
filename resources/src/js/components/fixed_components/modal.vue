@@ -67,6 +67,7 @@
 
              this.$store.dispatch("toggleModal", false);
              this.$store.dispatch("toggleCropping", false);
+             this.croppaAvailable = true;
            },
 
 
