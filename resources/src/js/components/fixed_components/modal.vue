@@ -3,10 +3,18 @@
     <div class="modal-mask" >
       <div class="modal__wrapper">
         <div class="modal__container">
+          <div class="type--center modal-header">
+            <div>
+              <strong>{{modalData.first_name + " " + modalData.last_name}}</strong>
+            </div>
+            <div class="pull-right modal--exit">
+                <i class="fa fa-times-circle fa-2x" @click="showModal()"></i>
+            </div>
+          </div>
           <div class="modal-body">
-            <slot name="body">
+            <div name="body">
               <modals-carousel :student="modalData"></modals-carousel>
-            </slot>
+            </div>
           </div>
           <div class="modal-footer cf">
             <div name="footer">
@@ -55,6 +63,12 @@
             modalsCarousel
         },
         methods: {
+          showModal() {
+
+             this.$store.dispatch("toggleModal", false);
+             this.$store.dispatch("toggleCropping", false);
+           },
+
 
 
            upDate() {

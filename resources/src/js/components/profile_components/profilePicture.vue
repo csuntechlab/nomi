@@ -6,19 +6,27 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	name: "profile-picture",
 	props: ["image", "student", "type", "editable"],
-
+	computed: {
+    ...mapGetters(["permission"])
+  	},
 	methods: {
-		...mapActions(['toggleModal', 'dataForModal']),
+		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse']),
 
 		showModal() {
+			if(this.permission === true)
+			{
+				this.toggleModal(true);
+				this.dataForModal(this.student);
+			} else {
+				this.nullifyPermissionResponse();
+			}
 			
-			this.toggleModal(true);
-			this.dataForModal(this.student);
+			
 		},
 
 		checkPermission() {

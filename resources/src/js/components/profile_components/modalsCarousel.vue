@@ -1,26 +1,24 @@
 <template>
 <div >
-    <div>
-      <i class="fa fa-times-circle fa-2x pull-right modal--exit" @click="showModal()"></i>
-    </div>
-    <div>
-        <strong class="type--center">{{student.first_name + " " + student.last_name}}</strong>
-        
-    </div>
-      <div slot="body">
+      
+      <div class="modal-body__carousel">
         <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'"  @pageChange="handleSlideClick">
             <slide class="slide-wrap">
               <div>
                   <croppa-profile :student="student"></croppa-profile>
-                  <i>Student Uploaded</i>
-                  <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
+                  <div class="type--center">
+                    <i>Student Uploaded</i>
+                    <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
+                  </div>
               </div>
             </slide>
             <slide class="slide-wrap">
               <div>
                   <profile-picture :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
-                  <i>Faculty Uploaded</i>
-                  <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
+                  <div class="type--center">
+                    <i>Faculty Uploaded</i>
+                    <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
+                  </div>
               </div>
             </slide>
         </carousel>
@@ -45,28 +43,19 @@ export default {
     croppaProfile
   },
   computed: {
-    ...mapGetters(["studentProfile", "modalVisible","toggleCroppa", "facultyMember"])
+    ...mapGetters(["studentProfile", "modalVisible","toggleCroppa"])
   },
 
   methods: {
-    checkPermission() {
-      this.showCroppaModal = true;
-      if (this.permission == false)
-        this.$store.dispatch("nullifyPermissionResponse");
-    },
 
     handleSlideClick() {
       this.$root.$emit('newSlide');
     },
-
-    showModal() {
-
-             this.$store.dispatch("toggleModal", false);
-             this.$store.dispatch("toggleCropping", false);
-           },
   },
+
+
   computed: {
     ...mapGetters(["permission"]),
   }
-};
+}
 </script>

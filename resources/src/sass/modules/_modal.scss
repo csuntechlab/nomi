@@ -29,6 +29,7 @@
 
 	&-header h3 {
 		margin-top: 0;
+		text-align: center;
 		@include themify($themes){
 		color: themed('accentColor');
 		}
@@ -36,6 +37,9 @@
 
 	&-body {
 		margin: 20px 0;
+		&__carousel{
+			// pointer-events: none;
+		}
 	}
 
 	// &__container {
@@ -93,9 +97,9 @@
 	&--exit {
 		color: gray;
 		margin-bottom: 0;
-		margin-top: 5%;
+		margin-top: 2%;
 		margin-left: 5%;
-		margin-right: 5%;
+		margin-right: 2%;
 		height: 10%;
 	}
 
