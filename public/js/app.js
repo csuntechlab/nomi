@@ -17823,10 +17823,12 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_menuBar_vue__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_menuBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_fixed_components_menuBar_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_termSelector_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_course_components_termSelector_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_course_components_termSelector_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_course_components_coursesContainer_vue__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_course_components_coursesContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_course_components_coursesContainer_vue__);
 //
 //
 //
@@ -17834,6 +17836,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -17843,8 +17850,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     name: 'home',
 
     components: {
-        termSelector: __WEBPACK_IMPORTED_MODULE_1__components_course_components_termSelector_vue___default.a,
-        coursesContainer: __WEBPACK_IMPORTED_MODULE_2__components_course_components_coursesContainer_vue___default.a,
+        termSelector: __WEBPACK_IMPORTED_MODULE_2__components_course_components_termSelector_vue___default.a,
+        coursesContainer: __WEBPACK_IMPORTED_MODULE_3__components_course_components_coursesContainer_vue___default.a,
+        menuBar: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_menuBar_vue___default.a,
         navBar: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default.a
     },
 
@@ -19166,7 +19174,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("nav-bar"), _vm._v(" "), _c("courses-container")], 1)
+  return this.$store.state.base.themeName.theme === this.$parent.$el.className
+    ? _c(
+        "div",
+        [
+          _c("nav-bar"),
+          _vm._v(" "),
+          _c("courses-container"),
+          _vm._v(" "),
+          _c("menu-bar")
+        ],
+        1
+      )
+    : _c("div", [_c("h1", [_vm._v("Not Loaded Yet")])])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -25560,7 +25580,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   },
   GET_SETTINGS: function GET_SETTINGS(state, payload) {
     state.themeName = payload.data;
-    document.getElementById('mainBody').className = state.themeName.theme;
+    document.getElementById('app').className = state.themeName.theme;
   },
   GET_DATA: function GET_DATA(state, payload) {
     function capitalize(name) {
