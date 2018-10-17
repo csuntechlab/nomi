@@ -5,7 +5,9 @@
         <menu-bar></menu-bar>
     </div>
     <div v-else>
-        <h1>Not Loaded Yet</h1>
+        <div class="post-login type--center">
+            <i class="fa fa-spinner fa-spin fa-3x post-login__loading-icon"></i>
+        </div>
     </div>
 </template>
 
