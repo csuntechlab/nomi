@@ -73,7 +73,7 @@ import courseList from './courseList';
         ]),
 
         shouldLoadClasses() {
-          if (this.facultyMember.image === null || this.loadingClasses) return true;
+          if (this.loadingClasses) return true;
           return false;
         },
 
@@ -120,6 +120,7 @@ import courseList from './courseList';
         },
 
         setCurrTerm() {
+          this.$store.dispatch('nullifyCourse');
           if (this.selectedTerm != 'current') {
             this.setCurrentTerm();
           }
