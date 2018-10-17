@@ -120,6 +120,7 @@ import courseList from './courseList';
         },
 
         setCurrTerm() {
+          this.$store.dispatch('nullifyCourse');
           if (this.selectedTerm != 'current') {
             this.setCurrentTerm();
           }
