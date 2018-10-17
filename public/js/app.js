@@ -18597,7 +18597,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'selectedTerm', 'loadingClasses']), {
     shouldLoadClasses: function shouldLoadClasses() {
-      if (this.facultyMember.image === null || this.loadingClasses) return true;
+      if (this.loadingClasses) return true;
       return false;
     },
     displayCurrentTerm: function displayCurrentTerm() {
