@@ -5,10 +5,10 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<profile-picture :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'roster'" />
+						<profile-picture :student="student" :handler="true" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'roster'" />
 					</div>
 				</div>
-				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" >
 				<div class="cardText clearPadding">
 					<div class="gallery__name type--center">{{display_name}}</div>
 				</div>

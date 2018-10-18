@@ -21734,12 +21734,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable", "email", "course_id"],
+	props: ["image", "student", "type", "editable", "email", "handler"],
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"])),
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
 		showModal: function showModal() {
@@ -21748,6 +21756,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.dataForModal(this.student);
 			} else {
 				this.nullifyPermissionResponse();
+			}
+		},
+		check: function check(e) {
+			if (this.handler) {
+				this.$router.push('/profile/' + this.$route.params.id + '/' + this.email);
+			} else {
+				e.preventDefault();
 			}
 		},
 		checkPermission: function checkPermission() {
@@ -21769,17 +21784,32 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "router-link",
-        { attrs: { to: "/profile/" + _vm.course_id + "/" + _vm.email } },
-        [
-          _c("img", {
-            staticClass: "img--circle",
-            class: [this.type == "profile" ? "profile__img" : "roster__img"],
-            attrs: { src: _vm.image, name: "photo" }
-          })
-        ]
-      ),
+      _c("router-link", {
+        attrs: {
+          to: "/profile/" + this.$route.params.id + "/" + _vm.email,
+          tag: "a"
+        }
+      }),
+      _vm._v(" "),
+      _vm.handler
+        ? _c("div", [
+            _c("a", [
+              _c("img", {
+                staticClass: "img--circle",
+                class: [
+                  this.type == "profile" ? "profile__img" : "roster__img"
+                ],
+                attrs: { src: _vm.image, name: "photo" }
+              })
+            ])
+          ])
+        : _c("div", [
+            _c("img", {
+              staticClass: "img--circle",
+              class: [this.type == "profile" ? "profile__img" : "roster__img"],
+              attrs: { src: _vm.image, name: "photo" }
+            })
+          ]),
       _vm._v(" "),
       this.editable
         ? _c("i", {
@@ -22035,6 +22065,7 @@ var render = function() {
               _c("profile-picture", {
                 attrs: {
                   student: _vm.student,
+                  handler: true,
                   email: _vm.student.email_uri,
                   course_id: this.$route.params.id,
                   editable: true,
