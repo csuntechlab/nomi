@@ -1,40 +1,5 @@
 export default {
   // General
-  getAllUserData(context) {
-    if (context.state.termYear != null) {
-      window.axios.get(`data/${context.state.term}`)
-        .then((response) => {
-          context.commit('GET_DATA', response);
-        })
-        .catch((error) => {
-          context.commit('API_FAILURE', error);
-        });
-    } else {
-      window.axios.get('data')
-        .then((response) => {
-          context.commit('GET_DATA', response);
-        })
-        .catch((error) => {
-          context.commit('API_FAILURE', error);
-        });
-    }
-
-    window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-      .then((response) => {
-        context.commit('GET_FACULTY_PROFILE', response);
-      })
-      .catch((error) => {
-        context.commit('API_FAILURE', error);
-      });
-
-    window.axios.get('get_settings')
-      .then((response) => {
-        context.commit('GET_SETTINGS', response);
-      }).catch((error) => {
-        context.commit('API_FAILURE', error);
-      });
-  },
-
   getOnlyData(context) {
     if (context.state.termYear != null) {
       window.axios.get(`data/${context.state.term}`)
