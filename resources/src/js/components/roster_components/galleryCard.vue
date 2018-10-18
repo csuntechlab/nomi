@@ -5,7 +5,7 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<profile-picture :student="student" :handler="true" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'roster'" />
+						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'profile'" />
 					</div>
 				</div>
 				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" >
@@ -21,7 +21,8 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-import profilePicture from "../profile_components/profilePicture.vue";
+// import profilePicture from "../profile_components/profilePicture.vue";
+import galleryProfile from "../roster_components/galleryProfile.vue";
 export default {
   name: 'gallery-card',
   props: ['student'],
@@ -35,7 +36,7 @@ export default {
 	},
 
 	components: {
-		profilePicture
+		galleryProfile
 	},
 
 	created() {

@@ -21732,22 +21732,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable", "email", "handler"],
+	props: ["image", "student", "type", "editable"],
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"])),
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
 		showModal: function showModal() {
@@ -21756,13 +21746,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				this.dataForModal(this.student);
 			} else {
 				this.nullifyPermissionResponse();
-			}
-		},
-		check: function check(e) {
-			if (this.handler) {
-				this.$router.push('/profile/' + this.$route.params.id + '/' + this.email);
-			} else {
-				e.preventDefault();
 			}
 		},
 		checkPermission: function checkPermission() {
@@ -21781,49 +21764,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("router-link", {
-        attrs: {
-          to: "/profile/" + this.$route.params.id + "/" + _vm.email,
-          tag: "a"
-        }
-      }),
-      _vm._v(" "),
-      _vm.handler
-        ? _c("div", [
-            _c("a", [
-              _c("img", {
-                staticClass: "img--circle",
-                class: [
-                  this.type == "profile" ? "profile__img" : "roster__img"
-                ],
-                attrs: { src: _vm.image, name: "photo" }
-              })
-            ])
-          ])
-        : _c("div", [
-            _c("img", {
-              staticClass: "img--circle",
-              class: [this.type == "profile" ? "profile__img" : "roster__img"],
-              attrs: { src: _vm.image, name: "photo" }
-            })
-          ]),
-      _vm._v(" "),
-      this.editable
-        ? _c("i", {
-            staticClass: "fas fa-pencil-alt panel__edit-button pull-right",
-            on: {
-              click: function($event) {
-                _vm.showModal()
-              }
+  return _c("div", [
+    _c("img", {
+      staticClass: "img--circle",
+      class: [this.type == "profile" ? "profile__img" : "roster__img"],
+      attrs: { src: _vm.image, name: "photo" }
+    }),
+    _vm._v(" "),
+    _vm.editable
+      ? _c("i", {
+          staticClass: "fas fa-pencil-alt panel__edit-button ",
+          on: {
+            click: function($event) {
+              _vm.showModal()
             }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+          }
+        })
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21866,7 +21824,6 @@ var render = function() {
             },
             [
               _c("profile-picture", {
-                staticClass: "roster__img",
                 attrs: {
                   name: _vm.display_name,
                   image: _vm.image,
@@ -21975,8 +21932,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue__ = __webpack_require__(185);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -22002,6 +21959,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+// import profilePicture from "../profile_components/profilePicture.vue";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 		name: 'gallery-card',
@@ -22016,7 +21974,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 
 		components: {
-				profilePicture: __WEBPACK_IMPORTED_MODULE_1__profile_components_profilePicture_vue___default.a
+				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
 		},
 
 		created: function created() {
@@ -22062,15 +22020,14 @@ var render = function() {
             "div",
             { staticClass: "panel__content" },
             [
-              _c("profile-picture", {
+              _c("gallery-profile", {
                 attrs: {
                   student: _vm.student,
-                  handler: true,
                   email: _vm.student.email_uri,
                   course_id: this.$route.params.id,
                   editable: true,
                   image: _vm.image,
-                  type: "roster"
+                  type: "profile"
                 }
               })
             ],
@@ -22121,6 +22078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -22971,16 +22929,6 @@ var render = function() {
           _c("div", { staticClass: "modal__wrapper" }, [
             _c("div", { staticClass: "modal__container" }, [
               _c("div", { staticClass: "type--center modal-header" }, [
-                _c("div", [
-                  _c("strong", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.modalData.first_name + " " + _vm.modalData.last_name
-                      )
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
                 _c("div", { staticClass: "pull-right modal--exit" }, [
                   _c("i", {
                     staticClass: "fa fa-times-circle fa-2x",
@@ -22990,6 +22938,16 @@ var render = function() {
                       }
                     }
                   })
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("strong", [
+                    _vm._v(
+                      _vm._s(
+                        _vm.modalData.first_name + " " + _vm.modalData.last_name
+                      )
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -23686,7 +23644,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23733,7 +23690,6 @@ var render = function() {
                     [
                       _c("profile-picture", {
                         attrs: {
-                          email: _vm.student.email_uri,
                           student: _vm.student,
                           image: _vm.student.images.likeness,
                           editable: true,
@@ -27192,6 +27148,151 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(186)
+/* template */
+var __vue_template__ = __webpack_require__(187)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/src/js/components/roster_components/galleryProfile.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62f1ec9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-62f1ec9c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 186 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: "gallery-profile",
+	props: ["image", "student", "type", "editable", "email"],
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"])),
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
+		showModal: function showModal() {
+			if (this.permission === true) {
+				this.toggleModal(true);
+				this.dataForModal(this.student);
+			} else {
+				this.nullifyPermissionResponse();
+			}
+		},
+		checkPermission: function checkPermission() {
+			if (this.permission == false) {
+				this.$store.dispatch("nullifyPermissionResponse");
+			}
+		}
+	})
+});
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "router-link",
+        {
+          attrs: {
+            to: "/profile/" + this.$route.params.id + "/" + _vm.email,
+            tag: "a"
+          }
+        },
+        [
+          _c("img", {
+            staticClass: "img--circle",
+            class: [this.type == "profile" ? "profile__img" : "roster__img"],
+            attrs: { src: _vm.image, name: "photo" }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      this.editable
+        ? _c("i", {
+            staticClass: "fas fa-pencil-alt panel__edit-button pull-right",
+            on: {
+              click: function($event) {
+                _vm.showModal()
+              }
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-62f1ec9c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

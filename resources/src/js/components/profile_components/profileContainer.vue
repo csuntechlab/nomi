@@ -10,8 +10,7 @@
                 <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :email="student.email_uri" :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
-                        
+                        <profile-picture :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>

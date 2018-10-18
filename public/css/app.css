@@ -1755,6 +1755,7 @@ textarea[type="text"]:focus {
   bottom: 0;
   left: 0;
   right: 0;
+  padding: 4%;
 }
 
 .roster-list__item {
