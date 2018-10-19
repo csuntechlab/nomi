@@ -30,4 +30,16 @@ class StudentProfileController extends Controller
 
         return $this->studentProfileUtility->updateStudentNotes($data);
     }
+
+    public function getProfileWithNoEmail(Request $request)
+    {
+        $data = [
+            'student_id' => $request->student_id,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+        ];
+
+        return $this->studentProfileUtility
+        ->getStudentProfileWithNoEmail($data);
+    }
 }
