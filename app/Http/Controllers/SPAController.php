@@ -28,6 +28,18 @@ class SPAController extends Controller
         $this->minutes = 27;
     }
 
+    private function getCurrentTerm($term) {
+       
+        if (env('CURRENT_TERM') && $term == null) {
+            $term = env('CURRENT_TERM');
+        }
+
+        if ($term == null) {
+            $term = $this->userSettingsUtility->getCurrentTerm();
+        }
+        return $term;
+    }
+
     /**
      * Description: Gets the course/roster data for the SPA.
      *
@@ -36,14 +48,8 @@ class SPAController extends Controller
     public function getData($term = null)
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+        $term = $this->getCurrentTerm($term);
 
-        if (env('CURRENT_TERM') && $term == null) {
-            $term = env('CURRENT_TERM');
-        }
-
-        if ($term == null) {
-            $term = $this->userSettingsUtility->getCurrentTerm();
-        }
 
         if (Cache::has('courses:' . $id . 'term:' . $term)) {
             $courses = Cache::get('courses:' . $id . 'term:' . $term);
