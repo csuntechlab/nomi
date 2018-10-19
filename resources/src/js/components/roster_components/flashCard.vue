@@ -1,13 +1,13 @@
 <template>
     <div class="col-xs-6 col-md-4 col-lg-3">
-        <div class="flash_panel"  @click="updateRecognized">
-          <div class="flash_positioner"></div>
-            <div class="flash_element">
-                <div v-show="!known" class="card_face">
+        <div class="flash__panel"  @click="updateRecognized">
+          <div class="flash__positioner"></div>
+            <div class="flash__element">
+                <div v-show="!known" class="card-face">
                     <profile-picture class="roster__img" :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
                 <div v-show="known">
-                    <div class="type--center textOverflow back_of_card back_of_card_mobile">
+                    <div class="type--center text-overflow back-of-card back-of-card-mobile">
                         {{display_name}}
                     </div>
                 </div>
@@ -17,17 +17,18 @@
 </template>
 
 <script>
-import axios from "axios";
-import { mapGetters } from "vuex";
-import profilePicture from "../profile_components/profilePicture.vue";
-export default {
-  name: "flash-card",
+import axios from 'axios';
+import { mapGetters } from 'vuex';
+import profilePicture from '../profile_components/profilePicture.vue';
 
-  data: function() {
+export default {
+  name: 'flash-card',
+
+  data() {
     return {
       known: false,
       messages: true,
-      errors: []
+      errors: [],
     };
   },
 
@@ -35,35 +36,35 @@ export default {
     profilePicture,
   },
 
-  props: ["student"],
+  props: ['student'],
 
   computed: {
 
     ...mapGetters([
     ]),
 
-    display_name: function() {
-      return this.student.first_name + " " + this.student.last_name;
+    display_name() {
+      return `${this.student.first_name} ${this.student.last_name}`;
     },
 
-    image: function() {
+    image() {
       if (this.student.image_priority === 'likeness') {
         return this.student.images.likeness;
-      } else if (this.student.image_priority === 'avatar') {
+      } if (this.student.image_priority === 'avatar') {
         return this.student.images.avatar;
       }
-    }
+    },
   },
 
   methods: {
-    updateRecognized: function() {
+    updateRecognized() {
       this.known = !this.known;
-      this.$emit("markRecognized", {
+      this.$emit('markRecognized', {
         student_id: this.student.student_id,
-        known: this.known
+        known: this.known,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

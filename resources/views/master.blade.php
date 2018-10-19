@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="theme-login" id="mainBody" lang="{{ app()->getLocale() }}">
+<html id="mainBody" lang="{{ app()->getLocale() }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,17 +26,11 @@
 
     <body>
         <div id='app'>
-            <nav-bar></nav-bar>
-            @if ( $errors->count() > 0 )
-                <div id="error_bar" class="alert alert--warning" >
-                    <strong>Oops!</strong> Login Failed
-                </div>
-            @endif
             @yield('content')
         </div>
     </body>
     <script src="{{ asset('js/metaphor.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-   
+
     @yield('scripts')
 </html>

@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\UserSettingsContract;
-use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
+  use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
 use App\Models\Theme;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserSettingsService implements UserSettingsContract
 {
-    protected $termModelRepository = null;
+    protected $termModelRepositoryUtility = null;
 
-    public function __construct(TermModelRepositoryInterface $termModelRepository)
+    public function __construct(TermModelRepositoryInterface $termModelRepositoryUtility)
     {
-        $this->termModelRepository = $termModelRepository;
+        $this->termModelRepositoryUtility = $termModelRepositoryUtility;
     }
 
     public function getSettings()
@@ -44,7 +44,7 @@ class UserSettingsService implements UserSettingsContract
     {
         $today = Carbon::now()->addWeeks(2)->toDateTimeString();
 
-        $term = $this->termModelRepository->getCurrentTerm($today);
+        $term = $this->termModelRepositoryUtility->find($today);
 
         if ($term != null) {
             return $term['term_id'];

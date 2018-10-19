@@ -18,7 +18,7 @@
                     </li>
                 </ul>
             </div>
-        <div class="panel about_padding">
+        <div class="panel about">
             <div v-if="showAbout">
                 <about-page></about-page>
             </div>
@@ -30,29 +30,30 @@
 </template>
 
 <script>
-    import AboutPage from "./aboutPage"
-    import VersionHistory from "./versionHistoryPage";
+    import AboutPage from './aboutPage';
+    import VersionHistory from './versionHistoryPage';
 
     export default {
-        components: {
-            VersionHistory,
-            AboutPage},
-        name: "about-banner",
-        data: function(){
-            return {
-                showAbout: true
-            }
-        },
+      components: {
+        VersionHistory,
+        AboutPage,
+  },
+      name: 'about-banner',
+      data() {
+    return {
+          showAbout: true,
+    };
+  },
 
 
-        methods: {
-            selectAbout: function (){
-                this.showAbout = true
-            },
-            selectVersion: function(){
-                this.showAbout = false
-            }
-        }
+      methods: {
+        selectAbout() {
+          this.showAbout = true;
+    },
+        selectVersion() {
+          this.showAbout = false;
+    },
+      },
 
-    }
+    };
 </script>

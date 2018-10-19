@@ -1,9 +1,9 @@
 <template>
     <div class="type--center">
-        <div v-if="displaySideMenu" id="outsideLayer" class="transparent_non-menu_layer" @click="toggleMenu"></div>
+        <div v-if="displaySideMenu" id="outsideLayer" class="menu--transparent" @click="toggleMenu"></div>
         <div id="sideMenu" class="side-menu" v-bind:class="[displaySideMenu ? 'side-menu--display' : 'side-menu--hide']">
             <div v-if="facultyMember.image === null" class="type--center">
-                <i class="fas fa-user-circle fa-3x icon_theme"></i>
+                <i class="fas fa-user-circle fa-3x icon__theme"></i>
             </div>
             <div v-else>
                 <div>
@@ -23,33 +23,34 @@
     </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
+
 export default {
-	name: "side-menu",
-	data() {
-		return {
-			url: ""
-		};
-	},
-	computed: {
-		...mapGetters(["courses", "facultyMember", "displaySideMenu"]),
-		showMenu() {
-			return this.displaySideMenu;
-		}
-	},
-	created: function() {
-		this.url = document.querySelector("meta[name=app-url]").content;
-	},
-	methods: {
-		toggleMenu() {
-			this.$store.dispatch("toggleMenu");
-		}
-	},
-	watch: {
-		showMenu(open) {
-			if (open) document.documentElement.style.overflow = "hidden";
-			else document.documentElement.style.overflow = "auto";
-		}
-	}
+  name: 'side-menu',
+  data() {
+    return {
+      url: '',
+    };
+  },
+  computed: {
+    ...mapGetters(['courses', 'facultyMember', 'displaySideMenu']),
+    showMenu() {
+      return this.displaySideMenu;
+    },
+  },
+  created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  },
+  methods: {
+    toggleMenu() {
+      this.$store.dispatch('toggleMenu');
+    },
+  },
+  watch: {
+    showMenu(open) {
+      if (open) document.documentElement.style.overflow = 'hidden';
+      else document.documentElement.style.overflow = 'auto';
+    },
+  },
 };
 </script>

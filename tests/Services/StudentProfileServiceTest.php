@@ -59,6 +59,7 @@ class StudentProfileServiceTest extends TestCase
                     'profile_image' => 'thisIsAnImage',
                     'individuals_id' => 'members:student',
                     'display_name' => 'Sun Ra',
+                    'biography' => 'This is my bio, look, I am interesting',
                 ],
                 'success' => 'true',
                 'status' => '200',
@@ -83,6 +84,7 @@ class StudentProfileServiceTest extends TestCase
             'members_id' => 'members:student',
             'notes' => 'This is a note',
             'image_priority' => 'likeness',
+            'bio' => 'This is my bio, look, I am interesting',
         ];
 
         $output = $studentService->getStudentProfile($email);
@@ -118,6 +120,7 @@ class StudentProfileServiceTest extends TestCase
                     'profile_image' => 'thisIsAnImage',
                     'individuals_id' => 'members:student',
                     'display_name' => 'Sun Ra',
+                    'bio' => 'This is my bio, look, I am interesting',
                 ],
                 'success' => 'false',
                 'status' => 400,
@@ -133,6 +136,52 @@ class StudentProfileServiceTest extends TestCase
         $output = $studentService->getStudentProfile($email);
 
         $this->assertEquals($studentProfile, $output);
+    }
+
+    /** @test */
+    public function getStudentProfileWithNoEmail_returns_a_student_profile()
+    {
+      $user = new User(['user_id' => 'members:professor']);
+      $this->be($user);
+
+      $studentService = new StudentProfileService(
+          $this->webResourceRetriever,
+          $this->rosterRetriever,
+          $this->imageCRUD
+      );
+
+      $note = factory(Note::class)->make([
+          'student_id' => 'members:student',
+          'user_id' => 'members:professor',
+          'notepad' => Crypt::encrypt('Hi liad'),
+      ])->save();
+
+      $imagePriority = $this->imageCRUD
+          ->shouldReceive('getPriority')
+          ->withArgs([['student']])
+          ->andReturn(['likeness']);
+
+      $data = [
+          'student_id' => 'members:student',
+          'first_name' => 'luis',
+          'last_name' => 'guzman',
+      ];
+
+      $test =  \json_encode([
+          'display_name' => $data['first_name'].' '.$data['last_name'],
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
+          'student_id' => $data['student_id'],
+          'members_id' => $data['student_id'],
+          'notes' => 'Hi liad',
+          'image_priority' => 'likeness',
+          'bio' => null, // if no email, then no bio
+      ]);
+
+      $output = $studentService->getStudentProfileWithNoEmail($data);
+
+      $this->assertEquals($output,$test);
+
     }
 
     /** @test */

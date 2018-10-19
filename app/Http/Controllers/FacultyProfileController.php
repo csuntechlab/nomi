@@ -8,15 +8,15 @@ use App\Contracts\FacultyProfileContract;
 
 class FacultyProfileController extends Controller
 {
-    protected $facultyProfileContract;
+    protected $facultyProfileUtility;
 
-    public function __construct(FacultyProfileContract $facultyProfileContract)
+    public function __construct(FacultyProfileContract $facultyProfileUtility)
     {
-        $this->facultyProfileContract = $facultyProfileContract;
+        $this->facultyProfileUtility = $facultyProfileUtility;
     }
 
     public function getFacultyProfile($email)
     {
-        return $this->facultyProfileContract->getFacultyProfile($email);
+        return $this->facultyProfileUtility->getFacultyProfile($email);
     }
 }

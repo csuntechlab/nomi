@@ -56,4 +56,24 @@ class StudentProfileControllerTest extends TestCase
 
         $controller->updateNotes($request);
     }
+
+    /**
+     * @test
+     */
+    public function getProfileWithNoEmail_retrieves_profile_based_off_request()
+    {
+        $controller = new StudentProfileController($this->retriever);
+
+        $this->retriever
+            ->shouldReceive('getStudentProfileWithNoEmail')
+            ->once();
+
+        $request = new Request();
+
+        $request->student_id = 'bigboi:420';
+        $request->first_name = 'plz';
+        $request->last_name = 'work';
+
+        $controller->getProfileWithNoEmail($request);
+    }
 }

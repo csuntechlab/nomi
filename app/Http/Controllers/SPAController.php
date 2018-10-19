@@ -11,21 +11,33 @@ use Illuminate\Support\Facades\Cache;
 
 class SPAController extends Controller
 {
-    public $rosterRetrievalContract;
-    public $webResourceRetrieverContract;
-    public $userSettings;
+    public $rosterRetrievalUtility;
+    public $webResourceRetrieverUtility;
+    public $userSettingsUtility;
     public $web;
     public $minutes;
 
     public function __construct(
-        RosterRetrievalContract $rosterRetrievalContract,
-        WebResourceRetrieverContract $webResourceRetrieverContract,
-        UserSettingsContract $userSettings
+        RosterRetrievalContract $rosterRetrievalUtility,
+        WebResourceRetrieverContract $webResourceRetrieverUtility,
+        UserSettingsContract $userSettingsUtility
     ) {
-        $this->rosterRetrievalContract = $rosterRetrievalContract;
-        $this->webResourceRetrieverContract = $webResourceRetrieverContract;
-        $this->userSettings = $userSettings;
+        $this->rosterRetrievalUtility = $rosterRetrievalUtility;
+        $this->webResourceRetrieverUtility = $webResourceRetrieverUtility;
+        $this->userSettingsUtility = $userSettingsUtility;
         $this->minutes = 27;
+    }
+
+    private function getCurrentTerm($term) {
+       
+        if (env('CURRENT_TERM') && $term == null) {
+            $term = env('CURRENT_TERM');
+        }
+
+        if ($term == null) {
+            $term = $this->userSettingsUtility->getCurrentTerm();
+        }
+        return $term;
     }
 
     /**
@@ -36,19 +48,13 @@ class SPAController extends Controller
     public function getData($term = null)
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+        $term = $this->getCurrentTerm($term);
 
-        if (env('CURRENT_TERM') && $term == null) {
-            $term = env('CURRENT_TERM');
-        }
-
-        if ($term == null) {
-            $term = $this->userSettings->getCurrentTerm();
-        }
 
         if (Cache::has('courses:' . $id . 'term:' . $term)) {
             $courses = Cache::get('courses:' . $id . 'term:' . $term);
         } else {
-            $courses = $this->webResourceRetrieverContract->getCourses($term);
+            $courses = $this->webResourceRetrieverUtility->getCourses($term);
             Cache::put('courses:' . $id . 'term:' . $term, $courses, $this->minutes);
         }
 
@@ -59,7 +65,7 @@ class SPAController extends Controller
             if (Cache::has('students:' . $i . ':' . $id . 'term:' . $term)) {
                 $students[$i] = Cache::get('students:' . $i . ':' . $id . 'term:' . $term);
             } else {
-                $students[$i] = $this->rosterRetrievalContract->getStudentsFromRoster($term, $i);
+                $students[$i] = $this->rosterRetrievalUtility->getStudentsFromRoster($term, $i);
                 Cache::put('students:' . $i . ':' . $id . 'term:' . $term, $students[$i], $this->minutes);
             }
 

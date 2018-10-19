@@ -1,130 +1,165 @@
+.theme {
+	padding: 5%;
+
+	&__item {
+		padding: 5% 0;
+		color: white;
+		width: 100%;
+		border: 2px solid transparent;
+		font-weight: bold;
+		letter-spacing: .1rem;
+	}
+}
+
+// Theme Colors
+#Matador {
+	background-color: #d00d2d;
+}
+
+#Navy {
+	background-color: #0f1821;
+}
+
+#Blues {
+	background-color: #0d3753;
+}
+
+#Dark {
+	background-color: #272727;
+}
+
 $themes: (
-  login: (
-    navigationBars: #D22030,
-    sideMenu: #a61926,
-    accentColor: #E74A37,
-    backgroundColor: #FFFFFF,
-    textColor: #464646,
+	login: (
+		navigationBars: #D22030,
+		sideMenu: #a61926,
+		accentColor: #E74A37,
+		altAccent: #FF7864,
+		backgroundColor: #FFFFFF,
+		textColor: #464646,
 
-    hoverColor: rgb(221, 221, 221),
-    focusColor: #92A1CD,
+		hoverColor: rgb(221, 221, 221),
+		focusColor: #92A1CD,
 
-    galleryBtnBg:#fff,
-    galleryBtnText: #808080,
-    disabledBtnColor:rgba(0, 0, 0, 0.6),
+		galleryBtnBg:#fff,
+		galleryBtnText: #808080,
+		disabledBtnColor:rgba(0, 0, 0, 0.6),
 
-    buttonColor: #d00d2d,
-    buttonText: #fff,
+		buttonColor: #d00d2d,
+		buttonText: #fff,
 
-    panelColor: #F0F0F0,
-    toolBanner: rgba(0,0,0,0.05),
+		panelColor: #F0F0F0,
+		toolBanner: rgba(0,0,0,0.05),
 
-    mainFontSize: 1.1rem,
-    mainFontFamily: sans-serif,
-  ),
-  main: ( /*aka NAVY theme - Needs to be renamed*/
-    navigationBars: #0F1821,
-    sideMenu: #172533,
-    accentColor: #4F9DA3,
-    backgroundColor: #E5E5E5,
-    textColor: #464646,
-    
-    hoverColor: #ccc,
-    focusColor: #4F9DA3,
-    
-    buttonColor: #4F9DA3,
-    buttonText: #fff,
-    
-    /*Gallery - Styles gallery edit button colors*/
-    galleryBtnBg:#4F9DA3,
-    galleryBtnText: #ffffff,
-    disabledBtnColor: rgba(255, 255, 255, 0.2),
-    
-    panelColor: #F4F4F4,
-    toolBanner: rgba(255,255,255,0.5),
+		mainFontSize: 1.1rem,
+		mainFontFamily: sans-serif,
+	),
 
-    mainFontSize: 1.1rem,
-	  mainFontFamily: helvetica,
-  ),
+	// Navy Theme
+	OnceAMatadorAlwaysAMatador: (
+		navigationBars: #D22030,
+		sideMenu: #a61926,
+		accentColor: #E74A37,
+		altAccent: #FF7864,
+		backgroundColor: #FFFFFF,
+		textColor: #464646,
 
-  bluesTheme: (
-    navigationBars: #0D3753,
-    sideMenu: #104669,
-    accentColor: #4CA1DB,
-    backgroundColor: #d9e7ee,
-    textColor: #575757,
-    
-    hoverColor: #ccc,
-    focusColor: #4CA1DB,
-    
-    buttonColor: #4CA1DB,
-    buttonText: #fff,
+		hoverColor: rgb(221, 221, 221),
+		focusColor: #92A1CD,
 
-    galleryBtnBg:#fff,
-    galleryBtnText: #2e88c5,
-    disabledBtnColor:rgba(0, 0, 0, 0.6),
+		galleryBtnBg:#fff,
+		galleryBtnText: #808080,
+		disabledBtnColor:rgba(0, 0, 0, 0.6),
 
-    panelColor: white,
-    toolBanner: rgba(255,255,255,0.5),
+		buttonColor: #E74A37,
+		buttonText: #fff,
 
-    mainFontSize: 1.1rem,
-    mainFontFamily: sans-serif,
-  ),
+		panelColor: #F0F0F0,
+		toolBanner: rgba(0,0,0,0.05),
 
-  OnceAMatadorAlwaysAMatador: (
-    navigationBars: #D22030,
-    sideMenu: #a61926,
-    accentColor: #E74A37,
-    backgroundColor: #FFFFFF,
-    textColor: #464646,
+		mainFontSize: 1.1rem,
+		mainFontFamily: sans-serif,
+	),
+	
+	main: ( 
+		navigationBars: #0F1821,
+		sideMenu: #172533,
+		accentColor: #4F9DA3,
+		altAccent: #5FB8BE,
+		backgroundColor: #E5E5E5,
+		textColor: #464646,
+		
+		hoverColor: #ccc,
+		focusColor: #4F9DA3,
+		
+		buttonColor: #4F9DA3,
+		buttonText: #fff,
+		
+		// Gallery
+		galleryBtnBg:#4F9DA3,
+		galleryBtnText: #ffffff,
+		disabledBtnColor: rgba(255, 255, 255, 0.2),
+		
+		panelColor: #F4F4F4,
+		toolBanner: rgba(255,255,255,0.5),
 
-    hoverColor: rgb(221, 221, 221),
-    focusColor: #92A1CD,
+		mainFontSize: 1.1rem,
+		mainFontFamily: helvetica,
+	),
 
-    galleryBtnBg:#fff,
-    galleryBtnText: #808080,
-    disabledBtnColor:rgba(0, 0, 0, 0.6),
+	bluesTheme: (
+		navigationBars: #0D3753,
+		sideMenu: #104669,
+		accentColor: #4CA1DB,
+		altAccent: #82C7FF,
+		backgroundColor: #d9e7ee,
+		textColor: #575757,
+		
+		hoverColor: #ccc,
+		focusColor: #4CA1DB,
+		
+		buttonColor: #4CA1DB,
+		buttonText: #fff,
 
-    buttonColor: #E74A37,
-    buttonText: #fff,
+		galleryBtnBg:#fff,
+		galleryBtnText: #2e88c5,
+		disabledBtnColor:rgba(0, 0, 0, 0.6),
 
-    panelColor: #F0F0F0,
-    toolBanner: rgba(0,0,0,0.05),
+		panelColor: white,
+		toolBanner: rgba(255,255,255,0.5),
 
-    mainFontSize: 1.1rem,
-    mainFontFamily: sans-serif,
-  ),
+		mainFontSize: 1.1rem,
+		mainFontFamily: sans-serif,
+	),
 
-  Dark: (
-    navigationBars: #1D1D1D,
-    sideMenu: #2a2a2a,
-    accentColor: #97B5D8,
-    backgroundColor: #272727,
-    textColor: #bababa,
+	Dark: (
+		navigationBars: #1D1D1D,
+		sideMenu: #2a2a2a,
+		accentColor: #6FA0D8,
+		altAccent: #C5E0FF,
+		backgroundColor: #272727,
+		textColor: #bababa,
 
-    hoverColor: #272727,
-    focusColor: rgb(66, 119, 172),
+		hoverColor: #272727,
+		focusColor: rgb(66, 119, 172),
 
-    buttonColor: #426c96,
-    buttonText: #dadada,
+		buttonColor: #426c96,
+		buttonText: #dadada,
 
-    galleryBtnBg:#426c96,
-    galleryBtnText: #dfe5ec,
-    disabledBtnColor: rgba(255, 255, 255, 0.2),
+		galleryBtnBg:#426c96,
+		galleryBtnText: #dfe5ec,
+		disabledBtnColor: rgba(255, 255, 255, 0.2),
 
-    panelColor: #303030,
-    toolBanner: rgba(255,255,255,.05),
+		panelColor: #303030,
+		toolBanner: rgba(255,255,255,.05),
 
-    inputColor: #424242,
-    inputBorder: none,
+		inputColor: #424242,
+		inputBorder: none,
 
-    mainFontSize: 1.1rem,
-    mainFontFamily: sans-serif,
-
-
-  )
-  
+		mainFontSize: 1.1rem,
+		mainFontFamily: sans-serif,
+	)
 );
+
 @mixin themify($themes: $themes) {
 	@each $theme, $map in $themes {
 		.theme-#{$theme} & {
@@ -143,6 +178,7 @@ $themes: (
 		}
 	}
 }
+
 @function themed($key) {
 	@return map-get($theme-map, $key);
 }

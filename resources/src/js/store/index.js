@@ -1,22 +1,20 @@
-import base from './modules/base'
-import game from './modules/game'
-import profile from './modules/profile'
 import createPersistedState from 'vuex-persistedstate';
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import profile from './modules/profile';
+import base from './modules/base';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    plugins: [createPersistedState({
-        key: 'nameface'
-    })],
+  plugins: [createPersistedState({
+    key: 'nameface',
+  })],
 
-    modules: {
-        base,
-        game,
-        profile
-    }
+  modules: {
+    base,
+    profile,
+  },
 });
 
 export default store;

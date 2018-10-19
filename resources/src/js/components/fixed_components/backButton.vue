@@ -1,30 +1,28 @@
 <template>
     <div v-if="!hideBack">
-        <div v-if="!disableBack">
-            <i class="fa fa-angle-left fa-3x back_button" title="Go Back" @click="goBack"></i>
-        </div>
-        <div v-else>
-            <i class="fa fa-angle-left fa-3x back_button back_button_disabled"></i>
-        </div>
+        <i class="fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
     </div>
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters } from 'vuex';
+
     export default {
-        name: "back-button",
+      name: 'back-button',
 
-        methods: {
-            goBack: function () {
-                this.$router.go(-1);
-            }
-        },
+      methods: {
+        goBack() {
+          this.$store.dispatch('clearStudent');
+          this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
+    },
+      },
 
-        computed: {
-            ...mapGetters([
-                'hideBack',
-                'disableBack'
-            ]),
-        }
-    }
+      computed: {
+        ...mapGetters([
+          'hideBack',
+          'disableBack',
+          'currentCourse',
+        ]),
+      },
+    };
 </script>

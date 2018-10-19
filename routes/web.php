@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 /** Routes associated with login. */
 Route::get('/', 'LoginController@index')->name('login');
+Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/login', 'LoginController@validateUser')->name('post.login');
 
 /** Route for home page. Takes us to the SPA. */
@@ -25,6 +26,8 @@ Route::get('/logout', function () {
     auth()->logout();
     return redirect('/');
 });
+
+
 
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
@@ -39,11 +42,16 @@ Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudent
 /** Student API Routes */
 Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
 Route::get('/student_profile/{email}', 'StudentProfileController@getProfile')->middleware('auth');
+Route::get('/student_profile/{first_name}/{last_name}','StudentProfileController@getProfileWithNoEmail')->middleware('auth');
 Route::post('/update_note', 'StudentProfileController@updateNotes')->middleware('auth');
 
 /** User Settings API Routes */
 Route::get('/get_settings', 'UserSettingsController@getSettings')->middleware('auth');
 Route::post('/update_theme', 'UserSettingsController@updateTheme')->middleware('auth');
+
+/** Upload Permission API Routes */
+Route::get('/get_upload_permission', 'UploadPermissionController@getUploadPermission')->middleware('auth');
+Route::post('/store_permission', 'UploadPermissionController@storePermission')->middleware('auth');
 
 /** Support and Feedback */
 Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create')->middleware('auth');
@@ -63,7 +71,7 @@ Route::group(['prefix' => 'api'], function () {
 // Route::group(['middleware' => ['auth']], function () {
 //     Route::get('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@create')->name('support.create');
 //     Route::post('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@store')->name('support.store');
-  
+
 //     Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create');
 //     Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store');
 //   });

@@ -47,7 +47,7 @@
   </head>
   <body>
     <div class="header-bar">
-      <img class="back_button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
+      <img class="back-button" src="{{ asset('/images/chevron-left.svg') }}" alt="Back Button" onclick="backtoNOMI()">
     </div>
     <div class="container sub-container">
       <div class="row justify-content-md-center">
