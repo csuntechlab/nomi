@@ -40,6 +40,12 @@ textarea[type="text"]:focus{
 	margin-bottom: 7%;
 }
 
+.clearfix::after{
+    display:block;
+    clear:both;
+    content:""
+}
+
 .margin-between-containers {
 	margin-top: 7%;
 }
@@ -47,15 +53,24 @@ textarea[type="text"]:focus{
 .panel__edit-button {
 	position: absolute;
     bottom: 5%;
-    right: 15%;
-	border-radius: 100%;
+	right: 15%;
     padding: 5%;
+	border-radius: 100%;
     font-size: 150%;
     -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 	@include themify($themes) {
 		background-color: themed("galleryBtnBg");
 		color: themed("galleryBtnText");
+	}
+
+	&--profile{
+		position: relative;
+		bottom: 8%;
+		right: 20%;
+		padding: 5%;
+		border-radius: 100%;
+
 	}
 }
 
@@ -149,4 +164,8 @@ textarea[type="text"]:focus{
 	height: auto;
 	padding: 5%;
 	margin: 0 auto;
+}
+
+.padding{
+	padding: 15%;
 }

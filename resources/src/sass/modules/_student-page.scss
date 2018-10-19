@@ -41,6 +41,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
+		padding: 4%;
 	}
 }
 
@@ -181,6 +182,8 @@
 		margin-bottom: 10px;
 	}
 
+	
+
 	&_email_text {
 		text-decoration: underline;
 		margin-left: 6px;
@@ -206,7 +209,11 @@
 	}
 	
 	&__img{
-		width: 12rem;
+		width: 100%;
+	}
+	&__edit-container{
+		display:block;
+		position: relative;
 	}
 	
 	&-carousel__edit {
@@ -223,25 +230,25 @@
 		}
 
 		@media only screen and (max-width: 400px) {
-			bottom: 25%;
+			bottom: 40%;
 			right: 15%;
 			padding: 4%;
 		}
 
 		@media only screen and (min-width: 400px) and (max-width: 600px) {
-			bottom: 25%;
+			bottom: 40%;
 			right: 26%;
 			padding: 3%;
 		}
 
 		@media only screen and (min-width: 600px) and (max-width: 750px) {
-			bottom: 25%;
+			bottom: 40%;
 			right: 28%;
 			padding: 3%;
 		}
 
 		@media only screen and (min-width: 750px) and (max-width: 1000px) {
-			bottom: 25%;
+			bottom: 40%;
 			right: 32%;
 			padding: 3%;
 		}
@@ -280,9 +287,11 @@
 	width: 60%;
 }
 
+
 .slide-wrap {
 	width: 55%;
 	height: 45%;
+	padding: 7%;
 }
 
 .student_list_first_name_mobile {
@@ -338,7 +347,6 @@
 	}
 
 	&-container {
-		padding: 0 2em 2em;  
 		@include themify($themes){
 			color: themed('panelColor');
 		}

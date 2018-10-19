@@ -14,6 +14,7 @@
                 :key="student.student_id"
                 :student="student"
             ></gallery-card>
+            <modal></modal>
         </div>
     </div>
 </template>
@@ -21,7 +22,9 @@
 <script>
 import { mapGetters } from 'vuex';
 import FlashCard from './flashCard';
-import GalleryCard from './galleryCard';
+import GalleryCard from "./galleryCard";
+import modal from "../fixed_components/modal.vue";
+
 
 export default {
   name: 'student-matrix',
@@ -37,10 +40,11 @@ export default {
 
   props: ['courseid'],
 
-  components: {
-    FlashCard,
-    GalleryCard,
-  },
+    components: {
+        FlashCard,
+        GalleryCard,
+        modal
+    },
 
   computed: {
     ...mapGetters([

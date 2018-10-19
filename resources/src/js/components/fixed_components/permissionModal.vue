@@ -24,10 +24,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
-    import { mapActions } from 'vuex';
-    import modal from './modal.vue';
-
+    import { mapGetters, mapActions} from 'vuex';
     export default {
       name: 'permission-modal',
 
@@ -45,12 +42,8 @@
 
       },
 
-      components: {
-        modal,
-      },
-
-      created() {
-        this.$store.dispatch('getUploadPermission');
+        created() {
+            this.$store.dispatch("getUploadPermission");
 	    },
 
       methods: {

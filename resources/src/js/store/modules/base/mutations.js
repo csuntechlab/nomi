@@ -178,14 +178,13 @@ export default {
     state.disableBack = true;
   },
 
+  UPDATE_IMAGE: function (state, payload) {
+      // let id = payload.studentId;
+      // let url = payload.imgUrl;
+      // state.studentImages[id] = url;
+  },
   ENABLE_BACK_BUTTON(state) {
     state.disableBack = false;
-  },
-
-  UPDATE_IMAGE(state, payload) {
-    // let id = payload.studentId;
-    // let url = payload.imgUrl;
-    // state.studentImages[id] = url;
   },
 
   SET_SPRING(state) {
