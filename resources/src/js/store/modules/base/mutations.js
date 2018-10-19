@@ -5,6 +5,7 @@ export default {
 
   GET_SETTINGS(state, payload) {
     state.themeName = payload.data;
+    document.getElementById('app').className = state.themeName.theme;
     document.getElementById('mainBody').className = state.themeName.theme;
   },
 

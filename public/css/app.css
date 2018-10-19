@@ -868,6 +868,7 @@ textarea[type="text"]:focus {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   visibility: hidden;
+  color: #d00d2d;
 }
 
 .login-loader__loader--active {
@@ -941,6 +942,25 @@ textarea[type="text"]:focus {
     padding-top: 0;
     width: 75%;
   }
+}
+
+.post-login {
+  position: absolute;
+  overflow: hidden;
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  z-index: 200;
+  background-color: white;
+}
+
+.post-login__loading-icon {
+  position: relative;
+  color: #d00d2d;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: calc(100% / 2);
 }
 
 .theme-login .navbar {
