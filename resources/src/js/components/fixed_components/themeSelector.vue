@@ -42,6 +42,7 @@
               'Content-Type': 'multipart/form-data',
             },
           }).then(() => {
+            document.getElementById('app').className = state.themeName.theme;
             document.getElementById('mainBody').className = theme;
           }).catch((e) => {
             console.log(e);
@@ -50,6 +51,6 @@
       },
     
 
-    };
+    }
 </script>
 
