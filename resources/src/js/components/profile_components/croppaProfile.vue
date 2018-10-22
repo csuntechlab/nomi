@@ -2,6 +2,7 @@
     <div>
         <croppa
             v-model="myCroppa"
+            v-if="toggleCroppa"
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
@@ -15,108 +16,100 @@
                 <i class="fas fa-spinner fa-spin fa-5x"></i>
             </div>
         </div>
-
-        <div>
-            <div class="modal-button__container pull-left">
-                <div class="modal-button">
-                    <div @click="chooseImage" class="type--center"><i class="fa fa-camera fa-2x"></i></div>
-                </div>
-            </div>
-            <div class="modal-button__container pull-right">
-                <div class="modal-button">
-                    <div @click.prevent="confirmImage" class="type--center"><i class="fa fa-check fa-2x"></i></div>
-                </div>
-            </div>
-        </div>
-        
     </div>
 </template>
 <script>
-    import { mapGetters } from 'vuex';
-
+    import { mapGetters } from "vuex";
     export default {
-      name: 'croppa-profile',
-
-      props: ['student'],
-
-      data() {
-    return {
-          messages: true,
-          errors: [],
-          myCroppa: null,
-          disabled: true,
-          url: '',
-          loadingCroppa: false,
-    };
-  },
-
-      computed: {
-        ...mapGetters([
-          'studentProfile',
-          'facultyMember',
-        ]),
-      },
-
-      created() {
-    this.url = document.querySelector('meta[name=app-url]').content;
-  },
-
-      methods: {
-        loadingStart() {
-          this.loadingCroppa = true;
+        name: "croppa-profile",
+        props:['student'],
+        data: function() {
+            return{
+                messages: true,
+                errors: [],
+                myCroppa: null,
+                disabled: true,
+                url: "",
+                loadingCroppa: false,
+            }
+        },
+        computed: {
+            ...mapGetters([
+                'studentProfile',
+                'facultyMember',
+                'toggleCroppa'
+            ]),
         },
 
-        loadingEnd() {
-          this.loadingCroppa = false;
+         mounted(){
+            this.$root.$on('chooseImage', () => {
+                this.chooseImage();
+            }),
+            this.$root.$on('confirmImage', () => {
+                this.confirmImage();
+            })
         },
 
-        confirmImage(emailURI) {
-          if (!this.myCroppa.hasImage()) {
-            alert('no image');
-          } else {
-            let url = this.myCroppa.generateDataUrl('jpg', 0.8);
-            const payload = { studentId: this.studentProfile.id, imgUrl: url };
-            this.$store.dispatch('updateImage', payload);
+        created: function () {
+            this.url = document.querySelector('meta[name=app-url]').content;
+            this.myCroppa = null;
+            this.fileInput = null;
+        },
+        methods: {
+            
 
-            const emuri = this.student.email.substring(0, this.student.email.indexOf('@'));
+            loadingStart(){
+                this.loadingCroppa = true;
+            },
+            loadingEnd(){
+                this.loadingCroppa = false;
+            },
+            confirmImage: function () {
+                if (!this.myCroppa.hasImage()) {
+                    alert('no image');
+                } else {
+                    let url = this.myCroppa.generateDataUrl('jpg', .8);
+                    let emuri = this.student.email_uri;
+            
+                    window.axios.post('/api/upload', {
+                        id: this.facultyMember.id,
+                        profile_image: url,
+                        image_type: 'likeness',
+                        entity_type: 'student',
+                        uri: emuri,
+                    }).then(response => {
+                        if (response.status) {
+                            this.$store.dispatch('getOnlyData');
+                            this.$parent.$emit('close', url);
+                        } else {
+                            console.error('OH NO');
+                        }
+                    }).catch(e => {
+                        url = null;
+                        this.$parent.$emit('close', url);
+                    });
+                }
+            },
+    
+            styleCanvas: function() {
+                let elm = this.myCroppa.getCanvas();
+                elm.style.width="100%";
+                elm.style.height="100%";
+                elm.style.borderRadius="50%";
+            },
 
-            window.axios.post('/api/upload', {
-              id: this.facultyMember.id,
-              profile_image: url,
-              image_type: 'likeness',
-              entity_type: 'student',
-              uri: emuri,
-            }).then((response) => {
-              if (response.status) {
-                this.$store.dispatch('getOnlyData');
-                this.$parent.$emit('close', url);
-              } else {
-                console.error('OH NO');
-              }
-            }).catch((e) => {
-              url = null;
-              console.log(e);
-              this.$parent.$emit('close', url);
-            });
-          }
-    },
+            //DO NOT TOUCH! Hacky fix for croppa fileinput 
+            chooseImage: function() {
+                if(this.myCroppa.$refs.fileInput) {
+                    this.fileInput = this.myCroppa.$refs.fileInput;
+                    this.myCroppa.chooseFile();
+                } else {
+                    this.myCroppa.$refs.fileInput = this.fileInput;
+                    this.myCroppa.chooseFile();
 
-        authorizeImageUpload() {
-
-    },
-
-        styleCanvas() {
-          const elm = this.myCroppa.getCanvas();
-
-          elm.style.width = '100%';
-          elm.style.height = '100%';
-          elm.style.borderRadius = '50%';
-    },
-
-        chooseImage() {
-          this.myCroppa.chooseFile();
-          this.switch = false;
-    },
-      },
-    };
+                }
+                
+            }
+        }
+    }
 </script>

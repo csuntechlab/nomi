@@ -29,6 +29,7 @@
 
 	&-header h3 {
 		margin-top: 0;
+		text-align: center;
 		@include themify($themes){
 		color: themed('accentColor');
 		}
@@ -36,11 +37,14 @@
 
 	&-body {
 		margin: 20px 0;
+		&__carousel{
+			// pointer-events: none;
+		}
 	}
 
-	&__container {
-		padding: 1.5em 2em;
-	}
+	// &__container {
+	// 	padding: 1.5em 2em;
+	// }
 
 	&-default-button {
 		float: right;
@@ -93,9 +97,18 @@
 	&--exit {
 		color: gray;
 		margin-bottom: 0;
-		margin-top: 5%;
+		margin-top: 2%;
 		margin-left: 5%;
-		margin-right: 5%;
+		margin-right: 2%;
+		height: 10%;
+	}
+
+	&--adjust{
+		height: 2em;
+	}
+
+	&--profile{
+		padding: 0;
 	}
 }
 
