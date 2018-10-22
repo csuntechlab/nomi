@@ -182,8 +182,6 @@
 		margin-bottom: 10px;
 	}
 
-	
-
 	&_email_text {
 		text-decoration: underline;
 		margin-left: 6px;
@@ -210,6 +208,7 @@
 	
 	&__img{
 		width: 100%;
+		border-color: white;
 	}
 	&__edit-container{
 		display:block;
@@ -257,6 +256,17 @@
 			bottom: 30%;
 			right: 37%;
 			padding: 2%;
+		}
+	}
+
+	&__name {
+		font-weight: bold;
+		color: white;
+	}
+	
+	&__color-layer {
+		@include themify($themes) {
+			background-color: themed("navigationBars");
 		}
 	}
 }

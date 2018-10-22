@@ -2087,6 +2087,7 @@ textarea[type="text"]:focus {
 
 .profile__img {
   width: 100%;
+  border-color: white;
 }
 
 .profile__edit-container {
@@ -2166,6 +2167,31 @@ textarea[type="text"]:focus {
     right: 37%;
     padding: 2%;
   }
+}
+
+.profile__name {
+  font-weight: bold;
+  color: white;
+}
+
+.theme-login .profile__color-layer {
+  background-color: #D22030;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile__color-layer {
+  background-color: #D22030;
+}
+
+.theme-main .profile__color-layer {
+  background-color: #0F1821;
+}
+
+.theme-bluesTheme .profile__color-layer {
+  background-color: #0D3753;
+}
+
+.theme-Dark .profile__color-layer {
+  background-color: #1D1D1D;
 }
 
 .notes_text {
