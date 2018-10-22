@@ -15,7 +15,7 @@
                 <a class="side-menu__link" :href="'https://academics.csun.edu/faculty/' + facultyMember.emailURI">
                     <i class="fas fa-user"/> Faculty Profile
                 </a>
-                <a class="side-menu__link" :href="this.url + '/logout'" title="Logout">
+                <a class="side-menu__link" :href="this.url + '/logout'" @click="logout()" title="Logout">
                     <i class="fas fa-sign-out-alt"/> Logout
                 </a>
             </div>
@@ -45,6 +45,10 @@ export default {
     toggleMenu() {
       this.$store.dispatch('toggleMenu');
     },
+    logout() {
+      window.history.forward();  
+      window.history.go(-window.history.length); 
+    }
   },
   watch: {
     showMenu(open) {

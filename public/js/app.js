@@ -27041,6 +27041,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   methods: {
     toggleMenu: function toggleMenu() {
       this.$store.dispatch('toggleMenu');
+    },
+    logout: function logout() {
+      window.history.forward();
+      window.history.go(-window.history.length);
     }
   },
   watch: {
@@ -27118,7 +27122,12 @@ var render = function() {
             "a",
             {
               staticClass: "side-menu__link",
-              attrs: { href: this.url + "/logout", title: "Logout" }
+              attrs: { href: this.url + "/logout", title: "Logout" },
+              on: {
+                click: function($event) {
+                  _vm.logout()
+                }
+              }
             },
             [
               _c("i", { staticClass: "fas fa-sign-out-alt" }),
