@@ -4,28 +4,25 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Contracts\RosterRetrievalContract;
 use App\Contracts\UserSettingsContract;
-use App\Contracts\WebResourceRetrieverContract;
+use App\Contracts\CacheContract;
+
 use Illuminate\Support\Facades\Cache;
 
 class SPAController extends Controller
 {
-    public $rosterRetrievalUtility;
-    public $webResourceRetrieverUtility;
     public $userSettingsUtility;
+    public $cacheUtility;
     public $web;
     public $minutes;
 
     public function __construct(
-        RosterRetrievalContract $rosterRetrievalUtility,
-        WebResourceRetrieverContract $webResourceRetrieverUtility,
-        UserSettingsContract $userSettingsUtility
+        UserSettingsContract $userSettingsUtility,
+        CacheContract $cacheUtility
     ) {
-        $this->rosterRetrievalUtility = $rosterRetrievalUtility;
-        $this->webResourceRetrieverUtility = $webResourceRetrieverUtility;
         $this->userSettingsUtility = $userSettingsUtility;
         $this->minutes = 27;
+        $this->cacheUtility = $cacheUtility;
     }
 
     private function getCurrentTerm($term) {
@@ -51,26 +48,13 @@ class SPAController extends Controller
         $term = $this->getCurrentTerm($term);
 
 
-        if (Cache::has('courses:' . $id . 'term:' . $term)) {
-            $courses = Cache::get('courses:' . $id . 'term:' . $term);
-        } else {
-            $courses = $this->webResourceRetrieverUtility->getCourses($term);
-            Cache::put('courses:' . $id . 'term:' . $term, $courses, $this->minutes);
-        }
+        $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
 
         $students = [];
         $len = \count($courses);
-
-        for ($i = 0; $i < $len; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $id . 'term:' . $term)) {
-                $students[$i] = Cache::get('students:' . $i . ':' . $id . 'term:' . $term);
-            } else {
-                $students[$i] = $this->rosterRetrievalUtility->getStudentsFromRoster($term, $i);
-                Cache::put('students:' . $i . ':' . $id . 'term:' . $term, $students[$i], $this->minutes);
-            }
-
-            $courses[$i]->roster = $students[$i];
-        }
+        
+        $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
+  
         $user = auth()->user();
         $email = $user->email;
 
