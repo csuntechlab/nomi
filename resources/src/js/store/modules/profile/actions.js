@@ -1,16 +1,31 @@
 export default {
     getStudentProfile (context, payload) {
-            let email = payload.uri+'@my.csun.edu'
-            let response = payload
-        window.axios.get('student_profile/'+email)
-            .then(payload => {
-                var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', payload)
-            })
-            .catch(error => {
-                context.commit('API_STUDENT_FAILURE', error)
-            });
+        let response = payload;
+        let email = payload.email;
+        let emailSplit = email.split('@');
+
+        if (emailSplit[1] === "NOTREALEMAIL.net") {
+            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {id: payload.id})
+                .then(payload => {
+                    var getters = context.getters
+                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                    context.commit('GET_STUDENT_BIO', payload)
+                })
+                .catch(error => {
+                    context.commit('API_STUDENT_FAILURE', error)
+                });
+        } else {
+            console.log("no")
+            window.axios.get('student_profile/'+email)
+                .then(payload => {
+                    var getters = context.getters
+                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                    context.commit('GET_STUDENT_BIO', payload)
+                })
+                .catch(error => {
+                    context.commit('API_STUDENT_FAILURE', error)
+                });
+        }
     },
 
     updateNotes (context, notes) {
@@ -56,6 +71,10 @@ export default {
     },
     
     //back button
+    getStudent (context, payload) {
+        context.commit("GET_STUDENT", payload)
+    },
+
     storeStudent (context, payload) {
         context.commit('STORE_STUDENT', payload)
     },
