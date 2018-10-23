@@ -1,19 +1,14 @@
 <?php
 
 declare(strict_types=1);
-
 namespace App\Http\Controllers;
 
 use App\Contracts\UserSettingsContract;
 use App\Contracts\CacheContract;
-
-use Illuminate\Support\Facades\Cache;
-
 class SPAController extends Controller
 {
     public $userSettingsUtility;
     public $cacheUtility;
-    public $web;
     public $minutes;
 
     public function __construct(
@@ -52,7 +47,7 @@ class SPAController extends Controller
 
         $students = [];
         $len = \count($courses);
-        
+
         $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
   
         $user = auth()->user();
