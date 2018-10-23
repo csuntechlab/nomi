@@ -64,18 +64,17 @@ class StudentProfileService implements StudentProfileContract
         $note = Note::where('student_id', $data['student_id'])
             ->firstOrFail();
 
-        $imagePriority = $this->imageCRUDUtility
-            ->getPriority([\str_replace('members:', '', $data['student_id'])])[0];
+        $imagePriority = 'likeness';
 
         $studentProfile = (object) [
-          'display_name' => $display_name,
-          'first_name' => $data['first_name'],
-          'last_name' => $data['last_name'],
-          'student_id' => $data['student_id'],
-          'members_id' => $data['student_id'],
-          'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
-          'image_priority' => $imagePriority,
-          'bio' => null, // if no email, then no bio
+            'display_name' => $display_name,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'student_id' => $data['student_id'],
+            'members_id' => $data['student_id'],
+            'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
+            'image_priority' => $imagePriority,
+            'bio' => null, // if no email, then no bio
         ];
 
         return \json_encode($studentProfile);

@@ -22384,14 +22384,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
 		},
 
-		created: function created() {
-				this.$store.dispatch("getStudentProfile", {
-						uri: this.student.email_uri,
-						faculty_id: this.facultyMember.id
-				});
-		},
-
-
 		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
 				display_name: function display_name() {
 						return this.student.first_name + " " + this.student.last_name[0] + ".";
@@ -22406,7 +22398,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 								return this.student.images.avatar;
 						}
 				}
-		})
+		}),
+
+		methods: {
+				getStudent: function getStudent() {
+						this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
+				}
+		}
 });
 
 /***/ }),
@@ -22588,6 +22586,11 @@ var render = function() {
           {
             attrs: {
               to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+            },
+            nativeOn: {
+              click: function($event) {
+                _vm.getStudent()
+              }
             }
           },
           [
@@ -23789,6 +23792,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   methods: {
     getStudent: function getStudent() {
+      console.log(this.student);
       this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
     }
   }
@@ -25900,9 +25904,13 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         var response = payload;
         var email = payload.email;
         var emailSplit = email.split('@');
-
+        console.log(payload);
         if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, { id: payload.id }).then(function (payload) {
+            window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, {
+                student_id: payload.id,
+                first_name: payload.first_name,
+                last_name: payload.last_name
+            }).then(function (payload) {
                 var getters = context.getters;
                 context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
                 context.commit('GET_STUDENT_BIO', payload);
@@ -25910,7 +25918,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
                 context.commit('API_STUDENT_FAILURE', error);
             });
         } else {
-            console.log("no");
             window.axios.get('student_profile/' + email).then(function (payload) {
                 var getters = context.getters;
                 context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });

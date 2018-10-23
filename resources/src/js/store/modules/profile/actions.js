@@ -3,9 +3,13 @@ export default {
         let response = payload;
         let email = payload.email;
         let emailSplit = email.split('@');
-
+        console.log(payload)
         if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {id: payload.id})
+            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {
+                student_id: payload.id,
+                first_name: payload.first_name,
+                last_name: payload.last_name
+            })
                 .then(payload => {
                     var getters = context.getters
                     context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
@@ -15,7 +19,6 @@ export default {
                     context.commit('API_STUDENT_FAILURE', error)
                 });
         } else {
-            console.log("no")
             window.axios.get('student_profile/'+email)
                 .then(payload => {
                     var getters = context.getters
