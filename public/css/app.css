@@ -2088,6 +2088,8 @@ textarea[type="text"]:focus {
 .profile__img {
   width: 100%;
   border-color: white;
+  border-style: solid;
+  border-width: thin;
 }
 
 .profile__edit-container {
@@ -2174,6 +2176,10 @@ textarea[type="text"]:focus {
   color: white;
 }
 
+.profile__color-layer {
+  position: relative;
+}
+
 .theme-login .profile__color-layer {
   background-color: #D22030;
 }
@@ -2192,6 +2198,11 @@ textarea[type="text"]:focus {
 
 .theme-Dark .profile__color-layer {
   background-color: #1D1D1D;
+}
+
+.profile__divider {
+  display: inline-block;
+  position: relative;
 }
 
 .notes_text {

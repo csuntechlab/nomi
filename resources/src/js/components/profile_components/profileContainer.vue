@@ -1,31 +1,29 @@
 <template>
 <div>
-    <div class="profile__color-layer">
-        <div>
-            <div>
-            <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
-            <slide class="slide-wrap">
-                <div>
-                    <profile-picture :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
-                    <div class="type--center">
-                        <i>Faculty Uploaded</i>
+    <div class="profile__color-layer profile-info-container row">
+            <div class="pull-left profile__divider">
+                <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Faculty Uploaded</i>
+                        </div>
                     </div>
-                </div>
-            </slide>
-            <slide class="slide-wrap">
-                <div>
-                    <profile-picture :student="student" :image="student.images.avatar" :editable="true" :type="'profile'"></profile-picture>
-                    <div class="type--center">
-                        <i>Student Uploaded</i>
+                    </slide>
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="student" :image="student.images.avatar" :editable="true" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Student Uploaded</i>
+                        </div>
                     </div>
-                </div>
-            </slide>
-            </carousel>
-        </div>
-        <div>
-            <h1 class="type--center profile__name">{{student.first_name + " " + student.last_name}}</h1>
-        </div>
-        </div>
+                    </slide>
+                </carousel>
+            </div>
+            <div class="pull-right profile__divider">
+                <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
+            </div>
     </div>
 </div>
 </template>

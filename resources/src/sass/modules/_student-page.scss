@@ -209,6 +209,8 @@
 	&__img{
 		width: 100%;
 		border-color: white;
+		border-style: solid;
+		border-width: thin;
 	}
 	&__edit-container{
 		display:block;
@@ -265,9 +267,15 @@
 	}
 	
 	&__color-layer {
+		position: relative;
 		@include themify($themes) {
 			background-color: themed("navigationBars");
 		}
+	}
+
+	&__divider {
+		display: inline-block;
+		position: relative;
 	}
 }
 

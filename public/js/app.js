@@ -24037,8 +24037,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24058,10 +24056,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "profile__color-layer" }, [
-      _c("div", [
+    _c(
+      "div",
+      { staticClass: "profile__color-layer profile-info-container row" },
+      [
         _c(
           "div",
+          { staticClass: "pull-left profile__divider" },
           [
             _c(
               "carousel",
@@ -24121,13 +24122,13 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", [
-          _c("h1", { staticClass: "type--center profile__name" }, [
+        _c("div", { staticClass: "pull-right profile__divider" }, [
+          _c("h5", { staticClass: "type--center profile__name" }, [
             _vm._v(_vm._s(_vm.student.first_name + " " + _vm.student.last_name))
           ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
