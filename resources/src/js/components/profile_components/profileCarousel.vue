@@ -9,7 +9,7 @@
                     <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                         <slide class="slide-wrap">
                             <div class="image-wrap">
-                                <profile-picture :image="image" :editable="true" :type="'profile'" @showModal="checkPermission()"></profile-picture>
+                                <profile-picture :image="image" :editable="this.emailExists" :type="'profile'" @showModal="checkPermission()"></profile-picture>
                                 <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
                             </div>
                         </slide>
@@ -103,6 +103,10 @@ export default {
     displayModal() {
       return (this.showCroppaModal && this.permission);
     },
+
+    emailExists() {
+      return (this.student.emailURI != null);
+    }
   },
 };
 </script>

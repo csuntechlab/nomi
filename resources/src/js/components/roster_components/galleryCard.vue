@@ -6,7 +6,7 @@
 					<div class="panel__content">
 						<profile-picture :image="image" :type="'roster'"/>
 					</div>
-					<div v-if="this.student.image_priority === 'likeness'">
+					<div v-if="this.student.image_priority === 'likeness' && this.student.email_uri">
 						<i class="fas fa-pencil-alt panel__edit-button" @click="checkPermission"/>
 					</div>
 				</div>
