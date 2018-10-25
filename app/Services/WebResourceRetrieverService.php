@@ -38,6 +38,11 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             ++$i;
         }
 
+        //ensure array is sorted by class_number
+        usort($data, function($item,$item2) {
+            return strcmp($item->class_number, $item2->class_number);
+        });
+
         return $data;
     }
 

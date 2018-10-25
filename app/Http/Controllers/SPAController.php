@@ -28,14 +28,7 @@ class SPAController extends Controller
         $this->minutes = 27;
     }
 
-    /**
-     * Description: Gets the course/roster data for the SPA.
-     *
-     * @param null|mixed $term
-     */
-    public function getData($term = null)
-    {
-        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+    private function getCurrentTerm($term) {
 
         if (env('CURRENT_TERM') && $term == null) {
             $term = env('CURRENT_TERM');
@@ -44,6 +37,19 @@ class SPAController extends Controller
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }
+        return $term;
+    }
+
+    /**
+     * Description: Gets the course/roster data for the SPA.
+     *
+     * @param null|mixed $term
+     */
+    public function getData($term = null)
+    {
+        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
+        $term = $this->getCurrentTerm($term);
+
 
         if (Cache::has('courses:' . $id . 'term:' . $term)) {
             $courses = Cache::get('courses:' . $id . 'term:' . $term);
@@ -68,13 +74,8 @@ class SPAController extends Controller
         $user = auth()->user();
         $email = $user->email;
 
-        $allStudents = [];
+        $allStudents = $this->allStudents($students);
 
-        foreach ($students as $class) {
-            $allStudents = \array_merge($allStudents, $class);
-        }
-
-        $allStudents = \array_unique($allStudents, SORT_REGULAR);
 
         return [
             'courses' => $courses,
@@ -93,5 +94,19 @@ class SPAController extends Controller
     public function index()
     {
         return view('spa');
+    }
+
+    private function allStudents($students) :array
+    {
+
+      $allStudents =[];
+      
+      foreach ($students as $class) {
+          $allStudents = \array_merge($allStudents, $class);
+      }
+
+      $allStudents = \array_unique($allStudents, SORT_REGULAR);
+
+      return $allStudents;
     }
 }

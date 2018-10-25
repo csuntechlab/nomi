@@ -164,6 +164,7 @@
 			position: relative;
 			transition: 0.4s;
 			visibility: hidden;
+			color: #d00d2d;
 
 			&--active {
 				display: block;
@@ -246,3 +247,21 @@
 		}
 	}
 }
+
+.post-login {
+		position: absolute;
+		overflow: hidden;
+		display: block;
+	    height: 100vh;
+	    width: 100vw;
+	    z-index: 200;
+		background-color: white;
+
+	
+	    &__loading-icon {
+			position: relative;
+			color: #d00d2d;
+			justify-content: center;
+			margin-top: calc(100% / 2);
+	    }
+	}

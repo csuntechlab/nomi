@@ -4,7 +4,7 @@
           <div class="flash__positioner"></div>
             <div class="flash__element">
                 <div v-show="!known" class="card-face">
-                    <profile-picture class="roster__img" :name="display_name" :image="image" :type="'roster'"></profile-picture>
+                    <profile-picture :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
                 <div v-show="known">
                     <div class="type--center text-overflow back-of-card back-of-card-mobile">
