@@ -35,64 +35,40 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'course-list-item',
+name: 'course-list-item',
 
-  props: ['course'],
+props: ['course'],
 
-  computed: {
+beforecreate() {
+    Vue.extend({
+        mixins: [convertCourseData]
+    })
+},
+
+computed: {
     classStartTime() {
-      return this.convertTime(this.course.meetings[0].start_time);
+        return this.convertTime(this.course.meetings[0].start_time);
     },
 
     classEndTime() {
-      return this.convertTime(this.course.meetings[0].end_time);
+        return this.convertTime(this.course.meetings[0].end_time);
     },
-  },
+},
 
-  methods: {
+methods: {
     ...mapGetters(['currentStudent']),
 
-    convertTime(OriginalTime) {
-      let time = OriginalTime;
-      let hour = parseInt(time.substring(0, 2));
-      let min = `${time.substring(2, 4)} a.m.`;
-      if (hour > 12) {
-        hour -= 12;
-        min = `${min.substring(0, 2)} p.m.`;
-      }
-      time = `${hour}:${min}`;
-      return time;
-    },
-
-    convertDays(originalDays) {
-      const days = originalDays;
-      const split = days.split('');
-
-      // M T W R F S
-      // Mo Tu We Th Fr Sa
-      const result = split.map((day) => {
-        if (day === 'M') day = 'Mo';
-        if (day === 'T') day = 'Tu';
-        if (day === 'W') day = 'We';
-        if (day === 'R') day = 'Th';
-        if (day === 'F') day = 'Fr';
-        if (day === 'S') day = 'Sa';
-        return day;
-      });
-
-      return result.join('');
-    },
-
     storeSelectedCourse() {
-      this.$store.dispatch('storeLocation', 'class');
-      this.$store.dispatch('storeCourse', this.course.id);
+        this.$store.dispatch('storeLocation', 'class');
+        this.$store.dispatch('storeCourse', this.course.id);
     },
 
     clearStudent() {
-      if (this.currentStudent) {
-        this.$store.dispatch('clearStudent');
-      }
+        if (this.currentStudent) {
+            this.$store.dispatch('clearStudent');
+        }
     },
-  },
+},
+
 };
 </script>
