@@ -14,9 +14,11 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { convertCourseData } from './../../mixins/convertCourseData.js'
 
 export default {
 name: 'course-banner',
+mixins: [convertCourseData],
 
 computed: {
 	...mapGetters([
