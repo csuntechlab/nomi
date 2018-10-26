@@ -1,35 +1,27 @@
 <?php
 
 declare(strict_types=1);
-
 namespace App\Http\Controllers;
 
-use App\Contracts\RosterRetrievalContract;
 use App\Contracts\UserSettingsContract;
-use App\Contracts\WebResourceRetrieverContract;
-use Illuminate\Support\Facades\Cache;
-
+use App\Contracts\CacheContract;
 class SPAController extends Controller
 {
-    public $rosterRetrievalUtility;
-    public $webResourceRetrieverUtility;
     public $userSettingsUtility;
-    public $web;
+    public $cacheUtility;
     public $minutes;
 
     public function __construct(
-        RosterRetrievalContract $rosterRetrievalUtility,
-        WebResourceRetrieverContract $webResourceRetrieverUtility,
-        UserSettingsContract $userSettingsUtility
+        UserSettingsContract $userSettingsUtility,
+        CacheContract $cacheUtility
     ) {
-        $this->rosterRetrievalUtility = $rosterRetrievalUtility;
-        $this->webResourceRetrieverUtility = $webResourceRetrieverUtility;
         $this->userSettingsUtility = $userSettingsUtility;
         $this->minutes = 27;
+        $this->cacheUtility = $cacheUtility;
     }
 
     private function getCurrentTerm($term) {
-       
+
         if (env('CURRENT_TERM') && $term == null) {
             $term = env('CURRENT_TERM');
         }
@@ -51,36 +43,18 @@ class SPAController extends Controller
         $term = $this->getCurrentTerm($term);
 
 
-        if (Cache::has('courses:' . $id . 'term:' . $term)) {
-            $courses = Cache::get('courses:' . $id . 'term:' . $term);
-        } else {
-            $courses = $this->webResourceRetrieverUtility->getCourses($term);
-            Cache::put('courses:' . $id . 'term:' . $term, $courses, $this->minutes);
-        }
+        $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
 
         $students = [];
         $len = \count($courses);
 
-        for ($i = 0; $i < $len; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $id . 'term:' . $term)) {
-                $students[$i] = Cache::get('students:' . $i . ':' . $id . 'term:' . $term);
-            } else {
-                $students[$i] = $this->rosterRetrievalUtility->getStudentsFromRoster($term, $i);
-                Cache::put('students:' . $i . ':' . $id . 'term:' . $term, $students[$i], $this->minutes);
-            }
-
-            $courses[$i]->roster = $students[$i];
-        }
+        $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
+  
         $user = auth()->user();
         $email = $user->email;
 
-        $allStudents = [];
+        $allStudents = $this->allStudents($students);
 
-        foreach ($students as $class) {
-            $allStudents = \array_merge($allStudents, $class);
-        }
-
-        $allStudents = \array_unique($allStudents, SORT_REGULAR);
 
         return [
             'courses' => $courses,
@@ -99,5 +73,19 @@ class SPAController extends Controller
     public function index()
     {
         return view('spa');
+    }
+
+    private function allStudents($students) :array
+    {
+
+      $allStudents =[];
+      
+      foreach ($students as $class) {
+          $allStudents = \array_merge($allStudents, $class);
+      }
+
+      $allStudents = \array_unique($allStudents, SORT_REGULAR);
+
+      return $allStudents;
     }
 }
