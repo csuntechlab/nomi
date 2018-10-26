@@ -168,6 +168,7 @@ return [
          * NameFace Service Providers...
          */
         App\Providers\AuthorizationServiceProvider::class,
+        App\Providers\CacheServiceProvider::class,
         App\Providers\WebResourceServiceProvider::class,
         App\Providers\RosterServiceProvider::class,
         App\Providers\ImageCRUDServiceProvider::class,
