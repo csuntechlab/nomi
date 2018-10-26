@@ -24060,7 +24060,10 @@ var render = function() {
   return _c("div", [
     _c(
       "div",
-      { staticClass: "profile__color-layer profile-info-container row" },
+      {
+        staticClass:
+          "profile__color-layer profile-pic-container type--center row"
+      },
       [
         _c(
           "div",
@@ -24124,7 +24127,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "pull-right profile__divider" }, [
+        _c("div", { staticClass: "pull-right profile__divide" }, [
           _c("div", { staticClass: "profile__name-container" }, [
             _c("h5", { staticClass: "type--center profile__name" }, [
               _vm._v(

@@ -2206,7 +2206,15 @@ textarea[type="text"]:focus {
 
 .profile__name-container {
   display: block;
-  margin: 0, auto;
+  padding-top: 50%;
+}
+
+.profile-pic-container {
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .profile__color-layer {
@@ -2236,6 +2244,8 @@ textarea[type="text"]:focus {
 .profile__divider {
   display: inline-block;
   position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .notes_text {

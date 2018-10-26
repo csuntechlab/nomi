@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="profile__color-layer profile-info-container row">
+    <div class="profile__color-layer profile-pic-container type--center row">
             <div class="pull-left profile__divider">
                 <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
@@ -21,7 +21,7 @@
                     </slide>
                 </carousel>
             </div>
-            <div class="pull-right profile__divider">
+            <div class="pull-right profile__divide">
                 <div class="profile__name-container">
                     <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
                 </div>
