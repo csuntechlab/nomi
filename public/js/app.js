@@ -25950,7 +25950,10 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     lastName: null,
     image: null,
     id: null
-  }
+  },
+
+  //Logout
+  authorization: false
 });
 
 /***/ }),
@@ -26079,6 +26082,13 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     }).catch(function (error) {
       context.commit('API_FAILURE', error);
     });
+  },
+
+
+  //Logout
+  authLogout: function authLogout(context, payload) {
+    context.commit('AUTH_LOGOUT', payload);
+    localStorage.removeItem(this.facultyMember);
   },
   clearErrors: function clearErrors(context) {
     context.commit('CLEAR_ERRORS');
@@ -26337,6 +26347,12 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         }
       }
     }
+  },
+
+
+  //Logout
+  AUTH_LOGOUT: function AUTH_LOGOUT(state) {
+    state.authorization = false;
   },
   STORE_COURSE: function STORE_COURSE(state, payload) {
     state.currentCourse = payload;
@@ -27043,8 +27059,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$store.dispatch('toggleMenu');
     },
     logout: function logout() {
-      window.history.forward();
-      window.history.go(-window.history.length);
+      this.$store.dispatch('authLogout');
     }
   },
   watch: {

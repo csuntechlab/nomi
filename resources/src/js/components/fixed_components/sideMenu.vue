@@ -46,8 +46,7 @@ export default {
       this.$store.dispatch('toggleMenu');
     },
     logout() {
-      window.history.forward();  
-      window.history.go(-window.history.length); 
+      this.$store.dispatch('authLogout');
     }
   },
   watch: {

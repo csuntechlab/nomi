@@ -57,6 +57,11 @@ export default {
     }
   },
 
+  //Logout
+  AUTH_LOGOUT(state) {
+    state.authorization = false;
+  },
+
   STORE_COURSE(state, payload) {
     state.currentCourse = payload;
   },
@@ -303,5 +308,4 @@ export default {
   SET_SEM(payload) {
     state.selectedTerm = payload;
   },
-
 };
