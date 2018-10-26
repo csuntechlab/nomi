@@ -532,9 +532,9 @@ textarea[type="text"]:focus {
   position: absolute;
   bottom: 5%;
   right: 15%;
-  padding: 3%;
+  padding: 4%;
   border-radius: 100%;
-  font-size: 100%;
+  font-size: 120%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
@@ -2202,16 +2202,20 @@ textarea[type="text"]:focus {
 .profile__name {
   font-weight: bold;
   color: white;
+  text-align: center;
 }
 
 .profile__name-container {
   display: block;
-  padding-top: 50%;
+  text-align: center;
+  padding-top: 40%;
 }
 
 .profile-pic-container {
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 01.875rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2219,6 +2223,13 @@ textarea[type="text"]:focus {
 
 .profile__color-layer {
   position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .theme-login .profile__color-layer {
@@ -2246,6 +2257,7 @@ textarea[type="text"]:focus {
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  width: 50%;
 }
 
 .notes_text {

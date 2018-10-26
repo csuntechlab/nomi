@@ -264,11 +264,13 @@
 	&__name {
 		font-weight: bold;
 		color: white;
+		text-align: center;
 	}
 
 	&__name-container {
 		display: block;
-    	padding-top: 50%;
+		text-align: center;
+		padding-top: 40%;
 	}
 
 	&-pic-container {
@@ -281,6 +283,8 @@
 	
 	&__color-layer {
 		position: relative;
+		flex-direction:row;
+		justify-content: space-between;
 		@include themify($themes) {
 			background-color: themed("navigationBars");
 		}
@@ -290,6 +294,7 @@
 		display: inline-block;
 		position: relative;
 		box-sizing: border-box;
+		width: 50%;
 	}
 }
 
