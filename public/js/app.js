@@ -19398,6 +19398,35 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -19414,8 +19443,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'empty-course-item'
+  name: 'empty-course-item',
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['selectedTerm']))
 });
 
 /***/ }),
@@ -19426,42 +19458,98 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row fullscreen-width" }, [
+    _vm.selectedTerm == "previous"
+      ? _c("div", [_vm._m(0)])
+      : _vm.selectedTerm == "current"
+        ? _c("div", [_vm._m(1)])
+        : _vm.selectedTerm == "next" ? _c("div", [_vm._m(2)]) : _vm._e()
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row fullscreen-width" }, [
-      _c(
-        "div",
-        { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
-        [
-          _c(
-            "h5",
-            { staticClass: "panel__header course__header--empty mb-0" },
-            [
-              _vm._v(
-                "\n            You are not teaching any classes this semester.\n        "
-              )
-            ]
-          ),
+    return _c(
+      "div",
+      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
+      [
+        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
+          _vm._v(
+            "\n                    You have not taught any classes this past semester.\n                "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel__content course__content--empty" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._v(
+              "Feel free to review your current and next classes by selecting a different term."
+            )
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "panel__content course__content--empty" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._v(
-                "Feel free to review your past and future classes by selecting a different term."
-              )
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [_vm._v("Enjoy your semester!")])
-          ])
-        ]
-      )
-    ])
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
+      [
+        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
+          _vm._v(
+            "\n                You are not teaching any classes this current semester.\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel__content course__content--empty" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._v(
+              "Feel free to review your past and next classes by selecting a different term."
+            )
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
+      [
+        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
+          _vm._v(
+            "\n                You are not teaching any classes next semester.\n            "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "panel__content course__content--empty" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._v(
+              "Feel free to review your past and current classes by selecting a different term."
+            )
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
