@@ -42,7 +42,7 @@ Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudent
 /** Student API Routes */
 Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
 Route::get('/student_profile/{email}', 'StudentProfileController@getProfile')->middleware('auth');
-Route::get('/student_profile/{first_name}/{last_name}','StudentProfileController@getProfileWithNoEmail')->middleware('auth');
+Route::get('/student_profile/alternative','StudentProfileController@getProfileWithNoEmail')->middleware('auth');
 Route::post('/update_note', 'StudentProfileController@updateNotes')->middleware('auth');
 
 /** User Settings API Routes */
