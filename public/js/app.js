@@ -22400,7 +22400,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 			return this.student.email.split('@')[0];
 		},
 		emailExists: function emailExists() {
-			return this.student.emailURI != null;
+			return this.student.email != null;
 		},
 		image: function image() {
 			if (this.student.image_priority === 'likeness') {
@@ -24197,11 +24197,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "profile-container",
-  props: ['student'],
-  components: {
-    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
-  }
+    name: "profile-container",
+    props: ['student'],
+    components: {
+        profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+    },
+    computed: {
+        emailExists: function emailExists() {
+            return this.student.email != null;
+        }
+    }
 });
 
 /***/ }),
@@ -24263,7 +24268,7 @@ var render = function() {
                         attrs: {
                           student: _vm.student,
                           image: _vm.student.images.avatar,
-                          editable: true,
+                          editable: _vm.emailExists,
                           type: "profile"
                         }
                       }),

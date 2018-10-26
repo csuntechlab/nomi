@@ -62,7 +62,7 @@ export default {
     },
 
     emailExists() {
-      return (this.student.emailURI != null);
+      return this.student.email != null;
     },
 
     image() {

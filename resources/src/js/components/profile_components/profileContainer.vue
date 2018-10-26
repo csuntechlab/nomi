@@ -18,7 +18,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.avatar" :editable="true" :type="'profile'"></profile-picture>
+                        <profile-picture :student="student" :image="student.images.avatar" :editable="emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>
@@ -38,5 +38,10 @@ export default {
   components:{
       profilePicture
   },
+  computed: {
+      emailExists(){
+          return this.student.email != null;
+      }
+  }
 }
 </script>
