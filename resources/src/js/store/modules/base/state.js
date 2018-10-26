@@ -39,7 +39,4 @@ export default {
     image: null,
     id: null,
   },
-
-  //Logout
-  authorization: false,
 };

@@ -45,12 +45,6 @@ export default {
       });
   },
 
-  //Logout
-  authLogout(context, payload){
-    context.commit('AUTH_LOGOUT', payload);
-    localStorage.removeItem('');
-  },
-
   clearErrors(context) {
     context.commit('CLEAR_ERRORS');
   },

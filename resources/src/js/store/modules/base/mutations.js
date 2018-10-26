@@ -57,11 +57,6 @@ export default {
     }
   },
 
-  //Logout
-  AUTH_LOGOUT(state) {
-    state.authorization = false;
-  },
-
   STORE_COURSE(state, payload) {
     state.currentCourse = payload;
   },
