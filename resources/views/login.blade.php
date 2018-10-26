@@ -53,8 +53,11 @@
 
 @stop @section('scripts')
 <script>
-    localStorage.removeItem('nameface');
-
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+    
     function loading() {
         document.getElementById("login__loader").className += " login-loader__loader--active";
         document.getElementById("login__container").className += " login__container--hide";
