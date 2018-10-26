@@ -22,7 +22,9 @@
                 </carousel>
             </div>
             <div class="pull-right profile__divider">
-                <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
+                <div class="profile__name-container">
+                    <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
+                </div>
             </div>
     </div>
 </div>

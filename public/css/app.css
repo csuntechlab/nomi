@@ -529,11 +529,39 @@ textarea[type="text"]:focus {
 }
 
 .panel__edit-button--profile {
-  position: relative;
-  bottom: 8%;
-  right: 20%;
-  padding: 5%;
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
+  padding: 3%;
   border-radius: 100%;
+  font-size: 100%;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-login .panel__edit-button--profile {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__edit-button--profile {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-main .panel__edit-button--profile {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .panel__edit-button--profile {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-Dark .panel__edit-button--profile {
+  background-color: #426c96;
+  color: #dfe5ec;
 }
 
 .text-bold {
@@ -2174,6 +2202,11 @@ textarea[type="text"]:focus {
 .profile__name {
   font-weight: bold;
   color: white;
+}
+
+.profile__name-container {
+  display: block;
+  margin: 0, auto;
 }
 
 .profile__color-layer {

@@ -22028,7 +22028,7 @@ var render = function() {
     _vm._v(" "),
     _vm.editable
       ? _c("i", {
-          staticClass: "fas fa-pencil-alt panel__edit-button ",
+          staticClass: "fas fa-pencil-alt panel__edit-button--profile ",
           on: {
             click: function($event) {
               _vm.showModal()
@@ -24037,6 +24037,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24123,8 +24125,12 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "pull-right profile__divider" }, [
-          _c("h5", { staticClass: "type--center profile__name" }, [
-            _vm._v(_vm._s(_vm.student.first_name + " " + _vm.student.last_name))
+          _c("div", { staticClass: "profile__name-container" }, [
+            _c("h5", { staticClass: "type--center profile__name" }, [
+              _vm._v(
+                _vm._s(_vm.student.first_name + " " + _vm.student.last_name)
+              )
+            ])
           ])
         ])
       ]

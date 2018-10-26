@@ -1,7 +1,7 @@
 <template>
     <div>
 		<img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
-		<i v-if="editable" class="fas fa-pencil-alt panel__edit-button " @click="showModal()"/>
+		<i v-if="editable" class="fas fa-pencil-alt panel__edit-button--profile " @click="showModal()"/>
     </div>
 </template>
 

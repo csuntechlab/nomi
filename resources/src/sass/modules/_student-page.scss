@@ -265,6 +265,11 @@
 		font-weight: bold;
 		color: white;
 	}
+
+	&__name-container {
+		display: block;
+    	margin: 0, auto;
+	}
 	
 	&__color-layer {
 		position: relative;
