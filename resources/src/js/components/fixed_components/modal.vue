@@ -1,26 +1,23 @@
 <template>
   <transition v-if="modalVisible" name="modal">
     <div class="modal-mask" >
-      <div class="modal__wrapper">
-        <div class="modal__container">
-          <div class="type--center modal-header">
-             <div class="pull-right modal--exit">
-                <i class="fa fa-times-circle fa-2x" @click="showModal()"></i>
-            </div>
-            <div>
-              <strong>{{modalData.first_name + " " + modalData.last_name}}</strong>
-            </div>
-           
+      <div class="modal__container">
+        <div class="modal-header">
+          <div class="modal-name">
+            <strong>{{modalData.first_name + " " + modalData.last_name}}</strong>
           </div>
-          <div class="modal-body">
-            <div name="body">
-              <modals-carousel :student="modalData"></modals-carousel>
-            </div>
+          <div class="modal--exit">
+              <i class="fa fa-times fa-2x" @click="showModal()"></i>
           </div>
-          <div class="modal-footer cf">
-            <div name="footer">
-              <croppa-functionality v-if="croppaAvailable"></croppa-functionality>
-            </div>
+        </div>
+        <div class="modal-body">
+          <div name="body">
+            <modals-carousel :student="modalData"></modals-carousel>
+          </div>
+        </div>
+        <div class="modal-footer cf">
+          <div name="footer">
+            <croppa-functionality v-if="croppaAvailable"></croppa-functionality>
           </div>
         </div>
       </div>

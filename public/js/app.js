@@ -22656,9 +22656,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -22827,39 +22824,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "modal-button__container pull-left" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.chooseImage()
+    _c(
+      "div",
+      { staticClass: "modal-button__container modal-button-photo pull-left" },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.chooseImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-camera fa-2x" })]
-        )
-      ])
-    ]),
+            },
+            [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "modal-button__container pull-right" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.confirmImage()
+    _c(
+      "div",
+      {
+        staticClass: "modal-button__container modal-button-confirm pull-right"
+      },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.confirmImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-check fa-2x" })]
-        )
-      ])
-    ])
+            },
+            [_c("i", { staticClass: "fa fa-check fa-2x" })]
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -22936,8 +22943,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -23477,50 +23482,46 @@ var render = function() {
   return _vm.modalVisible
     ? _c("transition", { attrs: { name: "modal" } }, [
         _c("div", { staticClass: "modal-mask" }, [
-          _c("div", { staticClass: "modal__wrapper" }, [
-            _c("div", { staticClass: "modal__container" }, [
-              _c("div", { staticClass: "type--center modal-header" }, [
-                _c("div", { staticClass: "pull-right modal--exit" }, [
-                  _c("i", {
-                    staticClass: "fa fa-times-circle fa-2x",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal()
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("strong", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.modalData.first_name + " " + _vm.modalData.last_name
-                      )
+          _c("div", { staticClass: "modal__container" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("div", { staticClass: "modal-name" }, [
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.modalData.first_name + " " + _vm.modalData.last_name
                     )
-                  ])
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "body" } },
-                  [
-                    _c("modals-carousel", { attrs: { student: _vm.modalData } })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer cf" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "footer" } },
-                  [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
-                  1
-                )
+              _c("div", { staticClass: "modal--exit" }, [
+                _c("i", {
+                  staticClass: "fa fa-times fa-2x",
+                  on: {
+                    click: function($event) {
+                      _vm.showModal()
+                    }
+                  }
+                })
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "div",
+                { attrs: { name: "body" } },
+                [_c("modals-carousel", { attrs: { student: _vm.modalData } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer cf" }, [
+              _c(
+                "div",
+                { attrs: { name: "footer" } },
+                [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
+                1
+              )
             ])
           ])
         ])
