@@ -1,16 +1,34 @@
 export default {
     getStudentProfile (context, payload) {
-            let email = payload.uri+'@my.csun.edu'
-            let response = payload
-        window.axios.get('student_profile/'+email)
-            .then(payload => {
-                var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', payload)
+        let response = payload;
+        let email = payload.email;
+        let emailSplit = email.split('@');
+        console.log(payload)
+        if (emailSplit[1] === "NOTREALEMAIL.net") {
+            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {
+                student_id: payload.id,
+                first_name: payload.first_name,
+                last_name: payload.last_name
             })
-            .catch(error => {
-                context.commit('API_STUDENT_FAILURE', error)
-            });
+                .then(payload => {
+                    var getters = context.getters
+                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                    context.commit('GET_STUDENT_BIO', payload)
+                })
+                .catch(error => {
+                    context.commit('API_STUDENT_FAILURE', error)
+                });
+        } else {
+            window.axios.get('student_profile/'+email)
+                .then(payload => {
+                    var getters = context.getters
+                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                    context.commit('GET_STUDENT_BIO', payload)
+                })
+                .catch(error => {
+                    context.commit('API_STUDENT_FAILURE', error)
+                });
+        }
     },
 
     updateNotes (context, notes) {
@@ -56,6 +74,10 @@ export default {
     },
     
     //back button
+    getStudent (context, payload) {
+        context.commit("GET_STUDENT", payload)
+    },
+
     storeStudent (context, payload) {
         context.commit('STORE_STUDENT', payload)
     },

@@ -21,8 +21,6 @@ import modal from "../components/fixed_components/modal.vue";
 import profileInfo from "../components/profile_components/profileInfo.vue";
 import navBar from '../components/fixed_components/navBar.vue';
 
-
-
 export default {
 	name: 'profile',
 
@@ -42,13 +40,17 @@ export default {
 	created() {
 		this.$store.dispatch('disableBackButton');
 		this.$store.dispatch('showBackButton');
-		this.$store.dispatch('getStudentProfile', {
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id,
-		});
 	},
 
 	mounted() {
+		this.$store.dispatch('getStudentProfile', {
+			id: this.$store.state.profile.studentProfile.studentID,
+			uri: this.$route.params.emailURI,
+			faculty_id: this.facultyMember.id,
+			email: this.$store.state.profile.studentProfile.email,
+			first_name: this.$store.state.profile.studentProfile.firstName,
+			last_name: this.$store.state.profile.studentProfile.lastName,
+		});
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 

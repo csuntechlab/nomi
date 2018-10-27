@@ -22453,14 +22453,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
 		},
 
-		created: function created() {
-				this.$store.dispatch("getStudentProfile", {
-						uri: this.student.email_uri,
-						faculty_id: this.facultyMember.id
-				});
-		},
-
-
 		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
 				display_name: function display_name() {
 						return this.student.first_name + " " + this.student.last_name[0] + ".";
@@ -22475,7 +22467,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 								return this.student.images.avatar;
 						}
 				}
-		})
+		}),
+
+		methods: {
+				getStudent: function getStudent() {
+						this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
+				}
+		}
 });
 
 /***/ }),
@@ -22657,6 +22655,11 @@ var render = function() {
           {
             attrs: {
               to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+            },
+            nativeOn: {
+              click: function($event) {
+                _vm.getStudent()
+              }
             }
           },
           [
@@ -22695,9 +22698,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
 //
 //
 //
@@ -22893,39 +22893,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "modal-button__container pull-left" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.chooseImage()
+    _c(
+      "div",
+      { staticClass: "modal-button__container modal-button-photo pull-left" },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.chooseImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-camera fa-2x" })]
-        )
-      ])
-    ]),
+            },
+            [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "modal-button__container pull-right" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.confirmImage()
+    _c(
+      "div",
+      {
+        staticClass: "modal-button__container modal-button-confirm pull-right"
+      },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.confirmImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-check fa-2x" })]
-        )
-      ])
-    ])
+            },
+            [_c("i", { staticClass: "fa fa-check fa-2x" })]
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -23002,8 +23012,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -23543,50 +23551,46 @@ var render = function() {
   return _vm.modalVisible
     ? _c("transition", { attrs: { name: "modal" } }, [
         _c("div", { staticClass: "modal-mask" }, [
-          _c("div", { staticClass: "modal__wrapper" }, [
-            _c("div", { staticClass: "modal__container" }, [
-              _c("div", { staticClass: "type--center modal-header" }, [
-                _c("div", { staticClass: "pull-right modal--exit" }, [
-                  _c("i", {
-                    staticClass: "fa fa-times-circle fa-2x",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal()
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("strong", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.modalData.first_name + " " + _vm.modalData.last_name
-                      )
+          _c("div", { staticClass: "modal__container" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("div", { staticClass: "modal-name" }, [
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.modalData.first_name + " " + _vm.modalData.last_name
                     )
-                  ])
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "body" } },
-                  [
-                    _c("modals-carousel", { attrs: { student: _vm.modalData } })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer cf" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "footer" } },
-                  [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
-                  1
-                )
+              _c("div", { staticClass: "modal--exit" }, [
+                _c("i", {
+                  staticClass: "fa fa-times fa-2x",
+                  on: {
+                    click: function($event) {
+                      _vm.showModal()
+                    }
+                  }
+                })
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "div",
+                { attrs: { name: "body" } },
+                [_c("modals-carousel", { attrs: { student: _vm.modalData } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer cf" }, [
+              _c(
+                "div",
+                { attrs: { name: "footer" } },
+                [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
+                1
+              )
             ])
           ])
         ])
@@ -23854,7 +23858,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return this.student.images.avatar;
       }
     }
-  })
+  }),
+
+  methods: {
+    getStudent: function getStudent() {
+      console.log(this.student);
+      this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
+    }
+  }
 });
 
 /***/ }),
@@ -23868,7 +23879,12 @@ var render = function() {
   return _c(
     "router-link",
     {
-      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
+      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri },
+      nativeOn: {
+        click: function($event) {
+          _vm.getStudent()
+        }
+      }
     },
     [
       _c("div", { staticClass: "roster-list__item" }, [
@@ -24131,12 +24147,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	created: function created() {
 		this.$store.dispatch('disableBackButton');
 		this.$store.dispatch('showBackButton');
-		this.$store.dispatch('getStudentProfile', {
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id
-		});
 	},
 	mounted: function mounted() {
+		this.$store.dispatch('getStudentProfile', {
+			id: this.$store.state.profile.studentProfile.studentID,
+			uri: this.$route.params.emailURI,
+			faculty_id: this.facultyMember.id,
+			email: this.$store.state.profile.studentProfile.email,
+			first_name: this.$store.state.profile.studentProfile.firstName,
+			last_name: this.$store.state.profile.studentProfile.lastName
+		});
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 	updated: function updated() {
@@ -25889,6 +25909,8 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 /* harmony default export */ __webpack_exports__["a"] = ({
     studentProfile: {
         id: null,
+        studentID: null,
+        email: null,
         emailURI: null,
         displayName: null,
         bio: null,
@@ -25896,6 +25918,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         imagePriority: null,
         notes: null,
         firstName: null,
+        lastName: null,
         student: null
 
     },
@@ -25948,15 +25971,31 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
-        var email = payload.uri + '@my.csun.edu';
         var response = payload;
-        window.axios.get('student_profile/' + email).then(function (payload) {
-            var getters = context.getters;
-            context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-            context.commit('GET_STUDENT_BIO', payload);
-        }).catch(function (error) {
-            context.commit('API_STUDENT_FAILURE', error);
-        });
+        var email = payload.email;
+        var emailSplit = email.split('@');
+        console.log(payload);
+        if (emailSplit[1] === "NOTREALEMAIL.net") {
+            window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, {
+                student_id: payload.id,
+                first_name: payload.first_name,
+                last_name: payload.last_name
+            }).then(function (payload) {
+                var getters = context.getters;
+                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+                context.commit('GET_STUDENT_BIO', payload);
+            }).catch(function (error) {
+                context.commit('API_STUDENT_FAILURE', error);
+            });
+        } else {
+            window.axios.get('student_profile/' + email).then(function (payload) {
+                var getters = context.getters;
+                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+                context.commit('GET_STUDENT_BIO', payload);
+            }).catch(function (error) {
+                context.commit('API_STUDENT_FAILURE', error);
+            });
+        }
     },
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
@@ -25995,6 +26034,9 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 
 
     //back button
+    getStudent: function getStudent(context, payload) {
+        context.commit("GET_STUDENT", payload);
+    },
     storeStudent: function storeStudent(context, payload) {
         context.commit('STORE_STUDENT', payload);
     },
@@ -26099,6 +26141,12 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   //store student
   STORE_STUDENT: function STORE_STUDENT(state, payload) {
     state.currentStudent = payload;
+  },
+  GET_STUDENT: function GET_STUDENT(state, payload) {
+    state.studentProfile.studentID = payload.studentID;
+    state.studentProfile.email = payload.email;
+    state.studentProfile.firstName = payload.first_name;
+    state.studentProfile.lastName = payload.last_name;
   },
   CLEAR_STUDENT: function CLEAR_STUDENT(state) {
     state.currentStudent = null;

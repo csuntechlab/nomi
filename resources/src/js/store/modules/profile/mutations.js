@@ -86,6 +86,13 @@ export default {
       state.currentStudent = payload;
     },
 
+    GET_STUDENT(state, payload) {
+      state.studentProfile.studentID = payload.studentID;
+      state.studentProfile.email = payload.email;
+      state.studentProfile.firstName = payload.first_name;
+      state.studentProfile.lastName = payload.last_name;
+    },
+
     CLEAR_STUDENT(state) {
       state.currentStudent = null;
     },
