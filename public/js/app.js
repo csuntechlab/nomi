@@ -24582,63 +24582,56 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "profile-info-container type--center margin-between-containers"
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12" },
-            [
-              _c("div", { staticClass: "profile_email" }, [
-                _c("i", {
-                  staticClass: "fas fa-envelope",
-                  on: {
-                    click: function($event) {
-                      _vm.showEmail = true
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(this.student.student.email) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                this.student.bio != null
-                  ? _c("span", { staticClass: "text_italic display-inline" }, [
-                      _c("strong", [
-                        _vm._v("About " + _vm._s(this.student.firstName) + ":")
-                      ]),
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(this.student.bio) +
-                          "\n                    "
-                      )
-                    ])
-                  : _c("span")
-              ]),
-              _vm._v(" "),
-              _c("profile-notes", {
-                staticClass: "profile-notes-padding",
-                attrs: { student: _vm.student },
+    _c("div", { staticClass: "profile-info-container type--center" }, [
+      _c("div", { staticClass: "panel profile__info-panel" }, [
+        _c(
+          "div",
+          { staticClass: "col-sm-12" },
+          [
+            _c("div", { staticClass: "profile_email" }, [
+              _c("i", {
+                staticClass: "fas fa-envelope",
                 on: {
-                  unsavedChanges: _vm.sendUnsavedChanges,
-                  committedChanges: _vm.sendChanges
+                  click: function($event) {
+                    _vm.showEmail = true
+                  }
                 }
-              })
-            ],
-            1
-          )
-        ])
-      ]
-    )
+              }),
+              _vm._v(
+                "\n                    " +
+                  _vm._s(this.student.student.email) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              this.student.bio != null
+                ? _c("span", { staticClass: "text_italic display-inline" }, [
+                    _c("strong", [
+                      _vm._v("About " + _vm._s(this.student.firstName) + ":")
+                    ]),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(this.student.bio) +
+                        "\n                    "
+                    )
+                  ])
+                : _c("span")
+            ]),
+            _vm._v(" "),
+            _c("profile-notes", {
+              staticClass: "profile-notes-padding",
+              attrs: { student: _vm.student },
+              on: {
+                unsavedChanges: _vm.sendUnsavedChanges,
+                committedChanges: _vm.sendChanges
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

@@ -2215,7 +2215,7 @@ textarea[type="text"]:focus {
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.875rem;
-  padding-right: 01.875rem;
+  padding-right: 1.875rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2230,6 +2230,8 @@ textarea[type="text"]:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 }
 
 .theme-login .profile__color-layer {
@@ -2258,6 +2260,11 @@ textarea[type="text"]:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 50%;
+}
+
+.profile__info-panel {
+  padding: 5%;
+  overflow: auto;
 }
 
 .notes_text {
