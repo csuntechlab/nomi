@@ -22854,6 +22854,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-functionality",
     data: function data() {
@@ -23862,7 +23863,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   methods: {
     getStudent: function getStudent() {
-      console.log(this.student);
       this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
     }
   }
@@ -25974,7 +25974,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         var response = payload;
         var email = payload.email;
         var emailSplit = email.split('@');
-        console.log(payload);
         if (emailSplit[1] === "NOTREALEMAIL.net") {
             window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, {
                 student_id: payload.id,

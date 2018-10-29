@@ -1372,9 +1372,9 @@ textarea[type="text"]:focus {
 
 .modal__container {
   position: relative;
-  top: calc(100vh/18);
-  width: 80%;
-  max-width: 24rem;
+  top: 3.15rem;
+  width: 90%;
+  max-width: 18rem;
   margin: 0 auto;
   border-radius: 16px;
   -webkit-transition: all .3s ease;
@@ -1402,10 +1402,10 @@ textarea[type="text"]:focus {
 }
 
 .modal-name {
-  font-size: 1.5rem;
-  width: 75%;
+  font-size: 1.15rem;
+  width: 60%;
   margin: 0 auto;
-  margin-top: 2.25rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
@@ -1528,7 +1528,7 @@ textarea[type="text"]:focus {
 
 .modal--exit {
   position: absolute;
-  padding: 0.75rem 1.25rem 0 0;
+  padding: 0.70rem 0.8rem 0 0;
   top: 0;
   right: 0;
 }
@@ -1544,6 +1544,10 @@ textarea[type="text"]:focus {
 .permission-footer {
   margin: 15% 0 5%;
   text-align: center;
+}
+
+.VueCarousel-slide.slide-wrap {
+  padding: 0.5rem 1rem;
 }
 
 .VueCarousel-dot-container li {

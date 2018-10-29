@@ -3,7 +3,6 @@ export default {
         let response = payload;
         let email = payload.email;
         let emailSplit = email.split('@');
-        console.log(payload)
         if (emailSplit[1] === "NOTREALEMAIL.net") {
             window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {
                 student_id: payload.id,
