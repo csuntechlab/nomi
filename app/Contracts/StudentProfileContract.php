@@ -10,5 +10,5 @@ interface StudentProfileContract
 
     public function updateStudentNotes($data);
 
-    public function getStudentProfileWithNoEmail($data);
+    public function getStudentWithNoEmail($data);
 }

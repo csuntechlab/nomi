@@ -19429,7 +19429,7 @@ var staticRenderFns = [
             { staticClass: "panel__header course__header--empty mb-0" },
             [
               _vm._v(
-                "\n            You are not teaching any classes this semester.\n        "
+                "\r\n            You are not teaching any classes this semester.\r\n        "
               )
             ]
           ),
@@ -25553,7 +25553,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\n        Select Theme\n    ")
+      _vm._v("\r\n        Select Theme\r\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -25569,7 +25569,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        Matador")]
+          [_vm._v("\r\n        Matador")]
         ),
         _vm._v(" "),
         _c(
@@ -25906,7 +25906,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         var emailSplit = email.split('@');
         console.log(payload);
         if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, {
+            window.axios.get('/student_profile/alternative/', {
                 student_id: payload.id,
                 first_name: payload.first_name,
                 last_name: payload.last_name

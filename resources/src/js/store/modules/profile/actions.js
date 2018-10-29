@@ -5,7 +5,7 @@ export default {
         let emailSplit = email.split('@');
         console.log(payload)
         if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {
+            window.axios.get('/student_profile/alternative/', {
                 student_id: payload.id,
                 first_name: payload.first_name,
                 last_name: payload.last_name
@@ -72,7 +72,7 @@ export default {
     dataForModal (context, payload){
         context.commit("DATA_FOR_MODAL", payload)
     },
-    
+
     //back button
     getStudent (context, payload) {
         context.commit("GET_STUDENT", payload)
