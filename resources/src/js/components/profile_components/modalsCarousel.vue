@@ -15,7 +15,7 @@
             </slide>
             <slide class="slide-wrap">
               <div>
-                  <profile-picture :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                  <profile-picture :image="student.images.avatar.avatar_image" :editable="false" :type="'profile'"></profile-picture>
                   <div class="type--center">
                     <i>Student Uploaded</i>
                     <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
