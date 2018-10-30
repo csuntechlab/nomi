@@ -1359,26 +1359,31 @@ textarea[type="text"]:focus {
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
+  width: 100%;
+  height: 100%;
+  z-index: 110;
   top: 0;
   left: 0;
 }
 
 .modal__container {
   position: relative;
-  top: 3.15rem;
-  width: 90%;
-  max-width: 18rem;
+  width: 75%;
   margin: 0 auto;
+  margin-bottom: 2.75rem;
   border-radius: 16px;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 350ms ease-out;
+  transition: all 350ms ease-out;
 }
 
 .theme-login .modal__container {
@@ -1402,10 +1407,10 @@ textarea[type="text"]:focus {
 }
 
 .modal-name {
-  font-size: 1.15rem;
-  width: 60%;
+  font-size: 1.5rem;
+  width: 80%;
   margin: 0 auto;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -1546,11 +1551,11 @@ textarea[type="text"]:focus {
   text-align: center;
 }
 
-.VueCarousel-slide.slide-wrap {
-  padding: 0.5rem 1rem;
+.modal__container .VueCarousel-slide.slide-wrap {
+  padding: 0.25rem 1rem;
 }
 
-.VueCarousel-dot-container li {
+.modal__container .VueCarousel-dot-container li {
   margin-top: 0 !important;
 }
 
