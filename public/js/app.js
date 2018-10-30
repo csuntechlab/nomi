@@ -19429,7 +19429,7 @@ var staticRenderFns = [
             { staticClass: "panel__header course__header--empty mb-0" },
             [
               _vm._v(
-                "\r\n            You are not teaching any classes this semester.\r\n        "
+                "\n            You are not teaching any classes this semester.\n        "
               )
             ]
           ),
@@ -23793,7 +23793,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   methods: {
     getStudent: function getStudent() {
-      console.log(this.student);
       this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
     }
   }
@@ -24080,14 +24079,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		this.$store.dispatch('showBackButton');
 	},
 	mounted: function mounted() {
-		this.$store.dispatch('getStudentProfile', {
-			id: this.$store.state.profile.studentProfile.studentID,
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id,
-			email: this.$store.state.profile.studentProfile.email,
-			first_name: this.$store.state.profile.studentProfile.firstName,
-			last_name: this.$store.state.profile.studentProfile.lastName
-		});
+		var emailSplit = this.$store.state.profile.studentProfile.email.split('@');
+		if (emailSplit[1] === "NOTREALEMAIL.net") {
+			this.$store.dispatch('getStudentProfileNoEmail', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		} else {
+			this.$store.dispatch('getStudentProfile', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		}
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 	updated: function updated() {
@@ -25554,7 +25565,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\r\n        Select Theme\r\n    ")
+      _vm._v("\n        Select Theme\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -25570,7 +25581,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\r\n        Matador")]
+          [_vm._v("\n        Matador")]
         ),
         _vm._v(" "),
         _c(
@@ -25903,30 +25914,27 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
         var response = payload;
-        var email = payload.email;
-        var emailSplit = email.split('@');
-        console.log(payload);
-        if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/alternative/', {
-                student_id: payload.id,
-                first_name: payload.first_name,
-                last_name: payload.last_name
-            }).then(function (payload) {
-                var getters = context.getters;
-                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-                context.commit('GET_STUDENT_BIO', payload);
-            }).catch(function (error) {
-                context.commit('API_STUDENT_FAILURE', error);
-            });
-        } else {
-            window.axios.get('student_profile/' + email).then(function (payload) {
-                var getters = context.getters;
-                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-                context.commit('GET_STUDENT_BIO', payload);
-            }).catch(function (error) {
-                context.commit('API_STUDENT_FAILURE', error);
-            });
-        }
+        window.axios.get('student_profile/' + payload.email).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', payload);
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
+        });
+    },
+    getStudentProfileNoEmail: function getStudentProfileNoEmail(context, payload) {
+        var response = payload;
+        window.axios.post('/student_profile_alternative', {
+            student_id: payload.id,
+            first_name: payload.first_name,
+            last_name: payload.last_name
+        }).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE_NO_EMAIL', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', payload);
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
+        });
     },
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
@@ -26001,11 +26009,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var email = payload.data.email;
-    var data = new FormData();
-
-    data.append('faculty_id', response.faculty_id);
-    data.append('email', email);
-
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
     state.studentProfile.imagePriority = payload.data.image_priority;
@@ -26019,6 +26022,26 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
           state.studentProfile.images = getters.students[student].images;
           break;
         }
+      }
+    }
+  },
+  GET_STUDENT_PROFILE_NO_EMAIL: function GET_STUDENT_PROFILE_NO_EMAIL(state, _ref2) {
+    var payload = _ref2.payload,
+        getters = _ref2.getters,
+        response = _ref2.response;
+
+    var email = response.email;
+    state.studentProfile.emailURI = response.uri;
+    state.studentProfile.displayName = payload.data.display_name;
+    state.studentProfile.imagePriority = payload.data.image_priority;
+    state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.id = payload.data.student_id;
+    state.studentProfile.firstName = payload.data.first_name;
+    for (var student in getters.students) {
+      if (getters.students[student].email == email) {
+        state.studentProfile.student = getters.students[student];
+        state.studentProfile.images = getters.students[student].images;
+        break;
       }
     }
   },

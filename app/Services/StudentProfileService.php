@@ -77,7 +77,6 @@ class StudentProfileService implements StudentProfileContract
             'image_priority' => $imagePriority,
             'bio' => null, // if no email, then no bio
         ];
-
         return \json_encode($studentProfile);
     }
 
