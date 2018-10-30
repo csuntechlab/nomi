@@ -19477,7 +19477,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\n                    You have not taught any classes this past semester.\n                "
+            "\r\n                    You have not taught any classes this past semester.\r\n                "
           )
         ]),
         _vm._v(" "),
@@ -19505,7 +19505,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\n                You are not teaching any classes this current semester.\n            "
+            "\r\n                You are not teaching any classes this current semester.\r\n            "
           )
         ]),
         _vm._v(" "),
@@ -19533,7 +19533,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\n                You are not teaching any classes next semester.\n            "
+            "\r\n                You are not teaching any classes next semester.\r\n            "
           )
         ]),
         _vm._v(" "),
@@ -22438,44 +22438,44 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // import profilePicture from "../profile_components/profilePicture.vue";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-		name: 'gallery-card',
-		props: ['student'],
+	name: 'gallery-card',
+	props: ['student'],
 
-		data: function data() {
-				return {
-						messages: true,
-						errors: [],
-						showCroppaModal: false
-				};
+	data: function data() {
+		return {
+			messages: true,
+			errors: [],
+			showCroppaModal: false
+		};
+	},
+
+	components: {
+		galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
+	},
+
+	created: function created() {
+		this.$store.dispatch("getStudentProfile", {
+			uri: this.student.email_uri,
+			faculty_id: this.facultyMember.id
+		});
+	},
+
+
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+		display_name: function display_name() {
+			return this.student.first_name + " " + this.student.last_name[0] + ".";
 		},
-
-		components: {
-				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
+		email_uri: function email_uri() {
+			return this.student.email.split('@')[0];
 		},
-
-		created: function created() {
-				this.$store.dispatch("getStudentProfile", {
-						uri: this.student.email_uri,
-						faculty_id: this.facultyMember.id
-				});
-		},
-
-
-		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
-				display_name: function display_name() {
-						return this.student.first_name + " " + this.student.last_name[0] + ".";
-				},
-				email_uri: function email_uri() {
-						return this.student.email.split('@')[0];
-				},
-				image: function image() {
-						if (this.student.image_priority === 'likeness') {
-								return this.student.images.likeness;
-						}if (this.student.image_priority === 'avatar') {
-								return this.student.images.avatar;
-						}
-				}
-		})
+		image: function image() {
+			if (this.student.image_priority === 'likeness') {
+				return this.student.images.likeness;
+			}if (this.student.image_priority === 'avatar') {
+				return this.student.images.avatar;
+			}
+		}
+	})
 });
 
 /***/ }),
@@ -25603,7 +25603,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\n        Select Theme\n    ")
+      _vm._v("\r\n        Select Theme\r\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -25619,7 +25619,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        Matador")]
+          [_vm._v("\r\n        Matador")]
         ),
         _vm._v(" "),
         _c(
