@@ -1824,6 +1824,10 @@ textarea[type="text"]:focus {
           align-items: center;
 }
 
+.roster-sorting-padding {
+  padding: 0.25rem;
+}
+
 .roster-sorting__button {
   width: 100%;
   margin: 0.5rem 0;
@@ -2284,6 +2288,15 @@ textarea[type="text"]:focus {
   right: 50%;
   margin-left: -50%;
   margin-right: -50%;
+}
+
+@media only screen and (max-width: 375px) {
+  .roster-sorting-padding {
+    width: 100%;
+  }
+  .roster-sorting-padding > * {
+    margin: 0;
+  }
 }
 
 /*  Fixed Safari font-awesome issue
