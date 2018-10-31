@@ -303,5 +303,4 @@ export default {
   SET_SEM(payload) {
     state.selectedTerm = payload;
   },
-
 };

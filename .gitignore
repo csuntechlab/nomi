@@ -14,4 +14,3 @@ yarn-error.log
 .php_cs.cache
 *.DS_STORE
 public/images/*/
-public/images/apple-touch-icon.png

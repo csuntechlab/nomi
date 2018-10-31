@@ -27386,7 +27386,12 @@ var render = function() {
             "a",
             {
               staticClass: "side-menu__link",
-              attrs: { href: this.url + "/logout", title: "Logout" }
+              attrs: { href: this.url + "/logout", title: "Logout" },
+              on: {
+                click: function($event) {
+                  _vm.toggleMenu()
+                }
+              }
             },
             [
               _c("i", { staticClass: "fas fa-sign-out-alt" }),
