@@ -575,23 +575,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn {
-  background: #F0F0F0;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn {
-  background: #F0F0F0;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .theme-main .confirm-btn {
-  background: #F4F4F4;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .theme-bluesTheme .confirm-btn {
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .theme-Dark .confirm-btn {
-  background: #303030;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .confirm-btn:hover {
@@ -627,23 +627,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn {
-  background: #F0F0F0;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn {
-  background: #F0F0F0;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .theme-main .decline-btn {
-  background: #F4F4F4;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .theme-bluesTheme .decline-btn {
-  background: white;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .theme-Dark .decline-btn {
-  background: #303030;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .decline-btn:hover {
@@ -1403,33 +1403,51 @@ textarea[type="text"]:focus {
   background: #303030;
 }
 
-.modal-header h3 {
-  margin-top: 0;
+.modal-permission__container {
+  -webkit-box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+          box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+  width: 80%;
+  max-width: 425px;
+  padding: 1.5rem;
+}
+
+.modal-name {
+  font-size: 1.15rem;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
-.theme-login .modal-header h3 {
+.theme-login .modal-name {
   color: #E74A37;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .modal-header h3 {
+.theme-OnceAMatadorAlwaysAMatador .modal-name {
   color: #E74A37;
 }
 
-.theme-main .modal-header h3 {
+.theme-main .modal-name {
   color: #4F9DA3;
 }
 
-.theme-bluesTheme .modal-header h3 {
+.theme-bluesTheme .modal-name {
   color: #4CA1DB;
 }
 
-.theme-Dark .modal-header h3 {
+.theme-Dark .modal-name {
   color: #6FA0D8;
 }
 
-.modal-body {
-  margin: 20px 0;
+.modal-header {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
 .modal-default-button {
@@ -1438,7 +1456,6 @@ textarea[type="text"]:focus {
 
 .modal-btn {
   display: inline-block;
-  padding: 6px 20px;
   margin: 0 3%;
   font-size: 15px;
   font-weight: 500;

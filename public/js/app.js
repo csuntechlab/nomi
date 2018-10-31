@@ -19477,7 +19477,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\r\n                    You have not taught any classes this past semester.\r\n                "
+            "\n                    You have not taught any classes this past semester.\n                "
           )
         ]),
         _vm._v(" "),
@@ -19505,7 +19505,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\r\n                You are not teaching any classes this current semester.\r\n            "
+            "\n                You are not teaching any classes this current semester.\n            "
           )
         ]),
         _vm._v(" "),
@@ -19533,7 +19533,7 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
           _vm._v(
-            "\r\n                You are not teaching any classes next semester.\r\n            "
+            "\n                You are not teaching any classes next semester.\n            "
           )
         ]),
         _vm._v(" "),
@@ -22438,44 +22438,44 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // import profilePicture from "../profile_components/profilePicture.vue";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: 'gallery-card',
-	props: ['student'],
+		name: 'gallery-card',
+		props: ['student'],
 
-	data: function data() {
-		return {
-			messages: true,
-			errors: [],
-			showCroppaModal: false
-		};
-	},
-
-	components: {
-		galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
-	},
-
-	created: function created() {
-		this.$store.dispatch("getStudentProfile", {
-			uri: this.student.email_uri,
-			faculty_id: this.facultyMember.id
-		});
-	},
-
-
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
-		display_name: function display_name() {
-			return this.student.first_name + " " + this.student.last_name[0] + ".";
+		data: function data() {
+				return {
+						messages: true,
+						errors: [],
+						showCroppaModal: false
+				};
 		},
-		email_uri: function email_uri() {
-			return this.student.email.split('@')[0];
+
+		components: {
+				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
 		},
-		image: function image() {
-			if (this.student.image_priority === 'likeness') {
-				return this.student.images.likeness;
-			}if (this.student.image_priority === 'avatar') {
-				return this.student.images.avatar;
-			}
-		}
-	})
+
+		created: function created() {
+				this.$store.dispatch("getStudentProfile", {
+						uri: this.student.email_uri,
+						faculty_id: this.facultyMember.id
+				});
+		},
+
+
+		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+				display_name: function display_name() {
+						return this.student.first_name + " " + this.student.last_name[0] + ".";
+				},
+				email_uri: function email_uri() {
+						return this.student.email.split('@')[0];
+				},
+				image: function image() {
+						if (this.student.image_priority === 'likeness') {
+								return this.student.images.likeness;
+						}if (this.student.image_priority === 'avatar') {
+								return this.student.images.avatar;
+						}
+				}
+		})
 });
 
 /***/ }),
@@ -25603,7 +25603,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\r\n        Select Theme\r\n    ")
+      _vm._v("\n        Select Theme\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -25619,7 +25619,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\r\n        Matador")]
+          [_vm._v("\n        Matador")]
         ),
         _vm._v(" "),
         _c(
@@ -27053,32 +27053,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'permission-modal',
+    name: 'permission-modal',
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
 
-  data: function data() {
-    return {
-      show: true
-    };
-  },
-
-
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
-
-  created: function created() {
-    this.$store.dispatch("getUploadPermission");
-  },
-
-
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
-    accept: function accept() {
-      this.$store.dispatch('storePermission', this.facultyMember.id);
-      this.handlePermissionResponse(true);
+    data: function data() {
+        return {
+            show: true
+        };
     },
-    deny: function deny() {
-      this.handlePermissionResponse(false);
-    }
-  })
+    created: function created() {
+        this.$store.dispatch("getUploadPermission");
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
+        accept: function accept() {
+            this.$store.dispatch('storePermission', this.facultyMember.id);
+            this.handlePermissionResponse(true);
+        },
+        deny: function deny() {
+            this.handlePermissionResponse(false);
+        }
+    })
 });
 
 /***/ }),
@@ -27106,44 +27104,48 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "modal__wrapper" }, [
-          _c("div", { staticClass: "modal__container" }, [
-            _c("div", { staticClass: "modal-body__container" }, [
-              _c(
-                "div",
-                { staticClass: "modal-header" },
-                [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
-                2
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("h5", [
-                  _vm._v(
-                    "Photo and Camera access required for full functionality"
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "permission-footer" }, [
-                _c("button", {
-                  staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
-                  on: {
-                    click: function($event) {
-                      _vm.accept()
-                    }
-                  }
-                }),
+          _c(
+            "div",
+            { staticClass: "modal__container modal-permission__container" },
+            [
+              _c("div", { staticClass: "modal-body__container" }, [
+                _c(
+                  "div",
+                  { staticClass: "modal-header" },
+                  [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
+                  2
+                ),
                 _vm._v(" "),
-                _c("button", {
-                  staticClass: "modal-btn decline-btn fa fa-2x fa-times",
-                  on: {
-                    click: function($event) {
-                      _vm.deny()
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("h5", [
+                    _vm._v(
+                      "Photo and Camera permissions are required for full functionality."
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "permission-footer" }, [
+                  _c("button", {
+                    staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
+                    on: {
+                      click: function($event) {
+                        _vm.accept()
+                      }
                     }
-                  }
-                })
+                  }),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "modal-btn decline-btn fa fa-2x fa-times",
+                    on: {
+                      click: function($event) {
+                        _vm.deny()
+                      }
+                    }
+                  })
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]
     )

@@ -108,7 +108,7 @@ textarea[type="text"]:focus{
 
 .confirm-btn {
 	@include themify($themes) {
-		background: themed("panelColor");
+		background: themed("toolBanner");
 	}
 	color: green;
 	border-color: #ccc;
@@ -126,7 +126,7 @@ textarea[type="text"]:focus{
 
 .decline-btn {
 	@include themify($themes) {
-    	background: themed("panelColor");
+    	background: themed("toolBanner");
 	}
 	color: red;
 	border-color: #ccc;
