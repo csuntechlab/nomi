@@ -575,23 +575,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn {
-  background: rgba(0, 0, 0, 0.05);
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn {
-  background: rgba(0, 0, 0, 0.05);
+  background: #FBFBFB;
 }
 
 .theme-main .confirm-btn {
-  background: rgba(255, 255, 255, 0.5);
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .confirm-btn {
-  background: rgba(255, 255, 255, 0.5);
+  background: #E0E0E0;
 }
 
 .theme-Dark .confirm-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: #3B3B3B;
 }
 
 .confirm-btn:hover {
@@ -601,11 +601,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .confirm-btn:hover {
@@ -627,23 +627,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn {
-  background: rgba(0, 0, 0, 0.05);
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn {
-  background: rgba(0, 0, 0, 0.05);
+  background: #FBFBFB;
 }
 
 .theme-main .decline-btn {
-  background: rgba(255, 255, 255, 0.5);
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .decline-btn {
-  background: rgba(255, 255, 255, 0.5);
+  background: #E0E0E0;
 }
 
 .theme-Dark .decline-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: #3B3B3B;
 }
 
 .decline-btn:hover {
@@ -653,11 +653,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .decline-btn:hover {
@@ -1282,12 +1282,12 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
