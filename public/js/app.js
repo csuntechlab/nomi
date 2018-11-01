@@ -24472,6 +24472,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -24479,11 +24481,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-info',
     props: ['student'],
+
     data: function data() {
         return {
             showEmail: false
         };
     },
+    mounted: function mounted() {
+        var emailSplit = this.student.student.email.split("@")[1];
+        if (emailSplit === "NOTREALEMAIL.net") {
+            console.log(this.showEmail);
+            this.showEmail = false;
+            console.log(this.showEmail);
+        }
+    },
+
 
     components: {
         profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
@@ -24770,19 +24782,23 @@ var render = function() {
             { staticClass: "col-sm-12" },
             [
               _c("div", { staticClass: "profile_email" }, [
-                _c("i", {
-                  staticClass: "fas fa-envelope",
-                  on: {
-                    click: function($event) {
-                      _vm.showEmail = true
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(this.student.student.email) +
-                    "\n                "
-                )
+                this.showEmail
+                  ? _c("div", [
+                      _c("i", {
+                        staticClass: "fas fa-envelope",
+                        on: {
+                          click: function($event) {
+                            _vm.showEmail = true
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(this.student.student.email) +
+                          "\n                    "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", [
