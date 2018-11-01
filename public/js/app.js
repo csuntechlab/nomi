@@ -19399,6 +19399,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_displayCurrentTerm_js__ = __webpack_require__(189);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -19442,12 +19443,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'empty-course-item',
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['selectedTerm']))
+  mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_displayCurrentTerm_js__["a" /* displayCurrentTerm */]],
+
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['selectedTerm'])),
+  created: function created() {
+    this.url = document.querySelector('meta[name=app-url]').content;
+  }
 });
 
 /***/ }),
@@ -19458,100 +19466,157 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row fullscreen-width" }, [
-    _vm.selectedTerm == "previous"
-      ? _c("div", [_vm._m(0)])
-      : _vm.selectedTerm == "current"
-        ? _c("div", [_vm._m(1)])
-        : _vm.selectedTerm == "next" ? _c("div", [_vm._m(2)]) : _vm._e()
-  ])
+  return _vm.displayCurrentTerm
+    ? _c("div", { staticClass: "row fullscreen-width" }, [
+        _vm.selectedTerm == "previous"
+          ? _c("div", [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "panel col-lg-12 col-md-12 col-xs-12 type--center"
+                },
+                [
+                  _c(
+                    "h5",
+                    { staticClass: "panel__header course__header--empty mb-0" },
+                    [
+                      _vm._v(
+                        "\n                    You did not teach any classes for " +
+                          _vm._s(_vm.displayedTerm) +
+                          ".\n                "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "panel__content course__content--empty" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _vm._v(
+                          "If you notice any errors in your class schedule, send "
+                        ),
+                        _c("a", { attrs: { href: this.url + "/support" } }, [
+                          _vm._v("feedback")
+                        ]),
+                        _vm._v(".")
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _vm._v("Enjoy our App!")
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ])
+          : _vm.selectedTerm == "current"
+            ? _c("div", [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "panel col-lg-12 col-md-12 col-xs-12 type--center"
+                  },
+                  [
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "panel__header course__header--empty mb-0"
+                      },
+                      [
+                        _vm._v(
+                          "\n                You are not teaching any classes for " +
+                            _vm._s(_vm.displayedTerm) +
+                            ".\n            "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "panel__content course__content--empty" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _vm._v(
+                            "If you notice any errors in your class schedule, send "
+                          ),
+                          _c("a", { attrs: { href: this.url + "/support" } }, [
+                            _vm._v("feedback")
+                          ]),
+                          _vm._v(".")
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _vm._v("Enjoy our App!")
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ])
+            : _vm.selectedTerm == "next"
+              ? _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "panel col-lg-12 col-md-12 col-xs-12 type--center"
+                    },
+                    [
+                      _c(
+                        "h5",
+                        {
+                          staticClass:
+                            "panel__header course__header--empty mb-0"
+                        },
+                        [
+                          _vm._v(
+                            "\n                You are not scheduled to teach any classes for " +
+                              _vm._s(_vm.displayedTerm) +
+                              ".\n            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "panel__content course__content--empty"
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _vm._v(
+                              "If you notice any errors in your class schedule, send \n                "
+                            ),
+                            _c(
+                              "a",
+                              { attrs: { href: this.url + "/support" } },
+                              [_vm._v("feedback")]
+                            ),
+                            _vm._v(" .")
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "row" }, [
+                            _vm._v("Enjoy our App!")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+      ])
+    : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
-      [
-        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
-          _vm._v(
-            "\n                    You have not taught any classes this past semester.\n                "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel__content course__content--empty" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._v(
-              "Feel free to review your current and next classes by selecting a different term."
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
-      [
-        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
-          _vm._v(
-            "\n                You are not teaching any classes this current semester.\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel__content course__content--empty" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._v(
-              "Feel free to review your past and next classes by selecting a different term."
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
-      [
-        _c("h5", { staticClass: "panel__header course__header--empty mb-0" }, [
-          _vm._v(
-            "\n                You are not teaching any classes next semester.\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "panel__content course__content--empty" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._v(
-              "Feel free to review your past and current classes by selecting a different term."
-            )
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [_vm._v("Enjoy our App!")])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -27371,6 +27436,55 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return displayCurrentTerm; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+var displayCurrentTerm = {
+    data: function data() {
+        return {
+            displayedTerm: ''
+        };
+    },
+
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
+        displayCurrentTerm: function displayCurrentTerm() {
+            if (this.term != null) {
+                var termCode = this.term;
+                switch (termCode.charAt(3)) {
+                    case '3':
+                        this.displayedTerm = 'Spring';
+                        break;
+                    case '5':
+                        this.displayedTerm = 'Summer';
+                        break;
+                    case '7':
+                        this.displayedTerm = 'Fall';
+                        break;
+                    case '9':
+                        this.displayedTerm = 'Winter';
+                }
+                if (termCode.charAt(0) == '2') {
+                    this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                } else {
+                    this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+                }
+                return this.displayedTerm;
+            }
+        }
+    })
+};
 
 /***/ })
 /******/ ]);
