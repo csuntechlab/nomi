@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri">
+    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
         <div class="roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
@@ -53,5 +53,11 @@ export default {
       }
     },
   },
+
+  methods: {
+    getStudent() {
+      this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
+    }
+	},
 };
 </script>
