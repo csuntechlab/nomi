@@ -1,11 +1,27 @@
 export default {
     getStudentProfile (context, payload) {
-            let email = payload.uri+'@my.csun.edu'
-            let response = payload
-        window.axios.get('student_profile/'+email)
+        let response = payload;
+        window.axios.get('student_profile/'+ payload.email)
             .then(payload => {
                 var getters = context.getters
                 context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                context.commit('GET_STUDENT_BIO', payload)
+            })
+            .catch(error => {
+                context.commit('API_STUDENT_FAILURE', error)
+            });
+    },
+
+    getStudentProfileNoEmail (context, payload) {
+        let response = payload;
+        window.axios.post('/student_profile_alternative', {
+            student_id: payload.id,
+            first_name: payload.first_name,
+            last_name: payload.last_name
+        })
+            .then(payload => {
+                var getters = context.getters
+                context.commit('GET_STUDENT_PROFILE_NO_EMAIL', {payload, getters, response})
                 context.commit('GET_STUDENT_BIO', payload)
             })
             .catch(error => {
@@ -54,8 +70,12 @@ export default {
     dataForModal (context, payload){
         context.commit("DATA_FOR_MODAL", payload)
     },
-    
+
     //back button
+    getStudent (context, payload) {
+        context.commit("GET_STUDENT", payload)
+    },
+
     storeStudent (context, payload) {
         context.commit('STORE_STUDENT', payload)
     },
