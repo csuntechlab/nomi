@@ -1356,26 +1356,32 @@ textarea[type="text"]:focus {
 }
 
 .modal-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  z-index: 9998;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
-}
-
-.modal__wrapper {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .modal__container {
+  position: relative;
+  width: 80%;
   max-width: 20em;
   margin: 0px auto;
+  margin-bottom: 2.6rem;
   border-radius: 16px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
@@ -1412,35 +1418,34 @@ textarea[type="text"]:focus {
 }
 
 .modal-name {
-  font-size: 1.15rem;
-  width: 60%;
+  font-size: 1.5rem;
+  width: 75%;
   margin: 0 auto;
-  margin-top: 1.5rem;
+  margin-top: 2.25rem;
   text-align: center;
 }
 
 .theme-login .modal-name {
-  color: #E74A37;
+  color: #464646;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .modal-name {
-  color: #E74A37;
+  color: #464646;
 }
 
 .theme-main .modal-name {
-  color: #4F9DA3;
+  color: #464646;
 }
 
 .theme-bluesTheme .modal-name {
-  color: #4CA1DB;
+  color: #575757;
 }
 
 .theme-Dark .modal-name {
-  color: #6FA0D8;
+  color: #bababa;
 }
 
 .modal-header {
-  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1500,6 +1505,14 @@ textarea[type="text"]:focus {
   color: #303030;
 }
 
+.modal-button-photo {
+  border-radius: 0 0 0 16px;
+}
+
+.modal-button-confirm {
+  border-radius: 0 0 16px 0;
+}
+
 .modal-button__container {
   display: inline-block;
   padding: 5% 0;
@@ -1529,12 +1542,10 @@ textarea[type="text"]:focus {
 }
 
 .modal--exit {
-  color: gray;
-  margin-bottom: 0;
-  margin-top: 2%;
-  margin-left: 5%;
-  margin-right: 2%;
-  height: 10%;
+  position: absolute;
+  padding: 0.75rem 1.25rem 0 0;
+  top: 0;
+  right: 0;
 }
 
 .modal--adjust {
@@ -1548,6 +1559,10 @@ textarea[type="text"]:focus {
 .permission-footer {
   margin: 15% 0 5%;
   text-align: center;
+}
+
+.VueCarousel-dot-container li {
+  margin-top: 0 !important;
 }
 
 .menu {
