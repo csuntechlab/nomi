@@ -40,6 +40,17 @@ export default {
     state.facultyMember.lastName = payload.data.name_last;
   },
 
+  // GET_STUDENT_LIKENESS(state, response){
+  //   // console.log(state.students.student.images.likeness_image)
+  //   // console.log(response.data.likeness_image)
+  //   state.students.student.images.likeness_image = response.data.likeness_image;
+  // },
+
+  // GET_STUDENT_AVATAR(state, response){
+  //   state.students.student.images.avatar_image = response.data.avatar_image;
+  // },
+
+
   UPDATE_STUDENT_PRIORITY(state, payload) {
     for (let i = 0, len = state.courses.length; i < len; i += 1) {
       for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {

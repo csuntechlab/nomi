@@ -10,7 +10,7 @@
                 <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.likeness.likeness_image" :editable="true" :type="'profile'"></profile-picture>
+                        <profile-picture :student="student" :image="student.images.likeness_image" :editable="true" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -18,7 +18,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.avatar.avatar_image" :editable="true" :type="'profile'"></profile-picture>
+                        <profile-picture :student="student" :image="student.images.avatar_image" :editable="true" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>

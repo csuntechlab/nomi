@@ -47,9 +47,9 @@ export default {
 
     image() {
       if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness.likeness_image;
+        return this.student.images.likeness_image;
       } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar.avatar_image;
+        return this.student.images.avatar_image;
       }
     },
   },

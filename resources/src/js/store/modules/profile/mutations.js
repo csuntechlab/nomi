@@ -32,6 +32,14 @@ export default {
     }
   },
 
+  GET_STUDENT_LIKENESS(state, response){
+    state.studentProfile.images.likeness_image = response.data.likeness_image;
+  },
+
+  GET_STUDENT_AVATAR(state, response){
+    state.studentProfile.images.avatar_image = response.data.avatar_image;
+  },
+
   GET_STUDENT_BIO(state, payload) {
     state.studentProfile.bio = payload.data.bio;
   },
