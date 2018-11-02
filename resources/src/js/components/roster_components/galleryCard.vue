@@ -5,7 +5,7 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'profile'" />
+						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
 					</div>
 				</div>
 				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
@@ -52,6 +52,10 @@ export default {
 
     email_uri() {
       return this.student.email.split('@')[0];
+    },
+
+    emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
     },
 
     image() {
