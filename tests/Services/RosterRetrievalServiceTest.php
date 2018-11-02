@@ -25,6 +25,7 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function processMembers_works()
     {
+        $this->markTestIncomplete();
         $this->imageCRUD
             ->shouldReceive('getPriority')
             ->once()
@@ -129,6 +130,7 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function sanitizeStudent_works()
     {
+        $this->markTestIncomplete();
         $rosterService = new RosterRetrievalService($this->retriever, $this->imageCRUD);
         $student = new \stdClass();
         $student->members_id = 0;
