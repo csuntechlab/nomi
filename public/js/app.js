@@ -25908,8 +25908,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     }
   },
   GET_STUDENT_LIKENESS: function GET_STUDENT_LIKENESS(state, response) {
-    console.log(response);
-    console.log(response.data.likeness_image + ' GET_STUDENT_LIKENESS mutations/profile');
     state.studentProfile.images.likeness_image = response.data.likeness_image;
   },
   GET_STUDENT_AVATAR: function GET_STUDENT_AVATAR(state, response) {
@@ -26150,24 +26148,25 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         context.commit('GET_DATA', response);
         window.axios.get('faculty_profile/' + context.state.facultyMember.email).then(function (response) {
           context.commit('GET_FACULTY_PROFILE', response);
+          console.log(context);
+          // console.log(context.state.students.student.images.likeness + ' base/actions')
+          // window.axios.get(context.state.students.student.images.likeness)
+          //   .then((response) => {
+          //     context.commit('GET_STUDENT_LIKENESS', response);
+          //   })
+          //   .catch((error) => {
+          //     context.commit('API_FAILURE', error);
+          //   });
+          // window.axios.get(context.state.students.student.images.avatar)
+          // .then((response) => {
+          //   context.commit('GET_STUDENT_AVATAR', response);
+          // })
+          // .catch((error) => {
+          //   context.commit('API_FAILURE', error);
+          // });
         }).catch(function (error) {
           context.commit('API_FAILURE', error);
         });
-        // window.axios.get(context.state.students.student.images.likeness)
-        // // console.log(context.state.students.student.images.likeness + ' base/actions')
-        // .then((response) => {
-        //   context.commit('GET_STUDENT_LIKENESS', response);
-        // })
-        // .catch((error) => {
-        //   context.commit('API_FAILURE', error);
-        // });
-        // window.axios.get(context.state.students.student.images.avatar)
-        // .then((response) => {
-        //   context.commit('GET_STUDENT_AVATAR', response);
-        // })
-        // .catch((error) => {
-        //   context.commit('API_FAILURE', error);
-        // });
       }).catch(function (error) {
         context.commit('API_FAILURE', error);
       });

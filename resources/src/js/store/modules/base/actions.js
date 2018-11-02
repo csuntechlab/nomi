@@ -23,25 +23,26 @@ export default {
           window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
+              console.log(context);
+              // console.log(context.state.students.student.images.likeness + ' base/actions')
+              // window.axios.get(context.state.students.student.images.likeness)
+              //   .then((response) => {
+              //     context.commit('GET_STUDENT_LIKENESS', response);
+              //   })
+              //   .catch((error) => {
+              //     context.commit('API_FAILURE', error);
+              //   });
+                // window.axios.get(context.state.students.student.images.avatar)
+                // .then((response) => {
+                //   context.commit('GET_STUDENT_AVATAR', response);
+                // })
+                // .catch((error) => {
+                //   context.commit('API_FAILURE', error);
+                // });
             })
             .catch((error) => {
               context.commit('API_FAILURE', error);
             });
-            // window.axios.get(context.state.students.student.images.likeness)
-            // // console.log(context.state.students.student.images.likeness + ' base/actions')
-            // .then((response) => {
-            //   context.commit('GET_STUDENT_LIKENESS', response);
-            // })
-            // .catch((error) => {
-            //   context.commit('API_FAILURE', error);
-            // });
-            // window.axios.get(context.state.students.student.images.avatar)
-            // .then((response) => {
-            //   context.commit('GET_STUDENT_AVATAR', response);
-            // })
-            // .catch((error) => {
-            //   context.commit('API_FAILURE', error);
-            // });
         })
         .catch((error) => {
           context.commit('API_FAILURE', error);
