@@ -65,7 +65,7 @@ class StudentProfileControllerTest extends TestCase
         $controller = new StudentProfileController($this->retriever);
 
         $this->retriever
-            ->shouldReceive('getStudentProfileWithNoEmail')
+            ->shouldReceive('getStudentWithNoEmail')
             ->once();
 
         $request = new Request();

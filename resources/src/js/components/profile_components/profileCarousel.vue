@@ -105,8 +105,8 @@ export default {
     },
 
     emailExists() {
-      return (this.student.emailURI != null);
-    }
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    },
   },
 };
 </script>

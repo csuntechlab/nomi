@@ -40,6 +40,6 @@ class StudentProfileController extends Controller
         ];
 
         return $this->studentProfileUtility
-        ->getStudentProfileWithNoEmail($data);
+        ->getStudentWithNoEmail($data);
     }
 }
