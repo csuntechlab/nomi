@@ -20551,8 +20551,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -20576,43 +20574,7 @@ var render = function() {
     _c("div", { staticClass: "row fullscreen-width roster-sorting" }, [
       this.list
         ? _c("div", { staticClass: "roster-sorting-container" }, [
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button--selected",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setList")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _vm._v(" List\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setGallery")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-users" }),
-                  _vm._v(" Gallery\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
               _c(
                 "button",
                 {
@@ -20625,50 +20587,50 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-clone" }),
-                  _vm._v(" Cards\n                ")
+                  _vm._v(" Flash Cards\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button--selected",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setList")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _vm._v(" Student List\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setGallery")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-users" }),
+                  _vm._v(" Photo Gallery\n                ")
                 ]
               )
             ])
           ])
         : this.flash
           ? _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20681,49 +20643,49 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
             ])
           : _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button--selected",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20736,7 +20698,43 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button--selected",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
@@ -27141,32 +27139,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'permission-modal',
+    name: 'permission-modal',
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
 
-  data: function data() {
-    return {
-      show: true
-    };
-  },
-
-
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
-
-  created: function created() {
-    this.$store.dispatch("getUploadPermission");
-  },
-
-
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
-    accept: function accept() {
-      this.$store.dispatch('storePermission', this.facultyMember.id);
-      this.handlePermissionResponse(true);
+    data: function data() {
+        return {
+            show: true
+        };
     },
-    deny: function deny() {
-      this.handlePermissionResponse(false);
-    }
-  })
+    created: function created() {
+        this.$store.dispatch("getUploadPermission");
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
+        accept: function accept() {
+            this.$store.dispatch('storePermission', this.facultyMember.id);
+            this.handlePermissionResponse(true);
+        },
+        deny: function deny() {
+            this.handlePermissionResponse(false);
+        }
+    })
 });
 
 /***/ }),
@@ -27194,44 +27190,48 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "modal__wrapper" }, [
-          _c("div", { staticClass: "modal__container" }, [
-            _c("div", { staticClass: "modal-body__container" }, [
-              _c(
-                "div",
-                { staticClass: "modal-header" },
-                [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
-                2
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("h5", [
-                  _vm._v(
-                    "Photo and Camera access required for full functionality"
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "permission-footer" }, [
-                _c("button", {
-                  staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
-                  on: {
-                    click: function($event) {
-                      _vm.accept()
-                    }
-                  }
-                }),
+          _c(
+            "div",
+            { staticClass: "modal__container modal-permission__container" },
+            [
+              _c("div", { staticClass: "modal-body__container" }, [
+                _c(
+                  "div",
+                  { staticClass: "modal-header" },
+                  [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
+                  2
+                ),
                 _vm._v(" "),
-                _c("button", {
-                  staticClass: "modal-btn decline-btn fa fa-2x fa-times",
-                  on: {
-                    click: function($event) {
-                      _vm.deny()
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("h5", [
+                    _vm._v(
+                      "Photo and Camera permissions are required for full functionality."
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "permission-footer" }, [
+                  _c("button", {
+                    staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
+                    on: {
+                      click: function($event) {
+                        _vm.accept()
+                      }
                     }
-                  }
-                })
+                  }),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "modal-btn decline-btn fa fa-2x fa-times",
+                    on: {
+                      click: function($event) {
+                        _vm.deny()
+                      }
+                    }
+                  })
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]
     )
