@@ -2,7 +2,9 @@
 	&-mask {
 		background-color: rgba(0, 0, 0, .5);
 		box-sizing: border-box;
+		display: flex;
 		justify-content: center;
+		align-items: center;
 		position: fixed;
 		width: 100vw;
 		height: 100vh;
@@ -13,15 +15,23 @@
 	
 	&__container {
 		position: relative;
-		top: calc(100vh/18);
 		width: 80%;
-		max-width: 24rem;
-		margin: 0 auto;
+		max-width: 20em;
+		margin: 0px auto;
+		margin-bottom: 2.6rem;
 		border-radius: 16px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .33);
 		transition: all .3s ease;
 		@include themify($themes) {
 			background: themed("panelColor");
 		}
+	}
+
+	&-permission__container {
+		box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+		width: 80%;
+		max-width: 425px;
+		padding: 1.5rem;
 	}
 	
 	&-name {
@@ -47,7 +57,6 @@
 
 	&-btn {
 		display: inline-block;
-		padding: 6px 20px;
 		margin: 0 3%;
 		font-size: 15px;
 		font-weight: 500;

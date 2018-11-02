@@ -575,23 +575,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-main .confirm-btn {
-  background: #F4F4F4;
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .confirm-btn {
-  background: white;
+  background: #E0E0E0;
 }
 
 .theme-Dark .confirm-btn {
-  background: #303030;
+  background: #3B3B3B;
 }
 
 .confirm-btn:hover {
@@ -601,11 +601,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .confirm-btn:hover {
@@ -627,23 +627,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-main .decline-btn {
-  background: #F4F4F4;
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .decline-btn {
-  background: white;
+  background: #E0E0E0;
 }
 
 .theme-Dark .decline-btn {
-  background: #303030;
+  background: #3B3B3B;
 }
 
 .decline-btn:hover {
@@ -653,11 +653,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .decline-btn:hover {
@@ -1282,12 +1282,12 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
@@ -1359,9 +1359,15 @@ textarea[type="text"]:focus {
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -1372,11 +1378,13 @@ textarea[type="text"]:focus {
 
 .modal__container {
   position: relative;
-  top: calc(100vh/18);
   width: 80%;
-  max-width: 24rem;
-  margin: 0 auto;
+  max-width: 20em;
+  margin: 0px auto;
+  margin-bottom: 2.6rem;
   border-radius: 16px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
 }
@@ -1399,6 +1407,14 @@ textarea[type="text"]:focus {
 
 .theme-Dark .modal__container {
   background: #303030;
+}
+
+.modal-permission__container {
+  -webkit-box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+          box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+  width: 80%;
+  max-width: 425px;
+  padding: 1.5rem;
 }
 
 .modal-name {
@@ -1445,7 +1461,6 @@ textarea[type="text"]:focus {
 
 .modal-btn {
   display: inline-block;
-  padding: 6px 20px;
   margin: 0 3%;
   font-size: 15px;
   font-weight: 500;
