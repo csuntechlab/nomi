@@ -1,33 +1,32 @@
 export default {
     getStudentProfile (context, payload) {
         let response = payload;
-        let email = payload.email;
-        let emailSplit = email.split('@');
-        if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/'+ payload.first_name +'/'+ payload.last_name, {
-                student_id: payload.id,
-                first_name: payload.first_name,
-                last_name: payload.last_name
+        window.axios.get('student_profile/'+ payload.email)
+            .then(payload => {
+                var getters = context.getters
+                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
+                context.commit('GET_STUDENT_BIO', payload)
             })
-                .then(payload => {
-                    var getters = context.getters
-                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                    context.commit('GET_STUDENT_BIO', payload)
-                })
-                .catch(error => {
-                    context.commit('API_STUDENT_FAILURE', error)
-                });
-        } else {
-            window.axios.get('student_profile/'+email)
-                .then(payload => {
-                    var getters = context.getters
-                    context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                    context.commit('GET_STUDENT_BIO', payload)
-                })
-                .catch(error => {
-                    context.commit('API_STUDENT_FAILURE', error)
-                });
-        }
+            .catch(error => {
+                context.commit('API_STUDENT_FAILURE', error)
+            });
+    },
+
+    getStudentProfileNoEmail (context, payload) {
+        let response = payload;
+        window.axios.post('/student_profile_alternative', {
+            student_id: payload.id,
+            first_name: payload.first_name,
+            last_name: payload.last_name
+        })
+            .then(payload => {
+                var getters = context.getters
+                context.commit('GET_STUDENT_PROFILE_NO_EMAIL', {payload, getters, response})
+                context.commit('GET_STUDENT_BIO', payload)
+            })
+            .catch(error => {
+                context.commit('API_STUDENT_FAILURE', error)
+            });
     },
 
     updateNotes (context, notes) {
@@ -71,7 +70,7 @@ export default {
     dataForModal (context, payload){
         context.commit("DATA_FOR_MODAL", payload)
     },
-    
+
     //back button
     getStudent (context, payload) {
         context.commit("GET_STUDENT", payload)

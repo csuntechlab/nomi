@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Contracts\ImageCRUDContract;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
+use GuzzleHttp\Client;
 use Intervention\Image\ImageManager;
 
 class RosterRetrievalService implements RosterRetrievalContract
@@ -89,17 +90,15 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         $emailUri = \substr($student->email, 0, \strpos($student->email, '@'));
 
+        $images = $this->gatherImageCorrectly($student);
+
         return [
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,
             'last_name' => $student->last_name,
             'email' => $student->email,
             'email_uri' => $emailUri,
-            'images' => [
-                'likeness' => $student->likeness_photo,
-                'avatar' => $student->avatar_photo,
-                'official' => $student->official_photo,
-            ],
+            'images' => $images,
             'name_recording' => $student->name_recording,
             'image_priority' => $student->image_priority,
         ];
@@ -112,5 +111,32 @@ class RosterRetrievalService implements RosterRetrievalContract
         });
 
         return $students;
+    }
+
+    private function gatherImageCorrectly($student)
+    {
+        $client = new Client();
+
+        $likeness_json =
+            \json_decode(
+                $client->get($student->likeness_photo, ['verify' => false])
+                ->getBody()
+                ->getContents()
+        );
+
+        $likeness_image = $likeness_json->likeness_image;
+
+        $avatar_json = \json_decode(
+            $client->get($student->avatar_photo, ['verify' => false])
+        ->getBody()
+        ->getContents()
+        );
+
+        $avatar_image = $avatar_json->avatar_image;
+
+        return [
+            'likeness' => $likeness_image,
+            'avatar' => $avatar_image,
+        ];
     }
 }

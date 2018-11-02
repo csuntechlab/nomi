@@ -10,11 +10,6 @@ export default {
 
   GET_STUDENT_PROFILE(state, { payload, getters, response }) {
     const email = payload.data.email;
-    const data = new FormData();
-
-    data.append('faculty_id', response.faculty_id);
-    data.append('email', email);
-
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
     state.studentProfile.imagePriority = payload.data.image_priority;
@@ -28,6 +23,23 @@ export default {
           state.studentProfile.images = getters.students[student].images;
           break;
         }
+      }
+    }
+  },
+
+  GET_STUDENT_PROFILE_NO_EMAIL(state, { payload, getters, response }) {
+    const email = response.email;
+    state.studentProfile.emailURI = response.uri;
+    state.studentProfile.displayName = payload.data.display_name;
+    state.studentProfile.imagePriority = payload.data.image_priority;
+    state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.id = payload.data.student_id;
+    state.studentProfile.firstName = payload.data.first_name;
+    for (const student in getters.students) {
+      if (getters.students[student].email == email) {
+        state.studentProfile.student = getters.students[student];
+        state.studentProfile.images = getters.students[student].images;
+        break;
       }
     }
   },

@@ -43,14 +43,26 @@ export default {
 	},
 
 	mounted() {
-		this.$store.dispatch('getStudentProfile', {
-			id: this.$store.state.profile.studentProfile.studentID,
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id,
-			email: this.$store.state.profile.studentProfile.email,
-			first_name: this.$store.state.profile.studentProfile.firstName,
-			last_name: this.$store.state.profile.studentProfile.lastName,
-		});
+		let emailSplit = this.$store.state.profile.studentProfile.email.split('@');
+		if (emailSplit[1] === "NOTREALEMAIL.net") {
+			this.$store.dispatch('getStudentProfileNoEmail', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName,
+			});
+		} else {
+			this.$store.dispatch('getStudentProfile', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName,
+			});
+		}
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 

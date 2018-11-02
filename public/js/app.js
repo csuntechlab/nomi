@@ -24149,14 +24149,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		this.$store.dispatch('showBackButton');
 	},
 	mounted: function mounted() {
-		this.$store.dispatch('getStudentProfile', {
-			id: this.$store.state.profile.studentProfile.studentID,
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id,
-			email: this.$store.state.profile.studentProfile.email,
-			first_name: this.$store.state.profile.studentProfile.firstName,
-			last_name: this.$store.state.profile.studentProfile.lastName
-		});
+		var emailSplit = this.$store.state.profile.studentProfile.email.split('@');
+		if (emailSplit[1] === "NOTREALEMAIL.net") {
+			this.$store.dispatch('getStudentProfileNoEmail', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		} else {
+			this.$store.dispatch('getStudentProfile', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		}
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 	updated: function updated() {
@@ -24461,6 +24473,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -24468,11 +24482,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-info',
     props: ['student'],
+
     data: function data() {
         return {
             showEmail: false
         };
     },
+    mounted: function mounted() {
+        var emailSplit = this.student.student.email.split("@")[1];
+        if (emailSplit === "NOTREALEMAIL.net") {
+            console.log(this.showEmail);
+            this.showEmail = false;
+            console.log(this.showEmail);
+        }
+    },
+
 
     components: {
         profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
@@ -24759,19 +24783,23 @@ var render = function() {
             { staticClass: "col-sm-12" },
             [
               _c("div", { staticClass: "profile_email" }, [
-                _c("i", {
-                  staticClass: "fas fa-envelope",
-                  on: {
-                    click: function($event) {
-                      _vm.showEmail = true
-                    }
-                  }
-                }),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(this.student.student.email) +
-                    "\n                "
-                )
+                this.showEmail
+                  ? _c("div", [
+                      _c("i", {
+                        staticClass: "fas fa-envelope",
+                        on: {
+                          click: function($event) {
+                            _vm.showEmail = true
+                          }
+                        }
+                      }),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(this.student.student.email) +
+                          "\n                    "
+                      )
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", [
@@ -25972,29 +26000,27 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
         var response = payload;
-        var email = payload.email;
-        var emailSplit = email.split('@');
-        if (emailSplit[1] === "NOTREALEMAIL.net") {
-            window.axios.get('/student_profile/' + payload.first_name + '/' + payload.last_name, {
-                student_id: payload.id,
-                first_name: payload.first_name,
-                last_name: payload.last_name
-            }).then(function (payload) {
-                var getters = context.getters;
-                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-                context.commit('GET_STUDENT_BIO', payload);
-            }).catch(function (error) {
-                context.commit('API_STUDENT_FAILURE', error);
-            });
-        } else {
-            window.axios.get('student_profile/' + email).then(function (payload) {
-                var getters = context.getters;
-                context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
-                context.commit('GET_STUDENT_BIO', payload);
-            }).catch(function (error) {
-                context.commit('API_STUDENT_FAILURE', error);
-            });
-        }
+        window.axios.get('student_profile/' + payload.email).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', payload);
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
+        });
+    },
+    getStudentProfileNoEmail: function getStudentProfileNoEmail(context, payload) {
+        var response = payload;
+        window.axios.post('/student_profile_alternative', {
+            student_id: payload.id,
+            first_name: payload.first_name,
+            last_name: payload.last_name
+        }).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE_NO_EMAIL', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', payload);
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
+        });
     },
     updateNotes: function updateNotes(context, notes) {
         context.commit('UPDATE_NOTES', notes);
@@ -26069,11 +26095,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var email = payload.data.email;
-    var data = new FormData();
-
-    data.append('faculty_id', response.faculty_id);
-    data.append('email', email);
-
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
     state.studentProfile.imagePriority = payload.data.image_priority;
@@ -26087,6 +26108,26 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
           state.studentProfile.images = getters.students[student].images;
           break;
         }
+      }
+    }
+  },
+  GET_STUDENT_PROFILE_NO_EMAIL: function GET_STUDENT_PROFILE_NO_EMAIL(state, _ref2) {
+    var payload = _ref2.payload,
+        getters = _ref2.getters,
+        response = _ref2.response;
+
+    var email = response.email;
+    state.studentProfile.emailURI = response.uri;
+    state.studentProfile.displayName = payload.data.display_name;
+    state.studentProfile.imagePriority = payload.data.image_priority;
+    state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.id = payload.data.student_id;
+    state.studentProfile.firstName = payload.data.first_name;
+    for (var student in getters.students) {
+      if (getters.students[student].email == email) {
+        state.studentProfile.student = getters.students[student];
+        state.studentProfile.images = getters.students[student].images;
+        break;
       }
     }
   },

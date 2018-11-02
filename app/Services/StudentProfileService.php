@@ -57,12 +57,13 @@ class StudentProfileService implements StudentProfileContract
         }
     }
 
-    public function getStudentProfileWithNoEmail($data)
+    public function getStudentWithNoEmail($data)
     {
         $display_name = $data['first_name'].' '.$data['last_name'];
 
-        $note = Note::where('student_id', $data['student_id'])
-            ->firstOrFail();
+        $note = Note::where('user_id', auth()->user()->user_id)
+            ->where('student_id', $data['student_id'])
+            ->first();
 
         $imagePriority = 'likeness';
 
@@ -76,7 +77,6 @@ class StudentProfileService implements StudentProfileContract
             'image_priority' => $imagePriority,
             'bio' => null, // if no email, then no bio
         ];
-
         return \json_encode($studentProfile);
     }
 
