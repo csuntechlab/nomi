@@ -20551,8 +20551,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -20576,43 +20574,7 @@ var render = function() {
     _c("div", { staticClass: "row fullscreen-width roster-sorting" }, [
       this.list
         ? _c("div", { staticClass: "roster-sorting-container" }, [
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button--selected",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setList")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _vm._v(" List\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setGallery")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-users" }),
-                  _vm._v(" Gallery\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
               _c(
                 "button",
                 {
@@ -20625,50 +20587,50 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-clone" }),
-                  _vm._v(" Cards\n                ")
+                  _vm._v(" Flash Cards\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button--selected",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setList")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _vm._v(" Student List\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setGallery")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-users" }),
+                  _vm._v(" Photo Gallery\n                ")
                 ]
               )
             ])
           ])
         : this.flash
           ? _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20681,49 +20643,49 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
             ])
           : _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button--selected",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20736,7 +20698,43 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button--selected",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
