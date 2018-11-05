@@ -1,11 +1,11 @@
 <template>
 <div>
-    <div class="profile__color-layer profile-pic-container type--center">
+    <div class="profile__color-layer type--center">
             <div class="profile__divider">
                 <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.likeness" :editable="true" :type="'profile'"></profile-picture>
+                        <profile-picture :student="student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,7 +13,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.avatar" :editable="true" :type="'profile'"></profile-picture>
+                        <profile-picture :student="student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>
@@ -32,10 +32,15 @@
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
 export default {
-    name: "profile-container",
-    props: ['student'],
-    components:{
-        profilePicture
+  name: "profile-container",
+  props: ['student'],
+  components:{
+      profilePicture
+  },
+  computed: {
+      emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
     },
+  }
 }
 </script>

@@ -530,8 +530,8 @@ textarea[type="text"]:focus {
 
 .panel__edit-button--profile {
   position: absolute;
-  bottom: 5%;
-  right: 15%;
+  bottom: 20%;
+  left: 75%;
   padding: 4%;
   border-radius: 100%;
   font-size: 120%;
@@ -562,6 +562,12 @@ textarea[type="text"]:focus {
 .theme-Dark .panel__edit-button--profile {
   background-color: #426c96;
   color: #dfe5ec;
+}
+
+@media only screen and (max-width: 345px) {
+  .panel__edit-button--profile {
+    bottom: 30%;
+  }
 }
 
 .text-bold {
@@ -603,23 +609,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-main .confirm-btn {
-  background: #F4F4F4;
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .confirm-btn {
-  background: white;
+  background: #E0E0E0;
 }
 
 .theme-Dark .confirm-btn {
-  background: #303030;
+  background: #3B3B3B;
 }
 
 .confirm-btn:hover {
@@ -629,11 +635,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .confirm-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .confirm-btn:hover {
@@ -655,23 +661,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn {
-  background: #F0F0F0;
+  background: #FBFBFB;
 }
 
 .theme-main .decline-btn {
-  background: #F4F4F4;
+  background: #E0E0E0;
 }
 
 .theme-bluesTheme .decline-btn {
-  background: white;
+  background: #E0E0E0;
 }
 
 .theme-Dark .decline-btn {
-  background: #303030;
+  background: #3B3B3B;
 }
 
 .decline-btn:hover {
@@ -681,11 +687,11 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .decline-btn:hover {
-  background: #dddddd;
+  background: #DDDDDD;
 }
 
 .theme-main .decline-btn:hover {
@@ -1310,12 +1316,12 @@ textarea[type="text"]:focus {
 }
 
 .theme-login .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
 .theme-OnceAMatadorAlwaysAMatador .course__button {
-  background-color: #dddddd !important;
+  background-color: #DDDDDD !important;
   color: #464646 !important;
 }
 
@@ -1384,27 +1390,33 @@ textarea[type="text"]:focus {
 }
 
 .modal-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
-  z-index: 9998;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  -webkit-transition: opacity .3s ease;
-  transition: opacity .3s ease;
-}
-
-.modal__wrapper {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .modal__container {
+  position: relative;
+  width: 80%;
   max-width: 20em;
   margin: 0px auto;
-  border-radius: 2px;
+  margin-bottom: 2.6rem;
+  border-radius: 16px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.33);
   -webkit-transition: all .3s ease;
@@ -1431,33 +1443,50 @@ textarea[type="text"]:focus {
   background: #303030;
 }
 
-.modal-header h3 {
-  margin-top: 0;
+.modal-permission__container {
+  -webkit-box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+          box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+  width: 80%;
+  max-width: 425px;
+  padding: 1.5rem;
+}
+
+.modal-name {
+  font-size: 1.5rem;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 2.25rem;
   text-align: center;
 }
 
-.theme-login .modal-header h3 {
-  color: #E74A37;
+.theme-login .modal-name {
+  color: #464646;
 }
 
-.theme-OnceAMatadorAlwaysAMatador .modal-header h3 {
-  color: #E74A37;
+.theme-OnceAMatadorAlwaysAMatador .modal-name {
+  color: #464646;
 }
 
-.theme-main .modal-header h3 {
-  color: #4F9DA3;
+.theme-main .modal-name {
+  color: #464646;
 }
 
-.theme-bluesTheme .modal-header h3 {
-  color: #4CA1DB;
+.theme-bluesTheme .modal-name {
+  color: #575757;
 }
 
-.theme-Dark .modal-header h3 {
-  color: #6FA0D8;
+.theme-Dark .modal-name {
+  color: #bababa;
 }
 
-.modal-body {
-  margin: 20px 0;
+.modal-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
 
 .modal-default-button {
@@ -1466,7 +1495,6 @@ textarea[type="text"]:focus {
 
 .modal-btn {
   display: inline-block;
-  padding: 6px 20px;
   margin: 0 3%;
   font-size: 15px;
   font-weight: 500;
@@ -1511,6 +1539,14 @@ textarea[type="text"]:focus {
   color: #303030;
 }
 
+.modal-button-photo {
+  border-radius: 0 0 0 16px;
+}
+
+.modal-button-confirm {
+  border-radius: 0 0 16px 0;
+}
+
 .modal-button__container {
   display: inline-block;
   padding: 5% 0;
@@ -1540,12 +1576,10 @@ textarea[type="text"]:focus {
 }
 
 .modal--exit {
-  color: gray;
-  margin-bottom: 0;
-  margin-top: 2%;
-  margin-left: 5%;
-  margin-right: 2%;
-  height: 10%;
+  position: absolute;
+  padding: 0.75rem 1.25rem 0 0;
+  top: 0;
+  right: 0;
 }
 
 .modal--adjust {
@@ -1559,6 +1593,10 @@ textarea[type="text"]:focus {
 .permission-footer {
   margin: 15% 0 5%;
   text-align: center;
+}
+
+.VueCarousel-dot-container li {
+  margin-top: 0 !important;
 }
 
 .menu {
@@ -1850,6 +1888,10 @@ textarea[type="text"]:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.roster-sorting-padding {
+  padding: 0.25rem;
 }
 
 .roster-sorting__button {
@@ -2202,36 +2244,26 @@ textarea[type="text"]:focus {
 .profile__name {
   font-weight: bold;
   color: white;
-  text-align: center;
+  margin-bottom: 0%;
 }
 
 .profile__name-container {
   display: block;
-  text-align: center;
-  padding-top: 40%;
-}
-
-.profile-pic-container {
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.875rem;
-  padding-right: 1.875rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  height: 100%;
 }
 
 .profile__color-layer {
   position: relative;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-  box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
 }
 
 .theme-login .profile__color-layer {
@@ -2260,6 +2292,7 @@ textarea[type="text"]:focus {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 50%;
+  height: 100%;
 }
 
 .profile__info-panel {
@@ -2383,6 +2416,15 @@ textarea[type="text"]:focus {
   right: 50%;
   margin-left: -50%;
   margin-right: -50%;
+}
+
+@media only screen and (max-width: 375px) {
+  .roster-sorting-padding {
+    width: 100%;
+  }
+  .roster-sorting-padding > * {
+    margin: 0;
+  }
 }
 
 /*  Fixed Safari font-awesome issue

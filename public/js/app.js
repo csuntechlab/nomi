@@ -20399,8 +20399,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
 
 
 
@@ -20424,43 +20422,7 @@ var render = function() {
     _c("div", { staticClass: "row fullscreen-width roster-sorting" }, [
       this.list
         ? _c("div", { staticClass: "roster-sorting-container" }, [
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button--selected",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setList")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _vm._v(" List\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setGallery")
-                    }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-users" }),
-                  _vm._v(" Gallery\n                ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4" }, [
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
               _c(
                 "button",
                 {
@@ -20473,50 +20435,50 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fas fa-clone" }),
-                  _vm._v(" Cards\n                ")
+                  _vm._v(" Flash Cards\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button--selected",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setList")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-list-ul" }),
+                  _vm._v(" Student List\n                ")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm roster-sorting__button",
+                  on: {
+                    click: function($event) {
+                      _vm.$store.dispatch("setGallery")
+                    }
+                  }
+                },
+                [
+                  _c("i", { staticClass: "fas fa-users" }),
+                  _vm._v(" Photo Gallery\n                ")
                 ]
               )
             ])
           ])
         : this.flash
           ? _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20529,49 +20491,49 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
             ])
           : _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" List\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button--selected",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Gallery\n                ")
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4" }, [
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
                 _c(
                   "button",
                   {
@@ -20584,7 +20546,43 @@ var render = function() {
                   },
                   [
                     _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Cards\n                ")
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button--selected",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
                   ]
                 )
               ])
@@ -22286,44 +22284,45 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // import profilePicture from "../profile_components/profilePicture.vue";
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-		name: 'gallery-card',
-		props: ['student'],
+  name: 'gallery-card',
+  props: ['student'],
 
-		data: function data() {
-				return {
-						messages: true,
-						errors: [],
-						showCroppaModal: false
-				};
-		},
+  data: function data() {
+    return {
+      messages: true,
+      errors: [],
+      showCroppaModal: false
+    };
+  },
 
-		components: {
-				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
-		},
+  components: {
+    galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
+  },
 
-		created: function created() {
-				this.$store.dispatch("getStudentProfile", {
-						uri: this.student.email_uri,
-						faculty_id: this.facultyMember.id
-				});
-		},
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+    display_name: function display_name() {
+      return this.student.first_name + " " + this.student.last_name[0] + ".";
+    },
+    email_uri: function email_uri() {
+      return this.student.email.split('@')[0];
+    },
+    emailExists: function emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    },
+    image: function image() {
+      if (this.student.image_priority === 'likeness') {
+        return this.student.images.likeness;
+      }if (this.student.image_priority === 'avatar') {
+        return this.student.images.avatar;
+      }
+    }
+  }),
 
-
-		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
-				display_name: function display_name() {
-						return this.student.first_name + " " + this.student.last_name[0] + ".";
-				},
-				email_uri: function email_uri() {
-						return this.student.email.split('@')[0];
-				},
-				image: function image() {
-						if (this.student.image_priority === 'likeness') {
-								return this.student.images.likeness;
-						}if (this.student.image_priority === 'avatar') {
-								return this.student.images.avatar;
-						}
-				}
-		})
+  methods: {
+    getStudent: function getStudent() {
+      this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
+    }
+  }
 });
 
 /***/ }),
@@ -22490,7 +22489,7 @@ var render = function() {
                   student: _vm.student,
                   email: _vm.student.email_uri,
                   course_id: this.$route.params.id,
-                  editable: true,
+                  editable: _vm.emailExists,
                   image: _vm.image,
                   type: "profile"
                 }
@@ -22505,6 +22504,11 @@ var render = function() {
           {
             attrs: {
               to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri
+            },
+            nativeOn: {
+              click: function($event) {
+                _vm.getStudent()
+              }
             }
           },
           [
@@ -22543,9 +22547,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(1);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
 //
 //
 //
@@ -22741,39 +22742,49 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "modal-button__container pull-left" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.chooseImage()
+    _c(
+      "div",
+      { staticClass: "modal-button__container modal-button-photo pull-left" },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.chooseImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-camera fa-2x" })]
-        )
-      ])
-    ]),
+            },
+            [_c("i", { staticClass: "fa fa-camera fa-2x" })]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticClass: "modal-button__container pull-right" }, [
-      _c("div", { staticClass: "modal-button" }, [
-        _c(
-          "div",
-          {
-            staticClass: "type--center",
-            on: {
-              click: function($event) {
-                _vm.confirmImage()
+    _c(
+      "div",
+      {
+        staticClass: "modal-button__container modal-button-confirm pull-right"
+      },
+      [
+        _c("div", { staticClass: "modal-button" }, [
+          _c(
+            "div",
+            {
+              staticClass: "type--center",
+              on: {
+                click: function($event) {
+                  _vm.confirmImage()
+                }
               }
-            }
-          },
-          [_c("i", { staticClass: "fa fa-check fa-2x" })]
-        )
-      ])
-    ])
+            },
+            [_c("i", { staticClass: "fa fa-check fa-2x" })]
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -22850,8 +22861,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
 //
 //
 //
@@ -23391,50 +23400,46 @@ var render = function() {
   return _vm.modalVisible
     ? _c("transition", { attrs: { name: "modal" } }, [
         _c("div", { staticClass: "modal-mask" }, [
-          _c("div", { staticClass: "modal__wrapper" }, [
-            _c("div", { staticClass: "modal__container" }, [
-              _c("div", { staticClass: "type--center modal-header" }, [
-                _c("div", { staticClass: "pull-right modal--exit" }, [
-                  _c("i", {
-                    staticClass: "fa fa-times-circle fa-2x",
-                    on: {
-                      click: function($event) {
-                        _vm.showModal()
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", [
-                  _c("strong", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.modalData.first_name + " " + _vm.modalData.last_name
-                      )
+          _c("div", { staticClass: "modal__container" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("div", { staticClass: "modal-name" }, [
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.modalData.first_name + " " + _vm.modalData.last_name
                     )
-                  ])
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "body" } },
-                  [
-                    _c("modals-carousel", { attrs: { student: _vm.modalData } })
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer cf" }, [
-                _c(
-                  "div",
-                  { attrs: { name: "footer" } },
-                  [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
-                  1
-                )
+              _c("div", { staticClass: "modal--exit" }, [
+                _c("i", {
+                  staticClass: "fa fa-times fa-2x",
+                  on: {
+                    click: function($event) {
+                      _vm.showModal()
+                    }
+                  }
+                })
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "div",
+                { attrs: { name: "body" } },
+                [_c("modals-carousel", { attrs: { student: _vm.modalData } })],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer cf" }, [
+              _c(
+                "div",
+                { attrs: { name: "footer" } },
+                [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
+                1
+              )
             ])
           ])
         ])
@@ -23702,7 +23707,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return this.student.images.avatar;
       }
     }
-  })
+  }),
+
+  methods: {
+    getStudent: function getStudent() {
+      this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
+    }
+  }
 });
 
 /***/ }),
@@ -23716,7 +23727,12 @@ var render = function() {
   return _c(
     "router-link",
     {
-      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri }
+      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri },
+      nativeOn: {
+        click: function($event) {
+          _vm.getStudent()
+        }
+      }
     },
     [
       _c("div", { staticClass: "roster-list__item" }, [
@@ -23979,12 +23995,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	created: function created() {
 		this.$store.dispatch('disableBackButton');
 		this.$store.dispatch('showBackButton');
-		this.$store.dispatch('getStudentProfile', {
-			uri: this.$route.params.emailURI,
-			faculty_id: this.facultyMember.id
-		});
 	},
 	mounted: function mounted() {
+		var emailSplit = this.$store.state.profile.studentProfile.email.split('@');
+		if (emailSplit[1] === "NOTREALEMAIL.net") {
+			this.$store.dispatch('getStudentProfileNoEmail', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		} else {
+			this.$store.dispatch('getStudentProfile', {
+				id: this.$store.state.profile.studentProfile.studentID,
+				uri: this.$route.params.emailURI,
+				faculty_id: this.facultyMember.id,
+				email: this.$store.state.profile.studentProfile.email,
+				first_name: this.$store.state.profile.studentProfile.firstName,
+				last_name: this.$store.state.profile.studentProfile.lastName
+			});
+		}
 		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 	updated: function updated() {
@@ -24111,11 +24143,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "profile-container",
-    props: ['student'],
-    components: {
-        profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+  name: "profile-container",
+  props: ['student'],
+  components: {
+    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+  },
+  computed: {
+    emailExists: function emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
     }
+  }
 });
 
 /***/ }),
@@ -24127,85 +24164,77 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass: "profile__color-layer profile-pic-container type--center"
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "profile__divider" },
-          [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  perPage: 1,
-                  paginationActiveColor: "#919191",
-                  paginationColor: "rgba(145,145,145,.3)"
-                }
-              },
-              [
-                _c("slide", { staticClass: "slide-wrap" }, [
-                  _c(
-                    "div",
-                    [
-                      _c("profile-picture", {
-                        attrs: {
-                          student: _vm.student,
-                          image: _vm.student.images.likeness,
-                          editable: true,
-                          type: "profile"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
-                        _c("i", [_vm._v("Faculty Uploaded")])
-                      ])
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "slide-wrap" }, [
-                  _c(
-                    "div",
-                    [
-                      _c("profile-picture", {
-                        attrs: {
-                          student: _vm.student,
-                          image: _vm.student.images.avatar,
-                          editable: true,
-                          type: "profile"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
-                        _c("i", [_vm._v("Student Uploaded")])
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "profile__divide" }, [
-          _c("div", { staticClass: "profile__name-container" }, [
-            _c("h5", { staticClass: "type--center profile__name" }, [
-              _vm._v(
-                _vm._s(_vm.student.first_name + " " + _vm.student.last_name)
-              )
-            ])
+    _c("div", { staticClass: "profile__color-layer type--center" }, [
+      _c(
+        "div",
+        { staticClass: "profile__divider" },
+        [
+          _c(
+            "carousel",
+            {
+              attrs: {
+                perPage: 1,
+                paginationActiveColor: "#919191",
+                paginationColor: "rgba(145,145,145,.3)"
+              }
+            },
+            [
+              _c("slide", { staticClass: "slide-wrap" }, [
+                _c(
+                  "div",
+                  [
+                    _c("profile-picture", {
+                      attrs: {
+                        student: _vm.student,
+                        image: _vm.student.images.likeness,
+                        editable: this.emailExists,
+                        type: "profile"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "type--center" }, [
+                      _c("i", [_vm._v("Faculty Uploaded")])
+                    ])
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("slide", { staticClass: "slide-wrap" }, [
+                _c(
+                  "div",
+                  [
+                    _c("profile-picture", {
+                      attrs: {
+                        student: _vm.student,
+                        image: _vm.student.images.avatar,
+                        editable: false,
+                        type: "profile"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "type--center" }, [
+                      _c("i", [_vm._v("Student Uploaded")])
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "profile__divide" }, [
+        _c("div", { staticClass: "profile__name-container" }, [
+          _c("h5", { staticClass: "type--center profile__name" }, [
+            _vm._v(_vm._s(_vm.student.first_name + " " + _vm.student.last_name))
           ])
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -24297,6 +24326,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -24304,11 +24335,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'profile-info',
     props: ['student'],
+
     data: function data() {
         return {
             showEmail: false
         };
     },
+    mounted: function mounted() {
+        var emailSplit = this.student.student.email.split("@")[1];
+        if (emailSplit === "NOTREALEMAIL.net") {
+            console.log(this.showEmail);
+            this.showEmail = false;
+            console.log(this.showEmail);
+        }
+    },
+
 
     components: {
         profileNotes: __WEBPACK_IMPORTED_MODULE_0__profileNotes_vue___default.a,
@@ -24589,19 +24630,23 @@ var render = function() {
           { staticClass: "col-sm-12" },
           [
             _c("div", { staticClass: "profile_email" }, [
-              _c("i", {
-                staticClass: "fas fa-envelope",
-                on: {
-                  click: function($event) {
-                    _vm.showEmail = true
-                  }
-                }
-              }),
-              _vm._v(
-                "\n                    " +
-                  _vm._s(this.student.student.email) +
-                  "\n                "
-              )
+              this.showEmail
+                ? _c("div", [
+                    _c("i", {
+                      staticClass: "fas fa-envelope",
+                      on: {
+                        click: function($event) {
+                          _vm.showEmail = true
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(this.student.student.email) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", [
@@ -25738,6 +25783,8 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 /* harmony default export */ __webpack_exports__["a"] = ({
     studentProfile: {
         id: null,
+        studentID: null,
+        email: null,
         emailURI: null,
         displayName: null,
         bio: null,
@@ -25745,6 +25792,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         imagePriority: null,
         notes: null,
         firstName: null,
+        lastName: null,
         student: null
 
     },
@@ -25797,11 +25845,24 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     getStudentProfile: function getStudentProfile(context, payload) {
-        var email = payload.uri + '@my.csun.edu';
         var response = payload;
-        window.axios.get('student_profile/' + email).then(function (payload) {
+        window.axios.get('student_profile/' + payload.email).then(function (payload) {
             var getters = context.getters;
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
+            context.commit('GET_STUDENT_BIO', payload);
+        }).catch(function (error) {
+            context.commit('API_STUDENT_FAILURE', error);
+        });
+    },
+    getStudentProfileNoEmail: function getStudentProfileNoEmail(context, payload) {
+        var response = payload;
+        window.axios.post('/student_profile_alternative', {
+            student_id: payload.id,
+            first_name: payload.first_name,
+            last_name: payload.last_name
+        }).then(function (payload) {
+            var getters = context.getters;
+            context.commit('GET_STUDENT_PROFILE_NO_EMAIL', { payload: payload, getters: getters, response: response });
             context.commit('GET_STUDENT_BIO', payload);
         }).catch(function (error) {
             context.commit('API_STUDENT_FAILURE', error);
@@ -25844,6 +25905,9 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 
 
     //back button
+    getStudent: function getStudent(context, payload) {
+        context.commit("GET_STUDENT", payload);
+    },
     storeStudent: function storeStudent(context, payload) {
         context.commit('STORE_STUDENT', payload);
     },
@@ -25877,11 +25941,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var email = payload.data.email;
-    var data = new FormData();
-
-    data.append('faculty_id', response.faculty_id);
-    data.append('email', email);
-
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
     state.studentProfile.imagePriority = payload.data.image_priority;
@@ -25895,6 +25954,26 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
           state.studentProfile.images = getters.students[student].images;
           break;
         }
+      }
+    }
+  },
+  GET_STUDENT_PROFILE_NO_EMAIL: function GET_STUDENT_PROFILE_NO_EMAIL(state, _ref2) {
+    var payload = _ref2.payload,
+        getters = _ref2.getters,
+        response = _ref2.response;
+
+    var email = response.email;
+    state.studentProfile.emailURI = response.uri;
+    state.studentProfile.displayName = payload.data.display_name;
+    state.studentProfile.imagePriority = payload.data.image_priority;
+    state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.id = payload.data.student_id;
+    state.studentProfile.firstName = payload.data.first_name;
+    for (var student in getters.students) {
+      if (getters.students[student].email == email) {
+        state.studentProfile.student = getters.students[student];
+        state.studentProfile.images = getters.students[student].images;
+        break;
       }
     }
   },
@@ -25948,6 +26027,12 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   //store student
   STORE_STUDENT: function STORE_STUDENT(state, payload) {
     state.currentStudent = payload;
+  },
+  GET_STUDENT: function GET_STUDENT(state, payload) {
+    state.studentProfile.studentID = payload.studentID;
+    state.studentProfile.email = payload.email;
+    state.studentProfile.firstName = payload.first_name;
+    state.studentProfile.lastName = payload.last_name;
   },
   CLEAR_STUDENT: function CLEAR_STUDENT(state) {
     state.currentStudent = null;
@@ -26902,32 +26987,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'permission-modal',
+    name: 'permission-modal',
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
 
-  data: function data() {
-    return {
-      show: true
-    };
-  },
-
-
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember'])),
-
-  created: function created() {
-    this.$store.dispatch("getUploadPermission");
-  },
-
-
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
-    accept: function accept() {
-      this.$store.dispatch('storePermission', this.facultyMember.id);
-      this.handlePermissionResponse(true);
+    data: function data() {
+        return {
+            show: true
+        };
     },
-    deny: function deny() {
-      this.handlePermissionResponse(false);
-    }
-  })
+    created: function created() {
+        this.$store.dispatch("getUploadPermission");
+    },
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['handlePermissionResponse', 'storePermission', 'getUploadPermission']), {
+        accept: function accept() {
+            this.$store.dispatch('storePermission', this.facultyMember.id);
+            this.handlePermissionResponse(true);
+        },
+        deny: function deny() {
+            this.handlePermissionResponse(false);
+        }
+    })
 });
 
 /***/ }),
@@ -26955,44 +27038,48 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "modal__wrapper" }, [
-          _c("div", { staticClass: "modal__container" }, [
-            _c("div", { staticClass: "modal-body__container" }, [
-              _c(
-                "div",
-                { staticClass: "modal-header" },
-                [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
-                2
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("h5", [
-                  _vm._v(
-                    "Photo and Camera access required for full functionality"
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "permission-footer" }, [
-                _c("button", {
-                  staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
-                  on: {
-                    click: function($event) {
-                      _vm.accept()
-                    }
-                  }
-                }),
+          _c(
+            "div",
+            { staticClass: "modal__container modal-permission__container" },
+            [
+              _c("div", { staticClass: "modal-body__container" }, [
+                _c(
+                  "div",
+                  { staticClass: "modal-header" },
+                  [_vm._t("header", [_c("h4", [_vm._v("Permission Needed")])])],
+                  2
+                ),
                 _vm._v(" "),
-                _c("button", {
-                  staticClass: "modal-btn decline-btn fa fa-2x fa-times",
-                  on: {
-                    click: function($event) {
-                      _vm.deny()
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("h5", [
+                    _vm._v(
+                      "Photo and Camera permissions are required for full functionality."
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "permission-footer" }, [
+                  _c("button", {
+                    staticClass: "modal-btn confirm-btn fa fa-2x fa-check",
+                    on: {
+                      click: function($event) {
+                        _vm.accept()
+                      }
                     }
-                  }
-                })
+                  }),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "modal-btn decline-btn fa fa-2x fa-times",
+                    on: {
+                      click: function($event) {
+                        _vm.deny()
+                      }
+                    }
+                  })
+                ])
               ])
-            ])
-          ])
+            ]
+          )
         ])
       ]
     )

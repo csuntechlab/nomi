@@ -1,50 +1,55 @@
 .modal {
 	&-mask {
+		background-color: rgba(0, 0, 0, .5);
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: fixed;
-		z-index: 9998;
+		width: 100vw;
+		height: 100vh;
+		z-index: 100;
 		top: 0;
 		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, .5);
-		display: table;
-		transition: opacity .3s ease;
 	}
-
-	&__wrapper {
-		display: table-cell;
-		vertical-align: middle;
-	}
-
+	
 	&__container {
+		position: relative;
+		width: 80%;
 		max-width: 20em;
 		margin: 0px auto;
-		border-radius: 2px;
+		margin-bottom: 2.6rem;
+		border-radius: 16px;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, .33);
 		transition: all .3s ease;
 		@include themify($themes) {
-		background: themed("panelColor");
+			background: themed("panelColor");
 		}
 	}
 
-	&-header h3 {
-		margin-top: 0;
+	&-permission__container {
+		box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+		width: 80%;
+		max-width: 425px;
+		padding: 1.5rem;
+	}
+	
+	&-name {
+		font-size: 1.5rem;
+		width: 75%;
+		margin: 0 auto;
+		margin-top: 2.25rem;
 		text-align: center;
 		@include themify($themes){
-		color: themed('accentColor');
+			color: themed('textColor');
 		}
 	}
 
-	&-body {
-		margin: 20px 0;
-		&__carousel{
-			// pointer-events: none;
-		}
+	&-header {
+		display: flex;
+		justify-content: center;
+		width: 100%;
 	}
-
-	// &__container {
-	// 	padding: 1.5em 2em;
-	// }
 
 	&-default-button {
 		float: right;
@@ -52,7 +57,6 @@
 
 	&-btn {
 		display: inline-block;
-		padding: 6px 20px;
 		margin: 0 3%;
 		font-size: 15px;
 		font-weight: 500;
@@ -81,6 +85,14 @@
 			color: themed('panelColor');
 		}
 
+		&-photo {
+			border-radius: 0 0 0 16px;
+		}
+
+		&-confirm {
+			border-radius: 0 0 16px 0;
+		}
+
 		&__container {
 			display: inline-block;
 			padding: 5% 0;
@@ -95,12 +107,10 @@
 	}
 
 	&--exit {
-		color: gray;
-		margin-bottom: 0;
-		margin-top: 2%;
-		margin-left: 5%;
-		margin-right: 2%;
-		height: 10%;
+		position: absolute;
+		padding: 0.75rem 1.25rem 0 0;
+		top: 0;
+		right: 0;
 	}
 
 	&--adjust{
@@ -115,4 +125,8 @@
 .permission-footer {
 	margin: 15% 0 5%;
 	text-align: center;
+}
+
+.VueCarousel-dot-container li {
+	margin-top: 0 !important;
 }

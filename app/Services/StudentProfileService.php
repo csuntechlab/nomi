@@ -57,25 +57,25 @@ class StudentProfileService implements StudentProfileContract
         }
     }
 
-    public function getStudentProfileWithNoEmail($data)
+    public function getStudentWithNoEmail($data)
     {
-        $display_name = $data['first_name'].' '.$data['last_name'];
+        $display_name = $data['first_name'] . ' ' . $data['last_name'];
 
-        $note = Note::where('student_id', $data['student_id'])
-            ->firstOrFail();
+        $note = Note::where('user_id', auth()->user()->user_id)
+            ->where('student_id', $data['student_id'])
+            ->first();
 
-        $imagePriority = $this->imageCRUDUtility
-            ->getPriority([\str_replace('members:', '', $data['student_id'])])[0];
+        $imagePriority = 'likeness';
 
         $studentProfile = (object) [
-          'display_name' => $display_name,
-          'first_name' => $data['first_name'],
-          'last_name' => $data['last_name'],
-          'student_id' => $data['student_id'],
-          'members_id' => $data['student_id'],
-          'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
-          'image_priority' => $imagePriority,
-          'bio' => null, // if no email, then no bio
+            'display_name' => $display_name,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'student_id' => $data['student_id'],
+            'members_id' => $data['student_id'],
+            'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
+            'image_priority' => $imagePriority,
+            'bio' => null, // if no email, then no bio
         ];
 
         return \json_encode($studentProfile);

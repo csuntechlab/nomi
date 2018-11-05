@@ -5,10 +5,10 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'profile'" />
+						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
 					</div>
 				</div>
-				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" >
+				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
 				<div class="cardText clearPadding">
 					<div class="gallery__name type--center">{{display_name}}</div>
 				</div>
@@ -39,13 +39,6 @@ export default {
 		galleryProfile
 	},
 
-	created() {
-		this.$store.dispatch("getStudentProfile", {
-			uri: this.student.email_uri,
-			faculty_id: this.facultyMember.id
-		});
-	},
-
 	computed: {
 
 		...mapGetters([
@@ -61,6 +54,10 @@ export default {
       return this.student.email.split('@')[0];
     },
 
+    emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    },
+
     image() {
       if (this.student.image_priority === 'likeness') {
         return this.student.images.likeness;
@@ -68,6 +65,12 @@ export default {
         return this.student.images.avatar;
       }
     },
-  },
+	},
+	
+	methods: {
+    getStudent() {
+      this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
+    }
+	},
 };
 </script>

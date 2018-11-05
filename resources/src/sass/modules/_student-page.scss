@@ -63,6 +63,10 @@
 		margin: 0.5rem 0;
 		justify-content: center;
 		align-items: center;
+
+		&-padding {
+			padding: 0.25rem;
+		}
 		
 		&__button {
 			width: 100%;
@@ -264,29 +268,23 @@
 	&__name {
 		font-weight: bold;
 		color: white;
-		text-align: center;
+		margin-bottom: 0%; 
 	}
 
 	&__name-container {
 		display: block;
-		text-align: center;
-		padding-top: 40%;
-	}
-
-	&-pic-container {
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 1.875rem;
-		padding-right: 1.875rem;
-		display: flex;
+		height: 100%;
 	}
 	
 	&__color-layer {
 		position: relative;
-		flex-direction:row;
-		justify-content: space-between;
-		-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
-		box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+		display: flex;
+		align-items: center;
+		// justify-content: space-between;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 1.875rem;
+		padding-right: 1.875rem;
 		@include themify($themes) {
 			background-color: themed("navigationBars");
 		}
@@ -297,6 +295,7 @@
 		position: relative;
 		box-sizing: border-box;
 		width: 50%;
+		height: 100%;
 	}
 
 	&__info-panel {
@@ -404,4 +403,14 @@
 	right: 50%;
 	margin-left: -50%;
 	margin-right: -50%;
+}
+
+@media only screen and (max-width: 375px) {
+	.roster-sorting-padding {
+		width: 100%;
+
+		& > * {
+			margin: 0;
+		}
+	}
 }
