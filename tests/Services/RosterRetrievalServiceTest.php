@@ -25,6 +25,7 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function processMembers_works()
     {
+        // $this->markTestIncomplete();
         $this->imageCRUD
             ->shouldReceive('getPriority')
             ->once()
@@ -35,7 +36,6 @@ class RosterRetrievalServiceTest extends TestCase
         $images = [
             'likeness' => 'http://localhost/images/likeness.jpg',
             'avatar' => 'images/student_avatar_default.jpg',
-            'official' => 'images/student_profile_default.jpg',
         ];
 
         $paulBlart = new \stdClass();
@@ -46,7 +46,6 @@ class RosterRetrievalServiceTest extends TestCase
         $paulBlart->email = 'cop@mall.com';
         $paulBlart->likeness_photo = $images['likeness'];
         $paulBlart->avatar_photo = $images['avatar'];
-        $paulBlart->official_photo = $images['official'];
         $paulBlart->name_recording = 'pew';
         $paulBlart->image_priority = 'likeness';
 
@@ -58,7 +57,6 @@ class RosterRetrievalServiceTest extends TestCase
         $shrek->email = 'ogre@swamp.com';
         $shrek->likeness_photo = $images['likeness'];
         $shrek->avatar_photo = $images['avatar'];
-        $shrek->official_photo = $images['official'];
         $shrek->name_recording = 'pew';
         $shrek->image_priority = 'likeness';
 
@@ -70,7 +68,6 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->email = 'mountainman@parks.gov';
         $bigJim->likeness_photo = $images['likeness'];
         $bigJim->avatar_photo = $images['avatar'];
-        $bigJim->official_photo = $images['official'];
         $bigJim->name_recording = 'pew';
         $bigJim->image_priority = 'official';
 
@@ -82,11 +79,17 @@ class RosterRetrievalServiceTest extends TestCase
         $frank->email = 'mountainman@parks.gov';
         $frank->likeness_photo = $images['likeness'];
         $frank->avatar_photo = $images['avatar'];
-        $frank->official_photo = $images['official'];
         $frank->name_recording = 'pew';
         $frank->image_priority = null;
 
         $roster = [$paulBlart, $shrek, $bigJim, $frank];
+
+        $this->retriever
+            ->shouldReceive('gatherImageCorrectly')
+            ->andReturn([
+              'likeness' => 'http://localhost/images/likeness.jpg',
+              'avatar' => 'images/student_avatar_default.jpg',
+            ]);
 
         $cleanRoster = [
             [
@@ -129,6 +132,7 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function sanitizeStudent_works()
     {
+        // $this->markTestIncomplete();
         $rosterService = new RosterRetrievalService($this->retriever, $this->imageCRUD);
         $student = new \stdClass();
         $student->members_id = 0;
@@ -139,14 +143,20 @@ class RosterRetrievalServiceTest extends TestCase
         $student->image_priority = 'avatar';
         $student->name_recording = 'pew';
 
+        $this->retriever
+            ->shouldReceive('gatherImageCorrectly')
+            ->once()
+            ->andReturn([
+              'likeness' => 'http://localhost/images/likeness.jpg',
+              'avatar' => 'images/student_avatar_default.jpg',
+            ]);
+
         $images = [
             'likeness' => 'http://localhost/images/likeness.jpg',
             'avatar' => 'images/student_avatar_default.jpg',
-            'official' => 'images/student_profile_default.jpg',
         ];
         $student->likeness_photo = $images['likeness'];
         $student->avatar_photo = $images['avatar'];
-        $student->official_photo = $images['official'];
 
         $this->assertEquals(
             $rosterService->sanitizeStudent($student),

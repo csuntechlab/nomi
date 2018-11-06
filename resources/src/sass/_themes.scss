@@ -37,7 +37,8 @@ $themes: (
 		backgroundColor: #FFFFFF,
 		textColor: #464646,
 
-		hoverColor: rgb(221, 221, 221),
+		staleColor: #FBFBFB,
+		hoverColor: #DDDDDD,
 		focusColor: #92A1CD,
 
 		galleryBtnBg:#fff,
@@ -63,7 +64,8 @@ $themes: (
 		backgroundColor: #FFFFFF,
 		textColor: #464646,
 
-		hoverColor: rgb(221, 221, 221),
+		staleColor: #FBFBFB,
+		hoverColor: #DDDDDD,
 		focusColor: #92A1CD,
 
 		galleryBtnBg:#fff,
@@ -88,6 +90,7 @@ $themes: (
 		backgroundColor: #E5E5E5,
 		textColor: #464646,
 		
+		staleColor: #E0E0E0,
 		hoverColor: #ccc,
 		focusColor: #4F9DA3,
 		
@@ -114,6 +117,7 @@ $themes: (
 		backgroundColor: #d9e7ee,
 		textColor: #575757,
 		
+		staleColor: #E0E0E0,
 		hoverColor: #ccc,
 		focusColor: #4CA1DB,
 		
@@ -139,6 +143,7 @@ $themes: (
 		backgroundColor: #272727,
 		textColor: #bababa,
 
+		staleColor: #3B3B3B,
 		hoverColor: #272727,
 		focusColor: rgb(66, 119, 172),
 

@@ -1,6 +1,8 @@
 export default {
     studentProfile: {
         id: null,
+        studentID: null,
+        email: null,
         emailURI: null,
         displayName: null,
         bio: null,
@@ -8,6 +10,7 @@ export default {
         imagePriority: null,
         notes: null,
         firstName: null,
+        lastName: null,
         student: null,
 
     },

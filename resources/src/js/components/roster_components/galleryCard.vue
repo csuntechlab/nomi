@@ -5,10 +5,10 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
-						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="true" :image="image" :type="'profile'" />
+						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
 					</div>
 				</div>
-				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" >
+				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
 				<div class="cardText clearPadding">
 					<div class="gallery__name type--center">{{display_name}}</div>
 				</div>
@@ -23,9 +23,11 @@
 import { mapGetters, mapState } from "vuex";
 // import profilePicture from "../profile_components/profilePicture.vue";
 import galleryProfile from "../roster_components/galleryProfile.vue";
+import { getStudent } from './../../mixins/getStudent.js'
 export default {
   name: 'gallery-card',
-  props: ['student'],
+	props: ['student'],
+	mixins: [getStudent],
 
 	data: function() {
 		return {
@@ -37,13 +39,6 @@ export default {
 
 	components: {
 		galleryProfile
-	},
-
-	created() {
-		this.$store.dispatch("getStudentProfile", {
-			uri: this.student.email_uri,
-			faculty_id: this.facultyMember.id
-		});
 	},
 
 	computed: {
@@ -61,6 +56,10 @@ export default {
       return this.student.email.split('@')[0];
     },
 
+    emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    },
+
     image() {
       if (this.student.image_priority === 'likeness') {
         return this.student.images.likeness;
@@ -68,6 +67,6 @@ export default {
         return this.student.images.avatar;
       }
     },
-  },
+	},
 };
 </script>

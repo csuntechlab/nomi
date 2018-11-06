@@ -101,4 +101,31 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             ['verify' => false]
         )->getBody()->getContents();
     }
+
+    public function gatherImageCorrectly($student)
+    {
+        $client = new Client();
+
+        $likeness_json =
+            \json_decode(
+                $client->get($student->likeness_photo, ['verify' => false])
+                ->getBody()
+                ->getContents()
+        );
+
+        $likeness_image = $likeness_json->likeness_image;
+
+        $avatar_json = \json_decode(
+            $client->get($student->avatar_photo, ['verify' => false])
+        ->getBody()
+        ->getContents()
+        );
+
+        $avatar_image = $avatar_json->avatar_image;
+
+        return [
+            'likeness' => $likeness_image,
+            'avatar' => $avatar_image,
+        ];
+    }
 }

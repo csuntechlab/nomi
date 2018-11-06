@@ -89,17 +89,15 @@ class RosterRetrievalService implements RosterRetrievalContract
 
         $emailUri = \substr($student->email, 0, \strpos($student->email, '@'));
 
+        $images = $this->webResourceUtility->gatherImageCorrectly($student);
+
         return [
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,
             'last_name' => $student->last_name,
             'email' => $student->email,
             'email_uri' => $emailUri,
-            'images' => [
-                'likeness' => $student->likeness_photo,
-                'avatar' => $student->avatar_photo,
-                'official' => $student->official_photo,
-            ],
+            'images' => $images,
             'name_recording' => $student->name_recording,
             'image_priority' => $student->image_priority,
         ];

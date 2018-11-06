@@ -178,7 +178,7 @@ class StudentProfileServiceTest extends TestCase
           'bio' => null, // if no email, then no bio
       ]);
 
-        $output = $studentService->getStudentProfileWithNoEmail($data);
+        $output = $studentService->getStudentWithNoEmail($data);
 
         $this->assertEquals($output, $test);
     }

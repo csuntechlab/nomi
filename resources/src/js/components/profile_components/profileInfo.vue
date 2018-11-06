@@ -4,8 +4,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="profile_email">
-                        <i class="fas fa-envelope" @click="showEmail = true"></i>
-                        {{this.student.student.email}}
+                        <div v-if="this.showEmail">
+                            <i class="fas fa-envelope" @click="showEmail = true"></i>
+                            {{this.student.student.email}}
+                        </div>
                     </div>
                     <div>
                         <span v-if="this.student.bio != null" class="text_italic display-inline">
@@ -29,11 +31,24 @@ export default {
     props: [
         'student',
     ],
+
     data() {
-    return {
-        showEmail: false,
-    };
-},
+        return {
+            showEmail: false,
+        };
+    },
+
+    mounted() {
+        let emailSplit = this.student.student.email.split("@")[1];
+        if (emailSplit === "NOTREALEMAIL.net") {
+            console.log(this.showEmail)
+            this.showEmail = false;
+            console.log(this.showEmail)
+        } else {
+            this.showEmail = true;
+        }
+    },
+
     components: {
         profileNotes,
         profilePicture,
