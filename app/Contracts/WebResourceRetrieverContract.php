@@ -13,4 +13,6 @@ interface WebResourceRetrieverContract
     public function getMedia($email);
 
     public function getStudent($email);
+
+    public function gatherImageCorrectly($student);
 }
