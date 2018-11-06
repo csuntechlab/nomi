@@ -23,9 +23,11 @@
 import { mapGetters, mapState } from "vuex";
 // import profilePicture from "../profile_components/profilePicture.vue";
 import galleryProfile from "../roster_components/galleryProfile.vue";
+import { getStudent } from './../../mixins/getStudent.js'
 export default {
   name: 'gallery-card',
-  props: ['student'],
+	props: ['student'],
+	mixins: [getStudent],
 
 	data: function() {
 		return {
@@ -65,12 +67,6 @@ export default {
         return this.student.images.avatar;
       }
     },
-	},
-	
-	methods: {
-    getStudent() {
-      this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
-    }
 	},
 };
 </script>

@@ -18,7 +18,7 @@
 		width: 75%;
 		max-width: 315px;
 		margin: 0 auto;
-		margin-bottom: 2.75rem;
+		margin-bottom: 2rem;
 		border-radius: 16px;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, .33);
 		transition: all 350ms ease-out;
@@ -49,6 +49,10 @@
 		display: flex;
 		justify-content: center;
 		width: 100%;
+	}
+
+	&-footer {
+		height: 4rem;
 	}
 
 	&-default-button {
