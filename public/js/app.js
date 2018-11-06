@@ -22257,13 +22257,17 @@ var render = function() {
   return _c("div", [
     _c("img", {
       staticClass: "img--circle",
-      class: [this.type == "profile" ? "profile__img" : "roster__img"],
+      class: [
+        this.type == "profile"
+          ? "profile__img profile__img--border"
+          : "roster__img"
+      ],
       attrs: { src: _vm.image, name: "photo" }
     }),
     _vm._v(" "),
     _vm.editable
       ? _c("i", {
-          staticClass: "fas fa-pencil-alt panel__edit-button ",
+          staticClass: "fas fa-pencil-alt panel__edit-button--profile ",
           on: {
             click: function($event) {
               _vm.showModal()
@@ -23523,7 +23527,7 @@ var render = function() {
                     attrs: {
                       image: _vm.student.images.avatar,
                       editable: false,
-                      type: "profile"
+                      type: "profile-picture"
                     }
                   }),
                   _vm._v(" "),
@@ -24313,7 +24317,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24338,74 +24341,75 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c("div", [
-        _c("div", [
-          _c("h1", { staticClass: "type--center" }, [
+    _c("div", { staticClass: "profile profile__color-layer type--center" }, [
+      _c(
+        "div",
+        { staticClass: "profile__divider" },
+        [
+          _c(
+            "carousel",
+            {
+              attrs: {
+                perPage: 1,
+                paginationActiveColor: "#919191",
+                paginationColor: "rgba(145,145,145,.3)"
+              }
+            },
+            [
+              _c("slide", { staticClass: "slide-wrap" }, [
+                _c(
+                  "div",
+                  [
+                    _c("profile-picture", {
+                      attrs: {
+                        student: _vm.student,
+                        image: _vm.student.images.likeness,
+                        editable: this.emailExists,
+                        type: "profile"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "type--center" }, [
+                      _c("i", [_vm._v("Faculty Uploaded")])
+                    ])
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("slide", { staticClass: "slide-wrap" }, [
+                _c(
+                  "div",
+                  [
+                    _c("profile-picture", {
+                      attrs: {
+                        student: _vm.student,
+                        image: _vm.student.images.avatar,
+                        editable: false,
+                        type: "profile"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "type--center" }, [
+                      _c("i", [_vm._v("Student Uploaded")])
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "profile__divider" }, [
+        _c("div", { staticClass: "profile__name-container" }, [
+          _c("h5", { staticClass: "type--center profile__name" }, [
             _vm._v(_vm._s(_vm.student.first_name + " " + _vm.student.last_name))
           ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          [
-            _c(
-              "carousel",
-              {
-                attrs: {
-                  perPage: 1,
-                  paginationActiveColor: "#919191",
-                  paginationColor: "rgba(145,145,145,.3)"
-                }
-              },
-              [
-                _c("slide", { staticClass: "slide-wrap" }, [
-                  _c(
-                    "div",
-                    [
-                      _c("profile-picture", {
-                        attrs: {
-                          student: _vm.student,
-                          image: _vm.student.images.likeness,
-                          editable: this.emailExists,
-                          type: "profile"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
-                        _c("i", [_vm._v("Faculty Uploaded")])
-                      ])
-                    ],
-                    1
-                  )
-                ]),
-                _vm._v(" "),
-                _c("slide", { staticClass: "slide-wrap" }, [
-                  _c(
-                    "div",
-                    [
-                      _c("profile-picture", {
-                        attrs: {
-                          student: _vm.student,
-                          image: _vm.student.images.avatar,
-                          editable: false,
-                          type: "profile"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "type--center" }, [
-                        _c("i", [_vm._v("Student Uploaded")])
-                      ])
-                    ],
-                    1
-                  )
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        )
+        ])
       ])
     ])
   ])
@@ -24798,67 +24802,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "profile-info-container type--center margin-between-containers"
-      },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12" },
-            [
-              _c("div", { staticClass: "profile_email" }, [
-                this.showEmail
-                  ? _c("div", [
-                      _c("i", {
-                        staticClass: "fas fa-envelope",
-                        on: {
-                          click: function($event) {
-                            _vm.showEmail = true
-                          }
+    _c("div", { staticClass: "profile-info-container type--center" }, [
+      _c("div", { staticClass: "panel profile__info-panel" }, [
+        _c(
+          "div",
+          { staticClass: "col-sm-12" },
+          [
+            _c("div", { staticClass: "profile_email" }, [
+              this.showEmail
+                ? _c("div", [
+                    _c("i", {
+                      staticClass: "fas fa-envelope",
+                      on: {
+                        click: function($event) {
+                          _vm.showEmail = true
                         }
-                      }),
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(this.student.student.email) +
-                          "\n                    "
-                      )
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                this.student.bio != null
-                  ? _c("span", { staticClass: "text_italic display-inline" }, [
-                      _c("strong", [
-                        _vm._v("About " + _vm._s(this.student.firstName) + ":")
-                      ]),
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(this.student.bio) +
-                          "\n                    "
-                      )
-                    ])
-                  : _c("span")
-              ]),
-              _vm._v(" "),
-              _c("profile-notes", {
-                staticClass: "profile-notes-padding",
-                attrs: { student: _vm.student },
-                on: {
-                  unsavedChanges: _vm.sendUnsavedChanges,
-                  committedChanges: _vm.sendChanges
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ]
-    )
+                      }
+                    }),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(this.student.student.email) +
+                        "\n                    "
+                    )
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              this.student.bio != null
+                ? _c("span", { staticClass: "text_italic display-inline" }, [
+                    _c("strong", [
+                      _vm._v("About " + _vm._s(this.student.firstName) + ":")
+                    ]),
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(this.student.bio) +
+                        "\n                    "
+                    )
+                  ])
+                : _c("span")
+            ]),
+            _vm._v(" "),
+            _c("profile-notes", {
+              staticClass: "profile-notes-padding",
+              attrs: { student: _vm.student },
+              on: {
+                unsavedChanges: _vm.sendUnsavedChanges,
+                committedChanges: _vm.sendChanges
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

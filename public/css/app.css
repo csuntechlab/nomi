@@ -529,11 +529,45 @@ textarea[type="text"]:focus {
 }
 
 .panel__edit-button--profile {
-  position: relative;
-  bottom: 8%;
-  right: 20%;
-  padding: 5%;
+  position: absolute;
+  bottom: 20%;
+  left: 75%;
+  padding: 4%;
   border-radius: 100%;
+  font-size: 120%;
+  -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+}
+
+.theme-login .panel__edit-button--profile {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .panel__edit-button--profile {
+  background-color: #fff;
+  color: #808080;
+}
+
+.theme-main .panel__edit-button--profile {
+  background-color: #4F9DA3;
+  color: #ffffff;
+}
+
+.theme-bluesTheme .panel__edit-button--profile {
+  background-color: #fff;
+  color: #2e88c5;
+}
+
+.theme-Dark .panel__edit-button--profile {
+  background-color: #426c96;
+  color: #dfe5ec;
+}
+
+@media only screen and (max-width: 345px) {
+  .panel__edit-button--profile {
+    bottom: 30%;
+  }
 }
 
 .text-bold {
@@ -2089,7 +2123,27 @@ textarea[type="text"]:focus {
   }
 }
 
-.profile_image {
+.theme-login .profile {
+  color: white;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile {
+  color: white;
+}
+
+.theme-main .profile {
+  color: white;
+}
+
+.theme-bluesTheme .profile {
+  color: white;
+}
+
+.theme-Dark .profile {
+  color: white;
+}
+
+.profile__image {
   margin: 0 auto;
 }
 
@@ -2123,6 +2177,36 @@ textarea[type="text"]:focus {
 
 .profile__img {
   width: 100%;
+}
+
+.theme-login .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-main .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-bluesTheme .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-Dark .profile__img--border {
+  border-color: #dadada;
+  border-style: solid;
+  border-width: 4px;
 }
 
 .profile__edit-container {
@@ -2202,6 +2286,68 @@ textarea[type="text"]:focus {
     right: 37%;
     padding: 2%;
   }
+}
+
+.profile__name {
+  font-weight: bold;
+  margin-bottom: 0%;
+}
+
+.profile__name-container {
+  display: block;
+  height: 100%;
+  margin-left: 10%;
+}
+
+.profile__color-layer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+}
+
+.theme-login .profile__color-layer {
+  background-color: #D22030;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile__color-layer {
+  background-color: #D22030;
+}
+
+.theme-main .profile__color-layer {
+  background-color: #0F1821;
+}
+
+.theme-bluesTheme .profile__color-layer {
+  background-color: #0D3753;
+}
+
+.theme-Dark .profile__color-layer {
+  background-color: #1D1D1D;
+}
+
+.profile__divider {
+  display: inline-block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+}
+
+.profile__info-panel {
+  padding: 5%;
+  overflow: auto;
 }
 
 .notes_text {
