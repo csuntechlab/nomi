@@ -178,6 +178,10 @@
 
 // Student Profile Page
 .profile {
+	@include themify($themes) {
+		color: white;
+	}
+
 	&__image {
 		margin: 0 auto;
 	}
@@ -212,10 +216,16 @@
 	
 	&__img{
 		width: 100%;
-		border-color: white;
-		border-style: solid;
-		border-width: 2px;
+
+		@include themify($themes) {
+			&--border {
+				border-color: themed("buttonText");
+				border-style: solid;
+				border-width: 4px;
+			}
+		}
 	}
+
 	&__edit-container{
 		display:block;
 		position: relative;
@@ -267,7 +277,6 @@
 
 	&__name {
 		font-weight: bold;
-		color: white;
 		margin-bottom: 0%; 
 	}
 

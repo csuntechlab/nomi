@@ -2123,6 +2123,26 @@ textarea[type="text"]:focus {
   }
 }
 
+.theme-login .profile {
+  color: white;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile {
+  color: white;
+}
+
+.theme-main .profile {
+  color: white;
+}
+
+.theme-bluesTheme .profile {
+  color: white;
+}
+
+.theme-Dark .profile {
+  color: white;
+}
+
 .profile__image {
   margin: 0 auto;
 }
@@ -2157,9 +2177,36 @@ textarea[type="text"]:focus {
 
 .profile__img {
   width: 100%;
-  border-color: white;
+}
+
+.theme-login .profile__img--border {
+  border-color: #fff;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-main .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-bluesTheme .profile__img--border {
+  border-color: #fff;
+  border-style: solid;
+  border-width: 4px;
+}
+
+.theme-Dark .profile__img--border {
+  border-color: #dadada;
+  border-style: solid;
+  border-width: 4px;
 }
 
 .profile__edit-container {
@@ -2243,7 +2290,6 @@ textarea[type="text"]:focus {
 
 .profile__name {
   font-weight: bold;
-  color: white;
   margin-bottom: 0%;
 }
 
