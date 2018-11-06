@@ -1,6 +1,6 @@
 <template>
     <div>
-		<router-link :to="'/profile/'+this.$route.params.id+'/'+email" tag="a">
+		<router-link :to="'/profile/'+this.$route.params.id+'/'+email" @click.native="getStudent()" tag="a">
         <img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
         </router-link>          
 		<i v-if="this.editable" class="fas fa-pencil-alt panel__edit-button pull-right" @click="showModal()"/>
@@ -9,10 +9,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { getStudent } from './../../mixins/getStudent.js'
 
 export default {
 	name: "gallery-profile",
 	props: ["image", "student", "type", "editable", "email"],
+	mixins: [getStudent],
 	computed: {
 	...mapGetters(["permission"])
 	

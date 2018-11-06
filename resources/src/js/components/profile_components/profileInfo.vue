@@ -44,6 +44,8 @@ export default {
             console.log(this.showEmail)
             this.showEmail = false;
             console.log(this.showEmail)
+        } else {
+            this.showEmail = true;
         }
     },
 
