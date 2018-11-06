@@ -13,155 +13,137 @@
 
 // Theme Colors
 #Matador {
-	background-color: #d00d2d;
+	background-color: rgb(208, 13, 45);
 }
 
 #Navy {
-	background-color: #0f1821;
+	background-color: rgb(15, 24, 33);
 }
 
-#Blues {
-	background-color: #0d3753;
+#Blue {
+	background-color: rgb(13, 55, 83);
 }
 
 #Dark {
-	background-color: #272727;
+	background-color: rgb(39 ,39, 39);
 }
 
 $themes: (
-	login: (
-		navigationBars: #D22030,
-		sideMenu: #a61926,
-		accentColor: #E74A37,
-		altAccent: #FF7864,
-		backgroundColor: #FFFFFF,
-		textColor: #464646,
-
-		staleColor: #FBFBFB,
-		hoverColor: #DDDDDD,
-		focusColor: #92A1CD,
-
-		galleryBtnBg:#fff,
-		galleryBtnText: #808080,
-		disabledBtnColor:rgba(0, 0, 0, 0.6),
-
-		buttonColor: #d00d2d,
-		buttonText: #fff,
-
-		panelColor: #F0F0F0,
-		toolBanner: rgba(0,0,0,0.05),
-
-		mainFontSize: 1.1rem,
+	matadorTheme: (
 		mainFontFamily: sans-serif,
-	),
-
-	// Navy Theme
-	OnceAMatadorAlwaysAMatador: (
-		navigationBars: #D22030,
-		sideMenu: #a61926,
-		accentColor: #E74A37,
-		altAccent: #FF7864,
-		backgroundColor: #FFFFFF,
-		textColor: #464646,
-
-		staleColor: #FBFBFB,
-		hoverColor: #DDDDDD,
-		focusColor: #92A1CD,
-
-		galleryBtnBg:#fff,
-		galleryBtnText: #808080,
-		disabledBtnColor:rgba(0, 0, 0, 0.6),
-
-		buttonColor: #E74A37,
-		buttonText: #fff,
-
-		panelColor: #F0F0F0,
-		toolBanner: rgba(0,0,0,0.05),
-
 		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif,
+
+		navigationBars: rgb(210, 32, 48),
+		sideMenu: rgb(166, 25, 38),
+		accentColor: rgb(231, 74, 55),
+		altAccent: rgb(190, 198, 195),
+		backgroundColor: rgb(255, 255, 255),
+		textColor: rgb(70, 70, 70),
+
+		panelColor: rgb(240, 240, 240),
+		toolBanner: rgba(0, 0, 0, 0.05),
+
+		staleColor: rgb(251, 251, 251),
+		hoverColor: rgb(221, 221, 221),
+		focusColor: rgb(146, 161, 205),
+
+		buttonText: rgb(255, 255, 255),
+		buttonColor: rgb(210, 32, 48),
+		altButtonColor: rgba(60, 60, 60, 0.8),
+		disabledBtnColor:rgba(120, 120, 120, 0.6),
+		
+		galleryBtnBg:rgb(255, 255, 255),
+		galleryBtnText: rgb(128, 128, 128),
+
+		feedbackBtn: rgb(85, 86, 90),
 	),
 	
-	main: ( 
-		navigationBars: #0F1821,
-		sideMenu: #172533,
-		accentColor: #4F9DA3,
-		altAccent: #5FB8BE,
-		backgroundColor: #E5E5E5,
-		textColor: #464646,
+	navyTheme: ( 
+		mainFontFamily: helvetica,
+		mainFontSize: 1.1rem,
+
+		navigationBars: rgb(15, 24, 33),
+		sideMenu: rgb(23, 37, 51),
+		accentColor: rgb(79, 157, 163),
+		altAccent: rgb(190, 198, 195),
+		backgroundColor: rgb(229, 229, 229),
+		textColor: rgb(70, 70, 70),
+
+		panelColor: rgb(244, 244, 244),
+		toolBanner: rgba(255, 255, 255,0.5),
 		
-		staleColor: #E0E0E0,
-		hoverColor: #ccc,
-		focusColor: #4F9DA3,
+		staleColor: rgb(224, 224, 224),
+		hoverColor: rgb(204, 204, 204),
+		focusColor: rgb(79, 157, 163),
 		
-		buttonColor: #4F9DA3,
-		buttonText: #fff,
-		
-		// Gallery
-		galleryBtnBg:#4F9DA3,
-		galleryBtnText: #ffffff,
+		buttonText: rgb(255, 255, 255),
+		buttonColor: rgb(79, 157, 163),
+		/* altButtonColor: REPLACE, */
 		disabledBtnColor: rgba(255, 255, 255, 0.2),
 		
-		panelColor: #F4F4F4,
-		toolBanner: rgba(255,255,255,0.5),
+		galleryBtnBg: rgb(79, 157, 163),
+		galleryBtnText: rgb(255, 255, 255),
 
-		mainFontSize: 1.1rem,
-		mainFontFamily: helvetica,
+		feedbackBtn: rgb(79, 157, 163),
 	),
 
-	bluesTheme: (
-		navigationBars: #0D3753,
-		sideMenu: #104669,
-		accentColor: #4CA1DB,
-		altAccent: #82C7FF,
-		backgroundColor: #d9e7ee,
-		textColor: #575757,
-		
-		staleColor: #E0E0E0,
-		hoverColor: #ccc,
-		focusColor: #4CA1DB,
-		
-		buttonColor: #4CA1DB,
-		buttonText: #fff,
+	blueTheme: (
+		mainFontFamily: sans-serif,
+		mainFontSize: 1.1rem,
 
-		galleryBtnBg:#fff,
-		galleryBtnText: #2e88c5,
+		navigationBars: rgb(13, 55, 83),
+		sideMenu: rgb(16, 70, 105),
+		accentColor: rgb(76, 161, 219),
+		altAccent: rgb(130, 199, 255),
+		backgroundColor: rgb(217, 231, 238),
+		textColor: rgb(87, 87, 87),
+
+		panelColor: rgb(255, 255, 255),
+		toolBanner: rgba(255, 255, 255, 0.5),
+		
+		staleColor: rgb(224, 224, 224),
+		hoverColor: rgb(204, 204, 204),
+		focusColor: rgb(76, 161, 219),
+		
+		buttonText: rgb(255, 255, 255),
+		buttonColor: rgb(76, 161, 219),
+		/* altButtonColor: REPLACE, */
 		disabledBtnColor:rgba(0, 0, 0, 0.6),
 
-		panelColor: white,
-		toolBanner: rgba(255,255,255,0.5),
-
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif,
+		galleryBtnBg:rgb(255, 255, 255),
+		galleryBtnText: rgb(46, 136, 197),
 	),
 
-	Dark: (
-		navigationBars: #1D1D1D,
-		sideMenu: #2a2a2a,
-		accentColor: #6FA0D8,
-		altAccent: #C5E0FF,
-		backgroundColor: #272727,
-		textColor: #bababa,
+	darkTheme: (
+		mainFontFamily: sans-serif,
+		mainFontSize: 1.1rem,
 
-		staleColor: #3B3B3B,
-		hoverColor: #272727,
+		navigationBars: rgb(29, 29, 29),
+		sideMenu: rgb(42, 42, 42),
+		accentColor: rgb(111, 160, 216),
+		altAccent: rgb(197, 224, 255),
+		backgroundColor: rgb(39, 39, 39),
+		textColor: rgb(186, 186, 186),
+
+		panelColor: rgb(48, 48, 48),
+		toolBanner: rgba(255, 255, 255, 0.05),
+
+		staleColor: rgb(59, 59, 59),
+		hoverColor: rgb(39, 39, 39),
 		focusColor: rgb(66, 119, 172),
 
-		buttonColor: #426c96,
-		buttonText: #dadada,
-
-		galleryBtnBg:#426c96,
-		galleryBtnText: #dfe5ec,
+		buttonText: rgb(218, 218, 218),
+		buttonColor: rgb(66, 108, 150),
+		/* altButtonColor: REPLACE, */
 		disabledBtnColor: rgba(255, 255, 255, 0.2),
 
-		panelColor: #303030,
-		toolBanner: rgba(255,255,255,.05),
+		galleryBtnBg: rgb(66, 108, 150),
+		galleryBtnText: rgb(223, 229, 236),
 
-		inputColor: #424242,
+		/* feedbackBtn: REPLACE, */
+
 		inputBorder: none,
-
-		mainFontSize: 1.1rem,
-		mainFontFamily: sans-serif,
+		inputColor: rgb(66, 66, 66),
 	)
 );
 

@@ -25630,7 +25630,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -25658,6 +25657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
       }).then(function () {
         document.getElementById('mainBody').className = theme;
+        document.getElementById('app').className = theme;
       }).catch(function (e) {
         console.log(e);
       });
@@ -25685,24 +25685,24 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Matador", name: "OnceAMatadorAlwaysAMatador" },
+            attrs: { id: "Matador", name: "matadorTheme" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-OnceAMatadorAlwaysAMatador")
+                _vm.updateTheme("theme-matadorTheme")
               }
             }
           },
-          [_vm._v("\n        Matador")]
+          [_vm._v("Matador")]
         ),
         _vm._v(" "),
         _c(
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Navy", name: "navy" },
+            attrs: { id: "Navy", name: "navyTheme" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-main")
+                _vm.updateTheme("theme-navyTheme")
               }
             }
           },
@@ -25713,10 +25713,10 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Blues", name: "bluesTheme" },
+            attrs: { id: "Blue", name: "blueTheme" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-bluesTheme")
+                _vm.updateTheme("theme-blueTheme")
               }
             }
           },
@@ -25727,10 +25727,10 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Dark", name: "Dark" },
+            attrs: { id: "Dark", name: "darkTheme" },
             on: {
               click: function($event) {
-                _vm.updateTheme("theme-Dark")
+                _vm.updateTheme("theme-darkTheme")
               }
             }
           },
@@ -26261,7 +26261,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   sortAscending: true,
 
   // Themes
-  themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
+  themeName: { theme: 'theme-matadorTheme' },
 
   // Back Button
   hideBack: true,

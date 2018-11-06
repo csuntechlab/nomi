@@ -5,11 +5,10 @@
     </div>
 <div class="panel">
     <div class="theme">
-        <button id="Matador" @click="updateTheme('theme-OnceAMatadorAlwaysAMatador')" class="theme__item" name="OnceAMatadorAlwaysAMatador">
-        Matador</button>
-        <button id="Navy" @click="updateTheme('theme-main')" class="theme__item" name="navy"> Navy</button>
-        <button id="Blues" @click="updateTheme('theme-bluesTheme')" class="theme__item" name="bluesTheme"> Blue</button>
-        <button id="Dark" @click="updateTheme('theme-Dark')" class="theme__item" name="Dark"> Dark</button>
+        <button id="Matador" @click="updateTheme('theme-matadorTheme')" class="theme__item" name="matadorTheme">Matador</button>
+        <button id="Navy" @click="updateTheme('theme-navyTheme')" class="theme__item" name="navyTheme"> Navy</button>
+        <button id="Blue" @click="updateTheme('theme-blueTheme')" class="theme__item" name="blueTheme"> Blue</button>
+        <button id="Dark" @click="updateTheme('theme-darkTheme')" class="theme__item" name="darkTheme"> Dark</button>
     </div>
 </div>
 </div>
@@ -42,6 +41,7 @@
             },
           }).then(() => {
             document.getElementById('mainBody').className = theme;
+            document.getElementById('app').className = theme;
           }).catch((e) => {
             console.log(e);
           });

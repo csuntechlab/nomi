@@ -32,7 +32,7 @@
 	border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;
 	@include themify($themes) {
-		background-color: themed("buttonColor");
+		background-color: themed("feedbackBtn");
 		color: themed("buttonText");
 	}
 	@media only screen and (max-width: 699px){

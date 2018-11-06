@@ -127,6 +127,20 @@
 	text-align: center;
 }
 
-.VueCarousel-dot-container li {
-	margin-top: 0 !important;
+.VueCarousel-dot-container {
+	& li {
+		margin-top: 0 !important;
+	}
+}
+
+.VueCarousel-dot > * {
+	@include themify($themes){
+		background-color: themed("disabledBtnColor") !important;
+	}
+}
+
+.VueCarousel-dot--active > * {
+	@include themify($themes){
+		background-color: themed("altButtonColor") !important;
+	}
 }
