@@ -22880,6 +22880,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "croppa-functionality",
     data: function data() {
@@ -23613,7 +23614,7 @@ var render = function() {
             _c("div", { staticClass: "modal-footer cf" }, [
               _c(
                 "div",
-                { attrs: { name: "footer" } },
+                { staticClass: "modal-footer", attrs: { name: "footer" } },
                 [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
                 1
               )
@@ -24521,9 +24522,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var emailSplit = this.student.student.email.split("@")[1];
         if (emailSplit === "NOTREALEMAIL.net") {
-            console.log(this.showEmail);
             this.showEmail = false;
-            console.log(this.showEmail);
         } else {
             this.showEmail = true;
         }

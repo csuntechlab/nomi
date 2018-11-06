@@ -41,9 +41,7 @@ export default {
     mounted() {
         let emailSplit = this.student.student.email.split("@")[1];
         if (emailSplit === "NOTREALEMAIL.net") {
-            console.log(this.showEmail)
             this.showEmail = false;
-            console.log(this.showEmail)
         } else {
             this.showEmail = true;
         }

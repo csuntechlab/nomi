@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="modal-footer cf">
-          <div name="footer">
+          <div name="footer" class="modal-footer">
             <croppa-functionality v-if="croppaAvailable"></croppa-functionality>
           </div>
         </div>
