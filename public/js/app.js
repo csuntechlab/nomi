@@ -23350,7 +23350,7 @@ var render = function() {
                     attrs: {
                       image: _vm.student.images.avatar,
                       editable: false,
-                      type: "profile"
+                      type: "profile-picture"
                     }
                   }),
                   _vm._v(" "),

@@ -2123,7 +2123,7 @@ textarea[type="text"]:focus {
   }
 }
 
-.profile_image {
+.profile__image {
   margin: 0 auto;
 }
 
@@ -2159,7 +2159,7 @@ textarea[type="text"]:focus {
   width: 100%;
   border-color: white;
   border-style: solid;
-  border-width: thin;
+  border-width: 2px;
 }
 
 .profile__edit-container {
@@ -2250,6 +2250,7 @@ textarea[type="text"]:focus {
 .profile__name-container {
   display: block;
   height: 100%;
+  margin-left: 10%;
 }
 
 .profile__color-layer {
@@ -2260,6 +2261,9 @@ textarea[type="text"]:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
   padding-left: 1.875rem;

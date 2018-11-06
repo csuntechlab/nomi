@@ -178,7 +178,7 @@
 
 // Student Profile Page
 .profile {
-	&_image {
+	&__image {
 		margin: 0 auto;
 	}
 
@@ -214,7 +214,7 @@
 		width: 100%;
 		border-color: white;
 		border-style: solid;
-		border-width: thin;
+		border-width: 2px;
 	}
 	&__edit-container{
 		display:block;
@@ -274,13 +274,14 @@
 	&__name-container {
 		display: block;
 		height: 100%;
+		margin-left: 10%;
 	}
 	
 	&__color-layer {
 		position: relative;
 		display: flex;
 		align-items: center;
-		// justify-content: space-between;
+		justify-content: space-between;
 		margin-left: auto;
 		margin-right: auto;
 		padding-left: 1.875rem;
