@@ -1198,7 +1198,11 @@ textarea[type="text"]:focus {
 }
 
 .course__content--empty {
-  line-height: 1;
+  line-height: 1.5rem;
+}
+
+.course__content--empty a {
+  text-decoration: underline;
 }
 
 .theme-Dark .course__field {

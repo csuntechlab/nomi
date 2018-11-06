@@ -1,14 +1,14 @@
 <template>
-<div v-if="displayCurrentTerm" class="row fullscreen-width">
+<div v-if="displayCurrentTerm" class="row fullscreen-width panel__empty-course">
     <div v-if="selectedTerm == 'previous'">
         <div class="panel col-lg-12 col-md-12 col-xs-12 type--center">
                 <h5  class="panel__header course__header--empty mb-0">
                     You did not teach any classes for {{displayedTerm}}.
                 </h5>
         <div class="panel__content course__content--empty">
-            <div class="row">If you notice any errors in your class schedule, send <a :href="this.url + '/support'">feedback</a>.</div>
-            <br>
-            <div class="row">Enjoy our App!</div>
+            <div class="row">If you notice any errors in your class schedule, please <a :href="this.url + '/support'">let us know</a>.</div>
+                <br>
+                Enjoy our App!</div>
         </div>
         </div>
     </div>
@@ -18,9 +18,9 @@
                 You are not teaching any classes for {{displayedTerm}}.
             </h5>
         <div class="panel__content course__content--empty">
-            <div class="row">If you notice any errors in your class schedule, send <a :href="this.url + '/support'">feedback</a>.</div>
-            <br>
-            <div class="row">Enjoy our App!</div>
+            <div class="row">If you notice any errors in your class schedule, please <a :href="this.url + '/support'">let us know</a>.</div>
+                <br>
+                Enjoy our App!</div>
         </div>
         </div>
     </div>
@@ -30,10 +30,10 @@
                 You are not scheduled to teach any classes for {{displayedTerm}}.
             </h5>
         <div class="panel__content course__content--empty">
-            <div class="row">If you notice any errors in your class schedule, send 
-                <a :href="this.url + '/support'">feedback</a> .</div>
-            <br>
-            <div class="row">Enjoy our App!</div>
+            <div class="row">If you notice any errors in your class schedule, please 
+                <a :href="this.url + '/support'">let us know</a>.</div>
+                <br>
+                Enjoy our App!</div>
         </div>
         </div>
     </div>

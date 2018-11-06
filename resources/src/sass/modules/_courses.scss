@@ -13,9 +13,11 @@
 	}
 
 	&__content--empty {
-		line-height: 1;
+		line-height: 1.5rem;
 	}
-
+	&__content--empty a {
+		text-decoration: underline;
+	}
 	&__field {
 		@include themify($themes) {
 			background: themed("inputColor");
