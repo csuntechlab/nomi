@@ -18048,6 +18048,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -19792,9 +19794,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "post-login type--center" }, [
-      _c("i", {
-        staticClass: "fa fa-spinner fa-spin fa-3x post-login__loading-icon"
-      })
+      _c("div", { staticClass: "post-login-container" }, [
+        _c("i", {
+          staticClass: "fa fa-spinner fa-spin fa-3x post-login__loading-icon"
+        })
+      ])
     ])
   }
 ]
@@ -19868,6 +19872,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_fixed_components_navBar_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_roster_components_rosterContainer_vue__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -24035,28 +24046,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("nav-bar"),
-      _vm._v(" "),
-      _c("course-banner"),
-      _vm._v(" "),
-      _c("settings-banner"),
-      _vm._v(" "),
-      _c(
+  return this.$store.state.base.themeName.theme === this.$parent.$el.className
+    ? _c(
         "div",
-        { staticClass: "container-full" },
         [
-          _c("roster-container", { attrs: { courseid: this.$route.params.id } })
+          _c("nav-bar"),
+          _vm._v(" "),
+          _c("course-banner"),
+          _vm._v(" "),
+          _c("settings-banner"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container-full" },
+            [
+              _c("roster-container", {
+                attrs: { courseid: this.$route.params.id }
+              })
+            ],
+            1
+          )
         ],
         1
       )
-    ],
-    1
-  )
+    : _c("div", [_vm._m(0)])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "post-login type--center" }, [
+      _c("div", { staticClass: "post-login-container" }, [
+        _c("i", {
+          staticClass: "fa fa-spinner fa-spin fa-3x post-login__loading-icon"
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -24130,6 +24158,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_fixed_components_navBar_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -24875,44 +24910,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("nav-bar"),
-      _vm._v(" "),
-      this.studentProfile.images == null ||
-      this.$route.params.emailURI != this.studentProfile.emailURI
-        ? _c("div", { staticClass: "type--center" }, [
-            _c("br"),
-            _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _c("i", { staticClass: "fa fa-spinner fa-spin fa-3x icon__theme" })
-          ])
-        : _c(
-            "div",
-            [
-              _c("modal"),
-              _vm._v(" "),
-              _c("profile-container", {
-                attrs: { student: this.studentProfile.student }
-              }),
-              _vm._v(" "),
-              _c("profile-info", {
-                attrs: { student: this.studentProfile },
-                on: {
-                  unsavedChanges: _vm.setUnsavedChanges,
-                  committedChanges: _vm.setChanges
-                }
-              })
-            ],
-            1
-          )
-    ],
-    1
-  )
+  return this.$store.state.base.themeName.theme === this.$parent.$el.className
+    ? _c(
+        "div",
+        [
+          _c("nav-bar"),
+          _vm._v(" "),
+          this.studentProfile.images == null ||
+          this.$route.params.emailURI != this.studentProfile.emailURI
+            ? _c("div", { staticClass: "type--center" }, [
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("i", {
+                  staticClass: "fa fa-spinner fa-spin fa-3x icon__theme"
+                })
+              ])
+            : _c(
+                "div",
+                [
+                  _c("modal"),
+                  _vm._v(" "),
+                  _c("profile-container", {
+                    attrs: { student: this.studentProfile.student }
+                  }),
+                  _vm._v(" "),
+                  _c("profile-info", {
+                    attrs: { student: this.studentProfile },
+                    on: {
+                      unsavedChanges: _vm.setUnsavedChanges,
+                      committedChanges: _vm.setChanges
+                    }
+                  })
+                ],
+                1
+              )
+        ],
+        1
+      )
+    : _c("div", [_vm._m(0)])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "post-login type--center" }, [
+      _c("div", { staticClass: "post-login-container" }, [
+        _c("i", {
+          staticClass: "fa fa-spinner fa-spin fa-3x post-login__loading-icon"
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -25545,6 +25597,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -25656,6 +25715,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'Content-Type': 'multipart/form-data'
         }
       }).then(function () {
+        document.getElementById('app').className = theme;
         document.getElementById('mainBody').className = theme;
       }).catch(function (e) {
         console.log(e);
@@ -25757,22 +25817,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("nav-bar"),
-      _vm._v(" "),
-      _c(
+  return this.$store.state.base.themeName.theme === this.$parent.$el.className
+    ? _c(
         "div",
-        { staticClass: "container" },
-        [_c("theme-setting"), _vm._v(" "), _c("about-banner")],
+        [
+          _c("nav-bar"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "container" },
+            [_c("theme-setting"), _vm._v(" "), _c("about-banner")],
+            1
+          )
+        ],
         1
       )
-    ],
-    1
-  )
+    : _c("div", [_vm._m(0)])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "post-login type--center" }, [
+      _c("div", { staticClass: "post-login-container" }, [
+        _c("i", {
+          staticClass: "fa fa-spinner fa-spin fa-3x post-login__loading-icon"
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

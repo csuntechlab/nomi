@@ -1,10 +1,17 @@
 <template>
-    <div>
+    <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
         <nav-bar></nav-bar>
         <course-banner></course-banner>
         <settings-banner></settings-banner>
         <div class="container-full">
             <roster-container :courseid="this.$route.params.id"></roster-container>
+        </div>
+    </div>
+    <div v-else>
+        <div class="post-login type--center">
+            <div class="post-login-container">
+                <i class="fa fa-spinner fa-spin fa-3x post-login__loading-icon"></i>
+            </div>
         </div>
     </div>
 </template>
