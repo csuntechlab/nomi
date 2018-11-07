@@ -41,6 +41,7 @@ export default {
           'Content-Type': 'multipart/form-data',
         },
         }).then(() => {
+          this.$store.dispatch('getOnlySettings');
           document.getElementById('app').className = theme;
           document.getElementById('mainBody').className = theme;
         }).catch((e) => {

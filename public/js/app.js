@@ -25707,6 +25707,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     updateTheme: function updateTheme(theme) {
+      var _this = this;
+
       var data = new FormData();
       data.append('theme', theme);
 
@@ -25715,6 +25717,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'Content-Type': 'multipart/form-data'
         }
       }).then(function () {
+        _this.$store.dispatch('getOnlySettings');
         document.getElementById('app').className = theme;
         document.getElementById('mainBody').className = theme;
       }).catch(function (e) {
