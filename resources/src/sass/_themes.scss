@@ -34,7 +34,7 @@ $themes: (
 		mainFontSize: 1.1rem,
 
 		navigationBars: rgb(210, 32, 48),
-		sideMenu: rgb(166, 25, 38),
+		sideMenu: rgb(200, 22, 38),
 		accentColor: rgb(231, 74, 55),
 		altAccent: rgb(190, 198, 195),
 		backgroundColor: rgb(255, 255, 255),
@@ -48,8 +48,10 @@ $themes: (
 
 		buttonText: rgb(255, 255, 255),
 		buttonColor: rgb(210, 32, 48),
-		altButtonColor: rgba(25, 25, 25, 0.6),
-		disabledBtnColor:rgba(180, 180, 180, 0.6),
+		disabledBtnColor:rgba(45, 45, 45, 0.6),
+
+		selectionActive: rgb(253, 191, 86),
+		selectionInactive: rgb(160, 160, 160),
 		
 		galleryBtnBg:rgb(255, 255, 255),
 		galleryBtnText: rgb(128, 128, 128),
@@ -69,15 +71,17 @@ $themes: (
 		textColor: rgb(70, 70, 70),
 
 		panelColor: rgb(244, 244, 244),
-		toolBanner: rgba(255, 255, 255,0.5),
+		toolBanner: rgba(255, 255, 255, 0.5),
 		
 		staleColor: rgb(224, 224, 224),
 		hoverColor: rgb(204, 204, 204),
 		
 		buttonText: rgb(255, 255, 255),
 		buttonColor: rgb(45, 115, 125),
-		/* altButtonColor: REPLACE, */
-		disabledBtnColor: rgba(255, 255, 255, 0.2),
+		disabledBtnColor: rgba(245, 245, 245, 0.3),
+
+		selectionActive: rgb(60, 130, 145),
+		selectionInactive: rgb(125, 125, 125),
 		
 		galleryBtnBg: rgb(70, 135, 140),
 		galleryBtnText: rgb(255, 255, 255),
@@ -104,8 +108,10 @@ $themes: (
 		
 		buttonText: rgb(255, 255, 255),
 		buttonColor: rgb(35, 115, 170),
-		/* altButtonColor: REPLACE, */
-		disabledBtnColor:rgba(0, 0, 0, 0.6),
+		disabledBtnColor: rgba(245, 245, 245, 0.3),
+
+		selectionActive: rgb(45, 125, 200),
+		selectionInactive: rgb(125, 125, 125),
 
 		galleryBtnBg:rgb(255, 255, 255),
 		galleryBtnText: rgb(46, 136, 197),
@@ -132,8 +138,10 @@ $themes: (
 
 		buttonText: rgb(245, 245, 245),
 		buttonColor: rgb(66, 108, 150),
-		/* altButtonColor: REPLACE, */
-		disabledBtnColor: rgba(255, 255, 255, 0.2),
+		disabledBtnColor: rgba(245, 245, 245, 0.35),
+
+		selectionActive: rgb(255, 255, 255),
+		selectionInactive: rgb(115, 115, 115),
 
 		galleryBtnBg: rgb(66, 108, 150),
 		galleryBtnText: rgb(223, 229, 236),

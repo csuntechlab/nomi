@@ -151,12 +151,12 @@
 
 .VueCarousel-dot > * {
 	@include themify($themes){
-		background-color: themed("disabledBtnColor") !important;
+		background-color: themed("selectionInactive") !important;
 	}
 }
 
 .VueCarousel-dot--active > * {
 	@include themify($themes){
-		background-color: themed("altButtonColor") !important;
+		background-color: themed("selectionActive") !important;
 	}
 }

@@ -1061,7 +1061,7 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   padding: .75rem 0 .5rem;
 }
 
@@ -1075,19 +1075,19 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .bottom-nav__button--disabled {
-  color: rgba(180, 180, 180, 0.6);
+  color: rgba(45, 45, 45, 0.6);
 }
 
 .theme-navyTheme .bottom-nav__button--disabled {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(245, 245, 245, 0.3);
 }
 
 .theme-blueTheme .bottom-nav__button--disabled {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(245, 245, 245, 0.3);
 }
 
 .theme-darkTheme .bottom-nav__button--disabled {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(245, 245, 245, 0.35);
 }
 
 .course__title {
@@ -1480,35 +1480,35 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .VueCarousel-dot > * {
-  background-color: rgba(180, 180, 180, 0.6) !important;
+  background-color: #a0a0a0 !important;
 }
 
 .theme-navyTheme .VueCarousel-dot > * {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: #7d7d7d !important;
 }
 
 .theme-blueTheme .VueCarousel-dot > * {
-  background-color: rgba(0, 0, 0, 0.6) !important;
+  background-color: #7d7d7d !important;
 }
 
 .theme-darkTheme .VueCarousel-dot > * {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: #737373 !important;
 }
 
 .theme-matadorTheme .VueCarousel-dot--active > * {
-  background-color: rgba(25, 25, 25, 0.6) !important;
+  background-color: #fdbf56 !important;
 }
 
 .theme-navyTheme .VueCarousel-dot--active > * {
-  background-color: !important;
+  background-color: #3c8291 !important;
 }
 
 .theme-blueTheme .VueCarousel-dot--active > * {
-  background-color: !important;
+  background-color: #2d7dc8 !important;
 }
 
 .theme-darkTheme .VueCarousel-dot--active > * {
-  background-color: !important;
+  background-color: white !important;
 }
 
 .menu {
@@ -1574,7 +1574,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .side-menu {
-  background-color: #a61926;
+  background-color: #c81626;
 }
 
 .theme-navyTheme .side-menu {
