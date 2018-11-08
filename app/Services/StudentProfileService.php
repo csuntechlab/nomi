@@ -59,7 +59,7 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentWithNoEmail($data)
     {
-        $display_name = $data['first_name'].' '.$data['last_name'];
+        $display_name = $data['first_name'] . ' ' . $data['last_name'];
 
         $note = Note::where('user_id', auth()->user()->user_id)
             ->where('student_id', $data['student_id'])
@@ -77,6 +77,7 @@ class StudentProfileService implements StudentProfileContract
             'image_priority' => $imagePriority,
             'bio' => null, // if no email, then no bio
         ];
+
         return \json_encode($studentProfile);
     }
 

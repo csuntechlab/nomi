@@ -63,6 +63,10 @@
 		margin: 0.5rem 0;
 		justify-content: center;
 		align-items: center;
+
+		&-padding {
+			padding: 0.25rem;
+		}
 		
 		&__button {
 			width: 100%;
@@ -174,15 +178,17 @@
 
 // Student Profile Page
 .profile {
-	&_image {
+	@include themify($themes) {
+		color: white;
+	}
+
+	&__image {
 		margin: 0 auto;
 	}
 
 	&_email {
 		margin-bottom: 10px;
 	}
-
-	
 
 	&_email_text {
 		text-decoration: underline;
@@ -210,7 +216,16 @@
 	
 	&__img{
 		width: 100%;
+		max-width: 250px;
+		@include themify($themes) {
+			&--border {
+				border-color: themed("buttonText");
+				border-style: solid;
+				border-width: 4px;
+			}
+		}
 	}
+
 	&__edit-container{
 		display:block;
 		position: relative;
@@ -258,6 +273,44 @@
 			right: 37%;
 			padding: 2%;
 		}
+	}
+
+	&__name {
+		font-weight: bold;
+		margin-bottom: 0%; 
+	}
+
+	&__name-container {
+		display: block;
+		height: 100%;
+		margin-left: 10%;
+	}
+	
+	&__color-layer {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 1.875rem;
+		padding-right: 1.875rem;
+		@include themify($themes) {
+			background-color: themed("navigationBars");
+		}
+	}
+
+	&__divider {
+		display: inline-block;
+		position: relative;
+		box-sizing: border-box;
+		width: 50%;
+		height: 100%;
+	}
+
+	&__info-panel {
+		padding: 5%;
+		overflow: auto;
 	}
 }
 
@@ -360,4 +413,14 @@
 	right: 50%;
 	margin-left: -50%;
 	margin-right: -50%;
+}
+
+@media only screen and (max-width: 375px) {
+	.roster-sorting-padding {
+		width: 100%;
+
+		& > * {
+			margin: 0;
+		}
+	}
 }

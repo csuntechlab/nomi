@@ -2,10 +2,12 @@
 	&-mask {
 		background-color: rgba(0, 0, 0, .5);
 		box-sizing: border-box;
+		display: flex;
 		justify-content: center;
+		align-items: center;
 		position: fixed;
-		width: 100vw;
-		height: 100vh;
+		width: 100%;
+		height: 100%;
 		z-index: 100;
 		top: 0;
 		left: 0;
@@ -13,22 +15,30 @@
 	
 	&__container {
 		position: relative;
-		top: calc(100vh/18);
-		width: 80%;
-		max-width: 24rem;
+		width: 75%;
+		max-width: 315px;
 		margin: 0 auto;
+		margin-bottom: 2rem;
 		border-radius: 16px;
-		transition: all .3s ease;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .33);
+		transition: all 350ms ease-out;
 		@include themify($themes) {
 			background: themed("panelColor");
 		}
 	}
+
+	&-permission__container {
+		box-shadow: 2px 3px 0 0 rgba(45, 45, 45, 0.75);
+		width: 80%;
+		max-width: 425px;
+		padding: 1.5rem;
+	}
 	
 	&-name {
-		font-size: 1.5rem;
-		width: 75%;
+		font-size: 1.15rem;
+		width: 60%;
 		margin: 0 auto;
-		margin-top: 2.25rem;
+		margin-top: 1.5rem;
 		text-align: center;
 		@include themify($themes){
 			color: themed('textColor');
@@ -41,13 +51,16 @@
 		width: 100%;
 	}
 
+	&-footer {
+		height: 4rem;
+	}
+
 	&-default-button {
 		float: right;
 	}
 
 	&-btn {
 		display: inline-block;
-		padding: 6px 20px;
 		margin: 0 3%;
 		font-size: 15px;
 		font-weight: 500;
@@ -71,6 +84,10 @@
 		margin: 0 0.6em;
 	}
 
+	&-functionality {
+		display: flex;
+	}
+
 	&-button {
 		@include themify($themes) {
 			color: themed('panelColor');
@@ -78,10 +95,18 @@
 
 		&-photo {
 			border-radius: 0 0 0 16px;
+			@include themify($themes){
+				border-right: 1px solid;
+				border-color: themed('buttonText');
+			}
 		}
 
 		&-confirm {
 			border-radius: 0 0 16px 0;
+			@include themify($themes){
+				border-left: 1px solid;
+				border-color: themed('buttonText');
+			}
 		}
 
 		&__container {
@@ -99,7 +124,7 @@
 
 	&--exit {
 		position: absolute;
-		padding: 0.75rem 1.25rem 0 0;
+		padding: 0.70rem 0.8rem 0 0;
 		top: 0;
 		right: 0;
 	}
@@ -118,6 +143,10 @@
 	text-align: center;
 }
 
-.VueCarousel-dot-container li {
+.modal-body .VueCarousel-slide.slide-wrap {
+	padding: 0.25rem 0.75rem;
+}
+
+.modal-body .VueCarousel-dot-container li {
 	margin-top: 0 !important;
 }

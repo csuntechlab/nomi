@@ -1,3 +1,4 @@
+import initialState from './state.js';
 export default {
   API_FAILURE(state, payload) {
     state.errors = payload.response.data.message;
@@ -38,6 +39,10 @@ export default {
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;
+  },
+
+  CLEAR_FACULTY(state) {
+    Object.assign(state, initialState);
   },
 
   UPDATE_STUDENT_PRIORITY(state, payload) {

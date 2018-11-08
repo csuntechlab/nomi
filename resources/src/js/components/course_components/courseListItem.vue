@@ -34,10 +34,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { convertCourseData } from './../../mixins/convertCourseData.js'
+import { getStudent } from './../../mixins/getStudent.js'
 
 export default {
 name: 'course-list-item',
-mixins: [convertCourseData],
+mixins: [convertCourseData, getStudent],
 props: ['course'],
 
 computed: {
