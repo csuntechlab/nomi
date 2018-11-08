@@ -19,15 +19,15 @@ Compiles to 2.4rem*/
 }
 
 #Navy {
-  background-color: #0f1821;
+  background-color: #05192d;
 }
 
 #Blue {
-  background-color: #0d3753;
+  background-color: #2373aa;
 }
 
 #Dark {
-  background-color: #272727;
+  background-color: #191919;
 }
 
 html * {
@@ -78,7 +78,7 @@ body {
 
 .theme-darkTheme body {
   background-color: #272727;
-  color: #bababa;
+  color: #ebebeb;
   padding-top: 2.4rem;
 }
 
@@ -227,7 +227,7 @@ body {
 }
 
 .theme-darkTheme .tab__link {
-  color: #bababa;
+  color: #ebebeb;
   border-bottom: none;
 }
 
@@ -255,7 +255,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #575757;
-  border-bottom: 5px solid #82c7ff;
+  border-bottom: 5px solid #a0a0a0;
 }
 
 .theme-darkTheme .tab__link-alt {
@@ -263,8 +263,8 @@ body {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #bababa;
-  border-bottom: 5px solid #c5e0ff;
+  color: #ebebeb;
+  border-bottom: 5px solid #919191;
 }
 
 .tab__link--kerning {
@@ -285,8 +285,8 @@ body {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #4f9da3;
-  border-bottom: 5px solid #4f9da3;
+  color: #1e5f7d;
+  border-bottom: 5px solid #1e5f7d;
 }
 
 .theme-blueTheme .tab__link--active {
@@ -294,8 +294,8 @@ body {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #4ca1db;
-  border-bottom: 5px solid #4ca1db;
+  color: #375fa0;
+  border-bottom: 5px solid #375fa0;
 }
 
 .theme-darkTheme .tab__link--active {
@@ -303,8 +303,8 @@ body {
   padding: 5px 20px;
   font-weight: normal;
   text-decoration: none;
-  color: #6fa0d8;
-  border-bottom: 5px solid #6fa0d8;
+  color: #5aaffa;
+  border-bottom: 5px solid #5aaffa;
 }
 
 .theme-darkTheme input, .theme-darkTheme
@@ -326,20 +326,20 @@ textarea {
 }
 
 .theme-navyTheme .btn {
-  background-color: #4f9da3;
+  background-color: #2d737d;
   color: white;
   border: 2px solid transparent;
 }
 
 .theme-blueTheme .btn {
-  background-color: #4ca1db;
+  background-color: #2373aa;
   color: white;
   border: 2px solid transparent;
 }
 
 .theme-darkTheme .btn {
   background-color: #426c96;
-  color: #dadada;
+  color: whitesmoke;
   border: 2px solid transparent;
 }
 
@@ -363,19 +363,19 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme textarea[type="text"]:focus {
-  border: 3px solid #92a1cd;
+  border: 3px solid;
 }
 
 .theme-navyTheme textarea[type="text"]:focus {
-  border: 3px solid #4f9da3;
+  border: 3px solid;
 }
 
 .theme-blueTheme textarea[type="text"]:focus {
-  border: 3px solid #4ca1db;
+  border: 3px solid;
 }
 
 .theme-darkTheme textarea[type="text"]:focus {
-  border: 3px solid #4277ac;
+  border: 3px solid;
 }
 
 .theme-matadorTheme .icon__theme {
@@ -383,15 +383,15 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .icon__theme {
-  color: #4f9da3;
+  color: #1e5f7d;
 }
 
 .theme-blueTheme .icon__theme {
-  color: #4ca1db;
+  color: #375fa0;
 }
 
 .theme-darkTheme .icon__theme {
-  color: #6fa0d8;
+  color: #5aaffa;
 }
 
 .text-overflow {
@@ -433,7 +433,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .panel__edit-button {
-  background-color: #4f9da3;
+  background-color: #46878c;
   color: white;
 }
 
@@ -464,7 +464,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .panel__edit-button--profile {
-  background-color: #4f9da3;
+  background-color: #46878c;
   color: white;
 }
 
@@ -553,7 +553,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-blueTheme .confirm-btn:hover {
-  background: #cccccc;
+  background: gainsboro;
 }
 
 .theme-darkTheme .confirm-btn:hover {
@@ -597,7 +597,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-blueTheme .decline-btn:hover {
-  background: #cccccc;
+  background: gainsboro;
 }
 
 .theme-darkTheme .decline-btn:hover {
@@ -927,7 +927,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .navbar {
-  background-color: #0f1821;
+  background-color: #05192d;
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
@@ -953,7 +953,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .navbar {
-  background-color: #1d1d1d;
+  background-color: #191919;
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
@@ -991,16 +991,18 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .feedback-button {
-  background-color: #4f9da3;
+  background-color: #2d737d;
   color: white;
 }
 
 .theme-blueTheme .feedback-button {
+  background-color: #2373aa;
   color: white;
 }
 
 .theme-darkTheme .feedback-button {
-  color: #dadada;
+  background-color: #426c96;
+  color: whitesmoke;
 }
 
 @media only screen and (max-width: 699px) {
@@ -1047,7 +1049,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .bottom-nav {
-  background: #0f1821;
+  background: #05192d;
 }
 
 .theme-blueTheme .bottom-nav {
@@ -1055,7 +1057,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .bottom-nav {
-  background: #1d1d1d;
+  background: #191919;
 }
 
 .bottom-nav__button {
@@ -1128,7 +1130,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .course__descriptor {
-  color: #bababa !important;
+  color: #ebebeb !important;
 }
 
 .course__banner {
@@ -1163,7 +1165,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .course__banner {
   background-color: rgba(255, 255, 255, 0.05);
-  color: #bababa;
+  color: #ebebeb;
   margin-top: 0.833rem;
   margin-bottom: 0.833rem;
   padding: 10px 0;
@@ -1184,13 +1186,13 @@ textarea[type="text"]:focus {
 }
 
 .theme-blueTheme .course__button {
-  background-color: #cccccc !important;
+  background-color: gainsboro !important;
   color: #575757 !important;
 }
 
 .theme-darkTheme .course__button {
   background-color: #272727 !important;
-  color: #bababa !important;
+  color: #ebebeb !important;
 }
 
 .theme-matadorTheme .course__button--selected {
@@ -1199,18 +1201,18 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .course__button--selected {
-  background-color: #4f9da3 !important;
+  background-color: #2d737d !important;
   color: white !important;
 }
 
 .theme-blueTheme .course__button--selected {
-  background-color: #4ca1db !important;
+  background-color: #2373aa !important;
   color: white !important;
 }
 
 .theme-darkTheme .course__button--selected {
   background-color: #426c96 !important;
-  color: #dadada !important;
+  color: whitesmoke !important;
 }
 
 .theme-matadorTheme .course-card--selected {
@@ -1218,15 +1220,15 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .course-card--selected {
-  color: #4f9da3;
+  color: #1e5f7d;
 }
 
 .theme-blueTheme .course-card--selected {
-  color: #4ca1db;
+  color: #375fa0;
 }
 
 .theme-darkTheme .course-card--selected {
-  color: #6fa0d8;
+  color: #5aaffa;
 }
 
 .about {
@@ -1312,7 +1314,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .modal-name {
-  color: #bababa;
+  color: #ebebeb;
 }
 
 .modal-header {
@@ -1402,7 +1404,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .modal-button-photo {
   border-right: 1px solid;
-  border-color: #dadada;
+  border-color: whitesmoke;
 }
 
 .modal-button-confirm {
@@ -1426,7 +1428,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .modal-button-confirm {
   border-left: 1px solid;
-  border-color: #dadada;
+  border-color: whitesmoke;
 }
 
 .modal-button__container {
@@ -1442,15 +1444,15 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .modal-button__container {
-  background-color: #4f9da3;
+  background-color: #1e5f7d;
 }
 
 .theme-blueTheme .modal-button__container {
-  background-color: #4ca1db;
+  background-color: #375fa0;
 }
 
 .theme-darkTheme .modal-button__container {
-  background-color: #6fa0d8;
+  background-color: #5aaffa;
 }
 
 .modal--exit {
@@ -1576,7 +1578,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .side-menu {
-  background-color: #172533;
+  background-color: #0a233c;
 }
 
 .theme-blueTheme .side-menu {
@@ -1584,7 +1586,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .side-menu {
-  background-color: #2a2a2a;
+  background-color: #1e1e1e;
 }
 
 .side-menu__link {
@@ -1805,7 +1807,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .roster-sorting__button {
   background-color: #303030 !important;
-  color: #bababa !important;
+  color: #ebebeb !important;
 }
 
 .roster-sorting__button--selected {
@@ -1819,18 +1821,18 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .roster-sorting__button--selected {
-  background-color: #4f9da3 !important;
+  background-color: #2d737d !important;
   color: white !important;
 }
 
 .theme-blueTheme .roster-sorting__button--selected {
-  background-color: #4ca1db !important;
+  background-color: #2373aa !important;
   color: white !important;
 }
 
 .theme-darkTheme .roster-sorting__button--selected {
   background-color: #426c96 !important;
-  color: #dadada !important;
+  color: whitesmoke !important;
 }
 
 .roster-sorting-container {
@@ -1861,7 +1863,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .roster-sorting__sort {
   background-color: #303030 !important;
-  color: #bababa !important;
+  color: #ebebeb !important;
 }
 
 .roster-sorting__sort * {
@@ -1882,7 +1884,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .roster-sorting__sort * {
-  fill: #bababa !important;
+  fill: #ebebeb !important;
 }
 
 .roster-sorting__name {
@@ -1907,7 +1909,7 @@ textarea[type="text"]:focus {
 
 .theme-darkTheme .roster-sorting__name {
   background-color: #303030;
-  color: #bababa;
+  color: #ebebeb;
 }
 
 .roster-sorting__name--selected {
@@ -1921,18 +1923,18 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .roster-sorting__name--selected {
-  background-color: #4f9da3;
+  background-color: #2d737d;
   color: white;
 }
 
 .theme-blueTheme .roster-sorting__name--selected {
-  background-color: #4ca1db;
+  background-color: #2373aa;
   color: white;
 }
 
 .theme-darkTheme .roster-sorting__name--selected {
   background-color: #426c96;
-  color: #dadada;
+  color: whitesmoke;
 }
 
 .gallery__layout {
@@ -2054,7 +2056,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .profile__img--border {
-  border-color: #dadada;
+  border-color: whitesmoke;
   border-style: solid;
   border-width: 4px;
 }
@@ -2079,7 +2081,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .profile-carousel__edit {
-  background-color: #4f9da3;
+  background-color: #46878c;
   color: white;
 }
 
@@ -2166,7 +2168,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-navyTheme .profile__color-layer {
-  background-color: #0f1821;
+  background-color: #05192d;
 }
 
 .theme-blueTheme .profile__color-layer {
@@ -2174,7 +2176,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-darkTheme .profile__color-layer {
-  background-color: #1d1d1d;
+  background-color: #191919;
 }
 
 .profile__divider {

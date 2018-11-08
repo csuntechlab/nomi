@@ -17,15 +17,15 @@
 }
 
 #Navy {
-	background-color: rgb(15, 24, 33);
+	background-color: rgb(5, 25, 45);
 }
 
 #Blue {
-	background-color: rgb(13, 55, 83);
+	background-color: rgb(35, 115, 170);
 }
 
 #Dark {
-	background-color: rgb(39 ,39, 39);
+	background-color: rgb(25, 25, 25);
 }
 
 $themes: (
@@ -45,7 +45,6 @@ $themes: (
 
 		staleColor: rgb(251, 251, 251),
 		hoverColor: rgb(221, 221, 221),
-		focusColor: rgb(146, 161, 205),
 
 		buttonText: rgb(255, 255, 255),
 		buttonColor: rgb(210, 32, 48),
@@ -62,9 +61,9 @@ $themes: (
 		mainFontFamily: helvetica,
 		mainFontSize: 1.1rem,
 
-		navigationBars: rgb(15, 24, 33),
-		sideMenu: rgb(23, 37, 51),
-		accentColor: rgb(79, 157, 163),
+		navigationBars: rgb(5, 25, 45),
+		sideMenu: rgb(10, 35, 60),
+		accentColor: rgb(30, 95, 125),
 		altAccent: rgb(190, 198, 195),
 		backgroundColor: rgb(229, 229, 229),
 		textColor: rgb(70, 70, 70),
@@ -74,17 +73,16 @@ $themes: (
 		
 		staleColor: rgb(224, 224, 224),
 		hoverColor: rgb(204, 204, 204),
-		focusColor: rgb(79, 157, 163),
 		
 		buttonText: rgb(255, 255, 255),
-		buttonColor: rgb(79, 157, 163),
+		buttonColor: rgb(45, 115, 125),
 		/* altButtonColor: REPLACE, */
 		disabledBtnColor: rgba(255, 255, 255, 0.2),
 		
-		galleryBtnBg: rgb(79, 157, 163),
+		galleryBtnBg: rgb(70, 135, 140),
 		galleryBtnText: rgb(255, 255, 255),
 
-		feedbackBtn: rgb(79, 157, 163),
+		feedbackBtn: rgb(45, 115, 125),
 	),
 
 	blueTheme: (
@@ -93,8 +91,8 @@ $themes: (
 
 		navigationBars: rgb(13, 55, 83),
 		sideMenu: rgb(16, 70, 105),
-		accentColor: rgb(76, 161, 219),
-		altAccent: rgb(130, 199, 255),
+		accentColor: rgb(55, 95, 160),
+		altAccent: rgb(160, 160, 160),
 		backgroundColor: rgb(217, 231, 238),
 		textColor: rgb(87, 87, 87),
 
@@ -102,37 +100,37 @@ $themes: (
 		toolBanner: rgba(255, 255, 255, 0.5),
 		
 		staleColor: rgb(224, 224, 224),
-		hoverColor: rgb(204, 204, 204),
-		focusColor: rgb(76, 161, 219),
+		hoverColor: rgb(220, 220, 220),
 		
 		buttonText: rgb(255, 255, 255),
-		buttonColor: rgb(76, 161, 219),
+		buttonColor: rgb(35, 115, 170),
 		/* altButtonColor: REPLACE, */
 		disabledBtnColor:rgba(0, 0, 0, 0.6),
 
 		galleryBtnBg:rgb(255, 255, 255),
 		galleryBtnText: rgb(46, 136, 197),
+
+		feedbackBtn: rgb(35, 115, 170),
 	),
 
 	darkTheme: (
 		mainFontFamily: sans-serif,
 		mainFontSize: 1.1rem,
 
-		navigationBars: rgb(29, 29, 29),
-		sideMenu: rgb(42, 42, 42),
-		accentColor: rgb(111, 160, 216),
-		altAccent: rgb(197, 224, 255),
+		navigationBars: rgb(25, 25, 25),
+		sideMenu: rgb(30, 30, 30),
+		accentColor: rgb(90, 175, 250),
+		altAccent: rgb(145, 145, 145),
 		backgroundColor: rgb(39, 39, 39),
-		textColor: rgb(186, 186, 186),
+		textColor: rgb(235, 235, 235),
 
 		panelColor: rgb(48, 48, 48),
 		toolBanner: rgba(255, 255, 255, 0.05),
 
 		staleColor: rgb(59, 59, 59),
 		hoverColor: rgb(39, 39, 39),
-		focusColor: rgb(66, 119, 172),
 
-		buttonText: rgb(218, 218, 218),
+		buttonText: rgb(245, 245, 245),
 		buttonColor: rgb(66, 108, 150),
 		/* altButtonColor: REPLACE, */
 		disabledBtnColor: rgba(255, 255, 255, 0.2),
@@ -140,7 +138,7 @@ $themes: (
 		galleryBtnBg: rgb(66, 108, 150),
 		galleryBtnText: rgb(223, 229, 236),
 
-		/* feedbackBtn: REPLACE, */
+		feedbackBtn: rgb(66, 108, 150),
 
 		inputBorder: none,
 		inputColor: rgb(66, 66, 66),
