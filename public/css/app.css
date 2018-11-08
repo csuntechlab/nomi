@@ -530,7 +530,7 @@ textarea[type="text"]:focus {
 
 .panel__edit-button--profile {
   position: absolute;
-  bottom: 20%;
+  bottom: 45%;
   left: 75%;
   padding: 4%;
   border-radius: 100%;

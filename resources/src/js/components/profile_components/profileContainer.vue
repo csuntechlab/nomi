@@ -20,6 +20,7 @@
                     </div>
                     </slide>
                 </carousel>
+                <i v-if="emailExists" class="fas fa-pencil-alt panel__edit-button--profile" @click="showModal()"/>
             </div>
             <div class="profile__divider">
                 <div class="profile__name-container">
@@ -31,6 +32,7 @@
 </template>
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "profile-container",
   props: ['student'],
@@ -38,9 +40,32 @@ export default {
       profilePicture
   },
   computed: {
+      ...mapGetters(["permission"]),
       emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
     },
-  }
+  },
+  methods: {
+    ...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
+
+		showModal() {
+			if(this.permission === true)
+			{
+				this.toggleModal(true);
+				this.dataForModal(this.student);
+			} else {
+				this.nullifyPermissionResponse();
+			}
+			
+			
+		},
+
+		checkPermission() {
+			if (this.permission == false){
+				this.$store.dispatch("nullifyPermissionResponse");
+			}
+			
+		}
+	},
 }
 </script>
