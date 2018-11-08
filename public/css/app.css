@@ -997,22 +997,31 @@ textarea[type="text"]:focus {
 }
 
 .post-login {
-  position: absolute;
+  position: fixed;
   overflow: hidden;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100vh;
   width: 100vw;
   z-index: 200;
   background-color: white;
 }
 
+.post-login-container {
+  margin-bottom: 4rem;
+}
+
 .post-login__loading-icon {
+  display: inline-block;
   position: relative;
   color: #d00d2d;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: calc(100% / 2);
 }
 
 .theme-login .navbar {
@@ -1456,8 +1465,8 @@ textarea[type="text"]:focus {
 }
 
 .modal-name {
-  font-size: 1.15rem;
-  width: 60%;
+  font-size: 1.25rem;
+  width: 75%;
   margin: 0 auto;
   margin-top: 1.5rem;
   text-align: center;
@@ -1494,7 +1503,7 @@ textarea[type="text"]:focus {
 }
 
 .modal-footer {
-  height: 4rem;
+  height: 3.8rem;
 }
 
 .modal-default-button {
