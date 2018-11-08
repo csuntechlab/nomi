@@ -2241,6 +2241,7 @@ textarea[type="text"]:focus {
 
 .profile__img {
   width: 100%;
+  max-width: 250px;
 }
 
 .theme-login .profile__img--border {
