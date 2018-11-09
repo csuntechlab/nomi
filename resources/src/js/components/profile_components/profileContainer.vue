@@ -20,7 +20,7 @@
                     </div>
                     </slide>
                 </carousel>
-                <i v-if="emailExists" class="fas fa-pencil-alt panel__edit-button--profile" @click="showModal()"/>
+                <i v-if="emailExists" class="fas fa-camera panel__edit-button--profile" @click="showModal()"/>
             </div>
             <div class="profile__divider">
                 <div class="profile__name-container">

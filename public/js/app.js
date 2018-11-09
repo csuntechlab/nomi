@@ -24567,7 +24567,7 @@ var render = function() {
           _vm._v(" "),
           _vm.emailExists
             ? _c("i", {
-                staticClass: "fas fa-pencil-alt panel__edit-button--profile",
+                staticClass: "fas fa-camera panel__edit-button--profile",
                 on: {
                   click: function($event) {
                     _vm.showModal()
