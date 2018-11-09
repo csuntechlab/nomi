@@ -15,39 +15,39 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
-    export default {
-      name: 'theme-setting',
-
-      data() {
+export default {
+  name: 'theme-setting',
+  
+  data() {
     return {
-          showModal: false,
+      showModal: false,
     };
   },
 
-      created() {
+  created() {
     this.url = document.querySelector('meta[name=app-url]').content;
   },
 
-      methods: {
-        updateTheme(theme) {
-          const data = new FormData();
-          data.append('theme', theme);
+  methods: {
+    updateTheme(theme) {
+      const data = new FormData();
+      data.append('theme', theme);
 
-          axios.post(`${this.url}/update_theme`, data, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }).then(() => {
-            document.getElementById('mainBody').className = theme;
-            document.getElementById('app').className = theme;
-          }).catch((e) => {
-            console.log(e);
-          });
+      axios.post(`${this.url}/update_theme`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        }).then(() => {
+          this.$store.dispatch('getOnlySettings');
+          document.getElementById('app').className = theme;
+          document.getElementById('mainBody').className = theme;
+        }).catch((e) => {
+          console.log(e);
+        });
     },
-      },
+  },
 
-
-    };
+};
 </script>
