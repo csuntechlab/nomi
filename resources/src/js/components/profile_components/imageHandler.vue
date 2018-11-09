@@ -19,7 +19,8 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
-                'modalData'
+                'modalData',
+                'term'
             ])
         },
 
@@ -39,6 +40,7 @@
                         studentId: this.modalData.student_id,
                         image_priority: this.image_type,
                         faculty_id: this.facultyMember.id.replace("members:", ""),
+                        term: this.term,
                     }
                 );
             }

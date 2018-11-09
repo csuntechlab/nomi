@@ -11,6 +11,8 @@ use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 // use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Validator;
+use App\Contracts\UserSettingsContract;
+
 
 /**
  * Intervention implementation of image CRUD.
@@ -18,14 +20,17 @@ use Illuminate\Support\Facades\Validator;
 class ImageCRUDService implements ImageCRUDContract
 {
     protected $userModelUtility = null;
+    protected $userSettingsUtility;
     protected $cache;
 
     public function __construct(
         UserModelRepositoryInterface $userModelUtility,
+        UserSettingsContract $userSettingsUtility,
         Repository $repository
         )
     {
         $this->userModelUtility = $userModelUtility;
+        $this->userSettingsUtility = $userSettingsUtility;
         $this->cache = $repository;
     }
 
@@ -124,32 +129,46 @@ class ImageCRUDService implements ImageCRUDContract
     }
 
     /** Update image_priority table */
-    public function updatePriority()
+    public function updatePriority($data)
     {
-        $facultyID = request()->faculty_id;
+        $facultyID = $data['faculty_id'];
+        $term = $data['term'];
         $priority = ImagePriority::updateOrCreate(
-            ['user_id' => $facultyID, 'student_id' => request()->student_id],
-            ['image_priority' => request()->image_priority]
+            ['user_id' => $facultyID, 'student_id' => $data['student_id']],
+            ['image_priority' => $data['image_priority']]
         );
 
-        $this->clearCache($facultyID);
+        $this->clearCache($facultyID, $term);
     }
 
-    private function clearCache($facultyID)
+    private function clearCache($facultyID, $term = null)
     {
         $msg = $facultyID;
+        $term = $this->getCurrentTerm($term);
 
         for ($i = 0; $i < 10; ++$i) {
-            if ($this->cache->has('students:' . $i . ':' . $facultyID)) {
-                $this->cache->forget('students:' . $i . ':' . $facultyID);
+            if ($this->cache->has('students:' . $i . ':' . $facultyID . 'term:' . $term)) {
+                $this->cache->forget('students:' . $i . ':' . $facultyID. 'term:' . $term);
                 $msg .= "forgot students\n";
             }
-            if ($this->cache->has('courses:' . $facultyID)) {
-                $this->cache->forget('courses:' . $facultyID);
+            if ($this->cache->has('courses:' . $facultyID. 'term:' . $term)) {
+                $this->cache->forget('courses:' . $facultyID. 'term:' . $term);
                 $msg .= "forgot courses\n\n";
             }
         }
 
         return $msg;
+    }
+
+    private function getCurrentTerm($term) {
+
+        if (env('CURRENT_TERM') && $term == null) {
+            $term = env('CURRENT_TERM');
+        }
+
+        if ($term == null) {
+            $term = $this->userSettingsUtility->getCurrentTerm();
+        }
+        return $term;
     }
 }

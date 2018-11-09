@@ -49,6 +49,7 @@ export default {
         const data = new FormData();
         data.append('student_id', payload.studentId);
         data.append('image_priority', payload.image_priority);
+        data.append('term', payload.term);
         data.append('faculty_id', payload.faculty_id);
         window.axios.post('api/priority', data)
             .then(response => {
