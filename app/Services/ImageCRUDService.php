@@ -8,7 +8,8 @@ use App\Contracts\ImageCRUDContract;
 use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
 use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
-use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Cache;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -17,10 +18,15 @@ use Illuminate\Support\Facades\Validator;
 class ImageCRUDService implements ImageCRUDContract
 {
     protected $userModelUtility = null;
+    protected $cache;
 
-    public function __construct(UserModelRepositoryInterface $userModelUtility)
+    public function __construct(
+        UserModelRepositoryInterface $userModelUtility,
+        Repository $repository
+        )
     {
         $this->userModelUtility = $userModelUtility;
+        $this->cache = $repository;
     }
 
     /** Image uploading functionality. */
@@ -134,12 +140,12 @@ class ImageCRUDService implements ImageCRUDContract
         $msg = $facultyID;
 
         for ($i = 0; $i < 10; ++$i) {
-            if (Cache::has('students:' . $i . ':' . $facultyID)) {
-                Cache::forget('students:' . $i . ':' . $facultyID);
+            if ($this->cache->has('students:' . $i . ':' . $facultyID)) {
+                $this->cache->forget('students:' . $i . ':' . $facultyID);
                 $msg .= "forgot students\n";
             }
-            if (Cache::has('courses:' . $facultyID)) {
-                Cache::forget('courses:' . $facultyID);
+            if ($this->cache->has('courses:' . $facultyID)) {
+                $this->cache->forget('courses:' . $facultyID);
                 $msg .= "forgot courses\n\n";
             }
         }

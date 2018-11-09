@@ -4,6 +4,7 @@ export default {
         window.axios.get('student_profile/'+ payload.email)
             .then(payload => {
                 var getters = context.getters
+                console.log(payload);
                 context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
                 context.commit('GET_STUDENT_BIO', payload)
             })
@@ -44,10 +45,14 @@ export default {
             });
     },
 
-    updateImagePriority (context) {
+    updateImagePriority (context, payload) {
+        const data = new FormData();
+        data.append('student_id', payload.studentId);
+        data.append('image_priority', payload.image_priority);
+        data.append('faculty_id', payload.faculty_id);
         window.axios.post('api/priority', data)
             .then(response => {
-                context.commit('UPDATE_IMAGE_PRIORITY', response)
+                context.commit('UPDATE_IMAGE_PRIORITY', payload.image_priority)
             })
             .catch(error => {
                 context.commit('API_FAILURE', error)
