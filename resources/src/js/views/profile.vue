@@ -1,15 +1,16 @@
 <template>
     <div>
-		<nav-bar></nav-bar>
+		<nav-bar/>
         <div v-if="(this.studentProfile.images == null) || (this.$route.params.emailURI != this.studentProfile.emailURI)" class="type--center">
             <br>
             <br>
-            <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
+            <i class="fa fa-spinner fa-spin fa-3x icon__theme"/>
         </div>
         <div v-else>
 			<modal></modal>
-            <profile-container :student="this.studentProfile.student"></profile-container>
-            <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"></profile-info>
+            <profile-container :student="this.studentProfile.student"/>
+			<upload-bar></upload-bar>
+            <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"/>
         </div>
     </div>
 </template>
@@ -20,6 +21,7 @@ import profileContainer from "../components/profile_components/profileContainer.
 import modal from "../components/fixed_components/modal.vue";
 import profileInfo from "../components/profile_components/profileInfo.vue";
 import navBar from '../components/fixed_components/navBar.vue';
+import uploadBar from '../components/fixed_components/uploadBar.vue';
 
 export default {
 	name: 'profile',
@@ -35,6 +37,7 @@ export default {
 		modal,
 		profileInfo,
 		navBar,
+		uploadBar
 	},
 
 	created() {
@@ -81,12 +84,14 @@ export default {
 
 		if (answer) {
 			this.$store.dispatch('hideBackButton');
+			this.$store.dispatch('stopUploadFeedback');
 			next();
 		} else {
 			next(false);
 		}
 		} else {
 		this.$store.dispatch('hideBackButton');
+		this.$store.dispatch('stopUploadFeedback');
 		next();
 		}
 	},
