@@ -216,7 +216,7 @@
 	
 	&__img{
 		width: 100%;
-
+		max-width: 250px;
 		@include themify($themes) {
 			&--border {
 				border-color: themed("buttonText");

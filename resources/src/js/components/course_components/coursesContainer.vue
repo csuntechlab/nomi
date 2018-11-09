@@ -47,10 +47,10 @@ import courseList from './courseList';
       name: 'courses-container',
 
       data() {
-    return {
-          displayedTerm: '',
-    };
-  },
+        return {
+            displayedTerm: '',
+        };
+      },
 
       components: {
         courseList,

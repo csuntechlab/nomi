@@ -1,6 +1,6 @@
 <template>
-    <div>
-		<nav-bar/>
+    <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
+		<nav-bar></nav-bar>
         <div v-if="(this.studentProfile.images == null) || (this.$route.params.emailURI != this.studentProfile.emailURI)" class="type--center">
             <br>
             <br>
@@ -9,8 +9,15 @@
         <div v-else>
 			<modal></modal>
             <profile-container :student="this.studentProfile.student"/>
-			<upload-bar></upload-bar>
+			<upload-bar/>
             <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"/>
+        </div>
+    </div>
+	<div v-else>
+        <div class="post-login type--center">
+			<div class="post-login-container">
+            	<i class="fa fa-spinner fa-spin fa-3x post-login__loading-icon"></i>
+			</div>
         </div>
     </div>
 </template>
