@@ -24255,6 +24255,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'upload-bar',
 
+  props: ['sticky'],
+
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['uploadFeedback']))
 });
 
@@ -24267,10 +24269,18 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return this.uploadFeedback
-    ? _c("div", { staticClass: "upload-bar" }, [
-        _c("strong", [_vm._v("Uploaded!")]),
-        _vm._v(" Photo changes will be reflected soon.\n")
-      ])
+    ? _c(
+        "div",
+        {
+          class: this.sticky
+            ? "upload-bar upload-bar--sticky"
+            : "upload-bar upload-bar--relative"
+        },
+        [
+          _c("strong", [_vm._v("Uploaded!")]),
+          _vm._v(" Photo changes will be reflected soon.\n")
+        ]
+      )
     : _vm._e()
 }
 var staticRenderFns = []
@@ -24297,7 +24307,7 @@ var render = function() {
         [
           _c("nav-bar"),
           _vm._v(" "),
-          _c("upload-bar"),
+          _c("upload-bar", { attrs: { sticky: true } }),
           _vm._v(" "),
           _c("course-banner"),
           _vm._v(" "),

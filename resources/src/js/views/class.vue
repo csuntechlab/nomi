@@ -1,7 +1,7 @@
 <template>
     <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
         <nav-bar></nav-bar>
-        <upload-bar></upload-bar>
+        <upload-bar :sticky="true"></upload-bar>
         <course-banner></course-banner>
         <settings-banner></settings-banner>
         <div class="container-full">

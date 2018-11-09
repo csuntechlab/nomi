@@ -731,7 +731,6 @@ textarea[type="text"]:focus {
 }
 
 .upload-bar {
-  position: relative;
   display: block;
   padding: 10px 20px;
   font-size: 1rem;
@@ -770,6 +769,17 @@ textarea[type="text"]:focus {
 .theme-Dark .upload-bar {
   background-color: #426c96;
   color: #dadada;
+}
+
+.upload-bar--normal {
+  position: relative;
+}
+
+.upload-bar--sticky {
+  z-index: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2.46666667rem;
 }
 
 .login {
@@ -1067,7 +1077,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1080,7 +1090,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1093,7 +1103,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1106,7 +1116,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1119,7 +1129,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
