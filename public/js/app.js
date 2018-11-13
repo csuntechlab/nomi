@@ -18118,7 +18118,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$store.dispatch('clearErrors');
     },
     beforeCreate: function beforeCreate() {
-        this.$store.dispatch('clearFaculty');
         this.$store.dispatch('getOnlyData');
     }
 });
@@ -23315,7 +23314,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -23424,7 +23422,8 @@ var render = function() {
               attrs: {
                 "prevent-white-space": true,
                 "show-remove-button": false,
-                quality: 2
+                quality: 2,
+                placeholder: ""
               },
               on: {
                 init: function($event) {
@@ -23443,11 +23442,7 @@ var render = function() {
             },
             [
               _c("img", {
-                attrs: {
-                  slot: "initial",
-                  crossOrigin: "anonymous",
-                  src: this.student.images.likeness
-                },
+                attrs: { slot: "initial", src: this.student.images.likeness },
                 slot: "initial"
               })
             ]
@@ -23455,22 +23450,15 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.loadingCroppa
-        ? _c("div", { staticClass: "croppa-loading" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "croppa-loading_icon" }, [
+            _c("i", { staticClass: "fas fa-spinner fa-spin fa-3x" })
+          ])
         : _vm._e()
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "croppa-loading_icon" }, [
-      _c("i", { staticClass: "fas fa-spinner fa-spin fa-5x" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -26580,9 +26568,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
       context.commit('API_FAILURE', error);
     });
   },
-  clearFaculty: function clearFaculty(context) {
-    context.commit('CLEAR_FACULTY');
-  },
   clearErrors: function clearErrors(context) {
     context.commit('CLEAR_ERRORS');
   },
@@ -26826,9 +26811,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;
-  },
-  CLEAR_FACULTY: function CLEAR_FACULTY(state) {
-    Object.assign(state, __WEBPACK_IMPORTED_MODULE_0__state_js__["a" /* default */]);
   },
   UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
     for (var i = 0, len = state.courses.length; i < len; i += 1) {
