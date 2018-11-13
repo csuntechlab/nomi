@@ -1,5 +1,4 @@
 export default {
-
   // General
   courses: state => state.courses,
   students: state => state.students,
@@ -7,6 +6,7 @@ export default {
   errors: state => state.errors,
   permission: state => state.imagePermission,
   currentLocation: state => state.currentLocation,
+  uploadFeedback: state => state.uploadFeedback,
 
   // Back Button
   hideBack: state => state.hideBack,

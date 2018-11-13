@@ -308,4 +308,12 @@ export default {
   SET_SEM(payload) {
     state.selectedTerm = payload;
   },
+
+  START_UPLOAD_FEEDBACK(state) {
+    state.uploadFeedback = true;
+  },
+
+  STOP_UPLOAD_FEEDBACK(state) {
+    state.uploadFeedback = false;
+  }
 };

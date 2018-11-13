@@ -16,15 +16,23 @@
 	background-color: rgb(208, 13, 45);
 }
 
-#Navy {
+#Raspberry {
+	background-color: rgb(162, 32, 98);
+}
+
+#Olive {
+	background-color: rgb(28, 162, 136);
+}
+
+#Neptune {
 	background-color: rgb(5, 25, 45);
 }
 
-#Blue {
+#Ocean {
 	background-color: rgb(16, 70, 105);
 }
 
-#Dark {
+#Noire {
 	background-color: rgb(25, 25, 25);
 }
 
@@ -58,8 +66,68 @@ $themes: (
 
 		feedbackBtn: rgb(85, 86, 90),
 	),
+
+	raspberryTheme: (
+		mainFontFamily: sans-serif,
+		mainFontSize: 1.1rem,
+
+		navigationBars: rgb(162, 32, 98),
+		sideMenu: rgb(182, 52, 118),
+		accentColor: rgb(165, 12, 105),
+		altAccent: rgb(145, 145, 145),
+		backgroundColor: rgb(220, 208, 218),
+		textColor: rgb(70, 70, 70),
+
+		panelColor: rgb(245, 245, 245),
+		toolBanner: rgb(240, 240, 240),
+
+		staleColor: rgb(251, 251, 251),
+		hoverColor: rgb(210, 210, 210),
+
+		buttonText: rgb(255, 255, 255),
+		buttonColor: rgb(165, 12, 105),
+		disabledBtnColor:rgba(45, 45, 45, 0.6),
+
+		selectionActive: rgb(235, 132, 205),
+		selectionInactive: rgb(160, 160, 160),
+		
+		galleryBtnBg:rgb(215, 112, 185),
+		galleryBtnText: rgb(245, 245, 245),
+
+		feedbackBtn: rgb(85, 86, 90),
+	),
+
+	oliveTheme: (
+		mainFontFamily: sans-serif,
+		mainFontSize: 1.1rem,
+
+		navigationBars: rgb(15, 125, 80),
+		sideMenu: rgb(25, 135, 90),
+		accentColor: rgb(30, 116, 80),
+		altAccent: rgb(160, 160, 160),
+		backgroundColor: rgb(222, 234, 242),
+		textColor: rgb(70, 70, 70),
+
+		panelColor: rgb(250, 250, 250),
+		toolBanner: rgb(255, 255, 255),
+
+		staleColor: rgb(250, 250, 250),
+		hoverColor: rgb(215, 215, 215),
+
+		buttonText: rgb(255, 255, 255),
+		buttonColor: rgb(30, 116, 80),
+		disabledBtnColor:rgba(0, 0, 0, 0.6),
+
+		selectionActive: rgb(25, 195, 145),
+		selectionInactive: rgb(160, 160, 160),
+		
+		galleryBtnBg: rgb(50, 165, 125),
+		galleryBtnText: rgb(245, 245, 245),
+
+		feedbackBtn: rgb(85, 86, 90),
+	),
 	
-	navyTheme: ( 
+	neptuneTheme: ( 
 		mainFontFamily: helvetica,
 		mainFontSize: 1.1rem,
 
@@ -89,7 +157,7 @@ $themes: (
 		feedbackBtn: rgb(45, 115, 125),
 	),
 
-	blueTheme: (
+	oceanTheme: (
 		mainFontFamily: sans-serif,
 		mainFontSize: 1.1rem,
 
@@ -119,7 +187,7 @@ $themes: (
 		feedbackBtn: rgb(35, 115, 170),
 	),
 
-	darkTheme: (
+	noireTheme: (
 		mainFontFamily: sans-serif,
 		mainFontSize: 1.1rem,
 
