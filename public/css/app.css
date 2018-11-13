@@ -730,8 +730,56 @@ textarea[type="text"]:focus {
   margin: 0 auto;
 }
 
-.padding {
-  padding: 15%;
+.upload-bar {
+  display: block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  line-height: inherit;
+  text-decoration: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #e7e7e7;
+  outline: 0;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.theme-login .upload-bar {
+  background-color: #d00d2d;
+  color: #fff;
+}
+
+.theme-OnceAMatadorAlwaysAMatador .upload-bar {
+  background-color: #E74A37;
+  color: #fff;
+}
+
+.theme-main .upload-bar {
+  background-color: #4F9DA3;
+  color: #fff;
+}
+
+.theme-bluesTheme .upload-bar {
+  background-color: #4CA1DB;
+  color: #fff;
+}
+
+.theme-Dark .upload-bar {
+  background-color: #426c96;
+  color: #dadada;
+}
+
+.upload-bar--normal {
+  position: relative;
+}
+
+.upload-bar--sticky {
+  z-index: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2.46666667rem;
 }
 
 .login {
@@ -1029,7 +1077,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1042,7 +1090,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1055,7 +1103,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1068,7 +1116,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
@@ -1081,7 +1129,7 @@ textarea[type="text"]:focus {
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   top: 0;
 }
 
