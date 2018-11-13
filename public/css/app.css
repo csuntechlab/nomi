@@ -554,6 +554,68 @@ textarea[type="text"]:focus {
   color: #5aaffa;
 }
 
+.nomi-logo--loading {
+  -webkit-animation: logoAnimation 1500ms infinite;
+          animation: logoAnimation 1500ms infinite;
+  width: 100px;
+}
+
+@-webkit-keyframes logoAnimation {
+  15% {
+    width: 125px;
+    -webkit-transform: rotate(-25deg);
+            transform: rotate(-25deg);
+  }
+  30% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  45% {
+    -webkit-transform: rotate(-12deg);
+            transform: rotate(-12deg);
+  }
+  60% {
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
+  }
+  75% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  90% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+}
+
+@keyframes logoAnimation {
+  15% {
+    width: 125px;
+    -webkit-transform: rotate(-25deg);
+            transform: rotate(-25deg);
+  }
+  30% {
+    -webkit-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  45% {
+    -webkit-transform: rotate(-12deg);
+            transform: rotate(-12deg);
+  }
+  60% {
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
+  }
+  75% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  90% {
+    -webkit-transform: rotate(2deg);
+            transform: rotate(2deg);
+  }
+}
+
 .text-overflow {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1161,6 +1223,8 @@ textarea[type="text"]:focus {
 
 .post-login {
   position: fixed;
+  top: 0;
+  left: 0;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1397,7 +1461,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-raspberryTheme .bottom-nav__button--disabled {
-  color: rgba(45, 45, 45, 0.6);
+  color: rgba(25, 25, 25, 0.6);
 }
 
 .theme-oliveTheme .bottom-nav__button--disabled {
