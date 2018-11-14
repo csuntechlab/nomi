@@ -62,6 +62,10 @@ export default {
     }
   },
 
+  FUN_THEME(state) {
+    state.funTheme = true;
+  },
+
   STORE_COURSE(state, payload) {
     state.currentCourse = payload;
   },

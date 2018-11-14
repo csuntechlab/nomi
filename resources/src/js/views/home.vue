@@ -5,17 +5,14 @@
         <menu-bar></menu-bar>
     </div>
     <div v-else>
-        <div class="post-login type--center">
-            <div class="post-login-container">
-                <img class="nomi-logo nomi-logo--loading" src="/images/apple-touch-icon.png" alt="NOMI Logo; Names of Matador Individuals">
-            </div>
-        </div>
+        <loading-screen></loading-screen>
     </div>
 </template>
 
 <script>
 import navBar from '../components/fixed_components/navBar.vue';
 import menuBar from '../components/fixed_components/menuBar.vue';
+import loadingScreen from '../components/fixed_components/loadingScreen.vue';
 import termSelector from '../components/course_components/termSelector.vue';
 import coursesContainer from '../components/course_components/coursesContainer.vue';
 
@@ -25,6 +22,7 @@ export default {
     components: {
         termSelector,
         coursesContainer,
+        loadingScreen,
         menuBar,
         navBar,
     },

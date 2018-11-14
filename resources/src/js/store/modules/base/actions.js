@@ -45,6 +45,10 @@ export default {
       });
   },
 
+  funTheme(context) {
+    context.commit('FUN_THEME');
+  },
+
   clearFaculty(context) {
     context.commit('CLEAR_FACULTY');
   },

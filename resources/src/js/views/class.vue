@@ -9,11 +9,7 @@
         </div>
     </div>
     <div v-else>
-        <div class="post-login type--center">
-            <div class="post-login-container">
-                <img class="nomi-logo nomi-logo--loading" src="/images/apple-touch-icon.png" alt="NOMI Logo; Names of Matador Individuals">
-            </div>
-        </div>
+        <loading-screen></loading-screen>
     </div>
 </template>
 
@@ -22,6 +18,7 @@ import settingsBanner from '../components/roster_components/settingsBanner.vue';
 import courseBanner from '../components/roster_components/courseBanner.vue';
 import navBar from '../components/fixed_components/navBar.vue';
 import rosterContainer from '../components/roster_components/rosterContainer.vue';
+import loadingScreen from '../components/fixed_components/loadingScreen.vue';
 import uploadBar from '../components/fixed_components/uploadBar.vue';
 
 export default {
@@ -30,6 +27,7 @@ export default {
         settingsBanner,
         courseBanner,
         rosterContainer,
+        loadingScreen,
         navBar,
         uploadBar
     },

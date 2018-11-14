@@ -14,11 +14,7 @@
         </div>
     </div>
 	<div v-else>
-        <div class="post-login type--center">
-			<div class="post-login-container">
-            	<img class="nomi-logo nomi-logo--loading" src="/images/apple-touch-icon.png" alt="NOMI Logo; Names of Matador Individuals">
-			</div>
-        </div>
+    	<loading-screen></loading-screen>
     </div>
 </template>
 
@@ -28,6 +24,7 @@ import profileContainer from "../components/profile_components/profileContainer.
 import modal from "../components/fixed_components/modal.vue";
 import profileInfo from "../components/profile_components/profileInfo.vue";
 import navBar from '../components/fixed_components/navBar.vue';
+import loadingScreen from '../components/fixed_components/loadingScreen.vue';
 import uploadBar from '../components/fixed_components/uploadBar.vue';
 
 export default {
@@ -41,6 +38,7 @@ export default {
 
 	components: {
 		profileContainer,
+		loadingScreen,
 		modal,
 		profileInfo,
 		navBar,
