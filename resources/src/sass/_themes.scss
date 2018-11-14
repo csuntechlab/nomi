@@ -32,10 +32,6 @@
 	background-color: rgb(16, 70, 105);
 }
 
-#Cloudy {
-	background-color: rgb(115, 115, 115);
-}
-
 #Noire {
 	background-color: rgb(25, 25, 25);
 }
@@ -189,39 +185,6 @@ $themes: (
 		galleryBtnText: rgb(46, 136, 197),
 
 		feedbackBtn: rgb(35, 115, 170),
-	),
-
-	cloudyTheme: (
-		mainFontFamily: sans-serif,
-		mainFontSize: 1.1rem,
-
-		navigationBars: rgb(60, 60, 60),
-		sideMenu: rgb(75, 75, 75),
-		accentColor: rgb(245, 175, 25),
-		altAccent: rgb(90, 90, 90),
-		backgroundColor: rgb(145, 145, 145),
-		textColor: rgb(225, 225, 225),
-
-		panelColor: rgb(105, 105, 105),
-		toolBanner: rgb(105, 105, 105),
-
-		staleColor: rgb(59, 59, 59),
-		hoverColor: rgb(145, 145, 145),
-
-		buttonText: rgb(245, 245, 245),
-		buttonColor: rgb(245, 175, 25),
-		disabledBtnColor: rgba(245, 245, 245, 0.35),
-
-		selectionActive: rgb(255, 255, 255),
-		selectionInactive: rgb(115, 115, 115),
-
-		galleryBtnBg: rgb(245, 175, 25),
-		galleryBtnText: rgb(255, 255, 255),
-
-		feedbackBtn: rgb(25, 25, 25),
-
-		inputBorder: none,
-		inputColor: rgb(60, 60, 60),
 	),
 
 	noireTheme: (

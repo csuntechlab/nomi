@@ -12,7 +12,6 @@ export default {
   // Views & Sorting
   list: true,
   flash: false,
-  funTheme: false,
   sortLastName: false,
   sortAscending: true,
 

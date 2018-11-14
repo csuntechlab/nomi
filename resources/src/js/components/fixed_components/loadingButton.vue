@@ -7,12 +7,17 @@
             <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
         </div>
     </div>
+
 </template>
-
 <script>
+    export default {
+      name: 'loading-button',
 
-export default {
-    name: 'loading-button',
-};
-
+      data: () => ({
+        ok: false,
+      }),
+    };
 </script>
+<style>
+
+</style>

@@ -10,7 +10,6 @@
         <button id="Olive" @click="updateTheme('theme-oliveTheme')" class="theme__item" name="oliveTheme"> Olive</button>
         <button id="Neptune" @click="updateTheme('theme-neptuneTheme')" class="theme__item" name="neptuneTheme"> Neptune</button>
         <button id="Ocean" @click="updateTheme('theme-oceanTheme')" class="theme__item" name="oceanTheme"> Ocean</button>
-        <button id="Cloudy" v-if="this.$store.state.base.funTheme" @click="updateTheme('theme-cloudyTheme')" class="theme__item" name="cloudyTheme"> Cloudy</button>
         <button id="Noire" @click="updateTheme('theme-noireTheme')" class="theme__item" name="noireTheme"> Noire</button>
     </div>
 </div>
