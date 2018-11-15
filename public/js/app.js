@@ -23614,7 +23614,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     props: ['image_type'],
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember', 'modalData'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['studentProfile', 'facultyMember', 'modalData', 'term'])),
 
     methods: {
         updateImageHandler: function updateImageHandler() {
@@ -23623,13 +23623,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 studentId: this.modalData.student_id,
                 image_priority: this.image_type
             });
-            // this.$store.dispatch(
-            //     'updateImagePriority',
-            //     {
-            //         image_priority: this.image_type,
-            //         faculty_id: this.facultyMember.id.replace("members:", ""),
-            //     }
-            // );
+            this.$store.dispatch('updateImagePriority', {
+                studentId: this.modalData.student_id,
+                image_priority: this.image_type,
+                faculty_id: this.facultyMember.id.replace("members:", ""),
+                term: this.term
+            });
         }
     }
 });
@@ -26442,9 +26441,14 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
             context.commit("API_FAILURE", error);
         });
     },
-    updateImagePriority: function updateImagePriority(context) {
+    updateImagePriority: function updateImagePriority(context, payload) {
+        var data = new FormData();
+        data.append('student_id', payload.studentId);
+        data.append('image_priority', payload.image_priority);
+        data.append('term', payload.term);
+        data.append('faculty_id', payload.faculty_id);
         window.axios.post('api/priority', data).then(function (response) {
-            context.commit('UPDATE_IMAGE_PRIORITY', response);
+            context.commit('UPDATE_IMAGE_PRIORITY', payload.image_priority);
         }).catch(function (error) {
             context.commit('API_FAILURE', error);
         });
@@ -26545,11 +26549,9 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   UPDATE_NOTES: function UPDATE_NOTES(state, notes) {
     state.studentProfile.notes = notes;
   },
-  UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
-    var data = new FormData();
-    data.append('student_id', state.studentProfile.id);
-    data.append('image_priority', payload.image_priority);
-    data.append('faculty_id', payload.faculty_id);
+  UPDATE_IMAGE_PRIORITY: function UPDATE_IMAGE_PRIORITY(state, payload) {
+    state.studentProfile.imagePriority = payload;
+    state.modalData.image_priority = payload;
   },
   NULLIFY_STUDENT_PROFILE: function NULLIFY_STUDENT_PROFILE(state) {
     state.studentProfile = {

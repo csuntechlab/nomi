@@ -19,7 +19,8 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
-                'modalData'
+                'modalData',
+                'term'
             ])
         },
 
@@ -33,13 +34,15 @@
                         image_priority: this.image_type,
                     }
                 );
-                // this.$store.dispatch(
-                //     'updateImagePriority',
-                //     {
-                //         image_priority: this.image_type,
-                //         faculty_id: this.facultyMember.id.replace("members:", ""),
-                //     }
-                // );
+                this.$store.dispatch(
+                    'updateImagePriority',
+                    {
+                        studentId: this.modalData.student_id,
+                        image_priority: this.image_type,
+                        faculty_id: this.facultyMember.id.replace("members:", ""),
+                        term: this.term,
+                    }
+                );
             }
         }
     }

@@ -14,7 +14,7 @@ export default {
         student: null,
 
     },
-    
+
 
     currentStudent: null,
     profileErrors: null,
