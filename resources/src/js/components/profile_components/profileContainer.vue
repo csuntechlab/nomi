@@ -20,7 +20,7 @@
                     </div>
                     </slide>
                 </carousel>
-                <carousel v-else :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
                    
                     <slide class="slide-wrap">
                     <div>
@@ -59,6 +59,7 @@ export default {
   computed: {
       emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+      return this.goToPage(0)
     },
   }
 }

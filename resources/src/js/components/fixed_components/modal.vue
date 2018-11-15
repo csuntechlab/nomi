@@ -16,11 +16,8 @@
           </div>
         </div>
         <div class="modal-footer cf">
-          <div v-if="modalData.image_priority === 'likeness'" name="footer" class="modal-footer" >
+          <div name="footer" class="modal-footer" >
             <croppa-functionality v-if="croppaAvailable"></croppa-functionality>
-          </div>
-          <div v-else name="footer" class="modal-footer" >
-            <croppa-functionality v-if="!croppaAvailable"></croppa-functionality>
           </div>
         </div>
       </div>

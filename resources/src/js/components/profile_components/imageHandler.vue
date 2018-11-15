@@ -26,7 +26,7 @@
 
         methods: {
             updateImageHandler() {
-                document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
+                // document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
                 this.$store.dispatch(
                     'updateStudentPriority',
                     {
