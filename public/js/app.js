@@ -24580,6 +24580,9 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(1);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -24630,6 +24633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24638,12 +24642,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
   },
-  computed: {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["modalData"]), {
     emailExists: function emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
       return this.goToPage(0);
     }
-  }
+  })
 });
 
 /***/ }),
@@ -24660,7 +24664,7 @@ var render = function() {
         "div",
         { staticClass: "profile__divider" },
         [
-          _vm.student.image_priority === "likeness"
+          _vm.modalData.image_priority === "likeness"
             ? _c(
                 "carousel",
                 {
