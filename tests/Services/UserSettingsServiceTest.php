@@ -51,11 +51,11 @@ class UserSettingsServiceTest extends TestCase
 
         factory(Theme::class)->make([
             'user_id' => 'members:professor',
-            'theme' => 'theme-bluesTheme',
+            'theme' => 'theme-blueTheme',
         ])->save();
 
         $service = new UserSettingsService($this->termModelRepository);
 
-        $this->assertEquals($service->getSettings(), \json_encode(['theme' => 'theme-bluesTheme']));
+        $this->assertEquals($service->getSettings(), \json_encode(['theme' => 'theme-blueTheme']));
     }
 }

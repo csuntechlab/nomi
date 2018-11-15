@@ -16,7 +16,7 @@ export default {
   sortAscending: true,
 
   // Themes
-  themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
+  themeName: { theme: 'theme-matadorTheme' },
 
   // Back Button
   hideBack: true,
