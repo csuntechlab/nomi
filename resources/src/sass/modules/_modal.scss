@@ -143,10 +143,20 @@
 	text-align: center;
 }
 
-.modal-body .VueCarousel-slide.slide-wrap {
-	padding: 0.25rem 0.75rem;
+.VueCarousel-dot-container {
+	& li {
+		margin-top: 0 !important;
+	}
 }
 
-.modal-body .VueCarousel-dot-container li {
-	margin-top: 0 !important;
+.VueCarousel-dot > * {
+	@include themify($themes){
+		background-color: themed("selectionInactive") !important;
+	}
+}
+
+.VueCarousel-dot--active > * {
+	@include themify($themes){
+		background-color: themed("selectionActive") !important;
+	}
 }

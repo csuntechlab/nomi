@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\UserSettingsContract;
-  use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
+use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
 use App\Models\Theme;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -24,7 +24,7 @@ class UserSettingsService implements UserSettingsContract
         $themeModel = Theme::where('user_id', auth()->user()->user_id)->first();
 
         if (null === $themeModel) {
-            $theme = 'theme-OnceAMatadorAlwaysAMatador';
+            $theme = 'theme-matadorTheme';
         } else {
             $theme = $themeModel->theme;
         }

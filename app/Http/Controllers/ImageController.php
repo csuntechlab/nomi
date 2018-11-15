@@ -36,7 +36,13 @@ class ImageController extends Controller
 
     public function updatePriority(Request $request)
     {
-        return $this->imageCRUDUtility->updatePriority($request);
+      $data = [
+        'student_id' => $request->student_id,
+        'image_priority' => $request->image_priority,
+        'term' => $request->term,
+        'faculty_id' => $request->faculty_id,
+      ];
+        return $this->imageCRUDUtility->updatePriority($data);
     }
 
     public function getPriority($student_id)

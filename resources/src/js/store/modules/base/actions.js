@@ -298,4 +298,12 @@ export default {
     context.commit('SET_SEM');
   },
 
+  startUploadFeedback(context) {
+    context.commit('START_UPLOAD_FEEDBACK');
+  },
+
+  stopUploadFeedback(context) {
+    context.commit('STOP_UPLOAD_FEEDBACK');
+  }
+
 };

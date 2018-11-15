@@ -4,7 +4,7 @@
 		position: fixed;
 		height: rem(37);
 		width: 100%;
-		z-index: 1;
+		z-index: 2;
 		top: 0;
 
 		&__sub-brand {
@@ -32,7 +32,7 @@
 	border-bottom-left-radius:10px;
 	border-bottom-right-radius:10px;
 	@include themify($themes) {
-		background-color: themed("buttonColor");
+		background-color: themed("feedbackBtn");
 		color: themed("buttonText");
 	}
 	@media only screen and (max-width: 699px){
@@ -75,7 +75,7 @@
 	}
 
 	&__button {
-		color: rgba(255, 255, 255, 0.6);
+		color: rgba(255, 255, 255, 0.8);
 		padding: .75rem 0 .5rem;
 	
 		&--active {

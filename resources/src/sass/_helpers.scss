@@ -28,6 +28,21 @@ textarea[type="text"]:focus{
 	}
 }
 
+.nomi-logo {
+	&--loading {
+		animation: logoAnimation 1500ms infinite;
+		width: 100px;
+		@keyframes logoAnimation {
+			15% {width: 125px; transform: rotate(-25deg);}
+			30% {transform: rotate(20deg);}
+			45% {transform: rotate(-12deg);}
+			60% {transform: rotate(8deg);}
+			75% {transform: rotate(-4deg);}
+			90% {transform: rotate(2deg);}
+		}
+	}
+}
+
 .text-overflow {
 	overflow-wrap: break-word;
 	word-wrap: break-word;
@@ -177,6 +192,31 @@ textarea[type="text"]:focus{
 	margin: 0 auto;
 }
 
-.padding{
-	padding: 15%;
+.upload-bar{
+	@include themify($themes) {
+		background-color: themed("buttonColor");
+		color: themed("buttonText");
+	}
+	display: block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	line-height: inherit;
+	text-decoration: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: #e7e7e7;
+	outline: 0;
+	-webkit-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+
+	&--normal{
+		position: relative;
+	}
+	&--sticky{
+		z-index: 1;
+		position: sticky;
+		top: rem(37);
+	}
 }
