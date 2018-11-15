@@ -23629,7 +23629,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.modalData.image_priority === _vm.image_type
+  return this.studentProfile.imagePriority === _vm.image_type
     ? _c("div", [_vm._m(0)])
     : _c("div", [
         _c(
