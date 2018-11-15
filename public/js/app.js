@@ -19594,9 +19594,9 @@ var render = function() {
                     { staticClass: "panel__header course__header--empty mb-0" },
                     [
                       _vm._v(
-                        "\r\n                    You did not teach any classes for " +
+                        "\n                    You did not teach any classes for " +
                           _vm._s(_vm.displayedTerm) +
-                          ".\r\n                "
+                          ".\n                "
                       )
                     ]
                   ),
@@ -19616,7 +19616,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("br"),
-                      _vm._v("\r\n                Enjoy our App!")
+                      _vm._v("\n                Enjoy our App!")
                     ]
                   )
                 ]
@@ -19635,9 +19635,9 @@ var render = function() {
                 { staticClass: "panel__header course__header--empty mb-0" },
                 [
                   _vm._v(
-                    "\r\n                You are not teaching any classes for " +
+                    "\n                You are not teaching any classes for " +
                       _vm._s(_vm.displayedTerm) +
-                      ".\r\n            "
+                      ".\n            "
                   )
                 ]
               ),
@@ -19657,7 +19657,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("br"),
-                  _vm._v("\r\n                Enjoy our App!")
+                  _vm._v("\n                Enjoy our App!")
                 ]
               )
             ]
@@ -19676,9 +19676,9 @@ var render = function() {
                   { staticClass: "panel__header course__header--empty mb-0" },
                   [
                     _vm._v(
-                      "\r\n                You are not scheduled to teach any classes for " +
+                      "\n                You are not scheduled to teach any classes for " +
                         _vm._s(_vm.displayedTerm) +
-                        ".\r\n            "
+                        ".\n            "
                     )
                   ]
                 ),
@@ -19689,7 +19689,7 @@ var render = function() {
                   [
                     _c("div", { staticClass: "row" }, [
                       _vm._v(
-                        "If you notice any errors in your class schedule, please \r\n                "
+                        "If you notice any errors in your class schedule, please \n                "
                       ),
                       _c("a", { attrs: { href: this.url + "/support" } }, [
                         _vm._v("let us know")
@@ -19698,7 +19698,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("br"),
-                    _vm._v("\r\n                Enjoy our App!")
+                    _vm._v("\n                Enjoy our App!")
                   ]
                 )
               ]
@@ -22606,40 +22606,40 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: 'gallery-card',
-	props: ['student'],
-	mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_getStudent_js__["a" /* getStudent */]],
+		name: 'gallery-card',
+		props: ['student'],
+		mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_getStudent_js__["a" /* getStudent */]],
 
-	data: function data() {
-		return {
-			messages: true,
-			errors: [],
-			showCroppaModal: false
-		};
-	},
+		data: function data() {
+				return {
+						messages: true,
+						errors: [],
+						showCroppaModal: false
+				};
+		},
 
-	components: {
-		galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
-	},
+		components: {
+				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
+		},
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
-		display_name: function display_name() {
-			return this.student.first_name + " " + this.student.last_name[0] + ".";
-		},
-		email_uri: function email_uri() {
-			return this.student.email.split('@')[0];
-		},
-		emailExists: function emailExists() {
-			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-		},
-		image: function image() {
-			if (this.student.image_priority === 'likeness') {
-				return this.student.images.likeness;
-			}if (this.student.image_priority === 'avatar') {
-				return this.student.images.avatar;
-			}
-		}
-	})
+		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+				display_name: function display_name() {
+						return this.student.first_name + " " + this.student.last_name[0] + ".";
+				},
+				email_uri: function email_uri() {
+						return this.student.email.split('@')[0];
+				},
+				emailExists: function emailExists() {
+						return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+				},
+				image: function image() {
+						if (this.student.image_priority === 'likeness') {
+								return this.student.images.likeness;
+						}if (this.student.image_priority === 'avatar') {
+								return this.student.images.avatar;
+						}
+				}
+		})
 });
 
 /***/ }),
@@ -25874,7 +25874,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\r\n        Select Theme\r\n    ")
+      _vm._v("\n        Select Theme\n    ")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
@@ -25890,7 +25890,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\r\n        Matador")]
+          [_vm._v("\n        Matador")]
         ),
         _vm._v(" "),
         _c(
@@ -26240,7 +26240,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         var response = payload;
         window.axios.get('student_profile/' + payload.email).then(function (payload) {
             var getters = context.getters;
-            console.log(payload);
             context.commit('GET_STUDENT_PROFILE', { payload: payload, getters: getters, response: response });
             context.commit('GET_STUDENT_BIO', payload);
         }).catch(function (error) {

@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Contracts\ImageCRUDContract;
+use App\Contracts\UserSettingsContract;
 use App\ModelRepositoryInterfaces\UserModelRepositoryInterface;
 use App\Models\ImagePriority;
-use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 // use Illuminate\Support\Facades\Cache;
+use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Facades\Validator;
-use App\Contracts\UserSettingsContract;
-
 
 /**
  * Intervention implementation of image CRUD.
@@ -27,8 +26,7 @@ class ImageCRUDService implements ImageCRUDContract
         UserModelRepositoryInterface $userModelUtility,
         UserSettingsContract $userSettingsUtility,
         Repository $repository
-        )
-    {
+        ) {
         $this->userModelUtility = $userModelUtility;
         $this->userSettingsUtility = $userSettingsUtility;
         $this->cache = $repository;
@@ -134,7 +132,7 @@ class ImageCRUDService implements ImageCRUDContract
         $facultyID = $data['faculty_id'];
         $term = $data['term'];
         $priority = ImagePriority::updateOrCreate(
-            ['user_id' => $facultyID, 'student_id' => $data['student_id']],
+            ['user_id' => "members:{$facultyID}", 'student_id' => "members:{$data['student_id']}"],
             ['image_priority' => $data['image_priority']]
         );
 
@@ -148,11 +146,11 @@ class ImageCRUDService implements ImageCRUDContract
 
         for ($i = 0; $i < 10; ++$i) {
             if ($this->cache->has('students:' . $i . ':' . $facultyID . 'term:' . $term)) {
-                $this->cache->forget('students:' . $i . ':' . $facultyID. 'term:' . $term);
+                $this->cache->forget('students:' . $i . ':' . $facultyID . 'term:' . $term);
                 $msg .= "forgot students\n";
             }
-            if ($this->cache->has('courses:' . $facultyID. 'term:' . $term)) {
-                $this->cache->forget('courses:' . $facultyID. 'term:' . $term);
+            if ($this->cache->has('courses:' . $facultyID . 'term:' . $term)) {
+                $this->cache->forget('courses:' . $facultyID . 'term:' . $term);
                 $msg .= "forgot courses\n\n";
             }
         }
@@ -160,8 +158,8 @@ class ImageCRUDService implements ImageCRUDContract
         return $msg;
     }
 
-    private function getCurrentTerm($term) {
-
+    private function getCurrentTerm($term)
+    {
         if (env('CURRENT_TERM') && $term == null) {
             $term = env('CURRENT_TERM');
         }
@@ -169,6 +167,7 @@ class ImageCRUDService implements ImageCRUDContract
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }
+
         return $term;
     }
 }

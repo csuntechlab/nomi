@@ -4,7 +4,6 @@ export default {
         window.axios.get('student_profile/'+ payload.email)
             .then(payload => {
                 var getters = context.getters
-                console.log(payload);
                 context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
                 context.commit('GET_STUDENT_BIO', payload)
             })
