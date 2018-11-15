@@ -249,19 +249,25 @@
 }
 
 .post-login {
-		position: absolute;
+		position: fixed;
+		top: 0;
+		left: 0;
 		overflow: hidden;
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	    height: 100vh;
 	    width: 100vw;
 	    z-index: 200;
 		background-color: white;
 
+		&-container {
+			margin-bottom: 4rem;
+		}
 	
 	    &__loading-icon {
+			display: inline-block;
 			position: relative;
 			color: #d00d2d;
-			justify-content: center;
-			margin-top: calc(100% / 2);
 	    }
 	}

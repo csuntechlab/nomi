@@ -7,6 +7,7 @@ export default {
   displaySideMenu: false,
   currentLocation: 'home',
   students: [],
+  uploadFeedback: false,
 
   // Views & Sorting
   list: true,
@@ -15,7 +16,7 @@ export default {
   sortAscending: true,
 
   // Themes
-  themeName: { theme: 'theme-OnceAMatadorAlwaysAMatador' },
+  themeName: { theme: 'theme-matadorTheme' },
 
   // Back Button
   hideBack: true,

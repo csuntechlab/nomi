@@ -24,7 +24,7 @@ class UserSettingsService implements UserSettingsContract
         $themeModel = Theme::where('user_id', auth()->user()->user_id)->first();
 
         if (null === $themeModel) {
-            $theme = 'theme-OnceAMatadorAlwaysAMatador';
+            $theme = 'theme-matadorTheme';
         } else {
             $theme = $themeModel->theme;
         }

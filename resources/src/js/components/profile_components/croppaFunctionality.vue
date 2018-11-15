@@ -15,6 +15,7 @@
 <script>
 import modal from "../fixed_components/modal.vue";
 import { mapGetters, mapActions } from 'vuex';
+
 export default {
         name: "croppa-functionality",
         data: function() {
@@ -37,13 +38,13 @@ export default {
 
         methods: {
         ...mapActions(['toggleCropping','toggleModal']),
-           chooseImage() {
-             this.$root.$emit('chooseImage');
-           },
-            confirmImage() {
-             this.$root.$emit('confirmImage');
-             this.toggleModal(false);
-           },
+            chooseImage() {
+                this.$root.$emit('chooseImage');
+            },
+                confirmImage() {
+                this.$root.$emit('confirmImage');
+                this.toggleModal(false);
+            },
         },
         beforeDestroy() {
             this.$root.$off('chooseImage');
@@ -51,5 +52,4 @@ export default {
         }
 
     }
-
 </script>

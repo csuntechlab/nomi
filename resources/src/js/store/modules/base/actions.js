@@ -45,6 +45,10 @@ export default {
       });
   },
 
+  clearFaculty(context) {
+    context.commit('CLEAR_FACULTY');
+  },
+
   clearErrors(context) {
     context.commit('CLEAR_ERRORS');
   },
@@ -297,5 +301,13 @@ export default {
   setSem(context) {
     context.commit('SET_SEM');
   },
+
+  startUploadFeedback(context) {
+    context.commit('START_UPLOAD_FEEDBACK');
+  },
+
+  stopUploadFeedback(context) {
+    context.commit('STOP_UPLOAD_FEEDBACK');
+  }
 
 };

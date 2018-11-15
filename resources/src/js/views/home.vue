@@ -6,7 +6,9 @@
     </div>
     <div v-else>
         <div class="post-login type--center">
-            <i class="fa fa-spinner fa-spin fa-3x post-login__loading-icon"></i>
+            <div class="post-login-container">
+                <img class="nomi-logo nomi-logo--loading" src="/images/apple-touch-icon.png" alt="NOMI Logo; Names of Matador Individuals">
+            </div>
         </div>
     </div>
 </template>
@@ -32,6 +34,7 @@ export default {
     },
 
     beforeCreate() {
+        this.$store.dispatch('clearFaculty');
         this.$store.dispatch('getOnlyData');
     },
 };

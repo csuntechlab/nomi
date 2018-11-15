@@ -80,6 +80,7 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('getOnlyData');
+                            this.$store.dispatch('startUploadFeedback')
                             this.$parent.$emit('close', url);
                         } else {
                             console.error('OH NO');

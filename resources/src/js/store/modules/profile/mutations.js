@@ -52,11 +52,9 @@ export default {
     state.studentProfile.notes = notes;
   },
 
-  UPDATE_IMAGE_PRIORITY(state, payload, rootState) {
-    const data = new FormData();
-    data.append('student_id', state.studentProfile.id);
-    data.append('image_priority', payload.image_priority);
-    data.append('faculty_id', payload.faculty_id);
+  UPDATE_IMAGE_PRIORITY(state, payload) {
+    state.studentProfile.imagePriority = payload;
+    state.modalData.image_priority = payload;
   },
 
   NULLIFY_STUDENT_PROFILE(state) {
