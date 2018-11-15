@@ -22958,6 +22958,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -23246,6 +23249,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23681,73 +23704,141 @@ var render = function() {
       "div",
       { staticClass: "modal-body__carousel" },
       [
-        _c(
-          "carousel",
-          {
-            attrs: {
-              perPage: 1,
-              paginationActiveColor: "#919191",
-              paginationColor: "rgba(145,145,145,.3)"
-            },
-            on: { pageChange: _vm.handleSlideClick }
-          },
-          [
-            _c("slide", { staticClass: "slide-wrap" }, [
-              _c(
-                "div",
-                [
-                  _c("croppa-profile", { attrs: { student: _vm.student } }),
-                  _vm._v(" "),
+        _vm.student.image_priority == "likeness"
+          ? _c(
+              "carousel",
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                },
+                on: { pageChange: _vm.handleSlideClick }
+              },
+              [
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "type--center" },
                     [
-                      _c("i", [_vm._v("Faculty Uploaded")]),
+                      _c("croppa-profile", { attrs: { student: _vm.student } }),
                       _vm._v(" "),
-                      _c("image-handler", {
-                        staticClass: "profile-carousel__default-btn",
-                        attrs: { image_type: "likeness" }
-                      })
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Faculty Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "likeness" }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("slide", { staticClass: "slide-wrap" }, [
-              _c(
-                "div",
-                [
-                  _c("profile-picture", {
-                    attrs: {
-                      image: _vm.student.images.avatar,
-                      editable: false,
-                      type: "profile-picture"
-                    }
-                  }),
-                  _vm._v(" "),
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "type--center" },
                     [
-                      _c("i", [_vm._v("Student Uploaded")]),
+                      _c("profile-picture", {
+                        attrs: {
+                          image: _vm.student.images.avatar,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("image-handler", {
-                        staticClass: "profile-carousel__default-btn",
-                        attrs: { image_type: "avatar" }
-                      })
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Student Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "avatar" }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              )
-            ])
-          ],
-          1
-        )
+                ])
+              ],
+              1
+            )
+          : _c(
+              "carousel",
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                },
+                on: { pageChange: _vm.handleSlideClick }
+              },
+              [
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("profile-picture", {
+                        attrs: {
+                          image: _vm.student.images.avatar,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Student Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "avatar" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("croppa-profile", { attrs: { student: _vm.student } }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Faculty Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "likeness" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            )
       ],
       1
     )
@@ -23808,12 +23899,27 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer cf" }, [
-              _c(
-                "div",
-                { staticClass: "modal-footer", attrs: { name: "footer" } },
-                [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
-                1
-              )
+              _vm.modalData.image_priority === "likeness"
+                ? _c(
+                    "div",
+                    { staticClass: "modal-footer", attrs: { name: "footer" } },
+                    [
+                      _vm.croppaAvailable
+                        ? _c("croppa-functionality")
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    { staticClass: "modal-footer", attrs: { name: "footer" } },
+                    [
+                      !_vm.croppaAvailable
+                        ? _c("croppa-functionality")
+                        : _vm._e()
+                    ],
+                    1
+                  )
             ])
           ])
         ])
@@ -24611,6 +24717,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -24640,60 +24765,115 @@ var render = function() {
         "div",
         { staticClass: "profile__divider" },
         [
-          _c(
-            "carousel",
-            {
-              attrs: {
-                perPage: 1,
-                paginationActiveColor: "#919191",
-                paginationColor: "rgba(145,145,145,.3)"
-              }
-            },
-            [
-              _c("slide", { staticClass: "slide-wrap" }, [
-                _c(
-                  "div",
-                  [
-                    _c("profile-picture", {
-                      attrs: {
-                        student: _vm.student,
-                        image: _vm.student.images.likeness,
-                        editable: this.emailExists,
-                        type: "profile"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "type--center" }, [
-                      _c("i", [_vm._v("Faculty Uploaded")])
-                    ])
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("slide", { staticClass: "slide-wrap" }, [
-                _c(
-                  "div",
-                  [
-                    _c("profile-picture", {
-                      attrs: {
-                        student: _vm.student,
-                        image: _vm.student.images.avatar,
-                        editable: false,
-                        type: "profile"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "type--center" }, [
-                      _c("i", [_vm._v("Student Uploaded")])
-                    ])
-                  ],
-                  1
-                )
-              ])
-            ],
-            1
-          )
+          _vm.student.image_priority === "likeness"
+            ? _c(
+                "carousel",
+                {
+                  attrs: {
+                    perPage: 1,
+                    paginationActiveColor: "#919191",
+                    paginationColor: "rgba(145,145,145,.3)"
+                  }
+                },
+                [
+                  _c("slide", { staticClass: "slide-wrap" }, [
+                    _c(
+                      "div",
+                      [
+                        _c("profile-picture", {
+                          attrs: {
+                            student: _vm.student,
+                            image: _vm.student.images.likeness,
+                            editable: this.emailExists,
+                            type: "profile"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "type--center" }, [
+                          _c("i", [_vm._v("Faculty Uploaded")])
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("slide", { staticClass: "slide-wrap" }, [
+                    _c(
+                      "div",
+                      [
+                        _c("profile-picture", {
+                          attrs: {
+                            student: _vm.student,
+                            image: _vm.student.images.avatar,
+                            editable: false,
+                            type: "profile"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "type--center" }, [
+                          _c("i", [_vm._v("Student Uploaded")])
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              )
+            : _c(
+                "carousel",
+                {
+                  attrs: {
+                    perPage: 1,
+                    paginationActiveColor: "#919191",
+                    paginationColor: "rgba(145,145,145,.3)"
+                  }
+                },
+                [
+                  _c("slide", { staticClass: "slide-wrap" }, [
+                    _c(
+                      "div",
+                      [
+                        _c("profile-picture", {
+                          attrs: {
+                            student: _vm.student,
+                            image: _vm.student.images.avatar,
+                            editable: false,
+                            type: "profile"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "type--center" }, [
+                          _c("i", [_vm._v("Student Uploaded")])
+                        ])
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("slide", { staticClass: "slide-wrap" }, [
+                    _c(
+                      "div",
+                      [
+                        _c("profile-picture", {
+                          attrs: {
+                            student: _vm.student,
+                            image: _vm.student.images.likeness,
+                            editable: this.emailExists,
+                            type: "profile"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "type--center" }, [
+                          _c("i", [_vm._v("Faculty Uploaded")])
+                        ])
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              )
         ],
         1
       ),
