@@ -24664,7 +24664,7 @@ var render = function() {
         "div",
         { staticClass: "profile__divider" },
         [
-          _vm.modalData.image_priority === "likeness"
+          _vm.student.image_priority === "likeness"
             ? _c(
                 "carousel",
                 {
