@@ -2,7 +2,7 @@
 <div>
     <div class="profile profile__color-layer type--center">
             <div class="profile__divider">
-                <carousel v-if="student.image_priority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                <carousel v-if="modalData.image_priority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
                         <profile-picture :student="student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
