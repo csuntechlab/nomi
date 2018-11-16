@@ -21392,7 +21392,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     modal: __WEBPACK_IMPORTED_MODULE_3__fixed_components_modal_vue___default.a
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['courses', 'flashroster', 'flash', 'modalVisible'])),
   methods: {
     markStudentAsRecognized: function markStudentAsRecognized(payload) {
       this.flashroster[this.courseid].forEach(function (student) {
@@ -22958,6 +22958,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -22967,7 +22970,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   data: function data() {
     return {
-      croppaAvailable: true
+      croppaAvailable: true,
+      okayToUpdate: null
     };
   },
 
@@ -22979,12 +22983,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     this.$root.$on('newSlide', function () {
       _this.croppaToggle();
     });
+    this.$root.$on('okayToUpdate', function (selected) {
+      _this.setUpdate(selected);
+    });
   },
 
 
   watch: {
     modalVisible: function modalVisible() {
-
       this.upDate();
     }
   },
@@ -23000,9 +23006,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$store.dispatch("toggleCropping", false);
       this.croppaAvailable = true;
     },
+    setUpdate: function setUpdate(selected) {
+      this.okayToUpdate = selected;
+    },
     upDate: function upDate() {
       if (this.modalVisible === true) {
-
         this.$store.dispatch("toggleCropping", true);
       }
     },
@@ -23271,6 +23279,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -23279,6 +23308,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "modals-carousel",
+  data: function data() {
+    return {
+      okayToUpdate: null
+    };
+  },
 
   props: ["student"],
 
@@ -23287,12 +23321,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a,
     croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible", "toggleCroppa", "permission"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"])),
 
   methods: {
     handleSlideClick: function handleSlideClick() {
       this.$root.$emit('newSlide');
     }
+  },
+
+  created: function created() {
+    if (this.student.image_priority === 'likeness') {
+      this.okayToUpdate = true;
+    } else {
+      this.okayToUpdate = false;
+    }
+    this.$root.$emit('okayToUpdate', this.okayToUpdate);
   }
 });
 
@@ -23678,73 +23721,141 @@ var render = function() {
       "div",
       { staticClass: "modal-body__carousel" },
       [
-        _c(
-          "carousel",
-          {
-            attrs: {
-              perPage: 1,
-              paginationActiveColor: "#919191",
-              paginationColor: "rgba(145,145,145,.3)"
-            },
-            on: { pageChange: _vm.handleSlideClick }
-          },
-          [
-            _c("slide", { staticClass: "slide-wrap" }, [
-              _c(
-                "div",
-                [
-                  _c("croppa-profile", { attrs: { student: _vm.student } }),
-                  _vm._v(" "),
+        _vm.okayToUpdate
+          ? _c(
+              "carousel",
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                },
+                on: { pageChange: _vm.handleSlideClick }
+              },
+              [
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "type--center" },
                     [
-                      _c("i", [_vm._v("Faculty Uploaded")]),
+                      _c("croppa-profile", { attrs: { student: _vm.student } }),
                       _vm._v(" "),
-                      _c("image-handler", {
-                        staticClass: "profile-carousel__default-btn",
-                        attrs: { image_type: "likeness" }
-                      })
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Faculty Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "likeness" }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c("slide", { staticClass: "slide-wrap" }, [
-              _c(
-                "div",
-                [
-                  _c("profile-picture", {
-                    attrs: {
-                      image: _vm.student.images.avatar,
-                      editable: false,
-                      type: "profile-picture"
-                    }
-                  }),
-                  _vm._v(" "),
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slide-wrap" }, [
                   _c(
                     "div",
-                    { staticClass: "type--center" },
                     [
-                      _c("i", [_vm._v("Student Uploaded")]),
+                      _c("profile-picture", {
+                        attrs: {
+                          image: _vm.student.images.avatar,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
                       _vm._v(" "),
-                      _c("image-handler", {
-                        staticClass: "profile-carousel__default-btn",
-                        attrs: { image_type: "avatar" }
-                      })
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Student Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "avatar" }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
-                1
-              )
-            ])
-          ],
-          1
-        )
+                ])
+              ],
+              1
+            )
+          : _c(
+              "carousel",
+              {
+                attrs: {
+                  perPage: 1,
+                  paginationActiveColor: "#919191",
+                  paginationColor: "rgba(145,145,145,.3)"
+                },
+                on: { pageChange: _vm.handleSlideClick }
+              },
+              [
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("profile-picture", {
+                        attrs: {
+                          image: _vm.student.images.avatar,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Student Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "avatar" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("slide", { staticClass: "slide-wrap" }, [
+                  _c(
+                    "div",
+                    [
+                      _c("croppa-profile", { attrs: { student: _vm.student } }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "type--center" },
+                        [
+                          _c("i", [_vm._v("Faculty Uploaded")]),
+                          _vm._v(" "),
+                          _c("image-handler", {
+                            staticClass: "profile-carousel__default-btn",
+                            attrs: { image_type: "likeness" }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            )
       ],
       1
     )
@@ -23805,12 +23916,27 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-footer cf" }, [
-              _c(
-                "div",
-                { staticClass: "modal-footer", attrs: { name: "footer" } },
-                [_vm.croppaAvailable ? _c("croppa-functionality") : _vm._e()],
-                1
-              )
+              _vm.okayToUpdate
+                ? _c(
+                    "div",
+                    { staticClass: "modal-footer", attrs: { name: "footer" } },
+                    [
+                      _vm.croppaAvailable
+                        ? _c("croppa-functionality")
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    { staticClass: "modal-footer", attrs: { name: "footer" } },
+                    [
+                      !_vm.croppaAvailable
+                        ? _c("croppa-functionality")
+                        : _vm._e()
+                    ],
+                    1
+                  )
             ])
           ])
         ])
