@@ -23244,8 +23244,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__profile_components_imageHandler_vue__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -23279,7 +23277,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
+/* harmony default export */ __webpack_exports__["default"] = ({
   name: "modals-carousel",
 
   props: ["student"],
@@ -23289,15 +23287,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a,
     croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible", "toggleCroppa"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible", "toggleCroppa", "permission"])),
 
   methods: {
     handleSlideClick: function handleSlideClick() {
       this.$root.$emit('newSlide');
     }
   }
-
-}, "computed", _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"]))));
+});
 
 /***/ }),
 /* 118 */
@@ -23629,8 +23626,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.studentProfile.imagePriority === _vm.image_type ||
-    _vm.modalData.image_priority === _vm.image_type
+  return _vm.modalData.image_priority === _vm.image_type
     ? _c("div", [_vm._m(0)])
     : _c("div", [
         _c(
@@ -24643,7 +24639,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["modalData"]), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile"]), {
     emailExists: function emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
       return this.goToPage(0);
@@ -24665,7 +24661,7 @@ var render = function() {
         "div",
         { staticClass: "profile__divider" },
         [
-          _vm.modalData.image_priority === "likeness"
+          _vm.studentProfile.imagePriority === "likeness"
             ? _c(
                 "carousel",
                 {
@@ -24682,7 +24678,7 @@ var render = function() {
                       [
                         _c("profile-picture", {
                           attrs: {
-                            student: _vm.student,
+                            student: _vm.studentProfile.student,
                             image: _vm.student.images.likeness,
                             editable: this.emailExists,
                             type: "profile"
@@ -24703,7 +24699,7 @@ var render = function() {
                       [
                         _c("profile-picture", {
                           attrs: {
-                            student: _vm.student,
+                            student: _vm.studentProfile.student,
                             image: _vm.student.images.avatar,
                             editable: false,
                             type: "profile"
@@ -24736,7 +24732,7 @@ var render = function() {
                       [
                         _c("profile-picture", {
                           attrs: {
-                            student: _vm.student,
+                            student: _vm.studentProfile.student,
                             image: _vm.student.images.avatar,
                             editable: false,
                             type: "profile"
@@ -24757,7 +24753,7 @@ var render = function() {
                       [
                         _c("profile-picture", {
                           attrs: {
-                            student: _vm.student,
+                            student: _vm.studentProfile.student,
                             image: _vm.student.images.likeness,
                             editable: this.emailExists,
                             type: "profile"
@@ -26585,6 +26581,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
       if (getters.students.hasOwnProperty(student)) {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
+          state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
           state.studentProfile.images = getters.students[student].images;
           break;
         }
@@ -26606,6 +26603,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     for (var student in getters.students) {
       if (getters.students[student].email == email) {
         state.studentProfile.student = getters.students[student];
+        state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
         state.studentProfile.images = getters.students[student].images;
         break;
       }

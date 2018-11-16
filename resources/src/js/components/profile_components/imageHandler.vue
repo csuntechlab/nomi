@@ -1,5 +1,5 @@
 <template>
-    <div v-if="studentProfile.imagePriority === image_type || modalData.image_priority === image_type">
+    <div v-if="modalData.image_priority === image_type">
         <button class="btn btn-default text-overflow">Default Set <i class="fas fa-check"/></button>
     </div>
     <div v-else>

@@ -42,7 +42,7 @@ export default {
     croppaProfile
   },
   computed: {
-    ...mapGetters(["studentProfile", "modalVisible","toggleCroppa"])
+    ...mapGetters(["studentProfile", "modalVisible","toggleCroppa", "permission"])
   },
 
   methods: {
@@ -51,10 +51,5 @@ export default {
       this.$root.$emit('newSlide');
     },
   },
-
-
-  computed: {
-    ...mapGetters(["permission"]),
-  }
 }
 </script>
