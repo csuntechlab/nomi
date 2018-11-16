@@ -20,6 +20,7 @@ export default {
       if (getters.students.hasOwnProperty(student)) {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
+          state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
           state.studentProfile.images = getters.students[student].images;
           break;
         }
@@ -38,6 +39,7 @@ export default {
     for (const student in getters.students) {
       if (getters.students[student].email == email) {
         state.studentProfile.student = getters.students[student];
+        state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
         state.studentProfile.images = getters.students[student].images;
         break;
       }

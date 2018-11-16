@@ -51,6 +51,7 @@ export default {
       'courses',
       'flashroster',
       'flash',
+      'modalVisible'
     ]),
   },
   methods: {

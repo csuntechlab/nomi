@@ -41,10 +41,6 @@ export default {
     state.facultyMember.lastName = payload.data.name_last;
   },
 
-  CLEAR_FACULTY(state) {
-    Object.assign(state, initialState);
-  },
-
   UPDATE_STUDENT_PRIORITY(state, payload) {
     for (let i = 0, len = state.courses.length; i < len; i += 1) {
       for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {

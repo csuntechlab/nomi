@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.modalData.image_priority === image_type">
+    <div v-if="modalData.image_priority === image_type">
         <button class="btn btn-default text-overflow">Default Set <i class="fas fa-check"/></button>
     </div>
     <div v-else>
@@ -26,7 +26,7 @@
 
         methods: {
             updateImageHandler() {
-                document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
+                // document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
                 this.$store.dispatch(
                     'updateStudentPriority',
                     {
@@ -43,6 +43,7 @@
                         term: this.term,
                     }
                 );
+              
             }
         }
     }

@@ -2,10 +2,10 @@
 <div>
     <div class="profile profile__color-layer type--center">
             <div class="profile__divider">
-                <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+                <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,9 +13,28 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                </carousel>
+                <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
+                   
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Student Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                     <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Faculty Uploaded</i>
                         </div>
                     </div>
                     </slide>
@@ -31,6 +50,7 @@
 </template>
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
+import { mapGetters, mapActions} from 'vuex';
 export default {
   name: "profile-container",
   props: ['student'],
@@ -38,9 +58,11 @@ export default {
       profilePicture
   },
   computed: {
+      ...mapGetters(["studentProfile"]),
       emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-    },
+      return this.goToPage(0)
+    }
   }
 }
 </script>
