@@ -528,11 +528,32 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
+.panel__edit-button-sim {
+  position: absolute;
+  top: 0;
+  height: 70%;
+  width: 100%;
+}
+
+.panel__edit-button-wrapper {
+  height: 100%;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.panel__edit-button-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 .panel__edit-button--profile {
   position: absolute;
-  bottom: 45%;
-  left: 75%;
-  padding: 4%;
+  bottom: 0;
+  right: 0;
+  margin: 2.5%;
+  padding: 5%;
   border-radius: 100%;
   font-size: 120%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -564,7 +585,13 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
-@media only screen and (max-width: 345px) {
+@media only screen and (max-width: 560px) {
+  .panel__edit-button--profile {
+    bottom: 15%;
+  }
+}
+
+@media only screen and (max-width: 325px) {
   .panel__edit-button--profile {
     bottom: 30%;
   }
@@ -2415,7 +2442,6 @@ textarea[type="text"]:focus {
 }
 
 .profile__divider {
-  display: inline-block;
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

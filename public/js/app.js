@@ -24465,6 +24465,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -24565,16 +24571,22 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.emailExists
-            ? _c("i", {
-                staticClass: "fas fa-camera panel__edit-button--profile",
-                on: {
-                  click: function($event) {
-                    _vm.showModal()
-                  }
-                }
-              })
-            : _vm._e()
+          _c("div", { staticClass: "panel__edit-button-sim" }, [
+            _c("div", { staticClass: "panel__edit-button-wrapper" }, [
+              _c("div", { staticClass: "panel__edit-button-container" }, [
+                _vm.emailExists
+                  ? _c("i", {
+                      staticClass: "fas fa-camera panel__edit-button--profile",
+                      on: {
+                        click: function($event) {
+                          _vm.showModal()
+                        }
+                      }
+                    })
+                  : _vm._e()
+              ])
+            ])
+          ])
         ],
         1
       ),
