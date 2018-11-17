@@ -561,6 +561,10 @@ textarea[type="text"]:focus {
 }
 
 @-webkit-keyframes logoAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
   15% {
     width: 125px;
     -webkit-transform: rotate(-25deg);
@@ -585,10 +589,19 @@ textarea[type="text"]:focus {
   90% {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
+  }
+  0% {
+    width: 100px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
 }
 
 @keyframes logoAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
   15% {
     width: 125px;
     -webkit-transform: rotate(-25deg);
@@ -613,6 +626,11 @@ textarea[type="text"]:focus {
   90% {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
+  }
+  0% {
+    width: 100px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
+    <div v-if="this.$store.state.base.themeName.theme === 'test'">
         <nav-bar></nav-bar>
         <courses-container></courses-container>
         <menu-bar></menu-bar>
