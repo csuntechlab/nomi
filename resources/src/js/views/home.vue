@@ -34,7 +34,6 @@ export default {
     },
 
     beforeCreate() {
-        this.$store.dispatch('clearFaculty');
         this.$store.dispatch('getOnlyData');
     },
 };

@@ -11,7 +11,9 @@ class UserModelRepository implements UserModelRepositoryInterface
 {
     public function find(array $userIds): array
     {
-        return User::with('imagePriority')
+        return User::with(['imagePriority' => function ($q) {
+            $q->where('user_id', auth()->user()->user_id);
+        }])
         ->whereIn('user_id', $userIds)
         ->get()
         ->toArray();

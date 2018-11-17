@@ -308,6 +308,13 @@
 		height: 100%;
 	}
 
+	&__divider-carousel {
+		position: relative;
+		box-sizing: border-box;
+		width: 50%;
+		height: 100%;
+	}
+
 	&__info-panel {
 		padding: 5%;
 		overflow: auto;
@@ -393,9 +400,9 @@
 
 	&-loading_icon {
 		position: absolute;
-		top: 50%;
+		top: 39%;
 		left: 50%;
-		color: rgba($color: #fff, $alpha: 0.5);
+		// color: rgba($color: #fff, $alpha: 0.5);
 		transform: translate(-50%, -50%);
 	}
 

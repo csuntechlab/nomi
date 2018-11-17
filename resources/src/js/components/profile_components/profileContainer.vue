@@ -1,11 +1,11 @@
 <template>
 <div>
     <div class="profile profile__color-layer type--center">
-            <div class="profile__divider">
-                <carousel :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
+            <div class="profile__divider-carousel">
+                <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,14 +13,42 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>
                     </div>
                     </slide>
                 </carousel>
+
+                <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Student Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                    <slide class="slide-wrap">
+                    <div>
+                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <div class="type--center">
+                            <i>Faculty Uploaded</i>
+                        </div>
+                    </div>
+                    </slide>
+                </carousel>
+
+                <div class="panel__edit-button-sim">
+                    <div class="panel__edit-button-wrapper">
+                        <div class="panel__edit-button-container">
+                            <i v-if="emailExists" class="fas fa-camera panel__edit-button--profile" @click="showModal()"/>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="profile__divider">
                 <div class="profile__name-container">
                     <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
@@ -31,16 +59,43 @@
 </template>
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
+import { mapGetters, mapActions} from 'vuex';
 export default {
-  name: "profile-container",
-  props: ['student'],
-  components:{
-      profilePicture
-  },
-  computed: {
-      emailExists() {
-      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    name: "profile-container",
+    props: ['student'],
+    components:{
+        profilePicture
     },
-  }
+    
+    computed: {
+        ...mapGetters(["studentProfile", "permission"]),
+        emailExists() {
+            return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+            return this.goToPage(0)
+        }
+    },
+
+	methods: {
+		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
+
+		showModal() {
+			if(this.permission === true)
+			{
+				this.toggleModal(true);
+				this.dataForModal(this.student);
+			} else {
+				this.nullifyPermissionResponse();
+			}
+			
+			
+		},
+
+		checkPermission() {
+			if (this.permission == false){
+				this.$store.dispatch("nullifyPermissionResponse");
+			}
+			
+		}
+	},
 }
 </script>

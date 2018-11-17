@@ -57,6 +57,7 @@
     window.onpopstate = function () {
         history.go(1);
     };
+    localStorage.removeItem('nameface');
     
     function loading() {
         document.getElementById("login__loader").className += " login-loader__loader--active";

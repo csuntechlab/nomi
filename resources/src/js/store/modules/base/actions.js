@@ -45,10 +45,6 @@ export default {
       });
   },
 
-  clearFaculty(context) {
-    context.commit('CLEAR_FACULTY');
-  },
-
   clearErrors(context) {
     context.commit('CLEAR_ERRORS');
   },
