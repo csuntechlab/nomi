@@ -19958,7 +19958,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.$store.state.base.themeName.theme === "test"
+  return this.$store.state.base.themeName.theme === this.$parent.$el.className
     ? _c(
         "div",
         [
@@ -19970,26 +19970,21 @@ var render = function() {
         ],
         1
       )
-    : _c("div", [_vm._m(0)])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-login type--center" }, [
-      _c("div", { staticClass: "post-login-container" }, [
-        _c("img", {
-          staticClass: "nomi-logo nomi-logo--loading",
-          attrs: {
-            src: "/images/apple-touch-icon.png",
-            alt: "NOMI Logo; Names of Matador Individuals"
-          }
-        })
+    : _c("div", [
+        _c("div", { staticClass: "post-login type--center" }, [
+          _c("div", { staticClass: "post-login-container" }, [
+            _c("img", {
+              staticClass: "nomi-logo nomi-logo--loading",
+              attrs: {
+                src: "./images/apple-touch-icon.png",
+                alt: "NOMI Logo; Names of Matador Individuals"
+              }
+            })
+          ])
+        ])
       ])
-    ])
-  }
-]
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -24409,26 +24404,21 @@ var render = function() {
         ],
         1
       )
-    : _c("div", [_vm._m(0)])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-login type--center" }, [
-      _c("div", { staticClass: "post-login-container" }, [
-        _c("img", {
-          staticClass: "nomi-logo nomi-logo--loading",
-          attrs: {
-            src: "/images/apple-touch-icon.png",
-            alt: "NOMI Logo; Names of Matador Individuals"
-          }
-        })
+    : _c("div", [
+        _c("div", { staticClass: "post-login type--center" }, [
+          _c("div", { staticClass: "post-login-container" }, [
+            _c("img", {
+              staticClass: "nomi-logo nomi-logo--loading",
+              attrs: {
+                src: "./images/apple-touch-icon.png",
+                alt: "NOMI Logo; Names of Matador Individuals"
+              }
+            })
+          ])
+        ])
       ])
-    ])
-  }
-]
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -25424,26 +25414,21 @@ var render = function() {
         ],
         1
       )
-    : _c("div", [_vm._m(0)])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "post-login type--center" }, [
-      _c("div", { staticClass: "post-login-container" }, [
-        _c("img", {
-          staticClass: "nomi-logo nomi-logo--loading",
-          attrs: {
-            src: "/images/apple-touch-icon.png",
-            alt: "NOMI Logo; Names of Matador Individuals"
-          }
-        })
+    : _c("div", [
+        _c("div", { staticClass: "post-login type--center" }, [
+          _c("div", { staticClass: "post-login-container" }, [
+            _c("img", {
+              staticClass: "nomi-logo nomi-logo--loading",
+              attrs: {
+                src: "./images/apple-touch-icon.png",
+                alt: "NOMI Logo; Names of Matador Individuals"
+              }
+            })
+          ])
+        ])
       ])
-    ])
-  }
-]
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

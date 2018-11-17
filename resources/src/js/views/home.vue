@@ -7,7 +7,7 @@
     <div v-else>
         <div class="post-login type--center">
             <div class="post-login-container">
-                <img class="nomi-logo nomi-logo--loading" src="/images/apple-touch-icon.png" alt="NOMI Logo; Names of Matador Individuals">
+                <img class="nomi-logo nomi-logo--loading" :src="`./images/apple-touch-icon.png`" alt="NOMI Logo; Names of Matador Individuals">
             </div>
         </div>
     </div>
