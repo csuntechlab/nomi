@@ -22420,9 +22420,6 @@ module.exports = function spread(callback) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-//
 //
 //
 //
@@ -22434,23 +22431,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable"],
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"])),
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
-		showModal: function showModal() {
-			if (this.permission === true) {
-				this.toggleModal(true);
-				this.dataForModal(this.student);
-			} else {
-				this.nullifyPermissionResponse();
-			}
-		},
-		checkPermission: function checkPermission() {
-			if (this.permission == false) {
-				this.$store.dispatch("nullifyPermissionResponse");
-			}
-		}
-	})
+	props: ["image", "student", "type", "editable"]
 });
 
 /***/ }),
@@ -22470,18 +22451,7 @@ var render = function() {
           : "roster__img"
       ],
       attrs: { src: _vm.image, name: "photo" }
-    }),
-    _vm._v(" "),
-    _vm.editable
-      ? _c("i", {
-          staticClass: "fas fa-pencil-alt panel__edit-button--profile ",
-          on: {
-            click: function($event) {
-              _vm.showModal()
-            }
-          }
-        })
-      : _vm._e()
+    })
   ])
 }
 var staticRenderFns = []
@@ -24756,21 +24726,47 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "profile-container",
-  props: ['student'],
-  components: {
-    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
-  },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile"]), {
-    emailExists: function emailExists() {
-      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-      return this.goToPage(0);
-    }
-  })
+	name: "profile-container",
+	props: ['student'],
+	components: {
+		profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+	},
+
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile", "permission"]), {
+		emailExists: function emailExists() {
+			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+			return this.goToPage(0);
+		}
+	}),
+
+	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
+		showModal: function showModal() {
+			if (this.permission === true) {
+				this.toggleModal(true);
+				this.dataForModal(this.student);
+			} else {
+				this.nullifyPermissionResponse();
+			}
+		},
+		checkPermission: function checkPermission() {
+			if (this.permission == false) {
+				this.$store.dispatch("nullifyPermissionResponse");
+			}
+		}
+	})
 });
 
 /***/ }),
@@ -24785,7 +24781,7 @@ var render = function() {
     _c("div", { staticClass: "profile profile__color-layer type--center" }, [
       _c(
         "div",
-        { staticClass: "profile__divider" },
+        { staticClass: "profile__divider-carousel" },
         [
           _vm.studentProfile.imagePriority === "likeness"
             ? _c(
@@ -24895,7 +24891,24 @@ var render = function() {
                   ])
                 ],
                 1
-              )
+              ),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel__edit-button-sim" }, [
+            _c("div", { staticClass: "panel__edit-button-wrapper" }, [
+              _c("div", { staticClass: "panel__edit-button-container" }, [
+                _vm.emailExists
+                  ? _c("i", {
+                      staticClass: "fas fa-camera panel__edit-button--profile",
+                      on: {
+                        click: function($event) {
+                          _vm.showModal()
+                        }
+                      }
+                    })
+                  : _vm._e()
+              ])
+            ])
+          ])
         ],
         1
       ),
