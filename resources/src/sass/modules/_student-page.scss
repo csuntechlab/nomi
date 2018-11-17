@@ -308,6 +308,13 @@
 		height: 100%;
 	}
 
+	&__divider-carousel {
+		position: relative;
+		box-sizing: border-box;
+		width: 50%;
+		height: 100%;
+	}
+
 	&__info-panel {
 		padding: 5%;
 		overflow: auto;
