@@ -97,6 +97,15 @@ body {
 	}
 }
 
+.line-break {
+	background-color: rgba(160, 160, 160, 0.2);
+	box-shadow: none;
+	font-weight: normal;
+	margin-bottom: 0.75rem;
+	width: 100%;
+	height: 0.1rem;
+}
+
 input,
 select,
 textarea {

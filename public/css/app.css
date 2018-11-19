@@ -439,6 +439,16 @@ body {
   border-bottom: 5px solid #5aaffa;
 }
 
+.line-break {
+  background-color: rgba(160, 160, 160, 0.2);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-weight: normal;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  height: 0.1rem;
+}
+
 .theme-noireTheme input, .theme-noireTheme
 select, .theme-noireTheme
 textarea {
