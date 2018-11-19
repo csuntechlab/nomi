@@ -40,7 +40,7 @@ textarea[type="text"]:focus{
 			60% {transform: rotate(8deg);}
 			75% {transform: rotate(-4deg);}
 			90% {transform: rotate(2deg);}
-			0% {width: 100px; transform: rotate(0deg);}
+			100% {width: 100px; transform: rotate(0deg);}
 		}
 	}
 }

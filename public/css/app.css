@@ -590,7 +590,7 @@ textarea[type="text"]:focus {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
   }
-  0% {
+  100% {
     width: 100px;
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
@@ -627,7 +627,7 @@ textarea[type="text"]:focus {
     -webkit-transform: rotate(2deg);
             transform: rotate(2deg);
   }
-  0% {
+  100% {
     width: 100px;
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
