@@ -25868,9 +25868,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'version-history'
+    name: 'version-history'
 });
 
 /***/ }),
@@ -25891,6 +25893,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "panel-content" }, [
       _c("h1", [_vm._v("Version History")]),
       _vm._v(" "),
+      _c("div", { staticClass: "line-break" }),
+      _vm._v(" "),
       _c("h3", [_vm._v("NOMI 1.1")]),
       _vm._v(" "),
       _c("h5", [_vm._v("Release Date: 11/19/2018")]),
@@ -25906,6 +25910,8 @@ var staticRenderFns = [
           ])
         ])
       ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "line-break" }),
       _vm._v(" "),
       _c("h3", [_vm._v("NOMI 1.0")]),
       _vm._v(" "),
