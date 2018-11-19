@@ -25859,6 +25859,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'version-history'
@@ -25881,6 +25890,22 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "panel-content" }, [
       _c("h1", [_vm._v("Version History")]),
+      _vm._v(" "),
+      _c("h3", [_vm._v("NOMI 1.1")]),
+      _vm._v(" "),
+      _c("h5", [_vm._v("Release Date: 11/19/2018")]),
+      _vm._v(" "),
+      _c("p", [
+        _c("ol", [
+          _c("li", [_vm._v("General Bug Fixes")]),
+          _vm._v(" "),
+          _c("li", [_vm._v("Two new themes added for customization")]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v("Improved photo upload and default selection process")
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("h3", [_vm._v("NOMI 1.0")]),
       _vm._v(" "),
