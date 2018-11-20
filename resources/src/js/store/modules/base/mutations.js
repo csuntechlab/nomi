@@ -233,7 +233,7 @@ export default {
   },
 
   STORE_PERMISSION(state, payload) {
-    state.imagePermission = payload;
+    state.imagePermission = true;
   },
 
   NULLIFY_COURSE(state) {

@@ -33,12 +33,14 @@ textarea[type="text"]:focus{
 		animation: logoAnimation 1500ms infinite;
 		width: 100px;
 		@keyframes logoAnimation {
+			0% {transform: rotate(0deg);}
 			15% {width: 125px; transform: rotate(-25deg);}
 			30% {transform: rotate(20deg);}
 			45% {transform: rotate(-12deg);}
 			60% {transform: rotate(8deg);}
 			75% {transform: rotate(-4deg);}
 			90% {transform: rotate(2deg);}
+			100% {width: 100px; transform: rotate(0deg);}
 		}
 	}
 }

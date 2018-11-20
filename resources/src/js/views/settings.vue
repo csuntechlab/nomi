@@ -7,17 +7,14 @@
         </div>
     </div>
     <div v-else>
-        <div class="post-login type--center">
-            <div class="post-login-container">
-                <i class="fa fa-spinner fa-spin fa-3x post-login__loading-icon"></i>
-            </div>
-        </div>
+        <loading-screen></loading-screen>
     </div>
 </template>
 
 <script>
 import navBar from '../components/fixed_components/navBar.vue';
 import themeSetting from '../components/fixed_components/themeSetting.vue';
+import loadingScreen from '../components/fixed_components/loadingScreen.vue';
 import aboutBanner from '../components/about_components/aboutBanner';
 
 export default {
@@ -25,6 +22,7 @@ export default {
     components: {
         aboutBanner,
         themeSetting,
+        loadingScreen,
         navBar,
     },
 };
