@@ -23510,7 +23510,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (!this.myCroppa.hasImage()) {
                 alert('no image');
             } else {
+                // var img = document.createElement('img');
+                // img.src=this.student.images.likeness;
+                // img.setAttribute('crossOrigin','anonymous');
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
+                console.log(url);
                 var emuri = this.student.email_uri;
 
                 window.axios.post('/api/upload', {
@@ -23531,6 +23535,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     url = null;
                     _this2.$parent.$emit('close', url);
                 });
+                this.$forceUpdate();
             }
         },
 
@@ -23590,16 +23595,7 @@ var render = function() {
                 expression: "myCroppa"
               }
             },
-            [
-              _c("img", {
-                attrs: {
-                  slot: "initial",
-                  crossorigin: "anonymous",
-                  src: this.student.images.likeness
-                },
-                slot: "initial"
-              })
-            ]
+            [_c("img", { attrs: { src: _vm.student.images.likeness } })]
           )
         : _vm._e(),
       _vm._v(" "),

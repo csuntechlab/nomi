@@ -10,7 +10,7 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img crossorigin="anonymous" :src="this.student.images.likeness" slot="initial">
+            <img :src="student.images.likeness">
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
@@ -67,7 +67,11 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
+                    // var img = document.createElement('img');
+                    // img.src=this.student.images.likeness;
+                    // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
+                    console.log(url);
                     let emuri = this.student.email_uri;
             
                     window.axios.post('/api/upload', {
@@ -88,6 +92,7 @@
                         url = null;
                         this.$parent.$emit('close', url);
                     });
+                    this.$forceUpdate();
                 }
             },
     
