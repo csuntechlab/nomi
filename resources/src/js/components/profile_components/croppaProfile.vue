@@ -10,7 +10,7 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img :src="student.images.likeness">
+            <img :src="student.images.likeness" >
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
@@ -97,6 +97,7 @@
             },
     
             styleCanvas: function() {
+                this.myCroppa.initialImage = this.student.images.likeness;
                 let elm = this.myCroppa.getCanvas();
                 elm.style.width="100%";
                 elm.style.height="100%";

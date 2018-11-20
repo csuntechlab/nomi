@@ -23540,6 +23540,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
 
         styleCanvas: function styleCanvas() {
+            this.myCroppa.initialImage = this.student.images.likeness;
             var elm = this.myCroppa.getCanvas();
             elm.style.width = "100%";
             elm.style.height = "100%";
