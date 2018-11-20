@@ -10,7 +10,7 @@
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img  :src="this.student.images.likeness" slot="initial">
+            <img crossorigin="anonymous" :src="this.student.images.likeness" slot="initial">
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
