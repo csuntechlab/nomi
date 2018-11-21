@@ -7,10 +7,10 @@
             :show-remove-button="false"
             :quality="2"
             placeholder=""
+            :initial-image="this.student.images.likeness"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img  :src="this.student.images.likeness" slot="initial">
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
@@ -40,7 +40,7 @@
             ]),
         },
 
-         mounted(){
+        mounted(){
             this.$root.$on('chooseImage', () => {
                 this.chooseImage();
             }),
@@ -67,6 +67,9 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
+                    // var img = document.createElement('img');
+                    // img.src=this.student.images.likeness;
+                    // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
             
@@ -88,6 +91,7 @@
                         url = null;
                         this.$parent.$emit('close', url);
                     });
+                    this.$forceUpdate();
                 }
             },
     
