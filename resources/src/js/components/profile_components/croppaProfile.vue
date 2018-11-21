@@ -7,10 +7,10 @@
             :show-remove-button="false"
             :quality="2"
             placeholder=""
+            :initial-image="this.student.images.likeness"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
-            <img :src="student.images.likeness" >
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
@@ -40,7 +40,7 @@
             ]),
         },
 
-         mounted(){
+        mounted(){
             this.$root.$on('chooseImage', () => {
                 this.chooseImage();
             }),
@@ -71,7 +71,6 @@
                     // img.src=this.student.images.likeness;
                     // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
-                    console.log(url);
                     let emuri = this.student.email_uri;
             
                     window.axios.post('/api/upload', {
@@ -97,7 +96,6 @@
             },
     
             styleCanvas: function() {
-                this.myCroppa.initialImage = this.student.images.likeness;
                 let elm = this.myCroppa.getCanvas();
                 elm.style.width="100%";
                 elm.style.height="100%";
