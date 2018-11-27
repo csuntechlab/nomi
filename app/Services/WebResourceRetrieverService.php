@@ -39,8 +39,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         }
 
         //ensure array is sorted by class_number
-        usort($data, function($item,$item2) {
-            return strcmp($item->class_number, $item2->class_number);
+        \usort($data, function ($item, $item2) {
+            return \strcmp($item->class_number, $item2->class_number);
         });
 
         return $data;
@@ -117,7 +117,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
                 ->getContents()
         );
 
-        $likeness_image = $likeness_json->likeness_image;
+        $likeness_image = $likeness_json->likeness_image . '?nocache=<?php echo time(); ?>';
 
         $avatar_json = \json_decode(
             $client->get($student->avatar_photo, ['verify' => false])
@@ -125,7 +125,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         ->getContents()
         );
 
-        $avatar_image = $avatar_json->avatar_image;
+        $avatar_image = $avatar_json->avatar_image . '?nocache=<?php echo time(); ?>';
 
         return [
             'likeness' => $likeness_image,
