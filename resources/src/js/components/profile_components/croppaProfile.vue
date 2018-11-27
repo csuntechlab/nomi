@@ -6,8 +6,7 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
-            placeholder=""
-            :initial-image="this.student.images.likeness"
+            placeholder="Click to upload"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
@@ -71,6 +70,8 @@
                     // img.src=this.student.images.likeness;
                     // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
+                    // window.localStorage.removeItem("item_name");
+                    console.log(window.localStorage);
                     let emuri = this.student.email_uri;
             
                     window.axios.post('/api/upload', {
@@ -91,7 +92,7 @@
                         url = null;
                         this.$parent.$emit('close', url);
                     });
-                    this.$forceUpdate();
+                    this.url = "";
                 }
             },
     
