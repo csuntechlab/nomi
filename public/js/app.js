@@ -23528,6 +23528,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                         _this2.$store.dispatch('getOnlyData');
                         _this2.$store.dispatch('startUploadFeedback');
                         _this2.$parent.$emit('close', url);
+                        _this2.url = "";
+                        window.location.reload(true);
                     } else {
                         console.error('OH NO');
                     }
@@ -23535,7 +23537,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     url = null;
                     _this2.$parent.$emit('close', url);
                 });
-                this.url = "";
             }
         },
 

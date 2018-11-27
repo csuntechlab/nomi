@@ -85,6 +85,8 @@
                             this.$store.dispatch('getOnlyData');
                             this.$store.dispatch('startUploadFeedback')
                             this.$parent.$emit('close', url);
+                            this.url = "";
+                            window.location.reload(true);
                         } else {
                             console.error('OH NO');
                         }
@@ -92,7 +94,7 @@
                         url = null;
                         this.$parent.$emit('close', url);
                     });
-                    this.url = "";
+                    
                 }
             },
     
