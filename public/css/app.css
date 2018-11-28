@@ -978,22 +978,22 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .upload-bar {
-  background-color: #f53c2d;
+  background-color: #555555;
   color: white;
 }
 
 .theme-raspberryTheme .upload-bar {
-  background-color: #d770b9;
+  background-color: #464646;
   color: white;
 }
 
 .theme-oliveTheme .upload-bar {
-  background-color: #19c391;
+  background-color: #464646;
   color: white;
 }
 
 .theme-neptuneTheme .upload-bar {
-  background-color: #3c8291;
+  background-color: #2d737d;
   color: white;
 }
 
@@ -1003,18 +1003,23 @@ textarea[type="text"]:focus {
 }
 
 .theme-noireTheme .upload-bar {
-  background-color: #4b91e1;
+  background-color: #426c96;
   color: whitesmoke;
 }
 
 .upload-bar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 
 .upload-bar__close {
   position: absolute;
-  top: -27px;
-  right: 20px;
+  right: 0;
   font-size: 1.44rem;
   color: inherit;
   text-decoration: none;
@@ -1423,17 +1428,17 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #555555;
   color: white;
 }
 
 .theme-raspberryTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #464646;
   color: white;
 }
 
 .theme-oliveTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #464646;
   color: white;
 }
 

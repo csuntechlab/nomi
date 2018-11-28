@@ -242,13 +242,14 @@ textarea[type="text"]:focus{
 	transition: all .2s ease-in-out;
 
 	&-container {
+		display: flex;
+		align-items: center;
 		position: relative;
 	}
 
 	&__close {
 		position: absolute;
-		top: -27px;
-		right: 20px;
+		right: 0;
 		font-size: 1.44rem;
 		color: inherit;
 		text-decoration: none;

@@ -24409,6 +24409,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -24444,11 +24446,11 @@ var render = function() {
             : "upload-bar upload-bar--relative"
         },
         [
-          _c("strong", [_vm._v("Uploaded!")]),
-          _vm._v(" Photo changes will be reflected soon.\n    "),
           _c("div", { staticClass: "upload-bar-container" }, [
+            _vm._m(0),
+            _vm._v(" "),
             _c(
-              "a",
+              "span",
               {
                 staticClass: "upload-bar__close",
                 attrs: { href: "#" },
@@ -24465,7 +24467,17 @@ var render = function() {
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("strong", [_vm._v("Uploaded!")]),
+      _vm._v(" Photo changes will be reflected soon.\n    ")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
