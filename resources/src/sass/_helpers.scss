@@ -22,6 +22,10 @@ textarea[type="text"]:focus{
 	}
 }
 
+.alert {
+	margin-bottom: 0;
+}
+
 .icon__theme {
 	@include themify($themes) {
 		color: themed("accentColor");
@@ -220,7 +224,7 @@ textarea[type="text"]:focus{
 
 .upload-bar{
 	@include themify($themes) {
-		background-color: themed("buttonColor");
+		background-color: themed("notification");
 		color: themed("buttonText");
 	}
 	display: block;
@@ -236,6 +240,20 @@ textarea[type="text"]:focus{
 	outline: 0;
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
+
+	&-container {
+		position: relative;
+	}
+
+	&__close {
+		position: absolute;
+		top: -27px;
+		right: 20px;
+		font-size: 1.44rem;
+		color: inherit;
+		text-decoration: none;
+		cursor: pointer;
+	}
 
 	&--normal{
 		position: relative;
