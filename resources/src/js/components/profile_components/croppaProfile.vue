@@ -7,10 +7,10 @@
             :show-remove-button="false"
             :quality="2"
             placeholder=""
-            :initial-image="this.student.images.likeness"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
+            <img slot="initial" :src="this.student.images.likeness" />
         </croppa>
         <div v-if="loadingCroppa" class="croppa-loading_icon">
             <i class="fas fa-spinner fa-spin fa-3x"></i>
