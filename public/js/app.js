@@ -24409,6 +24409,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -24418,7 +24423,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   props: ['sticky'],
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['uploadFeedback']))
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['uploadFeedback'])),
+
+  methods: {
+    closeUpload: function closeUpload() {
+      this.$store.dispatch('stopUploadFeedback');
+    }
+  }
 });
 
 /***/ }),
@@ -24438,13 +24449,38 @@ var render = function() {
             : "upload-bar upload-bar--relative"
         },
         [
-          _c("strong", [_vm._v("Uploaded!")]),
-          _vm._v(" Photo changes will be reflected soon.\n")
+          _c("div", { staticClass: "upload-bar-container" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass: "upload-bar__close",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    _vm.closeUpload()
+                  }
+                }
+              },
+              [_vm._v("×")]
+            )
+          ])
         ]
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("strong", [_vm._v("Uploaded!")]),
+      _vm._v(" Photo changes will be reflected soon.\n    ")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -25464,13 +25500,13 @@ var render = function() {
             : _c(
                 "div",
                 [
+                  _c("upload-bar"),
+                  _vm._v(" "),
                   _c("modal"),
                   _vm._v(" "),
                   _c("profile-container", {
                     attrs: { student: this.studentProfile.student }
                   }),
-                  _vm._v(" "),
-                  _c("upload-bar"),
                   _vm._v(" "),
                   _c("profile-info", {
                     attrs: { student: this.studentProfile },
