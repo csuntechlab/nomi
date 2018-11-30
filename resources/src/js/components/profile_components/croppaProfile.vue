@@ -66,13 +66,15 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
+                   
                     // var img = document.createElement('img');
                     // img.src=this.student.images.likeness;
                     // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
+                    
                     // window.localStorage.removeItem("item_name");
-                    console.log(window.localStorage);
                     let emuri = this.student.email_uri;
+
             
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
@@ -109,6 +111,7 @@
                 if(this.myCroppa.$refs.fileInput) {
                     this.fileInput = this.myCroppa.$refs.fileInput;
                     this.myCroppa.chooseFile();
+                    this.$root.$emit('letsSwitchItUp');
                 } else {
                     this.myCroppa.$refs.fileInput = this.fileInput;
                     this.myCroppa.chooseFile();

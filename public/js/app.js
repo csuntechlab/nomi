@@ -23352,6 +23352,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
 
 
 
@@ -23362,9 +23364,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   name: "modals-carousel",
   data: function data() {
     return {
-      okayToUpdate: null
+      okayToUpdate: null,
+      switchItUp: false
     };
   },
+
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$root.$on('letsSwitchItUp', function () {
+      _this.switchItUp = !_this.switchItUp;
+    });
+  },
+
 
   props: ["student"],
 
@@ -23512,12 +23524,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (!this.myCroppa.hasImage()) {
                 alert('no image');
             } else {
+
                 // var img = document.createElement('img');
                 // img.src=this.student.images.likeness;
                 // img.setAttribute('crossOrigin','anonymous');
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
+
                 // window.localStorage.removeItem("item_name");
-                console.log(window.localStorage);
                 var emuri = this.student.email_uri;
 
                 window.axios.post('/api/upload', {
@@ -23554,6 +23567,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.myCroppa.$refs.fileInput) {
                 this.fileInput = this.myCroppa.$refs.fileInput;
                 this.myCroppa.chooseFile();
+                this.$root.$emit('letsSwitchItUp');
             } else {
                 this.myCroppa.$refs.fileInput = this.fileInput;
                 this.myCroppa.chooseFile();
@@ -23785,7 +23799,33 @@ var render = function() {
                   _c(
                     "div",
                     [
-                      _c("croppa-profile", { attrs: { student: _vm.student } }),
+                      _c("profile-picture", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.switchItUp,
+                            expression: "!switchItUp"
+                          }
+                        ],
+                        attrs: {
+                          image: _vm.student.images.likeness,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("croppa-profile", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.switchItUp,
+                            expression: "switchItUp"
+                          }
+                        ],
+                        attrs: { student: _vm.student }
+                      }),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -23882,7 +23922,33 @@ var render = function() {
                   _c(
                     "div",
                     [
-                      _c("croppa-profile", { attrs: { student: _vm.student } }),
+                      _c("profile-picture", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.switchItUp,
+                            expression: "!switchItUp"
+                          }
+                        ],
+                        attrs: {
+                          image: _vm.student.images.likeness,
+                          editable: false,
+                          type: "profile-picture"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("croppa-profile", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.switchItUp,
+                            expression: "switchItUp"
+                          }
+                        ],
+                        attrs: { student: _vm.student }
+                      }),
                       _vm._v(" "),
                       _c(
                         "div",
