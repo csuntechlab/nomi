@@ -4,7 +4,8 @@
     <carousel v-if="okayToUpdate" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
-              <croppa-profile :student="student"></croppa-profile>
+            <profile-picture v-show="!switchItUp" :image="student.images.likeness" :editable="false" :type="'profile-picture'"></profile-picture>
+              <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
                 <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
@@ -34,7 +35,8 @@
         </slide>
          <slide class="slide-wrap">
           <div>
-              <croppa-profile :student="student"></croppa-profile>
+             <profile-picture v-show="!switchItUp" :image="student.images.likeness" :editable="false" :type="'profile-picture'"></profile-picture>
+              <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
                 <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
@@ -57,7 +59,14 @@ export default {
   data: function() {
       return{
         okayToUpdate: null,
+        switchItUp: false,
       }
+  },
+
+  mounted(){
+    this.$root.$on('letsSwitchItUp', () => {
+        this.switchItUp = !this.switchItUp;
+    });
   },
 
   props: ["student"],
