@@ -304,6 +304,6 @@ export default {
 
   stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
-  }
+  },
 
 };

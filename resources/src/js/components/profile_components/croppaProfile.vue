@@ -86,7 +86,9 @@
                         if (response.status) {
                             this.$store.dispatch('getOnlyData');
                             this.$store.dispatch('startUploadFeedback')
+                            this.$store.dispatch('setNewImage', url);
                             this.$parent.$emit('close', url);
+                            // this.$root.$emit('letSwitchImage', url);
                             this.url = "";
                         } else {
                             console.error('OH NO');

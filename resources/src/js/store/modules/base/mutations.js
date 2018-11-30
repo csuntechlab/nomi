@@ -311,5 +311,5 @@ export default {
 
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  }
+  },
 };

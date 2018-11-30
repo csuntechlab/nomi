@@ -49,6 +49,7 @@ export default {
   GET_STUDENT_BIO(state, payload) {
     state.studentProfile.bio = payload.data.bio;
   },
+  
 
   UPDATE_NOTES(state, notes) {
     state.studentProfile.notes = notes;
@@ -107,5 +108,10 @@ export default {
 
     CLEAR_STUDENT(state) {
       state.currentStudent = null;
+    },
+
+    SET_NEW_IMAGE(state, payload) {
+      state.studentProfile.images.likeness = payload;
+      state.studentProfile.student.images.likeness = payload;
     },
 };

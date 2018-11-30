@@ -89,6 +89,9 @@ export default {
         context.commit('CLEAR_STUDENT')
     },
 
+  setNewImage(context, payload) {
+    context.commit('SET_NEW_IMAGE', payload);
+  },
     //cropping functionality
     toggleCropping (context, payload) {
         context.commit('TOGGLE_CROPPING', payload)
