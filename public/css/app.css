@@ -540,6 +540,10 @@ textarea[type="text"]:focus {
   border: 3px solid;
 }
 
+.alert {
+  margin-bottom: 0;
+}
+
 .theme-matadorTheme .icon__theme {
   color: #e74a37;
 }
@@ -974,17 +978,17 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .upload-bar {
-  background-color: #d22030;
+  background-color: #555555;
   color: white;
 }
 
 .theme-raspberryTheme .upload-bar {
-  background-color: #a50c69;
+  background-color: #464646;
   color: white;
 }
 
 .theme-oliveTheme .upload-bar {
-  background-color: #1e7450;
+  background-color: #464646;
   color: white;
 }
 
@@ -1001,6 +1005,25 @@ textarea[type="text"]:focus {
 .theme-noireTheme .upload-bar {
   background-color: #426c96;
   color: whitesmoke;
+}
+
+.upload-bar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.upload-bar__close {
+  position: absolute;
+  right: 0;
+  font-size: 1.44rem;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .upload-bar--normal {
@@ -1405,17 +1428,17 @@ textarea[type="text"]:focus {
 }
 
 .theme-matadorTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #555555;
   color: white;
 }
 
 .theme-raspberryTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #464646;
   color: white;
 }
 
 .theme-oliveTheme .feedback-button {
-  background-color: #55565a;
+  background-color: #464646;
   color: white;
 }
 
