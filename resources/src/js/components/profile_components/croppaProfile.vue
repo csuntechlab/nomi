@@ -6,7 +6,7 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
-            placeholder="Click to upload"
+            placeholder="Waiting for upload..."
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
