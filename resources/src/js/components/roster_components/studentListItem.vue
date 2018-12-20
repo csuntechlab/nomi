@@ -3,7 +3,7 @@
         <div class="roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
-                <profile-picture class="pull-left" :name="display_name" :image="image" :type="'roster'"></profile-picture>
+                <profile-picture class="pull-left" :name="display_name" :image="getImage()" :type="'roster'"></profile-picture>
             </div>
             <div class="col-xs-9 col-md-10">
                 <span>
@@ -46,18 +46,33 @@ export default {
     },
 
     image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
+      // if (this.student.image_priority === 'likeness') {
+      //   return this.student.images.likeness;
+      // } if (this.student.image_priority === 'avatar') {
+      //   return this.student.images.avatar;
+      // }
     },
   },
 
   methods: {
     getStudent() {
       this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
-    }
+    },
+    getImage() {
+      const firstAPI = axios.create({
+          baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
+      })
+     firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}`, {
+        headers: {
+          'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+        },
+        }).then((response) => {
+          console.log(response);
+          return response;
+        }).catch((e) => {
+          console.log(e);
+        });
+    },
 	},
 };
 </script>
