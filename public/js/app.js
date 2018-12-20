@@ -21588,12 +21588,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     display_name: function display_name() {
       return this.student.first_name + ' ' + this.student.last_name;
     },
+
+
+    // image() {
+    //   if (this.student.image_priority === 'likeness') {
+    //     return this.student.images.likeness;
+    //   } if (this.student.image_priority === 'avatar') {
+    //     return this.student.images.avatar;
+    //   }
+    // },
     image: function image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      }if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
+      var testUrl = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==';
+      // const firstAPI = axios.create({
+      //     baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
+      // })
+      //  firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', {
+      //     // headers: {
+      //     //   'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+      //     // },
+      //     }).then((response) => {
+      //       // console.log(response.data);
+      //       return response.data;
+      //     }).catch((e) => {
+      //       console.log(e);
+
+      //     });
+      return testUrl;
     }
   }),
 
@@ -22714,40 +22734,60 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-		name: 'gallery-card',
-		props: ['student'],
-		mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_getStudent_js__["a" /* getStudent */]],
+  name: 'gallery-card',
+  props: ['student'],
+  mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_getStudent_js__["a" /* getStudent */]],
 
-		data: function data() {
-				return {
-						messages: true,
-						errors: [],
-						showCroppaModal: false
-				};
-		},
+  data: function data() {
+    return {
+      messages: true,
+      errors: [],
+      showCroppaModal: false
+    };
+  },
 
-		components: {
-				galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
-		},
+  components: {
+    galleryProfile: __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default.a
+  },
 
-		computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
-				display_name: function display_name() {
-						return this.student.first_name + " " + this.student.last_name[0] + ".";
-				},
-				email_uri: function email_uri() {
-						return this.student.email.split('@')[0];
-				},
-				emailExists: function emailExists() {
-						return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-				},
-				image: function image() {
-						if (this.student.image_priority === 'likeness') {
-								return this.student.images.likeness;
-						}if (this.student.image_priority === 'avatar') {
-								return this.student.images.avatar;
-						}
-				}
-		})
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['permission', 'facultyMember']), {
+    display_name: function display_name() {
+      return this.student.first_name + " " + this.student.last_name[0] + ".";
+    },
+    email_uri: function email_uri() {
+      return this.student.email.split('@')[0];
+    },
+    emailExists: function emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    },
+
+
+    // image() {
+    //   if (this.student.image_priority === 'likeness') {
+    //     return this.student.images.likeness;
+    //   } if (this.student.image_priority === 'avatar') {
+    //     return this.student.images.avatar;
+    //   }
+    // },
+    image: function image() {
+      var testUrl = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + ("" + this.student.email_uri) + '/' + ("" + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==';
+      // const firstAPI = axios.create({
+      //     baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
+      // })
+      //  firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', {
+      //     // headers: {
+      //     //   'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+      //     // },
+      //     }).then((response) => {
+      //       // console.log(response.data);
+      //       return response.data;
+      //     }).catch((e) => {
+      //       console.log(e);
+
+      //     });
+      return testUrl;
+    }
+  })
 });
 
 /***/ }),
@@ -23365,7 +23405,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   data: function data() {
     return {
       okayToUpdate: null,
-      switchItUp: false
+      switchItUp: false,
+      imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+      secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
     };
   },
 
@@ -23385,7 +23427,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     profilePicture: __WEBPACK_IMPORTED_MODULE_2__profile_components_profilePicture_vue___default.a,
     croppaProfile: __WEBPACK_IMPORTED_MODULE_1__profile_components_croppaProfile_vue___default.a
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
+    likenessImage: function likenessImage() {
+      if (this.studentProfile) {
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret;
+      }
+    },
+    avatarImage: function avatarImage() {
+      if (this.studentProfile) {
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+      }
+    }
+  }),
 
   methods: {
     handleSlideClick: function handleSlideClick() {
@@ -23809,7 +23862,7 @@ var render = function() {
                           }
                         ],
                         attrs: {
-                          image: _vm.student.images.likeness,
+                          image: _vm.likenessImage,
                           editable: false,
                           type: "profile-picture"
                         }
@@ -23851,7 +23904,7 @@ var render = function() {
                     [
                       _c("profile-picture", {
                         attrs: {
-                          image: _vm.student.images.avatar,
+                          image: _vm.avatarImage,
                           editable: false,
                           type: "profile-picture"
                         }
@@ -23894,7 +23947,7 @@ var render = function() {
                     [
                       _c("profile-picture", {
                         attrs: {
-                          image: _vm.student.images.avatar,
+                          image: _vm.avatarImage,
                           editable: false,
                           type: "profile-picture"
                         }
@@ -23932,7 +23985,7 @@ var render = function() {
                           }
                         ],
                         attrs: {
-                          image: _vm.student.images.likeness,
+                          image: _vm.likenessImage,
                           editable: false,
                           type: "profile-picture"
                         }
@@ -24311,33 +24364,38 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     email_uri: function email_uri() {
       return this.student.email.split('@')[0];
     },
+
+
+    // image() {
+    // if (this.student.image_priority === 'likeness') {
+    //   return this.student.images.likeness;
+    // } if (this.student.image_priority === 'avatar') {
+    //   return this.student.images.avatar;
+    // }
+    // },
     image: function image() {
-      // if (this.student.image_priority === 'likeness') {
-      //   return this.student.images.likeness;
-      // } if (this.student.image_priority === 'avatar') {
-      //   return this.student.images.avatar;
-      // }
+      var testUrl = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==';
+      // const firstAPI = axios.create({
+      //     baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
+      // })
+      //  firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', {
+      //     // headers: {
+      //     //   'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+      //     // },
+      //     }).then((response) => {
+      //       // console.log(response.data);
+      //       return response.data;
+      //     }).catch((e) => {
+      //       console.log(e);
+
+      //     });
+      return testUrl;
     }
   }),
 
   methods: {
     getStudent: function getStudent() {
       this.$store.dispatch('getStudent', { studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name });
-    },
-    getImage: function getImage() {
-      var firstAPI = axios.create({
-        baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
-      });
-      firstAPI.get('' + this.student.email_uri + '/' + ('' + this.student.image_priority), {
-        headers: {
-          'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
-        }
-      }).then(function (response) {
-        console.log(response);
-        return response;
-      }).catch(function (e) {
-        console.log(e);
-      });
     }
   }
 });
@@ -24371,7 +24429,7 @@ var render = function() {
                 staticClass: "pull-left",
                 attrs: {
                   name: _vm.display_name,
-                  image: _vm.getImage(),
+                  image: _vm.image,
                   type: "roster"
                 }
               })
@@ -24979,7 +25037,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.student.images.likeness,
+                            image: _vm.studentProfile.images,
                             editable: this.emailExists,
                             type: "profile"
                           }
@@ -25000,7 +25058,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.student.images.avatar,
+                            image: _vm.studentProfile.images,
                             editable: false,
                             type: "profile"
                           }
@@ -25033,7 +25091,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.student.images.avatar,
+                            image: _vm.studentProfile.images,
                             editable: false,
                             type: "profile"
                           }
@@ -25054,7 +25112,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.student.images.likeness,
+                            image: _vm.studentProfile.images,
                             editable: this.emailExists,
                             type: "profile"
                           }
@@ -26900,7 +26958,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = getters.students[student].images;
+          // state.studentProfile.images = image;
           break;
         }
       }

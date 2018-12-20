@@ -5,7 +5,7 @@
                 <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="studentProfile.images" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,7 +13,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="studentProfile.images" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>
@@ -24,7 +24,7 @@
                 <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="student.images.avatar" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="studentProfile.images" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Student Uploaded</i>
                         </div>
@@ -32,7 +32,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="student.images.likeness" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="studentProfile.images" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>

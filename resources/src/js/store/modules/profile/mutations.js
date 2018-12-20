@@ -21,7 +21,7 @@ export default {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = getters.students[student].images;
+          // state.studentProfile.images = image;
           break;
         }
       }

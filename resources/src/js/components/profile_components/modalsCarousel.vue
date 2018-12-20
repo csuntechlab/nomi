@@ -4,7 +4,7 @@
     <carousel v-if="okayToUpdate" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
-            <profile-picture v-show="!switchItUp" :image="student.images.likeness" :editable="false" :type="'profile-picture'"></profile-picture>
+            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
@@ -14,7 +14,7 @@
         </slide>
         <slide class="slide-wrap">
           <div>
-              <profile-picture :image="student.images.avatar" :editable="false" :type="'profile-picture'"></profile-picture>
+              <profile-picture :image="avatarImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <div class="type--center">
                 <i>Student Uploaded</i>
                 <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
@@ -26,7 +26,7 @@
        
         <slide class="slide-wrap">
           <div>
-              <profile-picture :image="student.images.avatar" :editable="false" :type="'profile-picture'"></profile-picture>
+              <profile-picture :image="avatarImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <div class="type--center">
                 <i>Student Uploaded</i>
                 <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
@@ -35,7 +35,7 @@
         </slide>
          <slide class="slide-wrap">
           <div>
-             <profile-picture v-show="!switchItUp" :image="student.images.likeness" :editable="false" :type="'profile-picture'"></profile-picture>
+             <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
@@ -60,6 +60,8 @@ export default {
       return{
         okayToUpdate: null,
         switchItUp: false,
+        imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
       }
   },
 
@@ -77,7 +79,18 @@ export default {
     croppaProfile
   },
   computed: {
-    ...mapGetters(["studentProfile", "modalVisible"])
+    ...mapGetters(["studentProfile", "modalVisible"]),
+    likenessImage() {
+      if(this.studentProfile){
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret
+
+      }
+    },
+    avatarImage() {
+    if(this.studentProfile){
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+      }
+    }
   },
 
   methods: {

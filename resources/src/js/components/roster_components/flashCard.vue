@@ -47,12 +47,30 @@ export default {
       return `${this.student.first_name} ${this.student.last_name}`;
     },
 
+    // image() {
+    //   if (this.student.image_priority === 'likeness') {
+    //     return this.student.images.likeness;
+    //   } if (this.student.image_priority === 'avatar') {
+    //     return this.student.images.avatar;
+    //   }
+    // },
     image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
+      let testUrl = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + `${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+      // const firstAPI = axios.create({
+      //     baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
+      // })
+    //  firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', {
+    //     // headers: {
+    //     //   'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+    //     // },
+    //     }).then((response) => {
+    //       // console.log(response.data);
+    //       return response.data;
+    //     }).catch((e) => {
+    //       console.log(e);
+   
+    //     });
+        return testUrl;
     },
   },
 
