@@ -7,7 +7,6 @@ namespace App\Services;
 use App\Contracts\ImageCRUDContract;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\WebResourceRetrieverContract;
-use GuzzleHttp\Client;
 use Intervention\Image\ImageManager;
 
 class RosterRetrievalService implements RosterRetrievalContract
@@ -88,18 +87,14 @@ class RosterRetrievalService implements RosterRetrievalContract
             $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
         }
 
-        $emailUri = \substr($student->email, 0, \strpos($student->email, '@'));
-
-        $images = $this->webResourceUtility->gatherImageCorrectly($student);
+        //$images = $this->webResourceUtility->gatherImageCorrectly($student);
 
         return [
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,
             'last_name' => $student->last_name,
             'email' => $student->email,
-            'email_uri' => $emailUri,
-            'images' => $images,
-            'name_recording' => $student->name_recording,
+            'email_uri' => $student->email_uri,
             'image_priority' => $student->image_priority,
         ];
     }
