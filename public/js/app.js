@@ -24923,34 +24923,50 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	name: "profile-container",
-	props: ['student'],
-	components: {
-		profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
-	},
+  name: "profile-container",
+  props: ['student'],
+  data: function data() {
+    return {
+      imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+      secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+    };
+  },
+  components: {
+    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
+  },
 
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile", "permission"]), {
-		emailExists: function emailExists() {
-			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-			return this.goToPage(0);
-		}
-	}),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile", "permission"]), {
+    emailExists: function emailExists() {
+      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+      return this.goToPage(0);
+    },
+    likenessImage: function likenessImage() {
+      if (this.studentProfile) {
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret;
+      }
+    },
+    avatarImage: function avatarImage() {
+      if (this.studentProfile) {
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+      }
+    }
+  }),
 
-	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
-		showModal: function showModal() {
-			if (this.permission === true) {
-				this.toggleModal(true);
-				this.dataForModal(this.student);
-			} else {
-				this.nullifyPermissionResponse();
-			}
-		},
-		checkPermission: function checkPermission() {
-			if (this.permission == false) {
-				this.$store.dispatch("nullifyPermissionResponse");
-			}
-		}
-	})
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
+    showModal: function showModal() {
+      if (this.permission === true) {
+        this.toggleModal(true);
+        this.dataForModal(this.student);
+      } else {
+        this.nullifyPermissionResponse();
+      }
+    },
+    checkPermission: function checkPermission() {
+      if (this.permission == false) {
+        this.$store.dispatch("nullifyPermissionResponse");
+      }
+    }
+  })
 });
 
 /***/ }),
@@ -24985,7 +25001,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.studentProfile.images,
+                            image: _vm.likenessImage,
                             editable: this.emailExists,
                             type: "profile"
                           }
@@ -25006,7 +25022,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.studentProfile.images,
+                            image: _vm.avatarImage,
                             editable: false,
                             type: "profile"
                           }
@@ -25039,7 +25055,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.studentProfile.images,
+                            image: _vm.avatarImage,
                             editable: false,
                             type: "profile"
                           }
@@ -25060,7 +25076,7 @@ var render = function() {
                         _c("profile-picture", {
                           attrs: {
                             student: _vm.studentProfile.student,
-                            image: _vm.studentProfile.images,
+                            image: _vm.likenessImage,
                             editable: this.emailExists,
                             type: "profile"
                           }
@@ -27387,7 +27403,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     state.flashroster = payload.data.students;
     state.facultyMember.email = payload.data.email;
     state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = 'http://www.csun.edu/faculty/profiles/' + state.facultyMember.name;
+    state.facultyMember.profile = 'https://api.metalab.csun.edu/media/1.1/faculty/media/' + state.facultyMember.name;
   },
   GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
     state.facultyMember.image = 'https://api.sandbox.csun.edu/metalab/media/1.0/' + state.facultyMember.emailURI + '/avatar';

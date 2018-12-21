@@ -78,6 +78,7 @@ export default {
     croppaProfile
   },
   computed: {
+    
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
