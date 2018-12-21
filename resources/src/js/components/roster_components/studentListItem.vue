@@ -20,12 +20,13 @@
 import { mapGetters } from 'vuex';
 import { mapState } from 'vuex';
 import modal from '../fixed_components/modal.vue';
+import { getImage } from './../../mixins/getImage.js';
 import profilePicture from '../profile_components/profilePicture.vue';
 
 export default {
   name: 'student-list-item',
-
   props: ['student'],
+  mixins: [getImage],
 
   components: {
     modal,
@@ -33,7 +34,6 @@ export default {
   },
 
   computed: {
-
     ...mapGetters([
     ]),
 
@@ -44,20 +44,13 @@ export default {
     email_uri() {
       return this.student.email.split('@')[0];
     },
-
-    image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
-    },
   },
 
   methods: {
     getStudent() {
       this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
-    }
+    },
+    
 	},
 };
 </script>

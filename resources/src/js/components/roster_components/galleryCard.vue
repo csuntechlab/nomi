@@ -21,13 +21,14 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
-// import profilePicture from "../profile_components/profilePicture.vue";
 import galleryProfile from "../roster_components/galleryProfile.vue";
+import { getImage } from './../../mixins/getImage.js';
 import { getStudent } from './../../mixins/getStudent.js'
+
 export default {
   name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent],
+	mixins: [getStudent, getImage],
 
 	data: function() {
 		return {
@@ -42,7 +43,6 @@ export default {
 	},
 
 	computed: {
-
 		...mapGetters([
 			'permission',
 			'facultyMember',
@@ -58,14 +58,6 @@ export default {
 
     emailExists() {
       return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-    },
-
-    image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
     },
 	},
 };

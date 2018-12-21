@@ -11,9 +11,9 @@
     import { mapGetters } from 'vuex';
 
     export default {
-      name: 'image-handler',
+        name: 'image-handler',
 
-      props: ['image_type'],
+        props: ['image_type'],
 
         computed: {
             ...mapGetters([
@@ -43,7 +43,6 @@
                         term: this.term,
                     }
                 );
-              
             }
         }
     }
