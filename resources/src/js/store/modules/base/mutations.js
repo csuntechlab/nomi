@@ -31,7 +31,7 @@ export default {
     state.flashroster = payload.data.students;
     state.facultyMember.email = payload.data.email;
     state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = `http://www.csun.edu/faculty/profiles/${state.facultyMember.name}`;
+    state.facultyMember.profile = `https://api.metalab.csun.edu/media/1.1/faculty/media/${state.facultyMember.name}`;
   },
 
   GET_FACULTY_PROFILE(state, payload) {
