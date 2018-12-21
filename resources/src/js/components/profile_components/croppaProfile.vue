@@ -54,8 +54,6 @@
             this.fileInput = null;
         },
         methods: {
-            
-
             loadingStart(){
                 this.loadingCroppa = true;
             },
@@ -66,16 +64,9 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
-                   
-                    // var img = document.createElement('img');
-                    // img.src=this.student.images.likeness;
-                    // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
-                    
-                    // window.localStorage.removeItem("item_name");
                     let emuri = this.student.email_uri;
 
-            
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
                         profile_image: url,
