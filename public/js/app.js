@@ -19775,95 +19775,108 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("br"),
-                      _vm._v("\n                Enjoy our App!")
+                      _vm._v("\n                Enjoy our App!\n        ")
                     ]
                   )
                 ]
               )
             ])
-          : _vm._e()
-      ])
-    : _vm.selectedTerm == "current"
-      ? _c("div", [
-          _c(
-            "div",
-            { staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center" },
-            [
-              _c(
-                "h5",
-                { staticClass: "panel__header course__header--empty mb-0" },
-                [
-                  _vm._v(
-                    "\n                You are not teaching any classes for " +
-                      _vm._s(_vm.displayedTerm) +
-                      ".\n            "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "panel__content course__content--empty" },
-                [
-                  _c("div", { staticClass: "row" }, [
-                    _vm._v(
-                      "If you notice any errors in your class schedule, please "
-                    ),
-                    _c("a", { attrs: { href: this.url + "/support" } }, [
-                      _vm._v("let us know")
-                    ]),
-                    _vm._v(".")
-                  ]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v("\n                Enjoy our App!")
-                ]
-              )
-            ]
-          )
-        ])
-      : _vm.selectedTerm == "next"
-        ? _c("div", [
-            _c(
-              "div",
-              {
-                staticClass: "panel col-lg-12 col-md-12 col-xs-12 type--center"
-              },
-              [
-                _c(
-                  "h5",
-                  { staticClass: "panel__header course__header--empty mb-0" },
-                  [
-                    _vm._v(
-                      "\n                You are not scheduled to teach any classes for " +
-                        _vm._s(_vm.displayedTerm) +
-                        ".\n            "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
+          : _vm.selectedTerm == "current"
+            ? _c("div", [
                 _c(
                   "div",
-                  { staticClass: "panel__content course__content--empty" },
+                  {
+                    staticClass:
+                      "panel col-lg-12 col-md-12 col-xs-12 type--center"
+                  },
                   [
-                    _c("div", { staticClass: "row" }, [
-                      _vm._v(
-                        "If you notice any errors in your class schedule, please \n                "
-                      ),
-                      _c("a", { attrs: { href: this.url + "/support" } }, [
-                        _vm._v("let us know")
-                      ]),
-                      _vm._v(".")
-                    ]),
+                    _c(
+                      "h5",
+                      {
+                        staticClass: "panel__header course__header--empty mb-0"
+                      },
+                      [
+                        _vm._v(
+                          "\n                You are not teaching any classes for " +
+                            _vm._s(_vm.displayedTerm) +
+                            ".\n            "
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("br"),
-                    _vm._v("\n                Enjoy our App!")
+                    _c(
+                      "div",
+                      { staticClass: "panel__content course__content--empty" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _vm._v(
+                            "If you notice any errors in your class schedule, please "
+                          ),
+                          _c("a", { attrs: { href: this.url + "/support" } }, [
+                            _vm._v("let us know")
+                          ]),
+                          _vm._v(".")
+                        ]),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v("\n                Enjoy our App!\n        ")
+                      ]
+                    )
                   ]
                 )
-              ]
-            )
-          ])
-        : _vm._e()
+              ])
+            : _vm.selectedTerm == "next"
+              ? _c("div", [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "panel col-lg-12 col-md-12 col-xs-12 type--center"
+                    },
+                    [
+                      _c(
+                        "h5",
+                        {
+                          staticClass:
+                            "panel__header course__header--empty mb-0"
+                        },
+                        [
+                          _vm._v(
+                            "\n                You are not scheduled to teach any classes for " +
+                              _vm._s(_vm.displayedTerm) +
+                              ".\n            "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "panel__content course__content--empty"
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _vm._v(
+                              "If you notice any errors in your class schedule, please \n                "
+                            ),
+                            _c(
+                              "a",
+                              { attrs: { href: this.url + "/support" } },
+                              [_vm._v("let us know")]
+                            ),
+                            _vm._v(".")
+                          ]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v("\n                Enjoy our App!\n        ")
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
