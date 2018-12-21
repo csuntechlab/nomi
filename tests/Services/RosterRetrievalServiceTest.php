@@ -74,8 +74,8 @@ class RosterRetrievalServiceTest extends TestCase
         $this->retriever
             ->shouldReceive('gatherImageCorrectly')
             ->andReturn([
-              'likeness' => 'http://localhost/images/likeness.jpg',
-              'avatar' => 'images/student_avatar_default.jpg',
+                'likeness' => 'http://localhost/images/likeness.jpg',
+                'avatar' => 'images/student_avatar_default.jpg',
             ]);
 
         $cleanRoster = [

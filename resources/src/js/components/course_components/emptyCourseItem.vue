@@ -46,16 +46,17 @@ import { displayCurrentTerm } from './../../mixins/displayCurrentTerm.js'
 
 
 export default {
-  name: 'empty-course-item',
-  mixins: [displayCurrentTerm],
-   
-  computed: {
+    name: 'empty-course-item',
+    mixins: [displayCurrentTerm],
+    
+    computed: {
         ...mapGetters([
-          'selectedTerm',
+            'selectedTerm',
         ]),
-  },
-   created() {
-    this.url = document.querySelector('meta[name=app-url]').content;
+    },
+
+    created() {
+        this.url = document.querySelector('meta[name=app-url]').content;
     },
 };
 </script>

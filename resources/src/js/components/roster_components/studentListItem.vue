@@ -20,12 +20,13 @@
 import { mapGetters } from 'vuex';
 import { mapState } from 'vuex';
 import modal from '../fixed_components/modal.vue';
+import { getImage } from './../../mixins/getImage.js';
 import profilePicture from '../profile_components/profilePicture.vue';
 
 export default {
   name: 'student-list-item',
-
   props: ['student'],
+  mixins: [getImage],
 
   components: {
     modal,
@@ -33,7 +34,6 @@ export default {
   },
 
   computed: {
-
     ...mapGetters([
     ]),
 
@@ -43,32 +43,6 @@ export default {
 
     email_uri() {
       return this.student.email.split('@')[0];
-    },
-
-    // image() {
-      // if (this.student.image_priority === 'likeness') {
-      //   return this.student.images.likeness;
-      // } if (this.student.image_priority === 'avatar') {
-      //   return this.student.images.avatar;
-      // }
-    // },
-    image() {
-      let testUrl = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + `${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
-      // const firstAPI = axios.create({
-      //     baseURL: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/'
-      // })
-    //  firstAPI.get(`${this.student.email_uri}`+ '/' +`${this.student.image_priority}` + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', {
-    //     // headers: {
-    //     //   'X-API-Key': 'IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
-    //     // },
-    //     }).then((response) => {
-    //       // console.log(response.data);
-    //       return response.data;
-    //     }).catch((e) => {
-    //       console.log(e);
-   
-    //     });
-        return testUrl;
     },
   },
 

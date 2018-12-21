@@ -22,8 +22,7 @@
           </div>
         </slide>
     </carousel>
-     <carousel v-else :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
-       
+    <carousel v-else :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
               <profile-picture :image="avatarImage" :editable="false" :type="'profile-picture'"></profile-picture>
@@ -33,9 +32,9 @@
               </div>
           </div>
         </slide>
-         <slide class="slide-wrap">
+        <slide class="slide-wrap">
           <div>
-             <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
+            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
@@ -86,6 +85,7 @@ export default {
 
       }
     },
+    
     avatarImage() {
     if(this.studentProfile){
       return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret

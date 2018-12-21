@@ -35,7 +35,7 @@ export default {
   },
 
   GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.image = payload.data.image;
+    state.facultyMember.image = 'https://api.sandbox.csun.edu/metalab/media/1.0/' + state.facultyMember.emailURI + '/avatar';
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;

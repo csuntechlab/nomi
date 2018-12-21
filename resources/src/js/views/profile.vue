@@ -102,7 +102,6 @@ export default {
 	},
 
 	computed: {
-
 		...mapGetters(['studentProfile', 'facultyMember', 'profileErrors', 'profileLoadError']),
 	},
 
