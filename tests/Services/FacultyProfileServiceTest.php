@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Tests\Services;
 
 use App\Contracts\WebResourceRetrieverContract;
+use App\Models\User;
 use App\Services\FacultyProfileService;
+use Illuminate\Support\Facades\Auth;
 use Mockery;
 use Tests\TestCase;
 
@@ -24,26 +26,25 @@ class FacultyProfileServiceTest extends TestCase
     {
         $facultyService = new FacultyProfileService($this->retriever);
 
-        $this->retriever
-            ->shouldReceive('getStudent')
-            ->withArgs(['MrTeacherMan@gmail.com'])
-            ->andReturn(\json_encode(['people' => [
-                'profile_image' => 'thisIsAnImage',
-                'individuals_id' => 'thisIsAnId',
-                'first_name' => 'anakin',
-                'last_name' => 'skywalker'
-            ],
-        ]));
+        $user = new User([
+          'user_id' => 'members:1',
+          'first_name' => 'anakin',
+          'last_name' => 'skywalker',
+        ]);
+
+        $this->be($user);
+
+        Auth::shouldReceive('user')
+            ->andReturn($user);
 
         $returnArray = [
-            'image' => 'thisIsAnImage',
-            'id' => 'thisIsAnId',
+            'image' => env('MEDIA_URL') . 'MrTeacherMan@gmail.com',
+            'id' => 'members:1',
             'name_first' => 'anakin',
-            'name_last' => 'skywalker'
+            'name_last' => 'skywalker',
         ];
 
         $output = $facultyService->getFacultyProfile('MrTeacherMan@gmail.com');
-
         $this->assertEquals($output, $returnArray);
     }
 }

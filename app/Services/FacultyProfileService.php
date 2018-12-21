@@ -26,9 +26,9 @@ class FacultyProfileService implements FacultyProfileContract
 
         return [
             'image' => $mediaURI,
-            'id' => Auth()->User()->user_id,
-            'name_first' => Auth()->User()->first_name,
-            'name_last' => Auth()->User()->last_name,
+            'id' => auth()->user()->user_id,
+            'name_first' => auth()->user()->first_name,
+            'name_last' => auth()->user()->last_name,
         ];
     }
 }
