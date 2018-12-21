@@ -18,19 +18,17 @@ class FacultyProfileService implements FacultyProfileContract
 
     public function getFacultyProfile($email)
     {
-        $faculty = $this->webResourceUtility->getStudent($email);
-
-        $member = \json_decode($faculty, true)['people'];
+        $mediaURI = env('MEDIA_URL') . $email;
 
         // if (is_null($member['profile_image'])) {
         //     $member['profile_image'] = asset('images/likeness.jpg');
         // }
 
         return [
-            'image' => $member['profile_image'],
-            'id' => $member['individuals_id'],
-            'name_first' => $member['first_name'],
-            'name_last' => $member['last_name']
+            'image' => $mediaURI,
+            'id' => auth()->user()->user_id,
+            'name_first' => auth()->user()->first_name,
+            'name_last' => auth()->user()->last_name,
         ];
     }
 }
