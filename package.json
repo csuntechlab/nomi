@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "font-awesome": "^4.7.0",
+        "moment": "^2.23.0",
         "prod": "^1.0.1",
         "vue-axios": "latest",
         "vue-carousel": "^0.15.0",
