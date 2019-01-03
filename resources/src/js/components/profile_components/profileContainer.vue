@@ -60,6 +60,7 @@
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
 import { mapGetters, mapActions} from 'vuex';
+import moment from 'moment';
 export default {
     name: "profile-container",
     props: ['student'],
@@ -88,7 +89,7 @@ export default {
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + '&' + moment().format('MMMM Do YYYY, h:mm:ss a')
       }
     }
     },
