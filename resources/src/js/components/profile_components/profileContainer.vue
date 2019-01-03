@@ -64,14 +64,20 @@ import moment from 'moment';
 export default {
     name: "profile-container",
     props: ['student'],
+
      data: function() {
       return{
         imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==', 
+        timeStamp:  '&?version=' + moment().format()
       }
   },
     components:{
         profilePicture
+    },
+
+    created() {
+        console.log( moment().format() )
     },
     
     computed: {
@@ -82,14 +88,14 @@ export default {
         },
         likenessImage() {
       if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + '&' + moment().format('MMMM Do YYYY, h:mm:ss a')
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp
 
       }
     },
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + '&' + moment().format('MMMM Do YYYY, h:mm:ss a')
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + this.timeStamp
       }
     }
     },

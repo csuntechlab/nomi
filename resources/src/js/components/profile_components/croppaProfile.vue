@@ -18,6 +18,7 @@
 </template>
 <script>
     import { mapGetters } from "vuex";
+    import moment from 'moment';
     export default {
         name: "croppa-profile",
         props:['student'],
@@ -69,7 +70,7 @@
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
-                        profile_image: url,
+                        profile_image: url + '&?' + this.secret + '&?' + moment().format(),
                         image_type: 'likeness',
                         entity_type: 'student',
                         uri: emuri,
