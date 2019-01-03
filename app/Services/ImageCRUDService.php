@@ -62,7 +62,7 @@ class ImageCRUDService implements ImageCRUDContract
                 'profile_image' => $data['profile_image'],
                 'image_type' => $data['image_type'],
                 'entity_type' => $data['entity_type'],
-                'secret_key' => env('MEDIA_KEY'),
+                'secret' => env('MEDIA_KEY'),
             ]);
 
             $response = $guzzle->post(env('MEDIA_URL') . $data['uri'] . '/photo');

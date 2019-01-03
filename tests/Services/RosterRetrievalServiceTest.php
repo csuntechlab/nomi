@@ -33,20 +33,13 @@ class RosterRetrievalServiceTest extends TestCase
 
         $rosterService = new RosterRetrievalService($this->retriever, $this->imageCRUD);
 
-        $images = [
-            'likeness' => 'http://localhost/images/likeness.jpg',
-            'avatar' => 'images/student_avatar_default.jpg',
-        ];
-
         $paulBlart = new \stdClass();
         $paulBlart->position = 'Mall Cop';
         $paulBlart->members_id = 1;
         $paulBlart->first_name = 'Paul';
         $paulBlart->last_name = 'Blart';
         $paulBlart->email = 'cop@mall.com';
-        $paulBlart->likeness_photo = $images['likeness'];
-        $paulBlart->avatar_photo = $images['avatar'];
-        $paulBlart->name_recording = 'pew';
+        $paulBlart->email_uri = 'cop';
         $paulBlart->image_priority = 'likeness';
 
         $shrek = new \stdClass();
@@ -55,9 +48,7 @@ class RosterRetrievalServiceTest extends TestCase
         $shrek->first_name = 'Shrek';
         $shrek->last_name = 'Nelson';
         $shrek->email = 'ogre@swamp.com';
-        $shrek->likeness_photo = $images['likeness'];
-        $shrek->avatar_photo = $images['avatar'];
-        $shrek->name_recording = 'pew';
+        $shrek->email_uri = 'ogre';
         $shrek->image_priority = 'likeness';
 
         $bigJim = new \stdClass();
@@ -66,9 +57,7 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->first_name = 'Big';
         $bigJim->last_name = 'Jim';
         $bigJim->email = 'mountainman@parks.gov';
-        $bigJim->likeness_photo = $images['likeness'];
-        $bigJim->avatar_photo = $images['avatar'];
-        $bigJim->name_recording = 'pew';
+        $bigJim->email_uri = 'mountainman';
         $bigJim->image_priority = 'official';
 
         $frank = new \stdClass();
@@ -77,9 +66,7 @@ class RosterRetrievalServiceTest extends TestCase
         $frank->first_name = 'Frank';
         $frank->last_name = 'Tank';
         $frank->email = 'mountainman@parks.gov';
-        $frank->likeness_photo = $images['likeness'];
-        $frank->avatar_photo = $images['avatar'];
-        $frank->name_recording = 'pew';
+        $frank->email_uri = 'mountainman';
         $frank->image_priority = null;
 
         $roster = [$paulBlart, $shrek, $bigJim, $frank];
@@ -87,8 +74,8 @@ class RosterRetrievalServiceTest extends TestCase
         $this->retriever
             ->shouldReceive('gatherImageCorrectly')
             ->andReturn([
-              'likeness' => 'http://localhost/images/likeness.jpg',
-              'avatar' => 'images/student_avatar_default.jpg',
+                'likeness' => 'http://localhost/images/likeness.jpg',
+                'avatar' => 'images/student_avatar_default.jpg',
             ]);
 
         $cleanRoster = [
@@ -98,9 +85,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'last_name' => 'Jim',
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
-                'images' => $images,
                 'image_priority' => 'official',
-                'name_recording' => 'pew',
             ],
 
             [
@@ -109,9 +94,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'last_name' => 'Tank',
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
-                'images' => $images,
                 'image_priority' => 'likeness',
-                'name_recording' => 'pew',
             ],
 
             [
@@ -120,9 +103,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'last_name' => 'Blart',
                 'email' => 'cop@mall.com',
                 'email_uri' => 'cop',
-                'images' => $images,
                 'image_priority' => 'likeness',
-                'name_recording' => 'pew',
             ],
         ];
 
@@ -139,24 +120,8 @@ class RosterRetrievalServiceTest extends TestCase
         $student->first_name = 'John';
         $student->last_name = 'Connor';
         $student->email = 'john.connor.123@my.csun.edu';
-        $student->emailUri = 'john.connor.123';
+        $student->email_uri = 'john.connor.123';
         $student->image_priority = 'avatar';
-        $student->name_recording = 'pew';
-
-        $this->retriever
-            ->shouldReceive('gatherImageCorrectly')
-            ->once()
-            ->andReturn([
-              'likeness' => 'http://localhost/images/likeness.jpg',
-              'avatar' => 'images/student_avatar_default.jpg',
-            ]);
-
-        $images = [
-            'likeness' => 'http://localhost/images/likeness.jpg',
-            'avatar' => 'images/student_avatar_default.jpg',
-        ];
-        $student->likeness_photo = $images['likeness'];
-        $student->avatar_photo = $images['avatar'];
 
         $this->assertEquals(
             $rosterService->sanitizeStudent($student),
@@ -165,10 +130,8 @@ class RosterRetrievalServiceTest extends TestCase
                 'first_name' => $student->first_name,
                 'last_name' => $student->last_name,
                 'email' => $student->email,
-                'email_uri' => $student->emailUri,
-                'images' => $images,
+                'email_uri' => $student->email_uri,
                 'image_priority' => $student->image_priority,
-                'name_recording' => 'pew',
             ]
         );
     }

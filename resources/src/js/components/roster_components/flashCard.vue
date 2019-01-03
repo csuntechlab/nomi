@@ -20,9 +20,11 @@
 import axios from 'axios';
 import { mapGetters } from 'vuex';
 import profilePicture from '../profile_components/profilePicture.vue';
+import { getImage } from './../../mixins/getImage.js';
 
 export default {
   name: 'flash-card',
+  mixins: [getImage],
 
   data() {
     return {
@@ -39,20 +41,11 @@ export default {
   props: ['student'],
 
   computed: {
-
     ...mapGetters([
     ]),
 
     display_name() {
       return `${this.student.first_name} ${this.student.last_name}`;
-    },
-
-    image() {
-      if (this.student.image_priority === 'likeness') {
-        return this.student.images.likeness;
-      } if (this.student.image_priority === 'avatar') {
-        return this.student.images.avatar;
-      }
     },
   },
 

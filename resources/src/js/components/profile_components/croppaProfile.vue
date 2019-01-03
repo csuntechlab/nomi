@@ -6,8 +6,7 @@
             :prevent-white-space="true"
             :show-remove-button="false"
             :quality="2"
-            placeholder=""
-            :initial-image="this.student.images.likeness"
+            placeholder="Waiting for upload..."
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
@@ -55,8 +54,6 @@
             this.fileInput = null;
         },
         methods: {
-            
-
             loadingStart(){
                 this.loadingCroppa = true;
             },
@@ -67,12 +64,9 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
-                    // var img = document.createElement('img');
-                    // img.src=this.student.images.likeness;
-                    // img.setAttribute('crossOrigin','anonymous');
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
-            
+
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
                         profile_image: url,
@@ -84,6 +78,7 @@
                             this.$store.dispatch('getOnlyData');
                             this.$store.dispatch('startUploadFeedback')
                             this.$parent.$emit('close', url);
+                            this.url = "";
                         } else {
                             console.error('OH NO');
                         }
@@ -91,7 +86,7 @@
                         url = null;
                         this.$parent.$emit('close', url);
                     });
-                    this.$forceUpdate();
+                    
                 }
             },
     
@@ -107,6 +102,7 @@
                 if(this.myCroppa.$refs.fileInput) {
                     this.fileInput = this.myCroppa.$refs.fileInput;
                     this.myCroppa.chooseFile();
+                    this.$root.$emit('letsSwitchItUp');
                 } else {
                     this.myCroppa.$refs.fileInput = this.fileInput;
                     this.myCroppa.chooseFile();

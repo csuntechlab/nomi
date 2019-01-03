@@ -7,9 +7,9 @@
             <i class="fa fa-spinner fa-spin fa-3x icon__theme"/>
         </div>
         <div v-else>
+			<upload-bar/>
 			<modal></modal>
             <profile-container :student="this.studentProfile.student"/>
-			<upload-bar/>
             <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"/>
         </div>
     </div>
@@ -102,7 +102,6 @@ export default {
 	},
 
 	computed: {
-
 		...mapGetters(['studentProfile', 'facultyMember', 'profileErrors', 'profileLoadError']),
 	},
 
