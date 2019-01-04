@@ -22,7 +22,7 @@ export default {
       if (getters.students.hasOwnProperty(student)) {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
-          state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
+          state.studentProfile.student.image_priority = state.studentProfile.imagePriority; 
           state.studentProfile.images = imageRoute + `${state.studentProfile.emailUri}`+ '/' +`${state.studentProfile.imagePriority}` + secret;
           break;
         }
@@ -37,11 +37,11 @@ export default {
     state.studentProfile.imagePriority = payload.data.image_priority;
     state.studentProfile.notes = payload.data.notes;
     state.studentProfile.id = payload.data.student_id;
-    state.studentProfile.firstName = payload.data.first_name;
+    state.studentProfile.firstName = payload.data.first_name; 
     for (const student in getters.students) {
       if (getters.students[student].email == email) {
         state.studentProfile.student = getters.students[student];
-        state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
+        state.studentProfile.student.image_priority = state.studentProfile.imagePriority 
         state.studentProfile.images = getters.students[student].images;
         break;
       }

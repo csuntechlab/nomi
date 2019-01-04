@@ -2,6 +2,7 @@ import Croppa from 'vue-croppa';
 import VueCarousel from 'vue-carousel';
 import router from './router';
 import store from './store';
+import moment from 'moment';
 
 require('./bootstrap');
 window.Vue = require('vue');

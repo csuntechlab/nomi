@@ -41,6 +41,7 @@ class RosterRetrievalServiceTest extends TestCase
         $paulBlart->email = 'cop@mall.com';
         $paulBlart->email_uri = 'cop';
         $paulBlart->image_priority = 'likeness';
+        $paulBlart->recently_uploaded = false;
 
         $shrek = new \stdClass();
         $shrek->position = 'Instructor';
@@ -50,6 +51,7 @@ class RosterRetrievalServiceTest extends TestCase
         $shrek->email = 'ogre@swamp.com';
         $shrek->email_uri = 'ogre';
         $shrek->image_priority = 'likeness';
+        $shrek->recently_uploaded = false;
 
         $bigJim = new \stdClass();
         $bigJim->position = 'Student';
@@ -59,6 +61,7 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->email = 'mountainman@parks.gov';
         $bigJim->email_uri = 'mountainman';
         $bigJim->image_priority = 'official';
+        $bigJim->recently_uploaded = false;
 
         $frank = new \stdClass();
         $frank->position = 'Student';
@@ -68,6 +71,7 @@ class RosterRetrievalServiceTest extends TestCase
         $frank->email = 'mountainman@parks.gov';
         $frank->email_uri = 'mountainman';
         $frank->image_priority = null;
+        $frank->recently_uploaded = false;
 
         $roster = [$paulBlart, $shrek, $bigJim, $frank];
 
@@ -86,6 +90,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'official',
+                'recently_uploaded' => false,
             ],
 
             [
@@ -95,6 +100,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'likeness',
+                'recently_uploaded' => false,
             ],
 
             [
@@ -104,6 +110,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'cop@mall.com',
                 'email_uri' => 'cop',
                 'image_priority' => 'likeness',
+                'recently_uploaded' => false,
             ],
         ];
 
@@ -122,6 +129,7 @@ class RosterRetrievalServiceTest extends TestCase
         $student->email = 'john.connor.123@my.csun.edu';
         $student->email_uri = 'john.connor.123';
         $student->image_priority = 'avatar';
+        $student->recently_uploaded = false;
 
         $this->assertEquals(
             $rosterService->sanitizeStudent($student),
@@ -132,6 +140,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => $student->email,
                 'email_uri' => $student->email_uri,
                 'image_priority' => $student->image_priority,
+                'recently_uploaded' => false,
             ]
         );
     }

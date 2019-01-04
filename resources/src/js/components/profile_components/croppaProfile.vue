@@ -70,7 +70,7 @@
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
-                        profile_image: url + '&?' + this.secret + '&?' + moment().format(),
+                        profile_image: url,
                         image_type: 'likeness',
                         entity_type: 'student',
                         uri: emuri,

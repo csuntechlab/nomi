@@ -11,6 +11,8 @@ export default {
   },
 
   GET_DATA(state, payload) {
+    console.log(payload)
+    console.log(state)
     function capitalize(name) {
       return name.charAt(0).toUpperCase() + name.substr(1);
     }

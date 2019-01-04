@@ -75,10 +75,6 @@ export default {
     components:{
         profilePicture
     },
-
-    created() {
-        console.log( moment().format() )
-    },
     
     computed: {
         ...mapGetters(["studentProfile", "permission"]),
@@ -87,16 +83,17 @@ export default {
             return this.goToPage(0)
         },
         likenessImage() {
-      if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp
+            if(this.studentProfile){
+                console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp)
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp
 
-      }
+        }
     },
     
-    avatarImage() {
-    if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + this.timeStamp
-      }
+        avatarImage() {
+            if(this.studentProfile){
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + this.timeStamp
+        }
     }
     },
 

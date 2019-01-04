@@ -12,7 +12,6 @@ export default {
         firstName: null,
         lastName: null,
         student: null,
-
     },
 
 
