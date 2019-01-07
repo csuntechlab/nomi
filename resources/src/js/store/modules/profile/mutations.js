@@ -12,6 +12,8 @@ export default {
     let imageRoute = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/";
     let secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==';
     const email = payload.data.email;
+    // let timeStamp = '&?version=' + moment().format();
+    let timeStamp = '&?version=2019-01-07T00:00:00-00:00';
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
     state.studentProfile.imagePriority = payload.data.image_priority;
@@ -23,7 +25,7 @@ export default {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority; 
-          state.studentProfile.images = imageRoute + `${state.studentProfile.emailUri}`+ '/' +`${state.studentProfile.imagePriority}` + secret;
+          state.studentProfile.images = imageRoute + `${state.studentProfile.emailUri}`+ '/' +`${state.studentProfile.imagePriority}` + secret + timeStamp;
           break;
         }
       }

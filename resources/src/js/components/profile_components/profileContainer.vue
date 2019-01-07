@@ -75,7 +75,7 @@ export default {
     components:{
         profilePicture
     },
-    
+     
     computed: {
         ...mapGetters(["studentProfile", "permission"]),
         emailExists() {
@@ -86,15 +86,14 @@ export default {
             if(this.studentProfile){
                 console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp)
                 return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp
-
-        }
+            }
     },
     
         avatarImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret + this.timeStamp
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret;
+            }
         }
-    }
     },
 
 	methods: {

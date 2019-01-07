@@ -304,7 +304,7 @@ export default {
 
   stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
-  }
+  },
   
   setUploadImage(context, payload){
     context.commit('SET_UPLOAD_IMAGE', payload);

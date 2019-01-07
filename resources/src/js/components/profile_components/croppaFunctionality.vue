@@ -22,8 +22,7 @@ export default {
         data: function() {
             return{
                 disabled: true,
-                timeStamp: moment().format(),
-                
+                // timeStamp: moment().format(),
             }
         },
 
@@ -45,7 +44,7 @@ export default {
             },
                 confirmImage() {
                 this.$root.$emit('confirmImage');
-                this.setUploadImage(true, this.timeStamp);
+                // this.setUploadImage(true, this.timeStamp);
                 this.toggleModal(false);
             },
         },

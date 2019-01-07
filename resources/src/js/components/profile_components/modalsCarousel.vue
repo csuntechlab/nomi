@@ -52,6 +52,7 @@ import { mapGetters, mapMutations, mapActions } from 'vuex';
 import croppaProfile from "../profile_components/croppaProfile.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
 import imageHandler from "../profile_components/imageHandler.vue";
+import moment from 'moment';
 
 export default {
   name: "modals-carousel",
@@ -60,7 +61,8 @@ export default {
         okayToUpdate: null,
         switchItUp: false,
         imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+        timeStamp:  '&?version=' + moment().format(),
       }
   },
 
@@ -77,19 +79,25 @@ export default {
     profilePicture,
     croppaProfile
   },
+  //  watch: {
+  //   studentProfile.recently_uploaded: function (val) {
+  //     likenessImage();
+  //   }
+  //   },
   computed: {
     
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret
+        console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp)
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp;
 
       }
     },
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret;
       }
     }
   },

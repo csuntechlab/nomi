@@ -18,7 +18,6 @@
 </template>
 <script>
     import { mapGetters } from "vuex";
-    import moment from 'moment';
     export default {
         name: "croppa-profile",
         props:['student'],
@@ -76,11 +75,12 @@
                         uri: emuri,
                     }).then(response => {
                         if (response.status) {
+                            this.$store.dispatch('setUploadImage', this.student)
                             this.$store.dispatch('startUploadFeedback')
                             this.$parent.$emit('close', url);
                             this.url = "";
                         } else {
-                            console.error('OH NO');
+                            console.error('OH NO');s
                         }
                     }).catch(e => {
                         url = null;

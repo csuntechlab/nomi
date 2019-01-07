@@ -313,12 +313,7 @@ export default {
     state.uploadFeedback = false;
   }, 
 
-  SET_UPLOAD_IMAGE(state, payload, timeStamp){
-    console.log(payload.data);
-    state.recentlyUploaded = payload.data.recently_uploaded;
-    if(payload){
-      
-    }
-
+  SET_UPLOAD_IMAGE(state, payload){
+    payload.recently_uploaded = true; 
   },
 };
