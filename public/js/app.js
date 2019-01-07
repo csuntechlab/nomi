@@ -44178,7 +44178,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     document.getElementById('mainBody').className = state.themeName.theme;
   },
   GET_DATA: function GET_DATA(state, payload) {
-    console.log(payload);
     function capitalize(name) {
       return name.charAt(0).toUpperCase() + name.substr(1);
     }
@@ -44454,6 +44453,10 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   },
   STOP_UPLOAD_FEEDBACK: function STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
+  },
+  SET_UPLOAD_IMAGE: function SET_UPLOAD_IMAGE(state, payload) {
+    state.recentlyUploaded = payload.data.recentlyuploaded;
+    console.log(payload.data);
   }
 });
 

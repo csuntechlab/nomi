@@ -40,4 +40,6 @@ export default {
     image: null,
     id: null,
   },
+
+  recentlyUploaded: false,
 };

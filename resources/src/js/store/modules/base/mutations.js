@@ -11,8 +11,6 @@ export default {
   },
 
   GET_DATA(state, payload) {
-    console.log(payload)
-    console.log(state)
     function capitalize(name) {
       return name.charAt(0).toUpperCase() + name.substr(1);
     }
@@ -313,5 +311,14 @@ export default {
 
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  }
+  }, 
+
+  SET_UPLOAD_IMAGE(state, payload, timeStamp){
+    console.log(payload.data);
+    state.recentlyUploaded = payload.data.recently_uploaded;
+    if(payload){
+      
+    }
+
+  },
 };
