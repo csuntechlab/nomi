@@ -46,7 +46,7 @@
           ...mapGetters(["modalVisible", "modalData"])
         },
 
-        mounted(){
+        created(){
             this.$root.$on('newSlide', () => {
                 this.croppaToggle()
             });
