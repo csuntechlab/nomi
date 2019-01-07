@@ -24923,50 +24923,65 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "profile-container",
-  props: ['student'],
-  data: function data() {
-    return {
-      imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-      secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
-    };
-  },
-  components: {
-    profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
-  },
+    name: "profile-container",
+    props: ['student'],
+    data: function data() {
+        return {
+            imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+        };
+    },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile", "permission"]), {
-    emailExists: function emailExists() {
-      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-      return this.goToPage(0);
+    components: {
+        profilePicture: __WEBPACK_IMPORTED_MODULE_0__profile_components_profilePicture_vue___default.a
     },
-    likenessImage: function likenessImage() {
-      if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret;
-      }
-    },
-    avatarImage: function avatarImage() {
-      if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
-      }
-    }
-  }),
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
-    showModal: function showModal() {
-      if (this.permission === true) {
-        this.toggleModal(true);
-        this.dataForModal(this.student);
-      } else {
-        this.nullifyPermissionResponse();
-      }
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["c" /* mapGetters */])(["studentProfile", "permission"]), {
+        emailExists: function emailExists() {
+            return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+            return this.goToPage(0);
+        },
+        likenessImage: function likenessImage() {
+            if (this.studentProfile) {
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secre;
+            }
+        },
+        avatarImage: function avatarImage() {
+            if (this.studentProfile) {
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+            }
+        }
+    }),
+
+    mounted: function mounted() {
+        var name = this.student.first_name + " " + this.student.last_name;
+        var nameSplit = name.split(" ");
+        var final_name = "";
+        if (document.getElementById('name') != null) {
+            for (var i = 0; i < nameSplit.length; i++) {
+                final_name = final_name + nameSplit[i] + '<br>';
+            }
+
+            document.getElementById('name').innerHTML = final_name;
+        }
     },
-    checkPermission: function checkPermission() {
-      if (this.permission == false) {
-        this.$store.dispatch("nullifyPermissionResponse");
-      }
-    }
-  })
+
+
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
+        showModal: function showModal() {
+            if (this.permission === true) {
+                this.toggleModal(true);
+                this.dataForModal(this.student);
+            } else {
+                this.nullifyPermissionResponse();
+            }
+        },
+        checkPermission: function checkPermission() {
+            if (this.permission == false) {
+                this.$store.dispatch("nullifyPermissionResponse");
+            }
+        }
+    })
 });
 
 /***/ }),
@@ -25113,17 +25128,25 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "profile__divider" }, [
-        _c("div", { staticClass: "profile__name-container" }, [
-          _c("h5", { staticClass: "type--center profile__name" }, [
-            _vm._v(_vm._s(_vm.student.first_name + " " + _vm.student.last_name))
-          ])
-        ])
-      ])
+      _vm._m(0)
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "profile__divider" }, [
+      _c("div", { staticClass: "profile__name-container" }, [
+        _c("h5", {
+          staticClass: "type--center profile__name",
+          attrs: { id: "name" }
+        })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

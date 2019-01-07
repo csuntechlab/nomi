@@ -51,7 +51,7 @@
 
             <div class="profile__divider">
                 <div class="profile__name-container">
-                    <h5 class="type--center profile__name">{{student.first_name+ " " +student.last_name}}</h5>
+                    <h5 id="name" class="type--center profile__name"></h5>
                 </div>
             </div>
     </div>
@@ -63,12 +63,13 @@ import { mapGetters, mapActions} from 'vuex';
 export default {
     name: "profile-container",
     props: ['student'],
-     data: function() {
-      return{
-        imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
-      }
-  },
+    data: function() {
+        return{
+            imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
+        }
+    },
+
     components:{
         profilePicture
     },
@@ -79,18 +80,31 @@ export default {
             return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
             return this.goToPage(0)
         },
-        likenessImage() {
-      if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret
 
-      }
-    },
+        likenessImage() {
+            if(this.studentProfile){
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secre
+            }
+        },
     
-    avatarImage() {
-    if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
-      }
-    }
+        avatarImage() {
+            if(this.studentProfile){
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+            }
+        }
+    },
+
+    mounted() {
+        let name = this.student.first_name + " " + this.student.last_name;
+        let nameSplit = name.split(" ");
+        let final_name = "";
+        if (document.getElementById('name') != null) {
+            for (let i= 0; i < nameSplit.length; i++) {
+                final_name = final_name + nameSplit[i] + '<br>' ;
+            }
+
+            document.getElementById('name').innerHTML = final_name;
+        }
     },
 
 	methods: {
@@ -106,7 +120,7 @@ export default {
 			}
 			
 			
-		},
+        },
 
 		checkPermission() {
 			if (this.permission == false){

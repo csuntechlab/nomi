@@ -2859,6 +2859,7 @@ textarea[type="text"]:focus {
 }
 
 .profile__name {
+  font-size: 1.50rem;
   font-weight: bold;
   margin-bottom: 0%;
 }
