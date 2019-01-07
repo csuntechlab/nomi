@@ -6,14 +6,22 @@ namespace App\ModelRepositories;
 
 use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
 use App\Models\Term;
+use Carbon\Carbon;
 
 class TermModelRepository implements TermModelRepositoryInterface
 {
     public function find($today): array
     {
-        return Term::currentTerm($today)
-        ->first()
-        ->toArray();
+        $currentTerm = Term::currentTerm($today)
+        ->first();
+
+        while ($currentTerm == null) {
+            $today = Carbon::parse($today)->addWeeks(1)->toDateTimeString();
+            $currentTerm = Term::currentTerm($today)
+          ->first();
+        }
+
+        return $currentTerm->toArray();
     }
 
     public function all(): array
