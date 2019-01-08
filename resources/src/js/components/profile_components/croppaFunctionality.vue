@@ -15,14 +15,12 @@
 <script>
 import modal from "../fixed_components/modal.vue";
 import { mapGetters, mapActions } from 'vuex';
-import moment from 'moment';
 
 export default {
         name: "croppa-functionality",
         data: function() {
             return{
                 disabled: true,
-                // timeStamp: moment().format(),
             }
         },
 
@@ -44,7 +42,6 @@ export default {
             },
                 confirmImage() {
                 this.$root.$emit('confirmImage');
-                // this.setUploadImage(true, this.timeStamp);
                 this.toggleModal(false);
             },
         },

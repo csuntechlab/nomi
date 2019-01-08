@@ -5,7 +5,7 @@
                 <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'" :key="timeStamp"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -32,7 +32,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'" :key="timeStamp"></profile-picture>
                         <div class="type--center">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -85,7 +85,7 @@ export default {
         likenessImage() {
             if(this.studentProfile){
                 console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp)
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.timeStamp}`
             }
     },
     
@@ -117,6 +117,14 @@ export default {
 			}
 			
 		}
-	},
+    },
+    
+        forceRerender() {
+            if(this.student.recently_uploaded){
+                console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp + "forcedUpdate")
+                this.timeStamp = '&?version=' + moment().format()
+                this.$store.dispatch('setUploadImage', false)
+            }
+    },
 }
 </script>

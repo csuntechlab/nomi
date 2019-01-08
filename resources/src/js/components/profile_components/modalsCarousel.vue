@@ -79,18 +79,14 @@ export default {
     profilePicture,
     croppaProfile
   },
-  //  watch: {
-  //   studentProfile.recently_uploaded: function (val) {
-  //     likenessImage();
-  //   }
-  //   },
+
   computed: {
     
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
         console.log(this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp)
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + this.timeStamp;
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.timeStamp}`;
 
       }
     },
