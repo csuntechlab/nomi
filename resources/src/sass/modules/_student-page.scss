@@ -186,6 +186,10 @@
 		margin: 0 auto;
 	}
 
+	&__uploaded-text {
+		padding-top: 0.35rem;
+	}
+
 	&_email {
 		margin-bottom: 10px;
 	}
@@ -285,6 +289,7 @@
 		display: block;
 		height: 100%;
 		margin-left: 10%;
+		margin-bottom: 4rem;
 	}
 	
 	&__color-layer {

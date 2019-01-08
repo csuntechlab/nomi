@@ -6,7 +6,7 @@
                     <slide class="slide-wrap">
                     <div>
                         <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
-                        <div class="type--center">
+                        <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
                     </div>
@@ -14,7 +14,7 @@
                     <slide class="slide-wrap">
                     <div>
                         <profile-picture :student="studentProfile.student" :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
-                        <div class="type--center">
+                        <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                     <slide class="slide-wrap">
                     <div>
                         <profile-picture :student="studentProfile.student" :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
-                        <div class="type--center">
+                        <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <slide class="slide-wrap">
                     <div>
                         <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
-                        <div class="type--center">
+                        <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
 
             <div class="profile__divider">
                 <div class="profile__name-container">
-                    <h5 id="name" class="type--center profile__name"></h5>
+                    <h1 id="profile__name" class="type--center profile__name"></h1>
                 </div>
             </div>
     </div>
@@ -63,13 +63,12 @@ import { mapGetters, mapActions} from 'vuex';
 export default {
     name: "profile-container",
     props: ['student'],
-    data: function() {
-        return{
-            imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==',
-        }
-    },
-
+     data: function() {
+      return{
+        imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+      }
+  },
     components:{
         profilePicture
     },
@@ -80,30 +79,30 @@ export default {
             return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
             return this.goToPage(0)
         },
-
         likenessImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secre
-            }
-        },
+      if(this.studentProfile){
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret
+
+      }
+    },
     
-        avatarImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
-            }
-        }
+    avatarImage() {
+    if(this.studentProfile){
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+      }
+    }
     },
 
     mounted() {
         let name = this.student.first_name + " " + this.student.last_name;
         let nameSplit = name.split(" ");
         let final_name = "";
-        if (document.getElementById('name') != null) {
+        if (document.getElementById('profile__name') != null) {
             for (let i= 0; i < nameSplit.length; i++) {
                 final_name = final_name + nameSplit[i] + '<br>' ;
             }
 
-            document.getElementById('name').innerHTML = final_name;
+            document.getElementById('profile__name').innerHTML = final_name;
         }
     },
 
@@ -120,7 +119,7 @@ export default {
 			}
 			
 			
-        },
+		},
 
 		checkPermission() {
 			if (this.permission == false){

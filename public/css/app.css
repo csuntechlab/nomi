@@ -2705,6 +2705,10 @@ textarea[type="text"]:focus {
   margin: 0 auto;
 }
 
+.profile__uploaded-text {
+  padding-top: 0.35rem;
+}
+
 .profile_email {
   margin-bottom: 10px;
 }
@@ -2868,6 +2872,7 @@ textarea[type="text"]:focus {
   display: block;
   height: 100%;
   margin-left: 10%;
+  margin-bottom: 4rem;
 }
 
 .profile__color-layer {
