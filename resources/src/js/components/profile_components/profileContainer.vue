@@ -60,6 +60,7 @@
 <script>
 import profilePicture from "../profile_components/profilePicture.vue"; 
 import { mapGetters, mapActions} from 'vuex';
+
 export default {
     name: "profile-container",
     props: ['student'],
@@ -79,18 +80,18 @@ export default {
             return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
             return this.goToPage(0)
         },
-        likenessImage() {
-      if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret
 
-      }
-    },
+        likenessImage() {
+            if(this.studentProfile){
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.student.timestamp}`;
+            }
+        },
     
-    avatarImage() {
-    if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
-      }
-    }
+        avatarImage() {
+            if(this.studentProfile){
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+            }
+        }
     },
 
     mounted() {

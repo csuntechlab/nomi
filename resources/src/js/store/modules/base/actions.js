@@ -304,6 +304,10 @@ export default {
 
   stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
+  },
+
+  setTimestamp(context, payload) {
+    context.commit('SET_TIMESTAMP', payload);
   }
 
 };

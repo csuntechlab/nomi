@@ -1,4 +1,6 @@
 import initialState from './state.js';
+import moment from 'moment';
+
 export default {
   API_FAILURE(state, payload) {
     state.errors = payload.response.data.message;
@@ -311,5 +313,15 @@ export default {
 
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  }
+  },
+
+  SET_TIMESTAMP(state, payload) {
+    for (let i = 0, len = state.courses.length; i < len; i += 1) {
+      for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
+        if (state.courses[i].roster[j].email_uri === payload) {
+          state.courses[i].roster[j].timestamp = '&?' + moment().format('DDhmmss');
+        }
+      }
+    } 
+  } 
 };
