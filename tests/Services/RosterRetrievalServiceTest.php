@@ -86,6 +86,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'official',
+                'timestamp' => '&?',
             ],
 
             [
@@ -95,6 +96,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'likeness',
+                'timestamp' => '&?',
             ],
 
             [
@@ -104,6 +106,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => 'cop@mall.com',
                 'email_uri' => 'cop',
                 'image_priority' => 'likeness',
+                'timestamp' => '&?',
             ],
         ];
 
@@ -132,6 +135,7 @@ class RosterRetrievalServiceTest extends TestCase
                 'email' => $student->email,
                 'email_uri' => $student->email_uri,
                 'image_priority' => $student->image_priority,
+                'timestamp' => '&?',
             ]
         );
     }
