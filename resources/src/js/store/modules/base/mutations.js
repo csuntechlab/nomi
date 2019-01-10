@@ -323,5 +323,13 @@ export default {
         }
       }
     } 
+    for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
+      for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
+        if (state.flashroster[i][j].email_uri === payload) {
+          state.flashroster[i][j].timestamp = '&?' + moment().format('DDhmmss');
+        }
+      }
+    } 
+
   } 
 };
