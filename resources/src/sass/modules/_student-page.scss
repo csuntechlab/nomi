@@ -191,7 +191,11 @@
 	}
 
 	&_email {
+		font-size: 3.25vw;
 		margin-bottom: 10px;
+		@media only screen and (min-width: 675px) {
+			font-size: 20px;
+		}
 	}
 
 	&_email_text {

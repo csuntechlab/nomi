@@ -2710,7 +2710,14 @@ textarea[type="text"]:focus {
 }
 
 .profile_email {
+  font-size: 3.25vw;
   margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 675px) {
+  .profile_email {
+    font-size: 20px;
+  }
 }
 
 .profile_email_text {
