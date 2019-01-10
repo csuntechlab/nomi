@@ -18,6 +18,8 @@
 </template>
 <script>
     import { mapGetters } from "vuex";
+    import { mapActions } from "vuex";
+
     export default {
         name: "croppa-profile",
         props:['student'],
@@ -54,6 +56,11 @@
             this.fileInput = null;
         },
         methods: {
+
+            ...mapActions([
+                'setTimestamp'
+            ]),
+
             loadingStart(){
                 this.loadingCroppa = true;
             },
@@ -75,8 +82,8 @@
                         uri: emuri,
                     }).then(response => {
                         if (response.status) {
-                            this.$store.dispatch('getOnlyData');
-                            this.$store.dispatch('startUploadFeedback')
+                            this.$store.dispatch('startUploadFeedback');
+                            this.$store.dispatch('setTimestamp', this.student.email_uri);
                             this.$parent.$emit('close', url);
                             this.url = "";
                         } else {
