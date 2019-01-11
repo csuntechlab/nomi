@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Term extends Model
@@ -16,5 +17,11 @@ class Term extends Model
     {
         return $query->where('begin_date', '<=', $today)
         ->where('end_date', '>=', $today);
+    }
+
+    public function scopeNowAndNextTerm($query, $take = 2)
+    {
+        return $query->where('end_date', '>', Carbon::now())
+              ->orderBy('end_date')->take($take + 1);
     }
 }
