@@ -12,13 +12,17 @@ class TermModelRepository implements TermModelRepositoryInterface
 {
     public function find($today): array
     {
-        $currentTerm = Term::currentTerm($today)
-        ->first();
+        $terms = Term::nowAndNextTerm(1)->get();
+        $currentTerm = $terms->first();
+        $nextTerm = $terms->last();
 
-        while ($currentTerm == null) {
-            $today = Carbon::parse($today)->addWeeks(1)->toDateTimeString();
-            $currentTerm = Term::currentTerm($today)
-          ->first();
+        $today = Carbon::today();
+        $nextStart = Carbon::parse($nextTerm->begin_date);
+        $diff = $today->diffInDays($nextStart);
+
+        // is next term 3 weeks away
+        if ($diff >= 0 && $diff <= 21) {
+            return $nextTerm->toArray();
         }
 
         return $currentTerm->toArray();
