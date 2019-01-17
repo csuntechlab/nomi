@@ -60,7 +60,7 @@ export default {
         okayToUpdate: null,
         switchItUp: false,
         imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
       }
   },
 

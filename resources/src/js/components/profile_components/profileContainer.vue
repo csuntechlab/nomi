@@ -67,7 +67,7 @@ export default {
      data: function() {
       return{
         imageUrl:'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw=='
+        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
       }
   },
     components:{
@@ -83,13 +83,13 @@ export default {
 
         likenessImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.student.timestamp}`;
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret  + `${this.student.timestamp}`;
             }
         },
     
         avatarImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret 
             }
         }
     },
