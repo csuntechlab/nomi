@@ -17100,7 +17100,7 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/" + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -39871,7 +39871,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return {
       okayToUpdate: null,
       switchItUp: false,
-      imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+      imageUrl: document.querySelector('meta[name=img-url]').content,
       secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
     };
   },
@@ -41416,7 +41416,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     props: ['student'],
     data: function data() {
         return {
-            imageUrl: 'https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/',
+            imageUrl: document.querySelector('meta[name=img-url]').content,
             secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
         };
     },
@@ -43440,7 +43440,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         getters = _ref.getters,
         response = _ref.response;
 
-    var imageRoute = "https://api.sandbox.csun.edu/metalab/test/media/1.1/student/media/";
+    var imageRoute = document.querySelector('meta[name=img-url]').content;
     var secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
     var email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
