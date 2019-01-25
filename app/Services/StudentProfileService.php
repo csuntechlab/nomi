@@ -41,10 +41,15 @@ class StudentProfileService implements StudentProfileContract
                 ->imageCRUDUtility
                 ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
+            // be resilient against display names with one word
+            $nameParts = \explode($profile['display_name']);
+            $firstName = $nameParts[0];
+            $lastName = (\count($nameParts) > 1 ? $nameParts[1] : $profile['last_name']);
+
             $studentProfile = (object) [
                 'display_name' => $profile['display_name'],
-                'first_name' => \explode(' ', $profile['display_name'])[0],
-                'last_name' => \substr(\strstr($profile['display_name'], ' '), 1),
+                'first_name' => $firstName,
+                'last_name' => $lastName,
                 'email' => $email,
                 'student_id' => $profile['individuals_id'],
                 'members_id' => $profile['individuals_id'],
