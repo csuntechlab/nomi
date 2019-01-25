@@ -42,7 +42,7 @@ class StudentProfileService implements StudentProfileContract
                 ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
             // be resilient against display names with one word
-            $nameParts = \explode($profile['display_name']);
+            $nameParts = \explode(' ', $profile['display_name']);
             $firstName = $nameParts[0];
             $lastName = (\count($nameParts) > 1 ? $nameParts[1] : $profile['last_name']);
 
