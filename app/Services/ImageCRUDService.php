@@ -11,6 +11,7 @@ use App\Models\ImagePriority;
 // use Illuminate\Support\Facades\Cache;
 use CSUNMetaLab\Guzzle\Factories\HandlerGuzzleFactory;
 use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -136,26 +137,12 @@ class ImageCRUDService implements ImageCRUDContract
             ['image_priority' => $data['image_priority']]
         );
 
-        $this->clearCache($facultyID, $term);
+        $this->clearCache();
     }
 
-    private function clearCache($facultyID, $term = null)
+    private function clearCache()
     {
-        $msg = $facultyID;
-        $term = $this->getCurrentTerm($term);
-
-        for ($i = 0; $i < 10; ++$i) {
-            if ($this->cache->has('students:' . $i . ':' . $facultyID . 'term:' . $term)) {
-                $this->cache->forget('students:' . $i . ':' . $facultyID . 'term:' . $term);
-                $msg .= "forgot students\n";
-            }
-            if ($this->cache->has('courses:' . $facultyID . 'term:' . $term)) {
-                $this->cache->forget('courses:' . $facultyID . 'term:' . $term);
-                $msg .= "forgot courses\n\n";
-            }
-        }
-
-        return $msg;
+        Artisan::call('cache:clear');
     }
 
     private function getCurrentTerm($term)
