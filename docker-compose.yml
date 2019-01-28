@@ -5,7 +5,7 @@ services:
     container_name: nomi
     image: csunmetalab/environment:nomi
     ports:
-      - '8080:80'
+      - '8089:80'
     volumes:
       - .:/var/www/
   

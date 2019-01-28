@@ -71,6 +71,7 @@
                 if (!this.myCroppa.hasImage()) {
                     alert('no image');
                 } else {
+                    
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
 
@@ -86,6 +87,17 @@
                             this.$store.dispatch('setTimestamp', this.student.email_uri);
                             this.$parent.$emit('close', url);
                             this.url = "";
+
+                            var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                            var photoElement = document.getElementById(photoGalleryId);
+
+                            console.log("photoGalleryId is " + photoGalleryId);
+
+                            photoElement.removeAttribute('src');
+                            // img.setAttribute('src', 'https://metalab-faculty-webdrive.s3.us-west-2.amazonaws.com/media/student/nr_shant.hairapetian.532/likeness.jpg?cachebustersuperpowers=' + num);
+                            
+                            
+                           
                         } else {
                             console.error('OH NO');
                         }

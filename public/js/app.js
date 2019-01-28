@@ -39016,12 +39016,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable"]
+	props: ["image", "student", "type", "editable"],
+	methods: {
+		doYourThing: function doYourThing() {
+			console.log("do your thing");
+		}
+	}
 });
 
 /***/ }),
@@ -39040,7 +39046,11 @@ var render = function() {
           ? "profile__img profile__img--border"
           : "roster__img"
       ],
-      attrs: { src: _vm.image, name: "photo" }
+      attrs: {
+        id: "photo-modal--" + _vm.student.email_uri,
+        src: _vm.image,
+        name: "photo"
+      }
     })
   ])
 }
@@ -39376,7 +39386,11 @@ var render = function() {
           _c("img", {
             staticClass: "img--circle",
             class: [this.type == "profile" ? "profile__img" : "roster__img"],
-            attrs: { src: _vm.image, name: "photo" }
+            attrs: {
+              id: "photo-gallery--" + _vm.email,
+              src: _vm.image,
+              name: "photo"
+            }
           })
         ]
       ),
@@ -40044,6 +40058,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (!this.myCroppa.hasImage()) {
                 alert('no image');
             } else {
+
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
 
@@ -40059,6 +40074,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                         _this2.$store.dispatch('setTimestamp', _this2.student.email_uri);
                         _this2.$parent.$emit('close', url);
                         _this2.url = "";
+
+                        var photoGalleryId = 'photo-gallery--' + _this2.student.email_uri;
+                        var photoElement = document.getElementById(photoGalleryId);
+
+                        console.log("photoGalleryId is " + photoGalleryId);
+
+                        photoElement.removeAttribute('src');
+                        // img.setAttribute('src', 'https://metalab-faculty-webdrive.s3.us-west-2.amazonaws.com/media/student/nr_shant.hairapetian.532/likeness.jpg?cachebustersuperpowers=' + num);
+
                     } else {
                         console.error('OH NO');
                     }
@@ -40325,7 +40349,8 @@ var render = function() {
                         attrs: {
                           image: _vm.likenessImage,
                           editable: false,
-                          type: "profile-picture"
+                          type: "profile-picture",
+                          student: _vm.student
                         }
                       }),
                       _vm._v(" "),
@@ -40367,7 +40392,8 @@ var render = function() {
                         attrs: {
                           image: _vm.avatarImage,
                           editable: false,
-                          type: "profile-picture"
+                          type: "profile-picture",
+                          student: _vm.student
                         }
                       }),
                       _vm._v(" "),
@@ -40410,7 +40436,8 @@ var render = function() {
                         attrs: {
                           image: _vm.avatarImage,
                           editable: false,
-                          type: "profile-picture"
+                          type: "profile-picture",
+                          student: _vm.student
                         }
                       }),
                       _vm._v(" "),
@@ -40448,7 +40475,8 @@ var render = function() {
                         attrs: {
                           image: _vm.likenessImage,
                           editable: false,
-                          type: "profile-picture"
+                          type: "profile-picture",
+                          student: _vm.student
                         }
                       }),
                       _vm._v(" "),
