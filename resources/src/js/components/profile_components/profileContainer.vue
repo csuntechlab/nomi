@@ -88,7 +88,7 @@ export default {
     
         avatarImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` 
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` ;
             }
         }
     },
