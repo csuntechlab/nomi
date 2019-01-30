@@ -76,7 +76,6 @@
 
                     let photoGalleryId = 'photo-gallery--' + emuri
                     let photoElement = document.getElementById(photoGalleryId);
-                    console.log(photoElement, photoGalleryId)
                     let photoSrc = photoElement.getAttribute('src');
                     photoElement.setAttribute('src', './images/profile-loading.gif')
 

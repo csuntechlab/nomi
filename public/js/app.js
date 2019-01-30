@@ -17100,7 +17100,7 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -40059,7 +40059,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
                 var photoGalleryId = 'photo-gallery--' + emuri;
                 var photoElement = document.getElementById(photoGalleryId);
-                console.log(photoElement, photoGalleryId);
                 var photoSrc = photoElement.getAttribute('src');
                 photoElement.setAttribute('src', './images/profile-loading.gif');
 
@@ -41731,7 +41730,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ("" + this.student.timestamp)
         };
     },
     components: {
