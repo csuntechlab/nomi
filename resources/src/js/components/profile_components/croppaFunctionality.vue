@@ -39,6 +39,7 @@ export default {
         methods: {
         ...mapActions(['toggleCropping','toggleModal']),
             chooseImage() {
+                console.log("CHOOSE IMAGE - CHILD");
                 this.$root.$emit('chooseImage');
             },
                 confirmImage() {

@@ -17101,6 +17101,7 @@ var getImage = {
     computed: {
         image: function image() {
             var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            console.log("GETIMAGE JUST RAN");
             return imageRoute;
         }
     }
@@ -39022,12 +39023,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable"],
-	methods: {
-		doYourThing: function doYourThing() {
-			console.log("do your thing");
-		}
-	}
+	props: ["image", "student", "type", "editable"]
 });
 
 /***/ }),
@@ -39046,11 +39042,7 @@ var render = function() {
           ? "profile__img profile__img--border"
           : "roster__img"
       ],
-      attrs: {
-        id: "photo-modal--" + _vm.student.email_uri,
-        src: _vm.image,
-        name: "photo"
-      }
+      attrs: { src: _vm.image, name: "photo" }
     })
   ])
 }
@@ -39209,6 +39201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_getStudent_js__ = __webpack_require__(10);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+//
 //
 //
 //
@@ -39682,6 +39675,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_1_vuex__["b" /* mapActions */])(['toggleCropping', 'toggleModal']), {
         chooseImage: function chooseImage() {
+            console.log("CHOOSE IMAGE - CHILD");
             this.$root.$emit('chooseImage');
         },
         confirmImage: function confirmImage() {
@@ -40032,6 +40026,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         var _this = this;
 
         this.$root.$on('chooseImage', function () {
+            console.log("CHOOSE IMAGE - PARENT");
             _this.chooseImage();
         }), this.$root.$on('confirmImage', function () {
             _this.confirmImage();
@@ -40062,6 +40057,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
 
+                var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                var photoElement = document.getElementById(photoGalleryId);
+                console.log("photoGalleryId is " + photoGalleryId);
+                photoElement.removeAttribute('src');
+
                 window.axios.post('/api/upload', {
                     id: this.facultyMember.id,
                     profile_image: url,
@@ -40074,15 +40074,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                         _this2.$store.dispatch('setTimestamp', _this2.student.email_uri);
                         _this2.$parent.$emit('close', url);
                         _this2.url = "";
-
-                        var photoGalleryId = 'photo-gallery--' + _this2.student.email_uri;
-                        var photoElement = document.getElementById(photoGalleryId);
-
-                        console.log("photoGalleryId is " + photoGalleryId);
-
-                        photoElement.removeAttribute('src');
-                        // img.setAttribute('src', 'https://metalab-faculty-webdrive.s3.us-west-2.amazonaws.com/media/student/nr_shant.hairapetian.532/likeness.jpg?cachebustersuperpowers=' + num);
-
                     } else {
                         console.error('OH NO');
                     }
@@ -44527,14 +44518,15 @@ webpackContext.id = 305;
     for (var i = 0, len = state.courses.length; i < len; i += 1) {
       for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
         if (state.courses[i].roster[j].email_uri === payload) {
-          state.courses[i].roster[j].timestamp = '&?' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
+          console.log("TIMESTAMP SET");
+          state.courses[i].roster[j].timestamp = '&?timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
         }
       }
     }
     for (var _i2 = 0, _len2 = state.flashroster.length; _i2 < _len2; _i2 += 1) {
       for (var _j2 = 0, _jLen2 = state.flashroster[_i2].length; _j2 < _jLen2; _j2 += 1) {
         if (state.flashroster[_i2][_j2].email_uri === payload) {
-          state.flashroster[_i2][_j2].timestamp = '&?' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
+          state.flashroster[_i2][_j2].timestamp = '&?timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
         }
       }
     }

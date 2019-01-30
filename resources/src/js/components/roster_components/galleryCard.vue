@@ -5,6 +5,7 @@
         	<div class="panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
+						<!-- {{image}} -->
 						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
 					</div>
 				</div>
