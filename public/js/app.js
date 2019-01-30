@@ -39040,7 +39040,11 @@ var render = function() {
           ? "profile__img profile__img--border"
           : "roster__img"
       ],
-      attrs: { src: _vm.image, name: "photo" }
+      attrs: {
+        id: [_vm.editable ? "photo-gallery--" + this.student.email_uri : null],
+        src: _vm.image,
+        name: "photo"
+      }
     })
   ])
 }
@@ -40053,8 +40057,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
 
-                var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                var photoGalleryId = 'photo-gallery--' + emuri;
                 var photoElement = document.getElementById(photoGalleryId);
+                console.log(photoElement, photoGalleryId);
                 var photoSrc = photoElement.getAttribute('src');
                 photoElement.setAttribute('src', './images/profile-loading.gif');
 

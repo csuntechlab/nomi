@@ -1,6 +1,6 @@
 <template>
     <div>
-		<img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img profile__img--border' : 'roster__img' ]" name="photo">
+		<img v-bind:id="[editable ? 'photo-gallery--' + this.student.email_uri : null]" :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img profile__img--border' : 'roster__img' ]" name="photo">
     </div>
 </template>
 

@@ -74,8 +74,9 @@
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
 
-                    let photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                    let photoGalleryId = 'photo-gallery--' + emuri
                     let photoElement = document.getElementById(photoGalleryId);
+                    console.log(photoElement, photoGalleryId)
                     let photoSrc = photoElement.getAttribute('src');
                     photoElement.setAttribute('src', './images/profile-loading.gif')
 
