@@ -313,23 +313,5 @@ export default {
 
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  },
-
-  SET_TIMESTAMP(state, payload) {
-    for (let i = 0, len = state.courses.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
-        if (state.courses[i].roster[j].email_uri === payload) {
-          state.courses[i].roster[j].timestamp = '&?' + moment().format('DDhmmss');
-        }
-      }
-    } 
-    for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
-        if (state.flashroster[i][j].email_uri === payload) {
-          state.flashroster[i][j].timestamp = '&?' + moment().format('DDhmmss');
-        }
-      }
-    } 
-
-  } 
+  }
 };

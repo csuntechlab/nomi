@@ -83,7 +83,7 @@ export default {
 
         likenessImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret  + `${this.student.timestamp}`;
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret;
             }
         },
     

@@ -17100,7 +17100,7 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
             return imageRoute;
         }
     }
@@ -39376,7 +39376,11 @@ var render = function() {
           _c("img", {
             staticClass: "img--circle",
             class: [this.type == "profile" ? "profile__img" : "roster__img"],
-            attrs: { src: _vm.image, name: "photo" }
+            attrs: {
+              id: "photo-gallery--" + _vm.email,
+              src: _vm.image,
+              name: "photo"
+            }
           })
         ]
       ),
@@ -39895,7 +39899,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret;
       }
     },
     avatarImage: function avatarImage() {
@@ -40047,6 +40051,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
 
+                var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                var photoElement = document.getElementById(photoGalleryId);
+                // console.log("photoGalleryId is " + photoGalleryId);
+                var photoSource = photoElement.getAttribute('src');
+                // console.log(photoSource);
+                photoElement.removeAttribute('src');
+                photoElement.setAttribute('src', './images/profile-loading.gif');
+
                 window.axios.post('/api/upload', {
                     id: this.facultyMember.id,
                     profile_image: url,
@@ -40056,9 +40068,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 }).then(function (response) {
                     if (response.status) {
                         _this2.$store.dispatch('startUploadFeedback');
-                        _this2.$store.dispatch('setTimestamp', _this2.student.email_uri);
+                        // this.$store.dispatch('setTimestamp', this.student.email_uri);
                         _this2.$parent.$emit('close', url);
                         _this2.url = "";
+
+                        photoElement.setAttribute('src', photoSource);
                     } else {
                         console.error('OH NO');
                     }
@@ -41431,7 +41445,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         likenessImage: function likenessImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret;
             }
         },
         avatarImage: function avatarImage() {
@@ -43454,7 +43468,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + secret + ('' + getters.students[student].timestamp);
+          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + secret;
 
           break;
         }
@@ -44192,9 +44206,6 @@ webpackContext.id = 305;
   },
   stopUploadFeedback: function stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
-  },
-  setTimestamp: function setTimestamp(context, payload) {
-    context.commit('SET_TIMESTAMP', payload);
   }
 });
 
@@ -44494,22 +44505,6 @@ webpackContext.id = 305;
   },
   STOP_UPLOAD_FEEDBACK: function STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  },
-  SET_TIMESTAMP: function SET_TIMESTAMP(state, payload) {
-    for (var i = 0, len = state.courses.length; i < len; i += 1) {
-      for (var j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
-        if (state.courses[i].roster[j].email_uri === payload) {
-          state.courses[i].roster[j].timestamp = '&?' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
-        }
-      }
-    }
-    for (var _i2 = 0, _len2 = state.flashroster.length; _i2 < _len2; _i2 += 1) {
-      for (var _j2 = 0, _jLen2 = state.flashroster[_i2].length; _j2 < _jLen2; _j2 += 1) {
-        if (state.flashroster[_i2][_j2].email_uri === payload) {
-          state.flashroster[_i2][_j2].timestamp = '&?' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
-        }
-      }
-    }
   }
 });
 

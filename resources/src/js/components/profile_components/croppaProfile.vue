@@ -74,6 +74,14 @@
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
 
+                    var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                    var photoElement = document.getElementById(photoGalleryId);
+                    // console.log("photoGalleryId is " + photoGalleryId);
+                    var photoSource = photoElement.getAttribute('src');
+                    // console.log(photoSource);
+                    photoElement.removeAttribute('src');
+                    photoElement.setAttribute('src','./images/profile-loading.gif')
+
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
                         profile_image: url,
@@ -83,9 +91,13 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
-                            this.$store.dispatch('setTimestamp', this.student.email_uri);
+                            // this.$store.dispatch('setTimestamp', this.student.email_uri);
                             this.$parent.$emit('close', url);
                             this.url = "";
+
+                            photoElement.setAttribute('src',photoSource);
+
+
                         } else {
                             console.error('OH NO');
                         }
