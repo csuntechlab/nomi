@@ -60,6 +60,7 @@ export default {
         okayToUpdate: null,
         switchItUp: false,
         imageUrl: document.querySelector('meta[name=img-url]').content,
+        secret: document.querySelector('meta[name=secret-url]').content,
       }
   },
 
@@ -81,14 +82,14 @@ export default {
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + `${this.student.timestamp}`;
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.student.timestamp}`;
 
       }
     },
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` ;
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret;
       }
     }
   },

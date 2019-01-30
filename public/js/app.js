@@ -39871,7 +39871,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return {
       okayToUpdate: null,
       switchItUp: false,
-      imageUrl: document.querySelector('meta[name=img-url]').content
+      imageUrl: document.querySelector('meta[name=img-url]').content,
+      secret: document.querySelector('meta[name=secret-url]').content
     };
   },
 
@@ -39894,12 +39895,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
       }
     },
     avatarImage: function avatarImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar";
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
       }
     }
   }),
@@ -41415,7 +41416,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     props: ['student'],
     data: function data() {
         return {
-            imageUrl: document.querySelector('meta[name=img-url]').content
+            imageUrl: document.querySelector('meta[name=img-url]').content,
+            secret: document.querySelector('meta[name=secret-url]').content
         };
     },
     components: {
@@ -41429,12 +41431,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         likenessImage: function likenessImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + ("" + this.student.timestamp);
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
             }
         },
         avatarImage: function avatarImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar";
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
             }
         }
     }),
