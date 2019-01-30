@@ -17100,7 +17100,8 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            var secret = document.querySelector('meta[name=secret-url]').content;
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + secret + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -43441,7 +43442,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var imageRoute = document.querySelector('meta[name=img-url]').content;
-    var secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+    var secret = document.querySelector('meta[name=secret-url]').content;
     var email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;

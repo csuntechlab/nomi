@@ -11,7 +11,7 @@ export default {
 
   GET_STUDENT_PROFILE(state, { payload, getters, response }) {
     let imageRoute = document.querySelector('meta[name=img-url]').content;
-    let secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+    let secret = document.querySelector('meta[name=secret-url]').content;
     const email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
