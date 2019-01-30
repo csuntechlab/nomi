@@ -79,8 +79,22 @@
                     // console.log("photoGalleryId is " + photoGalleryId);
                     var photoSource = photoElement.getAttribute('src');
                     // console.log(photoSource);
-                    photoElement.removeAttribute('src');
-                    photoElement.setAttribute('src','./images/profile-loading.gif')
+                    // photoElement.removeAttribute('src');
+                    // photoElement.setAttribute('src','./images/profile-loading.gif')
+
+                    
+
+
+                    var copyOfPhotoElement = photoElement.cloneNode(true);
+                    var photoElementParent = photoElement.parentNode
+
+                    var loadingImage = copyOfPhotoElement.cloneNode(true);
+                    loadingImage.setAttribute('src','./images/profile-loading.gif')
+                    
+
+                    photoElement.remove();
+
+                    photoElementParent.appendChild(loadingImage);
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
@@ -95,7 +109,12 @@
                             this.$parent.$emit('close', url);
                             this.url = "";
 
-                            photoElement.setAttribute('src',photoSource);
+                            // photoElement.setAttribute('src',photoSource);
+                            var attribute = copyOfPhotoElement.getAttribute('src');
+                            loadingImage.remove();
+                            copyOfPhotoElement.setAttribute('src',attribute + '?foo=bar')
+                            photoElementParent.appendChild(copyOfPhotoElement);
+                            
 
 
                         } else {
