@@ -1,5 +1,4 @@
 import initialState from './state.js';
-import moment from 'moment';
 
 export default {
   API_FAILURE(state, payload) {

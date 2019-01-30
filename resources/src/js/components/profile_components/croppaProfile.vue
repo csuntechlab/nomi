@@ -17,8 +17,8 @@
     </div>
 </template>
 <script>
-    import { mapGetters } from "vuex";
-    import { mapActions } from "vuex";
+    import { mapGetters, mapActions } from "vuex";
+    import moment from 'moment';
 
     export default {
         name: "croppa-profile",
@@ -74,27 +74,10 @@
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
 
-                    var photoGalleryId = 'photo-gallery--' + this.student.email_uri;
-                    var photoElement = document.getElementById(photoGalleryId);
-                    // console.log("photoGalleryId is " + photoGalleryId);
-                    var photoSource = photoElement.getAttribute('src');
-                    // console.log(photoSource);
-                    // photoElement.removeAttribute('src');
-                    // photoElement.setAttribute('src','./images/profile-loading.gif')
-
-                    
-
-
-                    var copyOfPhotoElement = photoElement.cloneNode(true);
-                    var photoElementParent = photoElement.parentNode
-
-                    var loadingImage = copyOfPhotoElement.cloneNode(true);
-                    loadingImage.setAttribute('src','./images/profile-loading.gif')
-                    
-
-                    photoElement.remove();
-
-                    photoElementParent.appendChild(loadingImage);
+                    let photoGalleryId = 'photo-gallery--' + this.student.email_uri;
+                    let photoElement = document.getElementById(photoGalleryId);
+                    let photoSrc = photoElement.getAttribute('src');
+                    photoElement.setAttribute('src', './images/profile-loading.gif')
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
@@ -105,18 +88,9 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
-                            // this.$store.dispatch('setTimestamp', this.student.email_uri);
                             this.$parent.$emit('close', url);
                             this.url = "";
-
-                            // photoElement.setAttribute('src',photoSource);
-                            var attribute = copyOfPhotoElement.getAttribute('src');
-                            loadingImage.remove();
-                            copyOfPhotoElement.setAttribute('src',attribute + '?foo=bar')
-                            photoElementParent.appendChild(copyOfPhotoElement);
-                            
-
-
+                            photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'))
                         } else {
                             console.error('OH NO');
                         }

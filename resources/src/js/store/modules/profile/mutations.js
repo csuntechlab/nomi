@@ -1,4 +1,3 @@
-import moment from 'moment';
 export default {
   API_FAILURE(state, payload) {
     state.profileErrors = payload.response.data.message;
