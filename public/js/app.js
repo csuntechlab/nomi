@@ -39995,6 +39995,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -40031,6 +40032,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.fileInput = null;
     },
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['setTimestamp']), {
+        handleImageCancelCase: function handleImageCancelCase() {
+            this.$root.$emit('letsSwitchItUp');
+        },
         loadingStart: function loadingStart() {
             this.loadingCroppa = true;
         },
@@ -40081,7 +40085,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.myCroppa.$refs.fileInput) {
                 this.fileInput = this.myCroppa.$refs.fileInput;
                 this.myCroppa.chooseFile();
-                this.$root.$emit('letsSwitchItUp');
             } else {
                 this.myCroppa.$refs.fileInput = this.fileInput;
                 this.myCroppa.chooseFile();
@@ -40110,6 +40113,7 @@ var render = function() {
               placeholder: "Waiting for upload..."
             },
             on: {
+              "file-choose": _vm.handleImageCancelCase,
               init: function($event) {
                 _vm.styleCanvas()
               },
