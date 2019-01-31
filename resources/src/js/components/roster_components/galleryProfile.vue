@@ -19,6 +19,7 @@ export default {
 	...mapGetters(["permission"])
 	
 	},
+
 	methods: {
 		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
 
@@ -30,8 +31,6 @@ export default {
 			} else {
 				this.nullifyPermissionResponse();
 			}
-			
-			
 		},
 
 		checkPermission() {

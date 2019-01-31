@@ -78,14 +78,14 @@ class SPAController extends Controller
     private function allStudents($students) :array
     {
 
-      $allStudents =[];
-      
-      foreach ($students as $class) {
-          $allStudents = \array_merge($allStudents, $class);
-      }
+    $allStudents =[];
+    
+    foreach ($students as $class) {
+        $allStudents = \array_merge($allStudents, $class);
+    }
 
-      $allStudents = \array_unique($allStudents, SORT_REGULAR);
+    $allStudents = \array_unique($allStudents, SORT_REGULAR);
 
-      return $allStudents;
+    return $allStudents;
     }
 }

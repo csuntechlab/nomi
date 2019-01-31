@@ -16,8 +16,6 @@ class CreateFeedbackSubmissionsTable extends Migration
             $table->string('application_name')->nullable();
             $table->string('user_id');
             $table->text('content');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));	
-            $table->timestamp('updated_at')->nullable();
         });
     }
 

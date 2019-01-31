@@ -85,10 +85,6 @@ export default {
     context.commit('NULLIFY_COURSE');
   },
 
-  updateImage(context, payload) {
-    context.commit('UPDATE_IMAGE', payload);
-  },
-
   updateStudentPriority(context, payload) {
     context.commit('UPDATE_STUDENT_PRIORITY', payload);
   },
@@ -304,5 +300,9 @@ export default {
 
   stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
+  },
+
+  isPhotoUpdated(context) {
+    context.commit('IS_PHOTO_UPDATED');
   }
 };

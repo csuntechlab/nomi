@@ -88,6 +88,7 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
+                            this.$store.dispatch('isPhotoUpdated');
                             this.$parent.$emit('close', url);
                             this.url = "";
                             photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'))

@@ -180,11 +180,6 @@ export default {
     state.disableBack = true;
   },
 
-  UPDATE_IMAGE: function (state, payload) {
-      // let id = payload.studentId;
-      // let url = payload.imgUrl;
-      // state.studentImages[id] = url;
-  },
   ENABLE_BACK_BUTTON(state) {
     state.disableBack = false;
   },
@@ -312,5 +307,9 @@ export default {
 
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
+  },
+
+  IS_PHOTO_UPDATED(state) {
+    state.isPhotoUpdated = true;
   }
 };
