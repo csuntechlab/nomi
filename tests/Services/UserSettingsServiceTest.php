@@ -36,7 +36,6 @@ class UserSettingsServiceTest extends TestCase
         if (env('PROD')) {
             $this->termModelRepository
               ->shouldReceive('find')
-              ->once()
               ->andReturn([
                   'term_id' => 420,
               ]);
