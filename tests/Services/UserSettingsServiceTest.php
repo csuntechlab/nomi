@@ -33,14 +33,16 @@ class UserSettingsServiceTest extends TestCase
         $testNow = Carbon::create(2014, 5, 20, 0, 0, 0);
         Carbon::setTestNow($testNow);
 
-        $this->termModelRepository
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn([
-                'term_id' => 2185,
-            ]);
-
-        $this->assertEquals($service->getCurrentTerm(), 2185);
+        if (env('PROD')) {
+            $this->termModelRepository
+              ->shouldReceive('find')
+              ->once()
+              ->andReturn([
+                  'term_id' => 420,
+              ]);
+        } else {
+            $this->assertEquals($service->getCurrentTerm(), 2173);
+        }
     }
 
     /** @test */
