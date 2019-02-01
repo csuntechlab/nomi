@@ -17100,7 +17100,7 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var secret = document.querySelector('meta[name=secret-url]').content;
+            var secret = document.querySelector('meta[name=secret]').content;
             var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + secret + ('' + this.student.timestamp);
             return imageRoute;
         }
@@ -39873,7 +39873,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       okayToUpdate: null,
       switchItUp: false,
       imageUrl: document.querySelector('meta[name=img-url]').content,
-      secret: document.querySelector('meta[name=secret-url]').content
+      secret: document.querySelector('meta[name=secret]').content
     };
   },
 
@@ -39896,7 +39896,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + +this.secret + ("" + this.student.timestamp);
       }
     },
     avatarImage: function avatarImage() {
@@ -41418,7 +41418,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: document.querySelector('meta[name=secret-url]').content
+            secret: document.querySelector('meta[name=secret]').content
         };
     },
     components: {
@@ -43442,7 +43442,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var imageRoute = document.querySelector('meta[name=img-url]').content;
-    var secret = document.querySelector('meta[name=secret-url]').content;
+    var secret = document.querySelector('meta[name=secret]').content;
     var email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;

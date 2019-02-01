@@ -82,14 +82,14 @@ export default {
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.student.timestamp}`;
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` +'?secret='+ this.secret + `${this.student.timestamp}`;
 
       }
     },
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret;
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` +'?secret='+ this.secret;
       }
     }
   },
