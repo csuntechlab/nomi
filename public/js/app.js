@@ -17100,7 +17100,8 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            var secret = document.querySelector('meta[name=secret]').content;
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=' + secret + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -39872,7 +39873,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       okayToUpdate: null,
       switchItUp: false,
       imageUrl: document.querySelector('meta[name=img-url]').content,
-      secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+      secret: document.querySelector('meta[name=secret]').content
     };
   },
 
@@ -39895,12 +39896,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
       }
     },
     avatarImage: function avatarImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
       }
     }
   }),
@@ -41417,7 +41418,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+            secret: document.querySelector('meta[name=secret]').content
         };
     },
     components: {
@@ -41431,12 +41432,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         likenessImage: function likenessImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
             }
         },
         avatarImage: function avatarImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
             }
         }
     }),
@@ -43441,7 +43442,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var imageRoute = document.querySelector('meta[name=img-url]').content;
-    var secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+    var secret = document.querySelector('meta[name=secret]').content;
     var email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
@@ -43454,7 +43455,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + secret + ('' + getters.students[student].timestamp);
+          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + '?secret=' + secret + ('' + getters.students[student].timestamp);
 
           break;
         }
