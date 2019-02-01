@@ -17101,7 +17101,7 @@ var getImage = {
     computed: {
         image: function image() {
             var secret = document.querySelector('meta[name=secret]').content;
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + secret + ('' + this.student.timestamp);
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=' + secret + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -39896,12 +39896,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + +this.secret + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
       }
     },
     avatarImage: function avatarImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
       }
     }
   }),
@@ -41432,12 +41432,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         likenessImage: function likenessImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
             }
         },
         avatarImage: function avatarImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
             }
         }
     }),
@@ -43455,7 +43455,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + secret + ('' + getters.students[student].timestamp);
+          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + '?secret=' + secret + ('' + getters.students[student].timestamp);
 
           break;
         }
