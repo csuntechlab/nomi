@@ -39,8 +39,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         }
 
         //ensure array is sorted by class_number
-        usort($data, function($item,$item2) {
-            return strcmp($item->class_number, $item2->class_number);
+        \usort($data, function ($item, $item2) {
+            return \strcmp($item->class_number, $item2->class_number);
         });
 
         return $data;
@@ -75,25 +75,6 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
                 echo Psr7\str($e->getResponse());
             }
         }
-    }
-
-    /**
-     * Retrieves media from META+LAB Media web service.
-     *
-     * @param mixed $email
-     *
-     * @return string
-     */
-    public function getMedia($email)
-    {
-        $client = new Client();
-
-        //hacky fix to remove @csun.edu
-        return $client->get(
-            'http://api.sandbox.csun.edu/metalab/test/media/1.1/' . $emailUri . '/photo'
-            . \explode('@', \str_replace('nr_', '', $email))[0],
-            ['verify' => false]
-        )->getBody()->getContents();
     }
 
     public function getStudent($email)
