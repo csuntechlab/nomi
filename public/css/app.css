@@ -49,7 +49,7 @@ html * {
 
 .theme-raspberryTheme html * {
   font-size: 1.1rem;
-  color: #dcd0da;
+  color: #edd1de;
 }
 
 .theme-oliveTheme html * {
@@ -83,7 +83,7 @@ body {
 }
 
 .theme-raspberryTheme body {
-  background-color: #dcd0da;
+  background-color: #edd1de;
   color: #464646;
   padding-top: 2.4rem;
 }
@@ -1352,7 +1352,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-raspberryTheme .navbar__sub-brand {
-  color: #dcd0da;
+  color: #edd1de;
 }
 
 .theme-oliveTheme .navbar {
@@ -1433,7 +1433,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-raspberryTheme .feedback-button {
-  background-color: #464646;
+  background-color: #701844;
   color: white;
 }
 
@@ -2375,7 +2375,7 @@ textarea[type="text"]:focus {
 
 .theme-raspberryTheme .roster-list__item {
   background-color: whitesmoke;
-  border-bottom: 1px solid #dcd0da;
+  border-bottom: 1px solid #edd1de;
 }
 
 .theme-oliveTheme .roster-list__item {
