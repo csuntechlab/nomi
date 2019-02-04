@@ -40550,9 +40550,16 @@ var render = function() {
                     "div",
                     { staticClass: "modal-footer", attrs: { name: "footer" } },
                     [
-                      _vm.croppaAvailable
-                        ? _c("croppa-functionality")
-                        : _vm._e()
+                      _c("croppa-functionality", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.croppaAvailable,
+                            expression: "croppaAvailable"
+                          }
+                        ]
+                      })
                     ],
                     1
                   )
@@ -40560,9 +40567,16 @@ var render = function() {
                     "div",
                     { staticClass: "modal-footer", attrs: { name: "footer" } },
                     [
-                      !_vm.croppaAvailable
-                        ? _c("croppa-functionality")
-                        : _vm._e()
+                      _c("croppa-functionality", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.croppaAvailable,
+                            expression: "!croppaAvailable"
+                          }
+                        ]
+                      })
                     ],
                     1
                   )
