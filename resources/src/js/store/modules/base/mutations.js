@@ -33,11 +33,11 @@ export default {
     state.flashroster = payload.data.students;
     state.facultyMember.email = payload.data.email;
     state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = `https://api.metalab.csun.edu/media/1.1/faculty/media/${state.facultyMember.name}`;
+    state.facultyMember.profile = payload.data.image;
   },
 
   GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.image = 'https://api.sandbox.csun.edu/metalab/media/1.0/' + state.facultyMember.emailURI + '/avatar';
+    state.facultyMember.image = payload.data.image;
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;
