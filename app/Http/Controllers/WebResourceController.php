@@ -44,16 +44,6 @@ class WebResourceController extends Controller
     }
 
     /**
-     * @param mixed $email
-     *
-     * @return mixed
-     */
-    public function media($email)
-    {
-        return $this->webResourceUtility->getMedia($email);
-    }
-
-    /**
      * @param $email
      *
      * @return mixed

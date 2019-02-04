@@ -7,6 +7,7 @@
             :show-remove-button="false"
             :quality="2"
             placeholder="Waiting for upload..."
+            @file-choose="handleImageCancelCase"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
@@ -56,11 +57,13 @@
             this.fileInput = null;
         },
         methods: {
-
             ...mapActions([
                 'setTimestamp'
             ]),
-
+            handleImageCancelCase(){
+                this.$root.$emit('letsSwitchItUp');
+            },
+            
             loadingStart(){
                 this.loadingCroppa = true;
             },
@@ -120,7 +123,8 @@
                 if(this.myCroppa.$refs.fileInput) {
                     this.fileInput = this.myCroppa.$refs.fileInput;
                     this.myCroppa.chooseFile();
-                    this.$root.$emit('letsSwitchItUp');
+                    
+                   
                 } else {
                     this.myCroppa.$refs.fileInput = this.fileInput;
                     this.myCroppa.chooseFile();
