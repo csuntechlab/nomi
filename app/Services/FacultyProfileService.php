@@ -22,10 +22,6 @@ class FacultyProfileService implements FacultyProfileContract
 
         $mediaURI = env('MEDIA_URL') . 'faculty/media/' . $emailUri . '/avatar/?source=true';
 
-        // if (is_null($member['profile_image'])) {
-        //     $member['profile_image'] = asset('images/likeness.jpg');
-        // }
-
         return [
             'image' => $mediaURI,
             'id' => auth()->user()->user_id,
