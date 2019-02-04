@@ -301,8 +301,4 @@ export default {
   stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
   },
-
-  isPhotoUpdated(context) {
-    context.commit('IS_PHOTO_UPDATED');
-  }
 };

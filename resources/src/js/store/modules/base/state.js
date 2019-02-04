@@ -8,7 +8,6 @@ export default {
   currentLocation: 'home',
   students: [],
   uploadFeedback: false,
-  isPhotoUpdated: false,
 
   // Views & Sorting
   list: true,

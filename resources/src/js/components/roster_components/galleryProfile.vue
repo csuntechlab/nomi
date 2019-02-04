@@ -9,7 +9,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getStudent } from './../../mixins/getStudent.js'
+import { getStudent } from './../../mixins/getStudent.js';
+import moment from 'moment';
 
 export default {
 	name: "gallery-profile",
@@ -18,6 +19,12 @@ export default {
 	computed: {
 	...mapGetters(["permission"])
 	
+	},
+
+	mounted() {
+		if (this.editable) {
+			this.$children[0].$el.childNodes[0].src = this.image + '&timestamp=' + moment().format('DDhmmss');
+		}
 	},
 
 	methods: {

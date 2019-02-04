@@ -308,8 +308,4 @@ export default {
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
   },
-
-  IS_PHOTO_UPDATED(state) {
-    state.isPhotoUpdated = true;
-  }
 };

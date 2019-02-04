@@ -73,11 +73,17 @@
                 } else {
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
-
-                    let photoGalleryId = 'photo-gallery--' + emuri
-                    let photoElement = document.getElementById(photoGalleryId);
-                    let photoSrc = photoElement.getAttribute('src');
-                    photoElement.setAttribute('src', './images/profile-loading.gif')
+                    let photoId = (this.$route.name === "class") ? 'photo-gallery--' + emuri : 'profile__img--border';
+                    let photoElement = document.getElementsByClassName(photoId);
+                    let photoSrc = photoElement[0].getAttribute('src');
+                    
+                    if (photoSrc.includes("likeness")) {
+                        photoElement = photoElement[0];
+                    } else {
+                        photoElement = photoElement[1];
+                        photoSrc = photoElement.getAttribute('src');
+                    }
+                    photoElement.setAttribute('src', './images/profile-loading.gif');
 
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
@@ -88,10 +94,9 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
-                            this.$store.dispatch('isPhotoUpdated');
                             this.$parent.$emit('close', url);
-                            this.url = "";
-                            photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'))
+                            this.url = ""; 
+                            photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'));
                         } else {
                             console.error('OH NO');
                         }

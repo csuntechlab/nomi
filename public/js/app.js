@@ -29734,7 +29734,6 @@ module.exports = Component.exports
   currentLocation: 'home',
   students: [],
   uploadFeedback: false,
-  isPhotoUpdated: false,
 
   // Views & Sorting
   list: true,
@@ -39028,8 +39027,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ["image", "student", "type", "editable"],
 
 	mounted: function mounted() {
-		if (this.$store.state.base.isPhotoUpdated && this.editable) {
-			this.$el.childNodes[0].src = './images/profile-loading.gif';
+		if (this.editable) {
 			this.$el.childNodes[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
 		}
 	}
@@ -39620,6 +39618,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mixins_getStudent_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -39635,11 +39635,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: "gallery-profile",
 	props: ["image", "student", "type", "editable", "email"],
 	mixins: [__WEBPACK_IMPORTED_MODULE_1__mixins_getStudent_js__["a" /* getStudent */]],
 	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["permission"])),
+
+	mounted: function mounted() {
+		if (this.editable) {
+			this.$children[0].$el.childNodes[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_2_moment___default()().format('DDhmmss');
+		}
+	},
+
 
 	methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['toggleModal', 'dataForModal', 'nullifyPermissionResponse', 'toggleCropping']), {
 		showModal: function showModal() {
@@ -40362,10 +40370,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             } else {
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
+                var photoId = this.$route.name === "class" ? 'photo-gallery--' + emuri : 'profile__img--border';
+                var photoElement = document.getElementsByClassName(photoId);
+                var photoSrc = photoElement[0].getAttribute('src');
 
-                var photoGalleryId = 'photo-gallery--' + emuri;
-                var photoElement = document.getElementById(photoGalleryId);
-                var photoSrc = photoElement.getAttribute('src');
+                if (photoSrc.includes("likeness")) {
+                    photoElement = photoElement[0];
+                } else {
+                    photoElement = photoElement[1];
+                    photoSrc = photoElement.getAttribute('src');
+                }
                 photoElement.setAttribute('src', './images/profile-loading.gif');
 
                 window.axios.post('/api/upload', {
@@ -40377,7 +40391,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 }).then(function (response) {
                     if (response.status) {
                         _this2.$store.dispatch('startUploadFeedback');
-                        _this2.$store.dispatch('isPhotoUpdated');
                         _this2.$parent.$emit('close', url);
                         _this2.url = "";
                         photoElement.setAttribute('src', photoSrc + '&' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss'));
@@ -44210,9 +44223,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   },
   stopUploadFeedback: function stopUploadFeedback(context) {
     context.commit('STOP_UPLOAD_FEEDBACK');
-  },
-  isPhotoUpdated: function isPhotoUpdated(context) {
-    context.commit('IS_PHOTO_UPDATED');
   }
 });
 
@@ -44502,9 +44512,6 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   },
   STOP_UPLOAD_FEEDBACK: function STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
-  },
-  IS_PHOTO_UPDATED: function IS_PHOTO_UPDATED(state) {
-    state.isPhotoUpdated = true;
   }
 });
 
