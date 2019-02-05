@@ -1034,7 +1034,7 @@ textarea[type="text"]:focus {
   z-index: 1;
   position: -webkit-sticky;
   position: sticky;
-  top: 2.46666667rem;
+  top: 2.4rem;
 }
 
 .login {
