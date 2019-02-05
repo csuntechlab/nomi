@@ -13,9 +13,8 @@ export default {
 	props: ["image", "student", "type", "editable"],
 
 	mounted() {
-		if (this.editable) {
-			this.$el.childNodes[0].src = this.image + '&timestamp=' + moment().format('DDhmmss');
-		}
+		this.$el.childNodes[0].src  = "./images/profile-loading.gif";
+		this.$el.childNodes[0].src = this.image + '&timestamp=' + moment().format('DDhmmss');
 	},
 };
 </script>
