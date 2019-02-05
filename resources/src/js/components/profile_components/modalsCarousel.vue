@@ -4,7 +4,7 @@
     <carousel v-if="okayToUpdate" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
-            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="true" :type="'profile-picture'"></profile-picture>
+            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
@@ -34,7 +34,7 @@
         </slide>
         <slide class="slide-wrap">
           <div>
-            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="true" :type="'profile-picture'"></profile-picture>
+            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>

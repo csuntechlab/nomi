@@ -40677,7 +40677,7 @@ var render = function() {
                         ],
                         attrs: {
                           image: _vm.likenessImage,
-                          editable: true,
+                          editable: false,
                           type: "profile-picture"
                         }
                       }),
@@ -40800,7 +40800,7 @@ var render = function() {
                         ],
                         attrs: {
                           image: _vm.likenessImage,
-                          editable: true,
+                          editable: false,
                           type: "profile-picture"
                         }
                       }),
