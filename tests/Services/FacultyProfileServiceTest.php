@@ -38,7 +38,7 @@ class FacultyProfileServiceTest extends TestCase
             ->andReturn($user);
 
         $returnArray = [
-            'image' => env('MEDIA_URL') . 'faculty/media/' . 'MrTeacherMan' . '/avatar/?source=true',
+            'image' => env('MEDIA_URL') . 'faculty/media/' . 'MrTeacherMan' . '/avatar?source=true',
             'id' => 'members:1',
             'name_first' => 'anakin',
             'name_last' => 'skywalker',

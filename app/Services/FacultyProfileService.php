@@ -20,7 +20,7 @@ class FacultyProfileService implements FacultyProfileContract
     {
         $emailUri = \substr($email, 0, \strpos($email, '@'));
 
-        $mediaURI = env('MEDIA_URL') . 'faculty/media/' . $emailUri . '/avatar/?source=true';
+        $mediaURI = env('MEDIA_URL') . 'faculty/media/' . $emailUri . '/avatar?source=true';
 
         return [
             'image' => $mediaURI,
