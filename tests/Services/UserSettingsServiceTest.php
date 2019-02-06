@@ -29,19 +29,20 @@ class UserSettingsServiceTest extends TestCase
     public function getCurrentTerm_returns_current_term()
     {
         $service = new UserSettingsService($this->termModelRepository);
+        $today = Carbon::today()->toDateTimeString();
 
-        $testNow = Carbon::create(2014, 5, 20, 0, 0, 0);
-        Carbon::setTestNow($testNow);
+        $this->termModelRepository
+          ->shouldReceive('find')
+          ->Once()
+          ->andReturn([
+            'term_id' => 2193,
+            'term' => 'Spring 2019',
+            'description' => 'Spring Semester 2019',
+            'begin_date' => '2019-01-22 00:00:00',
+            'end_date' => '2019-05-24 23:59:59',
+          ]);
 
-        if (env('PROD')) {
-            $this->termModelRepository
-              ->shouldReceive('find')
-              ->andReturn([
-                  'term_id' => 420,
-              ]);
-        } else {
-            $this->assertEquals($service->getCurrentTerm(), 2173);
-        }
+        $this->assertArrayHasKey('term_id', $this->termModelRepository->find());
     }
 
     /** @test */
