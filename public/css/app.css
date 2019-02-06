@@ -1356,7 +1356,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-oliveTheme .navbar {
-  background-color: #0f7d50;
+  background-color: #10783d;
   position: fixed;
   height: 2.46666667rem;
   width: 100%;
@@ -1438,7 +1438,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-oliveTheme .feedback-button {
-  background-color: #464646;
+  background-color: #0c592f;
   color: white;
 }
 
@@ -1505,7 +1505,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-oliveTheme .bottom-nav {
-  background: #0f7d50;
+  background: #10783d;
 }
 
 .theme-neptuneTheme .bottom-nav {
@@ -2908,7 +2908,7 @@ textarea[type="text"]:focus {
 }
 
 .theme-oliveTheme .profile__color-layer {
-  background-color: #0f7d50;
+  background-color: #10783d;
 }
 
 .theme-neptuneTheme .profile__color-layer {
