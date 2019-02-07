@@ -29638,8 +29638,8 @@ module.exports = Cancel;
 var refetchImage = {
 				mounted: function mounted() {
 								if (this.editable) {
-												this.$children[0].$el.childNodes[0].src = "./images/profile-loading.gif";
-												this.$children[0].$el.childNodes[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_0_moment___default()().format('DDhmmss');
+												this.$children[0].$el.querySelectorAll("img")[0].src = "./images/profile-loading.gif";
+												this.$children[0].$el.querySelectorAll("img")[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_0_moment___default()().format('DDhmmss');
 								}
 				}
 };
@@ -39046,8 +39046,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ["image", "student", "type", "editable"],
 
 	mounted: function mounted() {
-		this.$el.childNodes[0].src = "./images/profile-loading.gif";
-		this.$el.childNodes[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
+		Array.from(this.$el.querySelectorAll("img"))[0] = "./images/profile-loading.gif";
+		Array.from(this.$el.querySelectorAll("img"))[0] = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
 	}
 });
 
