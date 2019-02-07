@@ -17,10 +17,10 @@
         </div>
         <div class="modal-footer cf">
           <div v-if="okayToUpdate" name="footer" class="modal-footer" >
-            <croppa-functionality v-if="croppaAvailable"></croppa-functionality>	           
+            <croppa-functionality v-show="croppaAvailable"></croppa-functionality>	           
           </div>
           <div v-else name="footer" class="modal-footer" >
-            <croppa-functionality v-if="!croppaAvailable"></croppa-functionality>
+            <croppa-functionality v-show="!croppaAvailable"></croppa-functionality>
           </div>
         </div>
       </div>
@@ -49,6 +49,7 @@
         created(){
             this.$root.$on('newSlide', () => {
                 this.croppaToggle()
+                
             });
             this.$root.$on('okayToUpdate', (selected) => {
               this.setUpdate(selected)

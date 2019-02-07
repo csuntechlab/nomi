@@ -17100,7 +17100,8 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true' + ('' + this.student.timestamp);
+            var secret = document.querySelector('meta[name=secret]').content;
+            var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=' + secret + ('' + this.student.timestamp);
             return imageRoute;
         }
     }
@@ -39872,7 +39873,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       okayToUpdate: null,
       switchItUp: false,
       imageUrl: document.querySelector('meta[name=img-url]').content,
-      secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+      secret: document.querySelector('meta[name=secret]').content
     };
   },
 
@@ -39895,12 +39896,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(["studentProfile", "modalVisible"]), {
     likenessImage: function likenessImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
       }
     },
     avatarImage: function avatarImage() {
       if (this.studentProfile) {
-        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+        return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
       }
     }
   }),
@@ -39995,6 +39996,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -40031,6 +40033,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.fileInput = null;
     },
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['setTimestamp']), {
+        handleImageCancelCase: function handleImageCancelCase() {
+            this.$root.$emit('letsSwitchItUp');
+        },
         loadingStart: function loadingStart() {
             this.loadingCroppa = true;
         },
@@ -40081,7 +40086,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             if (this.myCroppa.$refs.fileInput) {
                 this.fileInput = this.myCroppa.$refs.fileInput;
                 this.myCroppa.chooseFile();
-                this.$root.$emit('letsSwitchItUp');
             } else {
                 this.myCroppa.$refs.fileInput = this.fileInput;
                 this.myCroppa.chooseFile();
@@ -40110,6 +40114,7 @@ var render = function() {
               placeholder: "Waiting for upload..."
             },
             on: {
+              "file-choose": _vm.handleImageCancelCase,
               init: function($event) {
                 _vm.styleCanvas()
               },
@@ -40549,9 +40554,16 @@ var render = function() {
                     "div",
                     { staticClass: "modal-footer", attrs: { name: "footer" } },
                     [
-                      _vm.croppaAvailable
-                        ? _c("croppa-functionality")
-                        : _vm._e()
+                      _c("croppa-functionality", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.croppaAvailable,
+                            expression: "croppaAvailable"
+                          }
+                        ]
+                      })
                     ],
                     1
                   )
@@ -40559,9 +40571,16 @@ var render = function() {
                     "div",
                     { staticClass: "modal-footer", attrs: { name: "footer" } },
                     [
-                      !_vm.croppaAvailable
-                        ? _c("croppa-functionality")
-                        : _vm._e()
+                      _c("croppa-functionality", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.croppaAvailable,
+                            expression: "!croppaAvailable"
+                          }
+                        ]
+                      })
                     ],
                     1
                   )
@@ -41417,7 +41436,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+            secret: document.querySelector('meta[name=secret]').content
         };
     },
     components: {
@@ -41431,12 +41450,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         likenessImage: function likenessImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + this.secret + ("" + this.student.timestamp);
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "likeness" + '?secret=' + this.secret + ("" + this.student.timestamp);
             }
         },
         avatarImage: function avatarImage() {
             if (this.studentProfile) {
-                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + this.secret;
+                return this.imageUrl + ("" + this.student.email_uri) + '/' + "avatar" + '?secret=' + this.secret;
             }
         }
     }),
@@ -43441,7 +43460,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         response = _ref.response;
 
     var imageRoute = document.querySelector('meta[name=img-url]').content;
-    var secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+    var secret = document.querySelector('meta[name=secret]').content;
     var email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
@@ -43454,7 +43473,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + secret + ('' + getters.students[student].timestamp);
+          state.studentProfile.images = imageRoute + ('' + state.studentProfile.emailURI) + '/' + ('' + state.studentProfile.imagePriority) + '?secret=' + secret + ('' + getters.students[student].timestamp);
 
           break;
         }
@@ -44239,10 +44258,10 @@ webpackContext.id = 305;
     state.flashroster = payload.data.students;
     state.facultyMember.email = payload.data.email;
     state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = 'https://api.metalab.csun.edu/media/1.1/faculty/media/' + state.facultyMember.name;
+    state.facultyMember.profile = payload.data.image;
   },
   GET_FACULTY_PROFILE: function GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.image = 'https://api.sandbox.csun.edu/metalab/media/1.0/' + state.facultyMember.emailURI + '/avatar';
+    state.facultyMember.image = payload.data.image;
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;

@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, height=device-height  ,initial-scale=1">
         <meta name="app-url" content="{{ url('/') }}">
         <meta name="img-url" content="{{ env('MEDIA_URL') . 'student/media/' }}">
+        <meta name="secret" content="{{ env('SECRET') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
