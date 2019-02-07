@@ -23,12 +23,13 @@
 import { mapGetters, mapState } from "vuex";
 import galleryProfile from "../roster_components/galleryProfile.vue";
 import { getImage } from './../../mixins/getImage.js';
-import { getStudent } from './../../mixins/getStudent.js'
+import { getStudent } from './../../mixins/getStudent.js';
+import { displayName } from './../../mixins/displayName.js';
 
 export default {
   name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage],
+	mixins: [getStudent, getImage, displayName],
 
 	data: function() {
 		return {
@@ -47,10 +48,6 @@ export default {
 			'permission',
 			'facultyMember',
 		]),
-
-    display_name() {
-      return `${this.student.first_name} ${this.student.last_name[0]}.`;
-    },
 
     email_uri() {
       return this.student.email.split('@')[0];
