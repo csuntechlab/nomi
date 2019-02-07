@@ -18,11 +18,9 @@ class FacultyProfileService implements FacultyProfileContract
 
     public function getFacultyProfile($email)
     {
-        $mediaURI = env('MEDIA_URL') . $email;
+        $emailUri = \substr($email, 0, \strpos($email, '@'));
 
-        // if (is_null($member['profile_image'])) {
-        //     $member['profile_image'] = asset('images/likeness.jpg');
-        // }
+        $mediaURI = env('MEDIA_URL') . 'faculty/media/' . $emailUri . '/avatar?source=true';
 
         return [
             'image' => $mediaURI,
