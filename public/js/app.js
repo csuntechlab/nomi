@@ -17100,7 +17100,7 @@ module.exports = defaults;
 var getImage = {
     computed: {
         image: function image() {
-            var secret = document.querySelector('meta[name=secret]').content;
+            var secret = document.querySelector('meta[name=secret]').content + '&source=true';
             var imageRoute = document.querySelector('meta[name=img-url]').content + ('' + this.student.email_uri) + '/' + ('' + this.student.image_priority) + '?secret=' + secret;
             return imageRoute;
         }
@@ -40203,7 +40203,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       okayToUpdate: null,
       switchItUp: false,
       imageUrl: document.querySelector('meta[name=img-url]').content,
-      secret: document.querySelector('meta[name=secret]').content
+      secret: document.querySelector('meta[name=secret]').content + '&source=true'
     };
   },
 
@@ -41786,7 +41786,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: document.querySelector('meta[name=secret]').content
+            secret: document.querySelector('meta[name=secret]').content + '&source=true'
         };
     },
     components: {
