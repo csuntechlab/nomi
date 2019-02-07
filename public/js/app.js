@@ -41014,14 +41014,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'upload-bar',
-
   props: ['sticky'],
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['uploadFeedback'])),
 
+  updated: function updated() {
+    var _this = this;
+
+    setTimeout(function () {
+      return _this.closeUpload();
+    }, 15000);
+  },
+
+
   methods: {
     closeUpload: function closeUpload() {
-      this.$store.dispatch('stopUploadFeedback');
+      if (this.uploadFeedback) {
+        this.$store.dispatch('stopUploadFeedback');
+      }
     }
   }
 });

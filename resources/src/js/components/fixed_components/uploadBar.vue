@@ -15,7 +15,6 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'upload-bar',
-
   props: ['sticky'],
 
   computed: {
@@ -24,9 +23,15 @@ export default {
     ]),
   },
 
+  updated() {
+    setTimeout(() => this.closeUpload(), 15000);
+  },
+
   methods: {
     closeUpload() {
-      this.$store.dispatch('stopUploadFeedback');
+      if (this.uploadFeedback) {
+        this.$store.dispatch('stopUploadFeedback');
+      }
     }
   }
 };
