@@ -1,10 +1,12 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Contracts\UserSettingsContract;
 use App\Contracts\CacheContract;
+use App\Contracts\UserSettingsContract;
+
 class SPAController extends Controller
 {
     public $userSettingsUtility;
@@ -20,15 +22,12 @@ class SPAController extends Controller
         $this->cacheUtility = $cacheUtility;
     }
 
-    private function getCurrentTerm($term) {
-
-        if (env('CURRENT_TERM') && $term == null) {
-            $term = env('CURRENT_TERM');
-        }
-
+    private function getCurrentTerm($term)
+    {
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }
+
         return $term;
     }
 
@@ -42,19 +41,17 @@ class SPAController extends Controller
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
         $term = $this->getCurrentTerm($term);
 
-
         $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
 
         $students = [];
         $len = \count($courses);
 
         $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
-  
+
         $user = auth()->user();
         $email = $user->email;
 
         $allStudents = $this->allStudents($students);
-
 
         return [
             'courses' => $courses,
@@ -75,17 +72,16 @@ class SPAController extends Controller
         return view('spa');
     }
 
-    private function allStudents($students) :array
+    private function allStudents($students): array
     {
+        $allStudents = [];
 
-    $allStudents =[];
-    
-    foreach ($students as $class) {
-        $allStudents = \array_merge($allStudents, $class);
-    }
+        foreach ($students as $class) {
+            $allStudents = \array_merge($allStudents, $class);
+        }
 
-    $allStudents = \array_unique($allStudents, SORT_REGULAR);
+        $allStudents = \array_unique($allStudents, SORT_REGULAR);
 
-    return $allStudents;
+        return $allStudents;
     }
 }

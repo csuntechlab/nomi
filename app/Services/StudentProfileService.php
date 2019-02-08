@@ -29,7 +29,6 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentProfile($email)
     {
-        $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceUtility->getStudent($email), true);
         if ($profile['status'] === '200') {
             $profile = $profile['people'];
@@ -89,16 +88,5 @@ class StudentProfileService implements StudentProfileContract
         );
 
         return 'Updated';
-    }
-
-    private function ensureStudentEmailWorks($email)
-    {
-        $regex = "/(\D)*\.(\D)*\.(\d)*@.*/";
-        $checkerEmail = \substr($email, 0, \strpos($email, '@'));
-        if (\preg_match($regex, $email)) {
-            return $email;
-        }
-
-        return $checkerEmail . '@csun.edu';
     }
 }
