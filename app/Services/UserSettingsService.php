@@ -42,14 +42,16 @@ class UserSettingsService implements UserSettingsContract
 
     public function getCurrentTerm()
     {
-        $today = Carbon::now()->toDateTimeString();
-
-        $term = $this->termModelRepositoryUtility->find($today);
-
-        if ($term != null) {
-            return $term['term_id'];
+        // grab real term if enviorment is production
+        if (env('PROD')) {
+            $today = Carbon::now()->toDateTimeString();
+            $term = $this->termModelRepositoryUtility->find($today);
+            if ($term != null) {
+                return $term['term_id'];
+            }
         }
 
+        // this is what nomi uses for both testing and demo
         return 2173;
     }
 }
