@@ -39046,8 +39046,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ["image", "student", "type", "editable"],
 
 	mounted: function mounted() {
-		Array.from(this.$el.querySelectorAll("img"))[0] = "./images/profile-loading.gif";
-		Array.from(this.$el.querySelectorAll("img"))[0] = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
+		Array.from(this.$el.querySelectorAll("img"))[0].src = "./images/profile-loading.gif";
+		Array.from(this.$el.querySelectorAll("img"))[0].src = this.image + '&timestamp=' + __WEBPACK_IMPORTED_MODULE_1_moment___default()().format('DDhmmss');
 	}
 });
 
@@ -39522,6 +39522,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__roster_components_galleryProfile_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixins_getImage_js__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mixins_getStudent_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mixins_refetchImage_js__ = __webpack_require__(146);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -39551,10 +39552,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'gallery-card',
 	props: ['student'],
-	mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_getStudent_js__["a" /* getStudent */], __WEBPACK_IMPORTED_MODULE_2__mixins_getImage_js__["a" /* getImage */]],
+	mixins: [__WEBPACK_IMPORTED_MODULE_3__mixins_getStudent_js__["a" /* getStudent */], __WEBPACK_IMPORTED_MODULE_2__mixins_getImage_js__["a" /* getImage */], __WEBPACK_IMPORTED_MODULE_4__mixins_refetchImage_js__["a" /* refetchImage */]],
 
 	data: function data() {
 		return {
