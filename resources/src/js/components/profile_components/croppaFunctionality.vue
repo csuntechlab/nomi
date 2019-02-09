@@ -21,7 +21,6 @@ export default {
         data: function() {
             return{
                 disabled: true,
-                
             }
         },
 

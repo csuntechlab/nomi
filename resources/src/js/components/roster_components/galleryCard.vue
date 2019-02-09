@@ -24,11 +24,12 @@ import { mapGetters, mapState } from "vuex";
 import galleryProfile from "../roster_components/galleryProfile.vue";
 import { getImage } from './../../mixins/getImage.js';
 import { getStudent } from './../../mixins/getStudent.js'
+import { refetchImage } from './../../mixins/refetchImage.js'
 
 export default {
   name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage],
+	mixins: [getStudent, getImage, refetchImage],
 
 	data: function() {
 		return {

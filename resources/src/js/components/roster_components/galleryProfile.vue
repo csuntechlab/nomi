@@ -1,7 +1,7 @@
 <template>
     <div>
 		<router-link :to="'/profile/'+this.$route.params.id+'/'+email" @click.native="getStudent()" tag="a">
-        <img :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
+        <img :id="'photo-gallery--'+email" :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
         </router-link>          
 		<i v-if="this.editable" class="fas fa-pencil-alt panel__edit-button pull-right" @click="showModal()"/>
     </div>
@@ -9,16 +9,18 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getStudent } from './../../mixins/getStudent.js'
+import { getStudent } from './../../mixins/getStudent.js';
+import { refetchImage } from './../../mixins/refetchImage.js';
 
 export default {
 	name: "gallery-profile",
 	props: ["image", "student", "type", "editable", "email"],
-	mixins: [getStudent],
+	mixins: [getStudent, refetchImage],
 	computed: {
 	...mapGetters(["permission"])
 	
 	},
+
 	methods: {
 		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
 
@@ -30,8 +32,6 @@ export default {
 			} else {
 				this.nullifyPermissionResponse();
 			}
-			
-			
 		},
 
 		checkPermission() {

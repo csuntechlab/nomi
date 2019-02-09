@@ -21,36 +21,36 @@ import { mapGetters } from 'vuex';
 import { mapState } from 'vuex';
 import modal from '../fixed_components/modal.vue';
 import { getImage } from './../../mixins/getImage.js';
+import { refetchImage } from './../../mixins/refetchImage.js';
 import profilePicture from '../profile_components/profilePicture.vue';
 
 export default {
-  name: 'student-list-item',
-  props: ['student'],
-  mixins: [getImage],
+    name: 'student-list-item',
+    props: ['student'],
+    mixins: [getImage, refetchImage],
 
-  components: {
-    modal,
-    profilePicture,
-  },
-
-  computed: {
-    ...mapGetters([
-    ]),
-
-    display_name() {
-      return `${this.student.first_name} ${this.student.last_name}`;
+    components: {
+        modal,
+        profilePicture,
     },
 
-    email_uri() {
-      return this.student.email.split('@')[0];
-    },
-  },
+    computed: {
+        ...mapGetters([
+        ]),
 
-  methods: {
-    getStudent() {
-      this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
+        display_name() {
+        return `${this.student.first_name} ${this.student.last_name}`;
+        },
+
+        email_uri() {
+        return this.student.email.split('@')[0];
+        },
     },
-    
+
+    methods: {
+        getStudent() {
+            this.$store.dispatch('getStudent', {studentID: this.student.student_id, email: this.student.email, first_name: this.student.first_name, last_name: this.student.last_name})
+        },
 	},
 };
 </script>
