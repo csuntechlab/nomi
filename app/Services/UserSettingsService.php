@@ -7,7 +7,6 @@ namespace App\Services;
 use App\Contracts\UserSettingsContract;
 use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
 use App\Models\Theme;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserSettingsService implements UserSettingsContract
@@ -42,16 +41,8 @@ class UserSettingsService implements UserSettingsContract
 
     public function getCurrentTerm()
     {
-        // grab real term if enviorment is production
-        if (env('PROD')) {
-            $today = Carbon::now()->toDateTimeString();
-            $term = $this->termModelRepositoryUtility->find($today);
-            if ($term != null) {
-                return $term['term_id'];
-            }
-        }
+        $term = $this->termModelRepositoryUtility->find();
 
-        // this is what nomi uses for both testing and demo
-        return 2173;
+        return $term['term_id'];
     }
 }
