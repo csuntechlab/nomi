@@ -1,6 +1,6 @@
 <template>
     <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
-        <div class="roster-list__item">
+        <div class="target-button roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
                 <profile-picture class="pull-left" :name="display_name" :image="image" :type="'roster'"></profile-picture>

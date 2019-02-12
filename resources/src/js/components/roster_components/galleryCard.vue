@@ -1,8 +1,6 @@
 <template>
     <div class="gallery-card col-xs-6 col-md-4 col-lg-3">
-        
-		
-        	<div class="panel gallery-card__content">
+        	<div class="target-button panel gallery-card__content">
 				<div class="panel__wrapper">
 					<div class="panel__content">
 						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
@@ -14,7 +12,6 @@
 				</div>
 				</router-link>
         	</div>
-					
     </div>
         
 </template>

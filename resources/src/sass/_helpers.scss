@@ -22,6 +22,20 @@ textarea[type="text"]:focus{
 	}
 }
 
+.target-button:hover,
+.target-button:focus {
+	@include themify($themes) {
+		outline: 2px solid themed("selectionActive");
+	}
+}
+
+.VueCarousel-dot-button:hover,
+.VueCarousel-dot-button:focus {
+	@include themify($themes) {
+		outline: 2px solid themed("selectionActive");
+	}
+}
+
 .alert {
 	margin-bottom: 0;
 }

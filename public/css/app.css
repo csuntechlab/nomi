@@ -540,6 +540,66 @@ textarea[type="text"]:focus {
   border: 3px solid;
 }
 
+.theme-matadorTheme .target-button:hover, .theme-matadorTheme
+.target-button:focus {
+  outline: 2px solid #fdbf56;
+}
+
+.theme-raspberryTheme .target-button:hover, .theme-raspberryTheme
+.target-button:focus {
+  outline: 2px solid #eb84cd;
+}
+
+.theme-oliveTheme .target-button:hover, .theme-oliveTheme
+.target-button:focus {
+  outline: 2px solid #19c391;
+}
+
+.theme-neptuneTheme .target-button:hover, .theme-neptuneTheme
+.target-button:focus {
+  outline: 2px solid #3c8291;
+}
+
+.theme-oceanTheme .target-button:hover, .theme-oceanTheme
+.target-button:focus {
+  outline: 2px solid #2d7dc8;
+}
+
+.theme-noireTheme .target-button:hover, .theme-noireTheme
+.target-button:focus {
+  outline: 2px solid white;
+}
+
+.theme-matadorTheme .VueCarousel-dot-button:hover, .theme-matadorTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid #fdbf56;
+}
+
+.theme-raspberryTheme .VueCarousel-dot-button:hover, .theme-raspberryTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid #eb84cd;
+}
+
+.theme-oliveTheme .VueCarousel-dot-button:hover, .theme-oliveTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid #19c391;
+}
+
+.theme-neptuneTheme .VueCarousel-dot-button:hover, .theme-neptuneTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid #3c8291;
+}
+
+.theme-oceanTheme .VueCarousel-dot-button:hover, .theme-oceanTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid #2d7dc8;
+}
+
+.theme-noireTheme .VueCarousel-dot-button:hover, .theme-noireTheme
+.VueCarousel-dot-button:focus {
+  outline: 2px solid white;
+}
+
 .alert {
   margin-bottom: 0;
 }

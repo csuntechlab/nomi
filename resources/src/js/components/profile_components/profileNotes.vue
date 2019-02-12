@@ -11,7 +11,7 @@
 			<div class="col-xs-10 type--right">
 				<span v-show="this.unsavedChanges" class="notes__status notes__status--italic">Unsaved Changes</span>
 				<span v-show="this.noteSaved" class="notes__status notes__status--italic">Changes Saved!</span>
-				<button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
+				<button class="target-button btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
 			</div>
 		</div>
 	</div>

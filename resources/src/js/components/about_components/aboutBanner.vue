@@ -2,18 +2,18 @@
     <div>
             <div>
                 <ul v-if="showAbout" class="tabs cf type--center tab__link--kerning">
-                    <li class="tab__list">
+                    <li class="target-button tab__list">
                         <a class="tab__link--active" @click="selectAbout">About</a>
                     </li>
-                    <li class="tab__list">
+                    <li class="target-button tab__list">
                         <a class="tab__link" @click="selectVersion">Version History</a>
                     </li>
                 </ul>
                 <ul v-if="showAbout === false" class="tabs cf type--center tab__link--kerning">
-                    <li class="tab__list">
+                    <li class="target-button tab__list">
                         <a class="tab__link" @click="selectAbout">About</a>
                     </li>
-                    <li class="tab__list">
+                    <li class="target-button tab__list">
                         <a class="tab__link--active" @click="selectVersion">Version History</a>
                     </li>
                 </ul>

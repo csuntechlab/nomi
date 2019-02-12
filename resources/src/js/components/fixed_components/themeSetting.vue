@@ -5,12 +5,24 @@
     </div>
 <div class="panel">
     <div class="theme">
+      <div class="target-button">
         <button id="Matador" @click="updateTheme('theme-matadorTheme')" class="theme__item" name="matadorTheme"> Matador</button>
+      </div>
+      <div class="target-button">
         <button id="Raspberry" @click="updateTheme('theme-raspberryTheme')" class="theme__item" name="raspberryTheme"> Raspberry</button>
+      </div>
+      <div class="target-button">
         <button id="Olive" @click="updateTheme('theme-oliveTheme')" class="theme__item" name="oliveTheme"> Olive</button>
+      </div>
+      <div class="target-button">
         <button id="Neptune" @click="updateTheme('theme-neptuneTheme')" class="theme__item" name="neptuneTheme"> Neptune</button>
+      </div>
+      <div class="target-button">
         <button id="Ocean" @click="updateTheme('theme-oceanTheme')" class="theme__item" name="oceanTheme"> Ocean</button>
+      </div>
+      <div class="target-button">
         <button id="Noire" @click="updateTheme('theme-noireTheme')" class="theme__item" name="noireTheme"> Noire</button>
+      </div>
     </div>
 </div>
 </div>
