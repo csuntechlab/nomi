@@ -23,13 +23,14 @@
 import { mapGetters, mapState } from "vuex";
 import galleryProfile from "../roster_components/galleryProfile.vue";
 import { getImage } from './../../mixins/getImage.js';
-import { getStudent } from './../../mixins/getStudent.js';
+import { getStudent } from './../../mixins/getStudent.js'
+import { refetchImage } from './../../mixins/refetchImage.js'
 import { displayName } from './../../mixins/displayName.js';
 
 export default {
-  name: 'gallery-card',
+	name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage, displayName],
+	mixins: [getStudent, getImage, refetchImage],
 
 	data: function() {
 		return {
@@ -50,11 +51,11 @@ export default {
 		]),
 
     email_uri() {
-      return this.student.email.split('@')[0];
+    	return this.student.email.split('@')[0];
     },
 
     emailExists() {
-      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+    	return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
     },
 	},
 };

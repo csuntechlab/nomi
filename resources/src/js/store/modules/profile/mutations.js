@@ -1,4 +1,3 @@
-import moment from 'moment';
 export default {
   API_FAILURE(state, payload) {
     state.profileErrors = payload.response.data.message;
@@ -24,7 +23,7 @@ export default {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + `${state.studentProfile.emailURI}`+ '/' +`${state.studentProfile.imagePriority}` +'?secret='+ secret + `${getters.students[student].timestamp}`;
+          state.studentProfile.images = imageRoute + `${state.studentProfile.emailURI}`+ '/' +`${state.studentProfile.imagePriority}` +'?secret='+ secret;
           
           break;
         }

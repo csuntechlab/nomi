@@ -67,7 +67,7 @@ export default {
     data: function() {
         return{
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: document.querySelector('meta[name=secret]').content,
+            secret: document.querySelector('meta[name=secret]').content + '&source=true',
         }
     },
     components:{
@@ -83,7 +83,7 @@ export default {
 
         likenessImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness`  +'?secret='+ this.secret +  `${this.student.timestamp}`;
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness`  +'?secret='+ this.secret;
             }
         },
     

@@ -7,7 +7,6 @@ namespace App\Services;
 use App\Contracts\UserSettingsContract;
 use App\ModelRepositoryInterfaces\TermModelRepositoryInterface;
 use App\Models\Theme;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserSettingsService implements UserSettingsContract
@@ -42,14 +41,8 @@ class UserSettingsService implements UserSettingsContract
 
     public function getCurrentTerm()
     {
-        $today = Carbon::now()->toDateTimeString();
+        $term = $this->termModelRepositoryUtility->find();
 
-        $term = $this->termModelRepositoryUtility->find($today);
-
-        if ($term != null) {
-            return $term['term_id'];
-        }
-
-        return 2173;
+        return $term['term_id'];
     }
 }

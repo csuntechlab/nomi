@@ -60,7 +60,7 @@ export default {
         okayToUpdate: null,
         switchItUp: false,
         imageUrl: document.querySelector('meta[name=img-url]').content,
-        secret: document.querySelector('meta[name=secret]').content,
+        secret: document.querySelector('meta[name=secret]').content + '&source=true',
       }
   },
 
