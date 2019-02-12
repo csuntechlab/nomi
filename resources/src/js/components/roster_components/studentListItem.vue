@@ -39,10 +39,6 @@ export default {
         ...mapGetters([
         ]),
 
-        display_name() {
-        return `${this.student.first_name} ${this.student.last_name}`;
-        },
-
         email_uri() {
         return this.student.email.split('@')[0];
         },

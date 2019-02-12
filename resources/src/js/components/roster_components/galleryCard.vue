@@ -30,7 +30,7 @@ import { displayName } from './../../mixins/displayName.js';
 export default {
 	name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage, refetchImage],
+	mixins: [getStudent, getImage, refetchImage, displayName],
 
 	data: function() {
 		return {
