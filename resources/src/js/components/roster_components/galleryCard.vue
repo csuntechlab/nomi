@@ -50,13 +50,17 @@ export default {
 			'facultyMember',
 		]),
 
-    email_uri() {
-    	return this.student.email.split('@')[0];
-    },
+		email_uri() {
+			return this.student.email.split('@')[0];
+		},
 
-    emailExists() {
-    	return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-    },
+		emailExists() {
+			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+		},
+
+        display_name() {
+            return `${ this.check_name_exists(this.student.first_name, false) } ${ this.check_name_exists(this.student.last_name[0], true) }`;
+        },
 	},
 };
 </script>

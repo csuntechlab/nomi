@@ -6169,7 +6169,7 @@ module.exports = Component.exports
 var displayName = {
 	computed: {
 		display_name: function display_name() {
-			return this.check_name_exists(this.student.first_name, false) + " " + this.check_name_exists(this.student.last_name[0], true);
+			return this.check_name_exists(this.student.first_name, false) + " " + this.check_name_exists(this.student.last_name[0], false);
 		}
 	},
 
@@ -39598,6 +39598,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		},
 		emailExists: function emailExists() {
 			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+		},
+		display_name: function display_name() {
+			return this.check_name_exists(this.student.first_name, false) + " " + this.check_name_exists(this.student.last_name[0], true);
 		}
 	})
 });
