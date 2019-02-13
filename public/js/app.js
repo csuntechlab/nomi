@@ -39902,7 +39902,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
   watch: {
     modalVisible: function modalVisible() {
-      this.upDate();
+      this.update();
     }
   },
 
@@ -39910,9 +39910,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     croppaFunctionality: __WEBPACK_IMPORTED_MODULE_0__profile_components_croppaFunctionality_vue___default.a,
     modalsCarousel: __WEBPACK_IMPORTED_MODULE_1__profile_components_modalsCarousel_vue___default.a
   },
+
   methods: {
     showModal: function showModal() {
-
       this.$store.dispatch("toggleModal", false);
       this.$store.dispatch("toggleCropping", false);
       this.croppaAvailable = true;
@@ -39920,9 +39920,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setUpdate: function setUpdate(selected) {
       this.okayToUpdate = selected;
     },
-    upDate: function upDate() {
+    update: function update() {
       if (this.modalVisible === true) {
         this.$store.dispatch("toggleCropping", true);
+      } else {
+        this.croppaAvailable = true;
       }
     },
     croppaToggle: function croppaToggle() {
@@ -40030,6 +40032,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.toggleModal(false);
         }
     }),
+
     beforeDestroy: function beforeDestroy() {
         this.$root.$off('chooseImage');
         this.$root.$off('confirmImage');
@@ -40599,7 +40602,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     methods: {
         updateImageHandler: function updateImageHandler() {
-            // document.getElementById("setDefaultBtn").innerHTML= 'Setting Default...'
+            document.getElementById("setDefaultBtn").innerHTML = 'Setting Default...';
             this.$store.dispatch('updateStudentPriority', {
                 studentId: this.modalData.student_id,
                 image_priority: this.image_type

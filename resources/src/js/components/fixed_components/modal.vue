@@ -57,9 +57,8 @@
         },
 
         watch: {
-          
           modalVisible() {
-            this.upDate();
+            this.update();
           }
         },
 
@@ -67,24 +66,26 @@
             croppaFunctionality,
             modalsCarousel
         },
+        
         methods: {
           showModal() {
+            this.$store.dispatch("toggleModal", false);
+            this.$store.dispatch("toggleCropping", false);
+            this.croppaAvailable = true;
+          },
 
-             this.$store.dispatch("toggleModal", false);
-             this.$store.dispatch("toggleCropping", false);
-             this.croppaAvailable = true;
-           },
+          setUpdate(selected){
+            this.okayToUpdate = selected;
+          },
 
-           setUpdate(selected){
-             this.okayToUpdate = selected;
-           },
-
-           upDate() {
-             if(this.modalVisible === true)
-             {
-               this.$store.dispatch("toggleCropping", true);
-             } 
-           },
+          update() {
+            if (this.modalVisible === true)
+            {
+              this.$store.dispatch("toggleCropping", true);
+            } else {
+              this.croppaAvailable = true;
+            }
+          },
 
           croppaToggle(){
             this.croppaAvailable = !this.croppaAvailable;
