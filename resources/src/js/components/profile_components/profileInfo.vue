@@ -25,9 +25,11 @@
 <script>
 import profileNotes from './profileNotes.vue';
 import profilePicture from './profilePicture.vue';
+import { displayName } from './../../mixins/displayName.js';
 
 export default {
     name: 'profile-info',
+    mixins: [displayName],
     props: [
         'student',
     ],

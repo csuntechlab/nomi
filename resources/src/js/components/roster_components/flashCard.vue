@@ -21,10 +21,11 @@ import axios from 'axios';
 import { mapGetters } from 'vuex';
 import profilePicture from '../profile_components/profilePicture.vue';
 import { getImage } from './../../mixins/getImage.js';
+import { displayName } from './../../mixins/displayName.js';
 
 export default {
   name: 'flash-card',
-  mixins: [getImage],
+  mixins: [getImage, displayName],
 
   data() {
     return {
@@ -37,17 +38,8 @@ export default {
   components: {
     profilePicture,
   },
-
+  
   props: ['student'],
-
-  computed: {
-    ...mapGetters([
-    ]),
-
-    display_name() {
-      return `${this.student.first_name} ${this.student.last_name}`;
-    },
-  },
 
   methods: {
     updateRecognized() {
