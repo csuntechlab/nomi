@@ -56,6 +56,10 @@
 		left: 15px;
 		transition: 25ms;
 		margin-top: -3.55px;
+
+		&:hover {
+			color: rgb(215, 215, 215);
+		}
 	}
 	
 	&-button--disabled {

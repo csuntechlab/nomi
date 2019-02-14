@@ -1698,6 +1698,10 @@ textarea[type="text"]:focus {
   margin-top: -3.55px;
 }
 
+.back-button:hover {
+  color: #d7d7d7;
+}
+
 .back-button--disabled {
   color: rgba(255, 255, 255, 0.2);
   position: absolute;
