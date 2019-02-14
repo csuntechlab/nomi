@@ -75,12 +75,27 @@
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
 			}
+
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%) !important;
+					color: themed("textColor") !important;
+				}
+			}
+
 			&--selected {
 				width: 100%;
 				margin: 0.5rem 0;
 				@include themify($themes) {
 					background-color: themed("buttonColor") !important;
 					color: themed("buttonText") !important;
+				}
+
+				&:hover {
+					@include themify($themes) {
+						background-color: darken(themed("buttonColor"), 8%) !important;
+						color: themed("buttonText") !important;
+					}
 				}
 			}
 		}
@@ -97,6 +112,13 @@
 			@include themify($themes) {
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
+			}
+
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%) !important;
+					color: themed("textColor") !important;
+				}
 			}
 		}
 
@@ -117,12 +139,27 @@
 				background-color: themed("panelColor");
 				color: themed("textColor");
 			}
+
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%);
+					color: themed("textColor");
+				}
+			}
+
 			&--selected {
 				display: inline-block;
 				padding: 0.4rem 1rem;
 				@include themify($themes) {
 					background-color: themed("buttonColor");
 					color: themed("buttonText");
+				}
+
+				&:hover {
+					@include themify($themes) {
+						background-color: darken(themed("buttonColor"), 8%);
+						color: themed("buttonText");
+					}
 				}
 			}
 		}

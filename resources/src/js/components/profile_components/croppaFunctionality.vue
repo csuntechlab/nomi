@@ -45,6 +45,7 @@ export default {
                 this.toggleModal(false);
             },
         },
+        
         beforeDestroy() {
             this.$root.$off('chooseImage');
             this.$root.$off('confirmImage');

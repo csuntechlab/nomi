@@ -4,7 +4,7 @@
             <div class="row sort-filters">
             <list-grid-selector></list-grid-selector>
             </div>
-            <shuffle-button v-if="!this.list && this.flash" class="target-button btn shuffle-button"></shuffle-button>
+            <shuffle-button v-if="!this.list && this.flash" class="btn shuffle-button"></shuffle-button>
         </div>
         <div v-else class="row sort-filters"> 
             <list-grid-selector></list-grid-selector>

@@ -2,7 +2,7 @@
     <div class="col-xs-6 col-md-4 col-lg-3">
         <div class="flash__panel"  @click="updateRecognized">
           <div class="flash__positioner"></div>
-            <div class="target-button flash__element">
+            <div class="flash__element">
                 <div v-show="!known" class="card-face">
                     <profile-picture :name="display_name" :image="image" :type="'roster'"></profile-picture>
                 </div>
@@ -21,10 +21,11 @@ import axios from 'axios';
 import { mapGetters } from 'vuex';
 import profilePicture from '../profile_components/profilePicture.vue';
 import { getImage } from './../../mixins/getImage.js';
+import { displayName } from './../../mixins/displayName.js';
 
 export default {
   name: 'flash-card',
-  mixins: [getImage],
+  mixins: [getImage, displayName],
 
   data() {
     return {
@@ -37,17 +38,8 @@ export default {
   components: {
     profilePicture,
   },
-
+  
   props: ['student'],
-
-  computed: {
-    ...mapGetters([
-    ]),
-
-    display_name() {
-      return `${this.student.first_name} ${this.student.last_name}`;
-    },
-  },
 
   methods: {
     updateRecognized() {

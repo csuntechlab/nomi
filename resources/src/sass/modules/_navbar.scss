@@ -35,9 +35,17 @@
 		background-color: themed("feedbackBtn");
 		color: themed("buttonText");
 	}
+
 	@media only screen and (max-width: 699px){
 		padding-top: 1%;
 		padding-bottom: 1%;
+	}
+
+	&:hover {
+		@include themify($themes) {
+			background-color: darken(themed("feedbackBtn"), 8%);
+			color: themed("buttonText");
+		}
 	}
 }
 
@@ -88,6 +96,12 @@
 				color: themed("disabledBtnColor");
 			}
 			padding: .75rem 0 .5rem;
+		}
+
+		&:hover {
+			@include themify($themes) {
+				box-shadow: 0 0 0 2px inset themed("selectionActive");
+			}
 		}
 	}
 }

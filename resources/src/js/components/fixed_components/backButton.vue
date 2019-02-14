@@ -1,6 +1,6 @@
 <template>
     <div v-if="!hideBack">
-        <i class="target-button fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
+        <i class="fa fa-angle-left fa-3x back-button" title="Go Back" @click="goBack"></i>
     </div>
 </template>
 
