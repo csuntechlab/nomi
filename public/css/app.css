@@ -497,8 +497,34 @@ textarea {
   border: 2px solid transparent;
 }
 
-:focus {
-  outline: none !important;
+.theme-matadorTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset #fdbf56;
+          box-shadow: 0 0 6px inset #fdbf56;
+}
+
+.theme-raspberryTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset #eb84cd;
+          box-shadow: 0 0 6px inset #eb84cd;
+}
+
+.theme-oliveTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset #19c391;
+          box-shadow: 0 0 6px inset #19c391;
+}
+
+.theme-neptuneTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset #3c8291;
+          box-shadow: 0 0 6px inset #3c8291;
+}
+
+.theme-oceanTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset #2d7dc8;
+          box-shadow: 0 0 6px inset #2d7dc8;
+}
+
+.theme-noireTheme :focus {
+  -webkit-box-shadow: 0 0 6px inset white;
+          box-shadow: 0 0 6px inset white;
 }
 
 textarea[type="text"] {

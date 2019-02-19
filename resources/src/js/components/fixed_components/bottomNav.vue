@@ -1,22 +1,22 @@
 <template>
     <div class="row bottom-nav">
-        <router-link v-bind:class="{[selected]: this.currentLocation == 'home'}" id="courses" class="col-xs-3 type--center bottom-nav__button" to="/" @click.native="setActive('home')">
+        <router-link v-bind:class="{[selected]: this.currentLocation == 'home'}" id="courses" class="col-xs-3 type--center bottom-nav__button" to="/" @click.native="setActive('home')" data-interactable>
             <i class="fas fa-2x fa-chalkboard-teacher"></i>
             <div class="bottom-nav__text">Courses</div>
         </router-link>
-        <div v-if="this.currentCourse == null || this.loadingClasses == true" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled">
+        <div v-if="this.currentCourse == null || this.loadingClasses == true" v-bind:class="{[selected]: this.currentLocation == 'class'}" id="students" class="col-xs-3 type--center bottom-nav__button--disabled" data-interactable>
             <i class="fas fa-2x fa-user-graduate"></i>
             <div class="bottom-nav__text">Students</div>
         </div>
-        <div v-else id="students" v-bind:class="{[selected]: this.currentLocation == 'class'}" class="col-xs-3 type--center bottom-nav__button" @click="setActive('class'), classOrStudent()">
+        <div v-else id="students" v-bind:class="{[selected]: this.currentLocation == 'class'}" class="col-xs-3 type--center bottom-nav__button" @click="setActive('class'), classOrStudent()" data-interactable>
             <i class="fas fa-2x fa-user-graduate"></i>
             <div class="bottom-nav__text">Students</div>
         </div>
-        <router-link v-bind:class="{[selected]: this.currentLocation == 'settings'}" id="settings" class="col-xs-3 type--center bottom-nav__button" to="/settings" @click.native="setActive('settings')">
+        <router-link v-bind:class="{[selected]: this.currentLocation == 'settings'}" id="settings" class="col-xs-3 type--center bottom-nav__button" to="/settings" @click.native="setActive('settings')" data-interactable>
             <i class="fas fa-2x fa-cog"></i>
             <div class="bottom-nav__text">Settings</div>
         </router-link>
-        <div id="profile" class="col-xs-3 type--center bottom-nav__button" @click="showMenu()">
+        <div id="profile" class="col-xs-3 type--center bottom-nav__button" @click="showMenu()" data-interactable>
             <i v-if="facultyMember.image == null" class="fas fa-2x fa-user-circle"></i>
             <div v-else>
                 <div class="height_fix">

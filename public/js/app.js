@@ -34736,7 +34736,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -34760,6 +34759,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     beforeCreate: function beforeCreate() {
         this.$store.dispatch('getOnlyData');
+    },
+    updated: function updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map(function (x, index) {
+            return x.tabIndex = index + 1;
+        });
     }
 });
 
@@ -34928,7 +34932,7 @@ var render = function() {
     ? _c("div", [
         _c("i", {
           staticClass: "fa fa-angle-left fa-3x back-button",
-          attrs: { title: "Go Back" },
+          attrs: { title: "Go Back", "data-interactable": "" },
           on: { click: _vm.goBack }
         })
       ])
@@ -34974,7 +34978,7 @@ var render = function() {
               "a",
               {
                 staticClass: "feedback-button pull-right",
-                attrs: { href: this.url + "/support" }
+                attrs: { "data-interactable": "", href: this.url + "/support" }
               },
               [_vm._v("Feedback")]
             )
@@ -35179,7 +35183,7 @@ var render = function() {
           class: ((_obj = {}),
           (_obj[_vm.selected] = this.currentLocation == "home"),
           _obj),
-          attrs: { id: "courses", to: "/" },
+          attrs: { id: "courses", to: "/", "data-interactable": "" },
           nativeOn: {
             click: function($event) {
               _vm.setActive("home")
@@ -35201,7 +35205,7 @@ var render = function() {
               class: ((_obj$1 = {}),
               (_obj$1[_vm.selected] = this.currentLocation == "class"),
               _obj$1),
-              attrs: { id: "students" }
+              attrs: { id: "students", "data-interactable": "" }
             },
             [
               _c("i", { staticClass: "fas fa-2x fa-user-graduate" }),
@@ -35218,7 +35222,7 @@ var render = function() {
               class: ((_obj$2 = {}),
               (_obj$2[_vm.selected] = this.currentLocation == "class"),
               _obj$2),
-              attrs: { id: "students" },
+              attrs: { id: "students", "data-interactable": "" },
               on: {
                 click: function($event) {
                   _vm.setActive("class"), _vm.classOrStudent()
@@ -35241,7 +35245,7 @@ var render = function() {
           class: ((_obj$3 = {}),
           (_obj$3[_vm.selected] = this.currentLocation == "settings"),
           _obj$3),
-          attrs: { id: "settings", to: "/settings" },
+          attrs: { id: "settings", to: "/settings", "data-interactable": "" },
           nativeOn: {
             click: function($event) {
               _vm.setActive("settings")
@@ -35259,7 +35263,7 @@ var render = function() {
         "div",
         {
           staticClass: "col-xs-3 type--center bottom-nav__button",
-          attrs: { id: "profile" },
+          attrs: { id: "profile", "data-interactable": "" },
           on: {
             click: function($event) {
               _vm.showMenu()
@@ -36019,7 +36023,10 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "panel course_padding fullscreen_width col-xs-12" },
+        {
+          staticClass: "panel course_padding fullscreen_width col-xs-12",
+          attrs: { "data-interactable": "" }
+        },
         [
           _c("div", { staticClass: "panel__header type--center" }, [
             _c("h2", { staticClass: "course__title pull-left" }, [
@@ -36475,6 +36482,7 @@ var render = function() {
                       ? "course__button--selected"
                       : ""
                   ],
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.setPrevTerm }
                 },
                 [_vm._v("Previous")]
@@ -36491,6 +36499,7 @@ var render = function() {
                       ? "course__button--selected"
                       : ""
                   ],
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.setCurrTerm }
                 },
                 [_vm._v("Current")]
@@ -36507,6 +36516,7 @@ var render = function() {
                       ? "course__button--selected"
                       : ""
                   ],
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.setNeTerm }
                 },
                 [_vm._v("Next")]
@@ -36534,6 +36544,7 @@ var render = function() {
                         ? "course__button--selected"
                         : ""
                     ],
+                    attrs: { "data-interactable": "" },
                     on: { click: _vm.setPrevTerm }
                   },
                   [_vm._v("Previous")]
@@ -36550,6 +36561,7 @@ var render = function() {
                         ? "course__button--selected"
                         : ""
                     ],
+                    attrs: { "data-interactable": "" },
                     on: { click: _vm.setCurrTerm }
                   },
                   [_vm._v("Current")]
@@ -36566,6 +36578,7 @@ var render = function() {
                         ? "course__button--selected"
                         : ""
                     ],
+                    attrs: { "data-interactable": "" },
                     on: { click: _vm.setNeTerm }
                   },
                   [_vm._v("Next")]
@@ -36615,17 +36628,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return this.$store.state.base.themeName.theme === this.$parent.$el.className
-    ? _c(
-        "div",
-        [
-          _c("nav-bar"),
-          _vm._v(" "),
-          _c("courses-container"),
-          _vm._v(" "),
-          _c("menu-bar")
-        ],
-        1
-      )
+    ? _c("div", [_c("nav-bar"), _vm._v(" "), _c("courses-container")], 1)
     : _c("div", [_c("loading-screen")], 1)
 }
 var staticRenderFns = []
@@ -36743,6 +36746,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     beforeRouteLeave: function beforeRouteLeave(to, from, next) {
         this.$store.dispatch('stopUploadFeedback');
         next();
+    },
+    updated: function updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map(function (x, index) {
+            return x.tabIndex = index + 1;
+        });
     }
 });
 
@@ -36929,6 +36937,7 @@ var render = function() {
     this.flash
       ? _c("i", {
           staticClass: "fa fa-random fa-3x",
+          attrs: { "data-interactable": "" },
           on: {
             click: function($event) {
               _vm.$store.dispatch("shuffleFlash")
@@ -37187,6 +37196,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "roster-sorting__name--selected",
+                  attrs: { "data-interactable": "" },
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortFirstName")
@@ -37199,6 +37209,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "roster-sorting__name",
+                  attrs: { "data-interactable": "" },
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortFirstName")
@@ -37213,6 +37224,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "roster-sorting__name--selected",
+                  attrs: { "data-interactable": "" },
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortLastName")
@@ -37225,6 +37237,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "roster-sorting__name",
+                  attrs: { "data-interactable": "" },
                   on: {
                     click: function($event) {
                       _vm.$store.dispatch("sortLastName")
@@ -37239,6 +37252,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "fas roster-sorting__sort",
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.sortDes }
                 },
                 [
@@ -37265,6 +37279,7 @@ var render = function() {
                 "span",
                 {
                   staticClass: "fas roster-sorting__sort",
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.sortAsc }
                 },
                 [
@@ -37436,170 +37451,235 @@ var render = function() {
     _c("div", { staticClass: "row fullscreen-width roster-sorting" }, [
       this.list
         ? _c("div", { staticClass: "roster-sorting-container" }, [
-            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button--selected",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setList")
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-4 roster-sorting-padding",
+                attrs: { "data-interactable": "" }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button--selected",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setList")
+                      }
                     }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-list-ul" }),
-                  _vm._v(" Student List\n                ")
-                ]
-              )
-            ]),
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-list-ul" }),
+                    _vm._v(" Student List\n                ")
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setGallery")
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-4 roster-sorting-padding",
+                attrs: { "data-interactable": "" }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setGallery")
+                      }
                     }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-users" }),
-                  _vm._v(" Photo Gallery\n                ")
-                ]
-              )
-            ]),
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-users" }),
+                    _vm._v(" Photo Gallery\n                ")
+                  ]
+                )
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-sm roster-sorting__button",
-                  on: {
-                    click: function($event) {
-                      _vm.$store.dispatch("setFlash")
+            _c(
+              "div",
+              {
+                staticClass: "col-xs-4 roster-sorting-padding",
+                attrs: { "data-interactable": "" }
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm roster-sorting__button",
+                    on: {
+                      click: function($event) {
+                        _vm.$store.dispatch("setFlash")
+                      }
                     }
-                  }
-                },
-                [
-                  _c("i", { staticClass: "fas fa-clone" }),
-                  _vm._v(" Flash Cards\n                ")
-                ]
-              )
-            ])
+                  },
+                  [
+                    _c("i", { staticClass: "fas fa-clone" }),
+                    _vm._v(" Flash Cards\n                ")
+                  ]
+                )
+              ]
+            )
           ])
         : this.flash
           ? _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm roster-sorting__button",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setList")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" Student List\n                ")
-                  ]
-                )
-              ]),
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-list-ul" }),
+                      _vm._v(" Student List\n                ")
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm roster-sorting__button",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setGallery")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Photo Gallery\n                ")
-                  ]
-                )
-              ]),
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-users" }),
+                      _vm._v(" Photo Gallery\n                ")
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button--selected",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setFlash")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-sm roster-sorting__button--selected",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setFlash")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Flash Cards\n                ")
-                  ]
-                )
-              ])
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-clone" }),
+                      _vm._v(" Flash Cards\n                ")
+                    ]
+                  )
+                ]
+              )
             ])
           : _c("div", { staticClass: "roster-sorting-container" }, [
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setList")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm roster-sorting__button",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setList")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-list-ul" }),
-                    _vm._v(" Student List\n                ")
-                  ]
-                )
-              ]),
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-list-ul" }),
+                      _vm._v(" Student List\n                ")
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button--selected",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setGallery")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "btn btn-sm roster-sorting__button--selected",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setGallery")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-users" }),
-                    _vm._v(" Photo Gallery\n                ")
-                  ]
-                )
-              ]),
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-users" }),
+                      _vm._v(" Photo Gallery\n                ")
+                    ]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-xs-4 roster-sorting-padding" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-sm roster-sorting__button",
-                    on: {
-                      click: function($event) {
-                        _vm.$store.dispatch("setFlash")
+              _c(
+                "div",
+                {
+                  staticClass: "col-xs-4 roster-sorting-padding",
+                  attrs: { "data-interactable": "" }
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm roster-sorting__button",
+                      on: {
+                        click: function($event) {
+                          _vm.$store.dispatch("setFlash")
+                        }
                       }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fas fa-clone" }),
-                    _vm._v(" Flash Cards\n                ")
-                  ]
-                )
-              ])
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-clone" }),
+                      _vm._v(" Flash Cards\n                ")
+                    ]
+                  )
+                ]
+              )
             ])
     ])
   ])
@@ -37786,6 +37866,7 @@ var render = function() {
             {
               staticClass: "tab__link-alt",
               attrs: {
+                "data-interactable": "",
                 "active-class": "tab__link--active",
                 to: "/class/" + course.id
               }
@@ -39410,7 +39491,11 @@ var render = function() {
   return _c("div", { staticClass: "col-xs-6 col-md-4 col-lg-3" }, [
     _c(
       "div",
-      { staticClass: "flash__panel", on: { click: _vm.updateRecognized } },
+      {
+        staticClass: "flash__panel",
+        attrs: { "data-interactable": "" },
+        on: { click: _vm.updateRecognized }
+      },
       [
         _c("div", { staticClass: "flash__positioner" }),
         _vm._v(" "),
@@ -39546,9 +39631,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mixins_displayName_js__ = __webpack_require__(9);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-//
-//
-//
 //
 //
 //
@@ -39740,6 +39822,7 @@ var render = function() {
       this.editable
         ? _c("i", {
             staticClass: "fas fa-pencil-alt panel__edit-button pull-right",
+            attrs: { "data-interactable": "" },
             on: {
               click: function($event) {
                 _vm.showModal()
@@ -39772,7 +39855,10 @@ var render = function() {
   return _c("div", { staticClass: "gallery-card col-xs-6 col-md-4 col-lg-3" }, [
     _c(
       "div",
-      { staticClass: "panel gallery-card__content" },
+      {
+        staticClass: "panel gallery-card__content",
+        attrs: { "data-interactable": "" }
+      },
       [
         _c("div", { staticClass: "panel__wrapper" }, [
           _c(
@@ -41242,7 +41328,10 @@ var render = function() {
   return _c(
     "router-link",
     {
-      attrs: { to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri },
+      attrs: {
+        to: "/profile/" + this.$route.params.id + "/" + _vm.email_uri,
+        "data-interactable": ""
+      },
       nativeOn: {
         click: function($event) {
           _vm.getStudent()
@@ -41660,6 +41749,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 	},
 	updated: function updated() {
 		this.$store.dispatch('enableBackButton');
+		Array.from(document.querySelectorAll("[data-interactable]")).map(function (x, index) {
+			return x.tabIndex = index + 1;
+		});
 	},
 	beforeRouteLeave: function beforeRouteLeave(to, from, next) {
 		if (this.profileLoadError) {
@@ -42023,6 +42115,7 @@ var render = function() {
                 _vm.emailExists
                   ? _c("i", {
                       staticClass: "fas fa-camera panel__edit-button--profile",
+                      attrs: { "data-interactable": "" },
                       on: {
                         click: function($event) {
                           _vm.showModal()
@@ -42337,6 +42430,7 @@ var render = function() {
       _c("textarea", {
         staticClass: "notes_text",
         attrs: {
+          "data-interactable": "",
           placeholder: "Write about " + this.student.firstName + ".",
           maxlength: "600",
           type: "text",
@@ -42412,6 +42506,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-sm btn-default",
+            attrs: { "data-interactable": "" },
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -43079,6 +43174,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "tab__link--active",
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.selectAbout }
                 },
                 [_vm._v("About")]
@@ -43088,7 +43184,11 @@ var render = function() {
             _c("li", { staticClass: "tab__list" }, [
               _c(
                 "a",
-                { staticClass: "tab__link", on: { click: _vm.selectVersion } },
+                {
+                  staticClass: "tab__link",
+                  attrs: { "data-interactable": "" },
+                  on: { click: _vm.selectVersion }
+                },
                 [_vm._v("Version History")]
               )
             ])
@@ -43100,7 +43200,11 @@ var render = function() {
             _c("li", { staticClass: "tab__list" }, [
               _c(
                 "a",
-                { staticClass: "tab__link", on: { click: _vm.selectAbout } },
+                {
+                  staticClass: "tab__link",
+                  attrs: { "data-interactable": "" },
+                  on: { click: _vm.selectAbout }
+                },
                 [_vm._v("About")]
               )
             ]),
@@ -43110,6 +43214,7 @@ var render = function() {
                 "a",
                 {
                   staticClass: "tab__link--active",
+                  attrs: { "data-interactable": "" },
                   on: { click: _vm.selectVersion }
                 },
                 [_vm._v("Version History")]
@@ -43243,6 +43348,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         themeSetting: __WEBPACK_IMPORTED_MODULE_1__components_fixed_components_themeSetting_vue___default.a,
         loadingScreen: __WEBPACK_IMPORTED_MODULE_2__components_fixed_components_loadingScreen_vue___default.a,
         navBar: __WEBPACK_IMPORTED_MODULE_0__components_fixed_components_navBar_vue___default.a
+    },
+
+    updated: function updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map(function (x, index) {
+            return x.tabIndex = index + 1;
+        });
     }
 });
 
@@ -43376,7 +43487,11 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Matador", name: "matadorTheme" },
+            attrs: {
+              id: "Matador",
+              name: "matadorTheme",
+              "data-interactable": ""
+            },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-matadorTheme")
@@ -43390,7 +43505,11 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Raspberry", name: "raspberryTheme" },
+            attrs: {
+              id: "Raspberry",
+              name: "raspberryTheme",
+              "data-interactable": ""
+            },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-raspberryTheme")
@@ -43404,7 +43523,7 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Olive", name: "oliveTheme" },
+            attrs: { id: "Olive", name: "oliveTheme", "data-interactable": "" },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-oliveTheme")
@@ -43418,7 +43537,11 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Neptune", name: "neptuneTheme" },
+            attrs: {
+              id: "Neptune",
+              name: "neptuneTheme",
+              "data-interactable": ""
+            },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-neptuneTheme")
@@ -43432,7 +43555,7 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Ocean", name: "oceanTheme" },
+            attrs: { id: "Ocean", name: "oceanTheme", "data-interactable": "" },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-oceanTheme")
@@ -43446,7 +43569,7 @@ var render = function() {
           "button",
           {
             staticClass: "theme__item",
-            attrs: { id: "Noire", name: "noireTheme" },
+            attrs: { id: "Noire", name: "noireTheme", "data-interactable": "" },
             on: {
               click: function($event) {
                 _vm.updateTheme("theme-noireTheme")

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<form autocomplete="off">
-			<textarea :placeholder="'Write about ' + this.student.firstName + '.'" class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
+			<textarea data-interactable :placeholder="'Write about ' + this.student.firstName + '.'" class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
 		</form>
 		<div class="row">
 			<div class="col-xs-2">
@@ -11,7 +11,7 @@
 			<div class="col-xs-10 type--right">
 				<span v-show="this.unsavedChanges" class="notes__status notes__status--italic">Unsaved Changes</span>
 				<span v-show="this.noteSaved" class="notes__status notes__status--italic">Changes Saved!</span>
-				<button class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
+				<button data-interactable class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>
 			</div>
 		</div>
 	</div>

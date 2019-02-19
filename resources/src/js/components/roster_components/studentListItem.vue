@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
+    <router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()" data-interactable>
         <div class="roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
