@@ -80,6 +80,7 @@ textarea[type="text"]:focus{
     font-size: 150%;
     -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+	cursor: pointer;
 	@include themify($themes) {
 		background-color: themed("galleryBtnBg");
 		color: themed("galleryBtnText");
@@ -126,7 +127,8 @@ textarea[type="text"]:focus{
 		bottom: 0;
 		right: 0;
 		margin: 2.5%;
-    	padding: 5%;
+		padding: 5%;
+		cursor: pointer;
 		border-radius: 100%;
     	font-size: 120%;
     	-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);

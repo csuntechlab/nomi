@@ -763,6 +763,7 @@ textarea[type="text"]:focus {
   font-size: 150%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
 }
 
 .theme-matadorTheme .panel__edit-button {
@@ -902,6 +903,7 @@ textarea[type="text"]:focus {
   right: 0;
   margin: 2.5%;
   padding: 5%;
+  cursor: pointer;
   border-radius: 100%;
   font-size: 120%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -1692,6 +1694,7 @@ textarea[type="text"]:focus {
 .back-button {
   color: white;
   position: absolute;
+  cursor: pointer;
   left: 15px;
   -webkit-transition: 25ms;
   transition: 25ms;
@@ -1752,6 +1755,7 @@ textarea[type="text"]:focus {
 .bottom-nav__button {
   color: rgba(255, 255, 255, 0.8);
   padding: .75rem 0 .5rem;
+  cursor: pointer;
 }
 
 .bottom-nav__button--active {
@@ -2200,6 +2204,10 @@ textarea[type="text"]:focus {
   float: right;
 }
 
+.modal__exit-button {
+  cursor: pointer;
+}
+
 .modal-btn {
   display: inline-block;
   margin: 0 3%;
@@ -2325,6 +2333,7 @@ textarea[type="text"]:focus {
 }
 
 .modal-button__container {
+  cursor: pointer;
   display: inline-block;
   padding: 5% 0;
   bottom: 0%;
@@ -2680,6 +2689,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2692,6 +2702,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2704,6 +2715,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2716,6 +2728,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2728,6 +2741,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2740,6 +2754,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2955,6 +2970,7 @@ textarea[type="text"]:focus {
   width: 40px;
   padding: 0.2rem;
   margin-left: 4px;
+  cursor: pointer;
 }
 
 .theme-matadorTheme .roster-sorting__sort {
@@ -3081,6 +3097,10 @@ textarea[type="text"]:focus {
   color: #ebebeb;
 }
 
+.roster-sorting__name:hover {
+  cursor: pointer;
+}
+
 .theme-matadorTheme .roster-sorting__name:hover {
   background-color: gainsboro;
   color: #464646;
@@ -3114,6 +3134,7 @@ textarea[type="text"]:focus {
 .roster-sorting__name--selected {
   display: inline-block;
   padding: 0.4rem 1rem;
+  cursor: pointer;
 }
 
 .theme-matadorTheme .roster-sorting__name--selected {
@@ -3195,6 +3216,7 @@ textarea[type="text"]:focus {
 
 .gallery-card__content {
   height: 100%;
+  cursor: pointer;
 }
 
 .gallery__name {

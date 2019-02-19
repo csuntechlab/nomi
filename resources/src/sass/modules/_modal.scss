@@ -59,6 +59,10 @@
 		float: right;
 	}
 
+	&__exit-button {
+		cursor: pointer;
+	}
+
 	&-btn {
 		display: inline-block;
 		margin: 0 3%;
@@ -110,6 +114,7 @@
 		}
 
 		&__container {
+			cursor: pointer;
 			display: inline-block;
 			padding: 5% 0;
 			bottom: 0%;

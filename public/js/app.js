@@ -40901,7 +40901,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal--exit" }, [
                 _c("i", {
-                  staticClass: "fa fa-times fa-2x",
+                  staticClass: "fa fa-times fa-2x modal__exit-button",
                   on: {
                     click: function($event) {
                       _vm.showModal()

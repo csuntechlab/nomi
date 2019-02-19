@@ -22,6 +22,7 @@
 			border: none;
 			display: inline-block;
 			position: relative;
+			cursor: pointer;
 			width: 100%;
 			margin-top: 6%;
 		}
@@ -109,6 +110,7 @@
 			width: 40px;
 			padding: 0.2rem;
 			margin-left: 4px;
+			cursor: pointer;
 			@include themify($themes) {
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
@@ -120,9 +122,7 @@
 					color: themed("textColor") !important;
 				}
 			}
-		}
 
-		&__sort {
 			& * {
 				height: 100%;
 				width: 100%;
@@ -141,6 +141,7 @@
 			}
 
 			&:hover {
+				cursor: pointer;
 				@include themify($themes) {
 					background-color: darken(themed("panelColor"), 8%);
 					color: themed("textColor");
@@ -150,6 +151,7 @@
 			&--selected {
 				display: inline-block;
 				padding: 0.4rem 1rem;
+				cursor: pointer;
 				@include themify($themes) {
 					background-color: themed("buttonColor");
 					color: themed("buttonText");
@@ -177,9 +179,9 @@
 
 	&-card {
 		margin-bottom: 1rem;
-
 		&__content {
 			height: 100%;
+			cursor: pointer;
 		}
 	}
 

@@ -7,7 +7,7 @@
             <strong>{{modalData.first_name + " " + modalData.last_name}}</strong>
           </div>
           <div class="modal--exit">
-              <i class="fa fa-times fa-2x" @click="showModal()"></i>
+              <i class="fa fa-times fa-2x modal__exit-button" @click="showModal()"></i>
           </div>
         </div>
         <div class="modal-body">
