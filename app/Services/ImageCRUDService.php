@@ -104,7 +104,7 @@ class ImageCRUDService implements ImageCRUDContract
                 if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
                     \array_push($out, $user['image_priority']['image_priority']);
                 } else {
-                    \array_push($out, 'likeness');
+                    \array_push($out, 'avatar');
                 }
             }
         } else {
@@ -119,7 +119,7 @@ class ImageCRUDService implements ImageCRUDContract
                 if ($user['image_priority'] && $user['image_priority']['user_id'] == auth()->user()->user_id) {
                     \array_push($out, $user['image_priority']['image_priority']);
                 } else {
-                    \array_push($out, 'likeness');
+                    \array_push($out, 'avatar');
                 }
             }
         }

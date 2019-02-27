@@ -3,18 +3,18 @@
             <div>
                 <ul v-if="showAbout" class="tabs cf type--center tab__link--kerning">
                     <li class="tab__list">
-                        <a class="tab__link--active" @click="selectAbout">About</a>
+                        <a data-interactable class="tab__link--active" @click="selectAbout">About</a>
                     </li>
                     <li class="tab__list">
-                        <a class="tab__link tab__link--hover" @click="selectVersion">Version History</a>
+                        <a data-interactable class="tab__link tab__link--hover" @click="selectVersion">Version History</a>
                     </li>
                 </ul>
                 <ul v-if="showAbout === false" class="tabs cf type--center tab__link--kerning">
                     <li class="tab__list">
-                        <a class="tab__link tab__link--hover" @click="selectAbout">About</a>
+                        <a data-interactable class="tab__link tab__link--hover" @click="selectAbout">About</a>
                     </li>
                     <li class="tab__list">
-                        <a class="tab__link--active" @click="selectVersion">Version History</a>
+                        <a data-interactable class="tab__link--active" @click="selectVersion">Version History</a>
                     </li>
                 </ul>
             </div>

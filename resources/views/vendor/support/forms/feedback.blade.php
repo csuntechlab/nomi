@@ -114,7 +114,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
       function backtoNOMI(){
-        window.location.href = '/home';
+        window.history.back();
       }
     </script>
 
