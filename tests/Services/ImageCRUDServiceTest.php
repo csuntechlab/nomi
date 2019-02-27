@@ -53,7 +53,7 @@ class ImageCRUDServiceTest extends TestCase
             ->andReturn([
                 [
                     'image_priority' => [
-                        'image_priority' => 'likeness',
+                        'image_priority' => 'avatar',
                         'user_id' => 1,
                     ],
                 ],
@@ -69,9 +69,9 @@ class ImageCRUDServiceTest extends TestCase
             ]);
 
         $priorities = [
-            'likeness',
+            'avatar',
             'official',
-            'likeness',
+            'avatar',
         ];
 
         $this->assertEquals($imageCRUDService->getPriority($student_ids), $priorities);
