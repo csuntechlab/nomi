@@ -6,6 +6,11 @@
 
 	&__padding {
 		margin-bottom: 0.7rem;
+		transition: 150ms ease-out;
+
+		&:hover {
+			padding: 0 1.5rem;
+		}
 	}
 
 	&__header--empty {
@@ -50,16 +55,29 @@
 
 	&__button {
 		width: 5.5rem;
-
 		@include themify($themes) {
 			background-color: themed("hoverColor") !important;
 			color: themed("textColor") !important;
+		}
+
+		&:hover {
+			@include themify($themes) {
+				background-color: darken(themed("hoverColor"), 8%) !important;
+				color: themed("textColor") !important;
+			}
 		}
 
 		&--selected {
 			@include themify($themes) {
 				background-color: themed("buttonColor") !important;
 				color: themed("buttonText") !important;
+			}
+
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("buttonColor"), 8%) !important;
+					color: themed("buttonText") !important;
+				}
 			}
 		}
 	}

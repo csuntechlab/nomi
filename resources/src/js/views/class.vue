@@ -39,6 +39,10 @@ export default {
     beforeRouteLeave (to, from, next) {
         this.$store.dispatch('stopUploadFeedback');
         next();
-    }
+    },
+    
+    updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map((x, index) => x.tabIndex = index + 1);
+    },
 };
 </script>

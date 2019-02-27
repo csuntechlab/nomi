@@ -7,6 +7,7 @@
             :show-remove-button="false"
             :quality="2"
             placeholder="Waiting for upload..."
+            @file-choose="handleImageCancelCase"
             @init="styleCanvas()"
             @loading-start="loadingStart"
             @loading-end="loadingEnd">
@@ -17,8 +18,8 @@
     </div>
 </template>
 <script>
-    import { mapGetters } from "vuex";
-    import { mapActions } from "vuex";
+    import { mapGetters, mapActions } from "vuex";
+    import moment from 'moment';
 
     export default {
         name: "croppa-profile",
@@ -56,11 +57,13 @@
             this.fileInput = null;
         },
         methods: {
-
             ...mapActions([
                 'setTimestamp'
             ]),
-
+            handleImageCancelCase(){
+                this.$root.$emit('letsSwitchItUp');
+            },
+            
             loadingStart(){
                 this.loadingCroppa = true;
             },
@@ -74,6 +77,22 @@
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
 
+                    let photoId = (this.$route.name === "class") ? 'photo-gallery--' + emuri : 'profile__img--border';
+                    let photoElement = (this.$route.name === "class") ? document.getElementById(photoId) : document.getElementsByClassName(photoId);
+                    let photoSrc = (this.$route.name === "class") ? photoElement.getAttribute('src') : photoElement[0].getAttribute('src');
+
+                    if (this.$route.name === "profile") {
+                        if (photoSrc.includes("likeness")) {
+                            photoElement = photoElement[0];
+                            photoSrc = photoElement.getAttribute('src');
+                        } else {
+                            photoElement = photoElement[1];
+                            photoSrc = photoElement.getAttribute('src');
+                        }
+                    }
+                    
+                    photoElement.setAttribute('src', './images/profile-loading.gif');
+
                     window.axios.post('/api/upload', {
                         id: this.facultyMember.id,
                         profile_image: url,
@@ -83,9 +102,9 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
-                            this.$store.dispatch('setTimestamp', this.student.email_uri);
                             this.$parent.$emit('close', url);
-                            this.url = "";
+                            this.url = ""; 
+                            photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'));
                         } else {
                             console.error('OH NO');
                         }
@@ -109,7 +128,8 @@
                 if(this.myCroppa.$refs.fileInput) {
                     this.fileInput = this.myCroppa.$refs.fileInput;
                     this.myCroppa.chooseFile();
-                    this.$root.$emit('letsSwitchItUp');
+                    
+                   
                 } else {
                     this.myCroppa.$refs.fileInput = this.fileInput;
                     this.myCroppa.chooseFile();

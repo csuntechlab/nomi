@@ -1,4 +1,3 @@
-import moment from 'moment';
 export default {
   API_FAILURE(state, payload) {
     state.profileErrors = payload.response.data.message;
@@ -11,7 +10,7 @@ export default {
 
   GET_STUDENT_PROFILE(state, { payload, getters, response }) {
     let imageRoute = document.querySelector('meta[name=img-url]').content;
-    let secret = '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true';
+    let secret = document.querySelector('meta[name=secret]').content;
     const email = payload.data.email;
     state.studentProfile.emailURI = response.uri;
     state.studentProfile.displayName = payload.data.display_name;
@@ -24,7 +23,7 @@ export default {
         if (getters.students[student].email == email) {
           state.studentProfile.student = getters.students[student];
           state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + `${state.studentProfile.emailURI}`+ '/' +`${state.studentProfile.imagePriority}` + secret + `${getters.students[student].timestamp}`;
+          state.studentProfile.images = imageRoute + `${state.studentProfile.emailURI}`+ '/' +`${state.studentProfile.imagePriority}` +'?secret='+ secret;
           
           break;
         }

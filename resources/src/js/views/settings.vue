@@ -25,5 +25,9 @@ export default {
         loadingScreen,
         navBar,
     },
+
+    updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map((x, index) => x.tabIndex = index + 1);
+    },
 };
 </script>

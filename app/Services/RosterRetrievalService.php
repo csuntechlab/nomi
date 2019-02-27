@@ -96,7 +96,6 @@ class RosterRetrievalService implements RosterRetrievalContract
             'email' => $student->email,
             'email_uri' => $student->email_uri,
             'image_priority' => $student->image_priority,
-            'timestamp' => '&?',
         ];
     }
 

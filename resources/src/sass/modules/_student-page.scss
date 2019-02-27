@@ -22,6 +22,7 @@
 			border: none;
 			display: inline-block;
 			position: relative;
+			cursor: pointer;
 			width: 100%;
 			margin-top: 6%;
 		}
@@ -75,12 +76,27 @@
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
 			}
+
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%) !important;
+					color: themed("textColor") !important;
+				}
+			}
+
 			&--selected {
 				width: 100%;
 				margin: 0.5rem 0;
 				@include themify($themes) {
 					background-color: themed("buttonColor") !important;
 					color: themed("buttonText") !important;
+				}
+
+				&:hover {
+					@include themify($themes) {
+						background-color: darken(themed("buttonColor"), 8%) !important;
+						color: themed("buttonText") !important;
+					}
 				}
 			}
 		}
@@ -94,13 +110,19 @@
 			width: 40px;
 			padding: 0.2rem;
 			margin-left: 4px;
+			cursor: pointer;
 			@include themify($themes) {
 				background-color: themed("panelColor") !important;
 				color: themed("textColor") !important;
 			}
-		}
 
-		&__sort {
+			&:hover {
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%) !important;
+					color: themed("textColor") !important;
+				}
+			}
+
 			& * {
 				height: 100%;
 				width: 100%;
@@ -117,12 +139,29 @@
 				background-color: themed("panelColor");
 				color: themed("textColor");
 			}
+
+			&:hover {
+				cursor: pointer;
+				@include themify($themes) {
+					background-color: darken(themed("panelColor"), 8%);
+					color: themed("textColor");
+				}
+			}
+
 			&--selected {
 				display: inline-block;
 				padding: 0.4rem 1rem;
+				cursor: pointer;
 				@include themify($themes) {
 					background-color: themed("buttonColor");
 					color: themed("buttonText");
+				}
+
+				&:hover {
+					@include themify($themes) {
+						background-color: darken(themed("buttonColor"), 8%);
+						color: themed("buttonText");
+					}
 				}
 			}
 		}
@@ -140,9 +179,9 @@
 
 	&-card {
 		margin-bottom: 1rem;
-
 		&__content {
 			height: 100%;
+			cursor: pointer;
 		}
 	}
 

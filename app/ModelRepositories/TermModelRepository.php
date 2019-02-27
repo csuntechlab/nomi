@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class TermModelRepository implements TermModelRepositoryInterface
 {
-    public function find($today): array
+    public function find(): array
     {
         $terms = Term::nowAndNextTerm(1)->get();
         $currentTerm = $terms->first();

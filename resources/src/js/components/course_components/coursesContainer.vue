@@ -6,13 +6,13 @@
                     <h1 class="course__descriptor">Selected Term</h1>
                 </div>
                 <div class="col-xs-4 type--right">
-                    <button @click="setPrevTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
+                    <button data-interactable @click="setPrevTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
                 </div>
                 <div class="col-xs-4 type--center">
-                    <button @click="setCurrTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
+                    <button data-interactable @click="setCurrTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button @click="setNeTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
+                    <button data-interactable @click="setNeTerm" class="btn btn-sm course__button no-click" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
                 </div>
             </div>
             <br>
@@ -24,13 +24,13 @@
                     <h1 class="course__descriptor">Selected Term</h1>
                 </div>
                 <div class="col-xs-4 type--right">
-                    <button @click="setPrevTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
+                    <button data-interactable @click="setPrevTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '' ]">Previous</button>
                 </div>
                 <div class="col-xs-4 type--center">
-                    <button @click="setCurrTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
+                    <button data-interactable @click="setCurrTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '' ]">Current</button>
                 </div>
                 <div class="col-xs-4 type--left">
-                    <button @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
+                    <button data-interactable @click="setNeTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '' ]">Next</button>
                 </div>
             </div>
             <course-list></course-list>

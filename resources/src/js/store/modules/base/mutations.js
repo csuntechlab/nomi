@@ -1,5 +1,4 @@
 import initialState from './state.js';
-import moment from 'moment';
 
 export default {
   API_FAILURE(state, payload) {
@@ -33,11 +32,11 @@ export default {
     state.flashroster = payload.data.students;
     state.facultyMember.email = payload.data.email;
     state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = `https://api.metalab.csun.edu/media/1.1/faculty/media/${state.facultyMember.name}`;
+    state.facultyMember.profile = payload.data.image;
   },
 
   GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.image = 'https://api.sandbox.csun.edu/metalab/media/1.0/' + state.facultyMember.emailURI + '/avatar';
+    state.facultyMember.image = payload.data.image;
     state.facultyMember.id = payload.data.id;
     state.facultyMember.firstName = payload.data.name_first;
     state.facultyMember.lastName = payload.data.name_last;
@@ -181,11 +180,6 @@ export default {
     state.disableBack = true;
   },
 
-  UPDATE_IMAGE: function (state, payload) {
-      // let id = payload.studentId;
-      // let url = payload.imgUrl;
-      // state.studentImages[id] = url;
-  },
   ENABLE_BACK_BUTTON(state) {
     state.disableBack = false;
   },
@@ -314,22 +308,4 @@ export default {
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
   },
-
-  SET_TIMESTAMP(state, payload) {
-    for (let i = 0, len = state.courses.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
-        if (state.courses[i].roster[j].email_uri === payload) {
-          state.courses[i].roster[j].timestamp = '&?' + moment().format('DDhmmss');
-        }
-      }
-    } 
-    for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
-        if (state.flashroster[i][j].email_uri === payload) {
-          state.flashroster[i][j].timestamp = '&?' + moment().format('DDhmmss');
-        }
-      }
-    } 
-
-  } 
 };

@@ -1,20 +1,17 @@
 <template>
     <div class="gallery-card col-xs-6 col-md-4 col-lg-3">
-        
-		
-        	<div class="panel gallery-card__content">
-				<div class="panel__wrapper">
-					<div class="panel__content">
-						<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
-					</div>
+		<div data-interactable class="panel gallery-card__content">
+			<div class="panel__wrapper">
+				<div class="panel__content">
+					<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
 				</div>
-				<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
-				<div class="cardText clearPadding">
-					<div class="gallery__name type--center">{{display_name}}</div>
-				</div>
-				</router-link>
-        	</div>
-					
+			</div>
+			<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
+			<div class="cardText clearPadding">
+				<div class="gallery__name type--center">{{display_name}}</div>
+			</div>
+			</router-link>
+		</div>
     </div>
         
 </template>
@@ -24,11 +21,13 @@ import { mapGetters, mapState } from "vuex";
 import galleryProfile from "../roster_components/galleryProfile.vue";
 import { getImage } from './../../mixins/getImage.js';
 import { getStudent } from './../../mixins/getStudent.js'
+import { refetchImage } from './../../mixins/refetchImage.js'
+import { displayName } from './../../mixins/displayName.js';
 
 export default {
-  name: 'gallery-card',
+	name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage],
+	mixins: [getStudent, getImage, refetchImage, displayName],
 
 	data: function() {
 		return {
@@ -48,17 +47,17 @@ export default {
 			'facultyMember',
 		]),
 
-    display_name() {
-      return `${this.student.first_name} ${this.student.last_name[0]}.`;
-    },
+		email_uri() {
+			return this.student.email.split('@')[0];
+		},
 
-    email_uri() {
-      return this.student.email.split('@')[0];
-    },
+		emailExists() {
+			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+		},
 
-    emailExists() {
-      return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
-    },
+        display_name() {
+            return `${ this.check_name_exists(this.student.first_name, false) } ${ this.check_name_exists(this.student.last_name[0], true) }`;
+        },
 	},
 };
 </script>

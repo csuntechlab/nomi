@@ -74,30 +74,12 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
         }
     }
 
-    /**
-     * Retrieves media from META+LAB Media web service.
-     *
-     * @param mixed $email
-     *
-     * @return string
-     */
-    public function getMedia($email)
-    {
-        $client = new Client();
-        //hacky fix to remove @csun.edu
-        return $client->get(
-            'http://api.sandbox.csun.edu/metalab/test/media/1.1/' . $emailUri . '/photo'
-            . \explode('@', \str_replace('nr_', '', $email))[0],
-            ['verify' => false]
-        )->getBody()->getContents();
-    }
-
     public function getStudent($email)
     {
         $client = new Client();
 
         return $client->get(
-            env('DIRECTORY_URL') . $email,
+            env('DIRECTORY_URL') . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
             ['verify' => false]
         )->getBody()->getContents();
     }

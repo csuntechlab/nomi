@@ -2,7 +2,6 @@
     <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
         <nav-bar></nav-bar>
         <courses-container></courses-container>
-        <menu-bar></menu-bar>
     </div>
     <div v-else>
         <loading-screen></loading-screen>
@@ -33,6 +32,10 @@ export default {
 
     beforeCreate() {
         this.$store.dispatch('getOnlyData');
+    },
+
+    updated() {
+        Array.from(document.querySelectorAll("[data-interactable]")).map((x, index) => x.tabIndex = index + 1);
     },
 };
 </script>

@@ -60,7 +60,7 @@ export default {
         okayToUpdate: null,
         switchItUp: false,
         imageUrl: document.querySelector('meta[name=img-url]').content,
-        secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+        secret: document.querySelector('meta[name=secret]').content + '&source=true',
       }
   },
 
@@ -82,14 +82,14 @@ export default {
     ...mapGetters(["studentProfile", "modalVisible"]),
     likenessImage() {
       if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret + `${this.student.timestamp}`
+        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` +'?secret='+ this.secret + `${this.student.timestamp}`;
 
       }
     },
     
     avatarImage() {
     if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret
+      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` +'?secret='+ this.secret;
       }
     }
   },

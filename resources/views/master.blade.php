@@ -6,7 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, height=device-height  ,initial-scale=1">
         <meta name="app-url" content="{{ url('/') }}">
-        <meta name="img-url" content="{{ env('IMG_URL') }}">
+        <meta name="img-url" content="{{ env('MEDIA_URL') . 'student/media/' }}">
+        <meta name="secret" content="{{ env('MEDIA_KEY') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="stylesheet" href="{{ asset('css/metaphor.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">

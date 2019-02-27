@@ -68,6 +68,12 @@ body {
 			color: themed("textColor");
 			border-bottom: none;
 		}
+
+		&--hover:hover {
+			@include themify($themes) {
+				box-shadow: 0 -5px 0 0 inset themed("altAccent");
+			}
+		}
 	}
 
 	&__link-alt {
@@ -78,6 +84,12 @@ body {
 			text-decoration: none;
 			color: themed("textColor");
 			border-bottom: 5px solid themed("altAccent");
+		}
+
+		&:hover {
+			@include themify($themes) {
+				border-bottom: 5px solid darken(themed("altAccent"), 12%);
+			}
 		}
 	}
 	
@@ -92,7 +104,7 @@ body {
 			font-weight: normal;
 			text-decoration: none;
 			color: themed("accentColor");
-			border-bottom: 5px solid themed("accentColor");
+			border-bottom: 5px solid themed("accentColor") !important;
 		}
 	}
 }
@@ -125,5 +137,12 @@ textarea {
 		background-color: themed("buttonColor");
 		color: themed("buttonText");
 		border: 2px solid transparent;
+	}
+
+	&-default:hover {
+		@include themify($themes) {
+			background-color: darken(themed("buttonColor"), 8%);
+			color: themed("buttonText");
+		}
 	}
 }

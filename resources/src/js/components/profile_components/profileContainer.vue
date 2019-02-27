@@ -43,7 +43,7 @@
                 <div class="panel__edit-button-sim">
                     <div class="panel__edit-button-wrapper">
                         <div class="panel__edit-button-container">
-                            <i v-if="emailExists" class="fas fa-camera panel__edit-button--profile" @click="showModal()"/>
+                            <i v-if="emailExists" data-interactable class="fas fa-camera panel__edit-button--profile" @click="showModal()"/>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ export default {
     data: function() {
         return{
             imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: '?secret=IUEdtASs7sdiCZBe7Phb/26ilx8PyWr6N4vk8r59KSE019TgsFiBb19wKAxLnwGlbOENrRikSSi5NgqDOTsftw==' + '&source=true'
+            secret: document.querySelector('meta[name=secret]').content + '&source=true',
         }
     },
     components:{
@@ -83,13 +83,13 @@ export default {
 
         likenessImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` + this.secret  + `${this.student.timestamp}`;
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness`  +'?secret='+ this.secret;
             }
         },
     
         avatarImage() {
             if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` + this.secret 
+                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` +'?secret='+ this.secret;
             }
         }
     },

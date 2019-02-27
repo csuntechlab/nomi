@@ -17,8 +17,6 @@ class CreateSupportSubmissionsTable extends Migration
             $table->string('user_id');
             $table->string('impact');
             $table->text('content');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->nullable();
         });
     }
 

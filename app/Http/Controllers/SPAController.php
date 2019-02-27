@@ -24,10 +24,6 @@ class SPAController extends Controller
 
     private function getCurrentTerm($term)
     {
-        if (env('CURRENT_TERM') && $term == null) {
-            $term = env('CURRENT_TERM');
-        }
-
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }

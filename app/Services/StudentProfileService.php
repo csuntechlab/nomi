@@ -29,7 +29,6 @@ class StudentProfileService implements StudentProfileContract
 
     public function getStudentProfile($email)
     {
-        $email = $this->ensureStudentEmailWorks($email);
         $profile = \json_decode($this->webResourceUtility->getStudent($email), true);
         if ($profile['status'] === '200') {
             $profile = $profile['people'];
@@ -41,15 +40,10 @@ class StudentProfileService implements StudentProfileContract
                 ->imageCRUDUtility
                 ->getPriority([\str_replace('members:', '', $profile['individuals_id'])])[0];
 
-            // be resilient against display names with one word
-            $nameParts = \explode(' ', $profile['display_name']);
-            $firstName = $nameParts[0];
-            $lastName = (\count($nameParts) > 1 ? $nameParts[1] : $profile['last_name']);
-
             $studentProfile = (object) [
                 'display_name' => $profile['display_name'],
-                'first_name' => $firstName,
-                'last_name' => $lastName,
+                'first_name' => $profile['first_name'],
+                'last_name' => $profile['last_name'],
                 'email' => $email,
                 'student_id' => $profile['individuals_id'],
                 'members_id' => $profile['individuals_id'],
@@ -94,16 +88,5 @@ class StudentProfileService implements StudentProfileContract
         );
 
         return 'Updated';
-    }
-
-    private function ensureStudentEmailWorks($email)
-    {
-        $regex = "/(\D)*\.(\D)*\.(\d)*@.*/";
-        $checkerEmail = \substr($email, 0, \strpos($email, '@'));
-        if (\preg_match($regex, $email)) {
-            return $email;
-        }
-
-        return $checkerEmail . '@csun.edu';
     }
 }

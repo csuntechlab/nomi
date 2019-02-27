@@ -76,6 +76,7 @@ export default {
 
 	updated() {
 		this.$store.dispatch('enableBackButton');
+		Array.from(document.querySelectorAll("[data-interactable]")).map((x, index) => x.tabIndex = index + 1);
 	},
 
 	beforeRouteLeave(to, from, next) {

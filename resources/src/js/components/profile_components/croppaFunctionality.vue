@@ -21,7 +21,6 @@ export default {
         data: function() {
             return{
                 disabled: true,
-                
             }
         },
 
@@ -46,6 +45,7 @@ export default {
                 this.toggleModal(false);
             },
         },
+        
         beforeDestroy() {
             this.$root.$off('chooseImage');
             this.$root.$off('confirmImage');
