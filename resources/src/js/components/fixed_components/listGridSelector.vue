@@ -62,13 +62,13 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'list-grid-selector',
+    name: 'list-grid-selector',
 
-  computed: {
-    ...mapGetters([
-      'list',
-      'flash',
-    ]),
-  },
-};
+    computed: {
+        ...mapGetters([
+        'list',
+        'flash',
+        ]),
+    },
+    };
 </script>

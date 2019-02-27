@@ -327,6 +327,36 @@ body {
   border-bottom: none;
 }
 
+.theme-matadorTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #bec6c3;
+          box-shadow: 0 -5px 0 0 inset #bec6c3;
+}
+
+.theme-raspberryTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #919191;
+          box-shadow: 0 -5px 0 0 inset #919191;
+}
+
+.theme-oliveTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #a0a0a0;
+          box-shadow: 0 -5px 0 0 inset #a0a0a0;
+}
+
+.theme-neptuneTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #bec6c3;
+          box-shadow: 0 -5px 0 0 inset #bec6c3;
+}
+
+.theme-oceanTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #a0a0a0;
+          box-shadow: 0 -5px 0 0 inset #a0a0a0;
+}
+
+.theme-noireTheme .tab__link--hover:hover {
+  -webkit-box-shadow: 0 -5px 0 0 inset #919191;
+          box-shadow: 0 -5px 0 0 inset #919191;
+}
+
 .theme-matadorTheme .tab__link-alt {
   display: block;
   padding: 5px 20px;
@@ -381,6 +411,30 @@ body {
   border-bottom: 5px solid #919191;
 }
 
+.theme-matadorTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #9da9a5;
+}
+
+.theme-raspberryTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #727272;
+}
+
+.theme-oliveTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #818181;
+}
+
+.theme-neptuneTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #9da9a5;
+}
+
+.theme-oceanTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #818181;
+}
+
+.theme-noireTheme .tab__link-alt:hover {
+  border-bottom: 5px solid #727272;
+}
+
 .tab__link--kerning {
   letter-spacing: 0.1rem;
 }
@@ -391,7 +445,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #e74a37;
-  border-bottom: 5px solid #e74a37;
+  border-bottom: 5px solid #e74a37 !important;
 }
 
 .theme-raspberryTheme .tab__link--active {
@@ -400,7 +454,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #a50c69;
-  border-bottom: 5px solid #a50c69;
+  border-bottom: 5px solid #a50c69 !important;
 }
 
 .theme-oliveTheme .tab__link--active {
@@ -409,7 +463,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #1e7450;
-  border-bottom: 5px solid #1e7450;
+  border-bottom: 5px solid #1e7450 !important;
 }
 
 .theme-neptuneTheme .tab__link--active {
@@ -418,7 +472,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #1e5f7d;
-  border-bottom: 5px solid #1e5f7d;
+  border-bottom: 5px solid #1e5f7d !important;
 }
 
 .theme-oceanTheme .tab__link--active {
@@ -427,7 +481,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #375fa0;
-  border-bottom: 5px solid #375fa0;
+  border-bottom: 5px solid #375fa0 !important;
 }
 
 .theme-noireTheme .tab__link--active {
@@ -436,7 +490,7 @@ body {
   font-weight: normal;
   text-decoration: none;
   color: #5aaffa;
-  border-bottom: 5px solid #5aaffa;
+  border-bottom: 5px solid #5aaffa !important;
 }
 
 .line-break {
@@ -495,6 +549,36 @@ textarea {
   background-color: #426c96;
   color: whitesmoke;
   border: 2px solid transparent;
+}
+
+.theme-matadorTheme .btn-default:hover {
+  background-color: #af1b28;
+  color: white;
+}
+
+.theme-raspberryTheme .btn-default:hover {
+  background-color: #7f0951;
+  color: white;
+}
+
+.theme-oliveTheme .btn-default:hover {
+  background-color: #16543a;
+  color: white;
+}
+
+.theme-neptuneTheme .btn-default:hover {
+  background-color: #22575f;
+  color: white;
+}
+
+.theme-oceanTheme .btn-default:hover {
+  background-color: #1c5c88;
+  color: white;
+}
+
+.theme-noireTheme .btn-default:hover {
+  background-color: #36587a;
+  color: whitesmoke;
 }
 
 .theme-matadorTheme :focus {
@@ -705,6 +789,7 @@ textarea[type="text"]:focus {
   font-size: 150%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
 }
 
 .theme-matadorTheme .panel__edit-button {
@@ -737,6 +822,87 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
+.panel__edit-button:hover {
+  -webkit-animation: tilt 1250ms infinite;
+          animation: tilt 1250ms infinite;
+}
+
+.theme-matadorTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid gray;
+}
+
+.theme-raspberryTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid whitesmoke;
+}
+
+.theme-oliveTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid whitesmoke;
+}
+
+.theme-neptuneTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid white;
+}
+
+.theme-oceanTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid #2e88c5;
+}
+
+.theme-noireTheme .panel__edit-button:hover {
+  font-size: 145%;
+  border: 2px solid #dfe5ec;
+}
+
+@-webkit-keyframes tilt {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(-24deg);
+            transform: rotate(-24deg);
+  }
+  50% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  75% {
+    -webkit-transform: rotate(-8deg);
+            transform: rotate(-8deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes tilt {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(-24deg);
+            transform: rotate(-24deg);
+  }
+  50% {
+    -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+  }
+  75% {
+    -webkit-transform: rotate(-8deg);
+            transform: rotate(-8deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
 .panel__edit-button-sim {
   position: absolute;
   top: 0;
@@ -763,6 +929,7 @@ textarea[type="text"]:focus {
   right: 0;
   margin: 2.5%;
   padding: 5%;
+  cursor: pointer;
   border-radius: 100%;
   font-size: 120%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
@@ -809,6 +976,36 @@ textarea[type="text"]:focus {
   .panel__edit-button--profile {
     bottom: 30%;
   }
+}
+
+.theme-matadorTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid gray;
+}
+
+.theme-raspberryTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid whitesmoke;
+}
+
+.theme-oliveTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid whitesmoke;
+}
+
+.theme-neptuneTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid white;
+}
+
+.theme-oceanTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid #2e88c5;
+}
+
+.theme-noireTheme .panel__edit-button--profile:hover {
+  font-size: 110%;
+  border: 2px solid #dfe5ec;
 }
 
 .text-bold {
@@ -1490,13 +1687,48 @@ textarea[type="text"]:focus {
   }
 }
 
+.theme-matadorTheme .feedback-button:hover {
+  background-color: #414141;
+  color: white;
+}
+
+.theme-raspberryTheme .feedback-button:hover {
+  background-color: #4e1130;
+  color: white;
+}
+
+.theme-oliveTheme .feedback-button:hover {
+  background-color: #07351c;
+  color: white;
+}
+
+.theme-neptuneTheme .feedback-button:hover {
+  background-color: #22575f;
+  color: white;
+}
+
+.theme-oceanTheme .feedback-button:hover {
+  background-color: #1c5c88;
+  color: white;
+}
+
+.theme-noireTheme .feedback-button:hover {
+  background-color: #36587a;
+  color: whitesmoke;
+}
+
 .back-button {
   color: white;
   position: absolute;
+  cursor: pointer;
   left: 15px;
   -webkit-transition: 25ms;
   transition: 25ms;
   margin-top: -3.55px;
+}
+
+.back-button:hover {
+  color: #d7d7d7;
 }
 
 .back-button--disabled {
@@ -1549,6 +1781,7 @@ textarea[type="text"]:focus {
 .bottom-nav__button {
   color: rgba(255, 255, 255, 0.8);
   padding: .75rem 0 .5rem;
+  cursor: pointer;
 }
 
 .bottom-nav__button--active {
@@ -1584,6 +1817,36 @@ textarea[type="text"]:focus {
   color: rgba(245, 245, 245, 0.35);
 }
 
+.theme-matadorTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset #fdbf56;
+          box-shadow: 0 0 0 2px inset #fdbf56;
+}
+
+.theme-raspberryTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset #eb84cd;
+          box-shadow: 0 0 0 2px inset #eb84cd;
+}
+
+.theme-oliveTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset #19c391;
+          box-shadow: 0 0 0 2px inset #19c391;
+}
+
+.theme-neptuneTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset #3c8291;
+          box-shadow: 0 0 0 2px inset #3c8291;
+}
+
+.theme-oceanTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset #2d7dc8;
+          box-shadow: 0 0 0 2px inset #2d7dc8;
+}
+
+.theme-noireTheme .bottom-nav__button:hover {
+  -webkit-box-shadow: 0 0 0 2px inset white;
+          box-shadow: 0 0 0 2px inset white;
+}
+
 .course__title {
   font-weight: bold;
   font-size: 1rem;
@@ -1591,6 +1854,12 @@ textarea[type="text"]:focus {
 
 .course__padding {
   margin-bottom: 0.7rem;
+  -webkit-transition: 150ms ease-out;
+  transition: 150ms ease-out;
+}
+
+.course__padding:hover {
+  padding: 0 1.5rem;
 }
 
 .course__header--empty {
@@ -1727,6 +1996,36 @@ textarea[type="text"]:focus {
   color: #ebebeb !important;
 }
 
+.theme-matadorTheme .course__button:hover {
+  background-color: #c9c9c9 !important;
+  color: #464646 !important;
+}
+
+.theme-raspberryTheme .course__button:hover {
+  background-color: #bebebe !important;
+  color: #464646 !important;
+}
+
+.theme-oliveTheme .course__button:hover {
+  background-color: #c3c3c3 !important;
+  color: #464646 !important;
+}
+
+.theme-neptuneTheme .course__button:hover {
+  background-color: #b8b8b8 !important;
+  color: #464646 !important;
+}
+
+.theme-oceanTheme .course__button:hover {
+  background-color: #c8c8c8 !important;
+  color: #575757 !important;
+}
+
+.theme-noireTheme .course__button:hover {
+  background-color: #131313 !important;
+  color: #ebebeb !important;
+}
+
 .theme-matadorTheme .course__button--selected {
   background-color: #d22030 !important;
   color: white !important;
@@ -1754,6 +2053,36 @@ textarea[type="text"]:focus {
 
 .theme-noireTheme .course__button--selected {
   background-color: #426c96 !important;
+  color: whitesmoke !important;
+}
+
+.theme-matadorTheme .course__button--selected:hover {
+  background-color: #af1b28 !important;
+  color: white !important;
+}
+
+.theme-raspberryTheme .course__button--selected:hover {
+  background-color: #7f0951 !important;
+  color: white !important;
+}
+
+.theme-oliveTheme .course__button--selected:hover {
+  background-color: #16543a !important;
+  color: white !important;
+}
+
+.theme-neptuneTheme .course__button--selected:hover {
+  background-color: #22575f !important;
+  color: white !important;
+}
+
+.theme-oceanTheme .course__button--selected:hover {
+  background-color: #1c5c88 !important;
+  color: white !important;
+}
+
+.theme-noireTheme .course__button--selected:hover {
+  background-color: #36587a !important;
   color: whitesmoke !important;
 }
 
@@ -1901,6 +2230,10 @@ textarea[type="text"]:focus {
   float: right;
 }
 
+.modal__exit-button {
+  cursor: pointer;
+}
+
 .modal-btn {
   display: inline-block;
   margin: 0 3%;
@@ -2026,6 +2359,7 @@ textarea[type="text"]:focus {
 }
 
 .modal-button__container {
+  cursor: pointer;
   display: inline-block;
   padding: 5% 0;
   bottom: 0%;
@@ -2055,6 +2389,30 @@ textarea[type="text"]:focus {
 
 .theme-noireTheme .modal-button__container {
   background-color: #5aaffa;
+}
+
+.theme-matadorTheme .modal-button__container:hover {
+  background-color: #db2f1a;
+}
+
+.theme-raspberryTheme .modal-button__container:hover {
+  background-color: #7f0951;
+}
+
+.theme-oliveTheme .modal-button__container:hover {
+  background-color: #16543a;
+}
+
+.theme-neptuneTheme .modal-button__container:hover {
+  background-color: #16465c;
+}
+
+.theme-oceanTheme .modal-button__container:hover {
+  background-color: #2d4d82;
+}
+
+.theme-noireTheme .modal-button__container:hover {
+  background-color: #329cf9;
 }
 
 .modal--exit {
@@ -2105,6 +2463,30 @@ textarea[type="text"]:focus {
   background-color: #737373 !important;
 }
 
+.theme-matadorTheme .VueCarousel-dot > *:hover {
+  background-color: #818181 !important;
+}
+
+.theme-raspberryTheme .VueCarousel-dot > *:hover {
+  background-color: #818181 !important;
+}
+
+.theme-oliveTheme .VueCarousel-dot > *:hover {
+  background-color: #818181 !important;
+}
+
+.theme-neptuneTheme .VueCarousel-dot > *:hover {
+  background-color: #5e5e5e !important;
+}
+
+.theme-oceanTheme .VueCarousel-dot > *:hover {
+  background-color: #5e5e5e !important;
+}
+
+.theme-noireTheme .VueCarousel-dot > *:hover {
+  background-color: #545454 !important;
+}
+
 .theme-matadorTheme .VueCarousel-dot--active > * {
   background-color: #fdbf56 !important;
 }
@@ -2127,6 +2509,30 @@ textarea[type="text"]:focus {
 
 .theme-noireTheme .VueCarousel-dot--active > * {
   background-color: white !important;
+}
+
+.theme-matadorTheme .VueCarousel-dot--active > *:hover {
+  background-color: #fca81a !important;
+}
+
+.theme-raspberryTheme .VueCarousel-dot--active > *:hover {
+  background-color: #e24fb8 !important;
+}
+
+.theme-oliveTheme .VueCarousel-dot--active > *:hover {
+  background-color: #128d69 !important;
+}
+
+.theme-neptuneTheme .VueCarousel-dot--active > *:hover {
+  background-color: #2a5b66 !important;
+}
+
+.theme-oceanTheme .VueCarousel-dot--active > *:hover {
+  background-color: #225e96 !important;
+}
+
+.theme-noireTheme .VueCarousel-dot--active > *:hover {
+  background-color: #e0e0e0 !important;
 }
 
 .menu {
@@ -2309,6 +2715,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2321,6 +2728,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2333,6 +2741,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2345,6 +2754,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2357,6 +2767,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2369,6 +2780,7 @@ textarea[type="text"]:focus {
   border: none;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   width: 100%;
   margin-top: 6%;
 }
@@ -2480,6 +2892,36 @@ textarea[type="text"]:focus {
   color: #ebebeb !important;
 }
 
+.theme-matadorTheme .roster-sorting__button:hover {
+  background-color: gainsboro !important;
+  color: #464646 !important;
+}
+
+.theme-raspberryTheme .roster-sorting__button:hover {
+  background-color: #e1e1e1 !important;
+  color: #464646 !important;
+}
+
+.theme-oliveTheme .roster-sorting__button:hover {
+  background-color: #e6e6e6 !important;
+  color: #464646 !important;
+}
+
+.theme-neptuneTheme .roster-sorting__button:hover {
+  background-color: #e0e0e0 !important;
+  color: #464646 !important;
+}
+
+.theme-oceanTheme .roster-sorting__button:hover {
+  background-color: #ebebeb !important;
+  color: #575757 !important;
+}
+
+.theme-noireTheme .roster-sorting__button:hover {
+  background-color: #1c1c1c !important;
+  color: #ebebeb !important;
+}
+
 .roster-sorting__button--selected {
   width: 100%;
   margin: 0.5rem 0;
@@ -2515,6 +2957,36 @@ textarea[type="text"]:focus {
   color: whitesmoke !important;
 }
 
+.theme-matadorTheme .roster-sorting__button--selected:hover {
+  background-color: #af1b28 !important;
+  color: white !important;
+}
+
+.theme-raspberryTheme .roster-sorting__button--selected:hover {
+  background-color: #7f0951 !important;
+  color: white !important;
+}
+
+.theme-oliveTheme .roster-sorting__button--selected:hover {
+  background-color: #16543a !important;
+  color: white !important;
+}
+
+.theme-neptuneTheme .roster-sorting__button--selected:hover {
+  background-color: #22575f !important;
+  color: white !important;
+}
+
+.theme-oceanTheme .roster-sorting__button--selected:hover {
+  background-color: #1c5c88 !important;
+  color: white !important;
+}
+
+.theme-noireTheme .roster-sorting__button--selected:hover {
+  background-color: #36587a !important;
+  color: whitesmoke !important;
+}
+
 .roster-sorting-container {
   width: 100%;
 }
@@ -2524,6 +2996,7 @@ textarea[type="text"]:focus {
   width: 40px;
   padding: 0.2rem;
   margin-left: 4px;
+  cursor: pointer;
 }
 
 .theme-matadorTheme .roster-sorting__sort {
@@ -2553,6 +3026,36 @@ textarea[type="text"]:focus {
 
 .theme-noireTheme .roster-sorting__sort {
   background-color: #303030 !important;
+  color: #ebebeb !important;
+}
+
+.theme-matadorTheme .roster-sorting__sort:hover {
+  background-color: gainsboro !important;
+  color: #464646 !important;
+}
+
+.theme-raspberryTheme .roster-sorting__sort:hover {
+  background-color: #e1e1e1 !important;
+  color: #464646 !important;
+}
+
+.theme-oliveTheme .roster-sorting__sort:hover {
+  background-color: #e6e6e6 !important;
+  color: #464646 !important;
+}
+
+.theme-neptuneTheme .roster-sorting__sort:hover {
+  background-color: #e0e0e0 !important;
+  color: #464646 !important;
+}
+
+.theme-oceanTheme .roster-sorting__sort:hover {
+  background-color: #ebebeb !important;
+  color: #575757 !important;
+}
+
+.theme-noireTheme .roster-sorting__sort:hover {
+  background-color: #1c1c1c !important;
   color: #ebebeb !important;
 }
 
@@ -2620,9 +3123,44 @@ textarea[type="text"]:focus {
   color: #ebebeb;
 }
 
+.roster-sorting__name:hover {
+  cursor: pointer;
+}
+
+.theme-matadorTheme .roster-sorting__name:hover {
+  background-color: gainsboro;
+  color: #464646;
+}
+
+.theme-raspberryTheme .roster-sorting__name:hover {
+  background-color: #e1e1e1;
+  color: #464646;
+}
+
+.theme-oliveTheme .roster-sorting__name:hover {
+  background-color: #e6e6e6;
+  color: #464646;
+}
+
+.theme-neptuneTheme .roster-sorting__name:hover {
+  background-color: #e0e0e0;
+  color: #464646;
+}
+
+.theme-oceanTheme .roster-sorting__name:hover {
+  background-color: #ebebeb;
+  color: #575757;
+}
+
+.theme-noireTheme .roster-sorting__name:hover {
+  background-color: #1c1c1c;
+  color: #ebebeb;
+}
+
 .roster-sorting__name--selected {
   display: inline-block;
   padding: 0.4rem 1rem;
+  cursor: pointer;
 }
 
 .theme-matadorTheme .roster-sorting__name--selected {
@@ -2655,6 +3193,36 @@ textarea[type="text"]:focus {
   color: whitesmoke;
 }
 
+.theme-matadorTheme .roster-sorting__name--selected:hover {
+  background-color: #af1b28;
+  color: white;
+}
+
+.theme-raspberryTheme .roster-sorting__name--selected:hover {
+  background-color: #7f0951;
+  color: white;
+}
+
+.theme-oliveTheme .roster-sorting__name--selected:hover {
+  background-color: #16543a;
+  color: white;
+}
+
+.theme-neptuneTheme .roster-sorting__name--selected:hover {
+  background-color: #22575f;
+  color: white;
+}
+
+.theme-oceanTheme .roster-sorting__name--selected:hover {
+  background-color: #1c5c88;
+  color: white;
+}
+
+.theme-noireTheme .roster-sorting__name--selected:hover {
+  background-color: #36587a;
+  color: whitesmoke;
+}
+
 .gallery__layout {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2674,6 +3242,7 @@ textarea[type="text"]:focus {
 
 .gallery-card__content {
   height: 100%;
+  cursor: pointer;
 }
 
 .gallery__name {

@@ -37432,9 +37432,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'list-grid-selector',
+    name: 'list-grid-selector',
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash']))
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'flash']))
 });
 
 /***/ }),
@@ -39499,62 +39499,66 @@ var render = function() {
       [
         _c("div", { staticClass: "flash__positioner" }),
         _vm._v(" "),
-        _c("div", { staticClass: "flash__element" }, [
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.known,
-                  expression: "!known"
-                }
+        _c(
+          "div",
+          { staticClass: "flash__element", attrs: { "data-interactable": "" } },
+          [
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.known,
+                    expression: "!known"
+                  }
+                ],
+                staticClass: "card-face"
+              },
+              [
+                _c("profile-picture", {
+                  attrs: {
+                    name: _vm.display_name,
+                    image: _vm.image,
+                    type: "roster"
+                  }
+                })
               ],
-              staticClass: "card-face"
-            },
-            [
-              _c("profile-picture", {
-                attrs: {
-                  name: _vm.display_name,
-                  image: _vm.image,
-                  type: "roster"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.known,
-                  expression: "known"
-                }
-              ]
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "type--center text-overflow back-of-card back-of-card-mobile"
-                },
-                [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.display_name) +
-                      "\n                "
-                  )
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.known,
+                    expression: "known"
+                  }
                 ]
-              )
-            ]
-          )
-        ])
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "type--center text-overflow back-of-card back-of-card-mobile"
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.display_name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ]
+            )
+          ]
+        )
       ]
     )
   ])
@@ -40990,7 +40994,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "modal--exit" }, [
                 _c("i", {
-                  staticClass: "fa fa-times fa-2x",
+                  staticClass: "fa fa-times fa-2x modal__exit-button",
                   on: {
                     click: function($event) {
                       _vm.showModal()
@@ -43185,7 +43189,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "tab__link",
+                  staticClass: "tab__link tab__link--hover",
                   attrs: { "data-interactable": "" },
                   on: { click: _vm.selectVersion }
                 },
@@ -43201,7 +43205,7 @@ var render = function() {
               _c(
                 "a",
                 {
-                  staticClass: "tab__link",
+                  staticClass: "tab__link tab__link--hover",
                   attrs: { "data-interactable": "" },
                   on: { click: _vm.selectAbout }
                 },
@@ -43429,6 +43433,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -43483,101 +43499,125 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
       _c("div", { staticClass: "theme" }, [
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: {
-              id: "Matador",
-              name: "matadorTheme",
-              "data-interactable": ""
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Matador",
+                name: "matadorTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-matadorTheme")
+                }
+              }
             },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-matadorTheme")
-              }
-            }
-          },
-          [_vm._v(" Matador")]
-        ),
+            [_vm._v(" Matador")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: {
-              id: "Raspberry",
-              name: "raspberryTheme",
-              "data-interactable": ""
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Raspberry",
+                name: "raspberryTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-raspberryTheme")
+                }
+              }
             },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-raspberryTheme")
-              }
-            }
-          },
-          [_vm._v(" Raspberry")]
-        ),
+            [_vm._v(" Raspberry")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: { id: "Olive", name: "oliveTheme", "data-interactable": "" },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-oliveTheme")
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Olive",
+                name: "oliveTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-oliveTheme")
+                }
               }
-            }
-          },
-          [_vm._v(" Olive")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: {
-              id: "Neptune",
-              name: "neptuneTheme",
-              "data-interactable": ""
             },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-neptuneTheme")
-              }
-            }
-          },
-          [_vm._v(" Neptune")]
-        ),
+            [_vm._v(" Olive")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: { id: "Ocean", name: "oceanTheme", "data-interactable": "" },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-oceanTheme")
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Neptune",
+                name: "neptuneTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-neptuneTheme")
+                }
               }
-            }
-          },
-          [_vm._v(" Ocean")]
-        ),
+            },
+            [_vm._v(" Neptune")]
+          )
+        ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "theme__item",
-            attrs: { id: "Noire", name: "noireTheme", "data-interactable": "" },
-            on: {
-              click: function($event) {
-                _vm.updateTheme("theme-noireTheme")
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Ocean",
+                name: "oceanTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-oceanTheme")
+                }
               }
-            }
-          },
-          [_vm._v(" Noire")]
-        )
+            },
+            [_vm._v(" Ocean")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "theme__item",
+              attrs: {
+                id: "Noire",
+                name: "noireTheme",
+                "data-interactable": ""
+              },
+              on: {
+                click: function($event) {
+                  _vm.updateTheme("theme-noireTheme")
+                }
+              }
+            },
+            [_vm._v(" Noire")]
+          )
+        ])
       ])
     ])
   ])

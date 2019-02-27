@@ -59,6 +59,10 @@
 		float: right;
 	}
 
+	&__exit-button {
+		cursor: pointer;
+	}
+
 	&-btn {
 		display: inline-block;
 		margin: 0 3%;
@@ -110,6 +114,7 @@
 		}
 
 		&__container {
+			cursor: pointer;
 			display: inline-block;
 			padding: 5% 0;
 			bottom: 0%;
@@ -118,6 +123,12 @@
 
 			@include themify($themes){
 				background-color: themed('accentColor');
+			}
+
+			&:hover {
+				@include themify($themes){
+					background-color: darken(themed('accentColor'), 8%);
+				}
 			}
 		}
 	}
@@ -153,10 +164,22 @@
 	@include themify($themes){
 		background-color: themed("selectionInactive") !important;
 	}
+
+	&:hover {
+		@include themify($themes){
+			background-color: darken(themed("selectionInactive"), 12%) !important;
+		}		
+	}
 }
 
 .VueCarousel-dot--active > * {
 	@include themify($themes){
 		background-color: themed("selectionActive") !important;
+	}
+
+	&:hover {
+		@include themify($themes){
+			background-color: darken(themed("selectionActive"), 12%) !important;
+		}	
 	}
 }

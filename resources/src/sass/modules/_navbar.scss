@@ -35,9 +35,17 @@
 		background-color: themed("feedbackBtn");
 		color: themed("buttonText");
 	}
+
 	@media only screen and (max-width: 699px){
 		padding-top: 1%;
 		padding-bottom: 1%;
+	}
+
+	&:hover {
+		@include themify($themes) {
+			background-color: darken(themed("feedbackBtn"), 8%);
+			color: themed("buttonText");
+		}
 	}
 }
 
@@ -45,9 +53,14 @@
 	&-button {
 		color: white;
 		position: absolute;
+		cursor: pointer;
 		left: 15px;
 		transition: 25ms;
 		margin-top: -3.55px;
+
+		&:hover {
+			color: rgb(215, 215, 215);
+		}
 	}
 	
 	&-button--disabled {
@@ -77,6 +90,7 @@
 	&__button {
 		color: rgba(255, 255, 255, 0.8);
 		padding: .75rem 0 .5rem;
+		cursor: pointer;
 	
 		&--active {
 			color: rgba(255, 255, 255, 1);
@@ -88,6 +102,12 @@
 				color: themed("disabledBtnColor");
 			}
 			padding: .75rem 0 .5rem;
+		}
+
+		&:hover {
+			@include themify($themes) {
+				box-shadow: 0 0 0 2px inset themed("selectionActive");
+			}
 		}
 	}
 }
