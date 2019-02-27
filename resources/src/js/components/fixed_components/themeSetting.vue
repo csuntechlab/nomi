@@ -5,12 +5,12 @@
     </div>
 <div class="panel">
     <div class="theme">
-        <button id="Matador" @click="updateTheme('theme-matadorTheme')" class="theme__item" name="matadorTheme"> Matador</button>
-        <button id="Raspberry" @click="updateTheme('theme-raspberryTheme')" class="theme__item" name="raspberryTheme"> Raspberry</button>
-        <button id="Olive" @click="updateTheme('theme-oliveTheme')" class="theme__item" name="oliveTheme"> Olive</button>
-        <button id="Neptune" @click="updateTheme('theme-neptuneTheme')" class="theme__item" name="neptuneTheme"> Neptune</button>
-        <button id="Ocean" @click="updateTheme('theme-oceanTheme')" class="theme__item" name="oceanTheme"> Ocean</button>
-        <button id="Noire" @click="updateTheme('theme-noireTheme')" class="theme__item" name="noireTheme"> Noire</button>
+        <button id="Matador" @click="updateTheme('theme-matadorTheme')" class="theme__item" name="matadorTheme" data-interactable> Matador</button>
+        <button id="Raspberry" @click="updateTheme('theme-raspberryTheme')" class="theme__item" name="raspberryTheme" data-interactable> Raspberry</button>
+        <button id="Olive" @click="updateTheme('theme-oliveTheme')" class="theme__item" name="oliveTheme" data-interactable> Olive</button>
+        <button id="Neptune" @click="updateTheme('theme-neptuneTheme')" class="theme__item" name="neptuneTheme" data-interactable> Neptune</button>
+        <button id="Ocean" @click="updateTheme('theme-oceanTheme')" class="theme__item" name="oceanTheme" data-interactable> Ocean</button>
+        <button id="Noire" @click="updateTheme('theme-noireTheme')" class="theme__item" name="noireTheme" data-interactable> Noire</button>
     </div>
 </div>
 </div>

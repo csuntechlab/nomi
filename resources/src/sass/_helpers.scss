@@ -1,5 +1,7 @@
 :focus{
-	outline: none !important;
+	@include themify($themes) {
+		box-shadow: 0 0 6px inset themed("selectionActive");
+	}
 }
 
 textarea[type="text"] {

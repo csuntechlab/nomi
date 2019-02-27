@@ -2,16 +2,16 @@
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
         <div class="row type--center roster-sorting">
-            <span v-if="!sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortFirstName')">First Name</span>
-            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortFirstName')">First Name</span>
-            <span v-if="sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortLastName')">Last Name</span>
-            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortLastName')">Last Name</span>
-            <span v-if="sortAscending == true" class="fas roster-sorting__sort" @click="sortDes">
+            <span v-if="!sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortFirstName')" data-interactable>First Name</span>
+            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortFirstName')" data-interactable>First Name</span>
+            <span v-if="sortLastName" class="roster-sorting__name--selected" @click="$store.dispatch('sortLastName')" data-interactable>Last Name</span>
+            <span v-else class="roster-sorting__name" @click="$store.dispatch('sortLastName')" data-interactable>Last Name</span>
+            <span v-if="sortAscending == true" class="fas roster-sorting__sort" @click="sortDes" data-interactable>
                 <svg enable-background="new 0 0 448 512" version="1.1" viewBox="0 0 448 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                     <path :d="this.sort_a_to_z" fill="currentColor"/>
                 </svg>
             </span>
-            <span v-else class="fas roster-sorting__sort" @click="sortAsc">
+            <span v-else class="fas roster-sorting__sort" @click="sortAsc" data-interactable>
                 <svg enable-background="new 0 0 448 512" version="1.1" viewBox="0 0 448 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                     <path :d="this.sort_z_to_a"/>
                 </svg>
