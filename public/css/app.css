@@ -905,6 +905,7 @@ textarea[type="text"]:focus {
 
 .panel__edit-button-sim {
   position: absolute;
+  pointer-events: none;
   top: 0;
   height: 70%;
   width: 100%;

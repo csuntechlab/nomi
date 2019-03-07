@@ -106,6 +106,7 @@ textarea[type="text"]:focus{
 
 	&-sim {
 		position: absolute;
+		pointer-events: none;
 		top: 0;
 		height: 70%;
 		width: 100%;
