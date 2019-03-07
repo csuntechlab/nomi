@@ -40496,7 +40496,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             var _this2 = this;
 
             if (!this.myCroppa.hasImage()) {
-                alert('no image');
+                this.$parent.$emit('close');
             } else {
                 var url = this.myCroppa.generateDataUrl('jpg', .8);
                 var emuri = this.student.email_uri;
