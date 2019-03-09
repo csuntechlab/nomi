@@ -926,6 +926,7 @@ textarea[type="text"]:focus {
 
 .panel__edit-button--profile {
   position: absolute;
+  pointer-events: auto;
   bottom: 0;
   right: 0;
   margin: 2.5%;
