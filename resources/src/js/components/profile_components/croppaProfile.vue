@@ -72,7 +72,7 @@
             },
             confirmImage: function () {
                 if (!this.myCroppa.hasImage()) {
-                    alert('no image');
+                    this.$parent.$emit('close');
                 } else {
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
                     let emuri = this.student.email_uri;
@@ -128,8 +128,6 @@
                 if(this.myCroppa.$refs.fileInput) {
                     this.fileInput = this.myCroppa.$refs.fileInput;
                     this.myCroppa.chooseFile();
-                    
-                   
                 } else {
                     this.myCroppa.$refs.fileInput = this.fileInput;
                     this.myCroppa.chooseFile();
