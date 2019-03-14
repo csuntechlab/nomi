@@ -26,6 +26,7 @@ export default {
   semester: null,
   termYear: null,
   term: null,
+  initialTerm: [],
   selectedTerm: 'current',
   loadingClasses: true,
   currentCourse: null,

@@ -240,22 +240,18 @@ export default {
     state.loadingClasses = true;
     state.termYear = state.term.slice(0, 3);
     state.semester = state.term.slice(3);
-    if (state.selectedTerm == 'current') {
-      state.semester -= 2;
-      if (state.semester < 3) {
-        state.semester = 9;
-        state.termYear -= 1;
-      }
-    } else if (state.selectedTerm == 'next') {
-      state.semester -= 4;
-      if (state.semester == 1) {
-        state.semester = 9;
-        state.termYear -= 1;
-      } else if (state.semester == -1) {
-        state.semester = 7;
-        state.termYear -= 1;
-      }
+
+    if (state.semester === 1) {
+      state.semester = 9;
+      state.termYear -= 1;
     }
+
+    state.semester -= 2;
+
+    if (state.selectedTerm === 'next') {
+      state.semester -= 2;
+    }
+
     state.term = `${state.termYear}${state.semester}`;
     state.termYear = `${state.termYear}`;
     state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
@@ -274,22 +270,18 @@ export default {
     state.loadingClasses = true;
     state.termYear = parseInt(state.term.slice(0, 3));
     state.semester = parseInt(state.term.slice(3));
-    if (state.selectedTerm == 'current') {
-      state.semester += 2;
-      if (state.semester > 9) {
-        state.semester = 3;
-        state.termYear += 1;
-      }
-    } else if (state.selectedTerm == 'previous') {
-      state.semester += 4;
-      if (state.semester == 11) {
-        state.semester = 3;
-        state.termYear += 1;
-      } else if (state.semester == 13) {
-        state.semester = 5;
-        state.termYear += 1;
-      }
+
+    if (state.semester === 9) {
+      state.semester = 1;
+      state.termYear += 1;
     }
+
+    state.semester += 2;
+
+    if (state.selectedTerm === 'previous') {
+      state.semester += 2;
+    }
+
     state.term = `${state.termYear}${state.semester}`;
     state.termYear = `${state.termYear}`;
     state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);

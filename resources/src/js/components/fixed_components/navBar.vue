@@ -33,6 +33,9 @@ export default {
       if (this.term != null) {
         const termCode = this.term;
         switch (termCode.charAt(3)) {
+          case '1':
+            this.displayedTerm = 'Winter';
+            break;
           case '3':
             this.displayedTerm = 'Spring';
             break;
@@ -44,6 +47,7 @@ export default {
             break;
           case '9':
             this.displayedTerm = 'Winter';
+            break;
         }
         if (termCode.charAt(0) == '2') {
           this.displayedTerm

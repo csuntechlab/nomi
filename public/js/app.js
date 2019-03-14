@@ -29797,6 +29797,7 @@ module.exports = Component.exports
   semester: null,
   termYear: null,
   term: null,
+  initialTerm: [],
   selectedTerm: 'current',
   loadingClasses: true,
   currentCourse: null,
@@ -34813,6 +34814,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       if (this.term != null) {
         var termCode = this.term;
         switch (termCode.charAt(3)) {
+          case '1':
+            this.displayedTerm = 'Winter';
+            break;
           case '3':
             this.displayedTerm = 'Spring';
             break;
@@ -34824,6 +34828,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             break;
           case '9':
             this.displayedTerm = 'Winter';
+            break;
         }
         if (termCode.charAt(0) == '2') {
           this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
@@ -35738,6 +35743,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       if (this.term != null) {
         var termCode = this.term;
         switch (termCode.charAt(3)) {
+          case '1':
+            this.displayedTerm = 'Winter';
+            break;
           case '3':
             this.displayedTerm = 'Spring';
             break;
@@ -35749,6 +35757,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             break;
           case '9':
             this.displayedTerm = 'Winter';
+            break;
         }
         if (termCode.charAt(0) == '2') {
           this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
@@ -36239,27 +36248,32 @@ var displayCurrentTerm = {
         };
     },
 
+
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['term']), {
         displayCurrentTerm: function displayCurrentTerm() {
             if (this.term != null) {
                 var termCode = this.term;
                 switch (termCode.charAt(3)) {
+                    case '1':
+                        this.displayedTerm = 'Winter' + ' ';
+                        break;
                     case '3':
-                        this.displayedTerm = 'Spring';
+                        this.displaye1dTerm = 'Spring' + ' ';
                         break;
                     case '5':
-                        this.displayedTerm = 'Summer';
+                        this.displayedTerm = 'Summer' + ' ';
                         break;
                     case '7':
-                        this.displayedTerm = 'Fall';
+                        this.displayedTerm = 'Fall' + ' ';
                         break;
                     case '9':
-                        this.displayedTerm = 'Winter';
+                        this.displayedTerm = 'Winter' + ' ';
+                        break;
                 }
                 if (termCode.charAt(0) == '2') {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '0' + termCode.substring(1, 3);
+                    this.displayedTerm += termCode.charAt(0) + '0' + termCode.substring(1, 3);
                 } else {
-                    this.displayedTerm += ' ' + termCode.charAt(0) + '9' + termCode.substring(1, 3);
+                    this.displayedTerm += termCode.charAt(0) + '9' + termCode.substring(1, 3);
                 }
                 return this.displayedTerm;
             }
@@ -36291,7 +36305,7 @@ var render = function() {
                     { staticClass: "panel__header course__header--empty mb-0" },
                     [
                       _vm._v(
-                        "\n                    You did not teach any classes for " +
+                        "\n                    You did not teach any classes for " +
                           _vm._s(_vm.displayedTerm) +
                           ".\n                "
                       )
@@ -36335,7 +36349,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                You are not teaching any classes for " +
+                          "\n                You are not teaching any classes for " +
                             _vm._s(_vm.displayedTerm) +
                             ".\n            "
                         )
@@ -36380,7 +36394,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                You are not scheduled to teach any classes for " +
+                            "\n                You are not scheduled to teach any classes for " +
                               _vm._s(_vm.displayedTerm) +
                               ".\n            "
                           )
@@ -44686,22 +44700,18 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     state.loadingClasses = true;
     state.termYear = state.term.slice(0, 3);
     state.semester = state.term.slice(3);
-    if (state.selectedTerm == 'current') {
-      state.semester -= 2;
-      if (state.semester < 3) {
-        state.semester = 9;
-        state.termYear -= 1;
-      }
-    } else if (state.selectedTerm == 'next') {
-      state.semester -= 4;
-      if (state.semester == 1) {
-        state.semester = 9;
-        state.termYear -= 1;
-      } else if (state.semester == -1) {
-        state.semester = 7;
-        state.termYear -= 1;
-      }
+
+    if (state.semester === 1) {
+      state.semester = 9;
+      state.termYear -= 1;
     }
+
+    state.semester -= 2;
+
+    if (state.selectedTerm === 'next') {
+      state.semester -= 2;
+    }
+
     state.term = '' + state.termYear + state.semester;
     state.termYear = '' + state.termYear;
     state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
@@ -44718,22 +44728,18 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     state.loadingClasses = true;
     state.termYear = parseInt(state.term.slice(0, 3));
     state.semester = parseInt(state.term.slice(3));
-    if (state.selectedTerm == 'current') {
-      state.semester += 2;
-      if (state.semester > 9) {
-        state.semester = 3;
-        state.termYear += 1;
-      }
-    } else if (state.selectedTerm == 'previous') {
-      state.semester += 4;
-      if (state.semester == 11) {
-        state.semester = 3;
-        state.termYear += 1;
-      } else if (state.semester == 13) {
-        state.semester = 5;
-        state.termYear += 1;
-      }
+
+    if (state.semester === 9) {
+      state.semester = 1;
+      state.termYear += 1;
     }
+
+    state.semester += 2;
+
+    if (state.selectedTerm === 'previous') {
+      state.semester += 2;
+    }
+
     state.term = '' + state.termYear + state.semester;
     state.termYear = '' + state.termYear;
     state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
