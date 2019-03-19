@@ -2,8 +2,8 @@
     <nav class="navbar">
         <back-button></back-button>
         <div v-if="!checkIfLogin">
-            <div v-if="this.displayCurrentTerm != null" class="navbar__header">
-            {{this.displayCurrentTerm}}
+            <div v-if="displayCurrentTerm" class="navbar__header">
+            {{displayCurrentTerm}}
             </div>
             <a data-interactable :href="this.url + '/support'" class="feedback-button pull-right">Feedback</a>
         </div>
@@ -30,35 +30,8 @@ export default {
     ...mapGetters(['term']),
 
     displayCurrentTerm() {
-      if (this.term != null) {
-        const termCode = this.term;
-        switch (termCode.charAt(3)) {
-          case '3':
-            this.displayedTerm = 'Spring';
-            break;
-          case '5':
-            this.displayedTerm = 'Summer';
-            break;
-          case '7':
-            this.displayedTerm = 'Fall';
-            break;
-          case '9':
-            this.displayedTerm = 'Winter';
-        }
-        if (termCode.charAt(0) == '2') {
-          this.displayedTerm
-						+= ` ${
-						 termCode.charAt(0)
-						 }0${
-						 termCode.substring(1, 3)}`;
-        } else {
-          this.displayedTerm
-						+= ` ${
-						 termCode.charAt(0)
-						 }9${
-						 termCode.substring(1, 3)}`;
-        }
-        return this.displayedTerm;
+      if (!(this.term.display_term == null || this.term.display_term == undefined)) {
+        return this.term.display_term;
       }
     },
     checkIfLogin() {

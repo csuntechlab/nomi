@@ -20,6 +20,7 @@ Route::post('/login', 'LoginController@validateUser')->name('post.login');
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
 Route::get('/data/{term?}', 'SPAController@getData')->middleware('auth');
+Route::get('/term/{term?}', 'SPAController@getCurrentTerm')->middleware('auth');
 
 /** Route for logout. */
 Route::get('/logout', function () {
@@ -31,7 +32,8 @@ Route::get('/logout', function () {
 
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
-Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
+Route::get('/roster/{term}/{course}', 'SPAController@getRoster')->middleware('auth');
+//Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
 Route::get('/media/{email}', 'WebResourceController@media')->middleware('auth');
 Route::get('/student/{email}', 'WebResourceController@student')->middleware('auth');
 

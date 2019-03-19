@@ -17,6 +17,7 @@ import coursesContainer from '../components/course_components/coursesContainer.v
 
 export default {
     name: 'home',
+    props: ['profile', 'term'],
 
     components: {
         termSelector,
@@ -28,10 +29,9 @@ export default {
 
     created() {
         this.$store.dispatch('clearErrors');
-    },
-
-    beforeCreate() {
-        this.$store.dispatch('getOnlyData');
+        this.$store.dispatch('getOnlyFacultyProfile', { response: JSON.parse(this.profile) });
+        this.$store.dispatch('getOnlyTerm', { response: JSON.parse(this.term) });
+        this.$store.dispatch('getOnlyCourses');
     },
 
     updated() {

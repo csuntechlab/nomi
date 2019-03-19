@@ -13,6 +13,16 @@ class Term extends Model
     public $incrementing = false;
     public $primaryKey = 'term_id';
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'updated_at',
+        'created_at',
+    ];
+
     public function scopeCurrentTerm($query, $today)
     {
         return $query->where('begin_date', '<=', $today)

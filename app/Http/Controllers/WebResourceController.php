@@ -29,7 +29,8 @@ class WebResourceController extends Controller
      */
     public function courses($term)
     {
-        return $this->webResourceUtility->getCourses($term);
+        $courses = $this->webResourceUtility->getCourses($term);
+        return ['courses' => $courses];
     }
 
     /**

@@ -11,6 +11,21 @@ export default {
     document.getElementById('mainBody').className = state.themeName.theme;
   },
 
+  GET_TERM(state, payload) {
+    state.term = payload;
+  },
+
+  GET_COURSES(state, payload) {
+    state.courses = payload.data.courses;
+    state.loadingClasses = false;
+  },
+
+  GET_ROSTER(state, payload) {
+    state.students = payload.data.students;
+    state.flashroster = payload.data.students;
+    state.loadingClasses = false;
+  },
+
   GET_DATA(state, payload) {
     function capitalize(name) {
       return name.charAt(0).toUpperCase() + name.substr(1);
@@ -27,19 +42,17 @@ export default {
     }
 
     state.term = payload.data.term;
-    state.courses = payload.data.courses;
     state.loadingClasses = false;
     state.flashroster = payload.data.students;
-    state.facultyMember.email = payload.data.email;
-    state.facultyMember.emailURI = state.facultyMember.email.split('@')[0];
-    state.facultyMember.profile = payload.data.image;
   },
 
   GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.image = payload.data.image;
-    state.facultyMember.id = payload.data.id;
-    state.facultyMember.firstName = payload.data.name_first;
-    state.facultyMember.lastName = payload.data.name_last;
+    state.facultyMember.id = payload.user_id;
+    state.facultyMember.email = payload.email;
+    state.facultyMember.image = payload.image;
+    state.facultyMember.emailURI = payload.email_uri;
+    state.facultyMember.firstName = payload.first_name;
+    state.facultyMember.lastName = payload.last_name;
   },
 
   UPDATE_STUDENT_PRIORITY(state, payload) {
@@ -272,8 +285,8 @@ export default {
 
   SET_NEXT_TERM(state) {
     state.loadingClasses = true;
-    state.termYear = parseInt(state.term.slice(0, 3));
-    state.semester = parseInt(state.term.slice(3));
+    state.termYear = parseInt(state.term.term.slice(0, 3));
+    state.semester = parseInt(state.term.term.slice(3));
     if (state.selectedTerm == 'current') {
       state.semester += 2;
       if (state.semester > 9) {

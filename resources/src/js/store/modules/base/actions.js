@@ -1,18 +1,27 @@
 export default {
   // General
+  getOnlyTerm(context, response) {
+    context.commit('GET_TERM', response.response);
+  },
+  getOnlyCourses(context) {
+    window.axios.get(`courses/${context.state.term.term}`)
+        .then((response) => context.commit('GET_COURSES', response))
+        .catch((error) => context.commit('API_FAILURE', error));
+  },
+  getOnlyRoster(context, response) {
+    window.axios.get(`roster/${context.state.term.term}/${response.course}`)
+        .then((response) => context.commit('GET_ROSTER', response))
+        .catch((error) => context.commit('API_FAILURE', error));
+  },
+  getOnlyFacultyProfile(context, response) {
+    context.commit('GET_FACULTY_PROFILE', response.response);
+  },
+
   getOnlyData(context) {
     if (context.state.termYear != null) {
       window.axios.get(`data/${context.state.term}`)
         .then((response) => {
           context.commit('GET_DATA', response);
-
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-            .then((response) => {
-              context.commit('GET_FACULTY_PROFILE', response);
-            })
-            .catch((error) => {
-              context.commit('API_FAILURE', error);
-            });
         })
         .catch((error) => {
           context.commit('API_FAILURE', error);
@@ -21,14 +30,6 @@ export default {
       window.axios.get('data')
         .then((response) => {
           context.commit('GET_DATA', response);
-
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
-            .then((response) => {
-              context.commit('GET_FACULTY_PROFILE', response);
-            })
-            .catch((error) => {
-              context.commit('API_FAILURE', error);
-            });
         })
         .catch((error) => {
           context.commit('API_FAILURE', error);

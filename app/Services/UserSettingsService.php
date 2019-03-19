@@ -43,6 +43,6 @@ class UserSettingsService implements UserSettingsContract
     {
         $term = $this->termModelRepositoryUtility->find();
 
-        return $term['term_id'];
+        return $term;
     }
 }

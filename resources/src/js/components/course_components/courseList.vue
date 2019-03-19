@@ -13,26 +13,29 @@
     import { mapGetters } from 'vuex';
     import courseListItem from './courseListItem.vue';
     import emptyCourseItem from './emptyCourseItem.vue';
-
     export default {
       name: 'course-list',
       data() {
-    return {
-          messages: true,
-          errors: [],
-    };
-  },
-
+        return {
+              messages: true,
+              errors: [],
+        };
+      },
+      created() {
+          if (this.courses.length === 1) {
+              this.$store.dispatch('getOnlyRoster', {course: this.courses[0].class_number});
+          } else {
+              console.log('courses is empty broesha!');
+          }
+      },
       computed: {
         ...mapGetters([
           'courses',
         ]),
       },
-
       components: {
         courseListItem,
         emptyCourseItem,
       },
-
     };
 </script>

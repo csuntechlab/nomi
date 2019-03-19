@@ -57,16 +57,15 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     public function getRoster($term, $course)
     {
         $client = new Client();
-        $class = $this->getCourses($term)[$course];
 
         try {
             return env('APP_ENV') == 'production' ?
                 $client->get(
-                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course,
                     ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
                 )
                 : $client->get(
-                    env('ROSTER_URL') . 'terms/' . $class->term . '/classes/' . $class->class_number,
+                    env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course,
                     ['verify' => false]
                 );
         } catch (RequestException $e) {
