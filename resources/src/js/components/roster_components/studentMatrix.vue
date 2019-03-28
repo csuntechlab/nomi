@@ -10,7 +10,7 @@
         </div>
         <div v-else class="row container panel__listing gallery__layout">
             <gallery-card
-                v-for="student in this.courses[this.courseid].roster"
+                v-for="student in this.students[this.courseid]"
                 :key="student.student_id"
                 :student="student"
             ></gallery-card>
@@ -49,6 +49,7 @@ export default {
   computed: {
     ...mapGetters([
       'courses',
+      'students',
       'flashroster',
       'flash',
       'modalVisible'

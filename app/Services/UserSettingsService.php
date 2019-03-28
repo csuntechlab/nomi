@@ -42,7 +42,18 @@ class UserSettingsService implements UserSettingsContract
     public function getCurrentTerm()
     {
         $term = $this->termModelRepositoryUtility->find();
-
         return $term;
+    }
+
+    public function getPreviousTerm()
+    {
+        $previous = $this->termModelRepositoryUtility->getPreviousTerm();
+        return $previous;
+    }
+
+    public function getNowAndNextTerm()
+    {
+        $nowAndNext = $this->termModelRepositoryUtility->getNowAndNextTerm();
+        return $nowAndNext;
     }
 }

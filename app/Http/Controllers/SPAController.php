@@ -45,42 +45,10 @@ class SPAController extends Controller
     public function getRoster($term, $course)
     {
         $students = $this->rosterRetrievalUtility->getStudentsFromRoster($term, $course);
-        $allStudents = $this->allStudents($students);
-        return [
+        return response()->json([
+            'allStudents' => $students,
             'students' => $students,
-            'allStudents' => $allStudents
-        ];
-    }
-
-    /**
-     * Description: Gets the course/roster data for the SPA.
-     *
-     * @param null|mixed $term
-     */
-    public function getData($term = null)
-    {
-        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
-        $term = $this->getCurrentTerm($term);
-
-        $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
-
-        $students = [];
-        $len = \count($courses);
-
-        $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
-
-        $user = auth()->user();
-        $email = $user->email;
-
-        $allStudents = $this->allStudents($students);
-
-        return [
-            'courses' => $courses,
-            'students' => $students,
-            'allStudents' => $allStudents,
-            'email' => $email,
-            'term' => "$term",
-        ];
+        ]);
     }
 
     /**
@@ -91,26 +59,15 @@ class SPAController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $emailUri = \substr($user->email, 0, \strpos($user->email, '@'));
-        $user['image'] = env('MEDIA_URL') . 'faculty/media/' . $emailUri . '/avatar?source=true';
-        $user['email_uri'] = $emailUri;
-        $term = $this->userSettingsUtility->getCurrentTerm();
-        $term['display_term'] = \str_replace('-', ' ', $term['term']);
+        $previousTerm = $this->userSettingsUtility->getPreviousTerm();
+        $nowAndNext = $this->userSettingsUtility->getNowAndNextTerm();
+        $terms = $previousTerm->merge($nowAndNext);
+        $previous['previous'] = empty($terms[0]) ? null :  $terms[0];
+        $current['current'] = empty($terms[1]) ? null : $terms[1];
+        $next['next'] = empty($terms[2]) ? null : $terms[2];
+        $terms = \json_encode(\array_merge($previous, $current, $next));
         session(['profile' => $user]);
-        session(['term' => $term]);
+        session(['terms' => $terms]);
         return view('spa');
-    }
-
-    private function allStudents($students): array
-    {
-        $allStudents = [];
-
-        foreach ($students as $class) {
-            $allStudents = \array_merge($allStudents, $class);
-        }
-
-        $allStudents = \array_unique($allStudents, SORT_REGULAR);
-
-        return $allStudents;
     }
 }

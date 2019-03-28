@@ -46,7 +46,6 @@ class StudentProfileService implements StudentProfileContract
                 'last_name' => $profile['last_name'],
                 'email' => $email,
                 'student_id' => $profile['individuals_id'],
-                'members_id' => $profile['individuals_id'],
                 'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
                 'image_priority' => $imagePriority,
                 'bio' => $profile['biography'],

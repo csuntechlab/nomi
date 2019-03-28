@@ -1,5 +1,3 @@
-import initialState from './state.js';
-
 export default {
   API_FAILURE(state, payload) {
     state.errors = payload.response.data.message;
@@ -11,8 +9,8 @@ export default {
     document.getElementById('mainBody').className = state.themeName.theme;
   },
 
-  GET_TERM(state, payload) {
-    state.term = payload;
+  GET_TERMS(state, terms) {
+    state.term = terms;
   },
 
   GET_COURSES(state, payload) {
@@ -21,38 +19,18 @@ export default {
   },
 
   GET_ROSTER(state, payload) {
-    state.students = payload.data.students;
+    state.students = payload.data.allStudents;
     state.flashroster = payload.data.students;
     state.loadingClasses = false;
   },
 
-  GET_DATA(state, payload) {
-    function capitalize(name) {
-      return name.charAt(0).toUpperCase() + name.substr(1);
-    }
-
-    state.term = payload.data.term;
-
-    if (state.termYear != null) {
-      let chosenTerm = state.termYear + state.semester;
-      chosenTerm = chosenTerm.slice(0, 1) + chosenTerm.slice(2);
-      state.term = chosenTerm;
-    } else {
-      state.students = payload.data.allStudents;
-    }
-
-    state.term = payload.data.term;
-    state.loadingClasses = false;
-    state.flashroster = payload.data.students;
-  },
-
-  GET_FACULTY_PROFILE(state, payload) {
-    state.facultyMember.id = payload.user_id;
-    state.facultyMember.email = payload.email;
-    state.facultyMember.image = payload.image;
-    state.facultyMember.emailURI = payload.email_uri;
-    state.facultyMember.firstName = payload.first_name;
-    state.facultyMember.lastName = payload.last_name;
+  GET_FACULTY_PROFILE(state, profile) {
+    state.facultyMember.id = profile.user_id;
+    state.facultyMember.email = profile.email;
+    state.facultyMember.image = profile.image;
+    state.facultyMember.emailURI = profile.email_uri;
+    state.facultyMember.firstName = profile.first_name;
+    state.facultyMember.lastName = profile.last_name;
   },
 
   UPDATE_STUDENT_PRIORITY(state, payload) {
@@ -99,7 +77,7 @@ export default {
     state.displaySideMenu = !state.displaySideMenu;
   },
 
-  SHUFFLE_FLASH(state) {
+  SHUFFLE_FLASH(state, course_id) {
     function shuffle(students) {
       let currentIndex = students.length; let temporaryValue; let
         randomIndex;
@@ -116,25 +94,24 @@ export default {
         students[randomIndex] = temporaryValue;
       }
     }
-
-    const len = state.flashroster.length;
+    const len = state.flashroster[course_id].length;
 
     for (let i = 0; i < len; ++i) {
       const unKnownStudents = [];
       const knownStudents = [];
 
-      state.flashroster[i].forEach((student) => {
-        if (student.recognized === true) {
-          knownStudents.push(student);
+      Object.entries(state.flashroster[course_id]).forEach(([key, value]) => {
+        if (value.recognized === true) {
+          knownStudents.push(value);
         } else {
-          unKnownStudents.push(student);
+          unKnownStudents.push(value);
         }
       });
 
       shuffle(unKnownStudents);
       shuffle(knownStudents);
 
-      state.flashroster[i] = unKnownStudents.concat(knownStudents);
+      state.flashroster[course_id] = unKnownStudents.concat(knownStudents);
     }
 
     state.flash = false;
@@ -156,6 +133,8 @@ export default {
         }
         return self.sort((a, b) => a.first_name.localeCompare(b.first_name)).reverse();
       }
+
+
 
       state.courses[i].roster = sortedRoster(state.courses[i].roster);
     }
@@ -197,21 +176,8 @@ export default {
     state.disableBack = false;
   },
 
-  SET_SPRING(state) {
-    state.semester = 3;
-  },
-
-  SET_SUMMER(state) {
-    state.semester = 5;
-  },
-
-
-  SET_FALL(state) {
-    state.semester = 7;
-  },
-
-  SET_WINTER(state) {
-    state.semester = 9;
+  SELECTED_TERM(state, term) {
+    state.selectedTerm = term;
   },
 
   SET_TERM_YEAR(state, payload) {
@@ -310,8 +276,8 @@ export default {
     state.selectedTerm = 'next';
   },
 
-  SET_SEM(payload) {
-    state.selectedTerm = payload;
+  SET_TERM(state, term) {
+    state.selectedTerm = term;
   },
 
   START_UPLOAD_FEEDBACK(state) {
@@ -321,4 +287,13 @@ export default {
   STOP_UPLOAD_FEEDBACK(state) {
     state.uploadFeedback = false;
   },
+
+  CLEAR_COURSES(state) {
+    state.courses = null;
+  },
+
+  CLEAR_ROSTER(state) {
+    state.students = null;
+    state.flashroster = null;
+  }
 };

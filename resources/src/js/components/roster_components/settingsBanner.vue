@@ -32,7 +32,6 @@ import listGridSelector from '../fixed_components/listGridSelector.vue';
 
       computed: {
         ...mapGetters([
-          'courseTitle',
           'list',
           'flash',
         ]),

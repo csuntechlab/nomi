@@ -1,44 +1,23 @@
 export default {
   // General
-  getOnlyTerm(context, response) {
-    context.commit('GET_TERM', response.response);
+  getOnlyTerms(context, response) {
+    context.commit('GET_TERMS', response.terms);
   },
   getOnlyCourses(context) {
-    window.axios.get(`courses/${context.state.term.term}`)
+    window.axios.get(`courses/${context.state.term[context.state.selectedTerm].term}`)
         .then((response) => context.commit('GET_COURSES', response))
         .catch((error) => context.commit('API_FAILURE', error));
   },
   getOnlyRoster(context, response) {
-    window.axios.get(`roster/${context.state.term.term}/${response.course}`)
+    window.axios.get(`roster/${context.state.term[context.state.selectedTerm].term}/${response.course}`)
         .then((response) => context.commit('GET_ROSTER', response))
         .catch((error) => context.commit('API_FAILURE', error));
   },
   getOnlyFacultyProfile(context, response) {
-    context.commit('GET_FACULTY_PROFILE', response.response);
+    context.commit('GET_FACULTY_PROFILE', response.profile);
   },
-
-  getOnlyData(context) {
-    if (context.state.termYear != null) {
-      window.axios.get(`data/${context.state.term}`)
-        .then((response) => {
-          context.commit('GET_DATA', response);
-        })
-        .catch((error) => {
-          context.commit('API_FAILURE', error);
-        });
-    } else {
-      window.axios.get('data')
-        .then((response) => {
-          context.commit('GET_DATA', response);
-        })
-        .catch((error) => {
-          context.commit('API_FAILURE', error);
-        });
-    }
-  },
-
   getOnlySettings(context) {
-    window.axios.get('get_settings')
+    window.axios.get('get-settings')
       .then((response) => {
         context.commit('GET_SETTINGS', response);
       }).catch((error) => {
@@ -46,8 +25,16 @@ export default {
       });
   },
 
+  clearCourses(context) {
+    context.commit('CLEAR_COURSES');
+  },
+
   clearErrors(context) {
     context.commit('CLEAR_ERRORS');
+  },
+
+  clearRoster(context) {
+    context.commit('CLEAR_ROSTER');
   },
 
   toggleMenu(context) {
@@ -63,7 +50,7 @@ export default {
   },
 
   getUploadPermission(context, payload) {
-    window.axios.get('get_upload_permission')
+    window.axios.get('get-upload-permission')
       .then((response) => {
         context.commit('GET_UPLOAD_PERMISSION', response.data.permission);
       })
@@ -73,7 +60,7 @@ export default {
   },
 
   storePermission(context, payload) {
-    window.axios.post('store_permission')
+    window.axios.post('store-permission')
       .then((response) => {
         context.commit('STORE_PERMISSION', response);
       })
@@ -102,8 +89,8 @@ export default {
     context.commit('SET_FLASH');
   },
 
-  shuffleFlash(context) {
-    context.commit('SHUFFLE_FLASH');
+  shuffleFlash(context, payload) {
+    context.commit('SHUFFLE_FLASH', payload.course_id);
   },
 
   sortFirstName(context) {
@@ -144,24 +131,8 @@ export default {
   },
 
   // Courses
-  setSpring(context) {
-    context.commit('SET_SPRING');
-  },
-
-  setSummer(context) {
-    context.commit('SET_SUMMER');
-  },
-
-  setFall(context) {
-    context.commit('SET_FALL');
-  },
-
-  setWinter(context) {
-    context.commit('SET_WINTER');
-  },
-
-  setTermYear(context, payload) {
-    context.commit('SET_TERM_YEAR', payload);
+  setTerm(context, payload) {
+    context.commit('SET_TERM', payload.term);
   },
 
   loadingClassesTrue(context) {
@@ -187,7 +158,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })
@@ -203,7 +174,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })
@@ -224,7 +195,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })
@@ -240,7 +211,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })
@@ -261,7 +232,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })
@@ -277,7 +248,7 @@ export default {
         .then((response) => {
           context.commit('GET_DATA', response);
 
-          window.axios.get(`faculty_profile/${context.state.facultyMember.email}`)
+          window.axios.get(`faculty-profile/${context.state.facultyMember.email}`)
             .then((response) => {
               context.commit('GET_FACULTY_PROFILE', response);
             })

@@ -32,10 +32,8 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             )->classes;
 
         //add an id to each object to make vue stuff easier
-        $i = 0;
         foreach ($data as $course) {
-            $course->id = $i;
-            ++$i;
+            $course->id = $course->class_number;
         }
 
         //ensure array is sorted by class_number

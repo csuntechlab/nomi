@@ -33,4 +33,14 @@ class TermModelRepository implements TermModelRepositoryInterface
         return Term::all()
         ->toArray();
     }
+
+    public function getPreviousTerm()
+    {
+        return Term::previousTerm(Carbon::now())->get();
+    }
+
+    public function getNowAndNextTerm()
+    {
+        return Term::nowAndNextTerm(1)->get();
+    }
 }

@@ -6,17 +6,17 @@
                     <div class="profile_email">
                         <div v-if="this.showEmail">
                             <i class="fas fa-envelope" @click="showEmail = true"></i>
-                            {{this.student.student.email}}
+                            {{this.studentProfile.email}}
                         </div>
                     </div>
                     <div>
-                        <span v-if="this.student.bio != null" class="text_italic display-inline">
-                            <strong>About {{this.student.firstName}}:</strong>
-                            {{this.student.bio}}
+                        <span v-if="this.studentProfile.bio != null" class="text_italic display-inline">
+                            <strong>About {{this.studentProfile.first_name}}:</strong>
+                            {{this.studentProfile.bio}}
                         </span>
                         <span v-else></span>
                     </div>
-                    <profile-notes class="profile-notes-padding" :student="student" @unsavedChanges="sendUnsavedChanges" @committedChanges="sendChanges"></profile-notes>
+                    <profile-notes class="profile-notes-padding" @unsavedChanges="sendUnsavedChanges" @committedChanges="sendChanges"></profile-notes>
                 </div>
             </div>
         </div>
@@ -25,14 +25,10 @@
 <script>
 import profileNotes from './profileNotes.vue';
 import profilePicture from './profilePicture.vue';
-import { displayName } from './../../mixins/displayName.js';
-
+import {mapGetters} from 'vuex';
 export default {
     name: 'profile-info',
-    mixins: [displayName],
-    props: [
-        'student',
-    ],
+    props: ['student'],
 
     data() {
         return {
@@ -41,12 +37,16 @@ export default {
     },
 
     mounted() {
-        let emailSplit = this.student.student.email.split("@")[1];
+        let emailSplit = this.studentProfile.email.split("@")[1];
         if (emailSplit === "NOTREALEMAIL.net") {
             this.showEmail = false;
         } else {
             this.showEmail = true;
         }
+    },
+
+    computed: {
+        ...mapGetters(["studentProfile"])
     },
 
     components: {

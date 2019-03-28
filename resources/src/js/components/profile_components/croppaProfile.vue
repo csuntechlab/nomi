@@ -23,7 +23,6 @@
 
     export default {
         name: "croppa-profile",
-        props:['student'],
         data: function() {
             return{
                 messages: true,
@@ -75,7 +74,7 @@
                     this.$parent.$emit('close');
                 } else {
                     let url = this.myCroppa.generateDataUrl('jpg', .8);
-                    let emuri = this.student.email_uri;
+                    let emuri = this.studentProfile.emailURI;
 
                     let photoId = (this.$route.name === "class") ? 'photo-gallery--' + emuri : 'profile__img--border';
                     let photoElement = (this.$route.name === "class") ? document.getElementById(photoId) : document.getElementsByClassName(photoId);

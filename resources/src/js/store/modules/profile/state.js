@@ -1,22 +1,17 @@
 export default {
     studentProfile: {
         id: null,
-        studentID: null,
         email: null,
         emailURI: null,
         displayName: null,
         bio: null,
-        images: null,
+        image: null,
         imagePriority: null,
         notes: null,
         firstName: null,
         lastName: null,
-        student: null,
-
     },
 
-
-    currentStudent: null,
     profileErrors: null,
     profileLoadError: false,
 

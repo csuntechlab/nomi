@@ -21,13 +21,6 @@
               errors: [],
         };
       },
-      created() {
-          if (this.courses.length === 1) {
-              this.$store.dispatch('getOnlyRoster', {course: this.courses[0].class_number});
-          } else {
-              console.log('courses is empty broesha!');
-          }
-      },
       computed: {
         ...mapGetters([
           'courses',

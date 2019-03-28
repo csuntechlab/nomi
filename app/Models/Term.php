@@ -23,10 +23,34 @@ class Term extends Model
         'created_at',
     ];
 
+    /**
+     * @var array
+     */
+    protected $appends = [
+        'display_term',
+        'term_season_number'
+    ];
+
+    public function getTermSeasonNumberAttribute()
+    {
+        return \substr((string)$this->term_id, -1);
+    }
+
+    public function getDisplayTermAttribute()
+    {
+       return \str_replace('-', ' ', $this->term);
+    }
+
     public function scopeCurrentTerm($query, $today)
     {
         return $query->where('begin_date', '<=', $today)
         ->where('end_date', '>=', $today);
+    }
+
+    public function scopePreviousTerm($query, $today)
+    {
+        return $query->where('end_date', '<', $today)
+            ->orderBy('end_date', 'desc')->take(1);
     }
 
     public function scopeNowAndNextTerm($query, $take = 2)

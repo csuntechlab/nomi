@@ -9,4 +9,8 @@ interface TermModelRepositoryInterface
     public function find();
 
     public function all(): array;
+
+    public function getPreviousTerm();
+
+    public function getNowAndNextTerm();
 }

@@ -5,12 +5,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
 import moment from 'moment';
 
 export default {
 	name: "profile-picture",
-	props: ["image", "student", "type", "editable"],
+	props: ["image", "type", "editable"],
 
 	mounted() {
 		Array.from(this.$el.querySelectorAll("img"))[0].src = "./images/profile-loading.gif";

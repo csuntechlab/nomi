@@ -9,6 +9,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends MetaUser
 {
+    public $incrementing = false;
+
+    protected $primaryKey = 'user_id';
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -19,9 +23,20 @@ class User extends MetaUser
         'created_at',
     ];
 
-    public $incrementing = false;
+    protected $appends = [
+        'email_uri',
+        'image'
+    ];
 
-    protected $primaryKey = 'user_id';
+    public function getEmailUriAttribute()
+    {
+        return \substr($this->email, 0, \strpos($this->email, '@'));
+    }
+
+    public function getImageAttribute()
+    {
+        return env('MEDIA_URL') . 'faculty/media/' . $this->email_uri . '/avatar?source=true';
+    }
 
     public function imagePriority()
     {

@@ -27,11 +27,11 @@ export default {
     this.url = document.querySelector('meta[name=app-url]').content;
   },
   computed: {
-    ...mapGetters(['term']),
+    ...mapGetters(['term', 'selectedTerm']),
 
     displayCurrentTerm() {
-      if (!(this.term.display_term == null || this.term.display_term == undefined)) {
-        return this.term.display_term;
+      if (!(this.term[this.selectedTerm].display_term == null || this.term[this.selectedTerm].display_term == undefined)) {
+        return this.term[this.selectedTerm].display_term;
       }
     },
     checkIfLogin() {

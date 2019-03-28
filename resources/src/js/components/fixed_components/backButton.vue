@@ -12,15 +12,12 @@
 
       methods: {
         goBack() {
-          this.$store.dispatch('clearStudent');
-          this.$router.replace({ name: 'class', params: { id: this.currentCourse } });
-    },
+            this.$router.go(-1);
+        },
       },
-
       computed: {
         ...mapGetters([
           'hideBack',
-          'disableBack',
           'currentCourse',
         ]),
       },
