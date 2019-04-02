@@ -5,7 +5,7 @@
                 <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['likeness']" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,7 +13,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
@@ -24,7 +24,7 @@
                 <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
@@ -32,7 +32,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['likeness']" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -78,18 +78,6 @@ export default {
         emailExists() {
             return this.studentProfile.email.split('@')[1] != 'NOTREALEMAIL.net';
             return this.goToPage(0)
-        },
-
-        likenessImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.studentProfile.emailURI}`+ '/' +`likeness`  +'?secret='+ this.secret;
-            }
-        },
-    
-        avatarImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.studentProfile.emailURI}`+ '/' +`avatar` +'?secret='+ this.secret;
-            }
         }
     },
 

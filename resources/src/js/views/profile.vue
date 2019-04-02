@@ -1,7 +1,7 @@
 <template>
     <div v-if="this.$store.state.base.themeName.theme === this.$parent.$el.className">
 		<nav-bar></nav-bar>
-        <div v-if="(this.studentProfile.image == null) || (this.$route.params.emailURI != this.studentProfile.emailURI)" class="type--center">
+        <div v-if="(this.studentProfile.images == null) || (this.$route.params.emailURI != this.studentProfile.emailURI)" class="type--center">
             <br>
             <br>
             <i class="fa fa-spinner fa-spin fa-3x icon__theme"/>

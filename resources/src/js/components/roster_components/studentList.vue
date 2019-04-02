@@ -10,32 +10,14 @@
 <script>
     import { mapGetters } from 'vuex';
     import studentListItem from './studentListItem.vue';
-
     export default {
       name: 'student-list',
-
-      data() {
-    return {
-          show: false,
-          messages: true,
-          errors: [],
-          sortFirstName: true,
-          sortAscending: true,
-    };
-  },
-
       components: {
         studentListItem,
       },
-
       props: ['courseid'],
-
       computed: {
         ...mapGetters(['courses', 'students']),
-      },
-
-      created() {
-        this.loading = true;
       },
     };
 </script>

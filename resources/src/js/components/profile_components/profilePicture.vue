@@ -5,15 +5,8 @@
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
 	name: "profile-picture",
 	props: ["image", "type", "editable"],
-
-	mounted() {
-		Array.from(this.$el.querySelectorAll("img"))[0].src = "./images/profile-loading.gif";
-		Array.from(this.$el.querySelectorAll("img"))[0].src = this.image + '&timestamp=' + moment().format('DDhmmss');
-	},
 };
 </script>

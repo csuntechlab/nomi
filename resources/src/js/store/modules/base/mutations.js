@@ -1,3 +1,4 @@
+import lodash from 'lodash';
 export default {
   API_FAILURE(state, payload) {
     state.errors = payload.response.data.message;
@@ -34,20 +35,17 @@ export default {
   },
 
   UPDATE_STUDENT_PRIORITY(state, payload) {
-    for (let i = 0, len = state.courses.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.courses[i].roster.length; j < jLen; j += 1) {
-        if (state.courses[i].roster[j].student_id === payload.studentId) {
-          state.courses[i].roster[j].image_priority = payload.image_priority;
-        }
+    Object.entries(state.students[state.currentCourse]).forEach(([key,value]) => {
+      if (payload.student_id === value.id) {
+        value.image_priority = payload.image_priority;
       }
-    }
-    for (let i = 0, len = state.flashroster.length; i < len; i += 1) {
-      for (let j = 0, jLen = state.flashroster[i].length; j < jLen; j += 1) {
-        if (state.flashroster[i][j].student_id === payload.studentId) {
-          state.flashroster[i][j].image_priority = payload.image_priority;
-        }
+    });
+
+    Object.entries(state.flashroster[state.currentCourse]).forEach(([key,value]) => {
+      if (payload.student_id === value.id) {
+        value.image_priority = payload.image_priority;
       }
-    }
+    });
   },
 
   STORE_COURSE(state, payload) {
@@ -77,7 +75,7 @@ export default {
     state.displaySideMenu = !state.displaySideMenu;
   },
 
-  SHUFFLE_FLASH(state, course_id) {
+  SHUFFLE_FLASH(state) {
     function shuffle(students) {
       let currentIndex = students.length; let temporaryValue; let
         randomIndex;
@@ -94,13 +92,13 @@ export default {
         students[randomIndex] = temporaryValue;
       }
     }
-    const len = state.flashroster[course_id].length;
+    const len = state.flashroster[state.currentCourse].length;
 
     for (let i = 0; i < len; ++i) {
       const unKnownStudents = [];
       const knownStudents = [];
 
-      Object.entries(state.flashroster[course_id]).forEach(([key, value]) => {
+      Object.entries(state.flashroster[state.currentCourse]).forEach(([key, value]) => {
         if (value.recognized === true) {
           knownStudents.push(value);
         } else {
@@ -111,32 +109,24 @@ export default {
       shuffle(unKnownStudents);
       shuffle(knownStudents);
 
-      state.flashroster[course_id] = unKnownStudents.concat(knownStudents);
+      state.flashroster[state.currentCourse] = unKnownStudents.concat(knownStudents);
     }
-
-    state.flash = false;
     state.flash = true;
   },
 
   SORT_ROSTER(state) {
-    const len = state.courses.length;
-    for (let i = 0; i < len; ++i) {
-      function sortedRoster(self) {
+    if (state.sortAscending === true) {
         if (state.sortLastName === true) {
-          if (state.sortAscending === true) {
-            return self.sort((a, b) => a.last_name.localeCompare(b.last_name));
-          }
-          return self.sort((a, b) => a.last_name.localeCompare(b.last_name)).reverse();
+          state.students[state.currentCourse] = lodash.orderBy(state.students[state.currentCourse], ['last_name'], ['asc']);
+        } else {
+          state.students[state.currentCourse] = lodash.orderBy(state.students[state.currentCourse], ['first_name'], ['asc']);
         }
-        if (state.sortAscending === true) {
-          return self.sort((a, b) => a.first_name.localeCompare(b.first_name));
+    } else {
+        if (state.sortLastName === false) {
+          state.students[state.currentCourse] = lodash.orderBy(state.students[state.currentCourse], ['first_name'], ['desc']);
+        } else {
+          state.students[state.currentCourse] = lodash.orderBy(state.students[state.currentCourse], ['last_name'], ['desc']);
         }
-        return self.sort((a, b) => a.first_name.localeCompare(b.first_name)).reverse();
-      }
-
-
-
-      state.courses[i].roster = sortedRoster(state.courses[i].roster);
     }
   },
 
@@ -213,67 +203,6 @@ export default {
 
   NULLIFY_COURSE(state) {
     state.currentCourse = null;
-  },
-
-  SET_PREVIOUS_TERM(state) {
-    state.loadingClasses = true;
-    state.termYear = state.term.slice(0, 3);
-    state.semester = state.term.slice(3);
-    if (state.selectedTerm == 'current') {
-      state.semester -= 2;
-      if (state.semester < 3) {
-        state.semester = 9;
-        state.termYear -= 1;
-      }
-    } else if (state.selectedTerm == 'next') {
-      state.semester -= 4;
-      if (state.semester == 1) {
-        state.semester = 9;
-        state.termYear -= 1;
-      } else if (state.semester == -1) {
-        state.semester = 7;
-        state.termYear -= 1;
-      }
-    }
-    state.term = `${state.termYear}${state.semester}`;
-    state.termYear = `${state.termYear}`;
-    state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
-    state.semester = `${state.semester}`;
-    state.selectedTerm = 'previous';
-  },
-
-  SET_CURRENT_TERM(state) {
-    state.loadingClasses = true;
-    state.semester = null;
-    state.termYear = null;
-    state.selectedTerm = 'current';
-  },
-
-  SET_NEXT_TERM(state) {
-    state.loadingClasses = true;
-    state.termYear = parseInt(state.term.term.slice(0, 3));
-    state.semester = parseInt(state.term.term.slice(3));
-    if (state.selectedTerm == 'current') {
-      state.semester += 2;
-      if (state.semester > 9) {
-        state.semester = 3;
-        state.termYear += 1;
-      }
-    } else if (state.selectedTerm == 'previous') {
-      state.semester += 4;
-      if (state.semester == 11) {
-        state.semester = 3;
-        state.termYear += 1;
-      } else if (state.semester == 13) {
-        state.semester = 5;
-        state.termYear += 1;
-      }
-    }
-    state.term = `${state.termYear}${state.semester}`;
-    state.termYear = `${state.termYear}`;
-    state.termYear = state.termYear.slice(0, 1) + 0 + state.termYear.slice(1);
-    state.semester = `${state.semester}`;
-    state.selectedTerm = 'next';
   },
 
   SET_TERM(state, term) {

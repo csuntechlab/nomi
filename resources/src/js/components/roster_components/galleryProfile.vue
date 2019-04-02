@@ -10,12 +10,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import { setStudent } from '../../mixins/setStudent.js';
-import { refetchImage } from './../../mixins/refetchImage.js';
 
 export default {
 	name: "gallery-profile",
 	props: ["image", "student", "type", "editable", "email"],
-	mixins: [setStudent, refetchImage],
+	mixins: [setStudent],
 	computed: {
 	...mapGetters(["permission"])
 	

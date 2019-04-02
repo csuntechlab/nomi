@@ -19,7 +19,6 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
-                'modalData',
                 'term'
             ])
         },
@@ -30,14 +29,14 @@
                 this.$store.dispatch(
                     'updateStudentPriority',
                     {
-                        studentId: this.modalData.student_id,
+                        student_id: this.studentProfile.id,
                         image_priority: this.image_type,
                     }
                 );
                 this.$store.dispatch(
                     'updateImagePriority',
                     {
-                        studentId: this.modalData.student_id,
+                        student_id: this.studentProfile.id,
                         image_priority: this.image_type,
                         faculty_id: this.facultyMember.id.replace("members:", ""),
                         term: this.term,

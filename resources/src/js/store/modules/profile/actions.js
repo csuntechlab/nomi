@@ -40,7 +40,7 @@ export default {
 
     updateImagePriority (context, payload) {
         const data = new FormData();
-        data.append('student_id', payload.studentId);
+        data.append('student_id', payload.student_id);
         data.append('image_priority', payload.image_priority);
         data.append('term', payload.term);
         data.append('faculty_id', payload.faculty_id);
@@ -71,8 +71,8 @@ export default {
     },
 
     //back button
-    getStudent (context, payload) {
-        context.commit("GET_STUDENT", payload)
+    setStudent (context, payload) {
+        context.commit("SET_STUDENT", payload)
     },
 
     //cropping functionality

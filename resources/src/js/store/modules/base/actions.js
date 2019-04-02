@@ -10,7 +10,7 @@ export default {
   },
   getOnlyRoster(context, response) {
     window.axios.get(`roster/${context.state.term[context.state.selectedTerm].term}/${response.course}`)
-        .then((response) => context.commit('GET_ROSTER', response))
+        .then((response) => {context.commit('GET_ROSTER', response); context.commit('SORT_ROSTER');})
         .catch((error) => context.commit('API_FAILURE', error));
   },
   getOnlyFacultyProfile(context, response) {
@@ -89,8 +89,8 @@ export default {
     context.commit('SET_FLASH');
   },
 
-  shuffleFlash(context, payload) {
-    context.commit('SHUFFLE_FLASH', payload.course_id);
+  shuffleFlash(context) {
+    context.commit('SHUFFLE_FLASH');
   },
 
   sortFirstName(context) {

@@ -5,7 +5,7 @@ export default {
         emailURI: null,
         displayName: null,
         bio: null,
-        image: null,
+        images: null,
         imagePriority: null,
         notes: null,
         firstName: null,

@@ -28,7 +28,6 @@ export default {
 
   UPDATE_IMAGE_PRIORITY(state, payload) {
     state.studentProfile.imagePriority = payload;
-    state.modalData.image_priority = payload;
   },
 
   NULLIFY_STUDENT_PROFILE(state) {
@@ -67,11 +66,12 @@ export default {
         state.toggleCroppa = payload;
     },
 
-    GET_STUDENT(state, payload) {
+    SET_STUDENT(state, payload) {
       state.studentProfile.id = payload.student_id;
       state.studentProfile.email = payload.email;
       state.studentProfile.emailURI = payload.email_uri;
-      state.studentProfile.image = payload.profile_image;
+      state.studentProfile.images = payload.images;
+      state.studentProfile.imagePriority = payload.image_priority;
       state.studentProfile.firstName = payload.first_name;
       state.studentProfile.lastName = payload.last_name;
       state.studentProfile.displayName = payload.display_name;

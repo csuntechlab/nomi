@@ -98,7 +98,10 @@ class RosterRetrievalService implements RosterRetrievalContract
             'email' => $student->email,
             'email_uri' => $student->email_uri,
             'image_priority' => $student->image_priority,
-            'profile_image' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/'.$student->image_priority.'?source=true&secret='.urlencode(env('MEDIA_KEY'))
+            'images' => [
+                'avatar' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                'likeness' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+            ]
         ];
     }
 

@@ -3,7 +3,7 @@
         <div class="roster-list__item">
         <div class="row">
             <div class="col-xs-3 col-md-2">
-                <profile-picture class="pull-left" :name="this.student.display_name" :image="this.student.profile_image" :type="'roster'"></profile-picture>
+                <profile-picture class="pull-left" :name="this.student.display_name" :image="this.student.images[this.student.image_priority]" :type="'roster'"></profile-picture>
             </div>
             <div class="col-xs-9 col-md-10">
                 <span>
@@ -17,16 +17,13 @@
 </template>
 
 <script>
-import { getImage } from './../../mixins/getImage.js';
 import { setStudent } from './../../mixins/setStudent.js';
-import { refetchImage } from './../../mixins/refetchImage.js';
 import profilePicture from '../profile_components/profilePicture.vue';
 
 export default {
     name: 'student-list-item',
     props: ['student'],
-    mixins: [getImage, refetchImage, setStudent],
-
+    mixins: [setStudent],
     components: {
         profilePicture,
     },

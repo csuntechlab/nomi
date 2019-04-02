@@ -19,7 +19,7 @@
       },
       methods: {
           handleClick() {
-              this.$store.dispatch('shuffleFlash', { course_id: this.$route.params.id});
+              this.$store.dispatch('shuffleFlash');
           }
       }
     };
