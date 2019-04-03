@@ -49,7 +49,7 @@ export default {
       const data = new FormData();
       data.append('theme', theme);
 
-      axios.post(`${this.url}/update_theme`, data, {
+      axios.post(`${this.url}/update-theme`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

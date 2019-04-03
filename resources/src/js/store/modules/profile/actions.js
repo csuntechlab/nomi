@@ -32,7 +32,7 @@ export default {
         data.append('student_id', context.state.studentProfile.id);
         data.append('notepad', context.state.studentProfile.notes);
 
-        window.axios.post('update_note', data)
+        window.axios.post('update-note', data)
             .catch(error => {
                 context.commit("API_FAILURE", error)
             });
