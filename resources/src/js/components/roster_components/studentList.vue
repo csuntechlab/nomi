@@ -1,6 +1,6 @@
 <template>
     <div v-if="students != null">
-        <student-list-item v-for="student in this.students[this.courseid]" :key="student.display_name" :student="student"/>
+        <student-list-item v-for="student in this.students[this.courseid]" :key="student.student_id+':'+student.image_priority" :student="student"/>
     </div>
     <div v-else class="type--center">
         <i class="fa fa-spinner fa-spin fa-3x icon__theme"></i>
