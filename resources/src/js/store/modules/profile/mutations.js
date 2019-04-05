@@ -8,45 +8,14 @@ export default {
     state.profileErrors = payload.response.data.message;
   },
 
-  GET_STUDENT_PROFILE(state, { payload, getters, response }) {
-    let imageRoute = document.querySelector('meta[name=img-url]').content;
-    let secret = document.querySelector('meta[name=secret]').content;
-    const email = payload.data.email;
-    state.studentProfile.emailURI = response.uri;
-    state.studentProfile.displayName = payload.data.display_name;
-    state.studentProfile.imagePriority = payload.data.image_priority;
+  GET_STUDENT_PROFILE(state, payload) {
+    state.studentProfile.bio = payload.data.bio;
     state.studentProfile.notes = payload.data.notes;
-    state.studentProfile.id = payload.data.student_id;
-    state.studentProfile.firstName = payload.data.first_name;
-    for (const student in getters.students) {
-      if (getters.students.hasOwnProperty(student)) {
-        if (getters.students[student].email == email) {
-          state.studentProfile.student = getters.students[student];
-          state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-          state.studentProfile.images = imageRoute + `${state.studentProfile.emailURI}`+ '/' +`${state.studentProfile.imagePriority}` +'?secret='+ secret;
-          
-          break;
-        }
-      }
-    }
   },
 
-  GET_STUDENT_PROFILE_NO_EMAIL(state, { payload, getters, response }) {
-    const email = response.email;
-    state.studentProfile.emailURI = response.uri;
-    state.studentProfile.displayName = payload.data.display_name;
-    state.studentProfile.imagePriority = payload.data.image_priority;
+  GET_STUDENT_PROFILE_NO_EMAIL(state, payload) {
+    state.studentProfile.bio = payload.data.bio;
     state.studentProfile.notes = payload.data.notes;
-    state.studentProfile.id = payload.data.student_id;
-    state.studentProfile.firstName = payload.data.first_name;
-    for (const student in getters.students) {
-      if (getters.students[student].email == email) {
-        state.studentProfile.student = getters.students[student];
-        state.studentProfile.student.image_priority = state.studentProfile.imagePriority;
-        state.studentProfile.images = getters.students[student].images;
-        break;
-      }
-    }
   },
 
   GET_STUDENT_BIO(state, payload) {
@@ -59,19 +28,20 @@ export default {
 
   UPDATE_IMAGE_PRIORITY(state, payload) {
     state.studentProfile.imagePriority = payload;
-    state.modalData.image_priority = payload;
   },
 
   NULLIFY_STUDENT_PROFILE(state) {
     state.studentProfile = {
       id: null,
+      email: null,
       emailURI: null,
       displayName: null,
       bio: null,
-      images: null,
+      image: null,
       imagePriority: null,
       notes: null,
       firstName: null,
+      lastName: null,
     };
 
     state.profileErrors = null;
@@ -94,21 +64,16 @@ export default {
     //toggle cropping functionality
     TOGGLE_CROPPING (state, payload) {
         state.toggleCroppa = payload;
-    }, 
-
-    //store student
-    STORE_STUDENT(state, payload) {
-      state.currentStudent = payload;
     },
 
-    GET_STUDENT(state, payload) {
-      state.studentProfile.studentID = payload.studentID;
+    SET_STUDENT(state, payload) {
+      state.studentProfile.id = payload.student_id;
       state.studentProfile.email = payload.email;
+      state.studentProfile.emailURI = payload.email_uri;
+      state.studentProfile.images = payload.images;
+      state.studentProfile.imagePriority = payload.image_priority;
       state.studentProfile.firstName = payload.first_name;
       state.studentProfile.lastName = payload.last_name;
+      state.studentProfile.displayName = payload.display_name;
     },
-
-    CLEAR_STUDENT(state) {
-      state.currentStudent = null;
-    }
 };

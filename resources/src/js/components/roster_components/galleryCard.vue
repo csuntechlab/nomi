@@ -3,12 +3,12 @@
 		<div data-interactable class="panel gallery-card__content">
 			<div class="panel__wrapper">
 				<div class="panel__content">
-					<gallery-profile :student="student" :email="student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="image" :type="'profile'" />
+					<gallery-profile :student="this.student" :email="this.student.email_uri" :course_id="this.$route.params.id" :editable="emailExists" :image="this.student.images[this.student.image_priority]" :type="'profile'" />
 				</div>
 			</div>
-			<router-link :to="'/profile/'+this.$route.params.id+'/'+email_uri" @click.native="getStudent()">
+			<router-link :to="'/profile/'+this.$route.params.id+'/'+this.student.email_uri" @click.native="setStudent()">
 			<div class="cardText clearPadding">
-				<div class="gallery__name type--center">{{display_name}}</div>
+				<div class="gallery__name type--center">{{this.student.display_name}}</div>
 			</div>
 			</router-link>
 		</div>
@@ -17,17 +17,14 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 import galleryProfile from "../roster_components/galleryProfile.vue";
-import { getImage } from './../../mixins/getImage.js';
-import { getStudent } from './../../mixins/getStudent.js'
-import { refetchImage } from './../../mixins/refetchImage.js'
-import { displayName } from './../../mixins/displayName.js';
+import { setStudent } from '../../mixins/setStudent.js'
 
 export default {
 	name: 'gallery-card',
 	props: ['student'],
-	mixins: [getStudent, getImage, refetchImage, displayName],
+	mixins: [setStudent],
 
 	data: function() {
 		return {
@@ -44,20 +41,11 @@ export default {
 	computed: {
 		...mapGetters([
 			'permission',
-			'facultyMember',
 		]),
-
-		email_uri() {
-			return this.student.email.split('@')[0];
-		},
 
 		emailExists() {
 			return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
 		},
-
-        display_name() {
-            return `${ this.check_name_exists(this.student.first_name, false) } ${ this.check_name_exists(this.student.last_name[0], true) }`;
-        },
 	},
 };
 </script>

@@ -15,7 +15,7 @@ Vue.component('error-bar', require('./components/fixed_components/errorBar.vue')
 Vue.component('permission-modal', require('./components/fixed_components/permissionModal.vue'));
 Vue.component('side-menu', require('./components/fixed_components/sideMenu.vue'));
 
-const app = new Vue({
+new Vue({
   el: '#app',
   router,
   store,

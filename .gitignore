@@ -5,6 +5,8 @@
 /storage/*.key
 /vendor
 /.idea
+/.sass-cache
+/.vscode
 /.vagrant
 Homestead.json
 Homestead.yaml

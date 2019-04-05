@@ -9,12 +9,9 @@
         <div v-else>
 			<upload-bar/>
 			<modal></modal>
-            <profile-container :student="this.studentProfile.student"/>
-            <profile-info :student="this.studentProfile" @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"/>
+            <profile-container/>
+            <profile-info @unsavedChanges="setUnsavedChanges" @committedChanges="setChanges"/>
         </div>
-    </div>
-	<div v-else>
-        <loading-screen></loading-screen>
     </div>
 </template>
 
@@ -22,7 +19,6 @@
 import { mapGetters, mapActions } from "vuex";
 import profileContainer from "../components/profile_components/profileContainer.vue";
 import modal from "../components/fixed_components/modal.vue";
-import loadingScreen from '../components/fixed_components/loadingScreen.vue';
 import profileInfo from "../components/profile_components/profileInfo.vue";
 import navBar from '../components/fixed_components/navBar.vue';
 import uploadBar from '../components/fixed_components/uploadBar.vue';
@@ -39,7 +35,6 @@ export default {
 	components: {
 		profileContainer,
 		modal,
-		loadingScreen,
 		profileInfo,
 		navBar,
 		uploadBar
@@ -51,27 +46,26 @@ export default {
 	},
 
 	mounted() {
-		let emailSplit = this.$store.state.profile.studentProfile.email.split('@');
+		let emailSplit = this.studentProfile.email.split('@');
 		if (emailSplit[1] === "NOTREALEMAIL.net") {
 			this.$store.dispatch('getStudentProfileNoEmail', {
-				id: this.$store.state.profile.studentProfile.studentID,
-				uri: this.$route.params.emailURI,
+				id: this.studentProfile.studentID,
+				uri: this.studentProfile.emailURI,
 				faculty_id: this.facultyMember.id,
-				email: this.$store.state.profile.studentProfile.email,
-				first_name: this.$store.state.profile.studentProfile.firstName,
-				last_name: this.$store.state.profile.studentProfile.lastName,
+				email: this.studentProfile.email,
+				first_name: this.studentProfile.firstName,
+				last_name: this.studentProfile.lastName,
 			});
 		} else {
 			this.$store.dispatch('getStudentProfile', {
-				id: this.$store.state.profile.studentProfile.studentID,
-				uri: this.$route.params.emailURI,
+				id: this.studentProfile.studentID,
+				uri: this.studentProfile.emailURI,
 				faculty_id: this.facultyMember.id,
-				email: this.$store.state.profile.studentProfile.email,
-				first_name: this.$store.state.profile.studentProfile.firstName,
-				last_name: this.$store.state.profile.studentProfile.lastName,
+				email: this.studentProfile.email,
+				first_name: this.studentProfile.firstName,
+				last_name: this.studentProfile.lastName,
 			});
 		}
-		this.$store.dispatch('storeStudent', this.$route.params.emailURI);
 	},
 
 	updated() {

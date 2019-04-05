@@ -9,16 +9,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends MetaUser
 {
-    use Notifiable;
+    public $incrementing = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'first_name', 'last_name', 'name', 'email', 'password', 'user_id',
-    ];
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,12 +19,24 @@ class User extends MetaUser
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'updated_at',
+        'created_at',
     ];
 
-    public $incrementing = false;
+    protected $appends = [
+        'email_uri',
+        'image'
+    ];
 
-    protected $primaryKey = 'user_id';
+    public function getEmailUriAttribute()
+    {
+        return \substr($this->email, 0, \strpos($this->email, '@'));
+    }
+
+    public function getImageAttribute()
+    {
+        return env('MEDIA_URL') . 'faculty/media/' . $this->email_uri . '/avatar?source=true';
+    }
 
     public function imagePriority()
     {

@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import navBar from '../components/fixed_components/navBar.vue';
 import menuBar from '../components/fixed_components/menuBar.vue';
 import loadingScreen from '../components/fixed_components/loadingScreen.vue';
@@ -17,6 +18,7 @@ import coursesContainer from '../components/course_components/coursesContainer.v
 
 export default {
     name: 'home',
+    props: ['profile', 'terms'],
 
     components: {
         termSelector,
@@ -25,13 +27,20 @@ export default {
         menuBar,
         navBar,
     },
-
-    created() {
-        this.$store.dispatch('clearErrors');
+    computed: {
+        ...mapGetters([
+            'facultyMember',
+        ]),
     },
 
-    beforeCreate() {
-        this.$store.dispatch('getOnlyData');
+    created() {
+
+        this.$store.dispatch('clearErrors');
+        this.$store.dispatch('getOnlyTerms', { terms: JSON.parse(this.terms) });
+        this.$store.dispatch('getOnlyCourses');
+        if (this.facultyMember.email === null) {
+            this.$store.dispatch('getOnlyFacultyProfile', { profile: JSON.parse(this.profile) });
+        }
     },
 
     updated() {

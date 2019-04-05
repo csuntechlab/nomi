@@ -1,5 +1,5 @@
 <template>
-    <div v-if="modalData.image_priority === image_type">
+    <div v-if="studentProfile.imagePriority === image_type">
         <button class="btn btn-default text-overflow">Default Set <i class="fas fa-check"/></button>
     </div>
     <div v-else>
@@ -19,7 +19,6 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
-                'modalData',
                 'term'
             ])
         },
@@ -30,14 +29,14 @@
                 this.$store.dispatch(
                     'updateStudentPriority',
                     {
-                        studentId: this.modalData.student_id,
+                        student_id: this.studentProfile.id,
                         image_priority: this.image_type,
                     }
                 );
                 this.$store.dispatch(
                     'updateImagePriority',
                     {
-                        studentId: this.modalData.student_id,
+                        student_id: this.studentProfile.id,
                         image_priority: this.image_type,
                         faculty_id: this.facultyMember.id.replace("members:", ""),
                         term: this.term,

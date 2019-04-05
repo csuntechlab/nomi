@@ -14,6 +14,7 @@ const router = new VueRouter({
       name: 'home',
       path: '/',
       component: Home,
+      props: true,
     },
     {
       name: 'class',
@@ -24,7 +25,6 @@ const router = new VueRouter({
       name: 'profile',
       path: '/profile/:courseID/:emailURI',
       component: Profile,
-      props: true,
     },
     {
       name: 'about',

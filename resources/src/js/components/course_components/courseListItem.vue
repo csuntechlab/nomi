@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse(), clearStudent()">
+    <router-link :to="'/class/' + this.course.id" class="row" @click.native="storeSelectedCourse()">
         <div data-interactable class="panel course_padding fullscreen_width col-xs-12">
             <div class="panel__header type--center">
                 <h2 class="course__title pull-left">{{course.title}}</h2>
@@ -14,7 +14,7 @@
                             {{course.enrollment_count}} Students
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
+                    <div v-if="course.meetings.length > 0" class="col-xs-12 col-sm-6">
                         <div>
                             <b>Days</b>: {{ convertDays(course.meetings[0].days) }}
                         </div>
@@ -32,13 +32,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { convertCourseData } from './../../mixins/convertCourseData.js'
-import { getStudent } from './../../mixins/getStudent.js'
 
 export default {
 name: 'course-list-item',
-mixins: [convertCourseData, getStudent],
+mixins: [convertCourseData],
 props: ['course'],
 
 computed: {
@@ -52,17 +50,10 @@ computed: {
 },
 
 methods: {
-    ...mapGetters(['currentStudent']),
-
     storeSelectedCourse() {
+        this.$store.dispatch('getOnlyRoster', {course: this.course.id});
         this.$store.dispatch('storeLocation', 'class');
         this.$store.dispatch('storeCourse', this.course.id);
-    },
-
-    clearStudent() {
-        if (this.currentStudent) {
-            this.$store.dispatch('clearStudent');
-        }
     },
 },
 

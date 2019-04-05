@@ -35,8 +35,9 @@ class RosterRetrievalService implements RosterRetrievalContract
     {
         // Grabs the roster information without the instructor
         $roster = $this->webResourceUtility->getRoster($term, $course)->getBody()->getContents();
-
-        return $this->processMembers(\json_decode($roster)->members);
+        $roster = \json_decode($roster);
+        $students = $this->processMembers($roster->members);
+        return [$roster->class_number => $students];
     }
 
     public function processMembers($members)
@@ -93,9 +94,14 @@ class RosterRetrievalService implements RosterRetrievalContract
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,
             'last_name' => $student->last_name,
+            'display_name' => $student->display_name,
             'email' => $student->email,
             'email_uri' => $student->email_uri,
             'image_priority' => $student->image_priority,
+            'images' => [
+                'avatar' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                'likeness' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+            ]
         ];
     }
 

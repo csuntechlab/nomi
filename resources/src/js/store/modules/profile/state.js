@@ -1,7 +1,6 @@
 export default {
     studentProfile: {
         id: null,
-        studentID: null,
         email: null,
         emailURI: null,
         displayName: null,
@@ -11,12 +10,8 @@ export default {
         notes: null,
         firstName: null,
         lastName: null,
-        student: null,
-
     },
 
-
-    currentStudent: null,
     profileErrors: null,
     profileLoadError: false,
 

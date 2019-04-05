@@ -20,6 +20,7 @@ Route::post('/login', 'LoginController@validateUser')->name('post.login');
 /** Route for home page. Takes us to the SPA. */
 Route::get('/home', 'SPAController@index')->name('home')->middleware('auth');
 Route::get('/data/{term?}', 'SPAController@getData')->middleware('auth');
+Route::get('/term/{term?}', 'SPAController@getCurrentTerm')->middleware('auth');
 
 /** Route for logout. */
 Route::get('/logout', function () {
@@ -31,7 +32,8 @@ Route::get('/logout', function () {
 
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
-Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
+Route::get('/roster/{term}/{course}', 'SPAController@getRoster')->middleware('auth');
+//Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
 Route::get('/media/{email}', 'WebResourceController@media')->middleware('auth');
 Route::get('/student/{email}', 'WebResourceController@student')->middleware('auth');
 
@@ -40,18 +42,18 @@ Route::get('/students/{term}/{course}', 'RosterController@getStudents')->middlew
 Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents')->middleware('auth');
 
 /** Student API Routes */
-Route::get('/faculty_profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
-Route::get('/student_profile/{email}', 'StudentProfileController@getProfile')->middleware('auth');
-Route::post('/student_profile_alternative','StudentProfileController@getProfileWithNoEmail')->middleware('auth');
-Route::post('/update_note', 'StudentProfileController@updateNotes')->middleware('auth');
+Route::get('/faculty-profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
+Route::get('/student-profile/{email}', 'StudentProfileController@getProfile')->middleware('auth');
+Route::post('/student-profile-alternative','StudentProfileController@getProfileWithNoEmail')->middleware('auth');
+Route::post('/update-note', 'StudentProfileController@updateNotes')->middleware('auth');
 
 /** User Settings API Routes */
-Route::get('/get_settings', 'UserSettingsController@getSettings')->middleware('auth');
-Route::post('/update_theme', 'UserSettingsController@updateTheme')->middleware('auth');
+Route::get('/get-settings', 'UserSettingsController@getSettings')->middleware('auth');
+Route::post('/update-theme', 'UserSettingsController@updateTheme')->middleware('auth');
 
 /** Upload Permission API Routes */
-Route::get('/get_upload_permission', 'UploadPermissionController@getUploadPermission')->middleware('auth');
-Route::post('/store_permission', 'UploadPermissionController@storePermission')->middleware('auth');
+Route::get('/get-upload-permission', 'UploadPermissionController@getUploadPermission')->middleware('auth');
+Route::post('/store-permission', 'UploadPermissionController@storePermission')->middleware('auth');
 
 /** Support and Feedback */
 Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create')->middleware('auth');

@@ -4,7 +4,7 @@
       <div class="modal__container">
         <div class="modal-header">
           <div class="modal-name">
-            <strong>{{modalData.first_name + " " + modalData.last_name}}</strong>
+            <strong>{{this.studentProfile.displayName}}</strong>
           </div>
           <div class="modal--exit">
               <i class="fa fa-times fa-2x modal__exit-button" @click="showModal()"></i>
@@ -12,7 +12,7 @@
         </div>
         <div class="modal-body">
           <div name="body">
-            <modals-carousel :student="modalData"></modals-carousel>
+            <modals-carousel></modals-carousel>
           </div>
         </div>
         <div class="modal-footer cf">
@@ -31,7 +31,7 @@
 <script>
     import croppaFunctionality from "../profile_components/croppaFunctionality.vue";
     import modalsCarousel from "../profile_components/modalsCarousel.vue";
-    import { mapGetters, mapMutations, mapActions } from 'vuex';
+    import { mapGetters } from 'vuex';
     export default {
       name: 'modal',
 
@@ -43,7 +43,7 @@
         },
 
         computed: {
-          ...mapGetters(["modalVisible", "modalData"])
+          ...mapGetters(["modalVisible", "studentProfile"])
         },
 
         created(){
