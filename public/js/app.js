@@ -35653,7 +35653,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     displayFormattedTermName: function displayFormattedTermName(termName) {
       var termSeason = termName.split(" ")[0];
-      return termSeason.charAt(0).toUpperCase() + termSeason.slice(1);
+      var formattedTermSeason = termSeason.charAt(0).toUpperCase() + termSeason.slice(1);
+      var formattedTermYear = ' \'' + termName.split(" ")[1].slice(2);
+      return formattedTermSeason + formattedTermYear;
     }
   })
 });
