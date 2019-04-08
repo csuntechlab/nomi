@@ -60,7 +60,7 @@
           <br>
           <h1>Feedback Form</h1>
           <br>
-          <p>Hello, {{ substr($submitter_email, 0, strpos($submitter_email, '.')) }}</p>
+          <p>Hello Professor,</p>
         </div>
       </div>
       <div class="row justify-content-md-center">
