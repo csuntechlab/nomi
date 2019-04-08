@@ -1782,13 +1782,68 @@ textarea[type="text"]:focus {
 
 .bottom-nav__button {
   color: whitesmoke;
-  padding: .75rem 0 .5rem;
+  padding: 1.15rem 0 .5rem;
   cursor: pointer;
 }
 
 .bottom-nav__button--active {
+  font-weight: bold;
   color: white;
   padding: .75rem 0 .5rem;
+}
+
+.theme-matadorTheme .bottom-nav__button--active {
+  background: #d22030;
+}
+
+.theme-raspberryTheme .bottom-nav__button--active {
+  background: #a22062;
+}
+
+.theme-oliveTheme .bottom-nav__button--active {
+  background: #10783d;
+}
+
+.theme-neptuneTheme .bottom-nav__button--active {
+  background: #05192d;
+}
+
+.theme-oceanTheme .bottom-nav__button--active {
+  background: #0d3753;
+}
+
+.theme-noireTheme .bottom-nav__button--active {
+  background: #191919;
+}
+
+.theme-matadorTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #d22030;
+  background-color: #bc1d2b;
+}
+
+.theme-raspberryTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #a22062;
+  background-color: #8d1c55;
+}
+
+.theme-oliveTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #10783d;
+  background-color: #0d6232;
+}
+
+.theme-neptuneTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #05192d;
+  background-color: #020c16;
+}
+
+.theme-oceanTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #0d3753;
+  background-color: #0a283d;
+}
+
+.theme-noireTheme .bottom-nav__button--active {
+  border-top: 0.45rem inset #191919;
+  background-color: #0c0c0c;
 }
 
 .bottom-nav__button--disabled {

@@ -83,18 +83,30 @@
 	right: 0;
 	margin: 0;
 	width: 100%;
+
 	@include themify($themes) {
 		background: themed("navigationBars");
 	}
 
 	&__button {
 		color: rgb(245, 245, 245);
-		padding: .75rem 0 .5rem;
+		padding: 1.15rem 0 .5rem;
 		cursor: pointer;
 	
 		&--active {
+			font-weight: bold;
 			color: rgb(255, 255, 255);
 			padding: .75rem 0 .5rem;
+
+			@include themify($themes) {
+				background: themed("navigationBars");
+			}
+
+			@include themify($themes) {
+				$baseSelectionActive: themed("navigationBars");
+				border-top: 0.45rem inset $baseSelectionActive;
+				background-color: darken($baseSelectionActive, 5%)
+			}
 		}
 		
 		&--disabled {
