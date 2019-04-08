@@ -1781,7 +1781,7 @@ textarea[type="text"]:focus {
 }
 
 .bottom-nav__button {
-  color: rgba(255, 255, 255, 0.8);
+  color: whitesmoke;
   padding: .75rem 0 .5rem;
   cursor: pointer;
 }

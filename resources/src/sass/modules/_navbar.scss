@@ -88,12 +88,12 @@
 	}
 
 	&__button {
-		color: rgba(255, 255, 255, 0.8);
+		color: rgb(245, 245, 245);
 		padding: .75rem 0 .5rem;
 		cursor: pointer;
 	
 		&--active {
-			color: rgba(255, 255, 255, 1);
+			color: rgb(255, 255, 255);
 			padding: .75rem 0 .5rem;
 		}
 		
