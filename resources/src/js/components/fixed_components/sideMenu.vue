@@ -7,7 +7,7 @@
             </div>
             <div v-else>
                 <div>
-                    <img :src="facultyMember.image" class="img--circle side-menu__img" name="photo">
+                    <img :src="facultyMember.image" class="img--circle side-menu__img" name="photo" alt="image of faculty profile">
                 </div>
                 <div class="side-menu__greeting" :href="facultyMember.profile" title="User Name">Hi, {{facultyMember.firstName}}</div>
             </div>
