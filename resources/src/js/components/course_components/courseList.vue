@@ -13,26 +13,22 @@
     import { mapGetters } from 'vuex';
     import courseListItem from './courseListItem.vue';
     import emptyCourseItem from './emptyCourseItem.vue';
-
     export default {
       name: 'course-list',
       data() {
-    return {
-          messages: true,
-          errors: [],
-    };
-  },
-
+        return {
+              messages: true,
+              errors: [],
+        };
+      },
       computed: {
         ...mapGetters([
           'courses',
         ]),
       },
-
       components: {
         courseListItem,
         emptyCourseItem,
       },
-
     };
 </script>

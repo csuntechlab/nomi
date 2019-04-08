@@ -4,20 +4,20 @@
     <carousel v-if="okayToUpdate" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
-            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
-              <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
+            <profile-picture v-show="!switchItUp" :image="this.studentProfile.images['likeness']" :editable="false" :type="'profile-picture'"></profile-picture>
+              <croppa-profile v-show="switchItUp"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
-                <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
+                <image-handler :image_type="'likeness'" class="profile-carousel__default-btn"></image-handler>
               </div>
           </div>
         </slide>
         <slide class="slide-wrap">
           <div>
-              <profile-picture :image="avatarImage" :editable="false" :type="'profile-picture'"></profile-picture>
+              <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile-picture'"></profile-picture>
               <div class="type--center">
                 <i>Student Uploaded</i>
-                <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
+                <image-handler :image_type="'avatar'" class="profile-carousel__default-btn"></image-handler>
               </div>
           </div>
         </slide>
@@ -25,20 +25,20 @@
     <carousel v-else :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'" @pageChange="handleSlideClick">
         <slide class="slide-wrap">
           <div>
-              <profile-picture :image="avatarImage" :editable="false" :type="'profile-picture'"></profile-picture>
+              <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile-picture'"></profile-picture>
               <div class="type--center">
                 <i>Student Uploaded</i>
-                <image-handler image_type="avatar" class="profile-carousel__default-btn"></image-handler>
+                <image-handler :image_type="'avatar'" class="profile-carousel__default-btn"></image-handler>
               </div>
           </div>
         </slide>
         <slide class="slide-wrap">
           <div>
-            <profile-picture v-show="!switchItUp" :image="likenessImage" :editable="false" :type="'profile-picture'"></profile-picture>
-              <croppa-profile v-show="switchItUp" :student="student"></croppa-profile>
+            <profile-picture v-show="!switchItUp" :image="this.studentProfile.images['likeness']" :editable="false" :type="'profile-picture'"></profile-picture>
+              <croppa-profile v-show="switchItUp"></croppa-profile>
               <div class="type--center">
                 <i>Faculty Uploaded</i>
-                <image-handler image_type="likeness" class="profile-carousel__default-btn"></image-handler>
+                <image-handler :image_type="'likeness'" class="profile-carousel__default-btn"></image-handler>
               </div>
           </div>
         </slide>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import croppaProfile from "../profile_components/croppaProfile.vue";
 import profilePicture from "../profile_components/profilePicture.vue";
 import imageHandler from "../profile_components/imageHandler.vue";
@@ -59,8 +59,6 @@ export default {
       return{
         okayToUpdate: null,
         switchItUp: false,
-        imageUrl: document.querySelector('meta[name=img-url]').content,
-        secret: document.querySelector('meta[name=secret]').content + '&source=true',
       }
   },
 
@@ -70,28 +68,13 @@ export default {
     });
   },
 
-  props: ["student"],
-
   components: {
     imageHandler,
     profilePicture,
     croppaProfile
   },
   computed: {
-    
     ...mapGetters(["studentProfile", "modalVisible"]),
-    likenessImage() {
-      if(this.studentProfile){
-        return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness` +'?secret='+ this.secret + `${this.student.timestamp}`;
-
-      }
-    },
-    
-    avatarImage() {
-    if(this.studentProfile){
-      return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` +'?secret='+ this.secret;
-      }
-    }
   },
 
   methods: {
@@ -102,7 +85,7 @@ export default {
   },
 
   created() {
-    if(this.student.image_priority === 'likeness'){
+    if(this.studentProfile.imagePriority === 'likeness'){
       this.okayToUpdate = true;
     } else {
       this.okayToUpdate = false;

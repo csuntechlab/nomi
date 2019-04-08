@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Contracts\CacheContract;
+use App\Contracts\RosterRetrievalContract;
 use App\Contracts\UserSettingsContract;
 
 class SPAController extends Controller
@@ -12,54 +13,42 @@ class SPAController extends Controller
     public $userSettingsUtility;
     public $cacheUtility;
     public $minutes;
+    protected $rosterRetrievalUtility;
 
     public function __construct(
         UserSettingsContract $userSettingsUtility,
-        CacheContract $cacheUtility
+        CacheContract $cacheUtility,
+        RosterRetrievalContract $rosterRetrievalUtility
     ) {
         $this->userSettingsUtility = $userSettingsUtility;
         $this->minutes = 27;
         $this->cacheUtility = $cacheUtility;
+        $this->rosterRetrievalUtility = $rosterRetrievalUtility;
     }
 
-    private function getCurrentTerm($term)
+    public function getCurrentTerm($term = null)
     {
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }
-
-        return $term;
+        $term['display_term'] = \str_replace('-', ' ', $term['term']);
+        return ['term' => $term];
     }
 
-    /**
-     * Description: Gets the course/roster data for the SPA.
-     *
-     * @param null|mixed $term
-     */
-    public function getData($term = null)
+    public function getCourses($term)
     {
         $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
-        $term = $this->getCurrentTerm($term);
-
         $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
+        return ['courses' => $courses];
+    }
 
-        $students = [];
-        $len = \count($courses);
-
-        $students = $this->cacheUtility->cacheStudents($students, $courses, $len, $id, $term, $this->minutes);
-
-        $user = auth()->user();
-        $email = $user->email;
-
-        $allStudents = $this->allStudents($students);
-
-        return [
-            'courses' => $courses,
+    public function getRoster($term, $course)
+    {
+        $students = $this->rosterRetrievalUtility->getStudentsFromRoster($term, $course);
+        return response()->json([
+            'allStudents' => $students,
             'students' => $students,
-            'allStudents' => $allStudents,
-            'email' => $email,
-            'term' => "$term",
-        ];
+        ]);
     }
 
     /**
@@ -69,19 +58,16 @@ class SPAController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $previousTerm = $this->userSettingsUtility->getPreviousTerm();
+        $nowAndNext = $this->userSettingsUtility->getNowAndNextTerm();
+        $terms = $previousTerm->merge($nowAndNext);
+        $previous['previous'] = empty($terms[0]) ? null :  $terms[0];
+        $current['current'] = empty($terms[1]) ? null : $terms[1];
+        $next['next'] = empty($terms[2]) ? null : $terms[2];
+        $terms = \json_encode(\array_merge($previous, $current, $next));
+        session(['profile' => $user]);
+        session(['terms' => $terms]);
         return view('spa');
-    }
-
-    private function allStudents($students): array
-    {
-        $allStudents = [];
-
-        foreach ($students as $class) {
-            $allStudents = \array_merge($allStudents, $class);
-        }
-
-        $allStudents = \array_unique($allStudents, SORT_REGULAR);
-
-        return $allStudents;
     }
 }

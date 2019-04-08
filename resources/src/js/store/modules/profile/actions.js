@@ -1,11 +1,8 @@
 export default {
     getStudentProfile (context, payload) {
-        let response = payload;
-        window.axios.get('student_profile/'+ payload.email)
+        window.axios.get('student-profile/'+ payload.email)
             .then(payload => {
-                var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', payload)
+                context.commit('GET_STUDENT_PROFILE', payload)
             })
             .catch(error => {
                 context.commit('API_STUDENT_FAILURE', error)
@@ -13,16 +10,13 @@ export default {
     },
 
     getStudentProfileNoEmail (context, payload) {
-        let response = payload;
-        window.axios.post('/student_profile_alternative', {
+        window.axios.post('/student-profile-alternative', {
             student_id: payload.id,
             first_name: payload.first_name,
             last_name: payload.last_name
         })
             .then(payload => {
-                var getters = context.getters
-                context.commit('GET_STUDENT_PROFILE_NO_EMAIL', {payload, getters, response})
-                context.commit('GET_STUDENT_BIO', payload)
+                context.commit('GET_STUDENT_PROFILE_NO_EMAIL', payload)
             })
             .catch(error => {
                 context.commit('API_STUDENT_FAILURE', error)
@@ -38,7 +32,7 @@ export default {
         data.append('student_id', context.state.studentProfile.id);
         data.append('notepad', context.state.studentProfile.notes);
 
-        window.axios.post('update_note', data)
+        window.axios.post('update-note', data)
             .catch(error => {
                 context.commit("API_FAILURE", error)
             });
@@ -46,7 +40,7 @@ export default {
 
     updateImagePriority (context, payload) {
         const data = new FormData();
-        data.append('student_id', payload.studentId);
+        data.append('student_id', payload.student_id);
         data.append('image_priority', payload.image_priority);
         data.append('term', payload.term);
         data.append('faculty_id', payload.faculty_id);
@@ -77,16 +71,8 @@ export default {
     },
 
     //back button
-    getStudent (context, payload) {
-        context.commit("GET_STUDENT", payload)
-    },
-
-    storeStudent (context, payload) {
-        context.commit('STORE_STUDENT', payload)
-    },
-
-    clearStudent (context) {
-        context.commit('CLEAR_STUDENT')
+    setStudent (context, payload) {
+        context.commit("SET_STUDENT", payload)
     },
 
     //cropping functionality

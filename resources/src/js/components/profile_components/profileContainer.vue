@@ -5,7 +5,7 @@
                 <carousel v-if="studentProfile.imagePriority === 'likeness'" :perPage="1" :paginationActiveColor="'#919191'" :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['likeness']" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -13,7 +13,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
@@ -24,7 +24,7 @@
                 <carousel v-else :perPage="1" :paginationActiveColor="'#919191'"   :paginationColor="'rgba(145,145,145,.3)'">
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="avatarImage" :editable="false" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Student Uploaded</i>
                         </div>
@@ -32,7 +32,7 @@
                     </slide>
                     <slide class="slide-wrap">
                     <div>
-                        <profile-picture :student="studentProfile.student" :image="likenessImage" :editable="this.emailExists" :type="'profile'"></profile-picture>
+                        <profile-picture :image="this.studentProfile.images['likeness']" :editable="this.emailExists" :type="'profile'"></profile-picture>
                         <div class="type--center profile__uploaded-text">
                             <i>Faculty Uploaded</i>
                         </div>
@@ -51,7 +51,7 @@
 
             <div class="profile__divider">
                 <div class="profile__name-container">
-                    <h1 id="profile__name" class="type--center profile__name"></h1>
+                    <h1 id="profile__name" class="type--center profile__name">{{ this.studentProfile.displayName }}</h1>
                 </div>
             </div>
     </div>
@@ -63,7 +63,6 @@ import { mapGetters, mapActions} from 'vuex';
 
 export default {
     name: "profile-container",
-    props: ['student'],
     data: function() {
         return{
             imageUrl: document.querySelector('meta[name=img-url]').content,
@@ -77,44 +76,18 @@ export default {
     computed: {
         ...mapGetters(["studentProfile", "permission"]),
         emailExists() {
-            return this.student.email.split('@')[1] != 'NOTREALEMAIL.net';
+            return this.studentProfile.email.split('@')[1] != 'NOTREALEMAIL.net';
             return this.goToPage(0)
-        },
-
-        likenessImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`likeness`  +'?secret='+ this.secret;
-            }
-        },
-    
-        avatarImage() {
-            if(this.studentProfile){
-                return this.imageUrl + `${this.student.email_uri}`+ '/' +`avatar` +'?secret='+ this.secret;
-            }
-        }
-    },
-
-    mounted() {
-        let name = this.student.first_name + " " + this.student.last_name;
-        let nameSplit = name.split(" ");
-        let final_name = "";
-        if (document.getElementById('profile__name') != null) {
-            for (let i= 0; i < nameSplit.length; i++) {
-                final_name = final_name + nameSplit[i] + '<br>' ;
-            }
-
-            document.getElementById('profile__name').innerHTML = final_name;
         }
     },
 
 	methods: {
-		...mapActions(['toggleModal', 'dataForModal','nullifyPermissionResponse','toggleCropping']),
+		...mapActions(['toggleModal', 'nullifyPermissionResponse','toggleCropping']),
 
 		showModal() {
 			if(this.permission === true)
 			{
 				this.toggleModal(true);
-				this.dataForModal(this.student);
 			} else {
 				this.nullifyPermissionResponse();
 			}

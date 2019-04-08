@@ -3,15 +3,15 @@
         <div v-if="this.flash" class="row container panel__listing">
             <flash-card
                 v-for="student in this.flashroster[this.courseid]"
-                :key="student.student_id"
+                :key="student.student_id+':'+student.image_priority"
                 :student="student"
                 @markRecognized="markStudentAsRecognized"
             ></flash-card>
         </div>
         <div v-else class="row container panel__listing gallery__layout">
             <gallery-card
-                v-for="student in this.courses[this.courseid].roster"
-                :key="student.student_id"
+                v-for="student in this.students[this.courseid]"
+                :key="student.student_id+':'+student.image_priority"
                 :student="student"
             ></gallery-card>
             <modal></modal>
@@ -49,6 +49,7 @@ export default {
   computed: {
     ...mapGetters([
       'courses',
+      'students',
       'flashroster',
       'flash',
       'modalVisible'

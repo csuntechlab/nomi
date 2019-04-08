@@ -10,7 +10,7 @@ use Carbon\Carbon;
 
 class TermModelRepository implements TermModelRepositoryInterface
 {
-    public function find(): array
+    public function find()
     {
         $terms = Term::nowAndNextTerm(1)->get();
         $currentTerm = $terms->first();
@@ -22,15 +22,25 @@ class TermModelRepository implements TermModelRepositoryInterface
 
         // is next term 3 weeks away
         if ($diff >= 0 && $diff <= 21) {
-            return $nextTerm->toArray();
+            return $nextTerm;
         }
 
-        return $currentTerm->toArray();
+        return $currentTerm;
     }
 
     public function all(): array
     {
         return Term::all()
         ->toArray();
+    }
+
+    public function getPreviousTerm()
+    {
+        return Term::previousTerm(Carbon::now())->get();
+    }
+
+    public function getNowAndNextTerm()
+    {
+        return Term::nowAndNextTerm(1)->get();
     }
 }

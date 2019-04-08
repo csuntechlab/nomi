@@ -34,7 +34,6 @@ export default {
   facultyMember: {
     email: null,
     emailURI: null,
-    profile: null,
     firstName: null,
     lastName: null,
     image: null,

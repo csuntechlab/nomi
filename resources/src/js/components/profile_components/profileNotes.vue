@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<form autocomplete="off">
-			<textarea data-interactable :placeholder="'Write about ' + this.student.firstName + '.'" class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.student.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
+			<textarea data-interactable :placeholder="'Write about ' + this.studentProfile.displayName + '.'" class="notes_text" maxlength="600" type="text" id="ex0" name="ex0" :value="this.studentProfile.notes" @input="updateNotes" @keyup.enter="updateNotes" @click="scrollToNotes"></textarea>
 		</form>
 		<div class="row">
 			<div class="col-xs-2">
-				<span v-if="this.student.notes == null" id="charCount" class="notes__status">0/600</span>
+				<span v-if="this.studentProfile.notes == null" id="charCount" class="notes__status">0/600</span>
 				<span v-else id="charCount" class="notes__status">{{characterCount}}/600</span>
 			</div>
 			<div class="col-xs-10 type--right">
@@ -18,12 +18,10 @@
 </template>
 <script>
 	import modal from '../fixed_components/modal.vue';
+	import {mapGetters} from 'vuex';
 
 	export default {
 	  name: 'profile-notes',
-
-	  props: ['student'],
-
 	  data() {
     return {
       unsavedChanges: false,
@@ -67,9 +65,10 @@
 	    },
 	  },
 	  computed: {
+	  	...mapGetters(['studentProfile']),
 	    characterCount() {
-	      if (this.student.notes != null) {
-	        return this.student.notes.length;
+	      if (this.studentProfile.notes != null) {
+	        return this.studentProfile.notes.length;
 	      }
 	    },
 	  },

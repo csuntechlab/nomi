@@ -33,12 +33,12 @@ class CacheService implements CacheContract
      */
     public function cacheCourses($id, $term, $minutes)
     {
-        if ($this->cache->has('courses:' . $id . 'term:' . $term)) {
-            $courses = $this->cache->get('courses:' . $id . 'term:' . $term);
-        } else {
+//        if ($this->cache->has('courses:' . $id . 'term:' . $term)) {
+//            $courses = $this->cache->get('courses:' . $id . 'term:' . $term);
+//        } else {
             $courses = $this->webResourceRetrieverUtility->getCourses($term);
-            $this->cache->put('courses:' . $id . 'term:' . $term, $courses, $minutes);
-        }
+//            $this->cache->put('courses:' . $id . 'term:' . $term, $courses, $minutes);
+//        }
 
         return  $courses;
     }

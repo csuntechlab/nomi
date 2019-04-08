@@ -5,7 +5,7 @@
                 <div class="text-bold">
                     {{course.subject}} {{course.catalog_number}}
                 </div>
-                <div class="text-bold text-size--large">
+                <div v-if="course.meetings.length > 0" class="text-bold text-size--large">
                     {{ convertDays(course.meetings[0].days) }} {{ classStartTime(course.meetings[0].start_time) }}
                 </div>
             </router-link>
