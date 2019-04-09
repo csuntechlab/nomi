@@ -35652,8 +35652,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     },
     displayFormattedTermName: function displayFormattedTermName(termName) {
-      var termSeason = termName.split(" ")[0];
-      var termYear = termName.split(" ")[1];
+      var termNameArray = termName.split(" ");
+      var termSeason = termNameArray[0];
+      var termYear = termNameArray[1];
       var formattedTermYear = ' \'' + termYear.slice(2);
 
       return termSeason + formattedTermYear;

@@ -97,8 +97,9 @@ import courseList from './courseList';
         },
 
         displayFormattedTermName(termName) {
-          let termSeason = termName.split(" ")[0];
-          let termYear = termName.split(" ")[1];
+          let termNameArray = termName.split(" ");
+          let termSeason = termNameArray[0];
+          let termYear = termNameArray[1];
           let formattedTermYear = ' \'' + termYear.slice(2);
 
           return termSeason + formattedTermYear;
