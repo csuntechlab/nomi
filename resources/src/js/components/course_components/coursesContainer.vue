@@ -98,9 +98,10 @@ import courseList from './courseList';
 
         displayFormattedTermName(termName) {
           let termSeason = termName.split(" ")[0];
-          let formattedTermSeason = termSeason.charAt(0).toUpperCase() + termSeason.slice(1);
-          let formattedTermYear = ' \'' + termName.split(" ")[1].slice(2);
-          return formattedTermSeason + formattedTermYear;
+          let termYear = termName.split(" ")[1];
+          let formattedTermYear = ' \'' + termYear.slice(2);
+
+          return termSeason + formattedTermYear;
         }
       },
     };
