@@ -35,15 +35,15 @@ export default {
   },
 
   UPDATE_STUDENT_PRIORITY(state, payload) {
-    Object.entries(state.students[state.currentCourse]).forEach(([key,value]) => {
-      if (payload.student_id === value.id) {
-        value.image_priority = payload.image_priority;
+    state.students[state.currentCourse] = lodash.forEach(state.students[state.currentCourse], (student) => {
+      if (student.student_id === payload.student_id) {
+        student.image_priority = payload.image_priority;
       }
     });
 
-    Object.entries(state.flashroster[state.currentCourse]).forEach(([key,value]) => {
-      if (payload.student_id === value.id) {
-        value.image_priority = payload.image_priority;
+    state.flashroster[state.currentCourse] = lodash.forEach(state.flashroster[state.currentCourse], (student) => {
+      if (student.student_id === payload.student_id) {
+        student.image_priority = payload.image_priority;
       }
     });
   },
