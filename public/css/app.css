@@ -1965,7 +1965,8 @@ textarea[type="text"]:focus {
 }
 
 .course__button {
-  width: 5.5rem;
+  width: 6rem;
+  padding: 5px 0;
 }
 
 .theme-matadorTheme .course__button {

@@ -35609,6 +35609,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     courseList: __WEBPACK_IMPORTED_MODULE_1__courseList___default.a
   },
+
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['list', 'courses', 'facultyMember', 'facultyFullName', 'term', 'selectedTerm', 'loadingClasses']), {
     shouldLoadClasses: function shouldLoadClasses() {
       if (this.loadingClasses) return true;
@@ -35649,6 +35650,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       if (this.selectedTerm != 'next') {
         this.setNextTerm();
       }
+    },
+    displayFormattedTermName: function displayFormattedTermName(termName) {
+      var termNameArray = termName.split(" ");
+      var termSeason = termNameArray[0];
+      var termYear = termNameArray[1];
+      var formattedTermYear = ' \'' + termYear.slice(2);
+
+      return termSeason + formattedTermYear;
     }
   })
 });
@@ -36166,7 +36175,13 @@ var render = function() {
               attrs: { "data-interactable": "" },
               on: { click: _vm.setPreviousTerm }
             },
-            [_vm._v("Previous")]
+            [
+              _vm._v(
+                _vm._s(
+                  _vm.displayFormattedTermName(this.term.previous.display_term)
+                )
+              )
+            ]
           )
         ]),
         _vm._v(" "),
@@ -36184,7 +36199,13 @@ var render = function() {
               attrs: { "data-interactable": "" },
               on: { click: _vm.setCurrentTerm }
             },
-            [_vm._v("Current")]
+            [
+              _vm._v(
+                _vm._s(
+                  _vm.displayFormattedTermName(this.term.current.display_term)
+                )
+              )
+            ]
           )
         ]),
         _vm._v(" "),
@@ -36200,7 +36221,13 @@ var render = function() {
               attrs: { "data-interactable": "" },
               on: { click: _vm.setNextTerm }
             },
-            [_vm._v("Next")]
+            [
+              _vm._v(
+                _vm._s(
+                  _vm.displayFormattedTermName(this.term.next.display_term)
+                )
+              )
+            ]
           )
         ])
       ]),
@@ -43039,23 +43066,15 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
     state.facultyMember.lastName = profile.last_name;
   },
   UPDATE_STUDENT_PRIORITY: function UPDATE_STUDENT_PRIORITY(state, payload) {
-    Object.entries(state.students[state.currentCourse]).forEach(function (_ref) {
-      var _ref2 = _slicedToArray(_ref, 2),
-          key = _ref2[0],
-          value = _ref2[1];
-
-      if (payload.student_id === value.id) {
-        value.image_priority = payload.image_priority;
+    state.students[state.currentCourse] = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(state.students[state.currentCourse], function (student) {
+      if (student.student_id === payload.student_id) {
+        student.image_priority = payload.image_priority;
       }
     });
 
-    Object.entries(state.flashroster[state.currentCourse]).forEach(function (_ref3) {
-      var _ref4 = _slicedToArray(_ref3, 2),
-          key = _ref4[0],
-          value = _ref4[1];
-
-      if (payload.student_id === value.id) {
-        value.image_priority = payload.image_priority;
+    state.flashroster[state.currentCourse] = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.forEach(state.flashroster[state.currentCourse], function (student) {
+      if (student.student_id === payload.student_id) {
+        student.image_priority = payload.image_priority;
       }
     });
   },
@@ -43102,10 +43121,10 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
       var unKnownStudents = [];
       var knownStudents = [];
 
-      Object.entries(state.flashroster[state.currentCourse]).forEach(function (_ref5) {
-        var _ref6 = _slicedToArray(_ref5, 2),
-            key = _ref6[0],
-            value = _ref6[1];
+      Object.entries(state.flashroster[state.currentCourse]).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            key = _ref2[0],
+            value = _ref2[1];
 
         if (value.recognized === true) {
           knownStudents.push(value);
