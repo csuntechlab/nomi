@@ -5,13 +5,13 @@
                 <h1 class="course__descriptor">Selected Term</h1>
             </div>
             <div class="col-xs-4 type--right">
-                <button data-interactable @click="setPreviousTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '']">Previous</button>
+                <button data-interactable @click="setPreviousTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'previous' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '']">{{ displayFormattedTermName(this.term.previous.display_term) }}</button>
             </div>
             <div class="col-xs-4 type--center">
-                <button data-interactable @click="setCurrentTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '' ]">Current</button>
+                <button data-interactable @click="setCurrentTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'current' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '' ]">{{ displayFormattedTermName(this.term.current.display_term) }}</button>
             </div>
             <div class="col-xs-4 type--left">
-                <button data-interactable @click="setNextTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '' ]">Next</button>
+                <button data-interactable @click="setNextTerm" class="btn btn-sm course__button" v-bind:class="[ this.selectedTerm == 'next' ? 'course__button--selected' : '', this.shouldLoadClasses ? 'no-click': '' ]">{{ displayFormattedTermName(this.term.next.display_term) }}</button>
             </div>
         </div>
         <div v-if="this.shouldLoadClasses" class="type--center">
@@ -35,6 +35,7 @@ import courseList from './courseList';
       components: {
         courseList,
       },
+
       computed: {
         ...mapGetters([
           'list',
@@ -94,6 +95,15 @@ import courseList from './courseList';
             this.setNextTerm();
           }
         },
+
+        displayFormattedTermName(termName) {
+          let termNameArray = termName.split(" ");
+          let termSeason = termNameArray[0];
+          let termYear = termNameArray[1];
+          let formattedTermYear = ' \'' + termYear.slice(2);
+
+          return termSeason + formattedTermYear;
+        }
       },
     };
 </script>
