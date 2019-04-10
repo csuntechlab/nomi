@@ -129,13 +129,13 @@ textarea[type="text"]:focus{
 		position: absolute;
 		pointer-events: auto;
 		bottom: 0;
-		right: 0;
+		right: 2%;
 		margin: 2.5%;
 		padding: 5%;
 		cursor: pointer;
 		border-radius: 100%;
-    	font-size: 120%;
-    	-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+		font-size: 150%;
+		-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 		box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 
 		@include themify($themes) {
@@ -143,12 +143,23 @@ textarea[type="text"]:focus{
 			color: themed("galleryBtnText");
 		}
 		
-		@media only screen and (max-width: 560px){
-			bottom: 15%;
+		@media only screen and (max-width: 620px){
+			right: 5%;
 		}
 
-		@media only screen and (max-width: 325px){
-			bottom: 30%;
+		@media only screen and (max-width: 480px){
+			bottom: 5%;
+			right: 5%;
+		}
+
+		@media only screen and (max-width: 432px){
+			bottom: 10%;
+			right: 5%;
+		}
+
+		@media only screen and (max-width: 336px){
+			bottom: 24%;
+			right: 3%;
 		}
 
 		&:hover {

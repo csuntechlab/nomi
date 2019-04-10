@@ -928,12 +928,12 @@ textarea[type="text"]:focus {
   position: absolute;
   pointer-events: auto;
   bottom: 0;
-  right: 0;
+  right: 2%;
   margin: 2.5%;
   padding: 5%;
   cursor: pointer;
   border-radius: 100%;
-  font-size: 120%;
+  font-size: 150%;
   -webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
@@ -968,15 +968,30 @@ textarea[type="text"]:focus {
   color: #dfe5ec;
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 620px) {
   .panel__edit-button--profile {
-    bottom: 15%;
+    right: 5%;
   }
 }
 
-@media only screen and (max-width: 325px) {
+@media only screen and (max-width: 480px) {
   .panel__edit-button--profile {
-    bottom: 30%;
+    bottom: 5%;
+    right: 5%;
+  }
+}
+
+@media only screen and (max-width: 432px) {
+  .panel__edit-button--profile {
+    bottom: 10%;
+    right: 5%;
+  }
+}
+
+@media only screen and (max-width: 336px) {
+  .panel__edit-button--profile {
+    bottom: 24%;
+    right: 3%;
   }
 }
 
