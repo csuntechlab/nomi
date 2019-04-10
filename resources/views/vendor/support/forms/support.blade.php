@@ -61,8 +61,8 @@
             </div>
           </div>
           <p>Hello, Professor {{ $submitter_name }}.</p>
-          <p class="m-0">Your feedback and input helps us improve our application.</p>
-          <p class="m-0">Please provide your comments below.</p>
+          <p>Your feedback and input helps us improve our application.</p>
+          <p>Please provide your comments below.</p>
         </div>
       </div>
       <div class="justify-content-md-center">
