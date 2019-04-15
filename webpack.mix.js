@@ -1,6 +1,11 @@
 let mix = require('laravel-mix');
 
-mix.options({ processCssUrls: false })
+mix.options({
+	processCssUrls: false,
+	uglify: {
+		parallel: true
+	}
+})
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
