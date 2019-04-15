@@ -12,7 +12,7 @@
 
   <style type="text/css">
       .sub-container{
-        display: inline-block;
+        display: block;
         padding: 3%;
       }
       .submit_button {
@@ -22,8 +22,7 @@
         color: #fff;
       }
       .nomi-logo {
-        float: right;
-        height: 25%;
+        height: 75%;
       }
       .back-button {
         position: relative;
@@ -36,34 +35,37 @@
         border-color: black;
       }
       .header-bar {
-        position: fixed;
 		    height: 3rem;
 		    width: 100%;
         top: 0;
         background-color: #d00d2d;
         z-index:101;
+        display: block;
       }
+
     </style>
   </head>
   <body>
   <div class="header-bar">
       <img class="back-button" src="{{ asset('/images/chevron-left.svg') }}" onclick="window.history.back()" alt="Back Button">
-    </div>
+  </div>
     <div class="container sub-container">
-      <div class="row justify-content-md-center">
+      <div class="justify-content-md-center">
         <div class="col-sm-8">
-          <br>
-          <br>
-        <img class="nomi-logo" src="{{ asset('/images/apple-touch-icon.png') }}" alt="NOMI Logo; Names of Matador Individuals">
-          <br>
-          <br>
-          <br>
-          <h1>Feedback Form</h1>
-          <br>
-          <p>Hello, {{ substr($submitter_email, 0, strpos($submitter_email, '.')) }}</p>
+          <div class="row">
+            <div class="col-6">
+              <h2 class="m-0">Feedback Form</h2>
+            </div>
+            <div class="col-6">
+              <img class="nomi-logo" src="{{ asset('/images/apple-touch-icon.png') }}" alt="NOMI Logo; Names of Matador Individuals"> 
+            </div>
+          </div>
+          <p>Hello, Professor {{ $submitter_name }}.</p>
+          <p>Your feedback and input helps us improve our application.</p>
+          <p>Please provide your comments below.</p>
         </div>
       </div>
-      <div class="row justify-content-md-center">
+      <div class="justify-content-md-center">
       <div class="form-group col-sm-8">
               <label for="impact"><span class="required">*</span> Impact</label>
               <select name="impact" id="impact" class="form-control">
@@ -111,7 +113,7 @@
         </div>
       @endif
 
-      <div class="row justify-content-md-center">
+      <div class="justify-content-md-center">
         <div class="col-sm-8">
           <form method="POST" action="{{ route('feedback.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
