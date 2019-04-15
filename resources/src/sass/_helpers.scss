@@ -89,19 +89,17 @@ textarea[type="text"]:focus{
 	}
 
 	&:hover {
-		animation: tilt 1250ms infinite;
+		animation: spin 2500ms infinite;
 		@include themify($themes) {
 			font-size: 145%;
 			border: 2px solid themed("galleryBtnText");
 		}
 	}
 
-	@keyframes tilt {
+	@keyframes spin {
 		0% { transform: rotate(0deg); }
-		25% { transform: rotate(-24deg); }
-		50% { transform: rotate(16deg); }
-		75% { transform: rotate(-8deg); }
-		100% { transform: rotate(0deg); }
+		50% { transform: rotate(180deg); }
+		100% { transform: rotate(360deg); }
 	}
 
 	&-sim {
@@ -134,8 +132,8 @@ textarea[type="text"]:focus{
 		padding: 5%;
 		cursor: pointer;
 		border-radius: 100%;
-    	font-size: 120%;
-    	-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
+		font-size: 120%;
+		-webkit-box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.07);
 		box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
 
 		@include themify($themes) {
@@ -154,6 +152,7 @@ textarea[type="text"]:focus{
 		&:hover {
 			@include themify($themes) {
 				font-size: 110%;
+				animation: spin 2500ms infinite;
 				border: 2px solid themed("galleryBtnText");
 			}
 		}
