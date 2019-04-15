@@ -20,7 +20,7 @@
             <i v-if="facultyMember.image == null" class="fas fa-2x fa-user-circle"></i>
             <div v-else>
                 <div class="height_fix">
-                    <img :src="facultyMember.image" class="bottom-nav__profile-pic img--circle faculty_image" name="photo">
+                    <img :src="facultyMember.image" class="bottom-nav__profile-pic img--circle faculty_image" name="photo" alt="image of faculty profile">
                 </div>
             </div>
             <div class="bottom-nav__text">Profile</div>

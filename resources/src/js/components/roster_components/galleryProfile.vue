@@ -1,7 +1,7 @@
 <template>
     <div>
 		<router-link :to="'/profile/'+this.$route.params.id+'/'+email" @click.native="setStudent()" tag="a">
-        <img :id="'photo-gallery--'+email" :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo">
+        <img :id="'photo-gallery--'+email" :src="image" class="img--circle" :class="[ this.type == 'profile' ? 'profile__img' : 'roster__img' ]" name="photo" alt="student's profile image">
         </router-link>          
 		<i v-if="this.editable" data-interactable class="fas fa-cog panel__edit-button pull-right" @click="showModal()"/>
     </div>
