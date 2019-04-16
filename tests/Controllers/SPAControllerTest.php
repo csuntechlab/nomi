@@ -45,7 +45,5 @@ class SPAControllerTest extends TestCase
         
         $user->shouldReceive('email')
             ->andReturn('ThisIsAnEmail');
-
-        $controller->getData();
     }
 }
