@@ -25,8 +25,6 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function processMembers_works()
     {
-        $this->markTestSkipped('Revisit at later time.');
-        // $this->markTestIncomplete();
         $this->imageCRUD
             ->shouldReceive('getPriority')
             ->once()
@@ -39,6 +37,7 @@ class RosterRetrievalServiceTest extends TestCase
         $paulBlart->members_id = 1;
         $paulBlart->first_name = 'Paul';
         $paulBlart->last_name = 'Blart';
+        $paulBlart->display_name = "{$paulBlart->first_name} {$paulBlart->last_name}";
         $paulBlart->email = 'cop@mall.com';
         $paulBlart->email_uri = 'cop';
         $paulBlart->image_priority = 'likeness';
@@ -48,6 +47,7 @@ class RosterRetrievalServiceTest extends TestCase
         $shrek->members_id = 2;
         $shrek->first_name = 'Shrek';
         $shrek->last_name = 'Nelson';
+        $shrek->display_name = "{$shrek->first_name} {$shrek->last_name}";
         $shrek->email = 'ogre@swamp.com';
         $shrek->email_uri = 'ogre';
         $shrek->image_priority = 'likeness';
@@ -57,6 +57,7 @@ class RosterRetrievalServiceTest extends TestCase
         $bigJim->members_id = 3;
         $bigJim->first_name = 'Big';
         $bigJim->last_name = 'Jim';
+        $bigJim->display_name = "{$bigJim->first_name} {$bigJim->last_name}";
         $bigJim->email = 'mountainman@parks.gov';
         $bigJim->email_uri = 'mountainman';
         $bigJim->image_priority = 'official';
@@ -66,6 +67,7 @@ class RosterRetrievalServiceTest extends TestCase
         $frank->members_id = 4;
         $frank->first_name = 'Frank';
         $frank->last_name = 'Tank';
+        $frank->display_name = "{$frank->first_name} {$frank->last_name}";
         $frank->email = 'mountainman@parks.gov';
         $frank->email_uri = 'mountainman';
         $frank->image_priority = null;
@@ -84,27 +86,42 @@ class RosterRetrievalServiceTest extends TestCase
                 'student_id' => 3,
                 'first_name' => 'Big',
                 'last_name' => 'Jim',
+                'display_name' => 'Big Jim',
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'official',
+                'images' => [
+                    'avatar' => env('MEDIA_URL').'student/media/mountainman/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                    'likeness' => env('MEDIA_URL').'student/media/mountainman/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+                ]
             ],
 
             [
                 'student_id' => 4,
                 'first_name' => 'Frank',
                 'last_name' => 'Tank',
+                'display_name' => 'Frank Tank',
                 'email' => 'mountainman@parks.gov',
                 'email_uri' => 'mountainman',
                 'image_priority' => 'likeness',
+                'images' => [
+                    'avatar' => env('MEDIA_URL').'student/media/mountainman/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                    'likeness' => env('MEDIA_URL').'student/media/mountainman/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+                ]
             ],
 
             [
                 'student_id' => 1,
                 'first_name' => 'Paul',
                 'last_name' => 'Blart',
+                'display_name' => 'Paul Blart',
                 'email' => 'cop@mall.com',
                 'email_uri' => 'cop',
                 'image_priority' => 'likeness',
+                'images' => [
+                    'avatar' => env('MEDIA_URL').'student/media/cop/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                    'likeness' => env('MEDIA_URL').'student/media/cop/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+                ]
             ],
         ];
 
@@ -114,13 +131,12 @@ class RosterRetrievalServiceTest extends TestCase
     /** @test */
     public function sanitizeStudent_works()
     {
-        $this->markTestSkipped('Revisit at later time.');
-        // $this->markTestIncomplete();
         $rosterService = new RosterRetrievalService($this->retriever, $this->imageCRUD);
         $student = new \stdClass();
         $student->members_id = 0;
         $student->first_name = 'John';
         $student->last_name = 'Connor';
+        $student->display_name = "{$student->first_name} {$student->last_name}";
         $student->email = 'john.connor.123@my.csun.edu';
         $student->email_uri = 'john.connor.123';
         $student->image_priority = 'avatar';
@@ -131,9 +147,14 @@ class RosterRetrievalServiceTest extends TestCase
                 'student_id' => $student->members_id,
                 'first_name' => $student->first_name,
                 'last_name' => $student->last_name,
+                'display_name' => "{$student->first_name} {$student->last_name}",
                 'email' => $student->email,
                 'email_uri' => $student->email_uri,
                 'image_priority' => $student->image_priority,
+                'images' => [
+                    'avatar' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                    'likeness' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
+                ]
             ]
         );
     }

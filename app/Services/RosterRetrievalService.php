@@ -88,8 +88,6 @@ class RosterRetrievalService implements RosterRetrievalContract
             $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
         }
 
-        //$images = $this->webResourceUtility->gatherImageCorrectly($student);
-
         return [
             'student_id' => $student->members_id,
             'first_name' => $student->first_name,

@@ -24,11 +24,9 @@ class AuthVerifierServiceTest extends TestCase
     /** @test */
     public function find_returns_true_with_good_creds()
     {
-        $this->markTestSkipped('Revisit at later time.');
-        $user = new User([
-            'user_id' => 'members:1',
-            'rank' => 'beast',
-        ]);
+        $user = new User();
+        $user->user_id = 'members:1';
+        $user->rank = 'beast';
 
         $this->be($user);
 
@@ -51,11 +49,9 @@ class AuthVerifierServiceTest extends TestCase
     /** @test */
     public function find_returns_false_with_bad_creds()
     {
-        $this->markTestSkipped('Revisit at later time.');
-        $user = new User([
-            'user_id' => 'members:1',
-            'rank' => 'beast',
-        ]);
+        $user = new User();
+        $user->user_id = 'members:1';
+        $user->rank = 'beast';
 
         $this->be($user);
 
@@ -80,10 +76,8 @@ class AuthVerifierServiceTest extends TestCase
     /** @test */
     public function find_returns_false_with_no_user_rank()
     {
-        $this->markTestSkipped('Revisit at later time.');
-        $user = new User([
-            'user_id' => 'members:1',
-        ]);
+        $user = new User();
+        $user->user_id = 'members:1';
 
         Auth::shouldReceive('attempt')
             ->andReturn(false);

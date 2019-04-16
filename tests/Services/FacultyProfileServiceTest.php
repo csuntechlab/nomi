@@ -24,14 +24,11 @@ class FacultyProfileServiceTest extends TestCase
     /** @test */
     public function getFacultyProfile_returns_image_id_firstname_and_lastname()
     {
-        $this->markTestSkipped('Revisit at later time.');
         $facultyService = new FacultyProfileService($this->retriever);
-
-        $user = new User([
-          'user_id' => 'members:1',
-          'first_name' => 'anakin',
-          'last_name' => 'skywalker',
-        ]);
+        $user = new User();
+        $user->user_id = 'members:1';
+        $user->first_name = 'anakin';
+        $user->last_name = 'skywalker';
 
         $this->be($user);
 

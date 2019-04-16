@@ -4,25 +4,23 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Contracts\CacheContract;
 use App\Contracts\RosterRetrievalContract;
 use App\Contracts\UserSettingsContract;
+use App\Contracts\WebResourceRetrieverContract;
 
 class SPAController extends Controller
 {
     public $userSettingsUtility;
-    public $cacheUtility;
-    public $minutes;
+    public $webResourceRetrieverUtility;
     protected $rosterRetrievalUtility;
 
     public function __construct(
         UserSettingsContract $userSettingsUtility,
-        CacheContract $cacheUtility,
+        WebResourceRetrieverContract $webResourceRetrieverUtility,
         RosterRetrievalContract $rosterRetrievalUtility
     ) {
         $this->userSettingsUtility = $userSettingsUtility;
-        $this->minutes = 27;
-        $this->cacheUtility = $cacheUtility;
+        $this->webResourceRetrieverUtility = $webResourceRetrieverUtility;
         $this->rosterRetrievalUtility = $rosterRetrievalUtility;
     }
 
@@ -31,15 +29,13 @@ class SPAController extends Controller
         if ($term == null) {
             $term = $this->userSettingsUtility->getCurrentTerm();
         }
-        $term['display_term'] = \str_replace('-', ' ', $term['term']);
-        return ['term' => $term];
+        return response()->json(['term' => $term]);
     }
 
     public function getCourses($term)
     {
-        $id = auth()->user() ? auth()->user()->getAuthIdentifier() : 'default';
-        $courses = $this->cacheUtility->cacheCourses($id, $term, $this->minutes);
-        return ['courses' => $courses];
+        $courses = $this->webResourceRetrieverUtility->getCourses($term);
+        return response()->json(['courses' => $courses]);
     }
 
     public function getRoster($term, $course)

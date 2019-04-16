@@ -70,7 +70,6 @@ class StudentProfileService implements StudentProfileContract
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'student_id' => $data['student_id'],
-            'members_id' => $data['student_id'],
             'notes' => $note == null ? '' : Crypt::decrypt($note->notepad),
             'image_priority' => $imagePriority,
             'bio' => null, // if no email, then no bio
