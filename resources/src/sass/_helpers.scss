@@ -162,7 +162,6 @@ textarea[type="text"]:focus{
 
 		&:hover {
 			@include themify($themes) {
-				font-size: 110%;
 				animation: spin 2500ms infinite;
 				border: 2px solid themed("galleryBtnText");
 			}
