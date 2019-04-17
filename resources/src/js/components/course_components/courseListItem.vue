@@ -51,6 +51,7 @@ computed: {
 
 methods: {
     storeSelectedCourse() {
+        this.$store.dispatch('clearRoster');
         this.$store.dispatch('getOnlyRoster', {course: this.course.id});
         this.$store.dispatch('storeLocation', 'class');
         this.$store.dispatch('storeCourse', this.course.id);

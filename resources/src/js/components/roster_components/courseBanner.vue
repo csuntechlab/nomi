@@ -40,7 +40,10 @@ methods: {
 	},
 
 	storeCourse(courseId) {
+	    this.$store.dispatch('clearRoster');
 		this.$store.dispatch('storeCourse', courseId);
+        this.$store.dispatch('getOnlyRoster', {course: courseId});
+        this.$store.dispatch('storeCourse', courseId);
 	},
 },
 
