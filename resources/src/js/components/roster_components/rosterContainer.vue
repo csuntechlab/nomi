@@ -37,9 +37,5 @@ import studentList from './studentList';
           'students'
         ]),
       },
-
-      created() {
-        this.$store.dispatch('nullifyStudentProfile');
-      },
     };
 </script>

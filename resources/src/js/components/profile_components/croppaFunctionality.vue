@@ -43,6 +43,9 @@ export default {
                 confirmImage() {
                 this.$root.$emit('confirmImage');
                 this.toggleModal(false);
+                if (this.$route.params.emailURI == null) {
+                    this.$store.dispatch('nullifyStudentProfile');
+                }
             },
         },
         
