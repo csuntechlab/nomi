@@ -33,6 +33,7 @@
 
 <script>
 import { convertCourseData } from './../../mixins/convertCourseData.js'
+import { mapGetters } from 'vuex'
 
 export default {
 name: 'course-list-item',
@@ -40,21 +41,24 @@ mixins: [convertCourseData],
 props: ['course'],
 
 computed: {
+    ...mapGetters([
+        'students'
+    ]),
     classStartTime() {
         return this.convertTime(this.course.meetings[0].start_time);
     },
-
     classEndTime() {
         return this.convertTime(this.course.meetings[0].end_time);
     },
 },
-
 methods: {
     storeSelectedCourse() {
-        this.$store.dispatch('clearRoster');
-        this.$store.dispatch('getOnlyRoster', {course: this.course.id});
-        this.$store.dispatch('storeLocation', 'class');
-        this.$store.dispatch('storeCourse', this.course.id);
+        if (this.students[this.course.id] == null) {
+            this.$store.dispatch('clearRoster');
+            this.$store.dispatch('getOnlyRoster', {course: this.course.id});
+            this.$store.dispatch('storeLocation', 'class');
+            this.$store.dispatch('storeCourse', this.course.id);
+        }
     },
 },
 
