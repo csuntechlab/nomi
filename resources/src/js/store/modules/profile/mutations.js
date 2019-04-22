@@ -57,10 +57,6 @@ export default {
         state.modalVisible = payload;
     },
 
-    DATA_FOR_MODAL (state, payload){
-        state.modalData = payload;
-    },
-
     //toggle cropping functionality
     TOGGLE_CROPPING (state, payload) {
         state.toggleCroppa = payload;
