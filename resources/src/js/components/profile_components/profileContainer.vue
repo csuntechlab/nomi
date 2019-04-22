@@ -63,12 +63,6 @@ import { mapGetters, mapActions} from 'vuex';
 
 export default {
     name: "profile-container",
-    data: function() {
-        return{
-            imageUrl: document.querySelector('meta[name=img-url]').content,
-            secret: document.querySelector('meta[name=secret]').content + '&source=true',
-        }
-    },
     components:{
         profilePicture
     },

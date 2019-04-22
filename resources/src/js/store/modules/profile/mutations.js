@@ -53,11 +53,11 @@ export default {
   },
 
     //Modal Specific
-    TOGGLE_MODAL: function(state, payload){
+    TOGGLE_MODAL (state, payload){
         state.modalVisible = payload;
     },
 
-    DATA_FOR_MODAL: function(state, payload){
+    DATA_FOR_MODAL (state, payload){
         state.modalData = payload;
     },
 
@@ -66,7 +66,7 @@ export default {
         state.toggleCroppa = payload;
     },
 
-    SET_STUDENT(state, payload) {
+    SET_STUDENT (state, payload) {
       state.studentProfile.id = payload.student_id;
       state.studentProfile.email = payload.email;
       state.studentProfile.emailURI = payload.email_uri;

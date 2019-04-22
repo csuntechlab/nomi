@@ -37,6 +37,7 @@
             ...mapGetters([
                 'studentProfile',
                 'facultyMember',
+                'term',
                 'toggleCroppa'
             ]),
         },
@@ -81,12 +82,10 @@
                     let photoSrc = (this.$route.name === "class") ? photoElement.getAttribute('src') : photoElement[0].getAttribute('src');
 
                     if (this.$route.name === "profile") {
-                        if (photoSrc.includes("likeness")) {
+                        if (photoSrc.includes("likeness") || photoSrc.includes("base64")) {
                             photoElement = photoElement[0];
-                            photoSrc = photoElement.getAttribute('src');
                         } else {
                             photoElement = photoElement[1];
-                            photoSrc = photoElement.getAttribute('src');
                         }
                     }
                     
@@ -101,9 +100,26 @@
                     }).then(response => {
                         if (response.status) {
                             this.$store.dispatch('startUploadFeedback');
+                            this.$store.dispatch('updatedImage', {student_id: this.studentProfile.id, image: url});
+                            this.$store.dispatch('imagePriority');
+                            photoElement.setAttribute('src', url);
+                            this.$store.dispatch(
+                                'updateStudentPriority',
+                                {
+                                    student_id: this.studentProfile.id,
+                                    image_priority: 'likeness',
+                                }
+                            );
+                            this.$store.dispatch(
+                                'updateImagePriority',
+                                {
+                                    student_id: this.studentProfile.id,
+                                    image_priority: 'likeness',
+                                    faculty_id: this.facultyMember.id.replace("members:", ""),
+                                    term: this.term,
+                                }
+                            );
                             this.$parent.$emit('close', url);
-                            this.url = ""; 
-                            photoElement.setAttribute('src', photoSrc + '&' + moment().format('DDhmmss'));
                         } else {
                             console.error('OH NO');
                         }
