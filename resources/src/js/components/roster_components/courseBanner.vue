@@ -24,6 +24,7 @@ computed: {
 	...mapGetters([
 		'courses',
 		'currentCourse',
+        'students'
 	]),
 },
 
@@ -40,10 +41,12 @@ methods: {
 	},
 
 	storeCourse(courseId) {
-	    this.$store.dispatch('clearRoster');
-		this.$store.dispatch('storeCourse', courseId);
-        this.$store.dispatch('getOnlyRoster', {course: courseId});
-        this.$store.dispatch('storeCourse', courseId);
+	    if (this.students[courseId] == null) {
+            this.$store.dispatch('clearRoster');
+            this.$store.dispatch('storeCourse', courseId);
+            this.$store.dispatch('getOnlyRoster', {course: courseId});
+            this.$store.dispatch('storeCourse', courseId);
+        }
 	},
 },
 

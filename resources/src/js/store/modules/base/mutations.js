@@ -224,5 +224,19 @@ export default {
   CLEAR_ROSTER(state) {
     state.students = null;
     state.flashroster = null;
+  },
+
+  UPDATED_IMAGE (state, payload)  {
+    state.students[state.currentCourse] = lodash.forEach(state.students[state.currentCourse], function (student) {
+      if (student.student_id === payload.student_id) {
+        student.images.likeness = payload.image;
+      }
+    });
+
+    state.flashroster[state.currentCourse] = lodash.forEach(state.flashroster[state.currentCourse], function (student) {
+      if (student.student_id === payload.student_id) {
+        student.images.likeness = payload.image;
+      }
+    });
   }
 };

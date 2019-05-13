@@ -66,10 +66,6 @@ export default {
         context.commit("TOGGLE_MODAL", payload)
     },
 
-    dataForModal (context, payload){
-        context.commit("DATA_FOR_MODAL", payload)
-    },
-
     //back button
     setStudent (context, payload) {
         context.commit("SET_STUDENT", payload)
