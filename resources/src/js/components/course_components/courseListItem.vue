@@ -53,7 +53,7 @@ computed: {
 },
 methods: {
     storeSelectedCourse() {
-        if (this.students[this.course.id] == null) {
+        if (this.students == null || this.students[this.course.id] == null) {
             this.$store.dispatch('clearRoster');
             this.$store.dispatch('getOnlyRoster', {course: this.course.id});
             this.$store.dispatch('storeLocation', 'class');
