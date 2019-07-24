@@ -38,7 +38,7 @@ body {
 		}
 
 		&__header {
-			padding-bottom: 1.5rem;
+			padding-bottom: 2.5rem;
 			font-weight: bold;
 		}
 	}
@@ -58,6 +58,11 @@ body {
 	
 		&__content {
 			padding: 0.5rem 1rem;
+			line-height: 1.7rem;
+		}
+		&__icon {
+			padding-right: .5rem;
+			padding-left: .5rem;
 		}
 	}
 }
@@ -145,4 +150,8 @@ textarea {
 			color: themed("buttonText");
 		}
 	}
+}
+
+.btn {
+	border-radius: 5px;
 }

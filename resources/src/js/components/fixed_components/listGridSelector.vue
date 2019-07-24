@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="mt-3">
         <label for="list-grid"></label>
         <div class="row fullscreen-width roster-sorting">
             <div v-if="this.list" class="roster-sorting-container">

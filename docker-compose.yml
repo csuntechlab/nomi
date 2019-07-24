@@ -8,4 +8,30 @@ services:
       - '8080:80'
     volumes:
       - .:/var/www/
-  
+    links:
+      - db
+
+  adminer:
+    container_name: nomi_adminer
+    image: adminer
+    restart: always
+    ports:
+      - '8081:8080'
+
+  db:
+    container_name: nomi_mysql
+    image: mysql:8.0.15
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password']
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: nomi
+      MYSQL_DATABASE: nomi
+      MYSQL_USER: nomi
+      MYSQL_PASSWORD: nomi
+
+volumes:
+  db_data:
