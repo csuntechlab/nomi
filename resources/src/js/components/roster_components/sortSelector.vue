@@ -1,7 +1,7 @@
 <template>
     <div v-if="!this.flash">
         <label for="name-sorting"></label>
-        <div class="row type--center roster-sorting">
+        <div class="row type--center roster-sorting mb-4">
             <span :class="[sortLastName ? 'roster-sorting__name' : 'roster-sorting__name--selected']" @click.prevent="$store.dispatch('sortFirstName')" data-interactable>First Name</span>
             <span :class="[sortLastName ? 'roster-sorting__name--selected' : 'roster-sorting__name']" @click.prevent="$store.dispatch('sortLastName')" data-interactable>Last Name</span>
             <span v-if="sortAscending" class="fas roster-sorting__sort" @click.prevent="sortDesc" data-interactable>

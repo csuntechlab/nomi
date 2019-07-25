@@ -1,7 +1,7 @@
 <template>
     <div>
             <div>
-                <ul v-if="showAbout" class="tabs cf type--center tab__link--kerning">
+                <ul v-if="showAbout" class="tabs cf type--center tab__link--kerning mt-4">
                     <li class="tab__list">
                         <a data-interactable class="tab__link--active" @click="selectAbout">About</a>
                     </li>
@@ -9,7 +9,7 @@
                         <a data-interactable class="tab__link tab__link--hover" @click="selectVersion">Version History</a>
                     </li>
                 </ul>
-                <ul v-if="showAbout === false" class="tabs cf type--center tab__link--kerning">
+                <ul v-if="showAbout === false" class="tabs cf type--center tab__link--kerning mt-4">
                     <li class="tab__list">
                         <a data-interactable class="tab__link tab__link--hover" @click="selectAbout">About</a>
                     </li>

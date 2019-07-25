@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="type--center tab__link tab__link--kerning">
+    <div class="type--center tab__link tab__link--kerning mt-3">
         Select Theme
     </div>
 <div class="panel">

@@ -48,7 +48,7 @@
 
 .roster {
 	&-list__item {
-		padding: .4rem 1rem;
+		padding: .6rem 1rem;
 		@include themify($themes) {
 			background-color: themed("panelColor");
 			border-bottom: 1px solid themed("backgroundColor")
@@ -110,6 +110,7 @@
 			width: 40px;
 			padding: 0.2rem;
 			margin-left: 4px;
+			border-radius: 3px;
 			cursor: pointer;
 			@include themify($themes) {
 				background-color: themed("panelColor") !important;
@@ -247,7 +248,7 @@
 	}
 
 	&-carousel__default-btn {
-		margin-top: rem(10);
+		margin-top: 0.66666667rem;
 	}
 
 	&-info-container {

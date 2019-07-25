@@ -6,7 +6,7 @@
           <div>
             <profile-picture v-show="!switchItUp" :image="this.studentProfile.images['likeness']" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp"></croppa-profile>
-              <div class="type--center">
+              <div class="type--center pt-3">
                 <i>Faculty Uploaded</i>
                 <image-handler :image_type="'likeness'" class="profile-carousel__default-btn"></image-handler>
               </div>
@@ -15,7 +15,7 @@
         <slide class="slide-wrap">
           <div>
               <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile-picture'"></profile-picture>
-              <div class="type--center">
+              <div class="type--center pt-3">
                 <i>Student Uploaded</i>
                 <image-handler :image_type="'avatar'" class="profile-carousel__default-btn"></image-handler>
               </div>
@@ -26,7 +26,7 @@
         <slide class="slide-wrap">
           <div>
               <profile-picture :image="this.studentProfile.images['avatar']" :editable="false" :type="'profile-picture'"></profile-picture>
-              <div class="type--center">
+              <div class="type--center pt-3">
                 <i>Student Uploaded</i>
                 <image-handler :image_type="'avatar'" class="profile-carousel__default-btn"></image-handler>
               </div>
@@ -36,7 +36,7 @@
           <div>
             <profile-picture v-show="!switchItUp" :image="this.studentProfile.images['likeness']" :editable="false" :type="'profile-picture'"></profile-picture>
               <croppa-profile v-show="switchItUp"></croppa-profile>
-              <div class="type--center">
+              <div class="type--center pt-3">
                 <i>Faculty Uploaded</i>
                 <image-handler :image_type="'likeness'" class="profile-carousel__default-btn"></image-handler>
               </div>

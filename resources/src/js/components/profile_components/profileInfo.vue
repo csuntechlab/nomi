@@ -3,7 +3,7 @@
         <div class="profile-info-container type--center">
             <div class="panel profile__info-panel">
                 <div class="col-sm-12">
-                    <div class="profile_email">
+                    <div class="profile_email mt-3">
                         <div v-if="this.showEmail">
                             <i class="fas fa-envelope" @click="showEmail = true"></i>
                             {{this.studentProfile.email}}
@@ -16,7 +16,7 @@
                         </span>
                         <span v-else></span>
                     </div>
-                    <profile-notes class="profile-notes-padding" @unsavedChanges="sendUnsavedChanges" @committedChanges="sendChanges"></profile-notes>
+                    <profile-notes class="profile-notes-padding pb-4" @unsavedChanges="sendUnsavedChanges" @committedChanges="sendChanges"></profile-notes>
                 </div>
             </div>
         </div>

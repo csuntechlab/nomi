@@ -6,7 +6,7 @@
                 <i class="fas fa-user-circle fa-3x icon__theme"></i>
             </div>
             <div v-else>
-                <div>
+                <div class="pb-4">
                     <img :src="facultyMember.image" class="img--circle side-menu__img" name="photo" alt="image of faculty profile">
                 </div>
                 <div class="side-menu__greeting" :href="facultyMember.profile" title="User Name">Hi, {{facultyMember.firstName}}</div>

@@ -8,7 +8,7 @@
 				<span v-if="this.studentProfile.notes == null" id="charCount" class="notes__status">0/600</span>
 				<span v-else id="charCount" class="notes__status">{{characterCount}}/600</span>
 			</div>
-			<div class="col-xs-10 type--right">
+			<div class="col-xs-10 type--right mt-2">
 				<span v-show="this.unsavedChanges" class="notes__status notes__status--italic">Unsaved Changes</span>
 				<span v-show="this.noteSaved" class="notes__status notes__status--italic">Changes Saved!</span>
 				<button data-interactable class="btn btn-sm btn-default" @click.prevent="commitNotes">Save</button>

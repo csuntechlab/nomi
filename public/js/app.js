@@ -20332,7 +20332,7 @@ var render = function() {
     ? _c("div", [
         _c("label", { attrs: { for: "name-sorting" } }),
         _vm._v(" "),
-        _c("div", { staticClass: "row type--center roster-sorting" }, [
+        _c("div", { staticClass: "row type--center roster-sorting mb-4" }, [
           _c(
             "span",
             {
@@ -21404,7 +21404,7 @@ var render = function() {
       staticClass: "img--circle",
       class: [
         this.type == "profile"
-          ? "profile__img profile__img--border"
+          ? "profile__img profile__img--border mb-2"
           : "roster__img"
       ],
       attrs: {
@@ -22739,7 +22739,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "type--center" },
+                        { staticClass: "type--center pt-3" },
                         [
                           _c("i", [_vm._v("Faculty Uploaded")]),
                           _vm._v(" "),
@@ -22769,7 +22769,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "type--center" },
+                        { staticClass: "type--center pt-3" },
                         [
                           _c("i", [_vm._v("Student Uploaded")]),
                           _vm._v(" "),
@@ -22812,7 +22812,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "type--center" },
+                        { staticClass: "type--center pt-3" },
                         [
                           _c("i", [_vm._v("Student Uploaded")]),
                           _vm._v(" "),
@@ -22861,7 +22861,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "type--center" },
+                        { staticClass: "type--center pt-3" },
                         [
                           _c("i", [_vm._v("Faculty Uploaded")]),
                           _vm._v(" "),
@@ -24310,7 +24310,7 @@ var render = function() {
             )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-xs-10 type--right" }, [
+      _c("div", { staticClass: "col-xs-10 type--right mt-2" }, [
         _c(
           "span",
           {
@@ -24386,7 +24386,7 @@ var render = function() {
           "div",
           { staticClass: "col-sm-12" },
           [
-            _c("div", { staticClass: "profile_email" }, [
+            _c("div", { staticClass: "profile_email mt-3" }, [
               this.showEmail
                 ? _c("div", [
                     _c("i", {
@@ -24424,7 +24424,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("profile-notes", {
-              staticClass: "profile-notes-padding",
+              staticClass: "profile-notes-padding pb-4",
               on: {
                 unsavedChanges: _vm.sendUnsavedChanges,
                 committedChanges: _vm.sendChanges
@@ -24801,7 +24801,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("h3", [_vm._v("Browser Support")]),
+      _c("h3", { staticClass: "mt-5" }, [_vm._v("Browser Support")]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
@@ -24817,7 +24817,7 @@ var staticRenderFns = [
         )
       ]),
       _vm._v(" "),
-      _c("h4", [_c("strong", [_vm._v("Android Users")])]),
+      _c("h4", { staticClass: "mt-5" }, [_vm._v("Android Users")]),
       _vm._v(" "),
       _c("p", [
         _vm._v("\n        Some functionality is not currently supported on "),
@@ -25007,59 +25007,67 @@ var render = function() {
   return _c("div", [
     _c("div", [
       _vm.showAbout
-        ? _c("ul", { staticClass: "tabs cf type--center tab__link--kerning" }, [
-            _c("li", { staticClass: "tab__list" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "tab__link--active",
-                  attrs: { "data-interactable": "" },
-                  on: { click: _vm.selectAbout }
-                },
-                [_vm._v("About")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "tab__list" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "tab__link tab__link--hover",
-                  attrs: { "data-interactable": "" },
-                  on: { click: _vm.selectVersion }
-                },
-                [_vm._v("Version History")]
-              )
-            ])
-          ])
+        ? _c(
+            "ul",
+            { staticClass: "tabs cf type--center tab__link--kerning mt-4" },
+            [
+              _c("li", { staticClass: "tab__list" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "tab__link--active",
+                    attrs: { "data-interactable": "" },
+                    on: { click: _vm.selectAbout }
+                  },
+                  [_vm._v("About")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "tab__list" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "tab__link tab__link--hover",
+                    attrs: { "data-interactable": "" },
+                    on: { click: _vm.selectVersion }
+                  },
+                  [_vm._v("Version History")]
+                )
+              ])
+            ]
+          )
         : _vm._e(),
       _vm._v(" "),
       _vm.showAbout === false
-        ? _c("ul", { staticClass: "tabs cf type--center tab__link--kerning" }, [
-            _c("li", { staticClass: "tab__list" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "tab__link tab__link--hover",
-                  attrs: { "data-interactable": "" },
-                  on: { click: _vm.selectAbout }
-                },
-                [_vm._v("About")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "tab__list" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "tab__link--active",
-                  attrs: { "data-interactable": "" },
-                  on: { click: _vm.selectVersion }
-                },
-                [_vm._v("Version History")]
-              )
-            ])
-          ])
+        ? _c(
+            "ul",
+            { staticClass: "tabs cf type--center tab__link--kerning mt-4" },
+            [
+              _c("li", { staticClass: "tab__list" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "tab__link tab__link--hover",
+                    attrs: { "data-interactable": "" },
+                    on: { click: _vm.selectAbout }
+                  },
+                  [_vm._v("About")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", { staticClass: "tab__list" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "tab__link--active",
+                    attrs: { "data-interactable": "" },
+                    on: { click: _vm.selectVersion }
+                  },
+                  [_vm._v("Version History")]
+                )
+              ])
+            ]
+          )
         : _vm._e()
     ]),
     _vm._v(" "),
@@ -25328,9 +25336,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "type--center tab__link tab__link--kerning" }, [
-      _vm._v("\n        Select Theme\n    ")
-    ]),
+    _c(
+      "div",
+      { staticClass: "type--center tab__link tab__link--kerning mt-3" },
+      [_vm._v("\n        Select Theme\n    ")]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "panel" }, [
       _c("div", { staticClass: "theme" }, [
@@ -44935,7 +44945,7 @@ var render = function() {
               _c("i", { staticClass: "fas fa-user-circle fa-3x icon__theme" })
             ])
           : _c("div", [
-              _c("div", [
+              _c("div", { staticClass: "pb-4" }, [
                 _c("img", {
                   staticClass: "img--circle side-menu__img",
                   attrs: {

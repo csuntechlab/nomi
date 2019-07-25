@@ -586,8 +586,8 @@ textarea {
   color: whitesmoke;
 }
 
-.btn {
-  border-radius: 5px;
+.container-full {
+  margin-bottom: 5rem;
 }
 
 .theme-matadorTheme :focus {
@@ -1267,7 +1267,7 @@ textarea[type="text"]:focus {
   top: 2.4rem;
 }
 
-/*Imported Bootstrap helpers*/
+/*Imported Bootstrap 4.3.1 utility classes*/
 .m-0 {
   margin: 0 !important;
 }
@@ -4680,7 +4680,7 @@ textarea[type="text"]:focus {
 }
 
 .roster-list__item {
-  padding: .4rem 1rem;
+  padding: .6rem 1rem;
 }
 
 .theme-matadorTheme .roster-list__item {
@@ -4873,6 +4873,7 @@ textarea[type="text"]:focus {
   width: 40px;
   padding: 0.2rem;
   margin-left: 4px;
+  border-radius: 3px;
   cursor: pointer;
 }
 
