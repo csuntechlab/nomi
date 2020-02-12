@@ -1,8 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=767f0d16c867945bd156",
-    "/css/app.css": "/css/app.css?id=f5a87f4046971ab787bd",
-    "/js/metaphor.js": "/js/metaphor.js?id=5781c57c8a49460b8e39",
-    "/css/metaphor.css": "/css/metaphor.css?id=c63b69ac0d2793c111dc",
-    "/css/vue-croppa.min.css": "/css/vue-croppa.min.css?id=cb019d79c5e380324308",
-    "/js/vue-croppa.min.js": "/js/vue-croppa.min.js?id=a7112a93edf61efa1c2c"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/metaphor.js": "/js/metaphor.js",
+    "/css/metaphor.css": "/css/metaphor.css",
+    "/css/vue-croppa.min.css": "/css/vue-croppa.min.css",
+    "/js/vue-croppa.min.js": "/js/vue-croppa.min.js"
 }
