@@ -78,16 +78,12 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
-        return $client->get(
-            env('PROD_DIRECTORY_URL') . 'members?email=' . $email,
-            ['verify' => false]
-        )->getBody()->getContents();
+        $url = env('APP_ENV') == "prod" ? env('PROD_DIRECTORY_URL') : env('DIRECTORY_URL');
 
-        // HAVE TO REVERT TO SANDBOX API in future...
-        // return $client->get(
-        //     env('DIRECTORY_URL') . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
-        //     ['verify' => false]
-        // )->getBody()->getContents();
+        return $client->get(
+            $url . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
+            [verify => false]
+        )->getBody()->getContents();
     }
 
     public function gatherImageCorrectly($student)
