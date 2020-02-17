@@ -82,7 +82,7 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
 
         return $client->get(
             $url . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
-            [verify => false]
+            ['verify' => false]
         )->getBody()->getContents();
     }
 
