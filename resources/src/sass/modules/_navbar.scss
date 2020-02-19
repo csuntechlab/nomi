@@ -88,6 +88,10 @@
 		background: themed("navigationBars");
 	}
 
+	&-max-height {
+		max-height: 12.5vh;
+	}
+
 	&__button {
 		color: rgb(245, 245, 245);
 		padding: 1.15rem 0 .5rem;
