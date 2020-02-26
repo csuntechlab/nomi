@@ -77,3 +77,8 @@ Route::group(['prefix' => 'api'], function () {
 //     Route::get('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@create')->name('feedback.create');
 //     Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store');
 //   });
+
+/**
+ * Canvas APIs
+ */
+Route::get('/canvas/user/{user_id}/courses', 'CanvasController@getCanvasCourses');

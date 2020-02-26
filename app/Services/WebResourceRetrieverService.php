@@ -110,4 +110,14 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
             'avatar' => $avatar_image,
         ];
     }
+
+    public function getCoursesFromCanvas($course_term, $user_id) {
+        $client = new Client();
+
+        $courses_json = \json_decode(
+            $client->get( 
+                env('CANVAS_COURSES_USER_URL') . $user_id . '/courses?enrollment_state=active&enrollment_type=teacher'
+                )
+            );
+    }
 }
