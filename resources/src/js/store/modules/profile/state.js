@@ -1,6 +1,7 @@
 export default {
     studentProfile: {
         id: null,
+        student_id: null,
         email: null,
         emailURI: null,
         displayName: null,

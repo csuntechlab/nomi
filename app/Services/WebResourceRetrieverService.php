@@ -78,8 +78,10 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
+        $url = env('APP_ENV') == "production" ? env('PROD_DIRECTORY_URL') : env('DIRECTORY_URL');
+
         return $client->get(
-            env('DIRECTORY_URL') . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
+            $url . $email . '?secret=' . urlencode(env('DIRECTORY_SECRET_KEY')),
             ['verify' => false]
         )->getBody()->getContents();
     }

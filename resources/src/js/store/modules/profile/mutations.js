@@ -11,6 +11,7 @@ export default {
   GET_STUDENT_PROFILE(state, payload) {
     state.studentProfile.bio = payload.data.bio;
     state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.student_id = payload.data.student_id;
   },
 
   GET_STUDENT_PROFILE_NO_EMAIL(state, payload) {
