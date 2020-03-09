@@ -34,13 +34,29 @@ class RosterRetrievalService implements RosterRetrievalContract
     public function getStudentsFromRoster($term, $course)
     {
         // Grabs the roster information without the instructor
-        $roster = $this->webResourceUtility->getRoster($term, $course)->getBody()->getContents();
-        $roster = \json_decode($roster);
-        $students = $this->processMembers($roster->members);
-        return [$roster->class_number => $students];
+        $roster = $this->webResourceUtility->getRoster($term, $course);
+        $rosterServiceResponse = $roster[0]["value"]->getBody()->getContents();
+        $rosterServiceResponse = \json_decode($rosterServiceResponse);
+
+        $rosterCanvasResponse = $roster[1]["value"]->getBody()->getContents();
+        $rosterCanvasResponse = \json_decode($rosterCanvasResponse);
+        $canvasPictures = $this->processCanvasResponse($rosterCanvasResponse);
+
+        $students = $this->processMembers($rosterServiceResponse->members, $canvasPictures);
+        return [$rosterServiceResponse->class_number => $students];
     }
 
-    public function processMembers($members)
+    public function processCanvasResponse($rosterCanvasResponse)
+    {
+        $canvasAssocArray = [];
+        foreach($rosterCanvasResponse as $canvasItem) {
+            // $canvasAssocArray[$canvasItem->id] = $canvasItem->avatar_url;
+            $canvasAssocArray[$canvasItem->email] = $canvasItem->avatar_url;
+        }
+        return $canvasAssocArray;
+    }
+
+    public function processMembers($members, $canvasPictures)
     {
         $imageManager = new ImageManager(['driver' => 'imagick']);
         $unsanitizedStudents = [];
@@ -70,7 +86,7 @@ class RosterRetrievalService implements RosterRetrievalContract
         // Cleans the student info so we only grab the fields we need
         $sanitizedStudents = [];
         foreach ($unsanitizedStudents as $unsanitizedStudent) {
-            \array_push($sanitizedStudents, $this->sanitizeStudent($unsanitizedStudent, $imageManager));
+            \array_push($sanitizedStudents, $this->sanitizeStudent($unsanitizedStudent, $imageManager, $canvasPictures));
         }
 
         \usort($sanitizedStudents, function ($a, $b) {
@@ -82,7 +98,7 @@ class RosterRetrievalService implements RosterRetrievalContract
         return $sortedStudents;
     }
 
-    public function sanitizeStudent($student, $imageManager = null)
+    public function sanitizeStudent($student, $imageManager = null, $canvasPictures = [])
     {
         if ($student->email == null) {
             $student->email = $student->first_name . $student->last_name . '@NOTREALEMAIL.net';
@@ -99,7 +115,9 @@ class RosterRetrievalService implements RosterRetrievalContract
             'email_uri' => $student->email_uri,
             'image_priority' => $student->image_priority,
             'images' => [
-                'avatar' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
+                'avatar' => array_key_exists($student->email, $canvasPictures) ?
+                    $canvasPictures[$student->email] : 
+                    env('MEDIA_URL').'student/media/'.$student->email_uri.'/avatar?source=true&secret='.urlencode(env('MEDIA_KEY')),
                 'likeness' => env('MEDIA_URL').'student/media/'.$student->email_uri.'/likeness?source=true&secret='.urlencode(env('MEDIA_KEY'))
             ]
         ];

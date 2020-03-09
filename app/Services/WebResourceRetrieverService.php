@@ -56,16 +56,39 @@ class WebResourceRetrieverService implements WebResourceRetrieverContract
     {
         $client = new Client();
 
+        $courseId = "0";
+
+        $canvasHeaders = ['Authorization' => 'Bearer ' . env('BEARER_AUTH')];
+
+        $getCanvasCourseId = $client->get('https://canvas.csun.edu/api/v1/courses?per_page=50',
+            ['headers' => $canvasHeaders])->getBody()->getContents();
+        $getCanvasCourseId = \json_decode($getCanvasCourseId);
+
+        foreach($getCanvasCourseId as $courseItem) {
+            if(!isset($courseItem->sis_course_id)){
+                continue;
+            }
+            if($course == explode("-", $courseItem->sis_course_id)[1]){
+                $courseId = $courseItem->id;
+            }
+        }
+
         try {
-            return env('APP_ENV') == 'production' ?
-                $client->get(
-                    env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course,
-                    ['verify' => false, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]]
-                )
-                : $client->get(
-                    env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course,
-                    ['verify' => false]
-                );
+            $promise1 = env('APP_ENV') == 'production' ? 
+                $client->getAsync(env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course, 
+                ['verify' => False, 'auth' => [env('ROSTER_USERNAME'), env('ROSTER_PASSWORD')]])
+                :  $client->getAsync(env('ROSTER_URL') . 'terms/' . $term . '/classes/' . $course,
+                ['verify' => False]);
+            $promise2 = $client->getAsync(env('CANVAS_COURSES_URL') . $courseId . '/users?per_page=50&include[]=avatar_url&include[]=email',
+                        ['headers' => $canvasHeaders]);
+
+            $promises = [$promise1];
+            if($courseId != "0") {
+                array_push($promises, $promise2);
+            }
+
+            $results = \GuzzleHttp\Promise\settle($promises)->wait();
+            return $results;
         } catch (RequestException $e) {
             echo Psr7\str($e->getRequest());
             if ($e->hasResponse()) {

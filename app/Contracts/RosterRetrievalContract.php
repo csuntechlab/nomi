@@ -8,5 +8,5 @@ interface RosterRetrievalContract
 {
     public function getStudentsFromRoster($term, $course);
 
-    public function sanitizeStudent($student, $imageManager = null);
+    public function sanitizeStudent($student, $imageManager = null, $canvasPictures = []);
 }
