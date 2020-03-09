@@ -26235,37 +26235,19 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     context.commit('GET_TERMS', response.terms);
   },
   getOnlyCourses: function getOnlyCourses(context) {
-    window.axios.get('courses/Fall-2018')
-    // window.axios.get(`courses/${context.state.term[context.state.selectedTerm].term}`)
-    .then(function (response) {
+    window.axios.get('courses/' + context.state.term[context.state.selectedTerm].term).then(function (response) {
       return context.commit('GET_COURSES', response);
     }).catch(function (error) {
       return context.commit('API_FAILURE', error);
     });
   },
   getOnlyRoster: function getOnlyRoster(context, response) {
-    window.axios.get('roster/Fall-2018/METALAB')
-    // window.axios.get(`roster/${context.state.term[context.state.selectedTerm].term}/${response.course}`)
-    .then(function (response) {
+    window.axios.get('roster/' + context.state.term[context.state.selectedTerm].term + '/' + response.course).then(function (response) {
       context.commit('GET_ROSTER', response);context.commit('SORT_ROSTER');
     }).catch(function (error) {
       return context.commit('API_FAILURE', error);
     });
   },
-
-
-  // getOnlyCourses(context) {
-  //   window.axios.get(`courses/${context.state.term[context.state.selectedTerm].term}`)
-  //       .then((response) => context.commit('GET_COURSES', response))
-  //       .catch((error) => context.commit('API_FAILURE', error));
-  // },
-
-  // getOnlyRoster(context, response) {
-  //   window.axios.get(`roster/${context.state.term[context.state.selectedTerm].term}/${response.course}`)
-  //       .then((response) => {context.commit('GET_ROSTER', response); context.commit('SORT_ROSTER');})
-  //       .catch((error) => context.commit('API_FAILURE', error));
-  // },
-
   getOnlyFacultyProfile: function getOnlyFacultyProfile(context, response) {
     context.commit('GET_FACULTY_PROFILE', response.profile);
   },
