@@ -4,7 +4,7 @@
         <upload-bar :sticky="true"></upload-bar>
         <course-banner></course-banner>
         <settings-banner></settings-banner>
-        <div class="container-full">
+        <div class="container-full roster-margin-bottom-nav">
             <roster-container :courseid="this.$route.params.id"></roster-container>
         </div>
     </div>

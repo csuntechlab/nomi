@@ -47,6 +47,20 @@
 }
 
 .roster {
+	&-margin-bottom-nav {
+		margin-bottom: 11vh;
+		/* Samsung Galaxy S5 Portrait */    
+		@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+			margin-bottom: 12.5vh;
+		}
+
+		// iphone 5
+		@media screen and (device-aspect-ratio: 40/71) {
+			margin-bottom: 12vh;
+		}
+
+	}
+
 	&-list__item {
 		padding: .4rem 1rem;
 		@include themify($themes) {

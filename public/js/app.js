@@ -18772,7 +18772,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row bottom-nav" },
+    { staticClass: "row bottom-nav bottom-nav-max-height" },
     [
       _c(
         "router-link",
@@ -23653,7 +23653,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "container-full" },
+            { staticClass: "container-full roster-margin-bottom-nav" },
             [
               _c("roster-container", {
                 attrs: { courseid: this.$route.params.id }

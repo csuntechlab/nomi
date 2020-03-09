@@ -1,5 +1,5 @@
 <template>
-    <div class="row bottom-nav">
+    <div class="row bottom-nav bottom-nav-max-height">
         <router-link v-bind:class="{[selected]: this.currentLocation == 'home'}" id="courses" class="col-xs-3 type--center bottom-nav__button" to="/" @click.native="setActive('home')" data-interactable>
             <i class="fas fa-2x fa-chalkboard-teacher"></i>
             <div class="bottom-nav__text">Courses</div>

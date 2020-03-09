@@ -1776,6 +1776,10 @@ textarea[type="text"]:focus {
   background: #191919;
 }
 
+.bottom-nav-max-height {
+  max-height: 12.5vh;
+}
+
 .bottom-nav__button {
   color: whitesmoke;
   padding: 1.15rem 0 .5rem;
@@ -2854,6 +2858,23 @@ textarea[type="text"]:focus {
   left: 0;
   right: 0;
   padding: 4%;
+}
+
+.roster-margin-bottom-nav {
+  margin-bottom: 11vh;
+  /* Samsung Galaxy S5 Portrait */
+}
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+  .roster-margin-bottom-nav {
+    margin-bottom: 12.5vh;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40 / 71) {
+  .roster-margin-bottom-nav {
+    margin-bottom: 12vh;
+  }
 }
 
 .roster-list__item {
