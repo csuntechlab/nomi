@@ -33,13 +33,10 @@ Route::get('/logout', function () {
 /** Web Service API Routes. */
 Route::get('/courses/{term}', 'WebResourceController@courses')->middleware('auth');
 Route::get('/roster/{term}/{course}', 'SPAController@getRoster')->middleware('auth');
-//Route::get('/roster/{term}/{course}', 'WebResourceController@roster')->middleware('auth');
-Route::get('/media/{email}', 'WebResourceController@media')->middleware('auth');
 Route::get('/student/{email}', 'WebResourceController@student')->middleware('auth');
 
 /** Roster API Routes. */
 Route::get('/students/{term}/{course}', 'RosterController@getStudents')->middleware('auth');
-Route::get('/students/shuffle/{term}/{course}', 'RosterController@shuffleStudents')->middleware('auth');
 
 /** Student API Routes */
 Route::get('/faculty-profile/{email}', 'FacultyProfileController@getFacultyProfile')->middleware('auth');
@@ -67,6 +64,7 @@ Route::post('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@
 Route::group(['prefix' => 'api'], function () {
     Route::post('/upload', 'ImageController@uploadImage')->middleware('auth');
     Route::post('/priority', 'ImageController@updatePriority')->middleware('auth');
+<<<<<<< HEAD
 });
 
 /** META+LAB Feedback Routes */
@@ -82,3 +80,6 @@ Route::group(['prefix' => 'api'], function () {
  * Canvas APIs
  */
 Route::get('/canvas/user/{user_id}/courses', 'CanvasController@getCanvasCourses');
+=======
+});
+>>>>>>> dev

@@ -18772,7 +18772,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "row bottom-nav" },
+    { staticClass: "row bottom-nav bottom-nav-max-height" },
     [
       _c(
         "router-link",
@@ -23653,7 +23653,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "container-full" },
+            { staticClass: "container-full roster-margin-bottom-nav" },
             [
               _c("roster-container", {
                 attrs: { courseid: this.$route.params.id }
@@ -25868,6 +25868,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
 /* harmony default export */ __webpack_exports__["a"] = ({
     studentProfile: {
         id: null,
+        student_id: null,
         email: null,
         emailURI: null,
         displayName: null,
@@ -25948,7 +25949,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
     },
     commitNotes: function commitNotes(context) {
         var data = new FormData();
-        data.append('student_id', context.state.studentProfile.id);
+        data.append('student_id', context.state.studentProfile.student_id);
         data.append('notepad', context.state.studentProfile.notes);
 
         window.axios.post('update-note', data).catch(function (error) {
@@ -26009,6 +26010,7 @@ function t(t,n,r){return void 0===(t=(n.split?n.split("."):n).reduce(function(t,
   GET_STUDENT_PROFILE: function GET_STUDENT_PROFILE(state, payload) {
     state.studentProfile.bio = payload.data.bio;
     state.studentProfile.notes = payload.data.notes;
+    state.studentProfile.student_id = payload.data.student_id;
   },
   GET_STUDENT_PROFILE_NO_EMAIL: function GET_STUDENT_PROFILE_NO_EMAIL(state, payload) {
     state.studentProfile.bio = payload.data.bio;
