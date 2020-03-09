@@ -22,8 +22,9 @@ class CanvasService implements CanvasContract
         $this->webResourceUtility = $webResourceUtility;
     }
 
-    public function getCanvasCourses() {
-        return "hello";
+    public function getCanvasCourses($id) {
+        $course_data = $this->webResourceUtility->getCoursesFromCanvas($id);
+        dd($course_data);
     }
 
 }
