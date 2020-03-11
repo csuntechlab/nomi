@@ -177,7 +177,6 @@ return [
         App\Providers\UserSettingServiceProvider::class,
         App\Providers\ModelRepositoryServiceProvider::class,
         App\Providers\UploadPermissionServiceProvider::class,
-        App\Providers\CanvasServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -270,5 +269,6 @@ return [
         // Form Aliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'ldap_ptg' => env("ldap_ptg_alias")
     ],
 ];
