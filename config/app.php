@@ -177,7 +177,6 @@ return [
         App\Providers\UserSettingServiceProvider::class,
         App\Providers\ModelRepositoryServiceProvider::class,
         App\Providers\UploadPermissionServiceProvider::class,
-        App\Providers\CanvasServiceProvider::class,
 
         /*
          * Application Service Providers...

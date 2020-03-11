@@ -14,5 +14,4 @@ interface WebResourceRetrieverContract
 
     public function gatherImageCorrectly($student);
 
-    public function getCoursesFromCanvas($courseid);
 }

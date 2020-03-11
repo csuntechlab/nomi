@@ -64,7 +64,6 @@ Route::post('support', '\CSUNMetaLab\Support\Http\Controllers\SupportController@
 Route::group(['prefix' => 'api'], function () {
     Route::post('/upload', 'ImageController@uploadImage')->middleware('auth');
     Route::post('/priority', 'ImageController@updatePriority')->middleware('auth');
-<<<<<<< HEAD
 });
 
 /** META+LAB Feedback Routes */
@@ -76,10 +75,3 @@ Route::group(['prefix' => 'api'], function () {
 //     Route::post('feedback', '\CSUNMetaLab\Support\Http\Controllers\FeedbackController@store')->name('feedback.store');
 //   });
 
-/**
- * Canvas APIs
- */
-Route::get('/canvas/user/{user_id}/courses', 'CanvasController@getCanvasCourses');
-=======
-});
->>>>>>> dev
