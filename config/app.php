@@ -269,6 +269,5 @@ return [
         // Form Aliases
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'ldap_ptg' => env("ldap_ptg_alias")
     ],
 ];
